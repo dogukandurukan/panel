@@ -1,20 +1,45 @@
 {
-  "updated": "2026-08-10 12:30",
+  "updated": "2026-08-10 15:18",
   "watch": [
-    {"code": "SASA",  "price": "2.48",   "chg": "-3.88%"},
-    {"code": "EREGL", "price": "37.42",  "chg": "-3.26%"},
-    {"code": "TUPRS", "price": "334.25", "chg": "+3.32%"},
-    {"code": "KONTR", "price": "4.00",   "chg": "-1.48%"},
-    {"code": "YEOTK", "price": "38.72",  "chg": "-1.48%"}
+    {
+      "code": "SASA",
+      "price": "2.47",
+      "chg": "-4.26%"
+    },
+    {
+      "code": "EREGL",
+      "price": "37.20",
+      "chg": "-3.83%"
+    },
+    {
+      "code": "TUPRS",
+      "price": "337.25",
+      "chg": "+4.25%"
+    },
+    {
+      "code": "KONTR",
+      "price": "4.00",
+      "chg": "-1.48%"
+    },
+    {
+      "code": "YEOTK",
+      "price": "38.88",
+      "chg": "-1.07%"
+    }
   ],
   "news": [
-    "⚪ Sasa Polyester 2Ç26'da kâr beklentisine karşı zarar açıkladı  (Paratic Haber)",
+    "⚪ SASA Polyester bilançosu açıklandı, ilk yarıda kara geçildi  (Foreks.com)",
+    "⚪ Sasa Polyester 2Ç26’da kâr beklentisine karşı zarar açıkladı  (Paratic Haber)",
+    "⚪ KAP *** SASA POLYESTER SANAYİ A.Ş. *** SASA *** Faaliyet Raporu (Konsolide)  (Yeni Şafak)",
     "🟢 Ereğli Demir Çelik'ten ikinci çeyrekte 8,5 milyar TL net kâr  (Haber 7)",
+    "⚪ Erdemir Ereğli Demir Çelik (EREGL) için bilanço sonrası hedef fiyatlar güncellendi  (Rota Borsa)",
+    "⚪ Erdemir Ereğli Demir Çelik (EREGL) hisselerinde 2 kurum üzerinden yüklü satış  (Rota Borsa)",
     "🟢 YEOTK esas sözleşme değişikliği tescil edildi  (Borsatek)"
   ],
   "world": [
-    "(örnek) Fed faiz kararı piyasaları hareketlendirdi  (Reuters)",
-    "(örnek) Brent petrol haftayı yükselişle kapattı  (Bloomberg)",
-    "(örnek) Küresel çip talebi teknoloji hisselerini etkiliyor  (FT)"
+    "🌍 Meclis’te tarihi oturum: Çerçeve yasa Genel Kurul’da - Medyascope  (Medyascope)",
+    "🌍 Atom bombası yapmadan Atom bombamız da oldu! - Necati Doğru - Sözcü Gazetesi  (Sözcü Gazetesi)",
+    "🌍 UltrAslan liderinin evinden servet çıktı. Sebahattin Şirin'in evinde 8.5 saat süren arama - NTV Haber  (NTV Haber)",
+    "🌍 Şanlıurfa'da dehşete düşüren olay! 85 yaşındaki annesini sopa ile öldüresiye dövdü - Hürriyet  (Hürriyet)"
   ]
 }
