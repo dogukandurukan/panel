@@ -1,0 +1,15 @@
+{
+  "updated": "2026-08-10 12:30",
+  "watch": [
+    {"code": "SASA",  "price": "2.48",   "chg": "-3.88%"},
+    {"code": "EREGL", "price": "37.42",  "chg": "-3.26%"},
+    {"code": "TUPRS", "price": "334.25", "chg": "+3.32%"},
+    {"code": "KONTR", "price": "4.00",   "chg": "-1.48%"},
+    {"code": "YEOTK", "price": "38.72",  "chg": "-1.48%"}
+  ],
+  "news": [
+    "⚪ Sasa Polyester 2Ç26'da kâr beklentisine karşı zarar açıkladı  (Paratic Haber)",
+    "🟢 Ereğli Demir Çelik'ten ikinci çeyrekte 8,5 milyar TL net kâr  (Haber 7)",
+    "🟢 YEOTK esas sözleşme değişikliği tescil edildi  (Borsatek)"
+  ]
+}

@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Günlük Almanak</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+  :root{--paper:#E9E4D8;--card:#F4F0E7;--ink:#211F1A;--muted:#6E675A;--line:#D3CCBD;--line2:#E1DACC;
+    --accent:#1C4E48;--up:#2F7D57;--down:#B4462F;
+    --serif:'Fraunces',Georgia,serif;--sans:'Inter',system-ui,sans-serif;--mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;}
+  *{box-sizing:border-box;} html,body{margin:0;padding:0;}
+  body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.5;padding:22px 20px 40px;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1200px;margin:0 auto;}
+  .masthead{border-bottom:2px solid var(--ink);padding-bottom:12px;margin-bottom:22px;}
+  .mast-top{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;}
+  .mast-title{font-family:var(--serif);font-weight:900;font-size:clamp(28px,5vw,50px);letter-spacing:-.02em;line-height:.95;margin:0;}
+  .mast-title .sub{display:block;font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--accent);margin-top:8px;}
+  .clock{font-family:var(--mono);font-weight:500;font-size:clamp(20px,4vw,32px);letter-spacing:.02em;text-align:right;line-height:1;}
+  .clock .cd{display:block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:8px;font-weight:400;}
+  .dateline{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:10px;display:flex;gap:14px;flex-wrap:wrap;align-items:center;}
+  .dot{width:4px;height:4px;background:var(--accent);border-radius:50%;display:inline-block;}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;align-items:start;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:5px;padding:16px 17px 17px;}
+  .card-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;border-bottom:1px solid var(--line2);padding-bottom:9px;margin-bottom:13px;}
+  .kicker{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin:0 0 3px;}
+  .card-title{font-family:var(--serif);font-weight:600;font-size:20px;margin:0;letter-spacing:-.01em;}
+  .meta{font-family:var(--mono);font-size:10.5px;color:var(--muted);text-align:right;white-space:nowrap;}
+  .ibtn{background:none;border:1px solid var(--line);color:var(--muted);font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:4px 8px;border-radius:4px;cursor:pointer;}
+  .ibtn:hover{border-color:var(--accent);color:var(--accent);}
+  .check{width:17px;height:17px;min-width:17px;margin-top:2px;border:1.5px solid var(--muted);border-radius:4px;cursor:pointer;display:flex;align-items:center;justify-content:center;background:transparent;}
+  .check.on{background:var(--accent);border-color:var(--accent);}
+  .check.on::after{content:'';width:5px;height:9px;border:solid var(--card);border-width:0 2px 2px 0;transform:rotate(45deg);margin-top:-2px;}
+  .empty{color:var(--muted);font-size:13.5px;font-style:italic;padding:6px 0;}
+  .add-row{display:flex;gap:8px;margin-top:11px;}
+  .add-row input{flex:1;background:transparent;border:1px solid var(--line);border-radius:4px;padding:7px 10px;font-family:var(--sans);font-size:14px;color:var(--ink);}
+  .add-row input:focus{outline:none;border-color:var(--accent);}
+  .add-row button{background:var(--accent);color:var(--card);border:none;border-radius:4px;padding:0 14px;font-weight:600;font-size:14px;cursor:pointer;}
+  .task{display:flex;align-items:flex-start;gap:10px;padding:7px 0;border-bottom:1px dotted var(--line2);}
+  .task:last-child{border-bottom:none;} .ttx{flex:1;font-size:14.5px;} .task.done .ttx{text-decoration:line-through;color:var(--muted);}
+  .del{opacity:.35;background:none;border:none;color:var(--down);cursor:pointer;font-size:16px;line-height:1;padding:0 2px;} .del:hover{opacity:1;}
+  .wtitle{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:9px;}
+  .ex{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px dotted var(--line2);}
+  .ex:last-child{border-bottom:none;}
+  .ex-body{flex:1;display:flex;justify-content:space-between;gap:10px;align-items:baseline;}
+  .ex-n{font-size:14px;} .ex.done .ex-n{text-decoration:line-through;color:var(--muted);}
+  .ex-s{font-family:var(--mono);font-size:11px;color:var(--muted);white-space:nowrap;}
+  .runbox{display:flex;align-items:center;gap:8px;margin-top:12px;border-top:1px solid var(--line2);padding-top:11px;}
+  .runbox label{font-size:13px;color:var(--muted);flex:1;}
+  .runbox input{width:78px;background:#fff;border:1px solid var(--line);border-radius:4px;padding:5px 7px;font-family:var(--mono);font-size:13px;text-align:right;color:var(--ink);}
+  .runbox input:focus{outline:none;border-color:var(--accent);}
+  .runnote{font-size:12px;color:var(--muted);margin-top:8px;font-style:italic;}
+  .tgt{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;}
+  .tgt .f{flex:1;min-width:66px;}
+  .tgt label{display:block;font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:3px;}
+  .tgt input{width:100%;background:#fff;border:1px solid var(--line);border-radius:4px;padding:5px 7px;font-family:var(--mono);font-size:13px;color:var(--ink);}
+  .tgt input:focus{outline:none;border-color:var(--accent);}
+  .bar-wrap{margin-bottom:10px;}
+  .bar-top{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;margin-bottom:3px;}
+  .bar-top .num{color:var(--muted);}
+  .bar{height:7px;background:var(--line2);border-radius:4px;overflow:hidden;}
+  .bar i{display:block;height:100%;background:var(--accent);border-radius:4px;transition:width .4s ease;}
+  .bar i.over{background:var(--down);}
+  .rem{font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:2px;}
+  .meal{padding:10px 0;border-bottom:1px dotted var(--line2);} .meal:last-child{border-bottom:none;}
+  .meal-top{display:flex;justify-content:space-between;align-items:center;gap:8px;}
+  .meal-slot{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);}
+  .portions{display:flex;gap:4px;align-items:center;}
+  .pchip{border:1px solid var(--line);background:transparent;color:var(--muted);font-family:var(--mono);font-size:11px;border-radius:4px;padding:2px 7px;cursor:pointer;min-width:30px;}
+  .pchip.on{background:var(--accent);color:var(--card);border-color:var(--accent);}
+  .pin{width:44px;background:#fff;border:1px solid var(--line);border-radius:4px;padding:2px 5px;font-family:var(--mono);font-size:11px;color:var(--ink);text-align:right;}
+  .pin:focus{outline:none;border-color:var(--accent);}
+  .meal-text{width:100%;background:transparent;border:none;border-bottom:1px solid transparent;font-family:var(--sans);font-size:14px;color:var(--ink);padding:4px 0 3px;margin-top:4px;}
+  .meal-text:focus{outline:none;border-bottom:1px solid var(--accent);}
+  .macros{display:flex;gap:8px;margin-top:5px;align-items:center;}
+  .macros .mi{display:flex;align-items:center;gap:3px;}
+  .macros .mi span{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+  .macros input{width:52px;background:#fff;border:1px solid var(--line);border-radius:3px;padding:3px 5px;font-family:var(--mono);font-size:11px;color:var(--ink);}
+  .macros input:focus{outline:none;border-color:var(--accent);}
+  .rtoggle{background:none;border:none;color:var(--accent);font-family:var(--mono);font-size:10px;letter-spacing:.05em;cursor:pointer;padding:2px 0;margin-left:auto;}
+  .recipe{margin-top:8px;background:#fff;border:1px solid var(--line2);border-radius:5px;padding:9px 11px;}
+  .rline{display:flex;gap:7px;padding:3px 0;font-size:12.5px;line-height:1.45;} .rline .rb{color:var(--accent);}
+  .mkt{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px dotted var(--line2);}
+  .mkt:last-child{border-bottom:none;}
+  .mkt-label{font-size:14px;} .mkt-sub{font-family:var(--mono);font-size:9px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;}
+  .mkt-val{font-family:var(--mono);font-size:15px;font-weight:500;text-align:right;}
+  .mkt-in{font-family:var(--mono);font-size:14px;text-align:right;width:110px;background:#fff;border:1px solid var(--line);border-radius:4px;padding:4px 7px;color:var(--ink);}
+  .mkt-in:focus{outline:none;border-color:var(--accent);}
+  .mkt-chg{font-family:var(--mono);font-size:11px;text-align:right;margin-top:1px;} .up{color:var(--up);} .down{color:var(--down);} .flat{color:var(--muted);}
+  .news-item{padding:8px 0;border-bottom:1px dotted var(--line2);display:flex;gap:11px;align-items:flex-start;} .news-item:last-child{border-bottom:none;}
+  .news-n{font-family:var(--mono);font-size:12px;color:var(--accent);font-weight:500;min-width:16px;margin-top:2px;}
+  .news-t{font-size:14px;line-height:1.4;flex:1;}
+  .paste{width:100%;background:#fff;border:1px solid var(--line);border-radius:4px;padding:8px 10px;font-family:var(--sans);font-size:13px;color:var(--ink);resize:vertical;min-height:48px;margin-top:9px;} .paste:focus{outline:none;border-color:var(--accent);}
+  .fact{display:flex;gap:9px;padding:8px 0;border-bottom:1px dotted var(--line2);font-size:13.5px;line-height:1.5;} .fact:last-child{border-bottom:none;} .fact .fb{color:var(--accent);}
+  .film-title{font-family:var(--serif);font-weight:600;font-size:19px;} .film-year{color:var(--muted);font-size:13px;font-family:var(--mono);}
+  .film-row{font-size:13px;margin-top:5px;line-height:1.5;} .film-row b{color:var(--accent);font-weight:600;font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;margin-right:6px;}
+  .film-note{font-size:12.5px;color:var(--muted);font-style:italic;margin-top:7px;}
+  .fitem+.fitem{border-top:1px dotted var(--line2);padding-top:12px;margin-top:12px;}
+  .de{padding:9px 0;border-bottom:1px dotted var(--line2);} .de:last-child{border-bottom:none;}
+  .de-word{font-family:var(--serif);font-weight:600;font-size:18px;} .de-tr{color:var(--muted);font-size:13.5px;} .de-ex{font-size:12.5px;margin-top:3px;font-style:italic;opacity:.82;}
+  .gram-head{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);border-top:1px solid var(--line2);padding-top:11px;margin-top:12px;margin-bottom:5px;}
+  .gram{display:flex;gap:8px;padding:5px 0;font-size:13px;line-height:1.45;} .gram .gi{font-family:var(--mono);color:var(--accent);font-size:12px;margin-top:1px;}
+  .loading{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.06em;padding:12px 0;}
+  footer{margin-top:26px;padding-top:14px;border-top:1px solid var(--line);font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+  @media (max-width:640px){body{padding:16px 14px 34px;}.clock{text-align:left;}}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <div class="mast-top">
+      <h1 class="mast-title">Günlük Almanak<span class="sub">Kişisel Kontrol Panosu</span></h1>
+      <div class="clock"><span id="clock">--:--:--</span><span class="cd" id="clockDate">—</span></div>
+    </div>
+    <div class="dateline"><span id="greeting">Günaydın</span><span class="dot"></span><span>Marmaris, Muğla</span><span class="dot"></span><span id="weekno">—</span></div>
+  </header>
+  <div class="grid">
+    <section class="card"><div class="card-head"><div><p class="kicker">Ajanda</p><h2 class="card-title">Bugün Yapılacaklar</h2></div><div class="meta" id="taskCount">0/0</div></div>
+      <div id="taskList"></div>
+      <div class="add-row"><input id="taskInput" placeholder="Yeni iş ekle…" maxlength="120"><button id="taskAdd">Ekle</button></div></section>
+
+    <section class="card"><div class="card-head"><div><p class="kicker">Sabah · Her gün</p><h2 class="card-title">Sabah Rutini + Koşu</h2></div><div class="meta" id="morningCount">0/0</div></div>
+      <div id="morningList"></div>
+      <div id="runArea"></div></section>
+
+    <section class="card"><div class="card-head"><div><p class="kicker">Antrenman · Bugün</p><h2 class="card-title" id="wkTitle">Bugünün Antrenmanı</h2></div><div class="meta" id="wkCount">0/0</div></div>
+      <div class="wtitle" id="wkSub">—</div>
+      <div id="exList"></div></section>
+
+    <section class="card"><div class="card-head"><div><p class="kicker">Beslenme · Bugün</p><h2 class="card-title">Bugünün Yemekleri</h2></div><div class="meta">hedefi düzenle ↓</div></div>
+      <div class="tgt" id="tgt"></div><div id="bars"></div><div style="height:6px"></div><div id="mealList"></div></section>
+
+    <section class="card"><div class="card-head"><div><p class="kicker">Piyasa</p><h2 class="card-title">Borsa Durumu</h2></div><div class="meta"><span id="fxTime">—</span><br><button class="ibtn" id="fxRefresh">Yenile</button></div></div>
+      <div id="marketList"><div class="loading">Kur çekiliyor…</div></div>
+      <div id="watchList"></div></section>
+
+    <section class="card"><div class="card-head"><div><p class="kicker">Gündem</p><h2 class="card-title">Günün Önemli Haberleri</h2></div><div class="meta">elle / mail</div></div>
+      <div id="newsList"></div>
+      <div class="add-row"><input id="newsInput" placeholder="Başlık ekle…" maxlength="160"><button id="newsAdd">Ekle</button></div>
+      <textarea class="paste" id="mailPaste" placeholder="…ya da 'Öğle Güncellemesi' mailini yapıştır"></textarea>
+      <div class="add-row"><button class="ibtn" id="mailParse" style="padding:6px 12px">Mailden ayrıştır (izleme listesi + haberler)</button></div></section>
+
+    <section class="card"><div class="card-head"><div><p class="kicker">Sohbetlik</p><h2 class="card-title">İlginç Bilgiler</h2></div><div class="meta"><button class="ibtn" id="factNext">Başka</button></div></div>
+      <div id="factList"></div></section>
+
+    <section class="card"><div class="card-head"><div><p class="kicker">Tarih</p><h2 class="card-title">Tarihten Bir Not</h2></div><div class="meta"><button class="ibtn" id="histNext">Başka</button></div></div>
+      <div id="histBox"></div></section>
+
+    <section class="card"><div class="card-head"><div><p class="kicker">Sinema</p><h2 class="card-title">Günün Filmi</h2></div><div class="meta"><button class="ibtn" id="filmNext">Başka</button></div></div>
+      <div id="filmBox"></div></section>
+
+    <section class="card"><div class="card-head"><div><p class="kicker">Müzik</p><h2 class="card-title">Günün Sanatçısı</h2></div><div class="meta"><button class="ibtn" id="artNext">Başka</button></div></div>
+      <div id="artBox"></div></section>
+
+    <section class="card"><div class="card-head"><div><p class="kicker">Okuma</p><h2 class="card-title">Günün Kitabı</h2></div><div class="meta"><button class="ibtn" id="bookNext">Başka</button></div></div>
+      <div id="bookBox"></div></section>
+
+    <section class="card"><div class="card-head"><div><p class="kicker">Öğrenme · A1–A2</p><h2 class="card-title">Günün 5 Almanca Kelimesi</h2></div><div class="meta"><button class="ibtn" id="deRefresh">Yeni set</button></div></div>
+      <div id="germanList"></div><div id="gramList"></div></section>
+  </div>
+  <footer><span>Antrenman & yemek programından · gün gün otomatik</span><span>Döviz canlı · yatırım tavsiyesi değildir</span></footer>
+</div>
+<script>
+const K={tasks:'d:tasks',targets:'d:targets',bist:'d:bist',altin:'d:altin',news:'d:news',fx:'d:fx',de:'d:de'};
+const mem={};
+async function sGet(k){try{if(window.storage){const r=await window.storage.get(k,false);return r?JSON.parse(r.value):null;}}catch(e){}
+  try{const v=localStorage.getItem(k);return v?JSON.parse(v):null;}catch(e){}return (k in mem)?mem[k]:null;}
+async function sSet(k,val){mem[k]=val;try{if(window.storage){await window.storage.set(k,JSON.stringify(val),false);return;}}catch(e){}
+  try{localStorage.setItem(k,JSON.stringify(val));}catch(e){}}
+const todayKey=()=>new Date().toLocaleDateString('sv-SE');
+const doy=()=>{const d=new Date();return Math.floor((d-new Date(d.getFullYear(),0,0))/86400000);};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const num=v=>Number(v)||0;
+const weekKey=()=>{const d=new Date(),s=new Date(d.getFullYear(),0,1);return d.getFullYear()+'-W'+Math.ceil((((d-s)/86400000)+s.getDay()+1)/7);};
+const DAYNAMES=['Pazar','Pazartesi','Salı','Çarşamba','Perşembe','Cuma','Cumartesi'];
+
+/* ===== ANTRENMAN (gün gün, programdan) ===== */
+const WK={
+ 1:{title:'Üst Vücut A — İtiş (+ koşu)',run:true,ex:[['Bench press','4 × 6-8'],['Overhead press','3 × 8'],['Incline dumbbell press','3 × 10'],['Dips / triceps pushdown','3 × 10'],['Overhead triceps extension','3 × 12'],['Lateral raise','3 × 12'],['Koşu (üst vücut günü)','protokole göre']]},
+ 2:{title:'Alt Vücut A — Tek Bacak',run:false,ex:[['Bulgar split squat (inişte 3 sn)','3 × 8 / bacak'],['Romanian deadlift','3 × 8'],['Step-up','3 × 10 / bacak'],['Leg extension','3 × 12 / bacak'],['Tek ayak denge (gözler kapalı dahil)','3 × 30 sn / ayak']]},
+ 3:{title:'Kürek (sabah) + Basket/Tenis (akşam)',run:false,ex:[['Sabah: kürek','20-30 dk'],['Akşam: basketbol / tenis','serbest']]},
+ 4:{title:'Üst Vücut B — Çekiş (+ koşu)',run:true,ex:[['Barfiks / lat pulldown','4 × 8'],['Barbell row','3 × 8'],['Face pull','3 × 15'],['Biceps curl','3 × 10'],['Hammer curl','3 × 12'],['Plank','3 × 45 sn'],['Koşu (üst vücut günü)','protokole göre']]},
+ 5:{title:'Alt Vücut B',run:false,ex:[['Tek bacak leg press','3 × 10 / bacak'],['Hip thrust','3 × 10'],['Walking lunge','3 × 10 / bacak'],['Leg curl','3 × 12'],['Calf raise (tek ayak)','3 × 15 / ayak']]},
+ 6:{title:'Kısa Koşu / Dinlenme',run:true,ex:[['Kısa koşu veya hafif tempo','15-20 dk']]},
+ 0:{title:'Tam Dinlenme',run:false,ex:[['Dinlenme','—'],['İstersen hafif yürüyüş','serbest']]}
+};
+const MORNING=[['Kedi-inek','10 tekrar'],['Kalça fleksör esnetme (diz üstü lunge)','2 × 30 sn / bacak'],['Güneş selamı','3-4 tur'],['Plank','3 × 45 sn'],['Dead bug','3 × 10 / taraf'],['Side plank','2 × 30 sn / taraf'],['Ayak bileği çemberi + tek ayak denge','3 dk']];
+
+/* ===== YEMEK (gün gün, 7 günlük plandan) ===== */
+const MP={
+ 1:[['Kahvaltı','3 yumurta omlet + 40g peynir + 50g yulaf (sütle) + 1 muz',520,34,55],['Öğle / PW','180g ızgara tavuk + bulgur pilavı + çoban salata',720,48,90],['Ara öğün','250g süzme yoğurt + 30g ceviz + 1 elma',410,22,35],['Akşam','150g fırın somon + fırın sebze + yeşil salata',700,41,80]],
+ 2:[['Kahvaltı','Menemen (3 yumurta) + 2 dilim tam buğday ekmek + 30g peynir',500,32,55],['Öğle / PW','180g ızgara hindi + pirinç + zeytinyağlı sebze',700,45,88],['Ara öğün','250g yoğurt + 20g badem + 1 armut',420,20,38],['Akşam','150g yağsız dana köfte + bulgur + salata',700,43,78]],
+ 3:[['Kahvaltı','60g yulaf + süt + 1 muz + 15g fıstık ezmesi (istersen whey)',560,38,72],['Öğle / PW','180g tavuk + tam buğday makarna + domates sos + rende peynir',730,48,95],['Ara öğün','200g yoğurt + mevsim meyvesi',360,16,40],['Akşam','2 kutu ton (veya 150g taze) + patates salatası + yeşillik',620,40,55]],
+ 4:[['Kahvaltı','3 yumurta + peynir + zeytin + domates-salatalık + 2 dilim ekmek',520,30,55],['Öğle / PW','180g dana bonfile + pirinç + fırın sebze',720,46,85],['Ara öğün','250g yoğurt + 30g ceviz + 1 elma',410,22,35],['Akşam','150g tavuk sote + bulgur + salata',700,42,80]],
+ 5:[['Kahvaltı','2 yumurta + 50g yulaf (sütle) + 1 muz + 25g badem',540,34,62],['Öğle / PW','180g somon + 200g haşlanmış patates + yeşil salata',690,40,80],['Ara öğün','200g süzme yoğurt + mevsim meyvesi',380,18,40],['Akşam','180g hindi + bulgur + zeytinyağlı sebze',700,48,75]],
+ 6:[['Kahvaltı','Ölçülü serpme: 2 yumurta, peynir, zeytin, 2 dilim ekmek, domates',480,25,50],['Öğle','180g ızgara tavuk/köfte + pilav + salata',700,45,85],['Ara öğün','Meyve + yoğurt + bir avuç kuruyemiş',400,18,42],['Akşam','Dışarıda esnek: ızgara balık/et + salata + az karbonhidrat',620,40,45]],
+ 0:[['Kahvaltı','3 yumurta + yulaf + meyve',500,30,55],['Öğle','180g tavuk/et + pirinç veya bulgur + sebze',700,45,85],['Ara öğün','250g yoğurt + 30g ceviz',400,22,38],['Akşam','Hafif: mercimek çorbası + 150g tavuk/balık + salata',560,38,55]]
+};
+const DEFAULT_TARGETS={kcal:2350,p:145,c:260,y:70};
+
+const RECIPES=[[/tavuk|hindi/i,'Tavuğu tuz, karabiber, kekikle 10 dk marine et; tavada orta-yüksek ateşte her yüzünü 6-7 dk kızart.'],
+ [/bulgur/i,'Soğanı zeytinyağında kavur, salçayı ekle; 1 ölçü bulgura 2 ölçü sıcak su, kısık ateşte demlendir.'],
+ [/(balık|somon|levrek)/i,'Balığı zeytinyağı, limon, tuzla ovala; 200°C fırında 15-18 dk pişir.'],
+ [/yumurta|menemen|omlet/i,'Yumurtaları az yağda düşük ateşte, karıştırarak yumuşak kıvamda pişir.'],
+ [/yulaf/i,'Yulafı süt/su ile 3-4 dk pişir; üzerine ceviz ve meyve ekle.'],
+ [/(salata|yeşillik)/i,'Mevsim yeşilliğine domates-salatalık; zeytinyağı, limon, tuzla harmanla.'],
+ [/yoğurt/i,'Süzme yoğurdun üzerine ceviz ve meyve; tarçın serpebilirsin.'],
+ [/(dana|köfte|bonfile|et\b|kırmızı et)/i,'Eti oda sıcaklığına getir; yüksek ateşte mühürle, 3-4 dk dinlendir.'],
+ [/sebze/i,'Sebzeleri zeytinyağında hafif sotele; tuz, karabiberle tatlandır.'],
+ [/(pirinç|pilav)/i,'Pirinci yıka-süz; yağda kavur, 1.5 ölçü su ile kısık ateşte pişir.'],
+ [/makarna/i,'Makarnayı al dente haşla; domates sos + rende peynirle karıştır.'],
+ [/mercimek/i,'Soğan-havucu kavur, kırmızı mercimek + su; blenderdan geçir, limon sık.']];
+function recipeFor(t){const o=[];RECIPES.forEach(([re,tip])=>{if(re.test(t||''))o.push(tip);});return o;}
+
+/* ===== İLGİNÇ BİLGİLER ===== */
+const FACTS=[
+ 'Bal asla bozulmaz; antik Mısır mezarlarında bulunan 3000 yıllık bal hâlâ yenebilir durumdaydı.',
+ 'Ahtapotların üç kalbi ve bakır bazlı mavi kanı vardır.',
+ 'Eyfel Kulesi yazın metalin genleşmesiyle ~15 cm uzayabilir.',
+ 'Uzay boşluğunda ses yayılmaz; sesi taşıyacak molekül yoktur.',
+ 'Bir çay kaşığı nötron yıldızı maddesi yaklaşık 6 milyar ton çeker.',
+ 'Wombatların dışkısı küp şeklindedir.',
+ 'Deniz atlarında yavruyu erkek taşır ve doğurur.',
+ 'Kleopatra zaman olarak piramitlerin yapımından çok, modern çağa daha yakın yaşadı.',
+ 'Vikinglerin boynuzlu miğfer taktığına dair arkeolojik kanıt yoktur; bu bir 19. yüzyıl mitidir.',
+ 'Oxford Üniversitesi, Aztek İmparatorluğu\'ndan daha eskidir.',
+ 'Zürafaların boyun omuru sayısı insanla aynıdır: yedi.',
+ 'Antarktika, Dünya\'nın en büyük çölüdür — çöl, sıcaklıkla değil yağış azlığıyla tanımlanır.',
+ 'Bir yıl Venüs\'te, bir Venüs gününden daha kısa sürer.',
+ 'Ay her yıl Dünya\'dan yaklaşık 3,8 cm uzaklaşıyor.',
+ 'Sıcak su bazı koşullarda soğuk sudan daha hızlı donabilir (Mpemba etkisi).',
+ 'Bir grup flamingoya İngilizcede "flamboyance" denir.',
+ 'Muz botanik olarak bir meyvedir ve bitkisi devasa bir ottur.',
+ 'Shakespeare İngilizceye 1700\'den fazla yeni kelime kazandırmıştır.',
+ 'Bilinen en yaşlı ağaçlardan biri (bristlecone çamı) ~4800 yaşındadır.',
+ 'Bir insanın tüm kan damarları uç uca eklenirse Dünya\'yı birkaç kez sarabilir.',
+ 'Karıncaların toplam biyokütlesi, tüm insanlarınkiyle yarışacak düzeydedir.',
+ 'Nutella için kullanılan fındığın büyük bölümü Türkiye\'den gelir.',
+ 'İnsan mide asidi metali aşındıracak kadar güçlüdür (pH ~1,5-3).',
+ 'Pisa Kulesi daha inşa hâlindeyken eğilmeye başlamıştı; sebep zemindi.',
+ 'Bazı ağustosböceği türleri tam 13 veya 17 yılda bir topluca çıkar — asal sayı stratejisi.',
+ 'Her kaplanın çizgi deseni, tıpkı parmak izi gibi benzersizdir.',
+ 'Bir bulut yüzlerce ton su taşıyabilir.',
+ 'Balın bakteri öldüren asidik yapısı, onu doğal bir koruyucu yapar.'];
+
+/* ===== GÜNÜN FİLMİ ===== */
+const FILMS=[
+ ['Esaretin Bedeli (The Shawshank Redemption)','1994','Frank Darabont','Tim Robbins, Morgan Freeman','Umut üzerine, çoğu listede tüm zamanların en iyisi sayılan hapishane draması.'],
+ ['Baba (The Godfather)','1972','Francis Ford Coppola','Marlon Brando, Al Pacino, James Caan','Bir mafya ailesinin destanı; sinemanın en etkili yapıtlarından.'],
+ ['Başlangıç (Inception)','2010','Christopher Nolan','Leonardo DiCaprio, Joseph Gordon-Levitt, Tom Hardy','Rüya içinde rüya kurgusuyla zihin büken bir soygun filmi.'],
+ ['Pulp Fiction','1994','Quentin Tarantino','John Travolta, Samuel L. Jackson, Uma Thurman','Kesişen hikâyeler ve keskin diyaloglarla bir kült klasik.'],
+ ['Matrix','1999','Wachowski Kardeşler','Keanu Reeves, Laurence Fishburne, Carrie-Anne Moss','Gerçeklik nedir sorusunu soran çığır açıcı bilimkurgu.'],
+ ['Dövüş Kulübü (Fight Club)','1999','David Fincher','Brad Pitt, Edward Norton, Helena Bonham Carter','Tüketim çağına isyanı anlatan, finaliyle sarsan bir kült.'],
+ ['Forrest Gump','1994','Robert Zemeckis','Tom Hanks, Robin Wright, Gary Sinise','Saf bir adamın gözünden Amerikan tarihinde bir yolculuk.'],
+ ['Sıkı Dostlar (Goodfellas)','1990','Martin Scorsese','Robert De Niro, Ray Liotta, Joe Pesci','Mafya dünyasının içeriden, hızlı ve acımasız anlatımı.'],
+ ['Yıldızlararası (Interstellar)','2014','Christopher Nolan','Matthew McConaughey, Anne Hathaway, Jessica Chastain','Zaman, yerçekimi ve baba-kız bağını işleyen destansı bilimkurgu.'],
+ ['Parazit (Parasite)','2019','Bong Joon-ho','Song Kang-ho, Lee Sun-kyun','Sınıf uçurumunu anlatan, Oscar\'lı Güney Kore filmi.'],
+ ['Kara Şövalye (The Dark Knight)','2008','Christopher Nolan','Christian Bale, Heath Ledger, Aaron Eckhart','Ledger\'ın efsanevi Joker\'iyle bir süper kahraman başyapıtı.'],
+ ['Schindler\'in Listesi','1993','Steven Spielberg','Liam Neeson, Ben Kingsley, Ralph Fiennes','Holokost sırasında yüzlerce hayatı kurtaran bir adamın gerçek hikâyesi.'],
+ ['Yedi (Se7en)','1995','David Fincher','Brad Pitt, Morgan Freeman, Kevin Spacey','Yedi ölümcül günah üzerine karanlık bir polisiye gerilim.'],
+ ['Gladyatör (Gladiator)','2000','Ridley Scott','Russell Crowe, Joaquin Phoenix','İntikam peşindeki bir Romalı generalin destanı.'],
+ ['Whiplash','2014','Damien Chazelle','Miles Teller, J.K. Simmons','Mükemmeliyet takıntısını işleyen, gergin bir müzik draması.'],
+ ['İhtiyarlara Yer Yok (No Country for Old Men)','2007','Coen Kardeşler','Javier Bardem, Tommy Lee Jones, Josh Brolin','Kaderi ve şiddeti soğukkanlılıkla anlatan Oscar\'lı gerilim.'],
+ ['Köstebek (The Departed)','2006','Martin Scorsese','Leonardo DiCaprio, Matt Damon, Jack Nicholson','Polis ve mafya arasında çifte ajanların gerilimi.'],
+ ['Zincirsiz (Django Unchained)','2012','Quentin Tarantino','Jamie Foxx, Christoph Waltz, Leonardo DiCaprio','Kölelik dönemi Amerika\'sında bir intikam western\'i.'],
+ ['Joker','2019','Todd Phillips','Joaquin Phoenix, Robert De Niro','Bir adamın çöküşünü anlatan karanlık karakter çalışması.'],
+ ['Blade Runner 2049','2017','Denis Villeneuve','Ryan Gosling, Harrison Ford, Ana de Armas','Görsel şölen niteliğinde, düşündüren bir bilimkurgu devamı.'],
+ ['Dune (Çöl Gezegeni)','2021','Denis Villeneuve','Timothée Chalamet, Rebecca Ferguson, Oscar Isaac','Frank Herbert\'in destansı bilimkurgu evreninin uyarlaması.'],
+ ['Para Avcısı (The Wolf of Wall Street)','2013','Martin Scorsese','Leonardo DiCaprio, Jonah Hill, Margot Robbie','Borsanın açgözlü dünyasında bir yükseliş ve düşüş.'],
+ ['Er Ryan\'ı Kurtarmak','1998','Steven Spielberg','Tom Hanks, Matt Damon','II. Dünya Savaşı\'nı çarpıcı gerçekçilikle anlatan bir klasik.'],
+ ['Kuzuların Sessizliği','1991','Jonathan Demme','Jodie Foster, Anthony Hopkins','Hannibal Lecter\'la unutulmaz bir psikolojik gerilim.'],
+ ['Büyük Budapeşte Oteli','2014','Wes Anderson','Ralph Fiennes, Tony Revolori','Simetrik görselliği ve mizahıyla kendine has bir Anderson filmi.'],
+ ['Oldboy','2003','Park Chan-wook','Choi Min-sik, Yoo Ji-tae','İntikam üzerine sarsıcı, kült Güney Kore filmi.'],
+ ['Amélie','2001','Jean-Pierre Jeunet','Audrey Tautou, Mathieu Kassovitz','Paris\'te iyilik yapan bir kızın rengârenk masalı.'],
+ ['Şüpheliler (The Usual Suspects)','1995','Bryan Singer','Kevin Spacey, Gabriel Byrne, Benicio del Toro','Finaldeki twist\'iyle akıllarda kalan bir polisiye.']];
+
+/* ===== GÜNÜN SANATÇISI ===== */
+const ARTISTS=[
+ ['The Beatles','Rock · 1960\'lar','Abbey Road, Sgt. Pepper\'s','Popüler müziği baştan tanımlayan, en etkili grup.'],
+ ['Pink Floyd','Progressive rock','The Dark Side of the Moon','Konsept albümleri ve atmosferik sesiyle çığır açtı.'],
+ ['Queen','Rock','A Night at the Opera','Freddie Mercury\'nin sahne enerjisiyle efsaneleşti.'],
+ ['Led Zeppelin','Hard rock','Led Zeppelin IV','Ağır riff\'leriyle rock\'ın temelini attı.'],
+ ['Radiohead','Alternatif rock','OK Computer, Kid A','Deneysel yaklaşımıyla modern rock\'ı dönüştürdü.'],
+ ['Nirvana','Grunge','Nevermind','Kurt Cobain önderliğinde 90\'ların sesini belirledi.'],
+ ['Miles Davis','Caz','Kind of Blue','Cazı defalarca yeniden icat eden trompetçi.'],
+ ['Ludwig van Beethoven','Klasik','9. Senfoni','Sağırlığına rağmen besteledi; klasik müziğin devi.'],
+ ['Wolfgang Amadeus Mozart','Klasik','Requiem','Çocuk yaşta başlayan olağanüstü bir dehâ.'],
+ ['Johann Sebastian Bach','Barok','Brandenburg Konçertoları','Batı müziğinin temellerini kuran besteci.'],
+ ['Bob Dylan','Folk / rock','Blowin\' in the Wind','Şarkı sözünü edebiyata taşıdı; Nobel ödüllü.'],
+ ['David Bowie','Rock / art pop','Ziggy Stardust','Değişen sahne personalarıyla bir ikon.'],
+ ['Michael Jackson','Pop','Thriller','Tüm zamanların en çok satan albümünün sahibi.'],
+ ['Daft Punk','Elektronik · Fransa','Discovery','Elektronik müziği ana akıma taşıyan ikili.'],
+ ['Bob Marley','Reggae','Legend','Reggae\'yi dünyaya tanıtan barış sembolü.'],
+ ['Aretha Franklin','Soul','Respect','"Soul\'un kraliçesi" olarak anılan ses.'],
+ ['Jimi Hendrix','Rock','Are You Experienced','Elektro gitarı yeniden tanımlayan virtüöz.'],
+ ['Fleetwood Mac','Rock','Rumours','İç çatışmalardan doğan efsanevi bir albüm.'],
+ ['Amy Winehouse','Soul / caz','Back to Black','Retro sesi ve derin sözleriyle bir dönem yarattı.'],
+ ['Kendrick Lamar','Hip-hop','To Pimp a Butterfly','Pulitzer kazanan ilk hip-hop sanatçısı.'],
+ ['Frédéric Chopin','Klasik · piyano','Noktürnler','Piyano için yazan en şiirsel bestecilerden.'],
+ ['Nina Simone','Caz / soul','Feeling Good','Müziği ve aktivizmi birleştiren güçlü bir ses.'],
+ ['The Rolling Stones','Rock','Let It Bleed','Altmış yıldır sahnede olan rock kurumu.'],
+ ['Barış Manço','Anadolu rock','Dağlar Dağlar, Gülpembe','Anadolu rock\'ın öncüsü, kültürel bir simge.'],
+ ['Sezen Aksu','Türk pop','Gülümse, Git','Türk pop müziğine yön veren "Minik Serçe".'],
+ ['Cem Karaca','Anadolu rock','Nem Kaldı','Toplumcu sözleri ve gür sesiyle bir efsane.']];
+
+/* ===== GÜNÜN KİTABI ===== */
+const BOOKS=[
+ ['Suç ve Ceza','Fyodor Dostoyevski','Bir cinayetin ardındaki vicdan hesaplaşması.'],
+ ['1984','George Orwell','Gözetim ve totaliter rejim üzerine distopya.'],
+ ['Yüzyıllık Yalnızlık','Gabriel García Márquez','Büyülü gerçekçiliğin başyapıtı.'],
+ ['Sefiller','Victor Hugo','Adalet, merhamet ve kurtuluş üzerine bir destan.'],
+ ['Dönüşüm','Franz Kafka','Bir sabah böceğe dönüşen adamın öyküsü.'],
+ ['Küçük Prens','Antoine de Saint-Exupéry','Çocuk gözünden yetişkinlere dersler.'],
+ ['Hayvan Çiftliği','George Orwell','İktidarın yozlaşmasını anlatan alegori.'],
+ ['Fareler ve İnsanlar','John Steinbeck','Dostluk ve kırılan hayaller üzerine bir roman.'],
+ ['Bülbülü Öldürmek','Harper Lee','Irkçılık ve adalet üzerine bir klasik.'],
+ ['Cesur Yeni Dünya','Aldous Huxley','Hazza ve konfora tutsak bir gelecek.'],
+ ['Anna Karenina','Lev Tolstoy','Aşk ve toplumsal baskı üzerine büyük Rus romanı.'],
+ ['Simyacı','Paulo Coelho','Kişisel efsaneyi arayış üzerine bir masal.'],
+ ['Uçurtma Avcısı','Khaled Hosseini','Suçluluk ve kefaret üzerine dokunaklı bir hikâye.'],
+ ['Sapiens','Yuval Noah Harari','İnsan türünün kısa bir tarihi.'],
+ ['Otostopçunun Galaksi Rehberi','Douglas Adams','Bilimkurguyu mizahla buluşturan kült kitap.'],
+ ['Fahrenheit 451','Ray Bradbury','Kitapların yasak olduğu bir gelecek.'],
+ ['Şeker Portakalı','José Mauro de Vasconcelos','Bir çocuğun hüzünlü büyüme öyküsü.'],
+ ['Satranç','Stefan Zweig','Takıntı ve zihnin sınırları üzerine bir novella.'],
+ ['Momo','Michael Ende','Zamanı çalan "gri adamlar" üzerine bir masal.'],
+ ['Kürk Mantolu Madonna','Sabahattin Ali','İçe dönük bir aşkın melankolik hikâyesi.'],
+ ['Tutunamayanlar','Oğuz Atay','Türk edebiyatının deneysel başyapıtı.'],
+ ['Saatleri Ayarlama Enstitüsü','Ahmet Hamdi Tanpınar','Doğu-Batı ve bürokrasi üzerine ironik bir roman.'],
+ ['İnce Memed','Yaşar Kemal','Çukurova\'da bir eşkıyanın destanı.'],
+ ['Savaş ve Barış','Lev Tolstoy','Savaş arka planında bir insanlık panoraması.'],
+ ['Görme Biçimleri','John Berger','Sanata ve imgeye bakışı değiştiren bir deneme.']];
+
+/* ===== TARİHTEN ===== */
+const HISTORY=[
+ '1969\'da Apollo 11 ile insan ilk kez Ay\'a ayak bastı.',
+ 'İstanbul 1453\'te fethedildi ve Doğu Roma İmparatorluğu sona erdi.',
+ 'Berlin Duvarı 1989\'da yıkıldı; Soğuk Savaş\'ın sonunu simgeledi.',
+ 'Fransız Devrimi 1789\'da Bastille\'in düşüşüyle başladı.',
+ 'Gutenberg\'in matbaası (~1440) bilgiye erişimi kökten değiştirdi.',
+ 'Magna Carta 1215\'te kralın yetkisini ilk kez yazıyla sınırladı.',
+ 'Roma İmparatorluğu\'nun batı kanadı MS 476\'da çöktü.',
+ 'Amerikan Bağımsızlık Bildirgesi 1776\'da imzalandı.',
+ 'Sanayi Devrimi 18. yüzyılda İngiltere\'de başlayıp üretimi dönüştürdü.',
+ 'İlk antik Olimpiyatlar MÖ 776\'da Yunanistan\'da düzenlendi.',
+ 'Pompeii, MS 79\'da Vezüv\'ün patlamasıyla küller altında kaldı.',
+ 'Darwin\'in "Türlerin Kökeni" 1859\'da yayımlandı.',
+ 'Penisilin 1928\'de Alexander Fleming tarafından tesadüfen keşfedildi.',
+ 'Titanic ilk seferinde, 1912\'de battı.',
+ 'Kara Ölüm (veba) 14. yüzyılda Avrupa nüfusunun yaklaşık üçte birini yok etti.',
+ 'Türkiye Cumhuriyeti 29 Ekim 1923\'te ilan edildi.',
+ 'Türkiye\'de kadınlara seçme-seçilme hakkı 1934\'te tanındı.',
+ 'İlk telefon görüşmesini 1876\'da Alexander Graham Bell yaptı.',
+ 'Rönesans, 14-16. yüzyıllarda sanat ve bilimde bir yeniden doğuş getirdi.',
+ 'Büyük İskender, 30 yaşına gelmeden bilinen dünyanın çoğunu fethetti.',
+ 'İpek Yolu yüzyıllarca Asya ile Avrupa arasında mal ve fikir taşıdı.',
+ 'Mısır\'ın büyük piramitleri yaklaşık 4500 yıl önce inşa edildi.',
+ 'Nürnberg Mahkemeleri (1945-46) savaş suçlarını ilk kez uluslararası yargıladı.',
+ 'İki Dünya Savaşı 20. yüzyılın ilk yarısına damga vurdu (1914-18 ve 1939-45).',
+ 'Çin Seddi\'nin bugünkü hâli çoğunlukla Ming Hanedanı döneminden kalmadır.',
+ 'İskenderiye Kütüphanesi antik dünyanın en büyük bilgi merkeziydi.'];
+
+/* ===== state ===== */
+let tasks=[],meals=[],targets={},openRec={},factOff=0,filmOff=0,artOff=0,bookOff=0,histOff=0;
+const dow=new Date().getDay();
+
+/* clock */
+function tick(){const n=new Date();document.getElementById('clock').textContent=n.toLocaleTimeString('tr-TR');
+  document.getElementById('clockDate').textContent=n.toLocaleDateString('tr-TR',{weekday:'long',day:'numeric',month:'long'});
+  const h=n.getHours();document.getElementById('greeting').textContent=h<6?'İyi geceler':h<12?'Günaydın':h<18?'İyi günler':'İyi akşamlar';}
+document.getElementById('weekno').textContent=weekKey();
+
+/* tasks */
+function renderTasks(){const el=document.getElementById('taskList');el.innerHTML='';
+  if(!tasks.length)el.innerHTML='<div class="empty">Henüz iş yok. Günün en önemli 3 işini ekle.</div>';
+  tasks.forEach((t,i)=>{const d=document.createElement('div');d.className='task'+(t.done?' done':'');
+    d.innerHTML='<div class="check '+(t.done?'on':'')+'" data-c="'+i+'"></div><div class="ttx">'+esc(t.text)+'</div><button class="del" data-d="'+i+'">×</button>';el.appendChild(d);});
+  document.getElementById('taskCount').textContent=tasks.filter(t=>t.done).length+'/'+tasks.length;
+  el.querySelectorAll('[data-c]').forEach(c=>c.onclick=()=>{const i=+c.dataset.c;tasks[i].done=!tasks[i].done;sSet(K.tasks,tasks);renderTasks();});
+  el.querySelectorAll('[data-d]').forEach(b=>b.onclick=()=>{tasks.splice(+b.dataset.d,1);sSet(K.tasks,tasks);renderTasks();});}
+function addTask(){const inp=document.getElementById('taskInput');const v=inp.value.trim();if(!v)return;tasks.push({text:v,done:false});inp.value='';sSet(K.tasks,tasks);renderTasks();}
+
+/* morning + run */
+let morningDone={};
+async function loadMorning(){morningDone=await sGet('d:morning:'+todayKey())||{};renderMorning();}
+function renderMorning(){const el=document.getElementById('morningList');el.innerHTML='';
+  MORNING.forEach((m,i)=>{const done=!!morningDone[i];const d=document.createElement('div');d.className='ex'+(done?' done':'');
+    d.innerHTML='<div class="check '+(done?'on':'')+'" data-m="'+i+'"></div><div class="ex-body"><span class="ex-n">'+esc(m[0])+'</span><span class="ex-s">'+esc(m[1])+'</span></div>';el.appendChild(d);});
+  document.getElementById('morningCount').textContent=Object.values(morningDone).filter(Boolean).length+'/'+MORNING.length;
+  el.querySelectorAll('[data-m]').forEach(c=>c.onclick=()=>{const i=+c.dataset.m;morningDone[i]=!morningDone[i];sSet('d:morning:'+todayKey(),morningDone);renderMorning();});}
+async function renderRun(){const km=await sGet('d:runkm:'+todayKey())||'';const isRun=WK[dow].run;const el=document.getElementById('runArea');
+  el.innerHTML='<div class="runbox"><label>Bugün koştuğun mesafe</label><input type="number" id="runIn" placeholder="0" value="'+esc(km)+'"><span class="mkt-sub">km</span></div>'+
+    (isRun?'<div class="runnote">Bugün koşu günü — protokol: 2 dk yürü / 1-2 dk koş × 8 tur (5. haftadan sonra kesintisiz 20 dk).</div>':'');
+  document.getElementById('runIn').oninput=e=>sSet('d:runkm:'+todayKey(),e.target.value);}
+
+/* workout (today) */
+let exDone={};
+async function loadWorkout(){exDone=await sGet('d:ex:'+todayKey())||{};
+  document.getElementById('wkTitle').textContent=DAYNAMES[dow];
+  document.getElementById('wkSub').textContent=WK[dow].title;renderEx();}
+function renderEx(){const el=document.getElementById('exList');el.innerHTML='';const ex=WK[dow].ex;
+  ex.forEach((e,i)=>{const done=!!exDone[i];const d=document.createElement('div');d.className='ex'+(done?' done':'');
+    d.innerHTML='<div class="check '+(done?'on':'')+'" data-x="'+i+'"></div><div class="ex-body"><span class="ex-n">'+esc(e[0])+'</span><span class="ex-s">'+esc(e[1])+'</span></div>';el.appendChild(d);});
+  document.getElementById('wkCount').textContent=Object.values(exDone).filter(Boolean).length+'/'+ex.length;
+  el.querySelectorAll('[data-x]').forEach(c=>c.onclick=()=>{const i=+c.dataset.x;exDone[i]=!exDone[i];sSet('d:ex:'+todayKey(),exDone);renderEx();});}
+
+/* meals (today, day-aware) + macros */
+async function loadMeals(){const key='d:meals:'+todayKey();meals=await sGet(key)||MP[dow].map(m=>({slot:m[0],text:m[1],kcal:m[2],p:m[3],c:m[4],portion:0}));renderTargets();renderBars();renderMeals();}
+async function saveMeals(){await sSet('d:meals:'+todayKey(),meals);}
+function renderTargets(){const el=document.getElementById('tgt');el.innerHTML='';
+  [['kcal','Kalori'],['p','Protein g'],['c','Karb g'],['y','Yağ g']].forEach(([k,l])=>{const f=document.createElement('div');f.className='f';
+    f.innerHTML='<label>'+l+'</label><input type="number" data-t="'+k+'" value="'+num(targets[k])+'">';el.appendChild(f);});
+  el.querySelectorAll('[data-t]').forEach(inp=>inp.oninput=()=>{targets[inp.dataset.t]=inp.value;sSet(K.targets,targets);renderBars();});}
+function consumed(){return meals.reduce((a,m)=>{const f=num(m.portion)/100;return{kcal:a.kcal+f*num(m.kcal),p:a.p+f*num(m.p),c:a.c+f*num(m.c)};},{kcal:0,p:0,c:0});}
+function bar(l,cn,tg,u){const pct=tg>0?Math.min(cn/tg*100,100):0;const ov=tg>0&&cn>tg;const rem=Math.max(tg-cn,0);
+  return '<div class="bar-wrap"><div class="bar-top"><span>'+l+'</span><span class="num">'+Math.round(cn)+' / '+tg+u+'</span></div><div class="bar"><i class="'+(ov?'over':'')+'" style="width:'+(ov?100:pct)+'%"></i></div><div class="rem">'+(ov?'hedef aşıldı +'+Math.round(cn-tg)+u:'kalan '+Math.round(rem)+u)+'</div></div>';}
+function renderBars(){const c=consumed();document.getElementById('bars').innerHTML=bar('Kalori',c.kcal,num(targets.kcal),'')+bar('Protein',c.p,num(targets.p),'g')+bar('Karbonhidrat',c.c,num(targets.c),'g');}
+function renderMeals(){const el=document.getElementById('mealList');el.innerHTML='';
+  meals.forEach((m,i)=>{const rc=recipeFor(m.text);const open=!!openRec[i];const d=document.createElement('div');d.className='meal';
+    d.innerHTML='<div class="meal-top"><span class="meal-slot">'+esc(m.slot)+'</span><div class="portions">'+
+      '<button class="pchip '+(num(m.portion)===0?'on':'')+'" data-p="0" data-i="'+i+'">—</button>'+
+      '<button class="pchip '+(num(m.portion)===50?'on':'')+'" data-p="50" data-i="'+i+'">½</button>'+
+      '<button class="pchip '+(num(m.portion)===100?'on':'')+'" data-p="100" data-i="'+i+'">✓</button>'+
+      '<input class="pin" type="number" min="0" max="100" data-pi="'+i+'" value="'+num(m.portion)+'" title="yediğim %"></div></div>'+
+      '<input class="meal-text" data-mt="'+i+'" value="'+esc(m.text)+'">'+
+      '<div class="macros"><div class="mi"><span>kcal</span><input type="number" data-mk="'+i+'" value="'+num(m.kcal)+'"></div>'+
+      '<div class="mi"><span>P</span><input type="number" data-mp="'+i+'" value="'+num(m.p)+'"></div>'+
+      '<div class="mi"><span>K</span><input type="number" data-mc="'+i+'" value="'+num(m.c)+'"></div>'+
+      (rc.length?'<button class="rtoggle" data-rt="'+i+'">'+(open?'tarifi gizle ▾':'nasıl yapılır? ▸')+'</button>':'')+'</div>'+
+      (open&&rc.length?'<div class="recipe">'+rc.map(t=>'<div class="rline"><span class="rb">•</span><span>'+esc(t)+'</span></div>').join('')+'</div>':'');
+    el.appendChild(d);});
+  el.querySelectorAll('[data-p]').forEach(b=>b.onclick=()=>{meals[+b.dataset.i].portion=+b.dataset.p;saveMeals();renderMeals();renderBars();});
+  el.querySelectorAll('[data-pi]').forEach(inp=>inp.oninput=()=>{meals[+inp.dataset.pi].portion=Math.max(0,Math.min(100,num(inp.value)));saveMeals();renderBars();});
+  el.querySelectorAll('[data-rt]').forEach(b=>b.onclick=()=>{const i=+b.dataset.rt;openRec[i]=!openRec[i];renderMeals();});
+  el.querySelectorAll('[data-mt]').forEach(inp=>inp.oninput=()=>{meals[+inp.dataset.mt].text=inp.value;saveMeals();});
+  el.querySelectorAll('[data-mk]').forEach(inp=>inp.oninput=()=>{meals[+inp.dataset.mk].kcal=inp.value;saveMeals();renderBars();});
+  el.querySelectorAll('[data-mp]').forEach(inp=>inp.oninput=()=>{meals[+inp.dataset.mp].p=inp.value;saveMeals();renderBars();});
+  el.querySelectorAll('[data-mc]').forEach(inp=>inp.oninput=()=>{meals[+inp.dataset.mc].c=inp.value;saveMeals();renderBars();});}
+
+/* facts + film */
+function renderFacts(){const el=document.getElementById('factList');const base=(doy()*2+factOff)%FACTS.length;el.innerHTML='';
+  for(let i=0;i<2;i++){const f=FACTS[(base+i)%FACTS.length];const d=document.createElement('div');d.className='fact';d.innerHTML='<span class="fb">◆</span><span>'+esc(f)+'</span>';el.appendChild(d);}}
+function filmHTML(f){return '<div class="fitem"><div class="film-title">'+esc(f[0])+' <span class="film-year">'+esc(f[1])+'</span></div><div class="film-row"><b>Yönetmen</b>'+esc(f[2])+'</div><div class="film-row"><b>Oyuncular</b>'+esc(f[3])+'</div><div class="film-note">'+esc(f[4])+'</div></div>';}
+function renderFilm(){const b=(doy()*2+filmOff)%FILMS.length;document.getElementById('filmBox').innerHTML=filmHTML(FILMS[b])+filmHTML(FILMS[(b+1)%FILMS.length]);}
+function artHTML(a){return '<div class="fitem"><div class="film-title">'+esc(a[0])+'</div><div class="film-row"><b>Tür</b>'+esc(a[1])+'</div><div class="film-row"><b>Öne çıkan</b>'+esc(a[2])+'</div><div class="film-note">'+esc(a[3])+'</div></div>';}
+function renderArtist(){const b=(doy()*2+artOff)%ARTISTS.length;document.getElementById('artBox').innerHTML=artHTML(ARTISTS[b])+artHTML(ARTISTS[(b+1)%ARTISTS.length]);}
+function bookHTML(x){return '<div class="fitem"><div class="film-title">'+esc(x[0])+'</div><div class="film-row"><b>Yazar</b>'+esc(x[1])+'</div><div class="film-note">'+esc(x[2])+'</div></div>';}
+function renderBook(){const b=(doy()*2+bookOff)%BOOKS.length;document.getElementById('bookBox').innerHTML=bookHTML(BOOKS[b])+bookHTML(BOOKS[(b+1)%BOOKS.length]);}
+function renderHistory(){const b=(doy()*2+histOff)%HISTORY.length;const one=i=>'<div class="fact"><span class="fb">◷</span><span>'+esc(HISTORY[i%HISTORY.length])+'</span></div>';document.getElementById('histBox').innerHTML=one(b)+one(b+1);}
+
+/* german + grammar */
+const DE=[['das Haus','ev','Das Haus ist sehr groß.'],['die Arbeit','iş','Meine Arbeit beginnt um acht.'],['der Freund','arkadaş','Mein Freund kommt heute.'],['das Wasser','su','Ich trinke viel Wasser.'],['die Zeit','zaman','Ich habe keine Zeit.'],['der Tag','gün','Der Tag ist schön.'],['die Stadt','şehir','Die Stadt ist groß.'],['das Kind','çocuk','Das Kind spielt gern.'],['die Frau','kadın','Die Frau liest ein Buch.'],['der Mann','adam','Der Mann arbeitet hier.'],['das Buch','kitap','Das Buch ist interessant.'],['die Schule','okul','Die Schule ist neu.'],['essen','yemek','Wir essen zusammen.'],['trinken','içmek','Ich trinke Kaffee.'],['lernen','öğrenmek','Ich lerne Deutsch.'],['arbeiten','çalışmak','Sie arbeitet viel.'],['kaufen','satın almak','Ich kaufe Brot.'],['sprechen','konuşmak','Wir sprechen Deutsch.'],['gehen','gitmek','Ich gehe nach Hause.'],['kommen','gelmek','Er kommt morgen.'],['schlafen','uyumak','Das Kind schläft jetzt.'],['lesen','okumak','Ich lese die Zeitung.'],['schreiben','yazmak','Sie schreibt einen Brief.'],['verstehen','anlamak','Ich verstehe das nicht.'],['das Brot','ekmek','Das Brot ist frisch.'],['der Apfel','elma','Der Apfel ist rot.'],['die Milch','süt','Die Milch ist kalt.'],['der Kaffee','kahve','Der Kaffee ist heiß.'],['das Auto','araba','Das Auto ist neu.'],['der Zug','tren','Der Zug kommt spät.'],['die Straße','sokak','Die Straße ist lang.'],['das Geld','para','Ich habe kein Geld.'],['die Woche','hafta','Die Woche war lang.'],['heute','bugün','Heute ist Montag.'],['morgen','yarın','Morgen habe ich frei.'],['immer','her zaman','Ich bin immer müde.'],['die Familie','aile','Meine Familie ist groß.'],['kalt','soğuk','Heute ist es kalt.'],['warm','sıcak','Das Wasser ist warm.'],['schnell','hızlı','Das Auto ist schnell.'],['wichtig','önemli','Das ist sehr wichtig.']];
+const GRAM=['Üç artikel var: der (eril), die (dişil), das (nötr). Kelimeyi hep artikeliyle ezberle.','Fiil cümlede ikinci sırada durur: "Heute gehe ich nach Hause."','Akkusativ\'de "der" → "den" olur: "Ich sehe den Mann."','Çoğul düzensizdir: das Kind → die Kinder, der Apfel → die Äpfel.','sein: ich bin, du bist, er ist, wir sind, ihr seid, sie sind.','haben: ich habe, du hast, er hat, wir haben.','Modal fiil varsa asıl fiil mastar hâlde sona gider: "Ich will Deutsch lernen."','"nicht" fiili, "kein" ise isimleri olumsuz yapar: "Ich habe kein Geld."','Ayrılabilen fiillerde ön ek sona atılır: "Ich stehe um 7 auf."','Datif isteyen edatlar: mit, nach, aus, bei, von, zu.','Geçmiş zaman (Perfekt): haben/sein + Partizip II → "Ich habe gegessen."','Cümle sırası: Zaman – Tarz – Yer.'];
+let deExtra=0;
+function pickDE(){const b=(doy()*5+deExtra)%DE.length;const o=[];for(let i=0;i<5;i++)o.push(DE[(b+i)%DE.length]);return o;}
+function pickGram(){const b=(doy()*3+deExtra)%GRAM.length;const o=[];for(let i=0;i<3;i++)o.push(GRAM[(b+i)%GRAM.length]);return o;}
+function renderGerman(){const el=document.getElementById('germanList');el.innerHTML='';pickDE().forEach(w=>{const d=document.createElement('div');d.className='de';d.innerHTML='<div class="de-word">'+esc(w[0])+' <span class="de-tr">— '+esc(w[1])+'</span></div><div class="de-ex">'+esc(w[2])+'</div>';el.appendChild(d);});
+  document.getElementById('gramList').innerHTML='<div class="gram-head">Gramer notları</div>'+pickGram().map(g=>'<div class="gram"><span class="gi">§</span><span>'+esc(g)+'</span></div>').join('');}
+
+/* borsa: döviz canlı + izleme listesi (mailden) */
+async function loadFX(force){const cache=await sGet(K.fx);let fx=(cache&&cache.date===todayKey()&&!force)?cache:null;
+  document.getElementById('marketList').innerHTML='<div class="loading">Kur çekiliyor…</div>';
+  if(!fx){try{const r=await fetch('https://open.er-api.com/v6/latest/USD');const d=await r.json();if(d.result!=='success')throw 0;
+    const u=d.rates.TRY,e=d.rates.TRY/d.rates.EUR,t=new Date().toLocaleTimeString('tr-TR',{hour:'2-digit',minute:'2-digit'});
+    fx={date:todayKey(),time:t,usdtry:u,eurtry:e,prevUsd:(cache&&cache.usdtry)||u,prevEur:(cache&&cache.eurtry)||e};await sSet(K.fx,fx);
+  }catch(e){fx=cache||{usdtry:null,eurtry:null,time:''};}}
+  renderMarket(fx);}
+function chg(n,p){if(!p||!n)return{cls:'flat',ar:'–',v:'0.00'};const x=(n-p)/p*100;return{cls:x>0?'up':x<0?'down':'flat',ar:x>0?'▲':x<0?'▼':'–',v:Math.abs(x).toFixed(2)};}
+function fmt(n){return n?n.toLocaleString('tr-TR',{minimumFractionDigits:2,maximumFractionDigits:2}):'—';}
+function renderMarket(fx){document.getElementById('fxTime').textContent=fx.time?('son '+fx.time):'—';const el=document.getElementById('marketList');
+  const cu=chg(fx.usdtry,fx.prevUsd),ce=chg(fx.eurtry,fx.prevEur);
+  el.innerHTML='<div class="mkt"><div><div class="mkt-label">Dolar / TL</div><div class="mkt-sub">canlı</div></div><div><div class="mkt-val">'+fmt(fx.usdtry)+'</div><div class="mkt-chg '+cu.cls+'">'+cu.ar+' '+cu.v+'%</div></div></div>'+
+    '<div class="mkt"><div><div class="mkt-label">Euro / TL</div><div class="mkt-sub">canlı</div></div><div><div class="mkt-val">'+fmt(fx.eurtry)+'</div><div class="mkt-chg '+ce.cls+'">'+ce.ar+' '+ce.v+'%</div></div></div>';}
+let watch=[];
+function renderWatch(){const el=document.getElementById('watchList');if(!el)return;
+  const head='<div class="wtitle" style="margin-top:12px;border-top:1px solid var(--line2);padding-top:11px">İzleme Listesi</div>';
+  if(!watch.length){el.innerHTML=head+'<div class="empty">Öğle güncellemesi mailini yapıştır → otomatik dolar.</div>';return;}
+  el.innerHTML=head+watch.map(s=>{const neg=/^-/.test(s.chg);const cls=neg?'down':(/^\+/.test(s.chg)?'up':'flat');const ar=neg?'▼':(cls==='up'?'▲':'–');
+    return '<div class="mkt"><div class="mkt-label">'+esc(s.code)+'</div><div><div class="mkt-val">'+esc(s.price)+'</div><div class="mkt-chg '+cls+'">'+ar+' '+esc(s.chg.replace(/^[+-]/,''))+'</div></div></div>';}).join('');}
+
+/* borsa.json otomatik okuma (bot üretiyorsa, elle yapıştırmaya gerek kalmaz) */
+async function loadBorsaJson(){try{const r=await fetch('borsa.json?_='+Date.now());if(!r.ok)throw 0;const d=await r.json();
+    if(d.watch&&d.watch.length){watch=d.watch;await sSet('d:watch',watch);renderWatch();}
+    if(d.news&&d.news.length){news=d.news.slice(0,10);await sSet(K.news,news);renderNews();}
+  }catch(e){/* borsa.json yok — kayıtlı veri / elle yapıştırma kullanılır */}}
+
+/* haberler */
+let news=[];
+function renderNews(){const el=document.getElementById('newsList');el.innerHTML='';
+  if(!news.length)el.innerHTML='<div class="empty">Henüz haber yok. Elle ekle ya da borsa mailini yapıştır.</div>';
+  news.forEach((n,i)=>{const d=document.createElement('div');d.className='news-item';d.innerHTML='<div class="news-n">'+String(i+1).padStart(2,'0')+'</div><div class="news-t">'+esc(n)+'</div><button class="del" data-dn="'+i+'">×</button>';el.appendChild(d);});
+  el.querySelectorAll('[data-dn]').forEach(b=>b.onclick=()=>{news.splice(+b.dataset.dn,1);sSet(K.news,news);renderNews();});}
+function addNews(){const inp=document.getElementById('newsInput');const v=inp.value.trim();if(!v)return;news.unshift(v);news=news.slice(0,8);inp.value='';sSet(K.news,news);renderNews();}
+function parseMail(){const ta=document.getElementById('mailPaste');const txt=ta.value||'';if(!txt.trim())return;
+  const lines=txt.split(/\r?\n/).map(l=>l.replace(/\s+$/,'')).filter(l=>l.trim());
+  const w=[];const addNews=[];
+  for(let i=0;i<lines.length;i++){const line=lines[i].trim();
+    const mw=line.match(/^([A-ZÇĞİÖŞÜ]{3,6})[\s\t]+([\d.,]+)[\s\t]+([+-][\d.,]+%)/);
+    if(mw){if(!w.some(x=>x.code===mw[1]))w.push({code:mw[1],price:mw[2],chg:mw[3]});continue;}
+    const mn=line.match(/^([🟢🔴⚪])\s*(.+)/u);
+    if(mn){const title=mn[2].trim();let src='';const nx=(lines[i+1]||'').trim();
+      if(nx&&nx.indexOf('·')>-1&&!/^[🟢🔴⚪]/u.test(nx)&&!/^[A-ZÇĞİÖŞÜ]{3,6}[\s\t]+[\d]/.test(nx)){src=nx.split('·')[0].trim();i++;}
+      addNews.push(mn[1]+' '+title+(src?'  ('+src+')':''));continue;}
+  }
+  if(w.length){watch=w;sSet('d:watch',watch);renderWatch();}
+  if(addNews.length){let merged=addNews.concat(news);const seen={};merged=merged.filter(n=>{if(seen[n])return false;seen[n]=1;return true;}).slice(0,10);news=merged;sSet(K.news,news);renderNews();}
+  ta.value='';}
+
+/* init */
+(async function(){tick();setInterval(tick,1000);
+  tasks=await sGet(K.tasks)||[];targets=await sGet(K.targets)||{...DEFAULT_TARGETS};news=await sGet(K.news)||[];watch=await sGet('d:watch')||[];
+  const de=await sGet(K.de);deExtra=(de&&de.date===todayKey())?de.extra:0;
+  document.getElementById('taskAdd').onclick=addTask;document.getElementById('taskInput').onkeydown=e=>{if(e.key==='Enter')addTask();};
+  document.getElementById('newsAdd').onclick=addNews;document.getElementById('newsInput').onkeydown=e=>{if(e.key==='Enter')addNews();};
+  document.getElementById('mailParse').onclick=parseMail;document.getElementById('fxRefresh').onclick=()=>loadFX(true);
+  document.getElementById('factNext').onclick=()=>{factOff+=2;renderFacts();};
+  document.getElementById('filmNext').onclick=()=>{filmOff+=2;renderFilm();};
+  document.getElementById('artNext').onclick=()=>{artOff+=2;renderArtist();};
+  document.getElementById('bookNext').onclick=()=>{bookOff+=2;renderBook();};
+  document.getElementById('histNext').onclick=()=>{histOff+=2;renderHistory();};
+  document.getElementById('deRefresh').onclick=()=>{deExtra+=5;sSet(K.de,{date:todayKey(),extra:deExtra});renderGerman();};
+  renderTasks();await loadMorning();await renderRun();await loadWorkout();await loadMeals();
+  renderFacts();renderFilm();renderArtist();renderBook();renderHistory();renderGerman();renderNews();renderWatch();loadFX(false);loadBorsaJson();
+})();
+</script>
+</body>
+</html>
