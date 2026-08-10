@@ -1,45 +1,76 @@
 {
-  "updated": "2026-08-10 15:18",
+  "updated": "2026-08-10 23:57",
   "watch": [
     {
       "code": "SASA",
-      "price": "2.47",
-      "chg": "-4.26%"
+      "price": "2.33",
+      "chg": "-9.69%",
+      "avg1w": "2.51",
+      "avg1m": "2.52"
     },
     {
-      "code": "EREGL",
-      "price": "37.20",
-      "chg": "-3.83%"
-    },
-    {
-      "code": "TUPRS",
-      "price": "337.25",
-      "chg": "+4.25%"
+      "code": "ALARK",
+      "price": "107.00",
+      "chg": "+5.11%",
+      "avg1w": "102.82",
+      "avg1m": "103.50"
     },
     {
       "code": "KONTR",
-      "price": "4.00",
-      "chg": "-1.48%"
+      "price": "4.01",
+      "chg": "-1.23%",
+      "avg1w": "4.11",
+      "avg1m": "4.87"
     },
     {
       "code": "YEOTK",
-      "price": "38.88",
-      "chg": "-1.07%"
+      "price": "38.48",
+      "chg": "-2.09%",
+      "avg1w": "39.47",
+      "avg1m": "40.36"
     }
   ],
-  "news": [
-    "⚪ SASA Polyester bilançosu açıklandı, ilk yarıda kara geçildi  (Foreks.com)",
-    "⚪ Sasa Polyester 2Ç26’da kâr beklentisine karşı zarar açıkladı  (Paratic Haber)",
-    "⚪ KAP *** SASA POLYESTER SANAYİ A.Ş. *** SASA *** Faaliyet Raporu (Konsolide)  (Yeni Şafak)",
-    "🟢 Ereğli Demir Çelik'ten ikinci çeyrekte 8,5 milyar TL net kâr  (Haber 7)",
-    "⚪ Erdemir Ereğli Demir Çelik (EREGL) için bilanço sonrası hedef fiyatlar güncellendi  (Rota Borsa)",
-    "⚪ Erdemir Ereğli Demir Çelik (EREGL) hisselerinde 2 kurum üzerinden yüklü satış  (Rota Borsa)",
-    "🟢 YEOTK esas sözleşme değişikliği tescil edildi  (Borsatek)"
+  "us": [
+    {
+      "code": "AAPL",
+      "price": "308.26",
+      "chg": "-1.62%",
+      "avg1w": "310.88",
+      "avg1m": "322.71"
+    },
+    {
+      "code": "MSFT",
+      "price": "506.06",
+      "chg": "+1.21%",
+      "avg1w": "497.24",
+      "avg1m": "427.75"
+    },
+    {
+      "code": "NVDA",
+      "price": "217.55",
+      "chg": "-2.86%",
+      "avg1w": "218.33",
+      "avg1m": "207.33"
+    },
+    {
+      "code": "AMZN",
+      "price": "278.09",
+      "chg": "+1.32%",
+      "avg1w": "274.98",
+      "avg1m": "252.85"
+    },
+    {
+      "code": "TSLA",
+      "price": "330.88",
+      "chg": "+0.70%",
+      "avg1w": "325.58",
+      "avg1m": "342.74"
+    }
   ],
-  "world": [
-    "🌍 Meclis’te tarihi oturum: Çerçeve yasa Genel Kurul’da - Medyascope  (Medyascope)",
-    "🌍 Atom bombası yapmadan Atom bombamız da oldu! - Necati Doğru - Sözcü Gazetesi  (Sözcü Gazetesi)",
-    "🌍 UltrAslan liderinin evinden servet çıktı. Sebahattin Şirin'in evinde 8.5 saat süren arama - NTV Haber  (NTV Haber)",
-    "🌍 Şanlıurfa'da dehşete düşüren olay! 85 yaşındaki annesini sopa ile öldüresiye dövdü - Hürriyet  (Hürriyet)"
-  ]
+  "gold": {
+    "price": "6,805.12",
+    "chg": "+2.31%"
+  },
+  "news": [],
+  "world": []
 }
