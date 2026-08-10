@@ -45,6 +45,13 @@
   .ex-body{flex:1;display:flex;justify-content:space-between;gap:10px;align-items:baseline;}
   .ex-n{font-size:14px;} .ex.done .ex-n{text-decoration:line-through;color:var(--muted);}
   .ex-s{font-family:var(--mono);font-size:11px;color:var(--muted);white-space:nowrap;}
+  .ex-body2{flex:1;}
+  .ex-line{display:flex;justify-content:space-between;gap:10px;align-items:baseline;}
+  .ex-wt{display:flex;align-items:center;gap:6px;margin-top:5px;flex-wrap:wrap;}
+  .wtin{width:62px;background:#fff;border:1px solid var(--line);border-radius:4px;padding:3px 6px;font-family:var(--mono);font-size:12px;text-align:right;color:var(--ink);}
+  .wtin:focus{outline:none;border-color:var(--accent);}
+  .wtu{font-family:var(--mono);font-size:10px;color:var(--muted);}
+  .wtprev{font-family:var(--mono);font-size:10px;color:var(--muted);margin-left:4px;}
   .runbox{display:flex;align-items:center;gap:8px;margin-top:12px;border-top:1px solid var(--line2);padding-top:11px;}
   .runbox label{font-size:13px;color:var(--muted);flex:1;}
   .runbox input{width:78px;background:#fff;border:1px solid var(--line);border-radius:4px;padding:5px 7px;font-family:var(--mono);font-size:13px;text-align:right;color:var(--ink);}
@@ -126,14 +133,17 @@
 
     <section class="card"><div class="card-head"><div><p class="kicker">Antrenman · Bugün</p><h2 class="card-title" id="wkTitle">Bugünün Antrenmanı</h2></div><div class="meta" id="wkCount">0/0</div></div>
       <div class="wtitle" id="wkSub">—</div>
-      <div id="exList"></div></section>
+      <div id="exList"></div>
+      <div class="add-row" style="margin-top:11px"><button class="ibtn" id="wtExport" style="padding:6px 12px">Ağırlıkları Excel'e aktar (CSV)</button></div></section>
 
     <section class="card"><div class="card-head"><div><p class="kicker">Beslenme · Bugün</p><h2 class="card-title">Bugünün Yemekleri</h2></div><div class="meta">hedefi düzenle ↓</div></div>
       <div class="tgt" id="tgt"></div><div id="bars"></div><div style="height:6px"></div><div id="mealList"></div></section>
 
     <section class="card"><div class="card-head"><div><p class="kicker">Piyasa</p><h2 class="card-title">Borsa Durumu</h2></div><div class="meta"><span id="fxTime">—</span><br><button class="ibtn" id="fxRefresh">Yenile</button></div></div>
       <div id="marketList"><div class="loading">Kur çekiliyor…</div></div>
-      <div id="watchList"></div></section>
+      <div id="goldRow"></div>
+      <div id="watchList"></div>
+      <div id="usList"></div></section>
 
     <section class="card"><div class="card-head"><div><p class="kicker">Gündem</p><h2 class="card-title">Günün Önemli Haberleri</h2></div><div class="meta">elle / mail</div></div>
       <div id="newsList"></div>
@@ -397,15 +407,27 @@ async function renderRun(){const km=await sGet('d:runkm:'+todayKey())||'';const 
   document.getElementById('runIn').oninput=e=>sSet('d:runkm:'+todayKey(),e.target.value);}
 
 /* workout (today) */
-let exDone={};
-async function loadWorkout(){exDone=await sGet('d:ex:'+todayKey())||{};
+let exDone={},wtlog={};
+async function loadWorkout(){exDone=await sGet('d:ex:'+todayKey())||{};wtlog=await sGet('d:wtlog')||{};
   document.getElementById('wkTitle').textContent=DAYNAMES[dow];
   document.getElementById('wkSub').textContent=WK[dow].title;renderEx();}
-function renderEx(){const el=document.getElementById('exList');el.innerHTML='';const ex=WK[dow].ex;
-  ex.forEach((e,i)=>{const done=!!exDone[i];const d=document.createElement('div');d.className='ex'+(done?' done':'');
-    d.innerHTML='<div class="check '+(done?'on':'')+'" data-x="'+i+'"></div><div class="ex-body"><span class="ex-n">'+esc(e[0])+'</span><span class="ex-s">'+esc(e[1])+'</span></div>';el.appendChild(d);});
+function prevWeight(name){let best=null;const tk=todayKey();for(const dk in wtlog){if(dk>=tk)continue;const v=wtlog[dk]&&wtlog[dk][name];if(v!==undefined&&v!==''&&v!=null){if(!best||dk>best.date)best={date:dk,kg:v};}}return best;}
+function renderEx(){const el=document.getElementById('exList');el.innerHTML='';const ex=WK[dow].ex;const tk=todayKey();const today=wtlog[tk]||{};
+  ex.forEach((e,i)=>{const done=!!exDone[i];const name=e[0];const cur=today[name]!==undefined?today[name]:'';const pv=prevWeight(name);
+    const pvh=pv?'<span class="wtprev">önceki: '+esc(pv.kg)+' kg ('+pv.date.slice(8,10)+'.'+pv.date.slice(5,7)+')</span>':'';
+    const d=document.createElement('div');d.className='ex'+(done?' done':'');
+    d.innerHTML='<div class="check '+(done?'on':'')+'" data-x="'+i+'"></div>'+
+      '<div class="ex-body2"><div class="ex-line"><span class="ex-n">'+esc(name)+'</span><span class="ex-s">'+esc(e[1])+'</span></div>'+
+      '<div class="ex-wt"><input class="wtin" type="number" inputmode="decimal" data-w="'+i+'" placeholder="kg" value="'+esc(cur)+'"><span class="wtu">kg</span>'+pvh+'</div></div>';
+    el.appendChild(d);});
   document.getElementById('wkCount').textContent=Object.values(exDone).filter(Boolean).length+'/'+ex.length;
-  el.querySelectorAll('[data-x]').forEach(c=>c.onclick=()=>{const i=+c.dataset.x;exDone[i]=!exDone[i];sSet('d:ex:'+todayKey(),exDone);renderEx();});}
+  el.querySelectorAll('[data-x]').forEach(c=>c.onclick=()=>{const i=+c.dataset.x;exDone[i]=!exDone[i];sSet('d:ex:'+todayKey(),exDone);renderEx();});
+  el.querySelectorAll('[data-w]').forEach(inp=>inp.oninput=()=>{const i=+inp.dataset.w;const name=WK[dow].ex[i][0];if(!wtlog[tk])wtlog[tk]={};wtlog[tk][name]=inp.value;sSet('d:wtlog',wtlog);});}
+function exportCSV(){const rows=[['Tarih','Gün','Hareket','kg']];Object.keys(wtlog).sort().forEach(dk=>{const rec=wtlog[dk]||{};const dn=DAYNAMES[new Date(dk+'T00:00').getDay()];for(const ex in rec){if(rec[ex]!==''&&rec[ex]!=null)rows.push([dk,dn,ex,rec[ex]]);}});
+  if(rows.length<2){alert('Henüz kayıtlı ağırlık yok.');return;}
+  const csv=rows.map(r=>r.map(c=>'"'+String(c).replace(/"/g,'""')+'"').join(',')).join('\n');
+  const blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'});const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');a.href=url;a.download='antrenman-agirliklar.csv';a.click();URL.revokeObjectURL(url);}
 
 /* meals (today, day-aware) + macros */
 async function loadMeals(){const key='d:meals:'+todayKey();meals=await sGet(key)||MP[dow].map(m=>({slot:m[0],text:m[1],kcal:m[2],p:m[3],c:m[4],portion:0}));renderTargets();renderBars();renderMeals();}
@@ -464,22 +486,34 @@ function renderGerman(){const el=document.getElementById('germanList');el.innerH
 async function loadFX(force){const cache=await sGet(K.fx);let fx=(cache&&cache.date===todayKey()&&!force)?cache:null;
   document.getElementById('marketList').innerHTML='<div class="loading">Kur çekiliyor…</div>';
   if(!fx){try{const r=await fetch('https://open.er-api.com/v6/latest/USD');const d=await r.json();if(d.result!=='success')throw 0;
-    const u=d.rates.TRY,e=d.rates.TRY/d.rates.EUR,t=new Date().toLocaleTimeString('tr-TR',{hour:'2-digit',minute:'2-digit'});
-    fx={date:todayKey(),time:t,usdtry:u,eurtry:e,prevUsd:(cache&&cache.usdtry)||u,prevEur:(cache&&cache.eurtry)||e};await sSet(K.fx,fx);
-  }catch(e){fx=cache||{usdtry:null,eurtry:null,time:''};}}
+    const u=d.rates.TRY,e=d.rates.TRY/d.rates.EUR,g=d.rates.TRY/d.rates.GBP,t=new Date().toLocaleTimeString('tr-TR',{hour:'2-digit',minute:'2-digit'});
+    fx={date:todayKey(),time:t,usdtry:u,eurtry:e,gbptry:g,prevUsd:(cache&&cache.usdtry)||u,prevEur:(cache&&cache.eurtry)||e,prevGbp:(cache&&cache.gbptry)||g};await sSet(K.fx,fx);
+  }catch(e){fx=cache||{usdtry:null,eurtry:null,gbptry:null,time:''};}}
   renderMarket(fx);}
 function chg(n,p){if(!p||!n)return{cls:'flat',ar:'–',v:'0.00'};const x=(n-p)/p*100;return{cls:x>0?'up':x<0?'down':'flat',ar:x>0?'▲':x<0?'▼':'–',v:Math.abs(x).toFixed(2)};}
 function fmt(n){return n?n.toLocaleString('tr-TR',{minimumFractionDigits:2,maximumFractionDigits:2}):'—';}
 function renderMarket(fx){document.getElementById('fxTime').textContent=fx.time?('son '+fx.time):'—';const el=document.getElementById('marketList');
-  const cu=chg(fx.usdtry,fx.prevUsd),ce=chg(fx.eurtry,fx.prevEur);
-  el.innerHTML='<div class="mkt"><div><div class="mkt-label">Dolar / TL</div><div class="mkt-sub">canlı</div></div><div><div class="mkt-val">'+fmt(fx.usdtry)+'</div><div class="mkt-chg '+cu.cls+'">'+cu.ar+' '+cu.v+'%</div></div></div>'+
-    '<div class="mkt"><div><div class="mkt-label">Euro / TL</div><div class="mkt-sub">canlı</div></div><div><div class="mkt-val">'+fmt(fx.eurtry)+'</div><div class="mkt-chg '+ce.cls+'">'+ce.ar+' '+ce.v+'%</div></div></div>';}
+  const cu=chg(fx.usdtry,fx.prevUsd),ce=chg(fx.eurtry,fx.prevEur),cg=chg(fx.gbptry,fx.prevGbp);
+  const row=(lbl,val,c)=>'<div class="mkt"><div><div class="mkt-label">'+lbl+'</div><div class="mkt-sub">canlı</div></div><div><div class="mkt-val">'+fmt(val)+'</div><div class="mkt-chg '+c.cls+'">'+c.ar+' '+c.v+'%</div></div></div>';
+  el.innerHTML=row('Dolar / TL',fx.usdtry,cu)+row('Euro / TL',fx.eurtry,ce)+row('Pound / TL',fx.gbptry,cg);}
+let gold=null;
+function renderGold(){const el=document.getElementById('goldRow');if(!el)return;
+  if(!gold){el.innerHTML='';return;}
+  const neg=/^-/.test(gold.chg||'');const cls=neg?'down':(/^\+/.test(gold.chg||'')?'up':'flat');const ar=neg?'▼':(cls==='up'?'▲':'–');
+  el.innerHTML='<div class="mkt"><div><div class="mkt-label">Gram Altın</div><div class="mkt-sub">TL · günlük</div></div><div><div class="mkt-val">'+esc(gold.price||'—')+'</div>'+(gold.chg?'<div class="mkt-chg '+cls+'">'+ar+' '+esc(gold.chg.replace(/^[+-]/,''))+'</div>':'')+'</div></div>';}
+function stockRow(s){const neg=/^-/.test(s.chg);const cls=neg?'down':(/^\+/.test(s.chg)?'up':'flat');const ar=neg?'▼':(cls==='up'?'▲':'–');
+  const avg=(s.avg1w||s.avg1m)?'<div class="mkt-sub" style="margin-top:2px">H.ort '+esc(s.avg1w||'—')+' · A.ort '+esc(s.avg1m||'—')+'</div>':'';
+  return '<div class="mkt"><div><div class="mkt-label">'+esc(s.code)+'</div>'+avg+'</div><div><div class="mkt-val">'+esc(s.price)+'</div><div class="mkt-chg '+cls+'">'+ar+' '+esc(s.chg.replace(/^[+-]/,''))+'</div></div></div>';}
 let watch=[];
 function renderWatch(){const el=document.getElementById('watchList');if(!el)return;
-  const head='<div class="wtitle" style="margin-top:12px;border-top:1px solid var(--line2);padding-top:11px">İzleme Listesi</div>';
-  if(!watch.length){el.innerHTML=head+'<div class="empty">Öğle güncellemesi mailini yapıştır → otomatik dolar.</div>';return;}
-  el.innerHTML=head+watch.map(s=>{const neg=/^-/.test(s.chg);const cls=neg?'down':(/^\+/.test(s.chg)?'up':'flat');const ar=neg?'▼':(cls==='up'?'▲':'–');
-    return '<div class="mkt"><div class="mkt-label">'+esc(s.code)+'</div><div><div class="mkt-val">'+esc(s.price)+'</div><div class="mkt-chg '+cls+'">'+ar+' '+esc(s.chg.replace(/^[+-]/,''))+'</div></div></div>';}).join('');}
+  const head='<div class="wtitle" style="margin-top:12px;border-top:1px solid var(--line2);padding-top:11px">İzleme Listesi · BIST</div>';
+  if(!watch.length){el.innerHTML=head+'<div class="empty">Feed çalışınca (09:00/14:00) otomatik dolar.</div>';return;}
+  el.innerHTML=head+watch.map(stockRow).join('');}
+let us=[];
+function renderUS(){const el=document.getElementById('usList');if(!el)return;
+  if(!us.length){el.innerHTML='';return;}
+  const head='<div class="wtitle" style="margin-top:12px;border-top:1px solid var(--line2);padding-top:11px">ABD Hisseleri</div>';
+  el.innerHTML=head+us.map(stockRow).join('');}
 
 /* borsa.json otomatik okuma (bot üretiyorsa, elle yapıştırmaya gerek kalmaz) */
 let world=[];
@@ -488,6 +522,8 @@ function renderWorld(){const el=document.getElementById('worldList');if(!el)retu
   el.innerHTML=world.slice(0,4).map((n,i)=>'<div class="news-item"><div class="news-n">'+String(i+1).padStart(2,'0')+'</div><div class="news-t">'+esc(n)+'</div></div>').join('');}
 async function loadBorsaJson(){try{const r=await fetch('borsa.json?_='+Date.now());if(!r.ok)throw 0;const d=await r.json();
     if(d.watch&&d.watch.length){watch=d.watch;await sSet('d:watch',watch);renderWatch();}
+    if(d.us&&d.us.length){us=d.us;await sSet('d:us',us);renderUS();}
+    if(d.gold){gold=d.gold;await sSet('d:gold',gold);renderGold();}
     if(d.news&&d.news.length){news=d.news.slice(0,10);await sSet(K.news,news);renderNews();}
     if(d.world&&d.world.length){world=d.world.slice(0,6);await sSet('d:world',world);renderWorld();}
   }catch(e){/* borsa.json yok — kayıtlı veri / elle yapıştırma kullanılır */}}
@@ -516,7 +552,7 @@ function parseMail(){const ta=document.getElementById('mailPaste');const txt=ta.
 
 /* init */
 (async function(){tick();setInterval(tick,1000);
-  tasks=await sGet(K.tasks)||[];targets=await sGet(K.targets)||{...DEFAULT_TARGETS};news=await sGet(K.news)||[];watch=await sGet('d:watch')||[];world=await sGet('d:world')||[];
+  tasks=await sGet(K.tasks)||[];targets=await sGet(K.targets)||{...DEFAULT_TARGETS};news=await sGet(K.news)||[];watch=await sGet('d:watch')||[];world=await sGet('d:world')||[];us=await sGet('d:us')||[];gold=await sGet('d:gold')||null;
   const de=await sGet(K.de);deExtra=(de&&de.date===todayKey())?de.extra:0;
   document.getElementById('taskAdd').onclick=addTask;document.getElementById('taskInput').onkeydown=e=>{if(e.key==='Enter')addTask();};
   document.getElementById('newsAdd').onclick=addNews;document.getElementById('newsInput').onkeydown=e=>{if(e.key==='Enter')addNews();};
@@ -527,8 +563,9 @@ function parseMail(){const ta=document.getElementById('mailPaste');const txt=ta.
   document.getElementById('bookNext').onclick=()=>{bookOff+=2;renderBook();};
   document.getElementById('histNext').onclick=()=>{histOff+=4;renderHistory();};
   document.getElementById('deRefresh').onclick=()=>{deExtra+=5;sSet(K.de,{date:todayKey(),extra:deExtra});renderGerman();};
+  document.getElementById('wtExport').onclick=exportCSV;
   renderTasks();await loadMorning();await renderRun();await loadWorkout();await loadMeals();
-  renderFacts();renderFilm();renderArtist();renderBook();renderHistory();renderGerman();renderNews();renderWatch();renderWorld();loadFX(false);loadBorsaJson();
+  renderFacts();renderFilm();renderArtist();renderBook();renderHistory();renderGerman();renderNews();renderWatch();renderUS();renderGold();renderWorld();loadFX(false);loadBorsaJson();
   setInterval(loadBorsaJson,15*60*1000);
   document.addEventListener('visibilitychange',()=>{if(!document.hidden){loadBorsaJson();loadFX(false);}});
 })();
