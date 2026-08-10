@@ -139,7 +139,9 @@
       <div id="newsList"></div>
       <div class="add-row"><input id="newsInput" placeholder="Başlık ekle…" maxlength="160"><button id="newsAdd">Ekle</button></div>
       <textarea class="paste" id="mailPaste" placeholder="…ya da 'Öğle Güncellemesi' mailini yapıştır"></textarea>
-      <div class="add-row"><button class="ibtn" id="mailParse" style="padding:6px 12px">Mailden ayrıştır (izleme listesi + haberler)</button></div></section>
+      <div class="add-row"><button class="ibtn" id="mailParse" style="padding:6px 12px">Mailden ayrıştır (izleme listesi + haberler)</button></div>
+      <div class="wtitle" style="margin-top:13px;border-top:1px solid var(--line2);padding-top:11px">Dünya Gündemi</div>
+      <div id="worldList"></div></section>
 
     <section class="card"><div class="card-head"><div><p class="kicker">Sohbetlik</p><h2 class="card-title">İlginç Bilgiler</h2></div><div class="meta"><button class="ibtn" id="factNext">Başka</button></div></div>
       <div id="factList"></div></section>
@@ -439,15 +441,15 @@ function renderMeals(){const el=document.getElementById('mealList');el.innerHTML
   el.querySelectorAll('[data-mc]').forEach(inp=>inp.oninput=()=>{meals[+inp.dataset.mc].c=inp.value;saveMeals();renderBars();});}
 
 /* facts + film */
-function renderFacts(){const el=document.getElementById('factList');const base=(doy()*2+factOff)%FACTS.length;el.innerHTML='';
-  for(let i=0;i<2;i++){const f=FACTS[(base+i)%FACTS.length];const d=document.createElement('div');d.className='fact';d.innerHTML='<span class="fb">◆</span><span>'+esc(f)+'</span>';el.appendChild(d);}}
+function renderFacts(){const el=document.getElementById('factList');const base=(doy()*4+factOff)%FACTS.length;el.innerHTML='';
+  for(let i=0;i<4;i++){const f=FACTS[(base+i)%FACTS.length];const d=document.createElement('div');d.className='fact';d.innerHTML='<span class="fb">◆</span><span>'+esc(f)+'</span>';el.appendChild(d);}}
 function filmHTML(f){return '<div class="fitem"><div class="film-title">'+esc(f[0])+' <span class="film-year">'+esc(f[1])+'</span></div><div class="film-row"><b>Yönetmen</b>'+esc(f[2])+'</div><div class="film-row"><b>Oyuncular</b>'+esc(f[3])+'</div><div class="film-note">'+esc(f[4])+'</div></div>';}
 function renderFilm(){const b=(doy()*2+filmOff)%FILMS.length;document.getElementById('filmBox').innerHTML=filmHTML(FILMS[b])+filmHTML(FILMS[(b+1)%FILMS.length]);}
 function artHTML(a){return '<div class="fitem"><div class="film-title">'+esc(a[0])+'</div><div class="film-row"><b>Tür</b>'+esc(a[1])+'</div><div class="film-row"><b>Öne çıkan</b>'+esc(a[2])+'</div><div class="film-note">'+esc(a[3])+'</div></div>';}
 function renderArtist(){const b=(doy()*2+artOff)%ARTISTS.length;document.getElementById('artBox').innerHTML=artHTML(ARTISTS[b])+artHTML(ARTISTS[(b+1)%ARTISTS.length]);}
 function bookHTML(x){return '<div class="fitem"><div class="film-title">'+esc(x[0])+'</div><div class="film-row"><b>Yazar</b>'+esc(x[1])+'</div><div class="film-note">'+esc(x[2])+'</div></div>';}
 function renderBook(){const b=(doy()*2+bookOff)%BOOKS.length;document.getElementById('bookBox').innerHTML=bookHTML(BOOKS[b])+bookHTML(BOOKS[(b+1)%BOOKS.length]);}
-function renderHistory(){const b=(doy()*2+histOff)%HISTORY.length;const one=i=>'<div class="fact"><span class="fb">◷</span><span>'+esc(HISTORY[i%HISTORY.length])+'</span></div>';document.getElementById('histBox').innerHTML=one(b)+one(b+1);}
+function renderHistory(){const b=(doy()*4+histOff)%HISTORY.length;const one=i=>'<div class="fact"><span class="fb">◷</span><span>'+esc(HISTORY[i%HISTORY.length])+'</span></div>';document.getElementById('histBox').innerHTML=one(b)+one(b+1)+one(b+2)+one(b+3);}
 
 /* german + grammar */
 const DE=[['das Haus','ev','Das Haus ist sehr groß.'],['die Arbeit','iş','Meine Arbeit beginnt um acht.'],['der Freund','arkadaş','Mein Freund kommt heute.'],['das Wasser','su','Ich trinke viel Wasser.'],['die Zeit','zaman','Ich habe keine Zeit.'],['der Tag','gün','Der Tag ist schön.'],['die Stadt','şehir','Die Stadt ist groß.'],['das Kind','çocuk','Das Kind spielt gern.'],['die Frau','kadın','Die Frau liest ein Buch.'],['der Mann','adam','Der Mann arbeitet hier.'],['das Buch','kitap','Das Buch ist interessant.'],['die Schule','okul','Die Schule ist neu.'],['essen','yemek','Wir essen zusammen.'],['trinken','içmek','Ich trinke Kaffee.'],['lernen','öğrenmek','Ich lerne Deutsch.'],['arbeiten','çalışmak','Sie arbeitet viel.'],['kaufen','satın almak','Ich kaufe Brot.'],['sprechen','konuşmak','Wir sprechen Deutsch.'],['gehen','gitmek','Ich gehe nach Hause.'],['kommen','gelmek','Er kommt morgen.'],['schlafen','uyumak','Das Kind schläft jetzt.'],['lesen','okumak','Ich lese die Zeitung.'],['schreiben','yazmak','Sie schreibt einen Brief.'],['verstehen','anlamak','Ich verstehe das nicht.'],['das Brot','ekmek','Das Brot ist frisch.'],['der Apfel','elma','Der Apfel ist rot.'],['die Milch','süt','Die Milch ist kalt.'],['der Kaffee','kahve','Der Kaffee ist heiß.'],['das Auto','araba','Das Auto ist neu.'],['der Zug','tren','Der Zug kommt spät.'],['die Straße','sokak','Die Straße ist lang.'],['das Geld','para','Ich habe kein Geld.'],['die Woche','hafta','Die Woche war lang.'],['heute','bugün','Heute ist Montag.'],['morgen','yarın','Morgen habe ich frei.'],['immer','her zaman','Ich bin immer müde.'],['die Familie','aile','Meine Familie ist groß.'],['kalt','soğuk','Heute ist es kalt.'],['warm','sıcak','Das Wasser ist warm.'],['schnell','hızlı','Das Auto ist schnell.'],['wichtig','önemli','Das ist sehr wichtig.']];
@@ -480,9 +482,14 @@ function renderWatch(){const el=document.getElementById('watchList');if(!el)retu
     return '<div class="mkt"><div class="mkt-label">'+esc(s.code)+'</div><div><div class="mkt-val">'+esc(s.price)+'</div><div class="mkt-chg '+cls+'">'+ar+' '+esc(s.chg.replace(/^[+-]/,''))+'</div></div></div>';}).join('');}
 
 /* borsa.json otomatik okuma (bot üretiyorsa, elle yapıştırmaya gerek kalmaz) */
+let world=[];
+function renderWorld(){const el=document.getElementById('worldList');if(!el)return;
+  if(!world.length){el.innerHTML='<div class="empty">Botun \'world\' alanını doldurunca dünya gündemi burada görünür.</div>';return;}
+  el.innerHTML=world.slice(0,4).map((n,i)=>'<div class="news-item"><div class="news-n">'+String(i+1).padStart(2,'0')+'</div><div class="news-t">'+esc(n)+'</div></div>').join('');}
 async function loadBorsaJson(){try{const r=await fetch('borsa.json?_='+Date.now());if(!r.ok)throw 0;const d=await r.json();
     if(d.watch&&d.watch.length){watch=d.watch;await sSet('d:watch',watch);renderWatch();}
     if(d.news&&d.news.length){news=d.news.slice(0,10);await sSet(K.news,news);renderNews();}
+    if(d.world&&d.world.length){world=d.world.slice(0,6);await sSet('d:world',world);renderWorld();}
   }catch(e){/* borsa.json yok — kayıtlı veri / elle yapıştırma kullanılır */}}
 
 /* haberler */
@@ -509,19 +516,21 @@ function parseMail(){const ta=document.getElementById('mailPaste');const txt=ta.
 
 /* init */
 (async function(){tick();setInterval(tick,1000);
-  tasks=await sGet(K.tasks)||[];targets=await sGet(K.targets)||{...DEFAULT_TARGETS};news=await sGet(K.news)||[];watch=await sGet('d:watch')||[];
+  tasks=await sGet(K.tasks)||[];targets=await sGet(K.targets)||{...DEFAULT_TARGETS};news=await sGet(K.news)||[];watch=await sGet('d:watch')||[];world=await sGet('d:world')||[];
   const de=await sGet(K.de);deExtra=(de&&de.date===todayKey())?de.extra:0;
   document.getElementById('taskAdd').onclick=addTask;document.getElementById('taskInput').onkeydown=e=>{if(e.key==='Enter')addTask();};
   document.getElementById('newsAdd').onclick=addNews;document.getElementById('newsInput').onkeydown=e=>{if(e.key==='Enter')addNews();};
   document.getElementById('mailParse').onclick=parseMail;document.getElementById('fxRefresh').onclick=()=>loadFX(true);
-  document.getElementById('factNext').onclick=()=>{factOff+=2;renderFacts();};
+  document.getElementById('factNext').onclick=()=>{factOff+=4;renderFacts();};
   document.getElementById('filmNext').onclick=()=>{filmOff+=2;renderFilm();};
   document.getElementById('artNext').onclick=()=>{artOff+=2;renderArtist();};
   document.getElementById('bookNext').onclick=()=>{bookOff+=2;renderBook();};
-  document.getElementById('histNext').onclick=()=>{histOff+=2;renderHistory();};
+  document.getElementById('histNext').onclick=()=>{histOff+=4;renderHistory();};
   document.getElementById('deRefresh').onclick=()=>{deExtra+=5;sSet(K.de,{date:todayKey(),extra:deExtra});renderGerman();};
   renderTasks();await loadMorning();await renderRun();await loadWorkout();await loadMeals();
-  renderFacts();renderFilm();renderArtist();renderBook();renderHistory();renderGerman();renderNews();renderWatch();loadFX(false);loadBorsaJson();
+  renderFacts();renderFilm();renderArtist();renderBook();renderHistory();renderGerman();renderNews();renderWatch();renderWorld();loadFX(false);loadBorsaJson();
+  setInterval(loadBorsaJson,15*60*1000);
+  document.addEventListener('visibilitychange',()=>{if(!document.hidden){loadBorsaJson();loadFX(false);}});
 })();
 </script>
 </body>
