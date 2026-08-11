@@ -1,40 +1,47 @@
 {
-  "updated": "2026-08-11 10:00",
+  "updated": "2026-08-11 14:43",
   "watch": [
     {
       "code": "SASA",
-      "price": "2.58",
-      "chg": "+0.00%",
-      "avg1w": "2.55",
-      "avg1m": "2.51"
+      "price": "2.37",
+      "chg": "+1.72%",
+      "avg1w": "2.48",
+      "avg1m": "2.52"
     },
     {
       "code": "EREGL",
-      "price": "38.68",
-      "chg": "-6.93%",
-      "avg1w": "40.93",
-      "avg1m": "42.02"
+      "price": "36.96",
+      "chg": "+0.22%",
+      "avg1w": "39.21",
+      "avg1m": "41.73"
     },
     {
       "code": "MGROS",
-      "price": "654.50",
-      "chg": "+4.55%",
-      "avg1w": "630.20",
-      "avg1m": "629.86"
+      "price": "633.00",
+      "chg": "-3.80%",
+      "avg1w": "640.50",
+      "avg1m": "631.07"
+    },
+    {
+      "code": "GUBRF",
+      "price": "426.00",
+      "chg": "-3.57%",
+      "avg1w": "435.55",
+      "avg1m": "420.80"
     },
     {
       "code": "KONTR",
-      "price": "4.06",
-      "chg": "-3.33%",
-      "avg1w": "4.14",
-      "avg1m": "4.89"
+      "price": "3.95",
+      "chg": "-1.50%",
+      "avg1w": "4.05",
+      "avg1m": "4.82"
     },
     {
       "code": "YEOTK",
-      "price": "39.30",
-      "chg": "+0.56%",
-      "avg1w": "39.34",
-      "avg1m": "40.34"
+      "price": "37.66",
+      "chg": "-2.13%",
+      "avg1w": "38.90",
+      "avg1m": "40.25"
     }
   ],
   "us": [
@@ -75,23 +82,23 @@
     }
   ],
   "gold": {
-    "price": "6,792.09",
-    "chg": "+1.56%"
+    "price": "6,820.22",
+    "chg": "+1.98%"
   },
   "news": [
-    "⚪ SASA bilançosundaki merak edilen konuya açıklık getirdi: \"Vergi tahakkuku veya ödemesi söz konusu değil\"  (CNBC-e)",
-    "🟢 SASA 2026 Bilançosunu Açıkladı: 492 Milyon TL Net Kâr Geldi, Hisseler Neden Düştü?  (bolgeninsesigazetesi.com)",
     "⚪ Sasa Polyester 2Ç26’da kâr beklentisine karşı zarar açıkladı  (Paratic Haber)",
+    "⚪ SASA bilançosundaki merak edilen konuya açıklık getirdi: \"Vergi tahakkuku veya ödemesi söz konusu değil\"  (CNBC-e)",
+    "🟢 SASA 2026 Bilançosunu Açıkladı: 492 Milyon TL Net Kâr Geldi, Hisseler Neden Düştü?  (Bölgenin Sesi Gazetesi)",
     "🟢 Ereğli Demir Çelik'ten ikinci çeyrekte 8,5 milyar TL net kâr  (Haber 7)",
     "⚪ Erdemir Ereğli Demir Çelik (EREGL) için bilanço sonrası hedef fiyatlar güncellendi  (Rota Borsa)",
     "🔴 Erdemir (EREGL) 2026/6 Bilanço Verileri Açıklandı: Net Kar Yüzde 415 Oldu! Hisseler Düşüşe Geçti!  (politikam.com)",
-    "⚪ KOÇ HOLDİNG A.Ş. Gelir Dağılımı – BIST:KCHOL  (TradingView)",
-    "🟢 Astor Enerji, TEİAŞ’tan 351,1 milyon TL’lik sözleşme kazandı  (Investing.com Türkiye)"
+    "⚪ #ALARK Ne İş Yapıyor? | Enerji, İnşaat, Turizm Alarko Holding'in 4 Milyar Dolarlık 2028 Hedefi! Freiburg Vs Braga (IHhNsTjSs1)  (Mshale)",
+    "🔴 ALARK Bilanço Ve Vizyon: Zararın Nedeni Ne? Geleceğin Holdingi Kuruluyor! Vistry Share Price (rFEkd0CORh)  (Mshale)"
   ],
   "world": [
-    "🌍 İşte çerçeve yasa teklifinin tam metni - Medyascope  (Medyascope)",
-    "🌍 Trump'tan İran'a yanıt: Biz de tazminat istiyoruz - Bloomberght  (Bloomberght)",
-    "🌍 Akın Gürlek duyurdu: Vize şirketlerine operasyon, onlarca gözaltı - birgun.net  (birgun.net)",
-    "🌍 Kolombiya'yı 7.4'lük deprem vurdu. Can kaybı artıyor - NTV Haber  (NTV Haber)"
+    "🌍 TBMM’de 'çerçeve yasa' oylaması: Kim 'evet', kim 'hayır' dedi? - Bianet  (Bianet)",
+    "🌍 \"Çerçeve yasa\" sonrası ilk adım: İçişleri Bakanlığı'nda zirve toplantısı - birgun.net  (birgun.net)",
+    "🌍 Fenerbahçe otobüsüne saldırı dosyasında yeni gelişme: 5 şüpheliye operasyon - TRT Haber  (TRT Haber)",
+    "🌍 Türkiye'nin 64 yıllık dev otobüs firması satıldı - Sözcü Gazetesi  (Sözcü Gazetesi)"
   ]
 }
