@@ -1,33 +1,40 @@
 {
-  "updated": "2026-08-12 10:19",
+  "updated": "2026-08-12 14:44",
   "watch": [
     {
       "code": "SASA",
-      "price": "2.36",
-      "chg": "+1.29%",
-      "avg1w": "2.48",
+      "price": "2.37",
+      "chg": "+0.42%",
+      "avg1w": "2.44",
       "avg1m": "2.52"
     },
     {
       "code": "MGROS",
-      "price": "584.50",
-      "chg": "-11.17%",
-      "avg1w": "630.80",
-      "avg1m": "628.76"
+      "price": "582.00",
+      "chg": "-7.62%",
+      "avg1w": "630.10",
+      "avg1m": "627.71"
+    },
+    {
+      "code": "ASTOR",
+      "price": "320.00",
+      "chg": "+6.05%",
+      "avg1w": "311.05",
+      "avg1m": "303.06"
     },
     {
       "code": "KONTR",
       "price": "3.82",
-      "chg": "-4.74%",
-      "avg1w": "4.02",
-      "avg1m": "4.82"
+      "chg": "-3.05%",
+      "avg1w": "4.01",
+      "avg1m": "4.78"
     },
     {
       "code": "YEOTK",
-      "price": "38.38",
-      "chg": "-0.26%",
-      "avg1w": "39.04",
-      "avg1m": "40.28"
+      "price": "38.62",
+      "chg": "+2.55%",
+      "avg1w": "38.63",
+      "avg1m": "40.20"
     }
   ],
   "us": [
@@ -68,22 +75,23 @@
     }
   ],
   "gold": {
-    "price": "6,843.92",
-    "chg": "+1.84%"
+    "price": "6,868.14",
+    "chg": "+2.13%"
   },
   "news": [
     "⚪ Sasa Polyester 2Ç26’da kâr beklentisine karşı zarar açıkladı  (Paratic Haber)",
-    "⚪ SASA Polyester bilançosu açıklandı, ilk yarıda kara geçildi  (foreks.com)",
+    "⚪ SASA Polyester bilançosu açıklandı, ilk yarıda kara geçildi  (Foreks.com)",
     "🟢 SASA 2026 Bilançosunu Açıkladı: 492 Milyon TL Net Kâr Geldi, Hisseler Neden Düştü?  (Bölgenin Sesi Gazetesi)",
     "🟢 Migros (MGROS) 2026 ikinci çeyrek bilançosunu açıkladı: Net kâr yüzde 42 düştü  (CNBC-e)",
-    "⚪ KAP *** MİGROS TİCARET A.Ş. *** MGROS *** Faaliyet Raporu (Konsolide)  (GZT)",
+    "⚪ KAP *** MİGROS TİCARET A.Ş. *** MGROS *** Faaliyet Raporu (Konsolide)  (gzt.com)",
     "⚪ KAP *** MİGROS TİCARET A.Ş. *** MGROS *** Özel Durum Açıklaması (Genel)  (Yeni Şafak)",
-    "⚪ BIMAS Hisse Yorumları (BIM MAGAZALAR Güncel Yorumlar)  (Mynet Finans)"
+    "🟢 Astor Enerji 351 milyon TL’lik sözleşmeyi imzaladı  (Dünya Gazetesi)",
+    "🟢 TEİAŞ ihalesi Astor Enerji'nin oldu  (Enerji Günlüğü)"
   ],
   "world": [
+    "🌍 Haluk Levent'in bankadaki kasasını açan polisler donup kaldı - Sözcü Gazetesi  (Sözcü Gazetesi)",
+    "🌍 Cumhurbaşkanı Erdoğan yanıtladı: Mekke Ortak Savunma Anlaşması fikri nasıl ortaya çıktı? - NTV Haber  (NTV Haber)",
     "🌍 TBMM’de 'çerçeve yasa' oylaması: Kim 'evet', kim 'hayır' dedi? - Bianet  (Bianet)",
-    "🌍 Trump'tan gizli uçuş açıklaması: \"Benim uçağım daha büyük risk altındaydı\" - ntv.com.tr  (ntv.com.tr)",
-    "🌍 ultrAslan lideri Muzaffer Şirin adli kontrolle serbest - Diken  (Diken)",
-    "🌍 Milyonlarca emekliyi etkileyecek: Maaşlarda yüzde 100 artış olabilir - Sözcü Gazetesi  (Sözcü Gazetesi)"
+    "🌍 Hürmüz için diplomasi trafiği hızlandı: Anlaşma yakın - Bloomberght  (Bloomberght)"
   ]
 }
