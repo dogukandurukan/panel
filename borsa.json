@@ -1,104 +1,89 @@
 {
-  "updated": "2026-08-11 14:43",
+  "updated": "2026-08-12 10:19",
   "watch": [
     {
       "code": "SASA",
-      "price": "2.37",
-      "chg": "+1.72%",
+      "price": "2.36",
+      "chg": "+1.29%",
       "avg1w": "2.48",
       "avg1m": "2.52"
     },
     {
-      "code": "EREGL",
-      "price": "36.96",
-      "chg": "+0.22%",
-      "avg1w": "39.21",
-      "avg1m": "41.73"
-    },
-    {
       "code": "MGROS",
-      "price": "633.00",
-      "chg": "-3.80%",
-      "avg1w": "640.50",
-      "avg1m": "631.07"
-    },
-    {
-      "code": "GUBRF",
-      "price": "426.00",
-      "chg": "-3.57%",
-      "avg1w": "435.55",
-      "avg1m": "420.80"
+      "price": "584.50",
+      "chg": "-11.17%",
+      "avg1w": "630.80",
+      "avg1m": "628.76"
     },
     {
       "code": "KONTR",
-      "price": "3.95",
-      "chg": "-1.50%",
-      "avg1w": "4.05",
+      "price": "3.82",
+      "chg": "-4.74%",
+      "avg1w": "4.02",
       "avg1m": "4.82"
     },
     {
       "code": "YEOTK",
-      "price": "37.66",
-      "chg": "-2.13%",
-      "avg1w": "38.90",
-      "avg1m": "40.25"
+      "price": "38.38",
+      "chg": "-0.26%",
+      "avg1w": "39.04",
+      "avg1m": "40.28"
     }
   ],
   "us": [
     {
       "code": "AAPL",
-      "price": "308.26",
-      "chg": "-1.62%",
-      "avg1w": "310.88",
-      "avg1m": "322.71"
+      "price": "304.91",
+      "chg": "-1.09%",
+      "avg1w": "309.98",
+      "avg1m": "322.12"
     },
     {
       "code": "MSFT",
-      "price": "506.06",
-      "chg": "+1.21%",
-      "avg1w": "497.24",
-      "avg1m": "427.75"
+      "price": "503.81",
+      "chg": "-0.44%",
+      "avg1w": "499.44",
+      "avg1m": "433.12"
     },
     {
       "code": "NVDA",
-      "price": "217.55",
-      "chg": "-2.86%",
-      "avg1w": "218.33",
-      "avg1m": "207.33"
+      "price": "217.50",
+      "chg": "-0.02%",
+      "avg1w": "219.44",
+      "avg1m": "207.99"
     },
     {
       "code": "AMZN",
-      "price": "278.09",
-      "chg": "+1.32%",
-      "avg1w": "274.98",
-      "avg1m": "252.85"
+      "price": "272.27",
+      "chg": "-2.09%",
+      "avg1w": "273.95",
+      "avg1m": "254.04"
     },
     {
       "code": "TSLA",
-      "price": "330.88",
-      "chg": "+0.70%",
-      "avg1w": "325.58",
-      "avg1m": "342.74"
+      "price": "332.81",
+      "chg": "+0.58%",
+      "avg1w": "326.67",
+      "avg1m": "339.79"
     }
   ],
   "gold": {
-    "price": "6,820.22",
-    "chg": "+1.98%"
+    "price": "6,843.92",
+    "chg": "+1.84%"
   },
   "news": [
     "⚪ Sasa Polyester 2Ç26’da kâr beklentisine karşı zarar açıkladı  (Paratic Haber)",
-    "⚪ SASA bilançosundaki merak edilen konuya açıklık getirdi: \"Vergi tahakkuku veya ödemesi söz konusu değil\"  (CNBC-e)",
+    "⚪ SASA Polyester bilançosu açıklandı, ilk yarıda kara geçildi  (foreks.com)",
     "🟢 SASA 2026 Bilançosunu Açıkladı: 492 Milyon TL Net Kâr Geldi, Hisseler Neden Düştü?  (Bölgenin Sesi Gazetesi)",
-    "🟢 Ereğli Demir Çelik'ten ikinci çeyrekte 8,5 milyar TL net kâr  (Haber 7)",
-    "⚪ Erdemir Ereğli Demir Çelik (EREGL) için bilanço sonrası hedef fiyatlar güncellendi  (Rota Borsa)",
-    "🔴 Erdemir (EREGL) 2026/6 Bilanço Verileri Açıklandı: Net Kar Yüzde 415 Oldu! Hisseler Düşüşe Geçti!  (politikam.com)",
-    "⚪ #ALARK Ne İş Yapıyor? | Enerji, İnşaat, Turizm Alarko Holding'in 4 Milyar Dolarlık 2028 Hedefi! Freiburg Vs Braga (IHhNsTjSs1)  (Mshale)",
-    "🔴 ALARK Bilanço Ve Vizyon: Zararın Nedeni Ne? Geleceğin Holdingi Kuruluyor! Vistry Share Price (rFEkd0CORh)  (Mshale)"
+    "🟢 Migros (MGROS) 2026 ikinci çeyrek bilançosunu açıkladı: Net kâr yüzde 42 düştü  (CNBC-e)",
+    "⚪ KAP *** MİGROS TİCARET A.Ş. *** MGROS *** Faaliyet Raporu (Konsolide)  (GZT)",
+    "⚪ KAP *** MİGROS TİCARET A.Ş. *** MGROS *** Özel Durum Açıklaması (Genel)  (Yeni Şafak)",
+    "⚪ BIMAS Hisse Yorumları (BIM MAGAZALAR Güncel Yorumlar)  (Mynet Finans)"
   ],
   "world": [
     "🌍 TBMM’de 'çerçeve yasa' oylaması: Kim 'evet', kim 'hayır' dedi? - Bianet  (Bianet)",
-    "🌍 \"Çerçeve yasa\" sonrası ilk adım: İçişleri Bakanlığı'nda zirve toplantısı - birgun.net  (birgun.net)",
-    "🌍 Fenerbahçe otobüsüne saldırı dosyasında yeni gelişme: 5 şüpheliye operasyon - TRT Haber  (TRT Haber)",
-    "🌍 Türkiye'nin 64 yıllık dev otobüs firması satıldı - Sözcü Gazetesi  (Sözcü Gazetesi)"
+    "🌍 Trump'tan gizli uçuş açıklaması: \"Benim uçağım daha büyük risk altındaydı\" - ntv.com.tr  (ntv.com.tr)",
+    "🌍 ultrAslan lideri Muzaffer Şirin adli kontrolle serbest - Diken  (Diken)",
+    "🌍 Milyonlarca emekliyi etkileyecek: Maaşlarda yüzde 100 artış olabilir - Sözcü Gazetesi  (Sözcü Gazetesi)"
   ]
 }
