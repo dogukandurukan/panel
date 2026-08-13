@@ -1,47 +1,47 @@
 {
-  "updated": "2026-08-13 10:21",
+  "updated": "2026-08-13 14:45",
   "watch": [
     {
       "code": "SASA",
-      "price": "2.50",
-      "chg": "+5.93%",
-      "avg1w": "2.47",
+      "price": "2.49",
+      "chg": "+0.00%",
+      "avg1w": "2.45",
       "avg1m": "2.52"
     },
     {
+      "code": "MGROS",
+      "price": "554.00",
+      "chg": "-3.15%",
+      "avg1w": "613.70",
+      "avg1m": "625.79"
+    },
+    {
       "code": "DOAS",
-      "price": "175.40",
-      "chg": "-9.54%",
-      "avg1w": "189.58",
-      "avg1m": "186.65"
+      "price": "175.30",
+      "chg": "-9.83%",
+      "avg1w": "190.40",
+      "avg1m": "187.05"
     },
     {
       "code": "ASTOR",
-      "price": "343.00",
-      "chg": "+13.67%",
-      "avg1w": "315.65",
-      "avg1m": "304.15"
-    },
-    {
-      "code": "MGROS",
-      "price": "561.50",
-      "chg": "-10.87%",
-      "avg1w": "626.00",
-      "avg1m": "626.74"
+      "price": "343.25",
+      "chg": "+3.47%",
+      "avg1w": "318.20",
+      "avg1m": "302.01"
     },
     {
       "code": "KONTR",
       "price": "3.83",
-      "chg": "-2.79%",
-      "avg1w": "4.01",
-      "avg1m": "4.78"
+      "chg": "+0.00%",
+      "avg1w": "3.93",
+      "avg1m": "4.70"
     },
     {
       "code": "YEOTK",
-      "price": "38.56",
-      "chg": "+2.39%",
-      "avg1w": "38.62",
-      "avg1m": "40.20"
+      "price": "37.88",
+      "chg": "-1.66%",
+      "avg1w": "38.37",
+      "avg1m": "40.11"
     }
   ],
   "us": [
@@ -82,23 +82,23 @@
     }
   ],
   "gold": {
-    "price": "6,810.11",
-    "chg": "+0.61%"
+    "price": "6,828.25",
+    "chg": "+0.88%"
   },
   "news": [
     "⚪ Erdemoğlu Holding'den SASA'da dev alım: Payı yüzde 54,77'ye çıktı  (CNBC-e)",
-    "🟢 SASA 2026 Bilançosunu Açıkladı: 492 Milyon TL Net Kâr Geldi, Hisseler Neden Düştü?  (Bölgenin Sesi Gazetesi)",
+    "🟢 SASA 2026 Bilançosunu Açıkladı: 492 Milyon TL Net Kâr Geldi, Hisseler Neden Düştü?  (bolgeninsesigazetesi.com)",
     "🟢 Erdemoğlu Holding'in SASA'daki payı yüzde 54,77'ye yükseldi  (isindetayi.com)",
+    "🟢 Migros (MGROS) 2026 ikinci çeyrek bilançosunu açıkladı: Net kâr yüzde 42 düştü  (CNBC-e)",
+    "🟢 Migros’ta kârlılık baskısı: Hedef fiyat 889 TL’ye çıktı  (Paratic Haber)",
+    "⚪ KAP *** MİGROS TİCARET A.Ş. *** MGROS *** Katılım Finansı İlkeleri Bilgi Formu  (GZT)",
     "🟢 Bugün Temettü Ödeyen Doğuş Otomotiv Fiyatında Düzeltme Yapıldı!  (borsagundem.com.tr)",
-    "⚪ Astor Enerji, ana faaliyet alanına odaklanmak için Romanya iştirakini sattı  (Paratic Haber)",
-    "⚪ Astor Enerji MSCI endeksine girdi: Yıllık getiri yüzde 183'e ulaştı  (Sözcü Gazetesi)",
-    "⚪ Astor Enerji küresel lige girdi: MSCI endeksine dahil edildi  (Ekonomim)",
-    "🟢 Migros’ta kârlılık baskısı: Hedef fiyat 889 TL’ye çıktı  (Paratic Haber)"
+    "⚪ Astor Enerji, Romanya iştiraki Astor RO’yu 56,75 milyon Euro’ya sattı  (Investing.com Türkiye)"
   ],
   "world": [
-    "🌍 Alihan Kuriş suç örgütüne operasyon - TRT Haber  (TRT Haber)",
-    "🌍 Bahçeli'den çerçeve yasa açıklaması. \"Kaybedecek vaktimiz yok\" - NTV Haber  (NTV Haber)",
-    "🌍 Ahbap'ın 1 milyon dolarlık altını 'kayıp': 'Gazze için' alınmış - Diken  (Diken)",
-    "🌍 Elektrik fiyatlarında güneş tutulması etkisi - Bloomberght  (Bloomberght)"
+    "🌍 Mekke İttifakı ve terörsüz Türkiye - MAHMUT ÖVÜR - Sabah  (Sabah)",
+    "🌍 Süleymancılar soruşturması: Gözaltına alınan 30 kişi belli oldu - Diken  (Diken)",
+    "🌍 Yeni nesil suç örgütü REDKİTLER'in lideri Ferhat Mardin yakalandı - Sözcü Gazetesi  (Sözcü Gazetesi)",
+    "🌍 Kolombiya'da 7.4'lük depremde bilanço ağırlaşıyor! Can kaybı yükseldi - İnternet Haber  (İnternet Haber)"
   ]
 }
