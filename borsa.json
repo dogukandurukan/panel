@@ -1,97 +1,104 @@
 {
-  "updated": "2026-08-12 14:44",
+  "updated": "2026-08-13 10:21",
   "watch": [
     {
       "code": "SASA",
-      "price": "2.37",
-      "chg": "+0.42%",
-      "avg1w": "2.44",
+      "price": "2.50",
+      "chg": "+5.93%",
+      "avg1w": "2.47",
       "avg1m": "2.52"
     },
     {
-      "code": "MGROS",
-      "price": "582.00",
-      "chg": "-7.62%",
-      "avg1w": "630.10",
-      "avg1m": "627.71"
+      "code": "DOAS",
+      "price": "175.40",
+      "chg": "-9.54%",
+      "avg1w": "189.58",
+      "avg1m": "186.65"
     },
     {
       "code": "ASTOR",
-      "price": "320.00",
-      "chg": "+6.05%",
-      "avg1w": "311.05",
-      "avg1m": "303.06"
+      "price": "343.00",
+      "chg": "+13.67%",
+      "avg1w": "315.65",
+      "avg1m": "304.15"
+    },
+    {
+      "code": "MGROS",
+      "price": "561.50",
+      "chg": "-10.87%",
+      "avg1w": "626.00",
+      "avg1m": "626.74"
     },
     {
       "code": "KONTR",
-      "price": "3.82",
-      "chg": "-3.05%",
+      "price": "3.83",
+      "chg": "-2.79%",
       "avg1w": "4.01",
       "avg1m": "4.78"
     },
     {
       "code": "YEOTK",
-      "price": "38.62",
-      "chg": "+2.55%",
-      "avg1w": "38.63",
+      "price": "38.56",
+      "chg": "+2.39%",
+      "avg1w": "38.62",
       "avg1m": "40.20"
     }
   ],
   "us": [
     {
       "code": "AAPL",
-      "price": "304.91",
-      "chg": "-1.09%",
-      "avg1w": "309.98",
-      "avg1m": "322.12"
+      "price": "302.25",
+      "chg": "-0.87%",
+      "avg1w": "308.23",
+      "avg1m": "321.52"
     },
     {
       "code": "MSFT",
-      "price": "503.81",
-      "chg": "-0.44%",
-      "avg1w": "499.44",
-      "avg1m": "433.12"
+      "price": "492.43",
+      "chg": "-2.26%",
+      "avg1w": "500.43",
+      "avg1m": "438.24"
     },
     {
       "code": "NVDA",
-      "price": "217.50",
-      "chg": "-0.02%",
-      "avg1w": "219.44",
-      "avg1m": "207.99"
+      "price": "224.09",
+      "chg": "+3.03%",
+      "avg1w": "220.42",
+      "avg1m": "208.58"
     },
     {
       "code": "AMZN",
-      "price": "272.27",
-      "chg": "-2.09%",
-      "avg1w": "273.95",
-      "avg1m": "254.04"
+      "price": "267.28",
+      "chg": "-1.83%",
+      "avg1w": "272.88",
+      "avg1m": "254.99"
     },
     {
       "code": "TSLA",
-      "price": "332.81",
-      "chg": "+0.58%",
-      "avg1w": "326.67",
-      "avg1m": "339.79"
+      "price": "327.51",
+      "chg": "-1.59%",
+      "avg1w": "327.86",
+      "avg1m": "336.52"
     }
   ],
   "gold": {
-    "price": "6,868.14",
-    "chg": "+2.13%"
+    "price": "6,810.11",
+    "chg": "+0.61%"
   },
   "news": [
-    "⚪ Sasa Polyester 2Ç26’da kâr beklentisine karşı zarar açıkladı  (Paratic Haber)",
-    "⚪ SASA Polyester bilançosu açıklandı, ilk yarıda kara geçildi  (Foreks.com)",
+    "⚪ Erdemoğlu Holding'den SASA'da dev alım: Payı yüzde 54,77'ye çıktı  (CNBC-e)",
     "🟢 SASA 2026 Bilançosunu Açıkladı: 492 Milyon TL Net Kâr Geldi, Hisseler Neden Düştü?  (Bölgenin Sesi Gazetesi)",
-    "🟢 Migros (MGROS) 2026 ikinci çeyrek bilançosunu açıkladı: Net kâr yüzde 42 düştü  (CNBC-e)",
-    "⚪ KAP *** MİGROS TİCARET A.Ş. *** MGROS *** Faaliyet Raporu (Konsolide)  (gzt.com)",
-    "⚪ KAP *** MİGROS TİCARET A.Ş. *** MGROS *** Özel Durum Açıklaması (Genel)  (Yeni Şafak)",
-    "🟢 Astor Enerji 351 milyon TL’lik sözleşmeyi imzaladı  (Dünya Gazetesi)",
-    "🟢 TEİAŞ ihalesi Astor Enerji'nin oldu  (Enerji Günlüğü)"
+    "🟢 Erdemoğlu Holding'in SASA'daki payı yüzde 54,77'ye yükseldi  (isindetayi.com)",
+    "🟢 Bugün Temettü Ödeyen Doğuş Otomotiv Fiyatında Düzeltme Yapıldı!  (borsagundem.com.tr)",
+    "⚪ Astor Enerji, ana faaliyet alanına odaklanmak için Romanya iştirakini sattı  (Paratic Haber)",
+    "⚪ Astor Enerji MSCI endeksine girdi: Yıllık getiri yüzde 183'e ulaştı  (Sözcü Gazetesi)",
+    "⚪ Astor Enerji küresel lige girdi: MSCI endeksine dahil edildi  (Ekonomim)",
+    "🟢 Migros’ta kârlılık baskısı: Hedef fiyat 889 TL’ye çıktı  (Paratic Haber)"
   ],
   "world": [
-    "🌍 Haluk Levent'in bankadaki kasasını açan polisler donup kaldı - Sözcü Gazetesi  (Sözcü Gazetesi)",
-    "🌍 Cumhurbaşkanı Erdoğan yanıtladı: Mekke Ortak Savunma Anlaşması fikri nasıl ortaya çıktı? - NTV Haber  (NTV Haber)",
-    "🌍 TBMM’de 'çerçeve yasa' oylaması: Kim 'evet', kim 'hayır' dedi? - Bianet  (Bianet)",
-    "🌍 Hürmüz için diplomasi trafiği hızlandı: Anlaşma yakın - Bloomberght  (Bloomberght)"
+    "🌍 Alihan Kuriş suç örgütüne operasyon - TRT Haber  (TRT Haber)",
+    "🌍 Bahçeli'den çerçeve yasa açıklaması. \"Kaybedecek vaktimiz yok\" - NTV Haber  (NTV Haber)",
+    "🌍 Ahbap'ın 1 milyon dolarlık altını 'kayıp': 'Gazze için' alınmış - Diken  (Diken)",
+    "🌍 Elektrik fiyatlarında güneş tutulması etkisi - Bloomberght  (Bloomberght)"
   ]
 }
