@@ -52,6 +52,12 @@
   .wtin:focus{outline:none;border-color:var(--accent);}
   .wtu{font-family:var(--mono);font-size:10px;color:var(--muted);}
   .wtprev{font-family:var(--mono);font-size:10px;color:var(--muted);margin-left:4px;}
+  .wtrow{padding:10px 0;border-bottom:1px dotted var(--line2);}
+  .wtrow:last-child{border-bottom:none;}
+  .wtrow-top{display:flex;justify-content:space-between;align-items:center;gap:10px;}
+  .wtname{font-size:14px;}
+  .wtctl{display:flex;align-items:center;gap:6px;white-space:nowrap;}
+  .wtcmp{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:4px;}
   .runbox{display:flex;align-items:center;gap:8px;margin-top:12px;border-top:1px solid var(--line2);padding-top:11px;}
   .runbox label{font-size:13px;color:var(--muted);flex:1;}
   .runbox input{width:78px;background:#fff;border:1px solid var(--line);border-radius:4px;padding:5px 7px;font-family:var(--mono);font-size:13px;text-align:right;color:var(--ink);}
@@ -133,8 +139,7 @@
 
     <section class="card"><div class="card-head"><div><p class="kicker">Antrenman · Bugün</p><h2 class="card-title" id="wkTitle">Bugünün Antrenmanı</h2></div><div class="meta" id="wkCount">0/0</div></div>
       <div class="wtitle" id="wkSub">—</div>
-      <div id="exList"></div>
-      <div class="add-row" style="margin-top:11px"><button class="ibtn" id="wtExport" style="padding:6px 12px">Ağırlıkları Excel'e aktar (CSV)</button></div></section>
+      <div id="exList"></div></section>
 
     <section class="card"><div class="card-head"><div><p class="kicker">Beslenme · Bugün</p><h2 class="card-title">Bugünün Yemekleri</h2></div><div class="meta">hedefi düzenle ↓</div></div>
       <div class="tgt" id="tgt"></div><div id="bars"></div><div style="height:6px"></div><div id="mealList"></div></section>
@@ -171,6 +176,9 @@
     <section class="card"><div class="card-head"><div><p class="kicker">Öğrenme · A1–A2</p><h2 class="card-title">Günün 5 Almanca Kelimesi</h2></div><div class="meta"><button class="ibtn" id="deRefresh">Yeni set</button></div></div>
       <div id="germanList"></div><div id="gramList"></div></section>
   </div>
+  <section class="card" style="margin-top:20px"><div class="card-head"><div><p class="kicker">Antrenman · Kayıt</p><h2 class="card-title">Ağırlık Takibi</h2></div><div class="meta"><button class="ibtn" id="wtExport" style="padding:6px 10px">Excel'e aktar</button></div></div>
+    <div class="wtitle" id="wtSub">—</div>
+    <div id="wtList"></div></section>
   <footer><span>Antrenman & yemek programından · gün gün otomatik</span><span>Döviz canlı · yatırım tavsiyesi değildir</span></footer>
 </div>
 <script>
@@ -201,13 +209,13 @@ const MORNING=[['Kedi-inek','10 tekrar'],['Kalça fleksör esnetme (diz üstü l
 
 /* ===== YEMEK (gün gün, 7 günlük plandan) ===== */
 const MP={
- 1:[['Kahvaltı','3 yumurta omlet + 40g peynir + 50g yulaf (sütle) + 1 muz',520,34,55],['Öğle / PW','180g ızgara tavuk + bulgur pilavı + çoban salata',720,48,90],['Ara öğün','250g süzme yoğurt + 30g ceviz + 1 elma',410,22,35],['Akşam','150g fırın somon + fırın sebze + yeşil salata',700,41,80]],
- 2:[['Kahvaltı','Menemen (3 yumurta) + 2 dilim tam buğday ekmek + 30g peynir',500,32,55],['Öğle / PW','180g ızgara hindi + pirinç + zeytinyağlı sebze',700,45,88],['Ara öğün','250g yoğurt + 20g badem + 1 armut',420,20,38],['Akşam','150g yağsız dana köfte + bulgur + salata',700,43,78]],
- 3:[['Kahvaltı','60g yulaf + süt + 1 muz + 15g fıstık ezmesi (istersen whey)',560,38,72],['Öğle / PW','180g tavuk + tam buğday makarna + domates sos + rende peynir',730,48,95],['Ara öğün','200g yoğurt + mevsim meyvesi',360,16,40],['Akşam','2 kutu ton (veya 150g taze) + patates salatası + yeşillik',620,40,55]],
- 4:[['Kahvaltı','3 yumurta + peynir + zeytin + domates-salatalık + 2 dilim ekmek',520,30,55],['Öğle / PW','180g dana bonfile + pirinç + fırın sebze',720,46,85],['Ara öğün','250g yoğurt + 30g ceviz + 1 elma',410,22,35],['Akşam','150g tavuk sote + bulgur + salata',700,42,80]],
- 5:[['Kahvaltı','2 yumurta + 50g yulaf (sütle) + 1 muz + 25g badem',540,34,62],['Öğle / PW','180g somon + 200g haşlanmış patates + yeşil salata',690,40,80],['Ara öğün','200g süzme yoğurt + mevsim meyvesi',380,18,40],['Akşam','180g hindi + bulgur + zeytinyağlı sebze',700,48,75]],
- 6:[['Kahvaltı','Ölçülü serpme: 2 yumurta, peynir, zeytin, 2 dilim ekmek, domates',480,25,50],['Öğle','180g ızgara tavuk/köfte + pilav + salata',700,45,85],['Ara öğün','Meyve + yoğurt + bir avuç kuruyemiş',400,18,42],['Akşam','Dışarıda esnek: ızgara balık/et + salata + az karbonhidrat',620,40,45]],
- 0:[['Kahvaltı','3 yumurta + yulaf + meyve',500,30,55],['Öğle','180g tavuk/et + pirinç veya bulgur + sebze',700,45,85],['Ara öğün','250g yoğurt + 30g ceviz',400,22,38],['Akşam','Hafif: mercimek çorbası + 150g tavuk/balık + salata',560,38,55]]
+ 1:[['Kahvaltı','3 yumurta omlet + 40g beyaz peynir + 50g yulaf (200ml sütle) + 1 muz',520,34,55],['Öğle / PW','180g ızgara tavuk + 1 kase bulgur pilavı (~150g) + çoban salata (1 yemek kaşığı zeytinyağı)',720,48,90],['Ara öğün','250g süzme yoğurt + 30g ceviz (~1 avuç) + 1 elma',410,22,35],['Akşam','150g fırın somon + ~200g fırın sebze + yeşil salata',700,41,80]],
+ 2:[['Kahvaltı','Menemen (3 yumurta) + 2 dilim tam buğday ekmek + 30g beyaz peynir',500,32,55],['Öğle / PW','180g ızgara hindi + 1 kase pirinç pilavı (~150g) + ~150g zeytinyağlı sebze',700,45,88],['Ara öğün','250g yoğurt + 20g badem (~15 adet) + 1 armut',420,20,38],['Akşam','150g yağsız dana köfte + 1 kase bulgur (~150g) + salata',700,43,78]],
+ 3:[['Kahvaltı','60g yulaf + 200ml süt + 1 muz + 1 yemek kaşığı (15g) fıstık ezmesi',560,38,72],['Öğle / PW','180g tavuk + 80g (kuru) tam buğday makarna + domates sos + 20g rende peynir',730,48,95],['Ara öğün','200g yoğurt + 1 porsiyon mevsim meyvesi',360,16,40],['Akşam','2 kutu ton (~160g) + ~200g patates salatası + yeşillik',620,40,55]],
+ 4:[['Kahvaltı','3 yumurta + 30g peynir + 5-6 zeytin + domates-salatalık + 2 dilim ekmek',520,30,55],['Öğle / PW','180g dana bonfile + 1 kase pirinç (~150g) + ~200g fırın sebze',720,46,85],['Ara öğün','250g yoğurt + 30g ceviz (~1 avuç) + 1 elma',410,22,35],['Akşam','150g tavuk sote + 1 kase bulgur (~150g) + salata',700,42,80]],
+ 5:[['Kahvaltı','2 yumurta + 50g yulaf (200ml sütle) + 1 muz + 25g badem',540,34,62],['Öğle / PW','180g somon + 200g haşlanmış patates + yeşil salata',690,40,80],['Ara öğün','200g süzme yoğurt + 1 porsiyon mevsim meyvesi',380,18,40],['Akşam','180g hindi + 1 kase bulgur (~150g) + zeytinyağlı sebze',700,48,75]],
+ 6:[['Kahvaltı','Ölçülü serpme: 2 yumurta, 40g peynir, 5-6 zeytin, 2 dilim ekmek, domates',480,25,50],['Öğle','180g ızgara tavuk/köfte + 1 kase pilav (~150g) + salata',700,45,85],['Ara öğün','1 meyve + 150g yoğurt + 1 avuç (~25g) kuruyemiş',400,18,42],['Akşam','Dışarıda esnek: ~180g ızgara balık/et + salata + az karbonhidrat',620,40,45]],
+ 0:[['Kahvaltı','3 yumurta + 50g yulaf + 1 meyve',500,30,55],['Öğle','180g tavuk/et + 1 kase pirinç veya bulgur (~150g) + sebze',700,45,85],['Ara öğün','250g yoğurt + 30g ceviz (~1 avuç)',400,22,38],['Akşam','Hafif: 1 kase mercimek çorbası + 150g tavuk/balık + salata',560,38,55]]
 };
 const DEFAULT_TARGETS={kcal:2350,p:145,c:260,y:70};
 
@@ -412,17 +420,23 @@ async function loadWorkout(){exDone=await sGet('d:ex:'+todayKey())||{};wtlog=awa
   document.getElementById('wkTitle').textContent=DAYNAMES[dow];
   document.getElementById('wkSub').textContent=WK[dow].title;renderEx();}
 function prevWeight(name){let best=null;const tk=todayKey();for(const dk in wtlog){if(dk>=tk)continue;const v=wtlog[dk]&&wtlog[dk][name];if(v!==undefined&&v!==''&&v!=null){if(!best||dk>best.date)best={date:dk,kg:v};}}return best;}
-function renderEx(){const el=document.getElementById('exList');el.innerHTML='';const ex=WK[dow].ex;const tk=todayKey();const today=wtlog[tk]||{};
-  ex.forEach((e,i)=>{const done=!!exDone[i];const name=e[0];const cur=today[name]!==undefined?today[name]:'';const pv=prevWeight(name);
-    const pvh=pv?'<span class="wtprev">önceki: '+esc(pv.kg)+' kg ('+pv.date.slice(8,10)+'.'+pv.date.slice(5,7)+')</span>':'';
-    const d=document.createElement('div');d.className='ex'+(done?' done':'');
-    d.innerHTML='<div class="check '+(done?'on':'')+'" data-x="'+i+'"></div>'+
-      '<div class="ex-body2"><div class="ex-line"><span class="ex-n">'+esc(name)+'</span><span class="ex-s">'+esc(e[1])+'</span></div>'+
-      '<div class="ex-wt"><input class="wtin" type="number" inputmode="decimal" data-w="'+i+'" placeholder="kg" value="'+esc(cur)+'"><span class="wtu">kg</span>'+pvh+'</div></div>';
-    el.appendChild(d);});
+function renderEx(){const el=document.getElementById('exList');el.innerHTML='';const ex=WK[dow].ex;
+  ex.forEach((e,i)=>{const done=!!exDone[i];const d=document.createElement('div');d.className='ex'+(done?' done':'');
+    d.innerHTML='<div class="check '+(done?'on':'')+'" data-x="'+i+'"></div><div class="ex-body"><span class="ex-n">'+esc(e[0])+'</span><span class="ex-s">'+esc(e[1])+'</span></div>';el.appendChild(d);});
   document.getElementById('wkCount').textContent=Object.values(exDone).filter(Boolean).length+'/'+ex.length;
-  el.querySelectorAll('[data-x]').forEach(c=>c.onclick=()=>{const i=+c.dataset.x;exDone[i]=!exDone[i];sSet('d:ex:'+todayKey(),exDone);renderEx();});
-  el.querySelectorAll('[data-w]').forEach(inp=>inp.oninput=()=>{const i=+inp.dataset.w;const name=WK[dow].ex[i][0];if(!wtlog[tk])wtlog[tk]={};wtlog[tk][name]=inp.value;sSet('d:wtlog',wtlog);});}
+  el.querySelectorAll('[data-x]').forEach(c=>c.onclick=()=>{const i=+c.dataset.x;exDone[i]=!exDone[i];sSet('d:ex:'+todayKey(),exDone);renderEx();});}
+function dateShift(k,days){const d=new Date(k+'T00:00');d.setDate(d.getDate()+days);return d.toLocaleDateString('sv-SE');}
+function renderWtLog(){const el=document.getElementById('wtList');if(!el)return;const ex=WK[dow].ex.filter(e=>String(e[1]).indexOf('×')>-1);
+  const tk=todayKey();const today=wtlog[tk]||{};const lw=wtlog[dateShift(tk,-7)]||{};
+  document.getElementById('wtSub').textContent='Bugün: '+WK[dow].title;
+  if(!ex.length){el.innerHTML='<div class="empty">Bugün ağırlık antrenmanı yok (kürek/koşu/dinlenme günü).</div>';return;}
+  el.innerHTML=ex.map(e=>{const name=e[0];const cur=today[name]!==undefined?today[name]:'';
+    let cmp;if(lw[name]!==undefined&&lw[name]!==''){cmp='geçen hafta bugün: '+esc(lw[name])+' kg';}
+    else{const pv=prevWeight(name);cmp=pv?'önceki: '+esc(pv.kg)+' kg ('+pv.date.slice(8,10)+'.'+pv.date.slice(5,7)+')':'ilk kayıt';}
+    return '<div class="wtrow"><div class="wtrow-top"><span class="wtname">'+esc(name)+' <span class="ex-s">'+esc(e[1])+'</span></span>'+
+      '<span class="wtctl"><input class="wtin" type="number" inputmode="decimal" data-wn="'+encodeURIComponent(name)+'" placeholder="kg" value="'+esc(cur)+'"><span class="wtu">kg</span></span></div>'+
+      '<div class="wtcmp">'+cmp+'</div></div>';}).join('');
+  el.querySelectorAll('[data-wn]').forEach(inp=>inp.oninput=()=>{const name=decodeURIComponent(inp.dataset.wn);if(!wtlog[tk])wtlog[tk]={};wtlog[tk][name]=inp.value;sSet('d:wtlog',wtlog);});}
 function exportCSV(){const rows=[['Tarih','Gün','Hareket','kg']];Object.keys(wtlog).sort().forEach(dk=>{const rec=wtlog[dk]||{};const dn=DAYNAMES[new Date(dk+'T00:00').getDay()];for(const ex in rec){if(rec[ex]!==''&&rec[ex]!=null)rows.push([dk,dn,ex,rec[ex]]);}});
   if(rows.length<2){alert('Henüz kayıtlı ağırlık yok.');return;}
   const csv=rows.map(r=>r.map(c=>'"'+String(c).replace(/"/g,'""')+'"').join(',')).join('\n');
@@ -564,7 +578,7 @@ function parseMail(){const ta=document.getElementById('mailPaste');const txt=ta.
   document.getElementById('histNext').onclick=()=>{histOff+=4;renderHistory();};
   document.getElementById('deRefresh').onclick=()=>{deExtra+=5;sSet(K.de,{date:todayKey(),extra:deExtra});renderGerman();};
   document.getElementById('wtExport').onclick=exportCSV;
-  renderTasks();await loadMorning();await renderRun();await loadWorkout();await loadMeals();
+  renderTasks();await loadMorning();await renderRun();await loadWorkout();renderWtLog();await loadMeals();
   renderFacts();renderFilm();renderArtist();renderBook();renderHistory();renderGerman();renderNews();renderWatch();renderUS();renderGold();renderWorld();loadFX(false);loadBorsaJson();
   setInterval(loadBorsaJson,15*60*1000);
   document.addEventListener('visibilitychange',()=>{if(!document.hidden){loadBorsaJson();loadFX(false);}});
