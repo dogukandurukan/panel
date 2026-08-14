@@ -1,104 +1,97 @@
 {
-  "updated": "2026-08-13 14:45",
+  "updated": "2026-08-14 10:18",
   "watch": [
     {
       "code": "SASA",
-      "price": "2.49",
-      "chg": "+0.00%",
-      "avg1w": "2.45",
+      "price": "2.46",
+      "chg": "-1.20%",
+      "avg1w": "2.44",
       "avg1m": "2.52"
     },
     {
-      "code": "MGROS",
-      "price": "554.00",
-      "chg": "-3.15%",
-      "avg1w": "613.70",
-      "avg1m": "625.79"
+      "code": "ASELS",
+      "price": "403.25",
+      "chg": "+5.84%",
+      "avg1w": "370.10",
+      "avg1m": "359.42"
     },
     {
       "code": "DOAS",
-      "price": "175.30",
-      "chg": "-9.83%",
-      "avg1w": "190.40",
-      "avg1m": "187.05"
-    },
-    {
-      "code": "ASTOR",
-      "price": "343.25",
-      "chg": "+3.47%",
-      "avg1w": "318.20",
-      "avg1m": "302.01"
+      "price": "173.60",
+      "chg": "-10.70%",
+      "avg1w": "190.06",
+      "avg1m": "186.97"
     },
     {
       "code": "KONTR",
-      "price": "3.83",
-      "chg": "+0.00%",
-      "avg1w": "3.93",
-      "avg1m": "4.70"
+      "price": "3.97",
+      "chg": "+3.66%",
+      "avg1w": "3.96",
+      "avg1m": "4.71"
     },
     {
       "code": "YEOTK",
-      "price": "37.88",
-      "chg": "-1.66%",
-      "avg1w": "38.37",
-      "avg1m": "40.11"
+      "price": "38.58",
+      "chg": "+0.16%",
+      "avg1w": "38.51",
+      "avg1m": "40.14"
     }
   ],
   "us": [
     {
       "code": "AAPL",
-      "price": "302.25",
-      "chg": "-0.87%",
-      "avg1w": "308.23",
-      "avg1m": "321.52"
+      "price": "305.26",
+      "chg": "+1.00%",
+      "avg1w": "306.80",
+      "avg1m": "320.46"
     },
     {
       "code": "MSFT",
-      "price": "492.43",
-      "chg": "-2.26%",
-      "avg1w": "500.43",
-      "avg1m": "438.24"
+      "price": "496.88",
+      "chg": "+0.90%",
+      "avg1w": "499.83",
+      "avg1m": "443.06"
     },
     {
       "code": "NVDA",
-      "price": "224.09",
-      "chg": "+3.03%",
-      "avg1w": "220.42",
-      "avg1m": "208.58"
+      "price": "225.30",
+      "chg": "+0.54%",
+      "avg1w": "221.68",
+      "avg1m": "209.19"
     },
     {
       "code": "AMZN",
-      "price": "267.28",
-      "chg": "-1.83%",
-      "avg1w": "272.88",
-      "avg1m": "254.99"
+      "price": "265.13",
+      "chg": "-0.80%",
+      "avg1w": "271.45",
+      "avg1m": "255.47"
     },
     {
       "code": "TSLA",
-      "price": "327.51",
-      "chg": "-1.59%",
-      "avg1w": "327.86",
-      "avg1m": "336.52"
+      "price": "339.96",
+      "chg": "+3.80%",
+      "avg1w": "331.95",
+      "avg1m": "333.92"
     }
   ],
   "gold": {
-    "price": "6,828.25",
-    "chg": "+0.88%"
+    "price": "6,754.86",
+    "chg": "+0.82%"
   },
   "news": [
     "⚪ Erdemoğlu Holding'den SASA'da dev alım: Payı yüzde 54,77'ye çıktı  (CNBC-e)",
-    "🟢 SASA 2026 Bilançosunu Açıkladı: 492 Milyon TL Net Kâr Geldi, Hisseler Neden Düştü?  (bolgeninsesigazetesi.com)",
+    "🟢 SASA’da bilanço şaşkınlığı: Kâra geçti, hisse neden tabanı gördü?  (Ekovitrin Haber)",
     "🟢 Erdemoğlu Holding'in SASA'daki payı yüzde 54,77'ye yükseldi  (isindetayi.com)",
+    "🟢 Doğuş Otomotiv, hisse başına 15 TL brüt temettü açıkladı  (Investing.com Türkiye)",
+    "🟢 Bugün Temettü Ödeyen Doğuş Otomotiv Fiyatında Düzeltme Yapıldı!  (borsagundem.com.tr)",
     "🟢 Migros (MGROS) 2026 ikinci çeyrek bilançosunu açıkladı: Net kâr yüzde 42 düştü  (CNBC-e)",
     "🟢 Migros’ta kârlılık baskısı: Hedef fiyat 889 TL’ye çıktı  (Paratic Haber)",
-    "⚪ KAP *** MİGROS TİCARET A.Ş. *** MGROS *** Katılım Finansı İlkeleri Bilgi Formu  (GZT)",
-    "🟢 Bugün Temettü Ödeyen Doğuş Otomotiv Fiyatında Düzeltme Yapıldı!  (borsagundem.com.tr)",
-    "⚪ Astor Enerji, Romanya iştiraki Astor RO’yu 56,75 milyon Euro’ya sattı  (Investing.com Türkiye)"
+    "⚪ KAP *** MİGROS TİCARET A.Ş. *** MGROS *** Özel Durum Açıklaması (Genel)  (Yeni Şafak)"
   ],
   "world": [
-    "🌍 Mekke İttifakı ve terörsüz Türkiye - MAHMUT ÖVÜR - Sabah  (Sabah)",
-    "🌍 Süleymancılar soruşturması: Gözaltına alınan 30 kişi belli oldu - Diken  (Diken)",
-    "🌍 Yeni nesil suç örgütü REDKİTLER'in lideri Ferhat Mardin yakalandı - Sözcü Gazetesi  (Sözcü Gazetesi)",
-    "🌍 Kolombiya'da 7.4'lük depremde bilanço ağırlaşıyor! Can kaybı yükseldi - İnternet Haber  (İnternet Haber)"
+    "🌍 Süleymancılara operasyondan yeni detaylar: Alihan Kuriş gizli bölmede yakalanmış - Hürriyet  (Hürriyet)",
+    "🌍 Kritik miras düzenlemesi. Satış önceliği ailede olacak - NTV Haber  (NTV Haber)",
+    "🌍 Çeyrek asırlık öykünün sonu: AKP'den sessiz veda - birgun.net  (birgun.net)",
+    "🌍 Cumhurbaşkanı Erdoğan: TBMM'de kabul edilen kanun tarihi bir adımdır - NTV Haber  (NTV Haber)"
   ]
 }
