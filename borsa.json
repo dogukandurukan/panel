@@ -1,26 +1,26 @@
 {
-  "updated": "2026-08-14 10:18",
+  "updated": "2026-08-14 12:39",
   "watch": [
     {
       "code": "SASA",
-      "price": "2.46",
-      "chg": "-1.20%",
+      "price": "2.45",
+      "chg": "-1.61%",
       "avg1w": "2.44",
       "avg1m": "2.52"
     },
     {
       "code": "ASELS",
-      "price": "403.25",
-      "chg": "+5.84%",
-      "avg1w": "370.10",
-      "avg1m": "359.42"
+      "price": "396.25",
+      "chg": "+4.00%",
+      "avg1w": "368.70",
+      "avg1m": "359.08"
     },
     {
       "code": "DOAS",
-      "price": "173.60",
-      "chg": "-10.70%",
-      "avg1w": "190.06",
-      "avg1m": "186.97"
+      "price": "171.90",
+      "chg": "-11.57%",
+      "avg1w": "189.72",
+      "avg1m": "186.89"
     },
     {
       "code": "KONTR",
@@ -31,10 +31,10 @@
     },
     {
       "code": "YEOTK",
-      "price": "38.58",
-      "chg": "+0.16%",
-      "avg1w": "38.51",
-      "avg1m": "40.14"
+      "price": "39.34",
+      "chg": "+2.13%",
+      "avg1w": "38.66",
+      "avg1m": "40.18"
     }
   ],
   "us": [
@@ -75,8 +75,8 @@
     }
   ],
   "gold": {
-    "price": "6,754.86",
-    "chg": "+0.82%"
+    "price": "6,783.53",
+    "chg": "+1.25%"
   },
   "news": [
     "⚪ Erdemoğlu Holding'den SASA'da dev alım: Payı yüzde 54,77'ye çıktı  (CNBC-e)",
@@ -85,13 +85,13 @@
     "🟢 Doğuş Otomotiv, hisse başına 15 TL brüt temettü açıkladı  (Investing.com Türkiye)",
     "🟢 Bugün Temettü Ödeyen Doğuş Otomotiv Fiyatında Düzeltme Yapıldı!  (borsagundem.com.tr)",
     "🟢 Migros (MGROS) 2026 ikinci çeyrek bilançosunu açıkladı: Net kâr yüzde 42 düştü  (CNBC-e)",
-    "🟢 Migros’ta kârlılık baskısı: Hedef fiyat 889 TL’ye çıktı  (Paratic Haber)",
+    "🟢 Migros’ta kârlılık baskısı: Hedef fiyat 889 TL’ye çıktı  (paratic.com)",
     "⚪ KAP *** MİGROS TİCARET A.Ş. *** MGROS *** Özel Durum Açıklaması (Genel)  (Yeni Şafak)"
   ],
   "world": [
-    "🌍 Süleymancılara operasyondan yeni detaylar: Alihan Kuriş gizli bölmede yakalanmış - Hürriyet  (Hürriyet)",
-    "🌍 Kritik miras düzenlemesi. Satış önceliği ailede olacak - NTV Haber  (NTV Haber)",
+    "🌍 Süleymancılar soruşturması: Kuriş gizli bölmede bulunmuş - Diken  (Diken)",
     "🌍 Çeyrek asırlık öykünün sonu: AKP'den sessiz veda - birgun.net  (birgun.net)",
-    "🌍 Cumhurbaşkanı Erdoğan: TBMM'de kabul edilen kanun tarihi bir adımdır - NTV Haber  (NTV Haber)"
+    "🌍 ABD’den İran’a “benzeri görülmemiş” ekonomik baskı sinyali - Bloomberght  (Bloomberght)",
+    "🌍 Giresun’daki sel faciasında kahreden detaylar: 'Gitmeyelim' uyarısına rağmen gidip, birbirlerine sarılarak can verdiler - Hürriyet  (Hürriyet)"
   ]
 }
