@@ -1,40 +1,33 @@
 {
-  "updated": "2026-08-14 12:39",
+  "updated": "2026-08-14 14:42",
   "watch": [
     {
       "code": "SASA",
-      "price": "2.45",
-      "chg": "-1.61%",
-      "avg1w": "2.44",
-      "avg1m": "2.52"
+      "price": "2.43",
+      "chg": "-0.82%",
+      "avg1w": "2.41",
+      "avg1m": "2.51"
     },
     {
       "code": "ASELS",
-      "price": "396.25",
-      "chg": "+4.00%",
-      "avg1w": "368.70",
-      "avg1m": "359.08"
-    },
-    {
-      "code": "DOAS",
-      "price": "171.90",
-      "chg": "-11.57%",
-      "avg1w": "189.72",
-      "avg1m": "186.89"
+      "price": "399.00",
+      "chg": "+0.82%",
+      "avg1w": "377.65",
+      "avg1m": "361.07"
     },
     {
       "code": "KONTR",
-      "price": "3.97",
-      "chg": "+3.66%",
+      "price": "4.16",
+      "chg": "+8.33%",
       "avg1w": "3.96",
-      "avg1m": "4.71"
+      "avg1m": "4.47"
     },
     {
       "code": "YEOTK",
-      "price": "39.34",
-      "chg": "+2.13%",
-      "avg1w": "38.66",
-      "avg1m": "40.18"
+      "price": "40.64",
+      "chg": "+5.56%",
+      "avg1w": "38.76",
+      "avg1m": "40.14"
     }
   ],
   "us": [
@@ -75,23 +68,23 @@
     }
   ],
   "gold": {
-    "price": "6,783.53",
-    "chg": "+1.25%"
+    "price": "6,791.64",
+    "chg": "+1.37%"
   },
   "news": [
     "⚪ Erdemoğlu Holding'den SASA'da dev alım: Payı yüzde 54,77'ye çıktı  (CNBC-e)",
     "🟢 SASA’da bilanço şaşkınlığı: Kâra geçti, hisse neden tabanı gördü?  (Ekovitrin Haber)",
     "🟢 Erdemoğlu Holding'in SASA'daki payı yüzde 54,77'ye yükseldi  (isindetayi.com)",
-    "🟢 Doğuş Otomotiv, hisse başına 15 TL brüt temettü açıkladı  (Investing.com Türkiye)",
-    "🟢 Bugün Temettü Ödeyen Doğuş Otomotiv Fiyatında Düzeltme Yapıldı!  (borsagundem.com.tr)",
-    "🟢 Migros (MGROS) 2026 ikinci çeyrek bilançosunu açıkladı: Net kâr yüzde 42 düştü  (CNBC-e)",
-    "🟢 Migros’ta kârlılık baskısı: Hedef fiyat 889 TL’ye çıktı  (paratic.com)",
-    "⚪ KAP *** MİGROS TİCARET A.Ş. *** MGROS *** Özel Durum Açıklaması (Genel)  (Yeni Şafak)"
+    "⚪ KAP *** TURKCELL İLETİŞİM HİZMETLERİ A.Ş. *** TCELL *** Faaliyet Raporu (Konsolide)  (Yeni Şafak)",
+    "⚪ KAP *** TURKCELL İLETİŞİM HİZMETLERİ A.Ş. *** TCELL *** Sorumluluk Beyanı (Konsolide)  (Yeni Şafak)",
+    "⚪ Turkcell (TCELL) hisseleri için bilanço sonrası 15 yeni hedef fiyat açıklandı  (Rota Borsa)",
+    "⚪ Tüpraş için 461 TL hedef fiyat ve “ALIM” tavsiyesi  (Paratic Haber)",
+    "⚪ KAP *** TÜPRAŞ-TÜRKİYE PETROL RAFİNERİLERİ A.Ş. *** TUPRS *** Pay Dışında Sermaye Piyasası Aracı İşlemlerine İlişkin Bildirim (Faiz  (Yeni Şafak)"
   ],
   "world": [
     "🌍 Süleymancılar soruşturması: Kuriş gizli bölmede bulunmuş - Diken  (Diken)",
-    "🌍 Çeyrek asırlık öykünün sonu: AKP'den sessiz veda - birgun.net  (birgun.net)",
-    "🌍 ABD’den İran’a “benzeri görülmemiş” ekonomik baskı sinyali - Bloomberght  (Bloomberght)",
-    "🌍 Giresun’daki sel faciasında kahreden detaylar: 'Gitmeyelim' uyarısına rağmen gidip, birbirlerine sarılarak can verdiler - Hürriyet  (Hürriyet)"
+    "🌍 AK Parti 25 yaşında | Cumhurbaşkanı Erdoğan: Tarihi eşik - NTV Haber  (NTV Haber)",
+    "🌍 'Taciz' iddiası ve darp görüntüleri: CHP'li milletvekili Ahmet Baran Yazgan'a kesin ihraç istemi - Cumhuriyet  (Cumhuriyet)",
+    "🌍 Daha 5 gün önce AKP sıralarına karşı masayı yumruklamıştı: İYİ Parti'den istifa etti AKP'ye geçiyor - sozcu.com.tr  (sozcu.com.tr)"
   ]
 }
