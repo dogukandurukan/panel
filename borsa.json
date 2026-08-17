@@ -1,90 +1,90 @@
 {
-  "updated": "2026-08-14 14:42",
+  "updated": "2026-08-17 09:46",
   "watch": [
     {
-      "code": "SASA",
-      "price": "2.43",
-      "chg": "-0.82%",
-      "avg1w": "2.41",
-      "avg1m": "2.51"
+      "code": "MGROS",
+      "price": "555.00",
+      "chg": "+0.54%",
+      "avg1w": "593.40",
+      "avg1m": "620.36"
     },
     {
       "code": "ASELS",
-      "price": "399.00",
-      "chg": "+0.82%",
-      "avg1w": "377.65",
-      "avg1m": "361.07"
+      "price": "387.50",
+      "chg": "-2.08%",
+      "avg1w": "375.35",
+      "avg1m": "360.73"
     },
     {
       "code": "KONTR",
-      "price": "4.16",
-      "chg": "+8.33%",
-      "avg1w": "3.96",
-      "avg1m": "4.47"
+      "price": "4.21",
+      "chg": "+9.64%",
+      "avg1w": "3.97",
+      "avg1m": "4.62"
     },
     {
       "code": "YEOTK",
-      "price": "40.64",
-      "chg": "+5.56%",
-      "avg1w": "38.76",
-      "avg1m": "40.14"
+      "price": "41.64",
+      "chg": "+8.16%",
+      "avg1w": "38.96",
+      "avg1m": "40.19"
     }
   ],
   "us": [
     {
       "code": "AAPL",
-      "price": "305.26",
-      "chg": "+1.00%",
-      "avg1w": "306.80",
-      "avg1m": "320.46"
+      "price": "305.93",
+      "chg": "+0.22%",
+      "avg1w": "305.32",
+      "avg1m": "319.16"
     },
     {
       "code": "MSFT",
-      "price": "496.88",
-      "chg": "+0.90%",
-      "avg1w": "499.83",
-      "avg1m": "443.06"
+      "price": "495.40",
+      "chg": "-0.30%",
+      "avg1w": "498.92",
+      "avg1m": "447.55"
     },
     {
       "code": "NVDA",
-      "price": "225.30",
-      "chg": "+0.54%",
-      "avg1w": "221.68",
-      "avg1m": "209.19"
+      "price": "225.16",
+      "chg": "-0.06%",
+      "avg1w": "221.92",
+      "avg1m": "210.03"
     },
     {
       "code": "AMZN",
-      "price": "265.13",
-      "chg": "-0.80%",
-      "avg1w": "271.45",
-      "avg1m": "255.47"
+      "price": "262.65",
+      "chg": "-0.94%",
+      "avg1w": "269.08",
+      "avg1m": "256.08"
     },
     {
       "code": "TSLA",
-      "price": "339.96",
-      "chg": "+3.80%",
-      "avg1w": "331.95",
-      "avg1m": "333.92"
+      "price": "342.27",
+      "chg": "+0.68%",
+      "avg1w": "334.69",
+      "avg1m": "331.60"
     }
   ],
   "gold": {
-    "price": "6,791.64",
-    "chg": "+1.37%"
+    "price": "6,843.08",
+    "chg": "+1.48%"
   },
   "news": [
-    "⚪ Erdemoğlu Holding'den SASA'da dev alım: Payı yüzde 54,77'ye çıktı  (CNBC-e)",
-    "🟢 SASA’da bilanço şaşkınlığı: Kâra geçti, hisse neden tabanı gördü?  (Ekovitrin Haber)",
-    "🟢 Erdemoğlu Holding'in SASA'daki payı yüzde 54,77'ye yükseldi  (isindetayi.com)",
-    "⚪ KAP *** TURKCELL İLETİŞİM HİZMETLERİ A.Ş. *** TCELL *** Faaliyet Raporu (Konsolide)  (Yeni Şafak)",
-    "⚪ KAP *** TURKCELL İLETİŞİM HİZMETLERİ A.Ş. *** TCELL *** Sorumluluk Beyanı (Konsolide)  (Yeni Şafak)",
-    "⚪ Turkcell (TCELL) hisseleri için bilanço sonrası 15 yeni hedef fiyat açıklandı  (Rota Borsa)",
-    "⚪ Tüpraş için 461 TL hedef fiyat ve “ALIM” tavsiyesi  (Paratic Haber)",
-    "⚪ KAP *** TÜPRAŞ-TÜRKİYE PETROL RAFİNERİLERİ A.Ş. *** TUPRS *** Pay Dışında Sermaye Piyasası Aracı İşlemlerine İlişkin Bildirim (Faiz  (Yeni Şafak)"
+    "🔴 MGROS'da Beklenmedik Net Zarar Sonrası Hedef Fiyat Revize Edildi  (Para Ajansı)",
+    "⚪ Migros Ticaret A.Ş. (MGROS) 2026/6 Dönemi Bilançosunu Açıkladı  (Para Ajansı)",
+    "🟢 BofA’nın alım listesinde ASELSAN, satış listesinde BİM zirvede  (Paratic Haber)",
+    "⚪ KAP *** YEO TEKNOLOJİ ENERJİ VE ENDÜSTRİ A.Ş. *** YEOTK *** Pay Dışında Sermaye Piyasası Aracı İşlemlerine İlişkin Bildirim (Faiz  (Yeni Şafak)",
+    "⚪ YEO Teknoloji (YEOTK) 2026 2. çeyrek bilanço beklentisi  (Rota Borsa)",
+    "⚪ BIST:ASTOR için marketgeometry77 tarafından ASTOR Enerji’de Mikro–Makro Fraktal Yapı Analizi  (TradingView)",
+    "⚪ BIST'teki 17 şirkete Dahilde İşleme İzin Belgesi: Otokar ve Astor ilk sırada  (CNBC-e)",
+    "⚪ KAP *** ASTOR ENERJİ A.Ş. *** ASTOR *** Genel Kurul İşlemlerine İlişkin Bildirim  (Yeni Şafak)"
   ],
   "world": [
-    "🌍 Süleymancılar soruşturması: Kuriş gizli bölmede bulunmuş - Diken  (Diken)",
-    "🌍 AK Parti 25 yaşında | Cumhurbaşkanı Erdoğan: Tarihi eşik - NTV Haber  (NTV Haber)",
-    "🌍 'Taciz' iddiası ve darp görüntüleri: CHP'li milletvekili Ahmet Baran Yazgan'a kesin ihraç istemi - Cumhuriyet  (Cumhuriyet)",
-    "🌍 Daha 5 gün önce AKP sıralarına karşı masayı yumruklamıştı: İYİ Parti'den istifa etti AKP'ye geçiyor - sozcu.com.tr  (sozcu.com.tr)"
+    "🌍 'Süleymancılar' lideri Alihan Kuriş'in savcılık ifadesi: Ben sadece bir varisim, kimseye talimat vermedim - T24  (T24)",
+    "🌍 Depremin izleri ilk günkü gibi duruyor. Dalgıçlar görüntüledi - NTV Haber  (NTV Haber)",
+    "🌍 Türker Ertürk hakkında soruşturma başlatıldı - NTV Haber  (NTV Haber)",
+    "🌍 Devlet Bahçeli’den Öcalan için dikkat çeken çağrı - Sözcü Gazetesi  (Sözcü Gazetesi)"
   ]
 }
