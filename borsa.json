@@ -1,33 +1,33 @@
 {
-  "updated": "2026-08-17 09:46",
+  "updated": "2026-08-17 14:25",
   "watch": [
     {
-      "code": "MGROS",
-      "price": "555.00",
-      "chg": "+0.54%",
-      "avg1w": "593.40",
-      "avg1m": "620.36"
+      "code": "SASA",
+      "price": "2.37",
+      "chg": "-0.84%",
+      "avg1w": "2.41",
+      "avg1m": "2.51"
     },
     {
-      "code": "ASELS",
-      "price": "387.50",
-      "chg": "-2.08%",
-      "avg1w": "375.35",
-      "avg1m": "360.73"
+      "code": "ENKAI",
+      "price": "82.65",
+      "chg": "-5.70%",
+      "avg1w": "85.74",
+      "avg1m": "87.67"
     },
     {
       "code": "KONTR",
-      "price": "4.21",
-      "chg": "+9.64%",
-      "avg1w": "3.97",
-      "avg1m": "4.62"
+      "price": "3.97",
+      "chg": "-5.70%",
+      "avg1w": "3.96",
+      "avg1m": "4.41"
     },
     {
-      "code": "YEOTK",
-      "price": "41.64",
-      "chg": "+8.16%",
-      "avg1w": "38.96",
-      "avg1m": "40.19"
+      "code": "ASTOR",
+      "price": "334.25",
+      "chg": "-2.34%",
+      "avg1w": "331.10",
+      "avg1m": "306.15"
     }
   ],
   "us": [
@@ -68,23 +68,23 @@
     }
   ],
   "gold": {
-    "price": "6,843.08",
-    "chg": "+1.48%"
+    "price": "6,862.58",
+    "chg": "+1.77%"
   },
   "news": [
-    "🔴 MGROS'da Beklenmedik Net Zarar Sonrası Hedef Fiyat Revize Edildi  (Para Ajansı)",
-    "⚪ Migros Ticaret A.Ş. (MGROS) 2026/6 Dönemi Bilançosunu Açıkladı  (Para Ajansı)",
-    "🟢 BofA’nın alım listesinde ASELSAN, satış listesinde BİM zirvede  (Paratic Haber)",
-    "⚪ KAP *** YEO TEKNOLOJİ ENERJİ VE ENDÜSTRİ A.Ş. *** YEOTK *** Pay Dışında Sermaye Piyasası Aracı İşlemlerine İlişkin Bildirim (Faiz  (Yeni Şafak)",
-    "⚪ YEO Teknoloji (YEOTK) 2026 2. çeyrek bilanço beklentisi  (Rota Borsa)",
-    "⚪ BIST:ASTOR için marketgeometry77 tarafından ASTOR Enerji’de Mikro–Makro Fraktal Yapı Analizi  (TradingView)",
-    "⚪ BIST'teki 17 şirkete Dahilde İşleme İzin Belgesi: Otokar ve Astor ilk sırada  (CNBC-e)",
-    "⚪ KAP *** ASTOR ENERJİ A.Ş. *** ASTOR *** Genel Kurul İşlemlerine İlişkin Bildirim  (Yeni Şafak)"
+    "⚪ KAP *** ENKA İNŞAAT VE SANAYİ A.Ş. *** ENKAI *** Faaliyet Raporu (Konsolide)  (Yeni Şafak)",
+    "⚪ ENKA İNŞAAT VE SANAYİ A.Ş.(ENKAI) Katılım Finansı İlkeleri Bilgi Formu 14 Ağustos 2026  (Mynet Finans)",
+    "⚪ Enka İnşaat (ENKAI) 2026 yılı 2. çeyrek bilançosunu açıkladı! İşte detaylar  (Rota Borsa)",
+    "⚪ BIST'teki 17 şirkete Dahilde İşleme İzin Belgesi: Otokar ve Astor ilk sırada  (cnbce.com)",
+    "⚪ BIST:ASTOR için marketgeometry77 tarafından ASTOR Enerji’de Mikro–Makro Fraktal Yapı Analizi  (tr.tradingview.com)",
+    "⚪ KAP *** ASTOR ENERJİ A.Ş. *** ASTOR *** Genel Kurul İşlemlerine İlişkin Bildirim  (Yeni Şafak)",
+    "🟢 Şişecam bilançosunu açıkladı: 6 aylık net kârı belli oldu  (cnbce.com)",
+    "⚪ KAP *** YEO TEKNOLOJİ ENERJİ VE ENDÜSTRİ A.Ş. *** YEOTK *** Pay Dışında Sermaye Piyasası Aracı İşlemlerine İlişkin Bildirim (Faiz  (Yeni Şafak)"
   ],
   "world": [
-    "🌍 'Süleymancılar' lideri Alihan Kuriş'in savcılık ifadesi: Ben sadece bir varisim, kimseye talimat vermedim - T24  (T24)",
-    "🌍 Depremin izleri ilk günkü gibi duruyor. Dalgıçlar görüntüledi - NTV Haber  (NTV Haber)",
-    "🌍 Türker Ertürk hakkında soruşturma başlatıldı - NTV Haber  (NTV Haber)",
-    "🌍 Devlet Bahçeli’den Öcalan için dikkat çeken çağrı - Sözcü Gazetesi  (Sözcü Gazetesi)"
+    "🌍 Nedim Şener: Alihan Kuriş ve örgütünü 'Süleymancılar' grubunun içinde yer alan kişiler ihbar etti - T24  (T24)",
+    "🌍 Prof. Dr. Naci Görür uyarılarını sürdürdü. \"Büyük bir deprem olacak\" - NTV Haber  (NTV Haber)",
+    "🌍 Irak basını duyurdu: İran İHA'ları, Barzani'nin ofisini ve istihbarat şefinin kaldığı yeri hedef aldı - birgun.net  (birgun.net)",
+    "🌍 AKP'nin Orta Anadolu ve Karadeniz kabusu varmış! \"Bunu vatandaşa nasıl anlatacağız\" diye dert yandılar - Halk TV  (Halk TV)"
   ]
 }
