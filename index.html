@@ -134,6 +134,7 @@
       <div class="add-row"><input id="taskInput" placeholder="Yeni iş ekle…" maxlength="120"><button id="taskAdd">Ekle</button></div></section>
 
     <section class="card"><div class="card-head"><div><p class="kicker">Sabah · Her gün</p><h2 class="card-title">Sabah Rutini + Koşu</h2></div><div class="meta" id="morningCount">0/0</div></div>
+      <div class="wtitle" id="morningSub">—</div>
       <div id="morningList"></div>
       <div id="runArea"></div></section>
 
@@ -197,15 +198,21 @@ const DAYNAMES=['Pazar','Pazartesi','Salı','Çarşamba','Perşembe','Cuma','Cum
 
 /* ===== ANTRENMAN (gün gün, programdan) ===== */
 const WK={
- 1:{title:'Üst Vücut A — İtiş (+ koşu)',run:true,ex:[['Bench press','4 × 6-8'],['Overhead press','3 × 8'],['Incline dumbbell press','3 × 10'],['Dips / triceps pushdown','3 × 10'],['Overhead triceps extension','3 × 12'],['Lateral raise','3 × 12'],['Koşu (üst vücut günü)','protokole göre']]},
- 2:{title:'Alt Vücut A — Tek Bacak',run:false,ex:[['Bulgar split squat (inişte 3 sn)','3 × 8 / bacak'],['Romanian deadlift','3 × 8'],['Step-up','3 × 10 / bacak'],['Leg extension','3 × 12 / bacak'],['Tek ayak denge (gözler kapalı dahil)','3 × 30 sn / ayak']]},
+ 1:{title:'Üst Vücut A — İtiş (+ koşu)',run:true,ex:[['Bench press','4 × 6-8'],['Overhead press','3 × 8'],['Incline dumbbell press','3 × 10'],['Dips','3 × 10'],['Overhead triceps extension','3 × 12'],['Lateral raise','3 × 12'],['Koşu','20-25 dk kolay tempo']]},
+ 2:{title:'Alt Vücut A — Tek Bacak',run:false,ex:[['Bulgar split squat (inişte 3 sn)','3 × 8 / bacak'],['Step-up','3 × 10 / bacak'],['Leg extension','3 × 12 / bacak'],['Tek ayak denge (gözler kapalı dahil)','3 × 30 sn / ayak']]},
  3:{title:'Kürek (sabah) + Basket/Tenis (akşam)',run:false,ex:[['Sabah: kürek','20-30 dk'],['Akşam: basketbol / tenis','serbest']]},
- 4:{title:'Üst Vücut B — Çekiş (+ koşu)',run:true,ex:[['Barfiks / lat pulldown','4 × 8'],['Barbell row','3 × 8'],['Face pull','3 × 15'],['Biceps curl','3 × 10'],['Hammer curl','3 × 12'],['Plank','3 × 45 sn'],['Koşu (üst vücut günü)','protokole göre']]},
- 5:{title:'Alt Vücut B',run:false,ex:[['Tek bacak leg press','3 × 10 / bacak'],['Hip thrust','3 × 10'],['Walking lunge','3 × 10 / bacak'],['Leg curl','3 × 12'],['Calf raise (tek ayak)','3 × 15 / ayak']]},
- 6:{title:'Kısa Koşu / Dinlenme',run:true,ex:[['Kısa koşu veya hafif tempo','15-20 dk']]},
+ 4:{title:'Üst Vücut B — Çekiş (+ koşu)',run:true,ex:[['Barfiks / lat pulldown','4 × 8'],['Barbell row','3 × 8'],['Face pull','3 × 15'],['Biceps curl','3 × 10'],['Hammer curl','3 × 12'],['Plank','3 × 45 sn'],['Koşu','20-25 dk kolay tempo']]},
+ 5:{title:'Alt Vücut B — Klasik',run:false,ex:[['Romanian deadlift','3 × 8'],['Hip thrust','3 × 10'],['Leg curl','3 × 12'],['Calf raise (tek ayak)','3 × 15 / ayak']]},
+ 6:{title:'Kısa Koşu / Dinlenme',run:true,ex:[['Kısa koşu (opsiyonel)','15-20 dk kolay tempo']]},
  0:{title:'Tam Dinlenme',run:false,ex:[['Dinlenme','—'],['İstersen hafif yürüyüş','serbest']]}
 };
-const MORNING=[['Kedi-inek','10 tekrar'],['Kalça fleksör esnetme (diz üstü lunge)','2 × 30 sn / bacak'],['Güneş selamı','3-4 tur'],['Plank','3 × 45 sn'],['Dead bug','3 × 10 / taraf'],['Side plank','2 × 30 sn / taraf'],['Ayak bileği çemberi + tek ayak denge','3 dk']];
+const MORNING_LONG=[['Kedi-inek','10 tekrar'],['Kalça fleksör esnetme (diz üstü lunge)','2 × 30 sn / bacak'],['Güneş selamı','3-4 tur'],['Plank','3 × 45 sn'],['Dead bug','3 × 10 / taraf'],['Side plank','2 × 30 sn / taraf'],['Ayak bileği çemberi + tek ayak denge','3 dk']];
+const MORNING_SHORT={
+ 2:[["World's greatest stretch",'2 tur / taraf'],['Ayak bileği çemberi','1 dk'],['Glute bridge','15 tekrar'],['Tek ayak denge','30 sn / ayak']],
+ 4:[['Thoracic rotation (kedi-inek + thread the needle)','2 tur'],['Band pull-apart','2 × 15'],['Omuz çemberi','1 dk'],['Wall slide','2 × 10']],
+ 6:[['Ayak bileği çemberi','1 dk'],['Kalça fleksör esnetme','2 × 30 sn / bacak'],['Yürüyerek dinamik lunge','10 tekrar'],['Tek ayak denge','30 sn / ayak']]
+};
+const MORNING=(MORNING_SHORT[new Date().getDay()]||MORNING_LONG);
 
 /* ===== YEMEK (gün gün, 7 günlük plandan) ===== */
 const MP={
@@ -217,7 +224,7 @@ const MP={
  6:[['Kahvaltı','Ölçülü serpme: 2 yumurta, 40g peynir, 5-6 zeytin, 2 dilim ekmek, domates',480,25,50],['Öğle','180g ızgara tavuk/köfte + 1 kase pilav (~150g) + salata',700,45,85],['Ara öğün','1 meyve + 150g yoğurt + 1 avuç (~25g) kuruyemiş',400,18,42],['Akşam','Dışarıda esnek: ~180g ızgara balık/et + salata + az karbonhidrat',620,40,45]],
  0:[['Kahvaltı','3 yumurta + 50g yulaf + 1 meyve',500,30,55],['Öğle','180g tavuk/et + 1 kase pirinç veya bulgur (~150g) + sebze',700,45,85],['Ara öğün','250g yoğurt + 30g ceviz (~1 avuç)',400,22,38],['Akşam','Hafif: 1 kase mercimek çorbası + 150g tavuk/balık + salata',560,38,55]]
 };
-const DEFAULT_TARGETS={kcal:2350,p:145,c:260,y:70};
+const DEFAULT_TARGETS={kcal:2350,p:148,c:285,y:67};
 
 const RECIPES=[[/tavuk|hindi/i,'Tavuğu tuz, karabiber, kekikle 10 dk marine et; tavada orta-yüksek ateşte her yüzünü 6-7 dk kızart.'],
  [/bulgur/i,'Soğanı zeytinyağında kavur, salçayı ekle; 1 ölçü bulgura 2 ölçü sıcak su, kısık ateşte demlendir.'],
@@ -405,6 +412,9 @@ function addTask(){const inp=document.getElementById('taskInput');const v=inp.va
 let morningDone={};
 async function loadMorning(){morningDone=await sGet('d:morning:'+todayKey())||{};renderMorning();}
 function renderMorning(){const el=document.getElementById('morningList');el.innerHTML='';
+  const sub=document.getElementById('morningSub');if(sub){const d=new Date().getDay();
+    const focus={2:'Alt vücut hazırlığı (~5-7 dk)',4:'Üst çekiş hazırlığı (~5-7 dk)',6:'Koşu ısınması (~5-7 dk)'};
+    sub.textContent=focus[d]||'Uzun rutin: mobilite + core (~12-15 dk)';}
   MORNING.forEach((m,i)=>{const done=!!morningDone[i];const d=document.createElement('div');d.className='ex'+(done?' done':'');
     d.innerHTML='<div class="check '+(done?'on':'')+'" data-m="'+i+'"></div><div class="ex-body"><span class="ex-n">'+esc(m[0])+'</span><span class="ex-s">'+esc(m[1])+'</span></div>';el.appendChild(d);});
   document.getElementById('morningCount').textContent=Object.values(morningDone).filter(Boolean).length+'/'+MORNING.length;
