@@ -114,6 +114,17 @@
   .gram-head{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);border-top:1px solid var(--line2);padding-top:11px;margin-top:12px;margin-bottom:5px;}
   .gram{display:flex;gap:8px;padding:5px 0;font-size:13px;line-height:1.45;} .gram .gi{font-family:var(--mono);color:var(--accent);font-size:12px;margin-top:1px;}
   .loading{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.06em;padding:12px 0;}
+  .statrow{display:flex;gap:9px;margin-bottom:13px;}
+  .stat{flex:1;text-align:center;background:var(--paper);border:1px solid var(--line2);border-radius:4px;padding:11px 6px 9px;}
+  .stat-n{font-family:var(--serif);font-weight:600;font-size:25px;line-height:1;}
+  .stat-l{font-family:var(--mono);font-size:9px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-top:5px;}
+  .app-item{padding:8px 0;border-bottom:1px dotted var(--line2);} .app-item:last-child{border-bottom:none;}
+  .app-top{display:flex;justify-content:space-between;align-items:baseline;gap:8px;}
+  .app-co{font-size:14px;font-weight:600;}
+  .app-status{font-family:var(--mono);font-size:9px;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:3px;white-space:nowrap;}
+  .app-status.ret{background:rgba(180,70,47,.12);color:var(--down);}
+  .app-status.bekliyor{background:rgba(28,78,72,.1);color:var(--accent);}
+  .app-sub{font-family:var(--mono);font-size:10.5px;color:var(--muted);display:flex;justify-content:space-between;gap:8px;margin-top:3px;}
   footer{margin-top:26px;padding-top:14px;border-top:1px solid var(--line);font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;}
   @media (max-width:640px){body{padding:16px 14px 34px;}.clock{text-align:left;}}
   @media (prefers-reduced-motion:reduce){*{transition:none!important;}}
@@ -150,6 +161,10 @@
       <div id="goldRow"></div>
       <div id="watchList"></div>
       <div id="usList"></div></section>
+
+    <section class="card"><div class="card-head"><div><p class="kicker">Kariyer</p><h2 class="card-title">İş Başvuruları</h2></div><div class="meta"><span id="basvuruTime">—</span><br><button class="ibtn" id="basvuruRefresh">Yenile</button></div></div>
+      <div id="basvuruStats" class="statrow"><div class="loading">Başvurular çekiliyor…</div></div>
+      <div id="basvuruList"></div></section>
 
     <section class="card"><div class="card-head"><div><p class="kicker">Gündem</p><h2 class="card-title">Günün Önemli Haberleri</h2></div><div class="meta">elle / mail</div></div>
       <div id="newsList"></div>
@@ -552,6 +567,58 @@ async function loadBorsaJson(){try{const r=await fetch('borsa.json?_='+Date.now(
     if(d.world&&d.world.length){world=d.world.slice(0,6);await sSet('d:world',world);renderWorld();}
   }catch(e){/* borsa.json yok — kayıtlı veri / elle yapıştırma kullanılır */}}
 
+/* iş başvuruları: Google Sheets (bağlantıya sahip olan görüntüleyebilir) → CSV, salt okunur */
+const BASVURU_SHEET_ID='1dUImQztxAZlKERjtkVAqQ92EgrvwzO7iUfAr4lz6AsY';
+function parseCSV(text){
+  const rows=[];let row=[];let field='';let inQ=false;
+  for(let i=0;i<text.length;i++){const c=text[i];
+    if(inQ){
+      if(c==='"'){if(text[i+1]==='"'){field+='"';i++;}else inQ=false;}
+      else field+=c;
+    }else{
+      if(c==='"')inQ=true;
+      else if(c===','){row.push(field);field='';}
+      else if(c==='\r'){/*skip*/}
+      else if(c==='\n'){row.push(field);rows.push(row);row=[];field='';}
+      else field+=c;
+    }
+  }
+  if(field.length||row.length){row.push(field);rows.push(row);}
+  return rows;
+}
+async function loadBasvuru(){
+  const statsEl=document.getElementById('basvuruStats');
+  try{
+    const r=await fetch('https://docs.google.com/spreadsheets/d/'+BASVURU_SHEET_ID+'/gviz/tq?tqx=out:csv&_='+Date.now());
+    if(!r.ok)throw 0;
+    const txt=await r.text();
+    const rows=parseCSV(txt).filter(r=>r.length>1);
+    const data=rows.slice(1).filter(r=>(r[0]||'').trim());
+    renderBasvuru(data);
+    document.getElementById('basvuruTime').textContent='son '+new Date().toLocaleTimeString('tr-TR',{hour:'2-digit',minute:'2-digit'});
+  }catch(e){
+    statsEl.innerHTML='<div class="empty">Sheet çekilemedi — bağlantı paylaşımını (bağlantıya sahip olan görüntüleyebilir) kontrol et.</div>';
+  }
+}
+function renderBasvuru(data){
+  const toplam=data.length;
+  const ret=data.filter(r=>/ret/i.test(r[4]||'')).length;
+  const bekliyor=toplam-ret;
+  document.getElementById('basvuruStats').innerHTML=
+    '<div class="stat"><div class="stat-n">'+toplam+'</div><div class="stat-l">Toplam</div></div>'+
+    '<div class="stat"><div class="stat-n">'+bekliyor+'</div><div class="stat-l">Bekliyor</div></div>'+
+    '<div class="stat"><div class="stat-n">'+ret+'</div><div class="stat-l">Ret</div></div>';
+  const last5=data.slice(-5).reverse();
+  const listEl=document.getElementById('basvuruList');
+  if(!last5.length){listEl.innerHTML='<div class="empty">Henüz başvuru yok.</div>';return;}
+  listEl.innerHTML=last5.map(r=>{
+    const durum=(r[4]||'').trim();
+    const cls=/ret/i.test(durum)?'ret':'bekliyor';
+    return '<div class="app-item"><div class="app-top"><span class="app-co">'+esc(r[0]||'—')+'</span><span class="app-status '+cls+'">'+esc(durum||'—')+'</span></div>'+
+      '<div class="app-sub"><span>'+esc(r[1]||'')+(r[2]?' · '+esc(r[2]):'')+'</span><span>'+esc(r[3]||'')+'</span></div></div>';
+  }).join('');
+}
+
 /* haberler */
 let news=[];
 function renderNews(){const el=document.getElementById('newsList');el.innerHTML='';
@@ -588,10 +655,11 @@ function parseMail(){const ta=document.getElementById('mailPaste');const txt=ta.
   document.getElementById('histNext').onclick=()=>{histOff+=4;renderHistory();};
   document.getElementById('deRefresh').onclick=()=>{deExtra+=5;sSet(K.de,{date:todayKey(),extra:deExtra});renderGerman();};
   document.getElementById('wtExport').onclick=exportCSV;
+  document.getElementById('basvuruRefresh').onclick=loadBasvuru;
   renderTasks();await loadMorning();await renderRun();await loadWorkout();renderWtLog();await loadMeals();
-  renderFacts();renderFilm();renderArtist();renderBook();renderHistory();renderGerman();renderNews();renderWatch();renderUS();renderGold();renderWorld();loadFX(false);loadBorsaJson();
-  setInterval(loadBorsaJson,15*60*1000);
-  document.addEventListener('visibilitychange',()=>{if(!document.hidden){loadBorsaJson();loadFX(false);}});
+  renderFacts();renderFilm();renderArtist();renderBook();renderHistory();renderGerman();renderNews();renderWatch();renderUS();renderGold();renderWorld();loadFX(false);loadBorsaJson();loadBasvuru();
+  setInterval(loadBorsaJson,15*60*1000);setInterval(loadBasvuru,15*60*1000);
+  document.addEventListener('visibilitychange',()=>{if(!document.hidden){loadBorsaJson();loadFX(false);loadBasvuru();}});
 })();
 </script>
 </body>
