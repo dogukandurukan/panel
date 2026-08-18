@@ -1,33 +1,33 @@
 {
-  "updated": "2026-08-18 09:36",
+  "updated": "2026-08-18 14:24",
   "watch": [
     {
-      "code": "MGROS",
-      "price": "555.00",
-      "chg": "+0.54%",
-      "avg1w": "593.40",
-      "avg1m": "622.26"
+      "code": "SASA",
+      "price": "2.28",
+      "chg": "-2.56%",
+      "avg1w": "2.39",
+      "avg1m": "2.50"
     },
     {
-      "code": "ASELS",
-      "price": "387.50",
-      "chg": "-2.08%",
-      "avg1w": "375.35",
-      "avg1m": "360.73"
+      "code": "BIMAS",
+      "price": "405.75",
+      "chg": "+6.22%",
+      "avg1w": "384.60",
+      "avg1m": "385.50"
+    },
+    {
+      "code": "ASTOR",
+      "price": "320.75",
+      "chg": "-5.52%",
+      "avg1w": "335.95",
+      "avg1m": "306.80"
     },
     {
       "code": "KONTR",
-      "price": "4.21",
-      "chg": "+9.64%",
+      "price": "4.00",
+      "chg": "+0.50%",
       "avg1w": "3.97",
-      "avg1m": "4.47"
-    },
-    {
-      "code": "YEOTK",
-      "price": "41.64",
-      "chg": "+8.16%",
-      "avg1w": "38.96",
-      "avg1m": "40.19"
+      "avg1m": "4.37"
     }
   ],
   "us": [
@@ -68,23 +68,23 @@
     }
   ],
   "gold": {
-    "price": "6,858.89",
-    "chg": "+0.90%"
+    "price": "6,855.95",
+    "chg": "+0.86%"
   },
   "news": [
-    "🔴 MGROS'da Beklenmedik Net Zarar Sonrası Hedef Fiyat Revize Edildi  (Para Ajansı)",
-    "🟢 BofA’nın alım listesinde ASELSAN, satış listesinde BİM zirvede  (Paratic Haber)",
-    "⚪ KAP *** YEO TEKNOLOJİ ENERJİ VE ENDÜSTRİ A.Ş. *** YEOTK *** Faaliyet Raporu (Konsolide)  (Yeni Şafak)",
-    "🟢 YEO Teknoloji kârlılıkta vites yükseltti  (Dünya Gazetesi)",
-    "⚪ YEO TEKNOLOJİ ENERJİ VE ENDÜSTRİ A.Ş.(YEOTK) Sorumluluk Beyanı (Konsolide) 17 Ağustos 2026  (Mynet Finans)",
+    "⚪ Sasa Polyester, 7,185 milyar TL tahsisli sermaye artırımı kararı aldı  (Investing.com Türkiye)",
+    "⚪ SASA'dan sermaye artırımı kararı  (Bloomberght)",
+    "⚪ SASA'dan dev sermaye hamlesi: 7,2 milyar TL'lik artırım kararı  (CNBC-e)",
+    "🟢 Astor Enerji kâr artışı beklentilerin üzerinde oldu  (Dünya Gazetesi)",
     "🟢 Astor Enerji'nin net karı ilk yarıda yüzde 88 arttı  (Ekonomim)",
     "🟢 Astor Enerji'nin kârı yüzde 88 arttı: 4,6 milyar TL'ye ulaştı  (CNBC-e)",
-    "🟢 Astor Enerji net kârını ikiye katladı  (Enerji Günlüğü)"
+    "⚪ Enka İnşaat’ta (ENKAI) 110 TL hedef fiyat: Bilanço incelendi  (Paratic Haber)",
+    "⚪ ENKAI’da 110 TL Hedef Fiyat: 2. Çeyrek Bilanço Nasıl?  (Haber Ege)"
   ],
   "world": [
-    "🌍 YKS yerleştirme sonuçları açıklandı - TRT Haber  (TRT Haber)",
-    "🌍 Çerçeve yasa Resmi Gazete'de. Cumhurbaşkanı Erdoğan: Hayırlara vesile olmasını diliyorum - NTV Haber  (NTV Haber)",
-    "🌍 İstanbul'a yeni metro hattı geliyor. Trafiği yoğun 3 ilçe birbirine bağlanacak - NTV Haber  (NTV Haber)",
-    "🌍 Yeni nesil suç örgütlerine soruşturma! Bakan Gürlek: 818 şüphelinin mal varlıklarına el kondu - CNN Türk  (CNN Türk)"
+    "🌍 2026-YKS yerleştirme sonuçları açıklandı - Anadolu Ajansı  (Anadolu Ajansı)",
+    "🌍 İki sıcak hava dalgası aynı anda geliyor. İstanbul'da hava sıcaklığı tavan yapacak - NTV Haber  (NTV Haber)",
+    "🌍 Bakan Gürlek duyurdu... İstanbul merkezli 8 ilde 'şeker' soruşturması: 47 şüpheli ifadeye çağrıldı - Hürriyet  (Hürriyet)",
+    "🌍 \"Çerçeve Yasa\" kapsamında kurulan kurulun ilk toplantı tarihi belli oldu - T24  (T24)"
   ]
 }
