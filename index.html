@@ -162,10 +162,6 @@
       <div id="watchList"></div>
       <div id="usList"></div></section>
 
-    <section class="card"><div class="card-head"><div><p class="kicker">Kariyer</p><h2 class="card-title">İş Başvuruları</h2></div><div class="meta"><span id="basvuruTime">—</span><br><button class="ibtn" id="basvuruRefresh">Yenile</button></div></div>
-      <div id="basvuruStats" class="statrow"><div class="loading">Başvurular çekiliyor…</div></div>
-      <div id="basvuruList"></div></section>
-
     <section class="card"><div class="card-head"><div><p class="kicker">Gündem</p><h2 class="card-title">Günün Önemli Haberleri</h2></div><div class="meta">elle / mail</div></div>
       <div id="newsList"></div>
       <div class="add-row"><input id="newsInput" placeholder="Başlık ekle…" maxlength="160"><button id="newsAdd">Ekle</button></div>
@@ -195,6 +191,9 @@
   <section class="card" style="margin-top:20px"><div class="card-head"><div><p class="kicker">Antrenman · Kayıt</p><h2 class="card-title">Ağırlık Takibi</h2></div><div class="meta"><button class="ibtn" id="wtExport" style="padding:6px 10px">Excel'e aktar</button></div></div>
     <div class="wtitle" id="wtSub">—</div>
     <div id="wtList"></div></section>
+  <section class="card" style="margin-top:20px"><div class="card-head"><div><p class="kicker">Kariyer</p><h2 class="card-title">İş Başvuruları</h2></div><div class="meta"><span id="basvuruTime">—</span><br><button class="ibtn" id="basvuruRefresh">Yenile</button></div></div>
+    <div id="basvuruStats" class="statrow"><div class="loading">Başvurular çekiliyor…</div></div>
+    <div id="basvuruList"></div></section>
   <footer><span>Antrenman & yemek programından · gün gün otomatik</span><span>Döviz canlı · yatırım tavsiyesi değildir</span></footer>
 </div>
 <script>
@@ -567,38 +566,30 @@ async function loadBorsaJson(){try{const r=await fetch('borsa.json?_='+Date.now(
     if(d.world&&d.world.length){world=d.world.slice(0,6);await sSet('d:world',world);renderWorld();}
   }catch(e){/* borsa.json yok — kayıtlı veri / elle yapıştırma kullanılır */}}
 
-/* iş başvuruları: Google Sheets (bağlantıya sahip olan görüntüleyebilir) → CSV, salt okunur */
+/* iş başvuruları: Google Sheets (bağlantıya sahip olan görüntüleyebilir), salt okunur.
+   fetch() yerine JSONP (script tag) kullanılıyor — gviz uç noktası fetch/XHR için CORS
+   header'ı dönmeyebiliyor, script-tag yüklemesi bu kısıtlamaya tabi değil. */
 const BASVURU_SHEET_ID='1dUImQztxAZlKERjtkVAqQ92EgrvwzO7iUfAr4lz6AsY';
-function parseCSV(text){
-  const rows=[];let row=[];let field='';let inQ=false;
-  for(let i=0;i<text.length;i++){const c=text[i];
-    if(inQ){
-      if(c==='"'){if(text[i+1]==='"'){field+='"';i++;}else inQ=false;}
-      else field+=c;
-    }else{
-      if(c==='"')inQ=true;
-      else if(c===','){row.push(field);field='';}
-      else if(c==='\r'){/*skip*/}
-      else if(c==='\n'){row.push(field);rows.push(row);row=[];field='';}
-      else field+=c;
-    }
-  }
-  if(field.length||row.length){row.push(field);rows.push(row);}
-  return rows;
-}
-async function loadBasvuru(){
+function loadBasvuru(){
   const statsEl=document.getElementById('basvuruStats');
-  try{
-    const r=await fetch('https://docs.google.com/spreadsheets/d/'+BASVURU_SHEET_ID+'/gviz/tq?tqx=out:csv&_='+Date.now());
-    if(!r.ok)throw 0;
-    const txt=await r.text();
-    const rows=parseCSV(txt).filter(r=>r.length>1);
-    const data=rows.slice(1).filter(r=>(r[0]||'').trim());
-    renderBasvuru(data);
-    document.getElementById('basvuruTime').textContent='son '+new Date().toLocaleTimeString('tr-TR',{hour:'2-digit',minute:'2-digit'});
-  }catch(e){
-    statsEl.innerHTML='<div class="empty">Sheet çekilemedi — bağlantı paylaşımını (bağlantıya sahip olan görüntüleyebilir) kontrol et.</div>';
-  }
+  const old=document.getElementById('basvuruJsonp');if(old)old.remove();
+  window.__basvuruCB=function(json){
+    try{
+      const rows=(json&&json.table&&json.table.rows)||[];
+      let data=rows.map(r=>(r.c||[]).map(c=>c?(c.f!=null?c.f:(c.v!=null?c.v:'')):''))
+                   .filter(r=>(r[0]||'').toString().trim());
+      if(data.length&&/^şirket$/i.test((data[0][0]||'').toString().trim()))data=data.slice(1);
+      renderBasvuru(data);
+      document.getElementById('basvuruTime').textContent='son '+new Date().toLocaleTimeString('tr-TR',{hour:'2-digit',minute:'2-digit'});
+    }catch(e){
+      statsEl.innerHTML='<div class="empty">Veri ayrıştırılamadı.</div>';
+    }
+  };
+  const s=document.createElement('script');
+  s.id='basvuruJsonp';
+  s.src='https://docs.google.com/spreadsheets/d/'+BASVURU_SHEET_ID+'/gviz/tq?tqx=out:json;responseHandler:__basvuruCB&_='+Date.now();
+  s.onerror=function(){statsEl.innerHTML='<div class="empty">Sheet çekilemedi — bağlantı paylaşımını (bağlantıya sahip olan görüntüleyebilir) kontrol et.</div>';};
+  document.body.appendChild(s);
 }
 function renderBasvuru(data){
   const toplam=data.length;
