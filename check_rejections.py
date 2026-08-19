@@ -30,7 +30,7 @@ import re
 
 import requests
 
-SHEET_ID = "1dUImQztxAZlKERjtkVAqQ92EgrvwzO7iUfAr4lz6AsY"
+SHEET_ID = "1Vw4pZMhnZqDWDQ8UqLvdX_3QadJ1aSZPna4aV2oNqkk"
 SHEET_NAME = "Untitled"
 DATA_RANGE = f"{SHEET_NAME}!A2:G1000"
 
@@ -80,6 +80,12 @@ CONDITIONAL_CUES = [
 ]
 
 SENTENCE_SPLIT_RE = re.compile(r"[.!?\n]+")
+
+# Durum sütununda "zaten reddedilmiş" sayılan yazımlar. Panel ile aynı mantık:
+# "Reddedildi" kelimesi "ret" harf dizisini içermediği için ayrı kalıp şart.
+ALREADY_REJECTED_RE = re.compile(
+    r"(^|\s)ret(\b|$)|reddedil|olumsuz|rejected|declined", re.IGNORECASE
+)
 
 
 def get_access_token():
@@ -205,8 +211,8 @@ def main():
 
         if not company:
             continue
-        if "ret" in durum.lower():
-            continue  # zaten ret olarak işaretli
+        if ALREADY_REJECTED_RE.search(durum):
+            continue  # zaten ret olarak işaretli (elle "Reddedildi" yazılmış olabilir)
 
         checked += 1
         days = window_days_for(basvuru_tarihi)

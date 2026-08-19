@@ -600,7 +600,10 @@ async function loadBorsaJson(){try{const r=await fetch('borsa.json?_='+Date.now(
 /* iş başvuruları: Google Sheets (bağlantıya sahip olan görüntüleyebilir), salt okunur.
    fetch() yerine JSONP (script tag) kullanılıyor — gviz uç noktası fetch/XHR için CORS
    header'ı dönmeyebiliyor, script-tag yüklemesi bu kısıtlamaya tabi değil. */
-const BASVURU_SHEET_ID='1dUImQztxAZlKERjtkVAqQ92EgrvwzO7iUfAr4lz6AsY';
+const BASVURU_SHEET_ID='1Vw4pZMhnZqDWDQ8UqLvdX_3QadJ1aSZPna4aV2oNqkk';
+/* Durum sütununda ret sayılan yazımlar. Dikkat: "Reddedildi" içinde "ret" geçmez,
+   o yüzden sadece /ret/i yetmiyor. */
+const RET_RE=/(^|\s)ret(\b|$)|reddedil|olumsuz|rejected|declined/i;
 function loadBasvuru(){
   const statsEl=document.getElementById('basvuruStats');
   const old=document.getElementById('basvuruJsonp');if(old)old.remove();
@@ -624,7 +627,9 @@ function loadBasvuru(){
 }
 function renderBasvuru(data){
   const toplam=data.length;
-  const ret=data.filter(r=>/ret/i.test(r[4]||'')).length;
+  /* "Ret" dışında "Reddedildi"/"Olumsuz" gibi elle yazılmış varyantları da say —
+     "Reddedildi" kelimesi "ret" harf dizisini İÇERMEZ, bu yüzden ayrı kalıp gerekli. */
+  const ret=data.filter(r=>RET_RE.test(r[4]||'')).length;
   const bekliyor=toplam-ret;
   document.getElementById('basvuruStats').innerHTML=
     '<div class="stat"><div class="stat-n">'+toplam+'</div><div class="stat-l">Toplam</div></div>'+
@@ -635,7 +640,7 @@ function renderBasvuru(data){
   if(!last5.length){listEl.innerHTML='<div class="empty">Henüz başvuru yok.</div>';return;}
   listEl.innerHTML=last5.map(r=>{
     const durum=(r[4]||'').trim();
-    const cls=/ret/i.test(durum)?'ret':'bekliyor';
+    const cls=RET_RE.test(durum)?'ret':'bekliyor';
     return '<div class="app-item"><div class="app-top"><span class="app-co">'+esc(r[0]||'—')+'</span><span class="app-status '+cls+'">'+esc(durum||'—')+'</span></div>'+
       '<div class="app-sub"><span>'+esc(r[1]||'')+(r[2]?' · '+esc(r[2]):'')+'</span><span>'+esc(r[3]||'')+'</span></div></div>';
   }).join('');
