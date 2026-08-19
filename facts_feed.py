@@ -19,6 +19,7 @@ index.html içine gömülü kısa listeye geri düşer (borsa.json / gmail.json 
 Çalıştırma: python facts_feed.py
 """
 import datetime as dt
+import difflib
 import json
 import re
 import time
@@ -85,7 +86,7 @@ TOPICS = [
     "Mariana Çukuru", "Everest Dağı", "Atacama Çölü", "Ölü Deniz", "Baykal Gölü",
     "Amazon Nehri", "Sahra Çölü", "Antarktika", "Yellowstone Kalderası", "Pamukkale",
     "Van Gölü", "Kapadokya", "Levha tektoniği", "Deprem", "Volkan", "Ay tutulması",
-    "Gayzer", "Mağara", "Buzul", "Tsunami", "Hurrikan",
+    "Gayzer", "Mağara", "Buzul", "Tsunami", "Kasırga",
     # --- Matematik ---
     "Altın oran", "Fibonacci dizisi", "Pi sayısı", "Fraktal", "Möbius şeridi",
     "Monty Hall problemi", "Doğum günü problemi", "Gödel'in eksiklik teoremleri",
@@ -143,6 +144,37 @@ def summary_by_title(session, title):
     }, None
 
 
+def _norm(s):
+    s = (s or "").lower()
+    for a, b in (("ı", "i"), ("ğ", "g"), ("ü", "u"), ("ş", "s"), ("ö", "o"), ("ç", "c"), ("â", "a"), ("î", "i")):
+        s = s.replace(a, b)
+    return "".join(c if (c.isalnum() or c == " ") else " " for c in s)
+
+
+def is_relevant(term, item):
+    """
+    Arama sonucunun gerçekten aranan konu olduğunu doğrula.
+
+    Sadece başlık benzerliğine bakmak yetmiyor: Vikipedi araması 'Hurrikan' için
+    'Harry Kane'i (futbolcu) döndürüyor ve benzerlik oranı 0.67 çıkıyor — doğru
+    eşleşme olan 'QR kod' -> 'Karekod' (0.62) ile ayrışmıyor. Bu yüzden asıl ölçüt
+    konunun ÖZET METİNDE geçmesi: doğru makale konudan bahseder, futbolcu bahsetmez.
+    """
+    hay = _norm(item.get("title", "") + " " + item.get("text", ""))
+    if "listesi" in _norm(item.get("title", "")):
+        return False                      # "En yaşlı ağaçlar listesi" bir bilgi değil
+    tokens = [t for t in _norm(term).split() if len(t) >= 4]
+    if not tokens:
+        return True
+    longest = max(tokens, key=len)
+    if longest[:5] in hay:
+        return True
+    # yazım farkı olan doğru eşleşmeler için ikinci yol ('Lucid rüya' -> 'Lüsid rüya').
+    # Eşik 0.8: bu çifti (0.90) geçirir, 'Hurrikan' -> 'Harry Kane'i (0.67) geçirmez.
+    sim = difflib.SequenceMatcher(None, _norm(term), _norm(item.get("title", ""))).ratio()
+    return sim >= 0.80
+
+
 def search_title(session, term):
     """
     Başlık birebir tutmadığında Vikipedi aramasıyla doğru makaleyi bul.
@@ -170,10 +202,12 @@ def fetch_summary(session, topic):
     if not found or found.lower() == topic.lower():
         return None, why
     item2, why2 = summary_by_title(session, found)
-    if item2 is not None:
-        item2["via_search"] = topic
-        return item2, None
-    return None, f"{why} / arama '{found}': {why2}"
+    if item2 is None:
+        return None, f"{why} / arama '{found}': {why2}"
+    if not is_relevant(topic, item2):
+        return None, f"{why} / arama '{found}': alakasiz"
+    item2["via_search"] = topic
+    return item2, None
 
 
 def build():
