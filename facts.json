@@ -1,7 +1,7 @@
 {
- "updated": "2026-08-19 19:11",
+ "updated": "2026-08-19 19:25",
  "ok": true,
- "count": 188,
+ "count": 187,
  "requested": 214,
  "items": [
   {
@@ -33,6 +33,12 @@
    "text": "Déjà vu, yaşanılan bir olayı daha önceden yaşamışlık veya görülen bir yeri daha önceden görmüş olma duygusu. Anı daha önceden yaşamışlık hâlidir. Fransızca; déjà ve voir (görmek) kelimelerinden oluşmaktadır.",
    "title": "Déjà vu",
    "url": "https://tr.wikipedia.org/wiki/D%C3%A9j%C3%A0_vu"
+  },
+  {
+   "text": "Pareidolia, kişinin karşılaştığı bir duyumu, bildiği bir nesne, örüntü ya da anlam olarak yanlış algılamasıdır. Bulutları nesnelere benzetmek, cansız nesneleri ya da soyut görüntüleri insan yüzüne benzetmek ve müzik dinlerken olmayan bir kelime duymak yaygın pareidolia örnekleridir.",
+   "title": "Pareidolia",
+   "url": "https://tr.wikipedia.org/wiki/Pareidolia",
+   "via_search": "Pareidoli"
   },
   {
    "text": "Estetik olarak, tekinsiz vadi bir nesnenin insan benzerliği derecesi ile nesneye duyulan duygusal tepki arasındaki hipoteze dayalı bir ilişki olarak kabul edilir.",
@@ -70,9 +76,21 @@
    "url": "https://tr.wikipedia.org/wiki/Hayalet_uzuv"
   },
   {
+   "text": "Loci Yöntemi, hafıza sarayı veya zihin sarayı tekniği diye de geçer, Kadim Roma ve Yunan belâgat anlaşmalarında benimsenmiş bir nimonik cihazdır. Basitçe, bilgi organize etmek ve hatırlamak için görselleştirmeyi kullanan bir hafıza geliştirme metodu.",
+   "title": "Loci Metodu",
+   "url": "https://tr.wikipedia.org/wiki/Loci_Metodu",
+   "via_search": "Hafıza sarayı"
+  },
+  {
    "text": "Uyku felci, uyandıktan hemen sonra veya seyrek olarak, uykuya dalmadan hemen önce, bedenin geçici olarak hareket edememesi ile karakterize edilen bir durumdur.",
    "title": "Uyku felci",
    "url": "https://tr.wikipedia.org/wiki/Uyku_felci"
+  },
+  {
+   "text": "Lüsid rüya veya berrak rüya, kişinin rüya gördüğü sırada, rüya gördüğünün farkında olması hâline ve rüya gördüğünün bilincinde olduğu bu tür rüyalara verilen addır.",
+   "title": "Lüsid rüya",
+   "url": "https://tr.wikipedia.org/wiki/L%C3%BCsid_r%C3%BCya",
+   "via_search": "Lucid rüya"
   },
   {
    "text": "Ayna nöron, bir canlının herhangi bir hareketi kendisi yaptığında ve aynı hareketi yapan birini gözlemlediği durumların her ikisinde de ateşlenen nöronlar için kullanılan terimdir.",
@@ -400,6 +418,18 @@
    "url": "https://tr.wikipedia.org/wiki/Fotosentez"
   },
   {
+   "text": "Bu liste, güvenilir kaynaklar tarafından teyit edilen, bilinen en yaşlı ağaçların bir listesidir. Tek bir ağacı neyin oluşturduğuna ilişkin tanımlar değişir.",
+   "title": "En yaşlı ağaçlar listesi",
+   "url": "https://tr.wikipedia.org/wiki/En_ya%C5%9Fl%C4%B1_a%C4%9Fa%C3%A7lar_listesi",
+   "via_search": "Pando (ağaç)"
+  },
+  {
+   "text": "Sekoya Ulusal Parkı, Amerika Birleşik Devletleri'nin Kaliforniya eyaletinde, Visalia şehri yakınlarında bulunan ve 1.635,18 km² genişliğindeki bir millî park'tır.",
+   "title": "Sekoya Millî Parkı",
+   "url": "https://tr.wikipedia.org/wiki/Sekoya_Mill%C3%AE_Park%C4%B1",
+   "via_search": "General Sherman (ağaç)"
+  },
+  {
    "text": "Bakteriyofaj, bakterileri enfekte eden bir virüstür. Terim genelde kısaltılmış hali olan faj olarak kullanılır.",
    "title": "Bakteriyofaj",
    "url": "https://tr.wikipedia.org/wiki/Bakteriyofaj"
@@ -408,6 +438,12 @@
    "text": "Mercan resifleri canlı organizmaların ürettiği aragonit yapılardır. Az miktar besin içeren deniz sularında bulunur. Çoğu resifte, baskın organizmalar kalsiyum karbonattan oluşan bir dış iskelete sahip taş mercanları, kolonyal sölenterlerdir.",
    "title": "Mercan resifi",
    "url": "https://tr.wikipedia.org/wiki/Mercan_resifi"
+  },
+  {
+   "text": "Hayvan göçü, hayvanlarda da çeşitli sebeplerden dolayı göçe rastlanmaktadır. Bunların bir kısmı geçicidir. Bir sebebe bağlı olarak ve çoğunlukla bir defa yaptıkları göçlerdir.",
+   "title": "Hayvan göçü",
+   "url": "https://tr.wikipedia.org/wiki/Hayvan_g%C3%B6%C3%A7%C3%BC",
+   "via_search": "Göç (hayvan)"
   },
   {
    "text": "Kış uykusu, soğuk ve kurak mevsimlere karşı koyabilmek için canlı varlıkların yapısında görülen olayların tümü olarak tanımlanır.",
@@ -423,6 +459,12 @@
    "text": "Ortakyaşam, ortakyaşarlık ya da simbiyoz, iki canlının tek bir organizma gibi birbirleriyle yardımlaşarak bir arada yaşamalarıdır.",
    "title": "Ortakyaşam",
    "url": "https://tr.wikipedia.org/wiki/Ortakya%C5%9Fam"
+  },
+  {
+   "text": "Bakteriyoterapi, bir hastalığın tedavisinde bakterilerin veya ürünlerinin amaca yönelik olarak kullanılmasıdır. Bakteriyoterapi biçimleri arasında, tüketildiğinde sağlığa fayda sağlayan mikroorganizmalar olan probiyotiklerin kullanımı; gaita nakli (FMT) /bağırsak mikrobiyota nakli (IMT), mikrobiyotayı eski haline getirmek için bağırsak…",
+   "title": "Bakteriyoterapi",
+   "url": "https://tr.wikipedia.org/wiki/Bakteriyoterapi",
+   "via_search": "Bağırsak mikrobiyotası"
   },
   {
    "text": "Ölümsüzlük, sonsuz yaşam, ölümden muaf olma, bitmeyen varoluştur. Bazı modern türler biyolojik ölümsüzlüğe sahip olabilir. Ölümsüz denizanası benzeri canlılar ise biyolojik ölümsüzlüğe sahiptir, yani gerekli koşullar oluşturulduğu takdirde teorik olarak sonsuza dek yaşamlarını sürdürebilirler.",
@@ -495,6 +537,12 @@
    "url": "https://tr.wikipedia.org/wiki/%C3%87atalh%C3%B6y%C3%BCk"
   },
   {
+   "text": "İlk Çin İmparatoru'nun Mozolesi Çin'in Şensi eyaletindeki Xi'an'daki Lintong Bölgesinde bulunmaktadır. Mozolenin M.Ö. 246 - 208 yılları arasında inşa edildiği ve kesik bir piramit şeklinde 76 metre yüksekliğinde bir mezarın höyüğün altında yer aldığı belirtilmiştir.",
+   "title": "İlk Çin İmparatorunun Mozolesi",
+   "url": "https://tr.wikipedia.org/wiki/%C4%B0lk_%C3%87in_%C4%B0mparatorunun_Mozolesi",
+   "via_search": "Terracotta Ordusu"
+  },
+  {
    "text": "Pompeii, Pompei komünü sınırları içerisinde, İtalya'nın kısmi özerk bölgesi Campania'da, Napoli şehri yakınlarında bulunan ve hâlâ kısmen gömülü olan yıkıntı halindeki antik Roma kentidir.",
    "title": "Pompeii",
    "url": "https://tr.wikipedia.org/wiki/Pompeii"
@@ -545,6 +593,12 @@
    "url": "https://tr.wikipedia.org/wiki/Ayasofya"
   },
   {
+   "text": "Büyük İskenderiye Kütüphanesi, Antik Dünya'nın en büyük ve en önemli kütüphanelerinden biri. Kütüphane, Müzler'e, sanatın dokuz tanrıçasına adanmış daha geniş bir araştırma enstitüsü olan İskenderiye Müzesi'nin bir parçasıydı.",
+   "title": "İskenderiye Kütüphanesi",
+   "url": "https://tr.wikipedia.org/wiki/%C4%B0skenderiye_K%C3%BCt%C3%BCphanesi",
+   "via_search": "Büyük İskenderiye Kütüphanesi"
+  },
+  {
    "text": "Hammurabi Kanunları, MÖ 1760 yılı civarında Mezopotamya'nın Babil ülkesinde ortaya çıkan, tarihin en eski ve en iyi korunmuş yazılı yasalarından biridir.",
    "title": "Hammurabi Kanunları",
    "url": "https://tr.wikipedia.org/wiki/Hammurabi_Kanunlar%C4%B1"
@@ -558,11 +612,6 @@
    "text": "Hiyeroglif, antik döneme ait bir yazı sistemi. Birçok türü olan hiyerogliflerin en bilinen türü Mısır hiyeroglifleridir. Ayrıca Luvi hiyeroglifleri ve Urartu hiyeroglifleri de bu yazı sisteminin Mezopotamya'da kullanılan diğer örneklerindendir.",
    "title": "Hiyeroglif",
    "url": "https://tr.wikipedia.org/wiki/Hiyeroglif"
-  },
-  {
-   "text": "Mumya, çeşitli işlemler uygulamak suretiyle çürümesi önlenerek bozulmadan kalması sağlanan cesettir.",
-   "title": "Mumya",
-   "url": "https://tr.wikipedia.org/wiki/Mumya"
   },
   {
    "text": "Vikingler ya da Norslar, İskandinavyalı korsan ve tüccar kavimlerdir. Aslında \"Viking\" veya \"Nors\" bir millet adı değildir; Danlara, Norveçlilere, İsveçlilere ve diğer İskandinavlara kim olduklarına bakmaksızın verilen isimdir.",
@@ -665,6 +714,12 @@
    "url": "https://tr.wikipedia.org/wiki/Unicode"
   },
   {
+   "text": "Karekod veya QR kod; belli bir algoritma ile şifrelenmiş, metin veya metin ile temsil edilebilecek verileri depolayabilen iki boyutlu matristir. Özelleşmiş bir veri matrisi türüdür. 1994 yılında Japon Denso firması tarafından geliştirilmiştir.",
+   "title": "Karekod",
+   "url": "https://tr.wikipedia.org/wiki/Karekod",
+   "via_search": "QR kod"
+  },
+  {
    "text": "Bilgisayar virüsü, içinde bulunduğu bilgisayardaki başka programlara ve dosyalara kendi kodunu enjekte eden ve kendini bu programları kullanarak çoğaltan bir kötü amaçlı yazılım türüdür.",
    "title": "Bilgisayar virüsü",
    "url": "https://tr.wikipedia.org/wiki/Bilgisayar_vir%C3%BCs%C3%BC"
@@ -708,6 +763,12 @@
    "text": "Periyodik tablo, periyodik cetvel ya da mendeleyev cetveli, kimyasal elementlerin sınıflandırılması için geliştirilmiş tablodur. Bu tablo bilinen bütün elementlerin artan atom numaralarına göre sıralanışıdır.",
    "title": "Periyodik tablo",
    "url": "https://tr.wikipedia.org/wiki/Periyodik_tablo"
+  },
+  {
+   "text": "Arkeolojik kazılarda ele geçen buluntuların bir kısmı, içinde karbon elementi bulunan çeşitli organik buluntulardır. Karbon içeren organik buluntularda eser olarak bulunan radyoaktif 14C (radyokarbon) izotopunun yoğunluğu ya da radyoaktivitesi ölçülerek söz konusu buluntular ve bu buluntuların ele geçtiği tabakalar ve kontekstler…",
+   "title": "Radyokarbon tarihleme yöntemi",
+   "url": "https://tr.wikipedia.org/wiki/Radyokarbon_tarihleme_y%C3%B6ntemi",
+   "via_search": "Radyokarbon tarihleme"
   },
   {
    "text": "Siyanoakrilat veya Türkçedeki yaygın adıyla Japon yapıştırıcı; tek bileşenli, çözücü (solvent) içermeyen, çabuk kuruyan, ısı direnci yüksek olan, az bir miktarla yapışma sağlayan, çok küçük boşluklara bile nüfuz eden bir yapıştırıcı.",
@@ -815,6 +876,12 @@
    "url": "https://tr.wikipedia.org/wiki/Tsunami"
   },
   {
+   "text": "Harry Edward Kane, İngiliz profesyonel futbolcu olan Kane, Bundesliga kulübü Bayern Münih'te forvet olarak oynamakta ve İngiltere milli takımının kaptanlığını yapmaktadır.",
+   "title": "Harry Kane",
+   "url": "https://tr.wikipedia.org/wiki/Harry_Kane",
+   "via_search": "Hurrikan"
+  },
+  {
    "text": "Altın oran, matematikte iki miktardan büyük olanın küçüğe oranı, miktarların toplamının miktarları büyük olanına oranı ile aynı ise altın orandır. Altın oran aynı zamanda antik çağdan bu yana sanat ve mimaride en iyi uyum ve oranları veren düzen bağıntısı olarak kabul edilmekteydi.",
    "title": "Altın oran",
    "url": "https://tr.wikipedia.org/wiki/Alt%C4%B1n_oran"
@@ -850,69 +917,10 @@
    "url": "https://tr.wikipedia.org/wiki/Do%C4%9Fum_g%C3%BCn%C3%BC_problemi"
   },
   {
-   "text": "Bir asal sayı, yalnızca 1'den büyük olup kendisinden küçük iki doğal sayının çarpımı olarak ifade edilemeyen bir doğal sayıdır. 1'den büyük ve asal olmayan doğal sayılara bileşik sayı adı verilir.",
-   "title": "Asal sayı",
-   "url": "https://tr.wikipedia.org/wiki/Asal_say%C4%B1"
-  },
-  {
-   "text": "Sonsuzluk, her ne kadar popüler düşüncede bitmeyen, zamansız ve zamanla tanımlansa da; birçok kişiye göre zamanın dışında bir zamansızlık varoluşu olarak tanımlanmıştır.",
-   "title": "Sonsuzluk",
-   "url": "https://tr.wikipedia.org/wiki/Sonsuzluk"
-  },
-  {
-   "text": "Kaos teorisi, kaos kuramı veya kargaşa kuramı; yapısal olarak bir fizik teorisi ya da matematiksel bir tümevarım değil, fiziksel gerçeklik parçalarının bir bütün olarak eğilimini açıklamaya yarayan bir yöntemdir.",
-   "title": "Kaos teorisi",
-   "url": "https://tr.wikipedia.org/wiki/Kaos_teorisi"
-  },
-  {
-   "text": "Teorem: Sonlu sayıda bölgeden oluşan bir harita, birbirine sonsuz sayıda nokta boyunca komşu olan iki bölgenin renkleri birbirinden farklı olmak üzere, boyanacaksa bu işlem için dört rengin yeterli olacağı bir strateji vardır.",
-   "title": "Dört renk teoremi",
-   "url": "https://tr.wikipedia.org/wiki/D%C3%B6rt_renk_teoremi"
-  },
-  {
-   "text": "Öklid (Grekçe: Εὐκλείδης Eukleídēs; MÖ 330 - 275 yılları arasında yaşamış, İskenderiyeli bir matematikçidir. Megaralı Öklid'den ayırmak için bazen İskenderiyeli Öklid olarak anılır, genellikle \"geometrinin kurucusu\" veya \"geometrinin babası\" olarak anılan bir Yunan matematikçiydi.",
-   "title": "Öklid",
-   "url": "https://tr.wikipedia.org/wiki/%C3%96klid"
-  },
-  {
-   "text": "0 (sıfır), etkisiz bir rakamı temsil eden bir niceliktir. Herhangi bir sayıya 0 eklemek veya çıkarmak o sayıyı değiştirmez; matematiksel terminolojide 0, tam sayılar, rasyonel sayılar, reel sayılar ve karmaşık sayıların yanı sıra diğer cebirsel yapıların da toplamsal birimidir.",
-   "title": "0",
-   "url": "https://tr.wikipedia.org/wiki/0"
-  },
-  {
-   "text": "Oyun teorisi veya Oyun kuramı, istatistik, sosyal bilimler, biyoloji, mühendislik, siyasi bilimler, bilgisayar bilimleri kullanılan meşhur teoridir. Oyun teorisi, bireyin başarısının diğerlerinin seçimlerine dayalı olduğu seçimler yapması olan bazı stratejik durumların matematiksel olarak davranış biçimlerini yakalamaya çalışır.",
-   "title": "Oyun teorisi",
-   "url": "https://tr.wikipedia.org/wiki/Oyun_teorisi"
-  },
-  {
-   "text": "Büyük Sayılar Kanunu ya da Büyük Sayılar Yasası, bir rassal değişkenin uzun vadede kararlı bir ortalamaya yaklaşacağını ifade eden bir olasılık teoremidir.",
-   "title": "Büyük sayılar yasası",
-   "url": "https://tr.wikipedia.org/wiki/B%C3%BCy%C3%BCk_say%C4%B1lar_yasas%C4%B1"
-  },
-  {
-   "text": "Ünlü, sesli veya vokal; ses yolu görece açık durumda iken, ses tellerinin titreşmesi ile bir engele takılmadan oluşan; hecenin en küçük birimini oluşturan konuşma sesi.",
-   "title": "Ünlü (dilbilim)",
-   "url": "https://tr.wikipedia.org/wiki/%C3%9Cnl%C3%BC_(dilbilim)"
-  },
-  {
-   "text": "Rüya ya da düş, uykunun genel ve karakteristik özelliklerinden biri olup, uykunun hızlı göz hareketi (REM) adlı evreleriyle yakından ilişkili bulunan, görsel ve işitsel algı ve duygulardır.",
-   "title": "Rüya",
-   "url": "https://tr.wikipedia.org/wiki/R%C3%BCya"
-  },
-  {
-   "text": "Müzik kuramı terimi genel olarak iki farklı ama birbiriyle ilgili anlamda kullanılır:Müziğin temel yapıtaşları. Bu yapıtaşları ile müziğin incelenmesi, sınıflandırılması ve hatta bestelenmesini konu alan bilim dalı.",
-   "title": "Müzik teorisi",
-   "url": "https://tr.wikipedia.org/wiki/M%C3%BCzik_teorisi"
-  },
-  {
-   "text": "Umami ; tatlı, ekşi, bitter (acımtırak/buruk) ve tuzlu ile birlikte beş temel tattan biridir. Umami Japonca \"hoşa giden tat\" anlamına gelen \"うま味\" kelimesinden alıntıdır.",
-   "title": "Umami",
-   "url": "https://tr.wikipedia.org/wiki/Umami"
-  },
-  {
-   "text": "Kahve, kökboyasıgiller (Rubiaceae) familyasının Coffea cinsinde yer alan bir ağaç ve bu ağacın meyve çekirdeklerinin kavrulup öğütülmesi ile elde edilen tozun su ya da süt ile karıştırılmasıyla yapılan içecektir.",
-   "title": "Kahve",
-   "url": "https://tr.wikipedia.org/wiki/Kahve"
+   "text": "Baharat Yolu, eski çağlarda, Uzak Doğu'yu Batı'ya bağlayan ticaret yollarından biriydi. Baharat günümüzden binlerce yıl önce Doğu ülkelerinde kullanılıyordu.",
+   "title": "Baharat Yolu",
+   "url": "https://tr.wikipedia.org/wiki/Baharat_Yolu",
+   "via_search": "Baharat ticareti"
   },
   {
    "text": "Zeytin, zeytingiller Oleaceae familyasından meyvesi yenen ve geleneksel olarak Akdeniz iklimine özgü bir ağaç türüdür. Tür, tüm Akdeniz ülkelerinin yanı sıra Güney Amerika, Güney Afrika, Çin, Avustralya, Yeni Zelanda, Meksika ve Amerika Birleşik Devletleri'nde yetiştirilir.",
