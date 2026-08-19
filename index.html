@@ -127,6 +127,14 @@
   .app-status.ret{background:rgba(180,70,47,.12);color:var(--down);}
   .app-status.bekliyor{background:rgba(28,78,72,.1);color:var(--accent);}
   .app-sub{font-family:var(--mono);font-size:10.5px;color:var(--muted);display:flex;justify-content:space-between;gap:8px;margin-top:3px;}
+  /* Gmail cevap taslağı */
+  .dr-box{margin-top:8px;border-left:2px solid var(--accent);background:var(--paper);border-radius:0 4px 4px 0;padding:8px 10px;}
+  .dr-sum{font-size:12.5px;line-height:1.45;margin-bottom:7px;}
+  .dr-txt{font-size:12.5px;line-height:1.5;white-space:pre-wrap;border-top:1px dotted var(--line2);padding-top:7px;margin-top:2px;}
+  .dr-act{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;align-items:center;}
+  .dr-act .ibtn{padding:3px 8px;}
+  .dr-tag{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);border:1px solid var(--line2);border-radius:3px;padding:2px 6px;}
+  .dr-done{opacity:.45;}
   footer{margin-top:26px;padding-top:14px;border-top:1px solid var(--line);font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;}
   @media (max-width:640px){body{padding:16px 14px 34px;}.clock{text-align:left;}}
   @media (prefers-reduced-motion:reduce){*{transition:none!important;}}
@@ -205,7 +213,7 @@
   <footer><span>Antrenman & yemek programından · gün gün otomatik</span><span>Döviz canlı · yatırım tavsiyesi değildir</span></footer>
 </div>
 <script>
-const K={tasks:'d:tasks',targets:'d:targets',bist:'d:bist',altin:'d:altin',news:'d:news',fx:'d:fx',de:'d:de'};
+const K={tasks:'d:tasks',targets:'d:targets',bist:'d:bist',altin:'d:altin',news:'d:news',fx:'d:fx',de:'d:de',gmailDone:'d:gmailDone'};
 const mem={};
 async function sGet(k){try{if(window.storage){const r=await window.storage.get(k,false);return r?JSON.parse(r.value):null;}}catch(e){}
   try{const v=localStorage.getItem(k);return v?JSON.parse(v):null;}catch(e){}return (k in mem)?mem[k]:null;}
@@ -412,6 +420,8 @@ const HISTORY=[
 
 /* ===== state ===== */
 let tasks=[],meals=[],targets={},openRec={},factOff=0,filmOff=0,artOff=0,bookOff=0,histOff=0;
+/* "Hallettim ✓" denen mail konuşmalarının id'leri — o maile ait öneri bir daha çıkmaz */
+let gmailDone=[];
 const dow=new Date().getDay();
 
 /* clock */
@@ -662,10 +672,43 @@ function renderGmail(d){
     '<div class="stat"><div class="stat-n">'+(d.important_unread||0)+'</div><div class="stat-l">Önemli/Kişisel</div></div>';
   const items=(d.items||[]).slice(0,5);
   if(!items.length){listEl.innerHTML='<div class="empty">Cevap bekleyen önemli mail yok.</div>';return;}
-  listEl.innerHTML=items.map(it=>
-    '<div class="app-item"><div class="app-top"><span class="app-co">'+esc(it.from||it.email||'—')+'</span></div>'+
-    '<div class="app-sub"><span>'+esc(it.subject||'(konu yok)')+'</span><span>'+esc((it.date||'').slice(0,22))+'</span></div></div>'
-  ).join('');
+  listEl.innerHTML=items.map(it=>{
+    const tid=it.thread_id||it.id||'';
+    const done=gmailDone.indexOf(tid)>-1;
+    /* Taslak yalnızca: cevap bekliyorsa (konuşmanın son mesajı senden DEĞİLSE),
+       model "cevap gerekiyor" dediyse ve sen tikle kapatmadıysan gösterilir. */
+    const showDraft=!done && it.awaiting_reply!==false && it.draft;
+    let box='';
+    if(!done && (it.summary||showDraft)){
+      box='<div class="dr-box">'+
+        (it.summary?'<div class="dr-sum">'+esc(it.summary)+'</div>':'')+
+        (showDraft?'<div class="dr-tag">Önerilen cevap</div><div class="dr-txt" id="drt-'+esc(tid)+'">'+esc(it.draft)+'</div>':'')+
+        '<div class="dr-act">'+
+          (showDraft?'<button class="ibtn" data-drcopy="'+esc(tid)+'">Kopyala</button>':'')+
+          (tid?'<a class="ibtn" style="text-decoration:none" target="_blank" rel="noopener" href="https://mail.google.com/mail/u/0/#all/'+encodeURIComponent(tid)+'">Gmail\'de aç</a>':'')+
+          '<button class="ibtn" data-drdone="'+esc(tid)+'">Hallettim ✓</button>'+
+        '</div></div>';
+    }
+    return '<div class="app-item'+(done?' dr-done':'')+'"><div class="app-top"><span class="app-co">'+esc(it.from||it.email||'—')+'</span>'+
+      (it.i_replied_before?'<span class="app-sub" style="margin:0">daha önce yazışmışsınız</span>':'')+'</div>'+
+      '<div class="app-sub"><span>'+esc(it.subject||'(konu yok)')+'</span><span>'+esc((it.date||'').slice(0,22))+'</span></div>'+
+      box+'</div>';
+  }).join('');
+
+  listEl.querySelectorAll('[data-drcopy]').forEach(b=>b.onclick=()=>{
+    const el=document.getElementById('drt-'+b.dataset.drcopy);
+    if(!el)return;
+    navigator.clipboard.writeText(el.textContent).then(()=>{
+      const o=b.textContent;b.textContent='Kopyalandı';setTimeout(()=>b.textContent=o,1500);
+    }).catch(()=>{});
+  });
+  listEl.querySelectorAll('[data-drdone]').forEach(b=>b.onclick=async()=>{
+    const tid=b.dataset.drdone;
+    if(gmailDone.indexOf(tid)===-1)gmailDone.push(tid);
+    gmailDone=gmailDone.slice(-200);            // listeyi sınırsız büyütme
+    await sSet(K.gmailDone,gmailDone);
+    renderGmail(d);
+  });
 }
 
 /* haberler */
@@ -692,7 +735,7 @@ function parseMail(){const ta=document.getElementById('mailPaste');const txt=ta.
 
 /* init */
 (async function(){tick();setInterval(tick,1000);
-  tasks=await sGet(K.tasks)||[];targets=await sGet(K.targets)||{...DEFAULT_TARGETS};news=await sGet(K.news)||[];watch=await sGet('d:watch')||[];world=await sGet('d:world')||[];us=await sGet('d:us')||[];gold=await sGet('d:gold')||null;
+  tasks=await sGet(K.tasks)||[];targets=await sGet(K.targets)||{...DEFAULT_TARGETS};news=await sGet(K.news)||[];watch=await sGet('d:watch')||[];world=await sGet('d:world')||[];us=await sGet('d:us')||[];gold=await sGet('d:gold')||null;gmailDone=await sGet(K.gmailDone)||[];
   const de=await sGet(K.de);deExtra=(de&&de.date===todayKey())?de.extra:0;
   document.getElementById('taskAdd').onclick=addTask;document.getElementById('taskInput').onkeydown=e=>{if(e.key==='Enter')addTask();};
   document.getElementById('newsAdd').onclick=addNews;document.getElementById('newsInput').onkeydown=e=>{if(e.key==='Enter')addNews();};

@@ -21,6 +21,7 @@ Kimlik bilgileri ortam değişkenlerinden okunur (GitHub Actions secrets):
 
 Çalıştırma: python gmail_feed.py
 """
+import base64
 import json
 import os
 import re
@@ -34,8 +35,16 @@ WINDOW_DAYS = 3       # hafta sonu boşluğunu (Cuma->Pazartesi) da kapsasın di
 MAX_ITEMS = 8         # panelde gösterilecek en fazla mail sayısı
 MAX_FETCH = 100        # header çekilecek üst sınır (API kotasını korumak için)
 
+MAX_DRAFTS = 5        # tur başına en fazla kaç maile taslak yazılsın (maliyet sınırı)
+MAX_THREAD_MSGS = 6   # konuşmanın son kaç mesajı modele verilsin
+MAX_BODY_CHARS = 1500 # mesaj başına gövde sınırı
+
 TOKEN_URL = "https://oauth2.googleapis.com/token"
 API_BASE = "https://www.googleapis.com/gmail/v1/users/me"
+
+ANTHROPIC_URL = "https://api.anthropic.com/v1/messages"
+ANTHROPIC_MODELS_URL = "https://api.anthropic.com/v1/models"
+ANTHROPIC_VERSION = "2023-06-01"
 
 # Header'da List-Unsubscribe yoksa ikinci güvenlik ağı: bilinen toplu-mail kalıpları
 BULK_LOCALPART_RE = re.compile(
@@ -93,6 +102,7 @@ def fetch_meta(headers, msg_id):
     r.raise_for_status()
     md = r.json()
     hdrs = {h["name"]: h["value"] for h in md.get("payload", {}).get("headers", [])}
+    hdrs["__thread_id"] = md.get("threadId", "")   # konuşma geçmişini çekmek için
     return hdrs, int(md.get("internalDate", "0"))
 
 
@@ -114,6 +124,153 @@ def parse_from(raw):
         name = m.group(1).strip() or m.group(2)
         return name, m.group(2)
     return raw, raw
+
+
+# ---------------------------------------------------------------------------
+# Konuşma geçmişi (thread) — cevap taslağı için
+# ---------------------------------------------------------------------------
+
+def get_my_address(headers):
+    r = requests.get(f"{API_BASE}/profile", headers=headers, timeout=20)
+    r.raise_for_status()
+    return (r.json().get("emailAddress") or "").lower()
+
+
+def _decode(data):
+    if not data:
+        return ""
+    try:
+        return base64.urlsafe_b64decode(data + "===").decode("utf-8", "ignore")
+    except Exception:
+        return ""
+
+
+def _plain_body(payload):
+    """text/plain'i tercih et; yoksa text/html'i sadeleştir."""
+    mime = payload.get("mimeType", "")
+    if mime == "text/plain":
+        return _decode(payload.get("body", {}).get("data"))
+    if mime == "text/html":
+        html = _decode(payload.get("body", {}).get("data"))
+        return re.sub(r"<[^>]+>", " ", html)
+    for part in payload.get("parts", []) or []:
+        b = _plain_body(part)
+        if b.strip():
+            return b
+    return _decode(payload.get("body", {}).get("data"))
+
+
+def strip_quoted(text):
+    """Alıntılanan önceki maili ve imzayı at — taslak için gürültü."""
+    lines = []
+    for ln in (text or "").split("\n"):
+        s = ln.strip()
+        if s.startswith(">"):
+            continue
+        if re.match(r"^-{2,}\s*$", s) or s in ("--", "__"):
+            break                                   # imza ayracı
+        if re.match(r"^On .+ wrote:$", s) or re.match(r"^\d{1,2}\s.+ tarihinde .+ yazdı:$", s):
+            break                                   # alıntı başlangıcı
+        lines.append(ln)
+    out = re.sub(r"\n{3,}", "\n\n", "\n".join(lines))
+    return re.sub(r"[ \t]+", " ", out).strip()
+
+
+def fetch_thread(headers, thread_id, my_address):
+    """Konuşmadaki tüm mesajları sırayla döndür (senin yazdıkların dahil)."""
+    r = requests.get(f"{API_BASE}/threads/{thread_id}", headers=headers,
+                     params={"format": "full"}, timeout=25)
+    r.raise_for_status()
+    msgs = []
+    for m in r.json().get("messages", []):
+        h = {x["name"]: x["value"] for x in m.get("payload", {}).get("headers", [])}
+        _, sender_mail = parse_from(h.get("From", ""))
+        body = strip_quoted(_plain_body(m.get("payload", {})))
+        msgs.append({
+            "from": h.get("From", ""),
+            "date": h.get("Date", ""),
+            "is_me": my_address in (sender_mail or "").lower(),
+            "body": body[:MAX_BODY_CHARS],
+        })
+    return msgs
+
+
+def build_transcript(msgs):
+    parts = []
+    for m in msgs[-MAX_THREAD_MSGS:]:
+        who = "BEN" if m["is_me"] else f"KARŞI TARAF ({m['from']})"
+        parts.append(f"--- {who} | {m['date']} ---\n{m['body']}")
+    return "\n\n".join(parts)
+
+
+# ---------------------------------------------------------------------------
+# Cevap taslağı (Claude API)
+# GİZLİLİK: bu bölüm çalıştığında mail konuşmasının metni Anthropic API'sine gider.
+# ANTHROPIC_API_KEY tanımlı değilse hiçbir istek atılmaz; panel taslaksız çalışır.
+# ---------------------------------------------------------------------------
+
+DRAFT_SYSTEM = """Sen, Dogukan'ın Türkçe e-posta asistanısın.
+Sana bir e-posta konuşmasının dökümü verilecek. "BEN" etiketli mesajlar Dogukan'ın
+kendi yazdıklarıdır; "KARŞI TARAF" etiketliler ona gelenlerdir.
+
+Görevin, Dogukan'ın AĞZINDAN, karşı tarafa gönderilebilecek bir cevap taslağı yazmak.
+
+Kurallar:
+- Konuşmanın dilini kullan (mail İngilizceyse taslak İngilizce, Türkçeyse Türkçe olsun).
+- Kısa ve profesyonel ol; 120 kelimeyi geçme.
+- Konuşmada geçen somut ayrıntılara (pozisyon adı, tarih, isim) atıf yap.
+- ASLA bilgi uydurma. Dogukan'ın doldurması gereken bir yer varsa [köşeli parantez] kullan.
+- Selamlama ve kapanış ekle, imza atma.
+- Cevap gerektirmeyen bir mailse (sadece bilgilendirme, otomatik onay, ret bildirimi)
+  draft'ı boş string bırak ve needs_reply'ı false yap.
+
+SADECE şu JSON'u döndür, başka hiçbir şey yazma:
+{"summary": "<mailin 1 cümlelik Türkçe özeti>", "needs_reply": true/false, "draft": "<taslak metin>"}"""
+
+
+def pick_model(api_key):
+    """Model kimliklerini sabitlemek yerine hesapta hangisi varsa onu seç."""
+    env = os.environ.get("ANTHROPIC_MODEL")
+    if env:
+        return env
+    r = requests.get(ANTHROPIC_MODELS_URL, timeout=20, headers={
+        "x-api-key": api_key, "anthropic-version": ANTHROPIC_VERSION,
+    })
+    r.raise_for_status()
+    ids = [m["id"] for m in r.json().get("data", [])]
+    if not ids:
+        raise RuntimeError("model listesi bos")
+    for pref in ("haiku", "sonnet"):          # ucuzdan pahalıya
+        for mid in ids:
+            if pref in mid.lower():
+                return mid
+    return ids[0]
+
+
+def generate_draft(api_key, model, subject, transcript):
+    payload = {
+        "model": model,
+        "max_tokens": 700,
+        "system": DRAFT_SYSTEM,
+        "messages": [{"role": "user", "content":
+                      f"Konu: {subject}\n\nKONUŞMA DÖKÜMÜ:\n{transcript}"}],
+    }
+    r = requests.post(ANTHROPIC_URL, timeout=60, json=payload, headers={
+        "x-api-key": api_key,
+        "anthropic-version": ANTHROPIC_VERSION,
+        "content-type": "application/json",
+    })
+    r.raise_for_status()
+    text = "".join(b.get("text", "") for b in r.json().get("content", [])).strip()
+    m = re.search(r"\{.*\}", text, re.S)       # model bazen JSON'u metne sarar
+    if not m:
+        return None
+    d = json.loads(m.group(0))
+    return {
+        "summary": (d.get("summary") or "").strip(),
+        "needs_reply": bool(d.get("needs_reply")),
+        "draft": (d.get("draft") or "").strip(),
+    }
 
 
 def build():
@@ -153,6 +310,8 @@ def build():
             continue
         name, email = parse_from(hdrs.get("From", ""))
         important.append({
+            "id": mid,
+            "thread_id": hdrs.get("__thread_id", ""),
             "from": name,
             "email": email,
             "subject": hdrs.get("Subject", "(konu yok)"),
@@ -163,15 +322,66 @@ def build():
     important.sort(key=lambda x: x["ts"], reverse=True)
     for it in important:
         del it["ts"]
+    important = important[:MAX_ITEMS]
 
-    return {
+    # --- konuşma geçmişi + cevap taslağı ---
+    api_key = os.environ.get("ANTHROPIC_API_KEY", "").strip()
+    draft_note = None
+    model = None
+    if api_key:
+        try:
+            model = pick_model(api_key)
+        except Exception as e:
+            draft_note = f"model_secilemedi: {e}"
+    else:
+        draft_note = "ANTHROPIC_API_KEY yok - taslak uretilmedi"
+
+    try:
+        my_address = get_my_address(headers)
+    except Exception:
+        my_address = ""
+
+    drafted = 0
+    for it in important:
+        tid = it.get("thread_id")
+        if not tid:
+            continue
+        try:
+            msgs = fetch_thread(headers, tid, my_address)
+        except Exception:
+            continue
+        it["thread_len"] = len(msgs)
+        # Son mesaj senden ise zaten cevap vermişsin -> öneri gösterme
+        it["awaiting_reply"] = bool(msgs) and not msgs[-1]["is_me"]
+        it["i_replied_before"] = any(m["is_me"] for m in msgs)
+
+        if not it["awaiting_reply"] or not model or drafted >= MAX_DRAFTS:
+            continue
+        try:
+            res = generate_draft(api_key, model, it["subject"], build_transcript(msgs))
+        except Exception as e:
+            if not draft_note:
+                draft_note = f"taslak_hatasi: {e}"
+            continue
+        if res:
+            drafted += 1
+            it["summary"] = res["summary"]
+            it["needs_reply"] = res["needs_reply"]
+            it["draft"] = res["draft"] if res["needs_reply"] else ""
+
+    out = {
         "updated": dt.datetime.now(IST).strftime("%Y-%m-%d %H:%M"),
         "ok": True,
         "window_days": WINDOW_DAYS,
         "total_unread": len(ids),
         "important_unread": len(important),
-        "items": important[:MAX_ITEMS],
+        "drafts": drafted,
+        "model": model or "",
+        "items": important,
     }
+    if draft_note:
+        out["draft_note"] = draft_note
+    return out
 
 
 if __name__ == "__main__":
