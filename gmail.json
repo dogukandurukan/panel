@@ -1,21 +1,8 @@
 {
-  "updated": "2026-08-19 09:22",
+  "updated": "2026-08-19 14:31",
   "ok": true,
   "window_days": 3,
-  "total_unread": 47,
-  "important_unread": 2,
-  "items": [
-    {
-      "from": "Apple",
-      "email": "no_reply@email.apple.com",
-      "subject": "Your invoice from Apple.",
-      "date": "Wed, 19 Aug 2026 04:02:37 +0000 (GMT)"
-    },
-    {
-      "from": "Apple Developer",
-      "email": "developer@insideapple.apple.com",
-      "subject": "Updated Apple Developer Program License Agreement Now Available",
-      "date": "Tue, 18 Aug 2026 17:00:46 +0000 (GMT)"
-    }
-  ]
+  "total_unread": 49,
+  "important_unread": 0,
+  "items": []
 }
