@@ -221,10 +221,10 @@ const DAYNAMES=['Pazar','Pazartesi','Salı','Çarşamba','Perşembe','Cuma','Cum
 /* ===== ANTRENMAN (gün gün, programdan) ===== */
 const WK={
  1:{title:'Üst Vücut A — İtiş (+ koşu)',run:true,ex:[['Bench press','4 × 6-8'],['Overhead press','3 × 8'],['Incline dumbbell press','3 × 10'],['Dips','3 × 10'],['Overhead triceps extension','3 × 12'],['Lateral raise','3 × 12'],['Koşu','20-25 dk kolay tempo']]},
- 2:{title:'Alt Vücut A — Tek Bacak',run:false,ex:[['Bulgar split squat (inişte 3 sn)','3 × 8 / bacak'],['Step-up','3 × 10 / bacak'],['Leg extension','3 × 12 / bacak'],['Tek ayak denge (gözler kapalı dahil)','3 × 30 sn / ayak']]},
+ 2:{title:'Alt Vücut A — Tek Bacak',run:false,ex:[['Back squat','3 × 6-8'],['Bulgar split squat (inişte 3 sn)','3 × 8 / bacak'],['Step-up','3 × 10 / bacak'],['Leg extension','3 × 12 / bacak'],['Tek ayak denge (gözler kapalı dahil)','3 × 30 sn / ayak']]},
  3:{title:'Kürek (sabah) + Basket/Tenis (akşam)',run:false,ex:[['Sabah: kürek','20-30 dk'],['Akşam: basketbol / tenis','serbest']]},
  4:{title:'Üst Vücut B — Çekiş (+ koşu)',run:true,ex:[['Barfiks / lat pulldown','4 × 8'],['Barbell row','3 × 8'],['Face pull','3 × 15'],['Biceps curl','3 × 10'],['Hammer curl','3 × 12'],['Plank','3 × 45 sn'],['Koşu','20-25 dk kolay tempo']]},
- 5:{title:'Alt Vücut B — Klasik',run:false,ex:[['Romanian deadlift','3 × 8'],['Hip thrust','3 × 10'],['Leg curl','3 × 12'],['Calf raise (tek ayak)','3 × 15 / ayak']]},
+ 5:{title:'Alt Vücut B — Klasik',run:false,ex:[['Romanian deadlift','3 × 8'],['Hip thrust','3 × 10'],['Leg curl','3 × 12'],['Calf raise (tek ayak)','4 × 15 / ayak']]},
  6:{title:'Kısa Koşu / Dinlenme',run:true,ex:[['Kısa koşu (opsiyonel)','15-20 dk kolay tempo']]},
  0:{title:'Tam Dinlenme',run:false,ex:[['Dinlenme','—'],['İstersen hafif yürüyüş','serbest']]}
 };
@@ -509,8 +509,21 @@ function renderMeals(){const el=document.getElementById('mealList');el.innerHTML
   el.querySelectorAll('[data-mc]').forEach(inp=>inp.oninput=()=>{meals[+inp.dataset.mc].c=inp.value;saveMeals();renderBars();});}
 
 /* facts + film */
-function renderFacts(){const el=document.getElementById('factList');const base=(doy()*4+factOff)%FACTS.length;el.innerHTML='';
-  for(let i=0;i<4;i++){const f=FACTS[(base+i)%FACTS.length];const d=document.createElement('div');d.className='fact';d.innerHTML='<span class="fb">◆</span><span>'+esc(f)+'</span>';el.appendChild(d);}}
+/* İlginç bilgiler: facts_feed.py'nin GitHub Actions'ta Türkçe Vikipedi'den ürettiği
+   facts.json havuzu kullanılır. Dosya yoksa/çekilemezse yukarıdaki gömülü FACTS
+   listesine düşülür (borsa.json / gmail.json ile aynı desen). */
+let factPool=FACTS.slice();
+async function loadFactsJson(){
+  try{
+    const r=await fetch('facts.json?_='+Date.now());
+    if(!r.ok)throw 0;
+    const d=await r.json();
+    const items=(d.items||[]).map(x=>x&&x.text).filter(Boolean);
+    if(items.length){factPool=items;renderFacts();}
+  }catch(e){/* gömülü listeyle devam */}
+}
+function renderFacts(){const el=document.getElementById('factList');const pool=(factPool&&factPool.length)?factPool:FACTS;const base=(doy()*4+factOff)%pool.length;el.innerHTML='';
+  for(let i=0;i<4;i++){const f=pool[(base+i)%pool.length];const d=document.createElement('div');d.className='fact';d.innerHTML='<span class="fb">◆</span><span>'+esc(f)+'</span>';el.appendChild(d);}}
 function filmHTML(f){return '<div class="fitem"><div class="film-title">'+esc(f[0])+' <span class="film-year">'+esc(f[1])+'</span></div><div class="film-row"><b>Yönetmen</b>'+esc(f[2])+'</div><div class="film-row"><b>Oyuncular</b>'+esc(f[3])+'</div><div class="film-note">'+esc(f[4])+'</div></div>';}
 function renderFilm(){const b=(doy()*2+filmOff)%FILMS.length;document.getElementById('filmBox').innerHTML=filmHTML(FILMS[b])+filmHTML(FILMS[(b+1)%FILMS.length]);}
 function artHTML(a){return '<div class="fitem"><div class="film-title">'+esc(a[0])+'</div><div class="film-row"><b>Tür</b>'+esc(a[1])+'</div><div class="film-row"><b>Öne çıkan</b>'+esc(a[2])+'</div><div class="film-note">'+esc(a[3])+'</div></div>';}
@@ -694,7 +707,7 @@ function parseMail(){const ta=document.getElementById('mailPaste');const txt=ta.
   document.getElementById('basvuruRefresh').onclick=loadBasvuru;
   document.getElementById('gmailRefresh').onclick=loadGmailJson;
   renderTasks();await loadMorning();await renderRun();await loadWorkout();renderWtLog();await loadMeals();
-  renderFacts();renderFilm();renderArtist();renderBook();renderHistory();renderGerman();renderNews();renderWatch();renderUS();renderGold();renderWorld();loadFX(false);loadBorsaJson();loadBasvuru();loadGmailJson();
+  renderFacts();renderFilm();renderArtist();renderBook();renderHistory();renderGerman();renderNews();renderWatch();renderUS();renderGold();renderWorld();loadFX(false);loadBorsaJson();loadBasvuru();loadGmailJson();loadFactsJson();
   setInterval(loadBorsaJson,15*60*1000);setInterval(loadBasvuru,15*60*1000);setInterval(loadGmailJson,15*60*1000);
   document.addEventListener('visibilitychange',()=>{if(!document.hidden){loadBorsaJson();loadFX(false);loadBasvuru();loadGmailJson();}});
 })();
