@@ -1,90 +1,90 @@
 {
-  "updated": "2026-08-18 14:24",
+  "updated": "2026-08-19 09:37",
   "watch": [
     {
-      "code": "SASA",
-      "price": "2.28",
-      "chg": "-2.56%",
-      "avg1w": "2.39",
-      "avg1m": "2.50"
+      "code": "ENKAI",
+      "price": "80.15",
+      "chg": "-8.56%",
+      "avg1w": "85.24",
+      "avg1m": "87.55"
     },
     {
-      "code": "BIMAS",
-      "price": "405.75",
-      "chg": "+6.22%",
-      "avg1w": "384.60",
-      "avg1m": "385.50"
-    },
-    {
-      "code": "ASTOR",
-      "price": "320.75",
-      "chg": "-5.52%",
-      "avg1w": "335.95",
-      "avg1m": "306.80"
+      "code": "SISE",
+      "price": "38.64",
+      "chg": "-6.67%",
+      "avg1w": "40.70",
+      "avg1m": "42.24"
     },
     {
       "code": "KONTR",
-      "price": "4.00",
-      "chg": "+0.50%",
-      "avg1w": "3.97",
-      "avg1m": "4.37"
+      "price": "3.98",
+      "chg": "-5.46%",
+      "avg1w": "3.96",
+      "avg1m": "4.50"
+    },
+    {
+      "code": "ODAS",
+      "price": "7.68",
+      "chg": "+2.54%",
+      "avg1w": "7.46",
+      "avg1m": "8.05"
     }
   ],
   "us": [
     {
       "code": "AAPL",
-      "price": "305.93",
-      "chg": "+0.22%",
-      "avg1w": "305.32",
-      "avg1m": "319.16"
+      "price": "305.59",
+      "chg": "-0.11%",
+      "avg1w": "304.79",
+      "avg1m": "317.82"
     },
     {
       "code": "MSFT",
-      "price": "495.40",
-      "chg": "-0.30%",
-      "avg1w": "498.92",
-      "avg1m": "447.55"
+      "price": "480.35",
+      "chg": "-3.04%",
+      "avg1w": "493.77",
+      "avg1m": "451.67"
     },
     {
       "code": "NVDA",
-      "price": "225.16",
-      "chg": "-0.06%",
-      "avg1w": "221.92",
-      "avg1m": "210.03"
+      "price": "225.01",
+      "chg": "-0.07%",
+      "avg1w": "223.41",
+      "avg1m": "211.09"
     },
     {
       "code": "AMZN",
-      "price": "262.65",
-      "chg": "-0.94%",
-      "avg1w": "269.08",
-      "avg1m": "256.08"
+      "price": "261.31",
+      "chg": "-0.51%",
+      "avg1w": "265.73",
+      "avg1m": "256.75"
     },
     {
       "code": "TSLA",
-      "price": "342.27",
-      "chg": "+0.68%",
-      "avg1w": "334.69",
-      "avg1m": "331.60"
+      "price": "339.30",
+      "chg": "-0.87%",
+      "avg1w": "336.37",
+      "avg1m": "329.62"
     }
   ],
   "gold": {
-    "price": "6,855.95",
-    "chg": "+0.86%"
+    "price": "6,774.81",
+    "chg": "+0.75%"
   },
   "news": [
-    "⚪ Sasa Polyester, 7,185 milyar TL tahsisli sermaye artırımı kararı aldı  (Investing.com Türkiye)",
-    "⚪ SASA'dan sermaye artırımı kararı  (Bloomberght)",
-    "⚪ SASA'dan dev sermaye hamlesi: 7,2 milyar TL'lik artırım kararı  (CNBC-e)",
-    "🟢 Astor Enerji kâr artışı beklentilerin üzerinde oldu  (Dünya Gazetesi)",
-    "🟢 Astor Enerji'nin net karı ilk yarıda yüzde 88 arttı  (Ekonomim)",
-    "🟢 Astor Enerji'nin kârı yüzde 88 arttı: 4,6 milyar TL'ye ulaştı  (CNBC-e)",
     "⚪ Enka İnşaat’ta (ENKAI) 110 TL hedef fiyat: Bilanço incelendi  (Paratic Haber)",
-    "⚪ ENKAI’da 110 TL Hedef Fiyat: 2. Çeyrek Bilanço Nasıl?  (Haber Ege)"
+    "⚪ ENKAI’da 110 TL Hedef Fiyat: 2. Çeyrek Bilanço Nasıl?  (Haber Ege)",
+    "⚪ ENKAI için hedef fiyat 2Ç26 bilançosuyla 126 TL’ye indi  (Paratic Haber)",
+    "🔴 Şişecam (SISE) bilanço sonrası sert düştü: Hedef fiyat geriledi  (Paratic Haber)",
+    "⚪ Şişecam’da hedef fiyat 64,7 TL’ye indirildi  (Paratic Haber)",
+    "⚪ Şişecam’da bilanço beklenti altında, hedef fiyatlar yukarıda  (borsagundem.com.tr)",
+    "⚪ KAP *** ODAŞ ELEKTRİK ÜRETİM SANAYİ TİCARET A.Ş. *** ODAS *** Herhangi Bir Otoriteye Mali Tablo Verilmesi  (Yeni Şafak)",
+    "⚪ BIST:ODAS için sezginnugur tarafından #ODAS  (TradingView)"
   ],
   "world": [
-    "🌍 2026-YKS yerleştirme sonuçları açıklandı - Anadolu Ajansı  (Anadolu Ajansı)",
-    "🌍 İki sıcak hava dalgası aynı anda geliyor. İstanbul'da hava sıcaklığı tavan yapacak - NTV Haber  (NTV Haber)",
-    "🌍 Bakan Gürlek duyurdu... İstanbul merkezli 8 ilde 'şeker' soruşturması: 47 şüpheli ifadeye çağrıldı - Hürriyet  (Hürriyet)",
-    "🌍 \"Çerçeve Yasa\" kapsamında kurulan kurulun ilk toplantı tarihi belli oldu - T24  (T24)"
+    "🌍 Furkan Vakfı'na yönelik operasyon: Alparslan Kuytul, eşi ve çok sayıda kişi gözaltında! - Hürriyet  (Hürriyet)",
+    "🌍 Süleymancılar: Arif Ahmet Denizolgun'un mezarı açılıyor - BBC  (BBC)",
+    "🌍 Trabzon'da ilçe emniyet müdürlüğüne İHA düştü - Diken  (Diken)",
+    "🌍 Tom Barrack: Türkiye, İsrail'in saldırısı konusunda uyarılmadı, tepki verebilirdi; İsrail, Türkiye ve Suriye arasında \"çatışmayı önleme mekanizması\" için çalışıyoruz - T24  (T24)"
   ]
 }
