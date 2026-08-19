@@ -1,90 +1,104 @@
 {
-  "updated": "2026-08-19 09:37",
+  "updated": "2026-08-19 14:24",
   "watch": [
     {
-      "code": "ENKAI",
-      "price": "80.15",
-      "chg": "-8.56%",
-      "avg1w": "85.24",
-      "avg1m": "87.55"
+      "code": "SASA",
+      "price": "2.27",
+      "chg": "+0.89%",
+      "avg1w": "2.34",
+      "avg1m": "2.48"
     },
     {
-      "code": "SISE",
-      "price": "38.64",
-      "chg": "-6.67%",
-      "avg1w": "40.70",
-      "avg1m": "42.24"
+      "code": "ALARK",
+      "price": "110.50",
+      "chg": "+3.27%",
+      "avg1w": "105.44",
+      "avg1m": "104.27"
+    },
+    {
+      "code": "GUBRF",
+      "price": "463.75",
+      "chg": "+8.10%",
+      "avg1w": "435.15",
+      "avg1m": "425.17"
+    },
+    {
+      "code": "TUPRS",
+      "price": "388.75",
+      "chg": "+3.94%",
+      "avg1w": "367.85",
+      "avg1m": "324.29"
     },
     {
       "code": "KONTR",
-      "price": "3.98",
-      "chg": "-5.46%",
-      "avg1w": "3.96",
-      "avg1m": "4.50"
+      "price": "3.94",
+      "chg": "-1.50%",
+      "avg1w": "3.99",
+      "avg1m": "4.34"
     },
     {
-      "code": "ODAS",
-      "price": "7.68",
-      "chg": "+2.54%",
-      "avg1w": "7.46",
-      "avg1m": "8.05"
+      "code": "YEOTK",
+      "price": "35.96",
+      "chg": "-3.12%",
+      "avg1w": "38.89",
+      "avg1m": "39.99"
     }
   ],
   "us": [
     {
       "code": "AAPL",
-      "price": "305.59",
-      "chg": "-0.11%",
-      "avg1w": "304.79",
-      "avg1m": "317.82"
+      "price": "310.03",
+      "chg": "+1.45%",
+      "avg1w": "305.81",
+      "avg1m": "317.03"
     },
     {
       "code": "MSFT",
-      "price": "480.35",
-      "chg": "-3.04%",
-      "avg1w": "493.77",
-      "avg1m": "451.67"
+      "price": "481.63",
+      "chg": "+0.27%",
+      "avg1w": "489.34",
+      "avg1m": "455.45"
     },
     {
       "code": "NVDA",
-      "price": "225.01",
-      "chg": "-0.07%",
-      "avg1w": "223.41",
-      "avg1m": "211.09"
+      "price": "219.74",
+      "chg": "-2.34%",
+      "avg1w": "223.86",
+      "avg1m": "211.87"
     },
     {
       "code": "AMZN",
-      "price": "261.31",
-      "chg": "-0.51%",
-      "avg1w": "265.73",
-      "avg1m": "256.75"
+      "price": "259.45",
+      "chg": "-0.71%",
+      "avg1w": "263.16",
+      "avg1m": "257.20"
     },
     {
       "code": "TSLA",
-      "price": "339.30",
-      "chg": "-0.87%",
-      "avg1w": "336.37",
-      "avg1m": "329.62"
+      "price": "336.87",
+      "chg": "-0.72%",
+      "avg1w": "337.18",
+      "avg1m": "328.07"
     }
   ],
   "gold": {
-    "price": "6,774.81",
-    "chg": "+0.75%"
+    "price": "6,824.76",
+    "chg": "+1.50%"
   },
   "news": [
-    "⚪ Enka İnşaat’ta (ENKAI) 110 TL hedef fiyat: Bilanço incelendi  (Paratic Haber)",
-    "⚪ ENKAI’da 110 TL Hedef Fiyat: 2. Çeyrek Bilanço Nasıl?  (Haber Ege)",
-    "⚪ ENKAI için hedef fiyat 2Ç26 bilançosuyla 126 TL’ye indi  (Paratic Haber)",
-    "🔴 Şişecam (SISE) bilanço sonrası sert düştü: Hedef fiyat geriledi  (Paratic Haber)",
-    "⚪ Şişecam’da hedef fiyat 64,7 TL’ye indirildi  (Paratic Haber)",
-    "⚪ Şişecam’da bilanço beklenti altında, hedef fiyatlar yukarıda  (borsagundem.com.tr)",
-    "⚪ KAP *** ODAŞ ELEKTRİK ÜRETİM SANAYİ TİCARET A.Ş. *** ODAS *** Herhangi Bir Otoriteye Mali Tablo Verilmesi  (Yeni Şafak)",
-    "⚪ BIST:ODAS için sezginnugur tarafından #ODAS  (TradingView)"
+    "⚪ Sasa Polyester, 7,185 milyar TL tahsisli sermaye artırımı kararı aldı  (Investing.com Türkiye)",
+    "⚪ SASA'dan sermaye artırımı kararı  (Bloomberght)",
+    "⚪ SASA'dan dev sermaye hamlesi: 7,2 milyar TL'lik artırım kararı  (CNBC-e)",
+    "⚪ KAP *** ALARKO HOLDİNG A.Ş. *** ALARK *** Herhangi Bir Otoriteye Mali Tablo Verilmesi  (Yeni Şafak)",
+    "⚪ #ALARK ALARKO HOLDİNG HEDEF FİYAT DEĞİŞİKLİĞİ - İLAYDA ÖZDEMİR İŞLEK Cathay Pacific (WZVPhNx7E6)  (Mshale)",
+    "⚪ Alarko Holding'den Büyük Geri Alım Hamlesi! #alark Endrick (ceD3htsJpe)  (Mshale)",
+    "⚪ KAP *** YEO TEKNOLOJİ ENERJİ VE ENDÜSTRİ A.Ş. *** YEOTK *** Faaliyet Raporu (Konsolide)  (Yeni Şafak)",
+    "🟢 YEO Teknoloji kârlılıkta vites yükseltti  (Dünya Gazetesi)"
   ],
   "world": [
-    "🌍 Furkan Vakfı'na yönelik operasyon: Alparslan Kuytul, eşi ve çok sayıda kişi gözaltında! - Hürriyet  (Hürriyet)",
-    "🌍 Süleymancılar: Arif Ahmet Denizolgun'un mezarı açılıyor - BBC  (BBC)",
-    "🌍 Trabzon'da ilçe emniyet müdürlüğüne İHA düştü - Diken  (Diken)",
-    "🌍 Tom Barrack: Türkiye, İsrail'in saldırısı konusunda uyarılmadı, tepki verebilirdi; İsrail, Türkiye ve Suriye arasında \"çatışmayı önleme mekanizması\" için çalışıyoruz - T24  (T24)"
+    "🌍 Furkan Vakfı: Alparslan Kuytul, eşi ve birçok vakıf üyesine gözaltı - BBC  (BBC)",
+    "🌍 Okullarda yeni dönem! MEB'den 81 ile genelge: Kılık kıyafet, cep telefonu, kayıt parası... - Milliyet  (Milliyet)",
+    "🌍 Yeni Parti vekili Melih Meriç'e bıçaklı saldırı. Saldırgan eski CHP'li ilçe başkanı çıktı - NTV Haber  (NTV Haber)",
+    "🌍 Süleymancıların lideri Alihan Kuriş neyle suçlanıyor? - dw.com  (dw.com)"
   ]
 }
