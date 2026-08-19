@@ -1,7 +1,7 @@
 {
- "updated": "2026-08-19 19:25",
+ "updated": "2026-08-19 19:46",
  "ok": true,
- "count": 187,
+ "count": 199,
  "requested": 214,
  "items": [
   {
@@ -418,18 +418,6 @@
    "url": "https://tr.wikipedia.org/wiki/Fotosentez"
   },
   {
-   "text": "Bu liste, güvenilir kaynaklar tarafından teyit edilen, bilinen en yaşlı ağaçların bir listesidir. Tek bir ağacı neyin oluşturduğuna ilişkin tanımlar değişir.",
-   "title": "En yaşlı ağaçlar listesi",
-   "url": "https://tr.wikipedia.org/wiki/En_ya%C5%9Fl%C4%B1_a%C4%9Fa%C3%A7lar_listesi",
-   "via_search": "Pando (ağaç)"
-  },
-  {
-   "text": "Sekoya Ulusal Parkı, Amerika Birleşik Devletleri'nin Kaliforniya eyaletinde, Visalia şehri yakınlarında bulunan ve 1.635,18 km² genişliğindeki bir millî park'tır.",
-   "title": "Sekoya Millî Parkı",
-   "url": "https://tr.wikipedia.org/wiki/Sekoya_Mill%C3%AE_Park%C4%B1",
-   "via_search": "General Sherman (ağaç)"
-  },
-  {
    "text": "Bakteriyofaj, bakterileri enfekte eden bir virüstür. Terim genelde kısaltılmış hali olan faj olarak kullanılır.",
    "title": "Bakteriyofaj",
    "url": "https://tr.wikipedia.org/wiki/Bakteriyofaj"
@@ -535,12 +523,6 @@
    "text": "Çatalhöyük, bugün Konya'nın Çumra ilçesine bağlı Küçükköy yakınlarında, milattan önce 7000 yıllarından itibaren Cilalı Taş Devri ve Bakır Çağı'nda yerleşim yeri olarak kullanılmış arkeolojik kalıntılardır.",
    "title": "Çatalhöyük",
    "url": "https://tr.wikipedia.org/wiki/%C3%87atalh%C3%B6y%C3%BCk"
-  },
-  {
-   "text": "İlk Çin İmparatoru'nun Mozolesi Çin'in Şensi eyaletindeki Xi'an'daki Lintong Bölgesinde bulunmaktadır. Mozolenin M.Ö. 246 - 208 yılları arasında inşa edildiği ve kesik bir piramit şeklinde 76 metre yüksekliğinde bir mezarın höyüğün altında yer aldığı belirtilmiştir.",
-   "title": "İlk Çin İmparatorunun Mozolesi",
-   "url": "https://tr.wikipedia.org/wiki/%C4%B0lk_%C3%87in_%C4%B0mparatorunun_Mozolesi",
-   "via_search": "Terracotta Ordusu"
   },
   {
    "text": "Pompeii, Pompei komünü sınırları içerisinde, İtalya'nın kısmi özerk bölgesi Campania'da, Napoli şehri yakınlarında bulunan ve hâlâ kısmen gömülü olan yıkıntı halindeki antik Roma kentidir.",
@@ -876,10 +858,9 @@
    "url": "https://tr.wikipedia.org/wiki/Tsunami"
   },
   {
-   "text": "Harry Edward Kane, İngiliz profesyonel futbolcu olan Kane, Bundesliga kulübü Bayern Münih'te forvet olarak oynamakta ve İngiltere milli takımının kaptanlığını yapmaktadır.",
-   "title": "Harry Kane",
-   "url": "https://tr.wikipedia.org/wiki/Harry_Kane",
-   "via_search": "Hurrikan"
+   "text": "Kasırga ya da tropikal siklon, büyük çaplı ve çok şiddetli, Beaufort ölçeğine göre saatte 118 km'den fazla hızla ve dönerek esen tropik rüzgârdır.",
+   "title": "Tropikal siklon",
+   "url": "https://tr.wikipedia.org/wiki/Tropikal_siklon"
   },
   {
    "text": "Altın oran, matematikte iki miktardan büyük olanın küçüğe oranı, miktarların toplamının miktarları büyük olanına oranı ile aynı ise altın orandır. Altın oran aynı zamanda antik çağdan bu yana sanat ve mimaride en iyi uyum ve oranları veren düzen bağıntısı olarak kabul edilmekteydi.",
@@ -915,6 +896,83 @@
    "text": "Olasılık teorisinde, doğum günü problemi veya doğum günü paradoksu, n adet rastgele seçilmiş kişiden oluşan bir grup içindeki bazı çiftlerin doğum gününün aynı olma olasılığını inceler.",
    "title": "Doğum günü problemi",
    "url": "https://tr.wikipedia.org/wiki/Do%C4%9Fum_g%C3%BCn%C3%BC_problemi"
+  },
+  {
+   "text": "Eksiklik Teoremi, Kurt Gödel'in 1931 yılında doktorasında yer verdiği \"Principia Mathematica Gibi Dizgelerin Biçimsel Olarak Karar Verilemeyen Önermeleri Üzerine\" başlıklı makalesinde 4. önerme olarak geçer.",
+   "title": "Gödel'in eksiklik teoremi",
+   "url": "https://tr.wikipedia.org/wiki/G%C3%B6del'in_eksiklik_teoremi",
+   "via_search": "Gödel'in eksiklik teoremleri"
+  },
+  {
+   "text": "Bir asal sayı, yalnızca 1'den büyük olup kendisinden küçük iki doğal sayının çarpımı olarak ifade edilemeyen bir doğal sayıdır. 1'den büyük ve asal olmayan doğal sayılara bileşik sayı adı verilir.",
+   "title": "Asal sayı",
+   "url": "https://tr.wikipedia.org/wiki/Asal_say%C4%B1"
+  },
+  {
+   "text": "Sonsuzluk, her ne kadar popüler düşüncede bitmeyen, zamansız ve zamanla tanımlansa da; birçok kişiye göre zamanın dışında bir zamansızlık varoluşu olarak tanımlanmıştır.",
+   "title": "Sonsuzluk",
+   "url": "https://tr.wikipedia.org/wiki/Sonsuzluk"
+  },
+  {
+   "text": "Kaos teorisi, kaos kuramı veya kargaşa kuramı; yapısal olarak bir fizik teorisi ya da matematiksel bir tümevarım değil, fiziksel gerçeklik parçalarının bir bütün olarak eğilimini açıklamaya yarayan bir yöntemdir.",
+   "title": "Kaos teorisi",
+   "url": "https://tr.wikipedia.org/wiki/Kaos_teorisi"
+  },
+  {
+   "text": "Teorem: Sonlu sayıda bölgeden oluşan bir harita, birbirine sonsuz sayıda nokta boyunca komşu olan iki bölgenin renkleri birbirinden farklı olmak üzere, boyanacaksa bu işlem için dört rengin yeterli olacağı bir strateji vardır.",
+   "title": "Dört renk teoremi",
+   "url": "https://tr.wikipedia.org/wiki/D%C3%B6rt_renk_teoremi"
+  },
+  {
+   "text": "Öklid (Grekçe: Εὐκλείδης Eukleídēs; MÖ 330 - 275 yılları arasında yaşamış, İskenderiyeli bir matematikçidir. Megaralı Öklid'den ayırmak için bazen İskenderiyeli Öklid olarak anılır, genellikle \"geometrinin kurucusu\" veya \"geometrinin babası\" olarak anılan bir Yunan matematikçiydi.",
+   "title": "Öklid",
+   "url": "https://tr.wikipedia.org/wiki/%C3%96klid"
+  },
+  {
+   "text": "0 (sıfır), etkisiz bir rakamı temsil eden bir niceliktir. Herhangi bir sayıya 0 eklemek veya çıkarmak o sayıyı değiştirmez; matematiksel terminolojide 0, tam sayılar, rasyonel sayılar, reel sayılar ve karmaşık sayıların yanı sıra diğer cebirsel yapıların da toplamsal birimidir.",
+   "title": "0",
+   "url": "https://tr.wikipedia.org/wiki/0"
+  },
+  {
+   "text": "Oyun teorisi veya Oyun kuramı, istatistik, sosyal bilimler, biyoloji, mühendislik, siyasi bilimler, bilgisayar bilimleri kullanılan meşhur teoridir. Oyun teorisi, bireyin başarısının diğerlerinin seçimlerine dayalı olduğu seçimler yapması olan bazı stratejik durumların matematiksel olarak davranış biçimlerini yakalamaya çalışır.",
+   "title": "Oyun teorisi",
+   "url": "https://tr.wikipedia.org/wiki/Oyun_teorisi"
+  },
+  {
+   "text": "Büyük Sayılar Kanunu ya da Büyük Sayılar Yasası, bir rassal değişkenin uzun vadede kararlı bir ortalamaya yaklaşacağını ifade eden bir olasılık teoremidir.",
+   "title": "Büyük sayılar yasası",
+   "url": "https://tr.wikipedia.org/wiki/B%C3%BCy%C3%BCk_say%C4%B1lar_yasas%C4%B1"
+  },
+  {
+   "text": "Ünlü, sesli veya vokal; ses yolu görece açık durumda iken, ses tellerinin titreşmesi ile bir engele takılmadan oluşan; hecenin en küçük birimini oluşturan konuşma sesi.",
+   "title": "Ünlü (dilbilim)",
+   "url": "https://tr.wikipedia.org/wiki/%C3%9Cnl%C3%BC_(dilbilim)"
+  },
+  {
+   "text": "Yazı, ağızdan çıkan seslerin, fikirlerin ve görüşlerin mimik yardımı olmaksızın iletilmesini sağlayan, insanlar tarafından bulunan belirli işaret ve işaret sistemleridir.",
+   "title": "Yazı tarihi",
+   "url": "https://tr.wikipedia.org/wiki/Yaz%C4%B1_tarihi",
+   "via_search": "Yazının tarihi"
+  },
+  {
+   "text": "Rüya ya da düş, uykunun genel ve karakteristik özelliklerinden biri olup, uykunun hızlı göz hareketi (REM) adlı evreleriyle yakından ilişkili bulunan, görsel ve işitsel algı ve duygulardır.",
+   "title": "Rüya",
+   "url": "https://tr.wikipedia.org/wiki/R%C3%BCya"
+  },
+  {
+   "text": "Müzik kuramı terimi genel olarak iki farklı ama birbiriyle ilgili anlamda kullanılır:Müziğin temel yapıtaşları. Bu yapıtaşları ile müziğin incelenmesi, sınıflandırılması ve hatta bestelenmesini konu alan bilim dalı.",
+   "title": "Müzik teorisi",
+   "url": "https://tr.wikipedia.org/wiki/M%C3%BCzik_teorisi"
+  },
+  {
+   "text": "Umami ; tatlı, ekşi, bitter (acımtırak/buruk) ve tuzlu ile birlikte beş temel tattan biridir. Umami Japonca \"hoşa giden tat\" anlamına gelen \"うま味\" kelimesinden alıntıdır.",
+   "title": "Umami",
+   "url": "https://tr.wikipedia.org/wiki/Umami"
+  },
+  {
+   "text": "Kahve, kökboyasıgiller (Rubiaceae) familyasının Coffea cinsinde yer alan bir ağaç ve bu ağacın meyve çekirdeklerinin kavrulup öğütülmesi ile elde edilen tozun su ya da süt ile karıştırılmasıyla yapılan içecektir.",
+   "title": "Kahve",
+   "url": "https://tr.wikipedia.org/wiki/Kahve"
   },
   {
    "text": "Baharat Yolu, eski çağlarda, Uzak Doğu'yu Batı'ya bağlayan ticaret yollarından biriydi. Baharat günümüzden binlerce yıl önce Doğu ülkelerinde kullanılıyordu.",
