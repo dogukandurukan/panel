@@ -1,8 +1,8 @@
 name: gmail-feed
 on:
   schedule:
-    - cron: '0 6 * * 1-5'    # 09:00 Türkiye (hafta içi)
-    - cron: '0 11 * * 1-5'   # 14:00 Türkiye (hafta içi)
+    - cron: '0 6 * * *'      # 09:00 Türkiye (her gün, hafta sonu dahil)
+    - cron: '0 11 * * *'     # 14:00 Türkiye (her gün, hafta sonu dahil)
   workflow_dispatch:          # "Run workflow" ile elle de tetiklenir
 jobs:
   feed:
@@ -20,6 +20,8 @@ jobs:
           GMAIL_CLIENT_ID: ${{ secrets.GMAIL_CLIENT_ID }}
           GMAIL_CLIENT_SECRET: ${{ secrets.GMAIL_CLIENT_SECRET }}
           GMAIL_REFRESH_TOKEN: ${{ secrets.GMAIL_REFRESH_TOKEN }}
+          # Opsiyonel: yoksa taslak üretilmez, mail listesi normal çalışır.
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
       - name: gmail.json'u commit et
         run: |
           git config user.name "gmail-feed"
