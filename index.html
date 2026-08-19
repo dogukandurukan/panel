@@ -645,7 +645,7 @@ function renderGmail(d){
     return;
   }
   statsEl.innerHTML=
-    '<div class="stat"><div class="stat-n">'+(d.total_unread||0)+'</div><div class="stat-l">Okunmamış · '+(d.window_days||3)+'g</div></div>'+
+    '<div class="stat"><div class="stat-n">'+(d.total_unread||0)+'</div><div class="stat-l">Primary · '+(d.window_days||3)+'g</div></div>'+
     '<div class="stat"><div class="stat-n">'+(d.important_unread||0)+'</div><div class="stat-l">Önemli/Kişisel</div></div>';
   const items=(d.items||[]).slice(0,5);
   if(!items.length){listEl.innerHTML='<div class="empty">Cevap bekleyen önemli mail yok.</div>';return;}

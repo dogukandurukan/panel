@@ -3,10 +3,12 @@
 gmail_feed.py — Gmail'deki son günlerin okunmamış maillerinden gmail.json üretir.
 MAIL GÖNDERMEZ, hiçbir maili değiştirmez/okundu işaretlemez (salt-okunur scope).
 
-Hesapta Gmail'in "Primary/Sosyal/Promosyon" sekmeleri (kategoriler) kapalı olduğu için
-category:primary filtresi kullanılmıyor. Onun yerine:
-  1) is:unread + son WINDOW_DAYS gün ile pencere daraltılıyor (9000+ eski okunmamışın
-     tamamı değil, sadece güncel akış)
+Sayım, Gmail'de kullanıcının fiilen baktığı PRIMARY sekmesiyle birebir aynı olsun diye
+category:primary + in:inbox ile sınırlandırılmıştır. (Aksi halde Promotions/Updates
+sekmelerindeki bülten ve LinkedIn iş ilanı bildirimleri de sayılıyor ve panel, Gmail'de
+"hiç okunmamışım yok" görünürken 49 gibi kafa karıştırıcı bir sayı gösteriyordu.)
+Eleme sırası:
+  1) is:unread + in:inbox + category:primary + son WINDOW_DAYS gün ile pencere daraltılıyor
   2) Toplu/otomatik postalar (bülten, iş ilanı bildirimi, pazarlama vb.) List-Unsubscribe /
      List-Unsubscribe-Post / Precedence: bulk header'larına bakılarak eleniyor
   3) Header'da bu bilgi yoksa, bilinen toplu-mail gönderen domain/local-part
@@ -65,7 +67,7 @@ def get_access_token():
 
 
 def list_unread_ids(headers, window_days):
-    q = f"is:unread newer_than:{window_days}d -in:chats"
+    q = f"is:unread in:inbox category:primary newer_than:{window_days}d -in:chats"
     ids, page_token = [], None
     while True:
         params = {"q": q, "maxResults": 100}
