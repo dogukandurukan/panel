@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Günlük Almanak</title>
+<script>/* temayı boyamadan önce uygula — FOUC olmasın (canlı sitede localStorage kullanılıyor) */
+  try{var _t=localStorage.getItem('d:theme');if(_t)document.documentElement.setAttribute('data-theme',JSON.parse(_t));}catch(e){}</script>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
   :root{--paper:#E9E4D8;--card:#F4F0E7;--ink:#211F1A;--muted:#6E675A;--line:#D3CCBD;--line2:#E1DACC;
@@ -149,7 +151,76 @@
   .wglass.on{background:var(--accent);border-color:var(--accent);}
   footer{margin-top:26px;padding-top:14px;border-top:1px solid var(--line);font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;}
   @media (max-width:640px){body{padding:16px 14px 34px;}.clock{text-align:left;}}
-  @media (prefers-reduced-motion:reduce){*{transition:none!important;}}
+
+  /* ===================== TEMA DÜĞMESİ ===================== */
+  .theme-toggle{background:none;border:1px solid var(--line);color:var(--muted);font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:6px 11px;border-radius:4px;cursor:pointer;white-space:nowrap;display:inline-flex;align-items:center;gap:7px;transition:border-color .2s,color .2s;}
+  .theme-toggle:hover{border-color:var(--accent);color:var(--accent);}
+  .theme-toggle .tt-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);}
+
+  /* ===================== HUD TEMASI ===================== */
+  html[data-theme="hud"]{
+    --paper:#070B12; --card:#0D1420; --ink:#D8E6F2; --muted:#7C93A8;
+    --line:#1B2942; --line2:#131E30; --accent:#35E0D4; --up:#3DDC91; --down:#FF5C7A;
+    --serif:'Inter',system-ui,sans-serif;   /* Fraunces almanak kimliği; HUD'da sans */
+  }
+  html[data-theme="hud"] body{
+    background-color:var(--paper);
+    background-image:linear-gradient(var(--line2) 1px,transparent 1px),linear-gradient(90deg,var(--line2) 1px,transparent 1px);
+    background-size:42px 42px;
+  }
+  html[data-theme="hud"] body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+    background:radial-gradient(125% 92% at 50% 0%,transparent 55%,rgba(3,7,14,.9) 100%);}
+  html[data-theme="hud"] .wrap{position:relative;z-index:1;}
+  /* kart: ince parlama + köşe işaretleri */
+  html[data-theme="hud"] .card{position:relative;box-shadow:0 0 0 1px var(--line),0 0 26px -14px var(--accent);}
+  html[data-theme="hud"] .card::before,html[data-theme="hud"] .card::after{content:'';position:absolute;width:9px;height:9px;pointer-events:none;opacity:.5;}
+  html[data-theme="hud"] .card::before{top:6px;left:6px;border-top:1px solid var(--accent);border-left:1px solid var(--accent);}
+  html[data-theme="hud"] .card::after{bottom:6px;right:6px;border-bottom:1px solid var(--accent);border-right:1px solid var(--accent);}
+  /* başlıklar: mono + uppercase + geniş harf aralığı */
+  html[data-theme="hud"] .card-title,html[data-theme="hud"] .mast-title{font-family:var(--mono);text-transform:uppercase;letter-spacing:.12em;}
+  html[data-theme="hud"] .mast-title{font-weight:600;font-size:clamp(24px,4.4vw,42px);}
+  html[data-theme="hud"] .card-title{font-size:16px;}
+  html[data-theme="hud"] .film-title,html[data-theme="hud"] .de-word{font-family:var(--mono);letter-spacing:.02em;}
+  /* sayılarda hafif parıltı */
+  html[data-theme="hud"] .clock,html[data-theme="hud"] .stat-n,html[data-theme="hud"] .mkt-val{text-shadow:0 0 13px color-mix(in srgb,var(--accent) 38%,transparent);}
+  /* koyu zeminde beyaz form alanları olmasın */
+  html[data-theme="hud"] .wtin,html[data-theme="hud"] .pin,html[data-theme="hud"] .mkt-in,html[data-theme="hud"] .macros input,html[data-theme="hud"] .tgt input,html[data-theme="hud"] .runbox input,html[data-theme="hud"] .add-row input,html[data-theme="hud"] .paste,html[data-theme="hud"] .stat,html[data-theme="hud"] .recipe{background:#0A111C;}
+  html[data-theme="hud"] .check.on::after{border-color:var(--paper);}
+  html[data-theme="hud"] .add-row button,html[data-theme="hud"] .pchip.on{color:var(--paper);}
+  /* durum rozetleri iki temada da okunur kalsın */
+  html[data-theme="hud"] .app-status.ret{background:color-mix(in srgb,var(--down) 16%,transparent);}
+  html[data-theme="hud"] .app-status.bekliyor{background:color-mix(in srgb,var(--accent) 14%,transparent);}
+
+  /* ===================== AJAN TELEMETRİSİ ===================== */
+  #agentGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(212px,1fr));gap:12px;}
+  .agent{position:relative;border:1px solid var(--line);border-radius:5px;padding:12px 13px 10px;background:var(--paper);text-decoration:none;color:inherit;display:block;transition:border-color .2s;}
+  .agent:hover{border-color:var(--accent);}
+  html[data-theme="hud"] .agent{background:#0A111C;}
+  .agent-top{display:flex;align-items:center;gap:8px;margin-bottom:7px;}
+  .agent-dot{width:9px;height:9px;min-width:9px;border-radius:50%;background:var(--muted);}
+  .agent-name{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.04em;color:var(--ink);}
+  .agent-state{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-left:auto;white-space:nowrap;}
+  .agent-desc{font-size:12px;color:var(--muted);line-height:1.4;margin-bottom:8px;}
+  .agent-flow{font-family:var(--mono);font-size:10.5px;color:var(--muted);display:flex;align-items:center;gap:6px;margin-bottom:8px;}
+  .agent-flow .arw{color:var(--accent);}
+  .agent-flow .art{color:var(--ink);}
+  .agent-meta{display:flex;justify-content:space-between;gap:8px;font-family:var(--mono);font-size:10px;color:var(--muted);border-top:1px solid var(--line2);padding-top:7px;}
+  .agent-meta .age{color:var(--ink);}
+  /* durum renkleri — gerçek run durumuna bağlı */
+  .agent.ok .agent-dot{background:var(--up);}
+  .agent.run .agent-dot{background:var(--accent);}
+  .agent.fail .agent-dot{background:var(--down);}
+  .agent.wait .agent-dot{background:#E0B23D;}
+  .agent.fail{border-color:color-mix(in srgb,var(--down) 55%,var(--line));}
+  .agent.run{border-color:color-mix(in srgb,var(--accent) 45%,var(--line));}
+  /* nabız YALNIZCA gerçekten çalışırken (status==in_progress) */
+  .agent.run .agent-dot{animation:agentPulse 1.15s ease-in-out infinite;}
+  @keyframes agentPulse{0%,100%{box-shadow:0 0 0 0 color-mix(in srgb,var(--accent) 70%,transparent);}50%{box-shadow:0 0 0 6px color-mix(in srgb,var(--accent) 0%,transparent);}}
+  /* akış oku yalnızca ajan son 1 saatte çalıştıysa akar */
+  .agent.fresh .agent-flow .arw{animation:flowPulse 1.4s ease-in-out infinite;}
+  @keyframes flowPulse{0%,100%{opacity:.3;}50%{opacity:1;}}
+
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;}.agent.run .agent-dot,.agent.fresh .agent-flow .arw{animation:none!important;}}
 </style>
 </head>
 <body>
@@ -157,10 +228,17 @@
   <header class="masthead">
     <div class="mast-top">
       <h1 class="mast-title">Günlük Almanak<span class="sub">Kişisel Kontrol Panosu</span></h1>
-      <div class="clock"><span id="clock">--:--:--</span><span class="cd" id="clockDate">—</span></div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:9px;">
+        <button class="theme-toggle" id="themeToggle" title="Tema değiştir"><span class="tt-dot"></span><span id="themeLabel">HUD</span></button>
+        <div class="clock"><span id="clock">--:--:--</span><span class="cd" id="clockDate">—</span></div>
+      </div>
     </div>
     <div class="dateline"><span id="greeting">Günaydın</span><span class="dot"></span><span>Marmaris, Muğla</span><span class="dot"></span><span id="weekno">—</span></div>
   </header>
+  <section class="card" id="agentCard" style="margin-bottom:20px">
+    <div class="card-head"><div><p class="kicker">Sistem · GitHub Actions</p><h2 class="card-title">Ajan Telemetrisi</h2></div>
+      <div class="meta"><span id="agentTime">—</span><br><button class="ibtn" id="agentRefresh">Yenile</button></div></div>
+    <div id="agentGrid"><div class="loading">GitHub Actions durumu çekiliyor…</div></div></section>
   <div class="grid">
     <div class="stack">
       <section class="card"><div class="card-head"><div><p class="kicker">Ajanda</p><h2 class="card-title">Bugün Yapılacaklar</h2></div><div class="meta" id="taskCount">0/0</div></div>
@@ -226,7 +304,7 @@
   <footer><span>Antrenman & yemek programından · gün gün otomatik</span><span>Döviz canlı · yatırım tavsiyesi değildir</span></footer>
 </div>
 <script>
-const K={tasks:'d:tasks',targets:'d:targets',bist:'d:bist',altin:'d:altin',news:'d:news',fx:'d:fx',de:'d:de',gmailDone:'d:gmailDone',targetsVer:'d:targetsVer',water:'d:water'};
+const K={tasks:'d:tasks',targets:'d:targets',bist:'d:bist',altin:'d:altin',news:'d:news',fx:'d:fx',de:'d:de',gmailDone:'d:gmailDone',targetsVer:'d:targetsVer',water:'d:water',theme:'d:theme',agents:'d:agents'};
 const mem={};
 async function sGet(k){try{if(window.storage){const r=await window.storage.get(k,false);return r?JSON.parse(r.value):null;}}catch(e){}
   try{const v=localStorage.getItem(k);return v?JSON.parse(v):null;}catch(e){}return (k in mem)?mem[k]:null;}
@@ -801,8 +879,108 @@ function parseMail(){const ta=document.getElementById('mailPaste');const txt=ta.
   if(addNews.length){let merged=addNews.concat(news);const seen={};merged=merged.filter(n=>{if(seen[n])return false;seen[n]=1;return true;}).slice(0,10);news=merged;sSet(K.news,news);renderNews();}
   ta.value='';}
 
+/* ===== TEMA (almanak <-> hud) ===== */
+function applyTheme(t){
+  if(t==='hud')document.documentElement.setAttribute('data-theme','hud');
+  else document.documentElement.removeAttribute('data-theme');
+  const lbl=document.getElementById('themeLabel');
+  if(lbl)lbl.textContent=(t==='hud')?'ALMANAK':'HUD';   // düğme tıklayınca geçilecek temayı gösterir
+}
+async function initTheme(){
+  const cur=document.documentElement.getAttribute('data-theme')==='hud'?'hud':'almanak';
+  const saved=await sGet(K.theme);
+  applyTheme(saved||cur);
+  document.getElementById('themeToggle').onclick=async()=>{
+    const now=document.documentElement.getAttribute('data-theme')==='hud'?'hud':'almanak';
+    const nx=now==='hud'?'almanak':'hud';
+    applyTheme(nx);await sSet(K.theme,nx);
+  };
+}
+
+/* ===== AJAN TELEMETRİSİ (GitHub Actions, kimlik doğrulaması yok) =====
+   Panel canlı API'ye değil, 15 dk'da bir actions/runs uç noktasına bakar. Kota:
+   60 istek/saat/IP; x-ratelimit-remaining<10 olunca yenilemeyi atlar, sessizce son
+   iyi veriyi gösterir (hata basmaz). Her gösterge gerçek run verisine bağlıdır. */
+const AGENTS=[
+  {name:'borsa-feed', desc:'BIST / döviz verisi', art:'borsa.json', times:[9,14], days:[1,2,3,4,5]},
+  {name:'gmail-feed', desc:'Gmail okunmamış + ret tarama', art:'gmail.json', times:[9,14], days:[0,1,2,3,4,5,6]},
+  {name:'facts-feed', desc:'Vikipedi bilgi havuzu', art:'facts.json', times:[9], days:[1]},
+  {name:'pages build and deployment', label:'pages-deploy', desc:'Siteyi yayınlar', art:'panel', times:null, days:null}
+];
+let agentRateOk=true;
+function agAge(iso){                       // ISO UTC -> {txt, dk}
+  const ms=Date.parse(iso); if(isNaN(ms))return null;
+  const dk=Math.floor((Date.now()-ms)/60000);
+  if(dk<2)return{txt:'az önce',dk};
+  if(dk<60)return{txt:dk+' dk önce',dk};
+  const sa=Math.floor(dk/60); if(sa<24)return{txt:sa+' sa önce',dk};
+  return{txt:Math.floor(sa/24)+' gün önce',dk};
+}
+function nextCron(times,days){             // yerel TR saatiyle sıradaki cron
+  if(!times)return null;
+  const now=new Date();
+  for(let add=0;add<9;add++){
+    const d=new Date(now); d.setDate(now.getDate()+add);
+    if(days&&days.indexOf(d.getDay())===-1)continue;
+    for(const h of times){
+      const t=new Date(d); t.setHours(h,0,0,0);
+      if(t>now){const gun=add===0?'bugün':add===1?'yarın':DAYNAMES[t.getDay()];return gun+' '+String(h).padStart(2,'0')+':00';}
+    }
+  }
+  return null;
+}
+function agentClass(run){
+  if(!run)return{cls:'wait',state:'—'};
+  if(run.status==='in_progress')return{cls:'run',state:'çalışıyor'};
+  if(run.status==='queued'||run.status==='waiting')return{cls:'wait',state:'sırada'};
+  if(run.conclusion==='success')return{cls:'ok',state:'başarılı'};
+  if(run.conclusion==null)return{cls:'wait',state:esc(run.status||'—')};
+  return{cls:'fail',state:run.conclusion==='failure'?'hata':esc(run.conclusion)};  // failure/cancelled/timed_out
+}
+function renderAgents(byName){
+  const el=document.getElementById('agentGrid'); if(!el)return;
+  el.innerHTML=AGENTS.map(a=>{
+    const run=byName[a.name]||null;
+    const cs=agentClass(run);
+    const age=run?agAge(run.updated_at):null;
+    const fresh=age&&age.dk<60;             // son 1 saatte çalıştıysa akış oku akar
+    const nx=nextCron(a.times,a.days);
+    const href=(run&&run.html_url)?run.html_url:'https://github.com/dogukandurukan/panel/actions';
+    return '<a class="agent '+cs.cls+(fresh?' fresh':'')+'" href="'+href+'" target="_blank" rel="noopener">'+
+      '<div class="agent-top"><span class="agent-dot"></span><span class="agent-name">'+esc(a.label||a.name)+'</span><span class="agent-state">'+cs.state+'</span></div>'+
+      '<div class="agent-desc">'+esc(a.desc)+'</div>'+
+      '<div class="agent-flow"><span class="arw">▸</span><span class="art">'+esc(a.art)+'</span></div>'+
+      '<div class="agent-meta"><span class="age">'+(age?age.txt:'kayıt yok')+'</span><span>'+(nx?('sıradaki '+nx):'push ile')+'</span></div>'+
+      '</a>';
+  }).join('');
+}
+async function loadAgents(force){
+  const el=document.getElementById('agentGrid'), timeEl=document.getElementById('agentTime');
+  if(!agentRateOk && !force){                // kota düşük: sessizce eski veriyle devam
+    const c=await sGet(K.agents);
+    if(c&&c.runs){renderAgents(c.runs);if(timeEl)timeEl.textContent='son '+c.time+' · kota bekliyor';}
+    return;
+  }
+  try{
+    const r=await fetch('https://api.github.com/repos/dogukandurukan/panel/actions/runs?per_page=30&_='+Date.now());
+    const rem=parseInt(r.headers.get('x-ratelimit-remaining'),10);
+    agentRateOk=isNaN(rem)?true:rem>=10;
+    if(!r.ok)throw 0;
+    const d=await r.json(), byName={};
+    (d.workflow_runs||[]).forEach(run=>{if(!(run.name in byName))byName[run.name]=run;});  // her workflow'un en yenisi
+    const time=new Date().toLocaleTimeString('tr-TR',{hour:'2-digit',minute:'2-digit'});
+    await sSet(K.agents,{runs:byName,time});
+    renderAgents(byName);
+    if(timeEl)timeEl.textContent='son '+time+(agentRateOk?'':' · kota ≈ dolu');
+  }catch(e){
+    const c=await sGet(K.agents);            // hata: sessizce son iyi veri
+    if(c&&c.runs){renderAgents(c.runs);if(timeEl)timeEl.textContent='son '+c.time+' · çevrimdışı';}
+    else if(el)el.innerHTML='<div class="empty">GitHub Actions durumu şu an alınamadı.</div>';
+  }
+}
+
 /* init */
-(async function(){tick();setInterval(tick,1000);
+(async function(){tick();setInterval(tick,1000);await initTheme();
   tasks=await sGet(K.tasks)||[];
   targets=await sGet(K.targets)||{...DEFAULT_TARGETS};
   if((await sGet(K.targetsVer))!==TARGETS_VERSION){    // program değişti -> hedefleri tazele
@@ -822,10 +1000,11 @@ function parseMail(){const ta=document.getElementById('mailPaste');const txt=ta.
   document.getElementById('wtExport').onclick=exportCSV;
   document.getElementById('basvuruRefresh').onclick=loadBasvuru;
   document.getElementById('gmailRefresh').onclick=loadGmailJson;
+  document.getElementById('agentRefresh').onclick=()=>loadAgents(true);
   renderTasks();await loadMorning();await renderRun();await loadWorkout();renderWtLog();await loadMeals();await loadWater();
-  renderFacts();renderFilm();renderArtist();renderBook();renderHistory();renderGerman();renderNews();renderWatch();renderUS();renderGold();renderWorld();loadFX(false);loadBorsaJson();loadBasvuru();loadGmailJson();loadFactsJson();
-  setInterval(loadBorsaJson,15*60*1000);setInterval(loadBasvuru,15*60*1000);setInterval(loadGmailJson,15*60*1000);
-  document.addEventListener('visibilitychange',()=>{if(!document.hidden){loadBorsaJson();loadFX(false);loadBasvuru();loadGmailJson();}});
+  renderFacts();renderFilm();renderArtist();renderBook();renderHistory();renderGerman();renderNews();renderWatch();renderUS();renderGold();renderWorld();loadFX(false);loadBorsaJson();loadBasvuru();loadGmailJson();loadFactsJson();loadAgents(false);
+  setInterval(loadBorsaJson,15*60*1000);setInterval(loadBasvuru,15*60*1000);setInterval(loadGmailJson,15*60*1000);setInterval(()=>loadAgents(false),15*60*1000);
+  document.addEventListener('visibilitychange',()=>{if(!document.hidden){loadBorsaJson();loadFX(false);loadBasvuru();loadGmailJson();loadAgents(false);}});
 })();
 </script>
 </body>
