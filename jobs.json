@@ -1,75 +1,106 @@
 {
- "updated": "2026-08-20 21:28",
+ "updated": "2026-08-20 21:42",
  "ok": true,
  "count": 3,
- "pool": 18,
+ "pool": 16,
  "items": [
   {
-   "title": "Senior Data Scientist/ML Engineer - Financial Crime",
-   "company": "SumUp",
+   "title": "Senior Data Engineer (f/m/d)",
+   "company": "Enpal",
    "location": "Berlin",
-   "loc_raw": "Berlin, Germany",
+   "loc_raw": "Berlin",
    "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/sumup/senior-data-scientist-ml-engineer-financial-crime-berlin-257478",
+   "url": "https://www.arbeitnow.com/jobs/companies/enpal/senior-data-engineer-metrify-berlin-61854",
    "source": "Arbeitnow",
    "posted": "2026-08-20",
    "days": 0,
    "skills": [
-    "python",
+    "azure",
+    "airflow",
+    "dbt",
+    "snowflake",
+    "ci/cd",
+    "git"
+   ],
+   "german": false,
+   "focus": "pipeline",
+   "summary": "Our goal is to have a solar system on every roof, a storage unit in every house, and an electric car in every garage. Enpal makes this possible with an integrated total solution for decentralized energy—from solar systems and battery storage to wall boxes, sma",
+   "keywords": [
+    "energy",
+    "scalab",
+    "dashboard",
+    "pipeline",
+    "stakeholder",
+    "self-service",
+    "governance"
+   ],
+   "score": 112
+  },
+  {
+   "title": "Staff Data Engineer (f/m/d)",
+   "company": "Enpal",
+   "location": "Berlin",
+   "loc_raw": "Berlin",
+   "remote": false,
+   "url": "https://www.arbeitnow.com/jobs/companies/enpal/staff-data-engineer-metrify-berlin-347291",
+   "source": "Arbeitnow",
+   "posted": "2026-08-20",
+   "days": 0,
+   "skills": [
+    "azure",
+    "airflow",
+    "dbt",
+    "snowflake",
+    "ci/cd",
+    "git"
+   ],
+   "german": false,
+   "focus": "pipeline",
+   "summary": "Our goal is to have a solar system on every roof, a storage unit in every house, and an electric car in every garage. Enpal makes this possible with an integrated total solution for decentralized energy—from solar systems and battery storage to wall boxes, sma",
+   "keywords": [
+    "energy",
+    "scalab",
+    "dashboard",
+    "pipeline",
+    "stakeholder",
+    "self-service",
+    "governance"
+   ],
+   "score": 100
+  },
+  {
+   "title": "Data Platform & Data Architecture Consultant",
+   "company": "Netlight",
+   "location": "Berlin",
+   "loc_raw": "Berlin",
+   "remote": false,
+   "url": "https://www.arbeitnow.com/jobs/companies/netlight/data-platform-data-architecture-consultant-berlin-248331",
+   "source": "Arbeitnow",
+   "posted": "2026-08-20",
+   "days": 0,
+   "skills": [
+    "databricks",
+    "azure",
+    "snowflake",
+    "etl",
     "ci/cd"
    ],
    "german": false,
-   "summary": "Help build ML systems that make financial crime harder to hide Financial crime is constantly changing. New patterns and behaviours emerge all the time, and the data we work with is complex. Our work helps make financial activity safer and more trustworthy for ",
-   "score": 88
-  },
-  {
-   "title": "Data Analyst (m/w/d) – BI, Reporting & Business Insights",
-   "company": "Ess Energy Sales Services Gmbh",
-   "location": "Berlin",
-   "loc_raw": "Berlin - Hybrid",
-   "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/ess-energy-sales-services-gmbh/data-analyst-bi-reporting-business-insights-berlin-hybrid-119731",
-   "source": "Arbeitnow",
-   "posted": "2026-08-19",
-   "days": 1,
-   "skills": [
-    "python",
-    "sql",
-    "power bi",
-    "git"
+   "focus": "pipeline",
+   "summary": "About the role As a Data Platform & Data Architecture Consultant , you are the person clients trust to turn their data infrastructure from a bottleneck into a competitive advantage. You design data landscapes, stand up and scale cloud data platforms, and set t",
+   "keywords": [
+    "cost",
+    "governance",
+    "stakeholder",
+    "enterprise"
    ],
-   "german": true,
-   "summary": "Wer wir sind Wir sind PLAN-B NET ZERO – ein ambitioniertes GreenTech-Scale-up mit Sitz in Zug, Schweiz. Seit 2023 treiben wir mit NEO ENERGY eine neue Kategorie voran: nachhaltige Energie digitaler, intelligenter und erlebbarer zu machen, mit Technologie, Date",
-   "score": 88
-  },
-  {
-   "title": "Senior Data Analyst - Operations (m/f/x)",
-   "company": "FINN",
-   "location": "Almanya",
-   "loc_raw": "Germany",
-   "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/finn/senior-data-analyst-operations-germany-49920",
-   "source": "Arbeitnow",
-   "posted": "2026-08-20",
-   "days": 0,
-   "skills": [
-    "python",
-    "sql",
-    "looker",
-    "dbt"
-   ],
-   "german": false,
-   "summary": "Your Role As Data Analyst in Operations at FINN, you will be at the heart of driving our business operations through data-driven insights. By leveraging advanced analytics tools and techniques, you will uncover trends, forecast outcomes, and provide actionable",
-   "score": 80
+   "score": 94
   }
  ],
  "seen": [
-  "https://www.arbeitnow.com/jobs/companies/sumup/senior-data-scientist-ml-engineer-financial-crime-berlin-257478",
-  "https://www.arbeitnow.com/jobs/companies/ess-energy-sales-services-gmbh/data-analyst-bi-reporting-business-insights-berlin-hybrid-119731",
-  "https://www.arbeitnow.com/jobs/companies/finn/senior-data-analyst-operations-germany-49920",
   "https://www.arbeitnow.com/jobs/companies/enpal/senior-data-engineer-metrify-berlin-61854",
   "https://www.arbeitnow.com/jobs/companies/enpal/staff-data-engineer-metrify-berlin-347291",
-  "https://www.arbeitnow.com/jobs/companies/sumup/senior-data-scientist-ml-engineer-financial-crime-berlin-185839"
+  "https://www.arbeitnow.com/jobs/companies/netlight/data-platform-data-architecture-consultant-berlin-248331"
  ],
  "note": "Kaynak: Arbeitnow + Remotive. Basvuruyu kullanici kendisi yapar."
 }
