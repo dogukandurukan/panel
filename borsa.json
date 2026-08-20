@@ -1,40 +1,40 @@
 {
-  "updated": "2026-08-20 09:39",
+  "updated": "2026-08-20 14:25",
   "watch": [
     {
-      "code": "ENKAI",
-      "price": "81.00",
-      "chg": "+1.06%",
-      "avg1w": "84.26",
-      "avg1m": "87.02"
+      "code": "SASA",
+      "price": "2.26",
+      "chg": "-0.44%",
+      "avg1w": "2.30",
+      "avg1m": "2.47"
     },
     {
-      "code": "BIMAS",
-      "price": "405.00",
-      "chg": "+6.02%",
-      "avg1w": "384.45",
-      "avg1m": "385.26"
+      "code": "ALARK",
+      "price": "109.40",
+      "chg": "-3.27%",
+      "avg1w": "107.34",
+      "avg1m": "104.06"
     },
     {
-      "code": "YEOTK",
-      "price": "37.12",
-      "chg": "-9.99%",
-      "avg1w": "39.40",
-      "avg1m": "40.20"
-    },
-    {
-      "code": "SMRTG",
-      "price": "9.79",
-      "chg": "-6.49%",
-      "avg1w": "10.31",
-      "avg1m": "11.10"
+      "code": "GUBRF",
+      "price": "458.50",
+      "chg": "-2.81%",
+      "avg1w": "444.75",
+      "avg1m": "427.56"
     },
     {
       "code": "KONTR",
-      "price": "4.00",
-      "chg": "+0.50%",
-      "avg1w": "3.97",
-      "avg1m": "4.40"
+      "price": "3.86",
+      "chg": "-2.28%",
+      "avg1w": "4.00",
+      "avg1m": "4.27"
+    },
+    {
+      "code": "YEOTK",
+      "price": "36.62",
+      "chg": "+1.33%",
+      "avg1w": "38.55",
+      "avg1m": "39.77"
     }
   ],
   "us": [
@@ -75,23 +75,23 @@
     }
   ],
   "gold": {
-    "price": "7,017.47",
-    "chg": "+1.48%"
+    "price": "7,000.54",
+    "chg": "+1.23%"
   },
   "news": [
-    "⚪ Enka İnşaat’ta (ENKAI) 110 TL hedef fiyat: Bilanço incelendi  (Paratic Haber)",
-    "⚪ ENKAI’da 110 TL Hedef Fiyat: 2. Çeyrek Bilanço Nasıl?  (Haber Ege)",
-    "⚪ ENKAI için hedef fiyat 2Ç26 bilançosuyla 126 TL’ye indi  (Paratic Haber)",
-    "🟢 BIM’in hisseleri güçlü ikinci çeyrek sonuçlarıyla %6 yükseldi  (Investing.com Türkiye)",
-    "⚪ KAP *** YEO TEKNOLOJİ ENERJİ VE ENDÜSTRİ A.Ş. *** YEOTK *** İhraç Tavanına İlişkin Bildirim  (GZT)",
+    "⚪ Sasa Polyester, 7,185 milyar TL tahsisli sermaye artırımı kararı aldı  (Investing.com Türkiye)",
+    "⚪ SASA'dan sermaye artırımı kararı  (Bloomberght)",
+    "⚪ SASA'dan dev sermaye hamlesi: 7,2 milyar TL'lik artırım kararı  (CNBC-e)",
+    "🟢 Alarko Holding'den güçlü bilanço: 4,36 milyar TL net kâr  (CNBC-e)",
+    "⚪ KAP *** ALARKO HOLDİNG A.Ş. *** ALARK *** Özel Durum Açıklaması (Genel)  (Yeni Şafak)",
+    "⚪ KAP *** ALARKO HOLDİNG A.Ş. *** ALARK *** Faaliyet Raporu (Konsolide)  (GZT)",
     "⚪ KAP *** YEO TEKNOLOJİ ENERJİ VE ENDÜSTRİ A.Ş. *** YEOTK *** Faaliyet Raporu (Konsolide)  (Yeni Şafak)",
-    "🟢 YEO Teknoloji kârlılıkta vites yükseltti  (Dünya Gazetesi)",
-    "⚪ Smart Güneş Teknolojileri’nden (SMRTG) sermaye avansı açıklaması  (Rota Borsa)"
+    "⚪ KAP *** YEO TEKNOLOJİ ENERJİ VE ENDÜSTRİ A.Ş. *** YEOTK *** İhraç Tavanına İlişkin Bildirim  (GZT)"
   ],
   "world": [
-    "🌍 Suriye Dışişleri Bakanı: İsrail'in vurduğu üste Türk askeri varlığı planı yok - BBC  (BBC)",
-    "🌍 İstanbul'da 10 dakika arayla iki deprem: Bu aktivite izlenmeli, ivmelenerek devam ederse 'öncü şok' ihtimali değerlendirilebilir - T24  (T24)",
+    "🌍 MSB'den İsrail'in İdlib saldırısına ilişkin açıklama: Üste Türk askeri var mıydı? - NTV Haber  (NTV Haber)",
+    "🌍 Furkan Vakfı’na operasyon: Kuytul’a gözaltı - Hürriyet  (Hürriyet)",
     "🌍 Trump, İran'a yönelik eşi benzeri görülmemiş \"ekonomik operasyon\" ilan etti - Bloomberght  (Bloomberght)",
-    "🌍 Pezeşkiyan: Müzakerelerde adım adım ilerleyeceğiz - Bloomberght  (Bloomberght)"
+    "🌍 İstanbul'da korku dolu sabah: Tramvay raydan çıktı! - Sözcü Gazetesi  (Sözcü Gazetesi)"
   ]
 }
