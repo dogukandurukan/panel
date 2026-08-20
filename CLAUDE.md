@@ -1,0 +1,59 @@
+# panel (Daily) — katkı kuralları
+
+Tek dosyalık kişisel kontrol panosu. GitHub Pages'ten yayınlanıyor:
+https://dogukandurukan.github.io/panel/
+
+## Değişmez kurallar
+
+1. **Bu repo PUBLIC.** Hiçbir API anahtarı, token veya kişisel veri (telefon,
+   e-posta, CV metni) buraya girmez. Gmail kimlik bilgileri yalnızca GitHub
+   Actions secrets'ta durur ve tarayıcıya hiç inmez. Kullanıcının cover letter
+   profili yalnızca kendi tarayıcısının `localStorage`'ında tutulur.
+2. **Her gösterge gerçek veriye bağlı olacak.** Arkasında veri olmayan nabız,
+   sahte akış çizgisi, dekoratif "çalışıyor" göstergesi konulmaz. Nabız yalnızca
+   `status==='in_progress'` iken atar; akış oku yalnızca ajan son 1 saatte
+   çalıştıysa akar. Bağlanacak veri yoksa öğe eklenmez.
+3. **Tek dosya, sıfır bağımlılık.** `index.html` içinde HTML+CSS+JS. CDN
+   script'i, npm paketi, build adımı eklenmez. PDF üretimi bile elle yazıldı
+   (`makePDF`) — jsPDF bilerek eklenmedi.
+4. **İki tema korunur.** `almanak` (varsayılan) ve `hud`. Renkler `:root`
+   değişkenlerinde; HUD `html[data-theme="hud"]` altında izole. Yeni kart
+   eklerken iki temada da kontrol et. `prefers-reduced-motion` yeni
+   animasyonları da kapsamalı.
+5. **LinkedIn otomasyonu yok.** Bireysel iş arama API'si yok ve otomatik erişim
+   Kullanıcı Sözleşmesi'ne aykırı. Panel yalnızca ilana bağlantı verir.
+
+## Veri akışı
+
+Panel canlı API'ye kimlik doğrulamayla bağlanmaz; Actions'ın ürettiği statik
+JSON okur.
+
+| Dosya | Üreten | Workflow | Ne zaman (TR) |
+|---|---|---|---|
+| `borsa.json` | `panel_feed.py` | `feed.yml` | hafta içi 09:00 / 14:00 |
+| `gmail.json` | `gmail_feed.py` | `gmail-feed.yml` | her gün 09:00 / 14:00 |
+| `facts.json` | `facts_feed.py` | `facts-feed.yml` | Pazartesi 09:00 |
+| `jobs.json` | `jobs_feed.py` | `jobs-feed.yml` | her gün 08:00 |
+
+Ayrıca doğrudan tarayıcıdan, anahtarsız: Google Sheets (gviz/JSONP, salt
+okunur), GitHub Actions API (15 dk), Open-Meteo (30 dk).
+
+## Bilinen tuzaklar
+
+- **localStorage varsayılanı ezer.** Sabiti değiştirmek yetmez; kayıtlı değer
+  üzerine biner. `TARGETS_VERSION` sürüm etiketi desenini kullan.
+- **`gviz` fetch() ile çalışmaz** (CORS). İş Başvuruları JSONP kullanıyor.
+- **Veri biçimi değişince geçiş kodu yaz.** Örnek: `renderJobs` içinde eski
+  `jobsApplied` kayıtlarını `myApps`'e taşıyan bir kerelik geçiş var.
+- **Yeni pencere/belge üretirken `background` açıkça ver** — kullanıcı koyu
+  moddaysa varsayılan tuval siyah oluyor.
+- **HTML temizlerken önce unescape, sonra etiket sil.**
+- **Test etmeden "çalışıyor" deme.** Tarayıcıda gerçek veriyle doğrula ve 7
+  günü de gez — antrenman, yemek ve günlük program güne göre değişiyor.
+
+## Yerel çalışma
+
+```bash
+python3 -m http.server 8899   # http://localhost:8899/index.html
+python3 jobs_feed.py          # feed'i elle çalıştır (yalnızca stdlib)
+```
