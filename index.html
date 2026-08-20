@@ -171,6 +171,18 @@
   .slp-bar.ok i{background:var(--accent);}
   .slp-bar.miss i{background:var(--down);opacity:.55;}
   .slp-bar span{font-family:var(--mono);font-size:9px;color:var(--muted);}
+  /* alışkanlık serileri */
+  .hab{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px dotted var(--line2);}
+  .hab:last-child{border-bottom:none;}
+  .hab-n{font-size:13.5px;flex:1;min-width:96px;}
+  .hab-dots{display:flex;gap:3px;flex-shrink:0;}
+  .hab-dots i{display:block;width:7px;height:7px;border-radius:2px;background:var(--line);}
+  .hab-dots i.ok{background:var(--accent);}
+  .hab-dots i.miss{background:var(--down);opacity:.45;}
+  .hab-dots i.skip{background:transparent;box-shadow:inset 0 0 0 1px var(--line);}
+  .hab-s{font-family:var(--mono);font-size:11px;color:var(--accent);white-space:nowrap;min-width:66px;text-align:right;}
+  .hab-s.zero{color:var(--muted);}
+  .hab-foot{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.05em;margin-top:10px;border-top:1px solid var(--line2);padding-top:9px;}
   footer{margin-top:26px;padding-top:14px;border-top:1px solid var(--line);font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;}
   @media (max-width:640px){body{padding:16px 14px 34px;}.clock{text-align:left;}}
 
@@ -393,6 +405,9 @@
 
     <section class="card"><div class="card-head"><div><p class="kicker">Uyku &middot; D&uuml;n gece</p><h2 class="card-title">Uyku Takibi</h2></div><div class="meta" id="slpMeta">&mdash;</div></div>
       <div id="sleepBox"></div></section>
+
+    <section class="card"><div class="card-head"><div><p class="kicker">Al&#305;&#351;kanl&#305;k &middot; Seriler</p><h2 class="card-title">Al&#305;&#351;kanl&#305;k Serileri</h2></div><div class="meta" id="habMeta">son 14 g&uuml;n</div></div>
+      <div id="habBox"></div></section>
 
     <section class="card"><div class="card-head"><div><p class="kicker">Piyasa</p><h2 class="card-title">Borsa Durumu</h2></div><div class="meta"><span id="fxTime">—</span><br><button class="ibtn" id="fxRefresh">Yenile</button></div></div>
       <div id="marketList"><div class="loading">Kur çekiliyor…</div></div>
@@ -744,11 +759,11 @@ function renderMorning(){const el=document.getElementById('morningList');el.inne
   MORNING.forEach((m,i)=>{const done=!!morningDone[i];const d=document.createElement('div');d.className='ex'+(done?' done':'');
     d.innerHTML='<div class="check '+(done?'on':'')+'" data-m="'+i+'"></div><div class="ex-body"><span class="ex-n">'+esc(m[0])+'</span><span class="ex-s">'+esc(m[1])+'</span></div>';el.appendChild(d);});
   document.getElementById('morningCount').textContent=Object.values(morningDone).filter(Boolean).length+'/'+MORNING.length;
-  el.querySelectorAll('[data-m]').forEach(c=>c.onclick=()=>{const i=+c.dataset.m;morningDone[i]=!morningDone[i];sSet('d:morning:'+todayKey(),morningDone);renderMorning();});}
-async function renderRun(){const km=await sGet('d:runkm:'+todayKey())||'';const isRun=WK[dow].run;const el=document.getElementById('runArea');
+  el.querySelectorAll('[data-m]').forEach(c=>c.onclick=()=>{const i=+c.dataset.m;morningDone[i]=!morningDone[i];sSet('d:morning:'+todayKey(),morningDone);renderMorning();renderHabits();});}
+async function renderRun(){const km=await sGet('d:runkm:'+todayKey())||'';runKmToday=km;const isRun=WK[dow].run;const el=document.getElementById('runArea');
   el.innerHTML='<div class="runbox"><label>Bugün koştuğun mesafe</label><input type="number" id="runIn" placeholder="0" value="'+esc(km)+'"><span class="mkt-sub">km</span></div>'+
     (isRun?'<div class="runnote">Bugün koşu günü — protokol: 2 dk yürü / 1-2 dk koş × 8 tur (5. haftadan sonra kesintisiz 20 dk).</div>':'');
-  document.getElementById('runIn').oninput=e=>sSet('d:runkm:'+todayKey(),e.target.value);}
+  document.getElementById('runIn').oninput=e=>{runKmToday=e.target.value;sSet('d:runkm:'+todayKey(),e.target.value);renderHabits();};}
 
 /* workout (today) */
 let exDone={},wtlog={};
@@ -760,7 +775,7 @@ function renderEx(){const el=document.getElementById('exList');el.innerHTML='';c
   ex.forEach((e,i)=>{const done=!!exDone[i];const d=document.createElement('div');d.className='ex'+(done?' done':'');
     d.innerHTML='<div class="check '+(done?'on':'')+'" data-x="'+i+'"></div><div class="ex-body"><span class="ex-n">'+esc(e[0])+'</span><span class="ex-s">'+esc(e[1])+'</span></div>';el.appendChild(d);});
   document.getElementById('wkCount').textContent=Object.values(exDone).filter(Boolean).length+'/'+ex.length;
-  el.querySelectorAll('[data-x]').forEach(c=>c.onclick=()=>{const i=+c.dataset.x;exDone[i]=!exDone[i];sSet('d:ex:'+todayKey(),exDone);renderEx();});}
+  el.querySelectorAll('[data-x]').forEach(c=>c.onclick=()=>{const i=+c.dataset.x;exDone[i]=!exDone[i];sSet('d:ex:'+todayKey(),exDone);renderEx();renderHabits();});}
 function dateShift(k,days){const d=new Date(k+'T00:00');d.setDate(d.getDate()+days);return d.toLocaleDateString('sv-SE');}
 function renderWtLog(){const el=document.getElementById('wtList');if(!el)return;const ex=WK[dow].ex.filter(e=>String(e[1]).indexOf('×')>-1);
   const tk=todayKey();const today=wtlog[tk]||{};const lw=wtlog[dateShift(tk,-7)]||{};
@@ -789,6 +804,63 @@ function renderTargets(){const el=document.getElementById('tgt');el.innerHTML=''
 function consumed(){return meals.reduce((a,m)=>{const f=num(m.portion)/100;return{kcal:a.kcal+f*num(m.kcal),p:a.p+f*num(m.p),c:a.c+f*num(m.c)};},{kcal:0,p:0,c:0});}
 function bar(l,cn,tg,u){const pct=tg>0?Math.min(cn/tg*100,100):0;const ov=tg>0&&cn>tg;const rem=Math.max(tg-cn,0);
   return '<div class="bar-wrap"><div class="bar-top"><span>'+l+'</span><span class="num">'+Math.round(cn)+' / '+tg+u+'</span></div><div class="bar"><i class="'+(ov?'over':'')+'" style="width:'+(ov?100:pct)+'%"></i></div><div class="rem">'+(ov?'hedef aşıldı +'+Math.round(cn-tg)+u:'kalan '+Math.round(rem)+u)+'</div></div>';}
+/* ===== ALISKANLIK SERILERI =====
+   Yeni veri girisi istemez: mevcut tiklerden (sabah rutini, antrenman, su, quiz,
+   kosu km, uyku) "kac gun ust uste" hesaplar.
+   - Gecmis gunler acilista bir kez okunur (habPast), bugun bellekteki degerlerden
+     canli gelir; her tikte tam okuma yapilmaz.
+   - 'skip' gunler seriyi ne kirar ne uzatir: Pazar tam dinlenme (antrenman),
+     kosu sadece programda kosu olan gunde beklenir, uyku aliskanligi henuz
+     olusmadiysa uyku satiri notr.
+   - Bugun 'miss' ise seri kirilmaz; gun daha bitmedi. */
+const HAB_LOOKBACK=90, HAB_MIN=.8, HAB_DOTS=14;
+let habPast=null,runKmToday='';
+const morningFor=d=>MORNING_SHORT[d]||MORNING_LONG;
+const waterGoalFor=d=>Math.ceil((d===6?3.5:3)*1000/WATER_GLASS_ML);
+const tickRatio=(o,n)=>n?Object.values(o||{}).filter(Boolean).length/n:0;
+const HABITS=[
+ {ad:'Sabah rutini',birim:'gün',st:v=>tickRatio(v.m,morningFor(v.d).length)>=HAB_MIN?'ok':'miss'},
+ {ad:'Koşu',birim:'hafta',st:v=>WK[v.d].run?(num(v.r)>0?'ok':'miss'):'skip'},
+ {ad:'Antrenman',birim:'gün',st:v=>v.d===0?'skip':(tickRatio(v.x,WK[v.d].ex.length)>=HAB_MIN?'ok':'miss')},
+ {ad:'Su hedefi',birim:'gün',st:v=>num(v.w)>=waterGoalFor(v.d)?'ok':'miss'},
+ {ad:'Almanca quiz',birim:'gün',st:v=>(v.q&&(num(v.q.right)+num(v.q.wrong))>=5)?'ok':'miss'},
+ {ad:'Uyku alışkanlığı',birim:'gece',st:v=>{const h=slpHabit();if(!h)return 'skip';return slpFits(sleepLog[v.k],h)?'ok':'miss';}}
+];
+async function loadHabits(){
+  habPast=[];
+  for(let i=1;i<=HAB_LOOKBACK;i++){
+    const k=dayBack(i),d=new Date(k+'T12:00:00').getDay();
+    const [m,x,w,q,r]=await Promise.all([sGet('d:morning:'+k),sGet('d:ex:'+k),sGet(K.water+':'+k),sGet('d:dequiz:'+k),sGet('d:runkm:'+k)]);
+    habPast.push({k,d,m,x,w,q,r});
+  }
+  renderHabits();
+}
+const habToday=()=>({k:todayKey(),d:dow,m:morningDone,x:exDone,w:waterCount,q:deQuiz,r:runKmToday});
+function habDays(){return [habToday()].concat(habPast||[]);}
+function habStreak(h,days){
+  let n=0;
+  for(let i=0;i<days.length;i++){
+    const s=h.st(days[i]);
+    if(s==='skip')continue;
+    if(s==='ok'){n++;continue;}
+    if(i===0)continue;            // bugün henüz bitmedi
+    break;
+  }
+  return n;
+}
+function renderHabits(){
+  const el=document.getElementById('habBox');if(!el)return;
+  if(!habPast){el.innerHTML='<div class="loading">Seriler hesaplanıyor…</div>';return;}
+  const days=habDays();
+  el.innerHTML=HABITS.map(h=>{
+    const n=habStreak(h,days);
+    let dots='';
+    for(let i=HAB_DOTS-1;i>=0;i--){const v=days[i];dots+='<i class="'+(v?h.st(v):'skip')+'" title="'+(v?v.k:'')+'"></i>';}
+    return '<div class="hab"><span class="hab-n">'+h.ad+'</span><span class="hab-dots">'+dots+'</span>'+
+      '<span class="hab-s'+(n?'':' zero')+'">'+(n?'🔥 '+n+' '+h.birim:'—')+'</span></div>';
+  }).join('')+'<div class="hab-foot">tik oranı %80+ sayılır · Pazar antrenmanda, koşusuz günler koşuda boş halka</div>';
+}
+
 /* ===== SU TAKİBİ =====
    Hedef: normalde 3 L; Cumartesi sabah koşu + öğlen Lower olduğu için 3.5 L.
    1 bardak = 250 ml. Gün değişince kendiliğinden sıfırlanır (anahtar tarih içeriyor). */
@@ -807,7 +879,7 @@ function renderWater(){
   el.querySelectorAll('[data-w]').forEach(b=>b.onclick=async()=>{
     const n=+b.dataset.w;
     waterCount=(waterCount===n)?n-1:n;      // dolu son bardağa basınca geri al
-    await sSet(K.water+':'+todayKey(),waterCount);renderWater();});
+    await sSet(K.water+':'+todayKey(),waterCount);renderWater();renderHabits();});
 }
 
 /* ===== UYKU TAKIBI =====
@@ -870,7 +942,7 @@ function renderSleep(){
   html+=bars+'</div>';
   el.innerHTML=html;
   const meta=document.getElementById('slpMeta');if(meta)meta.textContent=(d===null?'kayıt bekliyor':slpTxt(d));
-  const save=async(f,v)=>{const cur=sleepLog[tk]||{bed:'',wake:''};cur[f]=v;sleepLog[tk]=cur;await sSet(K.sleep,sleepLog);renderSleep();};
+  const save=async(f,v)=>{const cur=sleepLog[tk]||{bed:'',wake:''};cur[f]=v;sleepLog[tk]=cur;await sSet(K.sleep,sleepLog);renderSleep();renderHabits();};
   el.querySelector('#slpBed').onchange=ev=>save('bed',ev.target.value);
   el.querySelector('#slpWake').onchange=ev=>save('wake',ev.target.value);
   el.querySelectorAll('[data-sb]').forEach(b=>b.onclick=()=>save('bed',e.bed===b.dataset.sb?'':b.dataset.sb));
@@ -1017,7 +1089,7 @@ async function loadQuiz(){
   const q=await sGet('d:dequiz:'+todayKey());
   deQuiz=(q&&q.set===deExtra)?q:{set:deExtra,i:0,right:0,wrong:0,pick:null};
 }
-async function saveQuiz(){await sSet('d:dequiz:'+todayKey(),deQuiz);}
+async function saveQuiz(){await sSet('d:dequiz:'+todayKey(),deQuiz);renderHabits();}
 function renderQuiz(){
   const el=document.getElementById('quizBox');if(!el||!deQuiz)return;
   const words=pickDE().words,sc=document.getElementById('deScore');
@@ -1900,7 +1972,7 @@ function openJobsCfg(){
   document.getElementById('jobsCfg').onclick=openJobsCfg;
   jobProfile=await sGet(K.jobProfile)||null;jobsApplied=await sGet(K.jobsApplied)||[];myApps=await sGet(K.myApps)||[];
   document.getElementById('placeName').textContent=PLACE.name;
-  renderTasks();await loadSched();await loadMorning();await renderRun();await loadWorkout();renderWtLog();await loadMeals();await loadWater();await loadSleep();await loadMoney();
+  renderTasks();await loadSched();await loadMorning();await renderRun();await loadWorkout();renderWtLog();await loadMeals();await loadWater();await loadSleep();await loadMoney();loadHabits();
   renderFacts();renderFilm();renderArtist();renderBook();renderHistory();renderGerman();renderNews();renderWatch();renderUS();renderGold();renderWorld();renderMktSummary();renderFinNote();
   loadFX(false);loadBorsaJson();loadBasvuru();loadGmailJson();loadFactsJson();loadAgents(false);loadWx();loadJobsJson();
   setInterval(loadBorsaJson,15*60*1000);setInterval(loadBasvuru,15*60*1000);setInterval(loadGmailJson,15*60*1000);setInterval(()=>loadAgents(false),15*60*1000);setInterval(loadWx,30*60*1000);setInterval(loadJobsJson,60*60*1000);
