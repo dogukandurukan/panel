@@ -1,104 +1,97 @@
 {
-  "updated": "2026-08-19 14:24",
+  "updated": "2026-08-20 09:39",
   "watch": [
     {
-      "code": "SASA",
-      "price": "2.27",
-      "chg": "+0.89%",
-      "avg1w": "2.34",
-      "avg1m": "2.48"
+      "code": "ENKAI",
+      "price": "81.00",
+      "chg": "+1.06%",
+      "avg1w": "84.26",
+      "avg1m": "87.02"
     },
     {
-      "code": "ALARK",
-      "price": "110.50",
-      "chg": "+3.27%",
-      "avg1w": "105.44",
-      "avg1m": "104.27"
-    },
-    {
-      "code": "GUBRF",
-      "price": "463.75",
-      "chg": "+8.10%",
-      "avg1w": "435.15",
-      "avg1m": "425.17"
-    },
-    {
-      "code": "TUPRS",
-      "price": "388.75",
-      "chg": "+3.94%",
-      "avg1w": "367.85",
-      "avg1m": "324.29"
-    },
-    {
-      "code": "KONTR",
-      "price": "3.94",
-      "chg": "-1.50%",
-      "avg1w": "3.99",
-      "avg1m": "4.34"
+      "code": "BIMAS",
+      "price": "405.00",
+      "chg": "+6.02%",
+      "avg1w": "384.45",
+      "avg1m": "385.26"
     },
     {
       "code": "YEOTK",
-      "price": "35.96",
-      "chg": "-3.12%",
-      "avg1w": "38.89",
-      "avg1m": "39.99"
+      "price": "37.12",
+      "chg": "-9.99%",
+      "avg1w": "39.40",
+      "avg1m": "40.20"
+    },
+    {
+      "code": "SMRTG",
+      "price": "9.79",
+      "chg": "-6.49%",
+      "avg1w": "10.31",
+      "avg1m": "11.10"
+    },
+    {
+      "code": "KONTR",
+      "price": "4.00",
+      "chg": "+0.50%",
+      "avg1w": "3.97",
+      "avg1m": "4.40"
     }
   ],
   "us": [
     {
       "code": "AAPL",
-      "price": "310.03",
-      "chg": "+1.45%",
-      "avg1w": "305.81",
-      "avg1m": "317.03"
+      "price": "316.83",
+      "chg": "+2.19%",
+      "avg1w": "308.73",
+      "avg1m": "316.51"
     },
     {
       "code": "MSFT",
-      "price": "481.63",
-      "chg": "+0.27%",
-      "avg1w": "489.34",
-      "avg1m": "455.45"
+      "price": "484.31",
+      "chg": "+0.56%",
+      "avg1w": "487.71",
+      "avg1m": "459.57"
     },
     {
       "code": "NVDA",
-      "price": "219.74",
-      "chg": "-2.34%",
-      "avg1w": "223.86",
-      "avg1m": "211.87"
+      "price": "217.56",
+      "chg": "-0.99%",
+      "avg1w": "222.55",
+      "avg1m": "212.36"
     },
     {
       "code": "AMZN",
-      "price": "259.45",
-      "chg": "-0.71%",
-      "avg1w": "263.16",
-      "avg1m": "257.20"
+      "price": "265.84",
+      "chg": "+2.46%",
+      "avg1w": "262.88",
+      "avg1m": "258.07"
     },
     {
       "code": "TSLA",
-      "price": "336.87",
-      "chg": "-0.72%",
-      "avg1w": "337.18",
-      "avg1m": "328.07"
+      "price": "351.12",
+      "chg": "+4.23%",
+      "avg1w": "341.90",
+      "avg1m": "326.74"
     }
   ],
   "gold": {
-    "price": "6,824.76",
-    "chg": "+1.50%"
+    "price": "7,017.47",
+    "chg": "+1.48%"
   },
   "news": [
-    "⚪ Sasa Polyester, 7,185 milyar TL tahsisli sermaye artırımı kararı aldı  (Investing.com Türkiye)",
-    "⚪ SASA'dan sermaye artırımı kararı  (Bloomberght)",
-    "⚪ SASA'dan dev sermaye hamlesi: 7,2 milyar TL'lik artırım kararı  (CNBC-e)",
-    "⚪ KAP *** ALARKO HOLDİNG A.Ş. *** ALARK *** Herhangi Bir Otoriteye Mali Tablo Verilmesi  (Yeni Şafak)",
-    "⚪ #ALARK ALARKO HOLDİNG HEDEF FİYAT DEĞİŞİKLİĞİ - İLAYDA ÖZDEMİR İŞLEK Cathay Pacific (WZVPhNx7E6)  (Mshale)",
-    "⚪ Alarko Holding'den Büyük Geri Alım Hamlesi! #alark Endrick (ceD3htsJpe)  (Mshale)",
+    "⚪ Enka İnşaat’ta (ENKAI) 110 TL hedef fiyat: Bilanço incelendi  (Paratic Haber)",
+    "⚪ ENKAI’da 110 TL Hedef Fiyat: 2. Çeyrek Bilanço Nasıl?  (Haber Ege)",
+    "⚪ ENKAI için hedef fiyat 2Ç26 bilançosuyla 126 TL’ye indi  (Paratic Haber)",
+    "🟢 BIM’in hisseleri güçlü ikinci çeyrek sonuçlarıyla %6 yükseldi  (Investing.com Türkiye)",
+    "⚪ KAP *** YEO TEKNOLOJİ ENERJİ VE ENDÜSTRİ A.Ş. *** YEOTK *** İhraç Tavanına İlişkin Bildirim  (GZT)",
     "⚪ KAP *** YEO TEKNOLOJİ ENERJİ VE ENDÜSTRİ A.Ş. *** YEOTK *** Faaliyet Raporu (Konsolide)  (Yeni Şafak)",
-    "🟢 YEO Teknoloji kârlılıkta vites yükseltti  (Dünya Gazetesi)"
+    "🟢 YEO Teknoloji kârlılıkta vites yükseltti  (Dünya Gazetesi)",
+    "⚪ Smart Güneş Teknolojileri’nden (SMRTG) sermaye avansı açıklaması  (Rota Borsa)"
   ],
   "world": [
-    "🌍 Furkan Vakfı: Alparslan Kuytul, eşi ve birçok vakıf üyesine gözaltı - BBC  (BBC)",
-    "🌍 Okullarda yeni dönem! MEB'den 81 ile genelge: Kılık kıyafet, cep telefonu, kayıt parası... - Milliyet  (Milliyet)",
-    "🌍 Yeni Parti vekili Melih Meriç'e bıçaklı saldırı. Saldırgan eski CHP'li ilçe başkanı çıktı - NTV Haber  (NTV Haber)",
-    "🌍 Süleymancıların lideri Alihan Kuriş neyle suçlanıyor? - dw.com  (dw.com)"
+    "🌍 Suriye Dışişleri Bakanı: İsrail'in vurduğu üste Türk askeri varlığı planı yok - BBC  (BBC)",
+    "🌍 İstanbul'da 10 dakika arayla iki deprem: Bu aktivite izlenmeli, ivmelenerek devam ederse 'öncü şok' ihtimali değerlendirilebilir - T24  (T24)",
+    "🌍 Trump, İran'a yönelik eşi benzeri görülmemiş \"ekonomik operasyon\" ilan etti - Bloomberght  (Bloomberght)",
+    "🌍 Pezeşkiyan: Müzakerelerde adım adım ilerleyeceğiz - Bloomberght  (Bloomberght)"
   ]
 }
