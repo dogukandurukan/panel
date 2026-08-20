@@ -52,6 +52,16 @@ BULK_LOCALPART_RE = re.compile(
     r"kampanya|marketing|mailer|bounce|jobalerts|jobs-noreply|e-bulten|newsletter)",
     re.IGNORECASE,
 )
+# Toplu/pazarlama gönderim altyapılarının bıraktığı başlık adları.
+# X-Mailer KASITEN yok: Apple Mail gibi gerçek istemciler de onu koyuyor,
+# eklenirse kişisel mailler yanlışlıkla elenir.
+BULK_HEADER_RE = re.compile(
+    r"^(X-)?Feedback-ID$"
+    r"|^X-(Mailgun|Mailjet|MJ|SMTPAPI|SG|Sendgrid|Campaign|UTM|CSA|EmailType)"
+    r"|^X-(Report-Abuse|Complaints|Marketing|Bulk|Newsletter)"
+    r"|^(Auto-Submitted|Bounces-To|Errors-To|X-Auto-Response-Suppress)$",
+    re.IGNORECASE,
+)
 BULK_DOMAIN_RE = re.compile(
     r"(linkedin\.com|indeed\.com|glassdoor\.com|greenhouse\.io|myworkday\.com|"
     r"successfactors\.com|coursera\.org|trendyol\.com|iyzico\.com|flypgs\.com|"
@@ -93,11 +103,10 @@ def list_unread_ids(headers, window_days):
 
 
 def fetch_meta(headers, msg_id):
-    params = {
-        "format": "metadata",
-        "metadataHeaders": ["List-Unsubscribe", "List-Unsubscribe-Post",
-                             "Precedence", "From", "Subject", "Date"],
-    }
+    # metadataHeaders ile SINIRLAMA YOK: toplu-posta parmak izi (Feedback-ID,
+    # X-Mailgun-*, X-SMTPAPI ...) hangi başlıkta geleceği önceden bilinmediği için
+    # tüm başlıklar çekilip is_bulk() içinde taranıyor.
+    params = {"format": "metadata"}
     r = requests.get(f"{API_BASE}/messages/{msg_id}", headers=headers, params=params, timeout=20)
     r.raise_for_status()
     md = r.json()
@@ -111,6 +120,13 @@ def is_bulk(hdrs):
         return True
     if hdrs.get("Precedence", "").lower() in ("bulk", "list", "junk"):
         return True
+    # Toplu gönderim altyapısı parmak izi. Etsy / Alibaba / Cursor gibi bazı
+    # pazarlama gönderenleri List-Unsubscribe KOYMUYOR ve eskiden bu yüzden
+    # "kişisel" sanılıyorlardı. Feedback-ID (Google FBL) ve ESP'ye özgü X-
+    # başlıkları gerçek bir insanın yazdığı mailde bulunmaz.
+    for name in hdrs:
+        if BULK_HEADER_RE.match(name):
+            return True
     sender = hdrs.get("From", "")
     if BULK_LOCALPART_RE.search(sender) or BULK_DOMAIN_RE.search(sender):
         return True
