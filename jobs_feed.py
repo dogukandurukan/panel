@@ -54,11 +54,34 @@ SKILLS = [
     "power bi", "powerbi", "tableau", "looker", "dbt", "snowflake", "etl",
     "data warehouse", "dax", "mssql", "ci/cd", "git", "a/b test", "llm",
 ]
-# Almanca ilan tespiti (Almanca seviyesi orta -> kullanıcı bilmek istiyor)
+# --- dil tespiti ---
+# Mutlak eşik güvenilir değildi: "Baue mit LiveEO den Marktführer..." diye başlayan
+# ilan Almanca olduğu hâlde eşiğin altında kalıyordu. Bunun yerine Almanca ve
+# İngilizce işlev kelimelerinin yoğunluğu karşılaştırılıyor — hangisi baskınsa o.
 DE_WORDS = re.compile(
-    r"\b(und|oder|wir|unsere|deine|ihre|bei|für|mit|aufgaben|kenntnisse|"
-    r"erfahrung|arbeiten|team|stelle|bewerbung|m/w/d|w/m/d)\b", re.I
+    r"\b(und|oder|wir|uns|unsere|unser|deine|dein|ihre|dich|bei|für|mit|von|"
+    r"dem|den|der|die|das|ein|eine|einen|einem|nicht|auch|sowie|aufgaben|"
+    r"kenntnisse|erfahrung|erfahrungen|arbeiten|stelle|bewerbung|profil|"
+    r"suchen|bieten|willkommen|standort|mitarbeiter|unternehmen|abgeschlossenes|"
+    r"idealerweise|zusammen|weiter|werden|haben|sind|ist|wird|kannst|"
+    r"gute|sehr|mehr|über|durch|schon|damit|dabei)\b", re.I
 )
+EN_WORDS = re.compile(
+    r"\b(the|and|you|your|our|we|with|for|from|will|are|is|have|has|this|that|"
+    r"work|team|role|experience|skills|about|what|who|how|be|to|of|in|on|as|"
+    r"looking|join|help|build|across|within|able|strong|good|more|than|"
+    r"including|using|ensure|drive|support)\b", re.I
+)
+
+
+def is_german(text, title=""):
+    """Almanca ilanları ayıklamak için: DE/EN işlev kelimesi yoğunluğunu kıyasla."""
+    sample = (text or "")[:2500]
+    de = len(DE_WORDS.findall(sample))
+    en = len(EN_WORDS.findall(sample))
+    if de + en < 8:                       # metin çok kısa -> başlığa bak
+        return bool(re.search(r"\b(und|für|mit|wir|deine)\b", title or "", re.I))
+    return de > en
 
 
 def get_json(url):
@@ -134,6 +157,46 @@ def age_days(iso):
     return None
 
 
+FOCUS_RULES = [
+    ("ml",       r"machine learning|deep learning|\bmodel(s|ling|ing)?\b|mlops|\bnlp\b|"
+                 r"forecast|prediction|\bllm\b|\bai\b|data scien"),
+    ("pipeline", r"pipeline|\betl\b|\belt\b|ingest|airflow|dbt|spark|warehouse|lakehouse|"
+                 r"streaming|kafka|orchestrat|data platform|infrastructure"),
+    ("bi",       r"dashboard|power ?bi|tableau|looker|report(ing)?|\bkpi\b|visuali[sz]ation|"
+                 r"business intelligence|\bdax\b"),
+    ("business", r"stakeholder|business impact|commercial|decision|strategy|"
+                 r"cross-functional|product|growth|operations"),
+]
+
+
+def focus_of(title, body):
+    """İlanın ağırlık merkezini bul — panel cover letter'da hangi deneyimi öne
+    çıkaracağına buna bakarak karar veriyor."""
+    hay = (title + " " + body).lower()
+    best, bestn = "pipeline", 0
+    for name, pat in FOCUS_RULES:
+        n = len(re.findall(pat, hay))
+        if n > bestn:
+            best, bestn = name, n
+    return best
+
+
+KEY_RE = re.compile(
+    r"\b(stakeholder|dashboard|pipeline|forecast|automation|governance|"
+    r"optimi[sz]ation|migration|real[- ]?time|self[- ]?service|data quality|"
+    r"cost|scalab|experimentation|a/b|root cause|anomaly|retail|energy|"
+    r"finance|supply chain|e-?commerce|saas|startup|enterprise)\w*", re.I)
+
+
+def keywords_of(body):
+    out = []
+    for m in KEY_RE.findall(body or ""):
+        k = m.lower()
+        if k not in out:
+            out.append(k)
+    return out[:12]
+
+
 def norm(*, title, company, location, remote, url, text, posted, source, tags):
     body = clean(text, 4000)
     hay = (title + " " + body + " " + " ".join(tags)).lower()
@@ -156,9 +219,13 @@ def norm(*, title, company, location, remote, url, text, posted, source, tags):
         "posted": posted,
         "days": age_days(posted),
         "skills": found[:6],
-        # ilan Almanca mı — kullanıcının Almancası orta seviye, bilmek işine yarıyor
-        "german": len(DE_WORDS.findall(body[:1500])) >= 6,
+        # Almanca ilanlar tamamen eleniyor (kullanıcının Almancası yeterli değil);
+        # alan yine de tutuluyor ki elenme sebebi loglardan görülebilsin
+        "german": is_german(body, title),
+        "focus": focus_of(title, body),
         "summary": body[:260],
+        # cover letter'ı ilana göre uyarlamak için panelin kullandığı anahtar kelimeler
+        "keywords": keywords_of(body),
     }
     j["score"] = score(j)
     return j
@@ -239,13 +306,18 @@ def build():
 
     # aynı ilanı iki kez gösterme (url + şirket/başlık ikilisi)
     uniq, keys = [], set()
+    elenen_de = 0
     for j in jobs:
+        if j["german"]:          # Almanca ilan gösterilmiyor
+            elenen_de += 1
+            continue
         k = (j["company"].lower(), re.sub(r"\W+", "", j["title"].lower())[:40])
         if not j["url"] or j["url"] in seen or k in keys:
             continue
         keys.add(k)
         uniq.append(j)
 
+    print(f"  Almanca oldugu icin elenen: {elenen_de}")
     uniq.sort(key=lambda x: -x["score"])
     pick = uniq[:PICK]
     for j in pick:

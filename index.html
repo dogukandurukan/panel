@@ -1446,13 +1446,13 @@ function renderJobs(){
         (j.remote?'<span class="jb">remote</span>':'')+
         (j.german?'<span class="jb de">Almanca ilan</span>':'')+
         (yas?'<span class="jb">'+yas+'</span>':'')+
-        '<span class="jb">'+esc(j.source)+'</span>'+
+        '<span class="jb">'+esc(j.source)+'</span>'+(j.focus?'<span class="jb">'+esc(FOCUS_TR[j.focus]||j.focus)+'</span>':'')+
         (j.skills||[]).map(s=>'<span class="jb">'+esc(skillLabel(s))+'</span>').join('')+
       '</div>'+
       (j.summary?'<div class="job-sum">'+esc(j.summary)+'…</div>':'')+
       '<div class="job-act">'+
         '<a class="ibtn" href="'+esc(j.url)+'" target="_blank" rel="noopener">İlana git ↗</a>'+
-        '<button class="ibtn" data-jcl="'+i+'">Cover letter ↓</button>'+
+        '<button class="ibtn" data-jcl="'+i+'">Cover letter → PDF</button>'+
         '<button class="ibtn" data-jap="'+i+'">'+(done?'Geri al':'Başvurdum ✓')+'</button>'+
       '</div></div>';
   }).join('');
@@ -1460,34 +1460,99 @@ function renderJobs(){
   el.querySelectorAll('[data-jap]').forEach(b=>b.onclick=()=>toggleApplied(jobs[+b.dataset.jap]));
 }
 
-/* ---- Cover letter: profildeki bloklar + ilana özel alanlar birleştirilir.
-   Model/LLM yok; uydurma cümle üretilmez, yalnızca senin yazdıkların kullanılır. */
-function coverLetter(j){
-  const p=jobProfile;
-  if(!p||!p.name){openJobsCfg();alert('Önce ⚙ Profil bölümünü doldur — cover letter senin yazdığın bloklardan kuruluyor.');return;}
-  const tarih=new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
-  /* ilanda geçen ve profilinde de olan teknolojiler -> somut eşleşme cümlesi */
+/* ---- Cover letter: ilana göre uyarlanır, PDF olarak kaydedilir.
+   MİMARİ NOTU — neden model kullanılmıyor:
+   jobs.json PUBLIC repoya commit ediliyor. Mektup feed'de (Actions) üretilseydi
+   CV'den gelen cümleler herkese açık repoya yazılmış olurdu. Tarayıcıdan model
+   çağırmak da API anahtarını public siteye gömmek demek. Bu yüzden mektup
+   TARAYICIDA, senin localStorage'daki bloklarından kuruluyor: ilanın odağına
+   (focus) göre hangi deneyimin öne çıkacağı seçiliyor, ilandaki teknoloji ve
+   temalarla kesişim cümleye ekleniyor. Uydurma cümle üretilmiyor. */
+const FOCUS_TR={pipeline:'Veri mühendisliği / pipeline',ml:'ML / AI',bi:'BI / raporlama',business:'İş etkisi / stakeholder'};
+const FOCUS_LINE={
+  pipeline:'building and owning reliable, production-grade data pipelines end to end',
+  ml:'applying machine learning and AI to problems that have to work in production',
+  bi:'turning messy data into reporting that decision-makers actually rely on',
+  business:'translating ambiguous business questions into analysis that changes decisions'
+};
+function profBlocks(p){
+  /* eski profil biçimi (exp1/exp2) de desteklensin */
+  const b=p.blocks||{};
+  if(!b.pipeline&&!b.ml&&!b.bi&&!b.business&&(p.exp1||p.exp2))
+    return{pipeline:p.exp1||'',business:p.exp2||'',ml:p.exp1||'',bi:p.exp2||''};
+  return b;
+}
+function buildLetter(j){
+  const p=jobProfile,B=profBlocks(p);
+  const odak=j.focus||'pipeline';
   const mine=(p.skills||'').toLowerCase();
   const ort=(j.skills||[]).filter(s=>mine.indexOf(s.toLowerCase())>-1);
-  const esles=ort.length?(' The role\'s emphasis on '+ort.map(skillLabel).join(', ')+
+  /* ilanın odağına en uygun blok önce, ardından farklı bir ikinci blok */
+  const birincil=B[odak]||B.pipeline||B.business||'';
+  const sira=['business','pipeline','ml','bi'].filter(k=>k!==odak);
+  let ikincil='';
+  for(const k of sira){if(B[k]&&B[k]!==birincil){ikincil=B[k];break;}}
+  const esles=ort.length?(' The emphasis on '+ort.map(skillLabel).join(', ')+
     ' lines up directly with the tooling I work in day to day.'):'';
-  const L=[
-    p.name,p.contact,'',tarih,'',
-    'Hiring Team — '+j.title,j.company,'',
-    'Dear Hiring Team,','',
-    'I am writing to express my strong interest in the '+j.title+' role at '+j.company+'. '+(p.opening||''),'',
-    p.exp1||'','',
+  /* NOT: ilandaki anahtar kelimelerden "bunlarda deneyimim var" cümlesi
+     üretmiyoruz. Kelimeler ilandan geliyor, CV'den değil — doğrulanmamış
+     iddia olur; ayrıca kökler ("scalab") cümleyi bozuyordu. */
+  const paras=[
+    'I am writing to express my strong interest in the '+j.title+' role at '+j.company+
+      '. '+(p.opening||'')+' Your description centres on '+(FOCUS_LINE[odak]||FOCUS_LINE.pipeline)+
+      ' — which is precisely where I have spent the last five years.',
+    birincil,
   ];
-  if(p.exp2)L.push(p.exp2,'');
-  L.push('My technical foundation — '+(p.skills||'')+' — maps well to the role\'s requirements.'+esles+
-    (p.education?(' '+p.education):''),'');
-  if(p.closing)L.push(p.closing,'');
-  L.push('Thank you for your time and consideration.','','Best regards,',p.name);
-  const txt=L.join('\n');
-  const ad='cover-letter-'+(j.company||'ilan').replace(/[^\wÇĞİÖŞÜçğıöşü-]+/g,'-').toLowerCase()+'.txt';
-  const blob=new Blob(['﻿'+txt],{type:'text/plain;charset=utf-8'});
-  const url=URL.createObjectURL(blob);const a=document.createElement('a');
-  a.href=url;a.download=ad;a.click();URL.revokeObjectURL(url);
+  if(ikincil)paras.push(ikincil);
+  paras.push('My technical foundation — '+(p.skills||'')+' — maps well to the requirements.'+
+    esles+(p.education?(' '+p.education):''));
+  if(p.closing)paras.push(p.closing);
+  paras.push('Thank you for your time and consideration.');
+  return{
+    name:p.name||'',contact:p.contact||'',
+    date:new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}),
+    to:'Hiring Team — '+j.title,company:j.company,paras:paras.filter(Boolean)
+  };
+}
+/* Yazdırma görünümü: yeni sekmede A4 düzeninde açılır ve yazdırma penceresi
+   gelir; "Hedef: PDF olarak kaydet" seçilince PDF iner. Harici kütüphane yok —
+   panelin tek dosya / bağımlılıksız yapısı korunuyor ve Türkçe karakterler
+   (Kadıköy, Sabancı) doğru çıkıyor. */
+function coverLetter(j){
+  const p=jobProfile;
+  if(!p||!p.name){openJobsCfg();alert('Önce ⚙ Profil bölümünü doldur — mektup senin yazdığın bloklardan kuruluyor.');return;}
+  const L=buildLetter(j);
+  const w=window.open('','_blank');
+  if(!w){alert('Tarayıcı yeni sekmeyi engelledi — bu site için pop-up izni ver.');return;}
+  const st='<style>@page{size:A4;margin:22mm 20mm;}'+
+    'html{background:#fff;}'+/* zemin acikca beyaz olmali: kullanicinin tarayicisi koyu moddaysa varsayilan tuval siyah oluyor ve #111 yazi okunmuyordu */
+    'body{font-family:Georgia,"Times New Roman",serif;font-size:11.2pt;line-height:1.62;color:#111;background:#fff;margin:0;color-scheme:light;}'+
+    '.n{font-size:19pt;font-weight:700;letter-spacing:.02em;margin:0 0 3px;}'+
+    '.c{font-size:9.2pt;color:#444;margin:0 0 26px;font-family:Helvetica,Arial,sans-serif;}'+
+    '.d{margin:0 0 20px;font-size:10pt;color:#333;}'+
+    '.to{margin:0 0 22px;font-size:10.6pt;}.to b{display:block;font-weight:600;}'+
+    'p{margin:0 0 13px;text-align:justify;}'+
+    '.sig{margin-top:26px;}.sig span{display:block;}'+
+    '@media screen{body{max-width:750px;margin:34px auto;padding:0 22px;}'+
+    '.bar{position:fixed;top:0;left:0;right:0;background:#111;color:#fff;padding:9px 16px;'+
+    'font-family:Helvetica,Arial,sans-serif;font-size:13px;display:flex;gap:12px;align-items:center;}'+
+    '.bar button{font:inherit;padding:5px 13px;border:0;border-radius:4px;background:#35E0D4;cursor:pointer;}'+
+    'body{padding-top:56px;}}@media print{.bar{display:none;}}</style>';
+  const esc2=s=>String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+  w.document.write('<!doctype html><html lang="en"><head><meta charset="utf-8">'+
+    '<title>Cover Letter — '+esc2(L.company)+'</title>'+st+'</head><body>'+
+    '<div class="bar"><b>Cover letter hazır</b><button onclick="window.print()">PDF olarak kaydet</button>'+
+    '<span>Yazdırma penceresinde hedefi “PDF olarak kaydet” seç</span></div>'+
+    '<p class="n">'+esc2(L.name)+'</p><p class="c">'+esc2(L.contact)+'</p>'+
+    '<p class="d">'+esc2(L.date)+'</p>'+
+    '<p class="to"><b>'+esc2(L.to)+'</b>'+esc2(L.company)+'</p>'+
+    '<p>Dear Hiring Team,</p>'+
+    L.paras.map(t=>'<p>'+esc2(t)+'</p>').join('')+
+    '<div class="sig"><span>Best regards,</span><span>'+esc2(L.name)+'</span></div>'+
+    '</body></html>');
+  w.document.close();
+  w.document.title='Cover Letter — '+L.company;   // PDF dosya adı bu başlıktan gelir
+  setTimeout(()=>{try{w.focus();w.print();}catch(e){}},450);
 }
 
 /* ---- "Başvurdum": Google Form önden doldurulmuş link + yerel işaretleme.
@@ -1542,8 +1607,12 @@ function openJobsCfg(){
     f('cfName','Ad Soyad',p.name)+
     f('cfContact','İletişim satırı (mektup başlığında görünür)',p.contact)+
     f('cfOpening','Açılış cümlesi — ne yaptığın',p.opening,1)+
-    f('cfExp1','Deneyim paragrafı 1',p.exp1,1)+
-    f('cfExp2','Deneyim paragrafı 2 (ops.)',p.exp2,1)+
+    '<div class="cfg-note" style="margin:12px 0 0">Aşağıdaki dört blok ilanın odağına göre seçiliyor: '+
+    'ilan pipeline ağırlıklıysa o blok, ML ağırlıklıysa ML bloğu öne çıkıyor. En az ikisini doldur.</div>'+
+    f('cfBPipe','Deneyim · veri mühendisliği / pipeline',(p.blocks||{}).pipeline||p.exp1,1)+
+    f('cfBMl','Deneyim · ML / AI',(p.blocks||{}).ml,1)+
+    f('cfBBi','Deneyim · BI / raporlama',(p.blocks||{}).bi,1)+
+    f('cfBBus','Deneyim · iş etkisi / stakeholder',(p.blocks||{}).business||p.exp2,1)+
     f('cfSkills','Teknik beceriler (virgülle)',p.skills)+
     f('cfEdu','Eğitim cümlesi (ops.)',p.education,1)+
     f('cfClosing','Kapanış — konum / müsaitlik',p.closing,1)+
@@ -1556,8 +1625,9 @@ function openJobsCfg(){
     '<button class="ibtn" id="cfClose">Kapat</button></div></div>';
   box.style.display='block';
   document.getElementById('cfSave').onclick=async()=>{
-    jobProfile={name:v('cfName'),contact:v('cfContact'),opening:v('cfOpening'),exp1:v('cfExp1'),
-      exp2:v('cfExp2'),skills:v('cfSkills'),education:v('cfEdu'),closing:v('cfClosing'),form:v('cfForm')};
+    jobProfile={name:v('cfName'),contact:v('cfContact'),opening:v('cfOpening'),
+      blocks:{pipeline:v('cfBPipe'),ml:v('cfBMl'),bi:v('cfBBi'),business:v('cfBBus')},
+      skills:v('cfSkills'),education:v('cfEdu'),closing:v('cfClosing'),form:v('cfForm')};
     await sSet(K.jobProfile,jobProfile);
     box.style.display='none';renderJobs();
   };
