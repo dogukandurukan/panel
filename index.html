@@ -152,6 +152,34 @@
   footer{margin-top:26px;padding-top:14px;border-top:1px solid var(--line);font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;}
   @media (max-width:640px){body{padding:16px 14px 34px;}.clock{text-align:left;}}
 
+  /* günün 3 işi */
+  .job{border:1px solid var(--line);border-radius:5px;padding:12px 13px;margin-bottom:11px;background:var(--paper);}
+  .job:last-child{margin-bottom:0;}
+  html[data-theme="hud"] .job{background:#0A111C;}
+  .job.applied{opacity:.5;}
+  .job-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;}
+  .job-t{font-size:15px;font-weight:600;line-height:1.35;flex:1;min-width:180px;}
+  .job-co{font-family:var(--mono);font-size:11.5px;color:var(--accent);margin-top:3px;}
+  .job-badges{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px;}
+  .jb{font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;
+    border:1px solid var(--line2);border-radius:3px;padding:2px 6px;color:var(--muted);white-space:nowrap;}
+  .jb.loc{border-color:var(--accent);color:var(--accent);}
+  .jb.de{border-color:#E0B23D;color:#B8871F;}
+  html[data-theme="hud"] .jb.de{color:#E0B23D;}
+  .job-sum{font-size:12.5px;color:var(--muted);line-height:1.5;margin-top:8px;}
+  .job-act{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;align-items:center;}
+  .job-act .ibtn{padding:5px 10px;text-decoration:none;}
+  .job-done{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--up);}
+  .cfgbox{border:1px solid var(--line2);border-radius:5px;padding:12px 13px;margin-bottom:13px;background:var(--paper);}
+  html[data-theme="hud"] .cfgbox{background:#0A111C;}
+  .cfgbox label{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--muted);margin:9px 0 4px;}
+  .cfgbox input,.cfgbox textarea{width:100%;background:var(--card);border:1px solid var(--line);
+    border-radius:4px;padding:7px 9px;font-family:var(--sans);font-size:13px;color:var(--ink);resize:vertical;}
+  .cfgbox textarea{min-height:52px;}
+  .cfgbox input:focus,.cfgbox textarea:focus{outline:none;border-color:var(--accent);}
+  .cfg-note{font-size:11.5px;color:var(--muted);line-height:1.5;margin-top:9px;font-style:italic;}
+
   /* telemetrinin altındaki iki sütunlu satır — kart genişliği telemetriyle aynı */
   .duo{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px;align-items:start;}
   @media (max-width:760px){.duo{grid-template-columns:1fr;}}
@@ -383,13 +411,18 @@
   <section class="card" style="margin-top:20px"><div class="card-head"><div><p class="kicker">Antrenman · Kayıt</p><h2 class="card-title">Ağırlık Takibi</h2></div><div class="meta"><button class="ibtn" id="wtExport" style="padding:6px 10px">Excel'e aktar</button></div></div>
     <div class="wtitle" id="wtSub">—</div>
     <div id="wtList"></div></section>
+  <section class="card" style="margin-top:20px"><div class="card-head"><div><p class="kicker">Kariyer · Günlük</p><h2 class="card-title">Bugünün 3 İşi</h2></div>
+    <div class="meta"><span id="jobsTime">—</span><br><button class="ibtn" id="jobsCfg" style="margin-top:5px">⚙ Profil</button></div></div>
+    <div id="jobsCfgBox" style="display:none"></div>
+    <div id="jobsList"><div class="loading">jobs.json çekiliyor…</div></div></section>
+
   <section class="card" style="margin-top:20px"><div class="card-head"><div><p class="kicker">Kariyer</p><h2 class="card-title">İş Başvuruları</h2></div><div class="meta"><span id="basvuruTime">—</span><br><button class="ibtn" id="basvuruRefresh">Yenile</button></div></div>
     <div id="basvuruStats" class="statrow"><div class="loading">Başvurular çekiliyor…</div></div>
     <div id="basvuruList"></div></section>
   <footer><span>Antrenman & yemek programından · gün gün otomatik</span><span>Döviz canlı · yatırım tavsiyesi değildir</span></footer>
 </div>
 <script>
-const K={tasks:'d:tasks',targets:'d:targets',bist:'d:bist',altin:'d:altin',news:'d:news',fx:'d:fx',de:'d:de',gmailDone:'d:gmailDone',targetsVer:'d:targetsVer',water:'d:water',theme:'d:theme',agents:'d:agents',wx:'d:wx',deWrong:'d:deWrong'};
+const K={tasks:'d:tasks',targets:'d:targets',bist:'d:bist',altin:'d:altin',news:'d:news',fx:'d:fx',de:'d:de',gmailDone:'d:gmailDone',targetsVer:'d:targetsVer',water:'d:water',theme:'d:theme',agents:'d:agents',wx:'d:wx',deWrong:'d:deWrong',jobProfile:'d:jobProfile',jobsApplied:'d:jobsApplied'};
 /* Konum tek yerde — taşınırsan sadece burayı değiştir (dateline + hava durumu birlikte gelir). */
 const PLACE={name:'İstanbul, Kadıköy',lat:40.9833,lon:29.0333};
 const mem={};
@@ -1365,6 +1398,173 @@ async function loadAgents(force){
   }
 }
 
+/* ===== GÜNÜN 3 İŞİ =====
+   jobs_feed.py'nin ürettiği jobs.json okunur (borsa/gmail ile aynı statik desen).
+   LinkedIn'e bağlanmaz: LinkedIn'in bireysel iş arama API'si yok ve otomatik
+   erişim Kullanıcı Sözleşmesi'ne aykırı. Panel yalnızca ilana link verir.
+
+   GİZLİLİK: profil (ad, iletişim, deneyim blokları) YALNIZCA localStorage'da
+   durur — repo herkese açık, buraya hiçbir kişisel veri gömülmez. */
+let jobs=[],jobsApplied=[],jobProfile=null;
+/* teknoloji adlarini dogru yazimla goster: 'ci/cd' -> 'CI/CD' */
+const SKILL_LABEL={'ci/cd':'CI/CD','sql':'SQL','dbt':'dbt','power bi':'Power BI','powerbi':'Power BI',
+ 'etl':'ETL','llm':'LLM','a/b test':'A/B testing','pyspark':'PySpark','mssql':'MSSQL','dax':'DAX',
+ 'data warehouse':'Data Warehouse','git':'Git','azure':'Azure','airflow':'Airflow','spark':'Spark',
+ 'databricks':'Databricks','python':'Python','tableau':'Tableau','looker':'Looker','snowflake':'Snowflake'};
+function skillLabel(s){return SKILL_LABEL[s]||String(s).replace(/\b\w/g,c=>c.toUpperCase());}
+const JOB_MARK={SIRKET:'company',POZISYON:'title',KONUM:'location',TARIH:'date',DURUM:'status'};
+
+async function loadJobsJson(){
+  const el=document.getElementById('jobsList'),t=document.getElementById('jobsTime');
+  try{
+    const r=await fetch('jobs.json?_='+Date.now());
+    if(!r.ok)throw 0;
+    const d=await r.json();
+    jobs=d.items||[];
+    const ag=feedAge(d.updated);
+    if(t)t.textContent=ag?ag.txt:'—';
+    renderJobs();
+  }catch(e){
+    if(t)t.textContent='—';
+    el.innerHTML='<div class="empty">jobs.json henüz yok — jobs-feed workflow\'u ilk kez çalışınca burada görünecek.</div>';
+  }
+}
+function jobKey(j){return j.url||((j.company||'')+'|'+(j.title||''));}
+function renderJobs(){
+  const el=document.getElementById('jobsList');if(!el)return;
+  if(!jobs.length){el.innerHTML='<div class="empty">Bugün kriterlere uyan ilan bulunamadı.</div>';return;}
+  el.innerHTML=jobs.map((j,i)=>{
+    const done=jobsApplied.indexOf(jobKey(j))>-1;
+    const yas=j.days==null?'':(j.days===0?'bugün':j.days+' gün önce');
+    return '<div class="job'+(done?' applied':'')+'">'+
+      '<div class="job-top"><div style="flex:1;min-width:180px">'+
+        '<div class="job-t">'+esc(j.title)+'</div>'+
+        '<div class="job-co">'+esc(j.company)+'</div></div>'+
+        (done?'<span class="job-done">✓ başvuruldu</span>':'')+'</div>'+
+      '<div class="job-badges">'+
+        '<span class="jb loc">'+esc(j.location)+'</span>'+
+        (j.remote?'<span class="jb">remote</span>':'')+
+        (j.german?'<span class="jb de">Almanca ilan</span>':'')+
+        (yas?'<span class="jb">'+yas+'</span>':'')+
+        '<span class="jb">'+esc(j.source)+'</span>'+
+        (j.skills||[]).map(s=>'<span class="jb">'+esc(skillLabel(s))+'</span>').join('')+
+      '</div>'+
+      (j.summary?'<div class="job-sum">'+esc(j.summary)+'…</div>':'')+
+      '<div class="job-act">'+
+        '<a class="ibtn" href="'+esc(j.url)+'" target="_blank" rel="noopener">İlana git ↗</a>'+
+        '<button class="ibtn" data-jcl="'+i+'">Cover letter ↓</button>'+
+        '<button class="ibtn" data-jap="'+i+'">'+(done?'Geri al':'Başvurdum ✓')+'</button>'+
+      '</div></div>';
+  }).join('');
+  el.querySelectorAll('[data-jcl]').forEach(b=>b.onclick=()=>coverLetter(jobs[+b.dataset.jcl]));
+  el.querySelectorAll('[data-jap]').forEach(b=>b.onclick=()=>toggleApplied(jobs[+b.dataset.jap]));
+}
+
+/* ---- Cover letter: profildeki bloklar + ilana özel alanlar birleştirilir.
+   Model/LLM yok; uydurma cümle üretilmez, yalnızca senin yazdıkların kullanılır. */
+function coverLetter(j){
+  const p=jobProfile;
+  if(!p||!p.name){openJobsCfg();alert('Önce ⚙ Profil bölümünü doldur — cover letter senin yazdığın bloklardan kuruluyor.');return;}
+  const tarih=new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
+  /* ilanda geçen ve profilinde de olan teknolojiler -> somut eşleşme cümlesi */
+  const mine=(p.skills||'').toLowerCase();
+  const ort=(j.skills||[]).filter(s=>mine.indexOf(s.toLowerCase())>-1);
+  const esles=ort.length?(' The role\'s emphasis on '+ort.map(skillLabel).join(', ')+
+    ' lines up directly with the tooling I work in day to day.'):'';
+  const L=[
+    p.name,p.contact,'',tarih,'',
+    'Hiring Team — '+j.title,j.company,'',
+    'Dear Hiring Team,','',
+    'I am writing to express my strong interest in the '+j.title+' role at '+j.company+'. '+(p.opening||''),'',
+    p.exp1||'','',
+  ];
+  if(p.exp2)L.push(p.exp2,'');
+  L.push('My technical foundation — '+(p.skills||'')+' — maps well to the role\'s requirements.'+esles+
+    (p.education?(' '+p.education):''),'');
+  if(p.closing)L.push(p.closing,'');
+  L.push('Thank you for your time and consideration.','','Best regards,',p.name);
+  const txt=L.join('\n');
+  const ad='cover-letter-'+(j.company||'ilan').replace(/[^\wÇĞİÖŞÜçğıöşü-]+/g,'-').toLowerCase()+'.txt';
+  const blob=new Blob(['﻿'+txt],{type:'text/plain;charset=utf-8'});
+  const url=URL.createObjectURL(blob);const a=document.createElement('a');
+  a.href=url;a.download=ad;a.click();URL.revokeObjectURL(url);
+}
+
+/* ---- "Başvurdum": Google Form önden doldurulmuş link + yerel işaretleme.
+   Sheet'e yazma yetkisi panele GÖMÜLMEZ (repo public olduğu için) — Form
+   kullanıcının kendi hesabıyla, kendi tıklamasıyla yazar. */
+function formUrl(j){
+  const p=jobProfile;
+  if(!p||!p.form)return null;
+  try{
+    const u=new URL(p.form);
+    const bugun=todayKey();
+    u.searchParams.forEach?0:0;
+    const yeni=new URLSearchParams();
+    for(const[k,v]of u.searchParams.entries()){
+      const alan=JOB_MARK[String(v).trim().toUpperCase()];
+      if(alan==='company')yeni.set(k,j.company);
+      else if(alan==='title')yeni.set(k,j.title);
+      else if(alan==='location')yeni.set(k,j.location+(j.remote?' (Remote)':''));
+      else if(alan==='date')yeni.set(k,bugun);
+      else if(alan==='status')yeni.set(k,'Bekliyor');
+      else yeni.set(k,v);
+    }
+    return u.origin+u.pathname+'?'+yeni.toString();
+  }catch(e){return null;}
+}
+async function toggleApplied(j){
+  const k=jobKey(j),i=jobsApplied.indexOf(k);
+  if(i>-1){jobsApplied.splice(i,1);}
+  else{
+    jobsApplied.push(k);jobsApplied=jobsApplied.slice(-200);
+    const fu=formUrl(j);
+    if(fu)window.open(fu,'_blank','noopener');
+    else{
+      /* Form kurulmamış: satırı panoya kopyala, Sheet'i aç — elle yapıştırılır */
+      const satir=[j.company,j.title,j.location+(j.remote?' (Remote)':''),todayKey(),'Bekliyor'].join('\t');
+      try{await navigator.clipboard.writeText(satir);}catch(e){}
+      window.open('https://docs.google.com/spreadsheets/d/'+BASVURU_SHEET_ID+'/edit','_blank','noopener');
+    }
+  }
+  await sSet(K.jobsApplied,jobsApplied);renderJobs();
+}
+
+/* ---- profil / form ayarları (hepsi yalnızca bu tarayıcıda) */
+function openJobsCfg(){
+  const box=document.getElementById('jobsCfgBox');
+  if(box.style.display==='block'){box.style.display='none';return;}
+  const p=jobProfile||{};
+  const f=(id,l,v,ta)=>'<label>'+l+'</label>'+(ta
+    ?'<textarea id="'+id+'">'+esc(v||'')+'</textarea>'
+    :'<input id="'+id+'" value="'+esc(v||'')+'">');
+  box.innerHTML='<div class="cfgbox">'+
+    f('cfName','Ad Soyad',p.name)+
+    f('cfContact','İletişim satırı (mektup başlığında görünür)',p.contact)+
+    f('cfOpening','Açılış cümlesi — ne yaptığın',p.opening,1)+
+    f('cfExp1','Deneyim paragrafı 1',p.exp1,1)+
+    f('cfExp2','Deneyim paragrafı 2 (ops.)',p.exp2,1)+
+    f('cfSkills','Teknik beceriler (virgülle)',p.skills)+
+    f('cfEdu','Eğitim cümlesi (ops.)',p.education,1)+
+    f('cfClosing','Kapanış — konum / müsaitlik',p.closing,1)+
+    f('cfForm','Google Form önden doldurulmuş link (ops.)',p.form,1)+
+    '<div class="cfg-note">Form kurulumu: Sheet\'ine bağlı bir Google Form aç → "Önceden doldurulmuş bağlantı al" → alanlara sırasıyla '+
+    '<b>SIRKET</b>, <b>POZISYON</b>, <b>KONUM</b>, <b>TARIH</b>, <b>DURUM</b> yaz → çıkan linki buraya yapıştır. '+
+    'Panel bu işaretleri gerçek değerlerle değiştirir. Form kurmazsan "Başvurdum" satırı panoya kopyalayıp Sheet\'i açar.<br><br>'+
+    'Buradaki her şey yalnızca bu tarayıcıda saklanır; repoya veya sunucuya gitmez.</div>'+
+    '<div class="add-row" style="margin-top:11px"><button id="cfSave">Kaydet</button>'+
+    '<button class="ibtn" id="cfClose">Kapat</button></div></div>';
+  box.style.display='block';
+  document.getElementById('cfSave').onclick=async()=>{
+    jobProfile={name:v('cfName'),contact:v('cfContact'),opening:v('cfOpening'),exp1:v('cfExp1'),
+      exp2:v('cfExp2'),skills:v('cfSkills'),education:v('cfEdu'),closing:v('cfClosing'),form:v('cfForm')};
+    await sSet(K.jobProfile,jobProfile);
+    box.style.display='none';renderJobs();
+  };
+  document.getElementById('cfClose').onclick=()=>{box.style.display='none';};
+  function v(id){const e=document.getElementById(id);return e?e.value.trim():'';}
+}
+
 /* init */
 (async function(){tick();setInterval(tick,1000);await initTheme();
   tasks=await sGet(K.tasks)||[];
@@ -1398,12 +1598,14 @@ async function loadAgents(force){
   document.getElementById('basvuruRefresh').onclick=loadBasvuru;
   document.getElementById('gmailRefresh').onclick=loadGmailJson;
   document.getElementById('agentRefresh').onclick=()=>loadAgents(true);
+  document.getElementById('jobsCfg').onclick=openJobsCfg;
+  jobProfile=await sGet(K.jobProfile)||null;jobsApplied=await sGet(K.jobsApplied)||[];
   document.getElementById('placeName').textContent=PLACE.name;
   renderTasks();await loadSched();await loadMorning();await renderRun();await loadWorkout();renderWtLog();await loadMeals();await loadWater();await loadMoney();
   renderFacts();renderFilm();renderArtist();renderBook();renderHistory();renderGerman();renderNews();renderWatch();renderUS();renderGold();renderWorld();renderMktSummary();renderFinNote();
-  loadFX(false);loadBorsaJson();loadBasvuru();loadGmailJson();loadFactsJson();loadAgents(false);loadWx();
-  setInterval(loadBorsaJson,15*60*1000);setInterval(loadBasvuru,15*60*1000);setInterval(loadGmailJson,15*60*1000);setInterval(()=>loadAgents(false),15*60*1000);setInterval(loadWx,30*60*1000);
-  document.addEventListener('visibilitychange',()=>{if(!document.hidden){loadBorsaJson();loadFX(false);loadBasvuru();loadGmailJson();loadAgents(false);loadWx();}});
+  loadFX(false);loadBorsaJson();loadBasvuru();loadGmailJson();loadFactsJson();loadAgents(false);loadWx();loadJobsJson();
+  setInterval(loadBorsaJson,15*60*1000);setInterval(loadBasvuru,15*60*1000);setInterval(loadGmailJson,15*60*1000);setInterval(()=>loadAgents(false),15*60*1000);setInterval(loadWx,30*60*1000);setInterval(loadJobsJson,60*60*1000);
+  document.addEventListener('visibilitychange',()=>{if(!document.hidden){loadBorsaJson();loadFX(false);loadBasvuru();loadGmailJson();loadAgents(false);loadWx();loadJobsJson();}});
 })();
 </script>
 </body>

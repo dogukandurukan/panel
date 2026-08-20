@@ -1,0 +1,76 @@
+{
+ "updated": "2026-08-20 21:26",
+ "ok": true,
+ "count": 3,
+ "pool": 20,
+ "items": [
+  {
+   "title": "Senior Data Engineer (f/m/d)",
+   "company": "Enpal",
+   "location": "Berlin",
+   "loc_raw": "Berlin",
+   "remote": false,
+   "url": "https://www.arbeitnow.com/jobs/companies/enpal/senior-data-engineer-metrify-berlin-61854",
+   "source": "Arbeitnow",
+   "posted": "2026-08-20",
+   "days": 0,
+   "skills": [
+    "azure",
+    "airflow",
+    "dbt",
+    "snowflake",
+    "ci/cd",
+    "git"
+   ],
+   "german": false,
+   "summary": "Our goal is to have a solar system on every roof, a storage unit in every house, and an electric car in every garage. Enpal makes this possible with an integrated total solution for decentralized energy—from solar systems and battery storage to wall boxes, sma",
+   "score": 112
+  },
+  {
+   "title": "Staff Data Engineer (f/m/d)",
+   "company": "Enpal",
+   "location": "Berlin",
+   "loc_raw": "Berlin",
+   "remote": false,
+   "url": "https://www.arbeitnow.com/jobs/companies/enpal/staff-data-engineer-metrify-berlin-347291",
+   "source": "Arbeitnow",
+   "posted": "2026-08-20",
+   "days": 0,
+   "skills": [
+    "azure",
+    "airflow",
+    "dbt",
+    "snowflake",
+    "ci/cd",
+    "git"
+   ],
+   "german": false,
+   "summary": "Our goal is to have a solar system on every roof, a storage unit in every house, and an electric car in every garage. Enpal makes this possible with an integrated total solution for decentralized energy—from solar systems and battery storage to wall boxes, sma",
+   "score": 100
+  },
+  {
+   "title": "Senior Data Scientist/ML Engineer - Financial Crime",
+   "company": "sumup",
+   "location": "Berlin",
+   "loc_raw": "Berlin",
+   "remote": false,
+   "url": "https://www.arbeitnow.com/jobs/companies/sumup/senior-data-scientist-ml-engineer-financial-crime-berlin-185839",
+   "source": "Arbeitnow",
+   "posted": "2026-08-20",
+   "days": 0,
+   "skills": [
+    "python",
+    "ci/cd"
+   ],
+   "german": false,
+   "summary": "Help build ML systems that make financial crime harder to hide Financial crime is constantly changing. New patterns and behaviours emerge all the time, and the data we work with is complex. Our work helps make financial activity safer and more trustworthy for ",
+   "score": 88
+  }
+ ],
+ "seen": [
+  "https://www.arbeitnow.com/jobs/companies/enpal/senior-data-engineer-metrify-berlin-61854",
+  "https://www.arbeitnow.com/jobs/companies/enpal/staff-data-engineer-metrify-berlin-347291",
+  "https://www.arbeitnow.com/jobs/companies/sumup/senior-data-scientist-ml-engineer-financial-crime-berlin-185839"
+ ],
+ "note": "Kaynak: Arbeitnow + Remotive. Basvuruyu kullanici kendisi yapar."
+}
