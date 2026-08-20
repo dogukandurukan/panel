@@ -1,8 +1,45 @@
 {
-  "updated": "2026-08-19 17:14",
+  "updated": "2026-08-20 09:45",
   "ok": true,
   "window_days": 3,
-  "total_unread": 0,
-  "important_unread": 0,
-  "items": []
+  "total_unread": 8,
+  "important_unread": 3,
+  "drafts": 0,
+  "model": "",
+  "items": [
+    {
+      "id": "1a01da98f9ef3d38",
+      "thread_id": "1a01da98f9ef3d38",
+      "from": "Etsy Sellers",
+      "email": "mail@etsy.com",
+      "subject": "[Action needed] Your shop will close on August 30",
+      "date": "Thu, 20 Aug 2026 05:34:05 +0000 (UTC)",
+      "thread_len": 1,
+      "awaiting_reply": true,
+      "i_replied_before": false
+    },
+    {
+      "id": "1a01b83e4bd56e7b",
+      "thread_id": "1a01b83e4bd56e7b",
+      "from": "Alibaba",
+      "email": "mail@notice.alibaba.com",
+      "subject": "pet clothes: in stock now",
+      "date": "Wed, 19 Aug 2026 12:33:39 -0700 (PDT)",
+      "thread_len": 1,
+      "awaiting_reply": true,
+      "i_replied_before": false
+    },
+    {
+      "id": "1a01ac7c862698f0",
+      "thread_id": "1a01ac7c862698f0",
+      "from": "Cursor Team",
+      "email": "team@mail.cursor.com",
+      "subject": "Increased included usage and update to Auto pricing",
+      "date": "Wed, 19 Aug 2026 16:08:14 +0000",
+      "thread_len": 1,
+      "awaiting_reply": true,
+      "i_replied_before": false
+    }
+  ],
+  "draft_note": "ANTHROPIC_API_KEY yok - taslak uretilmedi"
 }
