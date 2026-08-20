@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Günlük Almanak</title>
+<title>Daily</title>
 <script>/* temayı boyamadan önce uygula — FOUC olmasın (canlı sitede localStorage kullanılıyor) */
   try{var _t=localStorage.getItem('d:theme');if(_t)document.documentElement.setAttribute('data-theme',JSON.parse(_t));}catch(e){}</script>
 <style>
@@ -152,6 +152,55 @@
   footer{margin-top:26px;padding-top:14px;border-top:1px solid var(--line);font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;}
   @media (max-width:640px){body{padding:16px 14px 34px;}.clock{text-align:left;}}
 
+  /* hava durumu (saatin altında) */
+  .wx{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);margin-top:7px;font-weight:400;white-space:nowrap;}
+  .wx b{color:var(--ink);font-weight:500;}
+  .wx .wxi{color:var(--accent);margin-right:2px;}
+
+  /* piyasa özeti + finans notu (borsa kartı altı) */
+  .sum{display:flex;justify-content:space-between;gap:8px;padding:6px 0;font-family:var(--mono);font-size:11.5px;border-bottom:1px dotted var(--line2);}
+  .sum:last-child{border-bottom:none;}
+  .sum .sl{color:var(--muted);}
+  .fin{margin-top:12px;border-top:1px solid var(--line2);padding-top:11px;}
+  .fin-tag{font-family:var(--mono);font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line2);border-radius:3px;padding:2px 6px;display:inline-block;margin-bottom:7px;}
+  .fin-h{font-size:13.5px;font-weight:600;margin-bottom:3px;}
+  .fin-b{font-size:12.5px;line-height:1.5;color:var(--muted);}
+
+  /* almanca quiz */
+  .qz{margin-top:12px;border-top:1px solid var(--line2);padding-top:11px;}
+  .qz-q{font-size:14px;margin-bottom:9px;}
+  .qz-q b{font-family:var(--mono);color:var(--accent);}
+  .qz-opts{display:flex;flex-direction:column;gap:6px;}
+  .qz-o{text-align:left;background:transparent;border:1px solid var(--line);color:var(--ink);border-radius:4px;padding:7px 10px;font-family:var(--sans);font-size:13.5px;cursor:pointer;transition:border-color .15s;}
+  .qz-o:hover:not(:disabled){border-color:var(--accent);}
+  .qz-o:disabled{cursor:default;}
+  .qz-o.right{border-color:var(--up);color:var(--up);}
+  .qz-o.wrong{border-color:var(--down);color:var(--down);}
+  .qz-fb{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:8px;}
+  .qz-prog{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:7px;}
+
+  /* harcama & kazanç */
+  .msel{background:transparent;border:1px solid var(--line);border-radius:4px;padding:7px 8px;font-family:var(--sans);font-size:13.5px;color:var(--ink);cursor:pointer;}
+  .msel:focus{outline:none;border-color:var(--accent);}
+  html[data-theme="hud"] .msel{background:#0A111C;}
+  html[data-theme="hud"] .msel option{background:#0D1420;color:var(--ink);}
+  #mAdd{flex-wrap:wrap;}
+  #mAdd input{min-width:90px;}
+  .mnav{display:inline-flex;align-items:center;gap:6px;}
+  .mnav .ibtn{padding:3px 7px;}
+  .mnav #mLabel{font-family:var(--mono);font-size:11px;color:var(--ink);min-width:82px;display:inline-block;text-align:center;}
+  .mrow{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px dotted var(--line2);}
+  .mrow:last-child{border-bottom:none;}
+  .mrow .mc{font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line2);border-radius:3px;padding:2px 6px;white-space:nowrap;}
+  .mrow .mn{flex:1;font-size:13.5px;}
+  .mrow .mv{font-family:var(--mono);font-size:13.5px;white-space:nowrap;}
+  .mrow .md{font-family:var(--mono);font-size:10px;color:var(--muted);white-space:nowrap;}
+  .catrow{display:flex;align-items:center;gap:9px;padding:5px 0;}
+  .catrow .cl{font-size:12.5px;min-width:82px;color:var(--muted);}
+  .catrow .cb{flex:1;height:6px;background:var(--line2);border-radius:4px;overflow:hidden;}
+  .catrow .cb i{display:block;height:100%;background:var(--accent);border-radius:4px;}
+  .catrow .cv{font-family:var(--mono);font-size:11px;white-space:nowrap;color:var(--muted);}
+
   /* ===================== TEMA DÜĞMESİ ===================== */
   .theme-toggle{background:none;border:1px solid var(--line);color:var(--muted);font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:6px 11px;border-radius:4px;cursor:pointer;white-space:nowrap;display:inline-flex;align-items:center;gap:7px;transition:border-color .2s,color .2s;}
   .theme-toggle:hover{border-color:var(--accent);color:var(--accent);}
@@ -227,13 +276,13 @@
 <div class="wrap">
   <header class="masthead">
     <div class="mast-top">
-      <h1 class="mast-title">Günlük Almanak<span class="sub">Kişisel Kontrol Panosu</span></h1>
+      <h1 class="mast-title">Daily<span class="sub">Kişisel Kontrol Panosu</span></h1>
       <div style="display:flex;flex-direction:column;align-items:flex-end;gap:9px;">
         <button class="theme-toggle" id="themeToggle" title="Tema değiştir"><span class="tt-dot"></span><span id="themeLabel">HUD</span></button>
-        <div class="clock"><span id="clock">--:--:--</span><span class="cd" id="clockDate">—</span></div>
+        <div class="clock"><span id="clock">--:--:--</span><span class="cd" id="clockDate">—</span><span class="wx" id="wx">hava alınıyor…</span></div>
       </div>
     </div>
-    <div class="dateline"><span id="greeting">Günaydın</span><span class="dot"></span><span>Marmaris, Muğla</span><span class="dot"></span><span id="weekno">—</span></div>
+    <div class="dateline"><span id="greeting">Günaydın</span><span class="dot"></span><span id="placeName">İstanbul, Kadıköy</span><span class="dot"></span><span id="weekno">—</span></div>
   </header>
   <section class="card" id="agentCard" style="margin-bottom:20px">
     <div class="card-head"><div><p class="kicker">Sistem · GitHub Actions</p><h2 class="card-title">Ajan Telemetrisi</h2></div>
@@ -267,15 +316,14 @@
       <div id="marketList"><div class="loading">Kur çekiliyor…</div></div>
       <div id="goldRow"></div>
       <div id="watchList"></div>
-      <div id="usList"></div></section>
+      <div id="usList"></div>
+      <div id="mktSummary"></div>
+      <div id="finNote"></div></section>
 
-    <section class="card"><div class="card-head"><div><p class="kicker">Gündem</p><h2 class="card-title">Günün Önemli Haberleri</h2></div><div class="meta">elle / mail</div></div>
-      <div id="newsList"></div>
-      <div class="add-row"><input id="newsInput" placeholder="Başlık ekle…" maxlength="160"><button id="newsAdd">Ekle</button></div>
-      <textarea class="paste" id="mailPaste" placeholder="…ya da 'Öğle Güncellemesi' mailini yapıştır"></textarea>
-      <div class="add-row"><button class="ibtn" id="mailParse" style="padding:6px 12px">Mailden ayrıştır (izleme listesi + haberler)</button></div>
-      <div class="wtitle" style="margin-top:13px;border-top:1px solid var(--line2);padding-top:11px">Dünya Gündemi</div>
-      <div id="worldList"></div></section>
+    <section class="card"><div class="card-head"><div><p class="kicker">Gündem</p><h2 class="card-title">Dünya Gündemi</h2></div><div class="meta" id="newsTime">—</div></div>
+      <div id="worldList"></div>
+      <div class="wtitle" style="margin-top:13px;border-top:1px solid var(--line2);padding-top:11px">Piyasa &amp; Şirket</div>
+      <div id="newsList"></div></section>
 
     <section class="card"><div class="card-head"><div><p class="kicker">Sohbetlik</p><h2 class="card-title">İlginç Bilgiler</h2></div><div class="meta"><button class="ibtn" id="factNext">Başka</button></div></div>
       <div id="factList"></div></section>
@@ -292,9 +340,22 @@
     <section class="card"><div class="card-head"><div><p class="kicker">Okuma</p><h2 class="card-title">Günün Kitabı</h2></div><div class="meta"><button class="ibtn" id="bookNext">Başka</button></div></div>
       <div id="bookBox"></div></section>
 
-    <section class="card"><div class="card-head"><div><p class="kicker">Öğrenme · A1–A2</p><h2 class="card-title">Günün 5 Almanca Kelimesi</h2></div><div class="meta"><button class="ibtn" id="deRefresh">Yeni set</button></div></div>
-      <div id="germanList"></div><div id="gramList"></div></section>
+    <section class="card"><div class="card-head"><div><p class="kicker" id="deKicker">Öğrenme · A1–A2</p><h2 class="card-title">Günün 5 Almanca Kelimesi</h2></div><div class="meta"><span id="deScore">—</span><br><button class="ibtn" id="deRefresh">Yeni set</button></div></div>
+      <div id="germanList"></div><div id="quizBox"></div><div id="gramList"></div></section>
   </div>
+  <section class="card" style="margin-top:20px"><div class="card-head"><div><p class="kicker">Bütçe</p><h2 class="card-title">Harcama &amp; Kazanç</h2></div>
+    <div class="meta"><span class="mnav"><button class="ibtn" id="mPrev" title="Önceki ay">◀</button><span id="mLabel">—</span><button class="ibtn" id="mNext" title="Sonraki ay">▶</button></span><br><button class="ibtn" id="mExport" style="margin-top:5px">Excel'e aktar</button></div></div>
+    <div id="mStats" class="statrow"></div>
+    <div id="mBar"></div>
+    <div class="add-row" id="mAdd">
+      <select id="mKind" class="msel"><option value="out">Gider</option><option value="in">Gelir</option></select>
+      <select id="mCat" class="msel"></select>
+      <input id="mAmt" type="number" inputmode="decimal" placeholder="Tutar ₺" style="max-width:110px">
+      <input id="mNote" placeholder="Not (ops.)" maxlength="60">
+      <button id="mSave">Ekle</button>
+    </div>
+    <div id="mCats"></div>
+    <div id="mList"></div></section>
   <section class="card" style="margin-top:20px"><div class="card-head"><div><p class="kicker">Antrenman · Kayıt</p><h2 class="card-title">Ağırlık Takibi</h2></div><div class="meta"><button class="ibtn" id="wtExport" style="padding:6px 10px">Excel'e aktar</button></div></div>
     <div class="wtitle" id="wtSub">—</div>
     <div id="wtList"></div></section>
@@ -304,7 +365,9 @@
   <footer><span>Antrenman & yemek programından · gün gün otomatik</span><span>Döviz canlı · yatırım tavsiyesi değildir</span></footer>
 </div>
 <script>
-const K={tasks:'d:tasks',targets:'d:targets',bist:'d:bist',altin:'d:altin',news:'d:news',fx:'d:fx',de:'d:de',gmailDone:'d:gmailDone',targetsVer:'d:targetsVer',water:'d:water',theme:'d:theme',agents:'d:agents'};
+const K={tasks:'d:tasks',targets:'d:targets',bist:'d:bist',altin:'d:altin',news:'d:news',fx:'d:fx',de:'d:de',gmailDone:'d:gmailDone',targetsVer:'d:targetsVer',water:'d:water',theme:'d:theme',agents:'d:agents',wx:'d:wx',deWrong:'d:deWrong'};
+/* Konum tek yerde — taşınırsan sadece burayı değiştir (dateline + hava durumu birlikte gelir). */
+const PLACE={name:'İstanbul, Kadıköy',lat:40.9833,lon:29.0333};
 const mem={};
 async function sGet(k){try{if(window.storage){const r=await window.storage.get(k,false);return r?JSON.parse(r.value):null;}}catch(e){}
   try{const v=localStorage.getItem(k);return v?JSON.parse(v):null;}catch(e){}return (k in mem)?mem[k]:null;}
@@ -662,14 +725,129 @@ function bookHTML(x){return '<div class="fitem"><div class="film-title">'+esc(x[
 function renderBook(){const b=(doy()*2+bookOff)%BOOKS.length;document.getElementById('bookBox').innerHTML=bookHTML(BOOKS[b])+bookHTML(BOOKS[(b+1)%BOOKS.length]);}
 function renderHistory(){const b=(doy()*4+histOff)%HISTORY.length;const one=i=>'<div class="fact"><span class="fb">◷</span><span>'+esc(HISTORY[i%HISTORY.length])+'</span></div>';document.getElementById('histBox').innerHTML=one(b)+one(b+1)+one(b+2)+one(b+3);}
 
-/* german + grammar */
-const DE=[['das Haus','ev','Das Haus ist sehr groß.'],['die Arbeit','iş','Meine Arbeit beginnt um acht.'],['der Freund','arkadaş','Mein Freund kommt heute.'],['das Wasser','su','Ich trinke viel Wasser.'],['die Zeit','zaman','Ich habe keine Zeit.'],['der Tag','gün','Der Tag ist schön.'],['die Stadt','şehir','Die Stadt ist groß.'],['das Kind','çocuk','Das Kind spielt gern.'],['die Frau','kadın','Die Frau liest ein Buch.'],['der Mann','adam','Der Mann arbeitet hier.'],['das Buch','kitap','Das Buch ist interessant.'],['die Schule','okul','Die Schule ist neu.'],['essen','yemek','Wir essen zusammen.'],['trinken','içmek','Ich trinke Kaffee.'],['lernen','öğrenmek','Ich lerne Deutsch.'],['arbeiten','çalışmak','Sie arbeitet viel.'],['kaufen','satın almak','Ich kaufe Brot.'],['sprechen','konuşmak','Wir sprechen Deutsch.'],['gehen','gitmek','Ich gehe nach Hause.'],['kommen','gelmek','Er kommt morgen.'],['schlafen','uyumak','Das Kind schläft jetzt.'],['lesen','okumak','Ich lese die Zeitung.'],['schreiben','yazmak','Sie schreibt einen Brief.'],['verstehen','anlamak','Ich verstehe das nicht.'],['das Brot','ekmek','Das Brot ist frisch.'],['der Apfel','elma','Der Apfel ist rot.'],['die Milch','süt','Die Milch ist kalt.'],['der Kaffee','kahve','Der Kaffee ist heiß.'],['das Auto','araba','Das Auto ist neu.'],['der Zug','tren','Der Zug kommt spät.'],['die Straße','sokak','Die Straße ist lang.'],['das Geld','para','Ich habe kein Geld.'],['die Woche','hafta','Die Woche war lang.'],['heute','bugün','Heute ist Montag.'],['morgen','yarın','Morgen habe ich frei.'],['immer','her zaman','Ich bin immer müde.'],['die Familie','aile','Meine Familie ist groß.'],['kalt','soğuk','Heute ist es kalt.'],['warm','sıcak','Das Wasser ist warm.'],['schnell','hızlı','Das Auto ist schnell.'],['wichtig','önemli','Das ist sehr wichtig.']];
-const GRAM=['Üç artikel var: der (eril), die (dişil), das (nötr). Kelimeyi hep artikeliyle ezberle.','Fiil cümlede ikinci sırada durur: "Heute gehe ich nach Hause."','Akkusativ\'de "der" → "den" olur: "Ich sehe den Mann."','Çoğul düzensizdir: das Kind → die Kinder, der Apfel → die Äpfel.','sein: ich bin, du bist, er ist, wir sind, ihr seid, sie sind.','haben: ich habe, du hast, er hat, wir haben.','Modal fiil varsa asıl fiil mastar hâlde sona gider: "Ich will Deutsch lernen."','"nicht" fiili, "kein" ise isimleri olumsuz yapar: "Ich habe kein Geld."','Ayrılabilen fiillerde ön ek sona atılır: "Ich stehe um 7 auf."','Datif isteyen edatlar: mit, nach, aus, bei, von, zu.','Geçmiş zaman (Perfekt): haben/sein + Partizip II → "Ich habe gegessen."','Cümle sırası: Zaman – Tarz – Yer.'];
-let deExtra=0;
-function pickDE(){const b=(doy()*5+deExtra)%DE.length;const o=[];for(let i=0;i<5;i++)o.push(DE[(b+i)%DE.length]);return o;}
-function pickGram(){const b=(doy()*3+deExtra)%GRAM.length;const o=[];for(let i=0;i<3;i++)o.push(GRAM[(b+i)%GRAM.length]);return o;}
-function renderGerman(){const el=document.getElementById('germanList');el.innerHTML='';pickDE().forEach(w=>{const d=document.createElement('div');d.className='de';d.innerHTML='<div class="de-word">'+esc(w[0])+' <span class="de-tr">— '+esc(w[1])+'</span></div><div class="de-ex">'+esc(w[2])+'</div>';el.appendChild(d);});
-  document.getElementById('gramList').innerHTML='<div class="gram-head">Gramer notları</div>'+pickGram().map(g=>'<div class="gram"><span class="gi">§</span><span>'+esc(g)+'</span></div>').join('');}
+/* ===== ALMANCA: temalı kelime havuzu + haftalık gramer + mini quiz =====
+   Eski hâlde 41 kelime vardı ve setler birbirine çok benziyordu. Havuz 14 temaya
+   bölündü (140 kelime); her gün BİR tema işleniyor, o günün 5 kelimesi aynı temadan
+   geliyor — dağınık kelimeler yerine anlamlı bir set. Quizde yanlış bilinen kelime
+   d:deWrong havuzuna düşüyor ve sonraki günlerin setine geri karışıyor. */
+const DE_THEMES=[
+ {t:'Ev & Eşya',lvl:'A1',w:[['das Haus','ev','Das Haus ist sehr groß.'],['die Wohnung','daire','Meine Wohnung hat drei Zimmer.'],['das Zimmer','oda','Das Zimmer ist hell.'],['die Küche','mutfak','Die Küche ist klein aber schön.'],['das Bett','yatak','Das Bett ist sehr bequem.'],['der Tisch','masa','Der Tisch steht am Fenster.'],['der Stuhl','sandalye','Der Stuhl ist aus Holz.'],['die Tür','kapı','Bitte mach die Tür zu.'],['das Fenster','pencere','Das Fenster ist offen.'],['der Schlüssel','anahtar','Ich suche meinen Schlüssel.']]},
+ {t:'Yemek & İçecek',lvl:'A1',w:[['das Brot','ekmek','Das Brot ist frisch.'],['der Apfel','elma','Der Apfel ist rot.'],['die Milch','süt','Die Milch ist kalt.'],['der Kaffee','kahve','Ich trinke Kaffee ohne Zucker.'],['das Wasser','su','Ich trinke viel Wasser.'],['das Fleisch','et','Das Fleisch ist noch nicht fertig.'],['der Käse','peynir','Der Käse kommt aus der Türkei.'],['das Gemüse','sebze','Ich esse jeden Tag Gemüse.'],['das Frühstück','kahvaltı','Das Frühstück ist um neun.'],['der Zucker','şeker','Ich nehme keinen Zucker.']]},
+ {t:'Aile & İnsanlar',lvl:'A1',w:[['die Familie','aile','Meine Familie ist groß.'],['die Mutter','anne','Meine Mutter kocht sehr gut.'],['der Vater','baba','Mein Vater arbeitet in Istanbul.'],['die Schwester','kız kardeş','Meine Schwester studiert Medizin.'],['der Bruder','erkek kardeş','Mein Bruder ist jünger als ich.'],['das Kind','çocuk','Das Kind spielt im Garten.'],['die Frau','kadın','Die Frau liest ein Buch.'],['der Mann','adam','Der Mann wartet draußen.'],['der Freund','arkadaş','Mein Freund kommt heute.'],['die Eltern','anne baba','Meine Eltern wohnen in Izmir.']]},
+ {t:'Zaman & Takvim',lvl:'A1',w:[['die Zeit','zaman','Ich habe keine Zeit.'],['der Tag','gün','Der Tag war sehr lang.'],['die Woche','hafta','Nächste Woche fahre ich weg.'],['der Monat','ay','Der Monat ist fast vorbei.'],['das Jahr','yıl','Das Jahr geht schnell vorbei.'],['heute','bugün','Heute ist Montag.'],['morgen','yarın','Morgen habe ich frei.'],['gestern','dün','Gestern war ich krank.'],['die Stunde','saat (süre)','Ich warte seit einer Stunde.'],['immer','her zaman','Er kommt immer zu spät.']]},
+ {t:'Şehir & Yol',lvl:'A1',w:[['die Stadt','şehir','Die Stadt ist sehr laut.'],['die Straße','sokak','Die Straße ist lang.'],['der Platz','meydan','Der Platz ist voll mit Menschen.'],['links','sol','Gehen Sie nach links.'],['rechts','sağ','Die Bank ist rechts.'],['geradeaus','dümdüz','Gehen Sie immer geradeaus.'],['die Brücke','köprü','Die Brücke ist neu.'],['die Ecke','köşe','Das Café ist an der Ecke.'],['weit','uzak','Ist es weit von hier?'],['die Haltestelle','durak','Die Haltestelle ist dort drüben.']]},
+ {t:'Alışveriş & Para',lvl:'A2',w:[['das Geld','para','Ich habe kein Geld dabei.'],['kaufen','satın almak','Ich kaufe Brot und Milch.'],['bezahlen','ödemek','Ich möchte bitte bezahlen.'],['teuer','pahalı','Das Auto ist zu teuer.'],['billig','ucuz','Die Jacke war sehr billig.'],['die Rechnung','hesap, fatura','Die Rechnung, bitte!'],['der Preis','fiyat','Der Preis ist zu hoch.'],['das Geschäft','dükkân','Das Geschäft macht um acht zu.'],['die Kasse','kasa','Bitte zahlen Sie an der Kasse.'],['kosten','tutmak (fiyat)','Was kostet das?']]},
+ {t:'İş & Meslek',lvl:'A2',w:[['die Arbeit','iş','Meine Arbeit beginnt um acht.'],['arbeiten','çalışmak','Sie arbeitet sehr viel.'],['der Beruf','meslek','Was sind Sie von Beruf?'],['das Büro','ofis','Das Büro ist im dritten Stock.'],['der Chef','patron','Mein Chef ist heute nicht da.'],['die Besprechung','toplantı','Die Besprechung dauert eine Stunde.'],['die Bewerbung','başvuru','Ich schreibe eine Bewerbung.'],['der Kollege','iş arkadaşı','Mein Kollege hilft mir oft.'],['verdienen','kazanmak','Er verdient gut.'],['der Vertrag','sözleşme','Ich habe den Vertrag unterschrieben.']]},
+ {t:'Sağlık & Vücut',lvl:'A2',w:[['der Kopf','baş','Mein Kopf tut weh.'],['die Hand','el','Gib mir deine Hand.'],['das Auge','göz','Mein linkes Auge ist rot.'],['der Arzt','doktor','Ich gehe morgen zum Arzt.'],['krank','hasta','Ich bin seit gestern krank.'],['gesund','sağlıklı','Obst ist gesund.'],['der Rücken','sırt','Mein Rücken tut weh.'],['das Herz','kalp','Mein Herz schlägt schnell.'],['die Schmerzen','ağrılar','Ich habe starke Schmerzen.'],['sich fühlen','hissetmek','Ich fühle mich heute besser.']]},
+ {t:'Seyahat & Ulaşım',lvl:'A2',w:[['die Reise','yolculuk','Die Reise war sehr lang.'],['der Zug','tren','Der Zug kommt spät.'],['das Flugzeug','uçak','Das Flugzeug landet um sechs.'],['der Bahnhof','tren garı','Wo ist der Bahnhof?'],['das Auto','araba','Das Auto ist neu.'],['die Fahrkarte','bilet','Ich habe eine Fahrkarte gekauft.'],['der Koffer','bavul','Mein Koffer ist zu schwer.'],['abfahren','hareket etmek','Der Bus fährt um acht ab.'],['ankommen','varmak','Wir kommen um zehn an.'],['der Flughafen','havalimanı','Der Flughafen ist weit.']]},
+ {t:'Duygular & Kişilik',lvl:'A2',w:[['glücklich','mutlu','Ich bin heute sehr glücklich.'],['traurig','üzgün','Warum bist du traurig?'],['müde','yorgun','Ich bin immer müde.'],['wütend','öfkeli','Er ist wütend auf mich.'],['ruhig','sakin','Bleib bitte ruhig.'],['freundlich','cana yakın','Die Verkäuferin war sehr freundlich.'],['nervös','gergin','Vor der Prüfung bin ich nervös.'],['stolz','gururlu','Ich bin stolz auf dich.'],['die Angst','korku','Ich habe Angst vor Hunden.'],['sich freuen','sevinmek','Ich freue mich auf das Wochenende.']]},
+ {t:'Okul & Öğrenme',lvl:'A2',w:[['lernen','öğrenmek','Ich lerne seit einem Jahr Deutsch.'],['die Schule','okul','Die Schule ist neu.'],['das Buch','kitap','Das Buch ist interessant.'],['die Frage','soru','Ich habe eine Frage.'],['die Antwort','cevap','Deine Antwort war richtig.'],['verstehen','anlamak','Ich verstehe das nicht.'],['üben','alıştırma yapmak','Du musst jeden Tag üben.'],['der Fehler','hata','Das war mein Fehler.'],['die Prüfung','sınav','Die Prüfung war schwer.'],['erklären','açıklamak','Können Sie das erklären?']]},
+ {t:'Doğa & Hava',lvl:'A1',w:[['das Wetter','hava durumu','Wie ist das Wetter heute?'],['die Sonne','güneş','Die Sonne scheint.'],['der Regen','yağmur','Der Regen hört nicht auf.'],['der Schnee','kar','Der Schnee ist geschmolzen.'],['der Wind','rüzgâr','Der Wind ist heute stark.'],['kalt','soğuk','Heute ist es sehr kalt.'],['warm','sıcak','Das Wasser ist warm.'],['der Baum','ağaç','Der Baum ist sehr alt.'],['das Meer','deniz','Das Meer ist ruhig.'],['der Himmel','gökyüzü','Der Himmel ist blau.']]},
+ {t:'Günlük Fiiller',lvl:'A1',w:[['gehen','gitmek','Ich gehe nach Hause.'],['kommen','gelmek','Er kommt morgen.'],['essen','yemek','Wir essen zusammen.'],['trinken','içmek','Ich trinke Kaffee.'],['schlafen','uyumak','Das Kind schläft jetzt.'],['lesen','okumak','Ich lese die Zeitung.'],['schreiben','yazmak','Sie schreibt einen Brief.'],['sprechen','konuşmak','Wir sprechen Deutsch.'],['sehen','görmek','Ich sehe dich morgen.'],['machen','yapmak','Was machst du heute?']]},
+ {t:'Sık Sıfatlar',lvl:'A2',w:[['groß','büyük','Das Haus ist sehr groß.'],['klein','küçük','Mein Zimmer ist klein.'],['neu','yeni','Mein Handy ist neu.'],['alt','eski, yaşlı','Das Auto ist ziemlich alt.'],['schnell','hızlı','Der Zug ist sehr schnell.'],['langsam','yavaş','Bitte sprich langsam.'],['wichtig','önemli','Das ist sehr wichtig.'],['schwer','zor, ağır','Die Aufgabe ist schwer.'],['einfach','kolay, basit','Die Frage war einfach.'],['schön','güzel','Das Wetter ist heute schön.']]}
+];
+const ALL_DE=DE_THEMES.reduce((a,t)=>a.concat(t.w),[]);
+/* Gramer: HAFTALIK rotasyon. Günlük değiştirmek öğretmiyordu; aynı üç konuyu
+   7 gün görmek kalıcı hâle getiriyor. [başlık, açıklama, örnek] */
+const GRAM=[
+ ['Artikel: der / die / das','Almancada her ismin bir cinsiyeti var ve tahmin edilemez. Kelimeyi asla yalnız değil, hep artikeliyle ezberle.','das Haus · die Tür · der Tisch'],
+ ['Fiil ikinci sırada','Düz cümlede çekimli fiil her zaman ikinci öğedir. Başa zaman koyarsan özne fiilin arkasına geçer.','Heute gehe ich nach Hause.'],
+ ['Akkusativ: der → den','Belirtili nesne Akkusativ olur. Sadece eril artikel değişir; die/das aynı kalır.','Ich sehe den Mann.'],
+ ['Çoğul biçimleri düzensiz','Çoğulun tek kuralı yok, kelimeyle birlikte öğrenilir. Çoğulda artikel hep die olur.','das Kind → die Kinder · der Apfel → die Äpfel'],
+ ['sein fiili','En sık kullanılan fiil, tamamen düzensiz. Ezbere bilmen şart.','ich bin · du bist · er ist · wir sind · ihr seid · sie sind'],
+ ['haben fiili','Sahiplik ve Perfekt için gerekli. du ve er biçimleri düzensiz.','ich habe · du hast · er hat · wir haben'],
+ ['Modal fiiller','Modal fiil çekimlenir, asıl fiil mastar hâlinde cümlenin SONUNA gider.','Ich will Deutsch lernen.'],
+ ['nicht mi, kein mi?','nicht fiili ve sıfatı olumsuzlar; kein ise isimleri (artikelli olanları).','Ich habe kein Geld. · Ich komme nicht.'],
+ ['Ayrılabilen fiiller','Ön ek düz cümlede fiilden ayrılıp sona atılır. Sözlükte aufstehen yazar ama cümlede bölünür.','Ich stehe um sieben auf.'],
+ ['Dativ isteyen edatlar','Bu edatlardan sonra isim her zaman Dativ olur. Liste hâlinde ezberle.','mit, nach, aus, bei, von, zu, seit → Ich fahre mit dem Bus.'],
+ ['Perfekt (konuşma geçmişi)','Günlük konuşmada geçmiş zaman Perfekt ile kurulur: haben/sein + Partizip II (sonda).','Ich habe gegessen. · Ich bin gegangen.'],
+ ['Cümle içi sıra: TeKaMoLo','Birden fazla tümleç varsa sıra: Zaman – Sebep – Tarz – Yer.','Ich fahre morgen mit dem Auto nach Ankara.'],
+ ['Akkusativ isteyen edatlar','Bu beş edattan sonra her zaman Akkusativ gelir.','durch, für, gegen, ohne, um → Das ist für dich.'],
+ ['Soru kelimeleri','W-sorularında soru kelimesi başa, fiil hemen arkasına gelir.','wer, was, wo, wann, warum, wie → Wann kommst du?'],
+ ['Evet/hayır sorusu','Soru kelimesi yoksa fiil cümlenin EN BAŞINA geçer.','Kommst du morgen? · Hast du Zeit?'],
+ ['İyelik: mein, dein, sein','İyelik kelimeleri kein gibi çekimlenir; sahip olunan şeyin cinsiyetine uyar.','mein Vater · meine Mutter · mein Kind'],
+ ['Dativ: dolaylı nesne','Bir şey birine yapılıyorsa o kişi Dativ olur. der→dem, die→der, das→dem.','Ich helfe dem Mann. · Ich gebe der Frau das Buch.'],
+ ['werden: gelecek zaman','werden + mastar gelecek kurar. Ama Almanlar gelecek için çoğu zaman şimdiki zamanı kullanır.','Ich werde morgen arbeiten. / Ich arbeite morgen.'],
+ ['Präteritum: war, hatte','Yazı dilinde geçmiş Präteritum ile kurulur; konuşmada ise sein ve haben için bu biçim tercih edilir.','Ich war krank. · Ich hatte keine Zeit.'],
+ ['weil: fiil sona gider','weil yan cümle kurar ve çekimli fiili cümlenin sonuna iter.','Ich bleibe zu Hause, weil ich krank bin.'],
+ ['dass: fiil sona gider','weil gibi davranır; düşünce ve söyleme fiillerinden sonra gelir.','Ich denke, dass er recht hat.'],
+ ['wenn: koşul ve tekrar','wenn hem eğer hem her defasında anlamı taşır; fiil yine sona gider.','Wenn ich Zeit habe, komme ich.'],
+ ['Karşılaştırma','Sıfata -er eklenir, karşılaştırmada als kullanılır. Kısa sıfatlar çoğu zaman Umlaut alır.','groß → größer → am größten · Er ist größer als ich.'],
+ ['İki şey eşitse: so ... wie','Eşitlik karşılaştırmasında als değil wie kullanılır.','Er ist so alt wie ich.'],
+ ['es gibt + Akkusativ','Var anlamı için es gibt kalıbı kullanılır ve ardından Akkusativ gelir.','Es gibt einen Park in der Nähe.'],
+ ['Dönüşlü fiiller','Bazı fiiller zorunlu olarak sich ister; özneye göre mich/dich/sich diye çekilir.','Ich freue mich. · Er wäscht sich.'],
+ ['zu + Infinitiv','İkinci fiil mastarı çoğu yapıda zu ile ve sonda gelir.','Ich versuche, früh aufzustehen.'],
+ ['Wechselpräpositionen','in, an, auf, unter, über gibi edatlar iki yönlü: hareket varsa Akkusativ, konum varsa Dativ.','Ich gehe in die Stadt. (Akk) · Ich bin in der Stadt. (Dat)'],
+ ['man: belirsiz özne','Genel ifadelerde man kullanılır, er gibi çekimlenir. Türkçedeki -ilir karşılığı.','Hier darf man nicht rauchen.'],
+ ['Emir kipi','du için fiil kökü kullanılır (ek yok), Sie için fiil + Sie.','Geh nach Hause! · Gehen Sie bitte!']
+];
+let deExtra=0,deWrong=[],deQuiz=null;
+function findDE(w){for(const x of ALL_DE){if(x[0]===w)return x;}return null;}
+/* Günün seti: o günün teması + varsa tekrar havuzundan en fazla 2 kelime */
+function pickDE(){
+  const th=DE_THEMES[(doy()+deExtra)%DE_THEMES.length];
+  const w=th.w,base=(deExtra*5)%w.length,out=[];
+  for(let i=0;i<5;i++)out.push(w[(base+i)%w.length]);
+  deWrong.slice(0,2).forEach((k,i)=>{const r=findDE(k);
+    if(r&&!out.some(x=>x[0]===r[0]))out[4-i]=r;});
+  return{theme:th,words:out};
+}
+function pickGram(){const b=(weekNum()*3)%GRAM.length,o=[];for(let i=0;i<3;i++)o.push(GRAM[(b+i)%GRAM.length]);return o;}
+function weekNum(){const d=new Date(),s=new Date(d.getFullYear(),0,1);return Math.ceil((((d-s)/86400000)+s.getDay()+1)/7);}
+/* Quiz şıkları: gün + soru sırasına göre deterministik üretilir, yoksa her
+   yeniden çizimde şıklar yer değiştirir ve cevap kaybolur. */
+function srand(s){const x=Math.sin(s)*10000;return x-Math.floor(x);}
+function quizOpts(words,idx){
+  const correct=words[idx][1],pool=ALL_DE.filter(x=>x[1]!==correct),out=[correct];
+  const seed=doy()*97+idx*13+deExtra*7;
+  for(let k=0;k<3;k++){let j=Math.floor(srand(seed+k*31)*pool.length),tries=0;
+    while(out.indexOf(pool[j][1])>-1&&tries<40){j=(j+1)%pool.length;tries++;}
+    out.push(pool[j][1]);}
+  return out.map((v,i)=>({v,r:srand(seed+i*7+3)})).sort((a,b)=>a.r-b.r).map(o=>o.v);
+}
+function renderGerman(){
+  const set=pickDE(),el=document.getElementById('germanList');el.innerHTML='';
+  const k=document.getElementById('deKicker');
+  if(k)k.textContent='Öğrenme · '+set.theme.lvl+' · '+set.theme.t;
+  set.words.forEach(w=>{const d=document.createElement('div');d.className='de';
+    d.innerHTML='<div class="de-word">'+esc(w[0])+' <span class="de-tr">— '+esc(w[1])+'</span></div><div class="de-ex">'+esc(w[2])+'</div>';el.appendChild(d);});
+  document.getElementById('gramList').innerHTML='<div class="gram-head">Gramer · bu hafta</div>'+
+    pickGram().map(g=>'<div class="gram"><span class="gi">§</span><span><b>'+esc(g[0])+'</b><br>'+esc(g[1])+'<br><span class="de-ex">'+esc(g[2])+'</span></span></div>').join('');
+  renderQuiz();
+}
+async function loadQuiz(){
+  const q=await sGet('d:dequiz:'+todayKey());
+  deQuiz=(q&&q.set===deExtra)?q:{set:deExtra,i:0,right:0,wrong:0,pick:null};
+}
+async function saveQuiz(){await sSet('d:dequiz:'+todayKey(),deQuiz);}
+function renderQuiz(){
+  const el=document.getElementById('quizBox');if(!el||!deQuiz)return;
+  const words=pickDE().words,sc=document.getElementById('deScore');
+  if(sc)sc.textContent=deQuiz.right+'/'+(deQuiz.right+deQuiz.wrong)+' doğru';
+  if(deQuiz.i>=words.length){
+    el.innerHTML='<div class="qz"><div class="qz-prog">Quiz bitti</div>'+
+      '<div class="qz-q"><b>'+deQuiz.right+'</b> doğru · <b>'+deQuiz.wrong+'</b> yanlış'+
+      (deWrong.length?'<br><span class="qz-fb">Tekrar havuzunda '+deWrong.length+' kelime var — yarınki sete karışacak.</span>':'')+'</div>'+
+      '<button class="ibtn" id="qzAgain">Baştan çöz</button></div>';
+    document.getElementById('qzAgain').onclick=async()=>{deQuiz={set:deExtra,i:0,right:0,wrong:0,pick:null};await saveQuiz();renderQuiz();};
+    return;
+  }
+  const cur=words[deQuiz.i],opts=quizOpts(words,deQuiz.i),picked=deQuiz.pick;
+  el.innerHTML='<div class="qz"><div class="qz-prog">Quiz · '+(deQuiz.i+1)+' / '+words.length+'</div>'+
+    '<div class="qz-q"><b>'+esc(cur[0])+'</b> ne demek?</div><div class="qz-opts">'+
+    opts.map(o=>{let c='';
+      if(picked!=null){if(o===cur[1])c=' right';else if(o===picked)c=' wrong';}
+      return '<button class="qz-o'+c+'" data-o="'+esc(o)+'"'+(picked!=null?' disabled':'')+'>'+esc(o)+'</button>';}).join('')+
+    '</div>'+(picked!=null?'<div class="qz-fb">'+(picked===cur[1]?'Doğru. ':'Doğrusu: '+esc(cur[1])+'. ')+esc(cur[2])+'</div><button class="ibtn" id="qzNext" style="margin-top:9px">Devam →</button>':'')+'</div>';
+  el.querySelectorAll('[data-o]').forEach(b=>b.onclick=async()=>{
+    const v=b.dataset.o;deQuiz.pick=v;
+    if(v===cur[1]){deQuiz.right++;deWrong=deWrong.filter(x=>x!==cur[0]);}
+    else{deQuiz.wrong++;if(deWrong.indexOf(cur[0])===-1)deWrong.push(cur[0]);deWrong=deWrong.slice(-30);}
+    await sSet(K.deWrong,deWrong);await saveQuiz();renderQuiz();
+  });
+  const nx=document.getElementById('qzNext');
+  if(nx)nx.onclick=async()=>{deQuiz.i++;deQuiz.pick=null;await saveQuiz();renderQuiz();};
+}
 
 /* borsa: döviz canlı + izleme listesi (mailden) */
 async function loadFX(force){const cache=await sGet(K.fx);let fx=(cache&&cache.date===todayKey()&&!force)?cache:null;
@@ -707,14 +885,16 @@ function renderUS(){const el=document.getElementById('usList');if(!el)return;
 /* borsa.json otomatik okuma (bot üretiyorsa, elle yapıştırmaya gerek kalmaz) */
 let world=[];
 function renderWorld(){const el=document.getElementById('worldList');if(!el)return;
-  if(!world.length){el.innerHTML='<div class="empty">Botun \'world\' alanını doldurunca dünya gündemi burada görünür.</div>';return;}
-  el.innerHTML=world.slice(0,4).map((n,i)=>'<div class="news-item"><div class="news-n">'+String(i+1).padStart(2,'0')+'</div><div class="news-t">'+esc(n)+'</div></div>').join('');}
+  newsRows(world.slice(0,5),el,'Feed çalışınca (09:00/14:00) buraya düşer.');}
 async function loadBorsaJson(){try{const r=await fetch('borsa.json?_='+Date.now());if(!r.ok)throw 0;const d=await r.json();
     if(d.watch&&d.watch.length){watch=d.watch;await sSet('d:watch',watch);renderWatch();}
     if(d.us&&d.us.length){us=d.us;await sSet('d:us',us);renderUS();}
     if(d.gold){gold=d.gold;await sSet('d:gold',gold);renderGold();}
     if(d.news&&d.news.length){news=d.news.slice(0,10);await sSet(K.news,news);renderNews();}
     if(d.world&&d.world.length){world=d.world.slice(0,6);await sSet('d:world',world);renderWorld();}
+    renderMktSummary();
+    const nt=document.getElementById('newsTime'),ag=feedAge(d.updated);
+    if(nt)nt.textContent=ag?ag.txt:'—';
   }catch(e){/* borsa.json yok — kayıtlı veri / elle yapıştırma kullanılır */}}
 
 /* iş başvuruları: Google Sheets (bağlantıya sahip olan görüntüleyebilir), salt okunur.
@@ -857,27 +1037,165 @@ function renderGmail(d){
   });
 }
 
-/* haberler */
+/* haberler — artık tamamen feed'e bağlı (borsa.json world + news).
+   Elle başlık ekleme, mail yapıştırma ve parseMail() kaldırıldı: kart okunmuyordu
+   ve izleme listesini doldurma görevini zaten borsa.json'daki `watch` alanı yapıyor. */
 let news=[];
-function renderNews(){const el=document.getElementById('newsList');el.innerHTML='';
-  if(!news.length)el.innerHTML='<div class="empty">Henüz haber yok. Elle ekle ya da borsa mailini yapıştır.</div>';
-  news.forEach((n,i)=>{const d=document.createElement('div');d.className='news-item';d.innerHTML='<div class="news-n">'+String(i+1).padStart(2,'0')+'</div><div class="news-t">'+esc(n)+'</div><button class="del" data-dn="'+i+'">×</button>';el.appendChild(d);});
-  el.querySelectorAll('[data-dn]').forEach(b=>b.onclick=()=>{news.splice(+b.dataset.dn,1);sSet(K.news,news);renderNews();});}
-function addNews(){const inp=document.getElementById('newsInput');const v=inp.value.trim();if(!v)return;news.unshift(v);news=news.slice(0,8);inp.value='';sSet(K.news,news);renderNews();}
-function parseMail(){const ta=document.getElementById('mailPaste');const txt=ta.value||'';if(!txt.trim())return;
-  const lines=txt.split(/\r?\n/).map(l=>l.replace(/\s+$/,'')).filter(l=>l.trim());
-  const w=[];const addNews=[];
-  for(let i=0;i<lines.length;i++){const line=lines[i].trim();
-    const mw=line.match(/^([A-ZÇĞİÖŞÜ]{3,6})[\s\t]+([\d.,]+)[\s\t]+([+-][\d.,]+%)/);
-    if(mw){if(!w.some(x=>x.code===mw[1]))w.push({code:mw[1],price:mw[2],chg:mw[3]});continue;}
-    const mn=line.match(/^([🟢🔴⚪])\s*(.+)/u);
-    if(mn){const title=mn[2].trim();let src='';const nx=(lines[i+1]||'').trim();
-      if(nx&&nx.indexOf('·')>-1&&!/^[🟢🔴⚪]/u.test(nx)&&!/^[A-ZÇĞİÖŞÜ]{3,6}[\s\t]+[\d]/.test(nx)){src=nx.split('·')[0].trim();i++;}
-      addNews.push(mn[1]+' '+title+(src?'  ('+src+')':''));continue;}
-  }
-  if(w.length){watch=w;sSet('d:watch',watch);renderWatch();}
-  if(addNews.length){let merged=addNews.concat(news);const seen={};merged=merged.filter(n=>{if(seen[n])return false;seen[n]=1;return true;}).slice(0,10);news=merged;sSet(K.news,news);renderNews();}
-  ta.value='';}
+function newsRows(arr,el,bos){
+  if(!arr.length){el.innerHTML='<div class="empty">'+bos+'</div>';return;}
+  el.innerHTML=arr.map((n,i)=>'<div class="news-item"><div class="news-n">'+String(i+1).padStart(2,'0')+
+    '</div><div class="news-t">'+esc(n)+'</div></div>').join('');
+}
+function renderNews(){const el=document.getElementById('newsList');if(!el)return;
+  newsRows(news.slice(0,5),el,'Feed çalışınca (09:00/14:00) buraya düşer.');}
+
+/* ===== HAVA DURUMU (Open-Meteo — anahtar yok, CORS açık) =====
+   Panelin kuralı: her gösterge gerçek veriye bağlı. Konum PLACE sabitinde.
+   Hata olursa son iyi veri gösterilir, uyarı basılmaz. */
+const WMO={0:['Açık','☀'],1:['Az bulutlu','🌤'],2:['Parçalı bulutlu','⛅'],3:['Kapalı','☁'],
+ 45:['Sisli','🌫'],48:['Kırağılı sis','🌫'],51:['Hafif çisenti','🌦'],53:['Çisenti','🌦'],55:['Yoğun çisenti','🌦'],
+ 56:['Dondurucu çisenti','🌧'],57:['Dondurucu çisenti','🌧'],61:['Hafif yağmur','🌦'],63:['Yağmurlu','🌧'],
+ 65:['Kuvvetli yağmur','🌧'],66:['Dondurucu yağmur','🌧'],67:['Dondurucu yağmur','🌧'],71:['Hafif kar','🌨'],
+ 73:['Kar yağışlı','🌨'],75:['Yoğun kar','❄'],77:['Kar taneli','🌨'],80:['Sağanak','🌦'],81:['Sağanak','🌧'],
+ 82:['Kuvvetli sağanak','⛈'],85:['Kar sağanağı','🌨'],86:['Kar sağanağı','🌨'],95:['Gök gürültülü','⛈'],
+ 96:['Dolulu fırtına','⛈'],99:['Dolulu fırtına','⛈']};
+function renderWx(w){
+  const el=document.getElementById('wx');if(!el||!w)return;
+  const d=WMO[w.code]||['—','·'];
+  el.innerHTML='<span class="wxi">'+d[1]+'</span> <b>'+Math.round(w.temp)+'°</b> '+esc(d[0])+
+    ' · %'+(w.rain==null?'—':w.rain)+' yağış · '+Math.round(w.min)+'°/'+Math.round(w.max)+'°';
+}
+async function loadWx(){
+  try{
+    const u='https://api.open-meteo.com/v1/forecast?latitude='+PLACE.lat+'&longitude='+PLACE.lon+
+      '&current=temperature_2m,weather_code&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max'+
+      '&timezone=Europe/Istanbul&forecast_days=1';
+    const r=await fetch(u);if(!r.ok)throw 0;
+    const d=await r.json();
+    const w={temp:d.current.temperature_2m,code:d.current.weather_code,
+      max:d.daily.temperature_2m_max[0],min:d.daily.temperature_2m_min[0],
+      rain:d.daily.precipitation_probability_max[0]};
+    await sSet(K.wx,w);renderWx(w);
+  }catch(e){const c=await sGet(K.wx);if(c)renderWx(c);
+    else{const el=document.getElementById('wx');if(el)el.textContent='hava alınamadı';}}
+}
+
+/* ===== PİYASA ÖZETİ — izleme listesinden türetilen saf istatistik =====
+   Yorum veya öneri yok; yalnızca borsa.json'daki gerçek fiyat/değişim alanlarından
+   hesaplanan sayılar. */
+function pctOf(s){const v=parseFloat(String(s.chg||'').replace('%','').replace(',','.'));return isNaN(v)?null:v;}
+function numOf(v){const n=parseFloat(String(v==null?'':v).replace(/,/g,''));return isNaN(n)?null:n;}
+function renderMktSummary(){
+  const el=document.getElementById('mktSummary');if(!el)return;
+  const all=watch.concat(us).filter(s=>pctOf(s)!==null);
+  if(!all.length){el.innerHTML='';return;}
+  const sorted=all.slice().sort((a,b)=>pctOf(a)-pctOf(b));
+  const lo=sorted[0],hi=sorted[sorted.length-1];
+  let ust=0,say=0;
+  all.forEach(s=>{const p=numOf(s.price),a=numOf(s.avg1w);if(p!=null&&a!=null){say++;if(p>a)ust++;}});
+  const line=(l,s)=>{const p=pctOf(s),c=p>0?'up':p<0?'down':'flat',ar=p>0?'▲':p<0?'▼':'–';
+    return '<div class="sum"><span class="sl">'+l+'</span><span>'+esc(s.code)+' <span class="'+c+'">'+ar+' '+Math.abs(p).toFixed(2)+'%</span></span></div>';};
+  el.innerHTML='<div class="wtitle" style="margin-top:12px;border-top:1px solid var(--line2);padding-top:11px">Günün Hareketi</div>'+
+    line('En çok yükselen',hi)+line('En çok düşen',lo)+
+    (say?'<div class="sum"><span class="sl">Haftalık ort. üstünde</span><span>'+ust+' / '+say+' hisse</span></div>':'');
+}
+
+/* ===== FİNANS NOTU — genel finansal okuryazarlık, günlük rotasyon =====
+   Bilinçli olarak hisse/al-sat önerisi İÇERMEZ; yalnızca herkes için geçerli
+   genel ilkeler. Kart üstünde eğitim amaçlı etiketi duruyor. */
+const FIN=[
+ ['Acil durum fonu önce gelir','3-6 aylık zorunlu giderin nakitte veya mevduatta durmalı. Amacı getiri değil, kötü bir günde pozisyon kapatmak zorunda kalmamak.'],
+ ['Çeşitlendirme riski azaltır','Tek bir varlığa yoğunlaşmak beklenen getiriyi artırmaz, sadece o varlığa özel riski artırır. Farklı varlık türleri aynı anda aynı yöne gitmez.'],
+ ['Maliyet ortalaması','Düzenli aralıklarla sabit tutar koymak, girişi zamanlamaya çalışmaktan daha öngörülebilirdir; fiyat düşükken daha çok, yüksekken daha az alınır.'],
+ ['Bileşik getiri zamanla çalışır','Getirinin kendisinin de getiri üretmesi uzun vadede ana etkendir. En büyük değişken oran değil, geçen süredir.'],
+ ['Nominal değil reel getiri','Enflasyonun üstünde kalmayan getiri, rakam büyüse bile alım gücü kaybıdır. Hesabı her zaman enflasyona göre yap.'],
+ ['Komisyon ve gider oranı','Yıllık yüzde birlik bir gider, otuz yılda toplam birikimin dörtte birine yakınını götürebilir. Küçük yüzdeler uzun vadede küçük değildir.'],
+ ['Risk ve getiri ayrılmaz','Yüksek getiri vaadi, yüksek risk demektir. Risksiz yüksek getiri diye bir şey yoktur; öyle sunuluyorsa risk gizlenmiştir.'],
+ ['Likidite bir özelliktir','Bir varlığı istediğin anda makul fiyata satabilmek ayrı bir değerdir. Likit olmayan varlıkta acil satış her zaman zararla olur.'],
+ ['Vade uyumu','Kısa vadede ihtiyacın olacak para, kısa vadede dalgalanan bir varlıkta durmamalı. Parayı ne zaman kullanacağın, nereye koyacağını belirler.'],
+ ['Dalgalanma kayıp değildir','Fiyatın düşmesi, satmadığın sürece gerçekleşmiş bir zarar değildir. Zararı kalıcı hâle getiren çoğu zaman panikle satmaktır.'],
+ ['Piyasada geçirilen süre','Uzun vadede sonucu belirleyen, en iyi anı yakalamak değil, piyasada kalınan süredir. En iyi günleri kaçırmak getiriyi ciddi düşürür.'],
+ ['Kur riski','Geliri TL, harcaması TL olan biri için yabancı para cinsi varlık da bir risktir. Kur her iki yöne de hareket eder.'],
+ ['Vergiyi hesaba kat','Getiriyi brüt değil, vergi ve stopaj sonrası net olarak karşılaştır. İki ürünün brüt getirisi aynı, neti çok farklı olabilir.'],
+ ['Portföyü dengeleme','Zamanla oranlar kayar; belirli aralıklarla hedef dağılıma dönmek, yükseleni bir miktar satıp düşenden almak anlamına gelir.'],
+ ['Kaldıraç riski büyütür','Borçla alınan pozisyon kazancı da kaybı da çarpar. Küçük bir ters hareket, ana paranın tamamını silebilir.'],
+ ['Batık maliyet yanılgısı','Bir varlığa şu ana kadar ne kadar harcadığın, bugün onu tutmak için geçerli bir sebep değildir. Karar bugünden ileriye bakar.'],
+ ['Kayıptan kaçınma önyargısı','İnsan kaybı kazançtan yaklaşık iki kat şiddetli hisseder. Bu yüzden zararda olan pozisyon gereğinden uzun tutulur.'],
+ ['Kalabalığı takip etme','Herkesin konuştuğu varlık, çoğu zaman fiyatının büyük kısmını çoktan yapmıştır. Aceleyle girme hissi bir karar değil, bir duygudur.'],
+ ['Geçmiş getiri garanti değil','Bir varlığın geçen yıl kazandırmış olması, gelecek yıl kazandıracağı anlamına gelmez. Geçmiş performans bir tahmin aracı değildir.'],
+ ['Kuralını önceden yaz','Ne zaman alacağını, ne zaman satacağını ve ne kadar riske gireceğini sakinken belirle. Karar anında yazılı kural, duygudan iyidir.']];
+function renderFinNote(){
+  const el=document.getElementById('finNote');if(!el)return;
+  const f=FIN[doy()%FIN.length];
+  el.innerHTML='<div class="fin"><span class="fin-tag">Eğitim amaçlı · yatırım tavsiyesi değildir</span>'+
+    '<div class="fin-h">'+esc(f[0])+'</div><div class="fin-b">'+esc(f[1])+'</div></div>';
+}
+
+/* ===== HARCAMA & KAZANÇ =====
+   Tamamen yerel: d:money:YYYY-MM anahtarında aylık kayıt dizisi. Sunucuya hiçbir
+   şey gitmez. Kayıt: {k:'in'|'out', c:kategori, a:tutar, n:not, d:tarih} */
+const MCATS={out:['Kira','Market','Ulaşım','Yeme-içme','Fatura','Sağlık','Eğlence','Diğer'],
+             in:['Maaş','Ek gelir','Satış','Diğer']};
+const AYLAR=['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'];
+let mCur='',mData=[];
+function thisMonth(){const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0');}
+function shiftMonth(k,n){const[y,m]=k.split('-').map(Number);const d=new Date(y,m-1+n,1);
+  return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0');}
+function monthLabel(k){const[y,m]=k.split('-').map(Number);return AYLAR[m-1]+' '+y;}
+function tl(n){return '₺'+Math.round(n).toLocaleString('tr-TR');}
+async function loadMoney(){mData=await sGet('d:money:'+mCur)||[];renderMoney();}
+async function saveMoney(){await sSet('d:money:'+mCur,mData);}
+function fillCats(){
+  const kind=document.getElementById('mKind').value,sel=document.getElementById('mCat');
+  sel.innerHTML=MCATS[kind].map(c=>'<option value="'+c+'">'+c+'</option>').join('');
+}
+function renderMoney(){
+  document.getElementById('mLabel').textContent=monthLabel(mCur);
+  const gelir=mData.filter(r=>r.k==='in').reduce((a,r)=>a+num(r.a),0);
+  const gider=mData.filter(r=>r.k==='out').reduce((a,r)=>a+num(r.a),0);
+  const kalan=gelir-gider;
+  document.getElementById('mStats').innerHTML=
+    '<div class="stat"><div class="stat-n" style="color:var(--up)">'+tl(gelir)+'</div><div class="stat-l">Gelir</div></div>'+
+    '<div class="stat"><div class="stat-n" style="color:var(--down)">'+tl(gider)+'</div><div class="stat-l">Gider</div></div>'+
+    '<div class="stat"><div class="stat-n">'+tl(kalan)+'</div><div class="stat-l">Kalan</div></div>';
+  document.getElementById('mBar').innerHTML=gelir>0?bar('Gelirin harcanan kısmı',gider,Math.round(gelir),' ₺'):'';
+  /* kategori dağılımı — yalnızca giderler */
+  const byCat={};mData.filter(r=>r.k==='out').forEach(r=>{byCat[r.c]=(byCat[r.c]||0)+num(r.a);});
+  const cats=Object.keys(byCat).sort((a,b)=>byCat[b]-byCat[a]);
+  const enb=cats.length?byCat[cats[0]]:0;
+  document.getElementById('mCats').innerHTML=cats.length?
+    '<div class="wtitle" style="margin-top:13px;border-top:1px solid var(--line2);padding-top:11px">Kategori Dağılımı</div>'+
+    cats.map(c=>'<div class="catrow"><span class="cl">'+esc(c)+'</span><span class="cb"><i style="width:'+
+      (enb?Math.round(byCat[c]/enb*100):0)+'%"></i></span><span class="cv">'+tl(byCat[c])+
+      (gider?' · %'+Math.round(byCat[c]/gider*100):'')+'</span></div>').join(''):'';
+  const el=document.getElementById('mList');
+  if(!mData.length){el.innerHTML='<div class="empty">Bu ay için kayıt yok. Yukarıdan ekle.</div>';return;}
+  el.innerHTML='<div class="wtitle" style="margin-top:13px;border-top:1px solid var(--line2);padding-top:11px">Kayıtlar</div>'+
+    mData.map((r,i)=>'<div class="mrow"><span class="mc">'+esc(r.c)+'</span><span class="mn">'+esc(r.n||'—')+
+      '</span><span class="md">'+esc((r.d||'').slice(8,10)+'.'+(r.d||'').slice(5,7))+'</span>'+
+      '<span class="mv '+(r.k==='in'?'up':'down')+'">'+(r.k==='in'?'+':'−')+tl(num(r.a))+'</span>'+
+      '<button class="del" data-md="'+i+'">×</button></div>').slice().reverse().join('');
+  el.querySelectorAll('[data-md]').forEach(b=>b.onclick=async()=>{
+    mData.splice(+b.dataset.md,1);await saveMoney();renderMoney();});
+}
+async function addMoney(){
+  const amt=num(document.getElementById('mAmt').value);
+  if(!amt||amt<=0)return;
+  mData.push({k:document.getElementById('mKind').value,c:document.getElementById('mCat').value,
+    a:amt,n:document.getElementById('mNote').value.trim(),d:todayKey()});
+  document.getElementById('mAmt').value='';document.getElementById('mNote').value='';
+  await saveMoney();renderMoney();
+}
+function moneyExport(){
+  const rows=[['Ay','Tarih','Tür','Kategori','Tutar','Not']],keys=[];
+  try{for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k&&k.indexOf('d:money:')===0)keys.push(k);}}catch(e){}
+  keys.sort().forEach(k=>{let arr=[];try{arr=JSON.parse(localStorage.getItem(k))||[];}catch(e){}
+    arr.forEach(r=>rows.push([k.slice(8),r.d||'',r.k==='in'?'Gelir':'Gider',r.c||'',num(r.a),r.n||'']));});
+  if(rows.length<2){alert('Henüz kayıtlı harcama yok.');return;}
+  const csv=rows.map(r=>r.map(c=>'"'+String(c).replace(/"/g,'""')+'"').join(',')).join('\n');
+  const blob=new Blob(['﻿'+csv],{type:'text/csv;charset=utf-8'});const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');a.href=url;a.download='harcama-kazanc.csv';a.click();URL.revokeObjectURL(url);
+}
 
 /* ===== TEMA (almanak <-> hud) ===== */
 function applyTheme(t){
@@ -988,23 +1306,36 @@ async function loadAgents(force){
     await sSet(K.targets,targets);await sSet(K.targetsVer,TARGETS_VERSION);
   }news=await sGet(K.news)||[];watch=await sGet('d:watch')||[];world=await sGet('d:world')||[];us=await sGet('d:us')||[];gold=await sGet('d:gold')||null;gmailDone=await sGet(K.gmailDone)||[];
   const de=await sGet(K.de);deExtra=(de&&de.date===todayKey())?de.extra:0;
+  deWrong=await sGet(K.deWrong)||[];await loadQuiz();
+  mCur=thisMonth();
   document.getElementById('taskAdd').onclick=addTask;document.getElementById('taskInput').onkeydown=e=>{if(e.key==='Enter')addTask();};
-  document.getElementById('newsAdd').onclick=addNews;document.getElementById('newsInput').onkeydown=e=>{if(e.key==='Enter')addNews();};
-  document.getElementById('mailParse').onclick=parseMail;document.getElementById('fxRefresh').onclick=()=>loadFX(true);
+  document.getElementById('fxRefresh').onclick=()=>loadFX(true);
+  /* bütçe kartı */
+  document.getElementById('mKind').onchange=fillCats;
+  document.getElementById('mSave').onclick=addMoney;
+  document.getElementById('mAmt').onkeydown=e=>{if(e.key==='Enter')addMoney();};
+  document.getElementById('mNote').onkeydown=e=>{if(e.key==='Enter')addMoney();};
+  document.getElementById('mExport').onclick=moneyExport;
+  document.getElementById('mPrev').onclick=async()=>{mCur=shiftMonth(mCur,-1);await loadMoney();};
+  document.getElementById('mNext').onclick=async()=>{mCur=shiftMonth(mCur,1);await loadMoney();};
+  fillCats();
   document.getElementById('factNext').onclick=()=>{factOff+=4;renderFacts();};
   document.getElementById('filmNext').onclick=()=>{filmOff+=2;renderFilm();};
   document.getElementById('artNext').onclick=()=>{artOff+=2;renderArtist();};
   document.getElementById('bookNext').onclick=()=>{bookOff+=2;renderBook();};
   document.getElementById('histNext').onclick=()=>{histOff+=4;renderHistory();};
-  document.getElementById('deRefresh').onclick=()=>{deExtra+=5;sSet(K.de,{date:todayKey(),extra:deExtra});renderGerman();};
+  document.getElementById('deRefresh').onclick=async()=>{deExtra+=1;await sSet(K.de,{date:todayKey(),extra:deExtra});
+    deQuiz={set:deExtra,i:0,right:0,wrong:0,pick:null};await saveQuiz();renderGerman();};   // yeni set -> quiz sıfırlanır
   document.getElementById('wtExport').onclick=exportCSV;
   document.getElementById('basvuruRefresh').onclick=loadBasvuru;
   document.getElementById('gmailRefresh').onclick=loadGmailJson;
   document.getElementById('agentRefresh').onclick=()=>loadAgents(true);
-  renderTasks();await loadMorning();await renderRun();await loadWorkout();renderWtLog();await loadMeals();await loadWater();
-  renderFacts();renderFilm();renderArtist();renderBook();renderHistory();renderGerman();renderNews();renderWatch();renderUS();renderGold();renderWorld();loadFX(false);loadBorsaJson();loadBasvuru();loadGmailJson();loadFactsJson();loadAgents(false);
-  setInterval(loadBorsaJson,15*60*1000);setInterval(loadBasvuru,15*60*1000);setInterval(loadGmailJson,15*60*1000);setInterval(()=>loadAgents(false),15*60*1000);
-  document.addEventListener('visibilitychange',()=>{if(!document.hidden){loadBorsaJson();loadFX(false);loadBasvuru();loadGmailJson();loadAgents(false);}});
+  document.getElementById('placeName').textContent=PLACE.name;
+  renderTasks();await loadMorning();await renderRun();await loadWorkout();renderWtLog();await loadMeals();await loadWater();await loadMoney();
+  renderFacts();renderFilm();renderArtist();renderBook();renderHistory();renderGerman();renderNews();renderWatch();renderUS();renderGold();renderWorld();renderMktSummary();renderFinNote();
+  loadFX(false);loadBorsaJson();loadBasvuru();loadGmailJson();loadFactsJson();loadAgents(false);loadWx();
+  setInterval(loadBorsaJson,15*60*1000);setInterval(loadBasvuru,15*60*1000);setInterval(loadGmailJson,15*60*1000);setInterval(()=>loadAgents(false),15*60*1000);setInterval(loadWx,30*60*1000);
+  document.addEventListener('visibilitychange',()=>{if(!document.hidden){loadBorsaJson();loadFX(false);loadBasvuru();loadGmailJson();loadAgents(false);loadWx();}});
 })();
 </script>
 </body>
