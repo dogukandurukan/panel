@@ -1,7 +1,7 @@
 name: jobs-feed
 on:
   schedule:
-    - cron: '0 5 * * 1-5'    # 08:00 Türkiye, hafta içi (gün başlamadan ilanlar hazır olsun)
+    - cron: '0 5 * * *'      # her gün 08:00 Türkiye
   workflow_dispatch:          # "Run workflow" ile elle de tetiklenir
 jobs:
   feed:

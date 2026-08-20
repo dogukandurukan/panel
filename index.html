@@ -178,6 +178,11 @@
     border-radius:4px;padding:7px 9px;font-family:var(--sans);font-size:13px;color:var(--ink);resize:vertical;}
   .cfgbox textarea{min-height:52px;}
   .cfgbox input:focus,.cfgbox textarea:focus{outline:none;border-color:var(--accent);}
+  .imp{border:1px solid var(--accent);border-radius:5px;padding:12px 13px;margin-bottom:6px;background:color-mix(in srgb,var(--accent) 7%,transparent);}
+  .imp-h{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;}
+  .imp-b{font-size:12.5px;line-height:1.5;margin-bottom:9px;}
+  .imp-row{margin-bottom:8px;}
+  .imp input[type=file]{font-family:var(--mono);font-size:11.5px;color:var(--muted);width:100%;}
   .cfg-note{font-size:11.5px;color:var(--muted);line-height:1.5;margin-top:9px;font-style:italic;}
 
   /* telemetrinin altındaki iki sütunlu satır — kart genişliği telemetriyle aynı */
@@ -1452,6 +1457,15 @@ async function loadJobsJson(){
 function jobKey(j){return j.url||((j.company||'')+'|'+(j.title||''));}
 function renderJobs(){
   const el=document.getElementById('jobsList');if(!el)return;
+  /* Geçiş: eski sürüm yalnızca jobsApplied'a yazıyordu, myApps yoktu. Daha önce
+     "Başvurdum" denmiş ilanlar burada bir kez listeye aktarılır. */
+  let tasindi=false;
+  jobs.forEach(j=>{const k=jobKey(j);
+    if(jobsApplied.indexOf(k)>-1&&!myApps.some(a=>a.key===k)){
+      myApps.push({key:k,company:j.company,position:j.title,
+        location:j.location+(j.remote?' (Remote)':''),date:todayKey(),status:'Bekliyor',url:j.url});
+      tasindi=true;}});
+  if(tasindi){sSet(K.myApps,myApps);if(typeof sheetRows!=='undefined')renderBasvuru(sheetRows);}
   if(!jobs.length){el.innerHTML='<div class="empty">Bugün kriterlere uyan ilan bulunamadı.</div>';return;}
   el.innerHTML=jobs.map((j,i)=>{
     const done=jobsApplied.indexOf(jobKey(j))>-1;
@@ -1478,6 +1492,103 @@ function renderJobs(){
   }).join('');
   el.querySelectorAll('[data-jcl]').forEach(b=>b.onclick=()=>coverLetter(jobs[+b.dataset.jcl]));
   el.querySelectorAll('[data-jap]').forEach(b=>b.onclick=()=>toggleApplied(jobs[+b.dataset.jap]));
+}
+
+/* ===== MİNİMAL PDF YAZICI =====
+   Tek tıkla gerçek PDF indirmek için. Harici kütüphane yok (jsPDF ~350KB olurdu
+   ve panelin tek dosya / bağımlılıksız yapısını bozardı). PDF'in standart 14
+   fontundan Times kullanılıyor — font gömmeye gerek kalmıyor.
+
+   Karakter kısıtı: standart fontlar WinAnsi kodlamasıyla çalışıyor; ö/ü/ç/é
+   sorunsuz ama ı/ş/ğ WinAnsi'de yok. O üçü ASCII karşılığına çevriliyor
+   (Kadıköy -> Kadikoy, Sabancı -> Sabanci) — CV'lerde standart yazım. */
+const TIMES_W=[250,333,408,500,500,833,778,333,333,333,500,564,250,333,250,278,
+ 500,500,500,500,500,500,500,500,500,500,278,278,564,564,564,444,921,
+ 722,667,667,722,611,556,722,722,333,389,722,611,889,722,722,556,722,667,556,611,722,722,944,722,722,611,
+ 333,278,333,469,500,333,
+ 444,500,444,500,444,333,500,500,278,278,500,278,778,500,500,500,500,333,389,278,500,500,722,500,500,444,
+ 480,200,480,541];
+/* WinAnsi'de karşılığı olanlar -> bayt; olmayanlar -> ASCII karşılık */
+const PDF_MAP={'ö':246,'ü':252,'ç':231,'Ö':214,'Ü':220,'Ç':199,'é':233,'ä':228,'ß':223,
+ '—':151,'–':150,'•':149,'’':146,'‘':145,'“':147,'”':148,'…':133,'€':128,
+ 'ı':'i','İ':'I','ş':'s','Ş':'S','ğ':'g','Ğ':'G'};
+function pdfChar(ch){
+  const m=PDF_MAP[ch];
+  if(typeof m==='number')return{b:m,w:500};
+  const c=(typeof m==='string')?m:ch;
+  const code=c.charCodeAt(0);
+  if(code>=32&&code<=126)return{b:code,w:TIMES_W[code-32]};
+  return{b:63,w:444};                      // bilinmeyen -> '?'
+}
+function pdfWidth(s,size){let w=0;for(const ch of s)w+=pdfChar(ch).w;return w*size/1000;}
+function pdfEscape(s){
+  let o='';
+  for(const ch of s){
+    const b=pdfChar(ch).b;
+    if(b===40||b===41||b===92)o+='\\'+String.fromCharCode(b);   // ( ) \
+    else if(b<32||b>126)o+='\\'+('00'+b.toString(8)).slice(-3); // sekizlik
+    else o+=String.fromCharCode(b);
+  }
+  return o;
+}
+function pdfWrap(text,size,maxW){
+  const out=[];
+  for(const para of String(text).split('\n')){
+    if(!para.trim()){out.push('');continue;}
+    let line='';
+    for(const kelime of para.split(/\s+/)){
+      const dene=line?line+' '+kelime:kelime;
+      if(pdfWidth(dene,size)<=maxW)line=dene;
+      else{if(line)out.push(line);line=kelime;}
+    }
+    if(line)out.push(line);
+  }
+  return out;
+}
+/* bloklar: [{t:'metin', size, bold, gapAfter}] -> Blob */
+function makePDF(bloklar){
+  const W=595.28,H=841.89,ML=62,MR=62,MT=76,MB=64,maxW=W-ML-MR;
+  const sayfalar=[];let satirlar=[],y=H-MT;
+  for(const b of bloklar){
+    const size=b.size||11,lh=size*1.45;
+    for(const ln of pdfWrap(b.t,size,maxW)){
+      if(y-lh<MB){sayfalar.push(satirlar);satirlar=[];y=H-MT;}
+      satirlar.push({t:ln,x:ML,y:y,size:size,bold:!!b.bold});
+      y-=lh;
+    }
+    y-=(b.gapAfter==null?size*0.85:b.gapAfter);
+  }
+  sayfalar.push(satirlar);
+
+  const objs=[];const ekle=s=>{objs.push(s);return objs.length;};   // 1 tabanlı
+  const katalog=ekle(''),sayfaAgac=ekle(''),
+        fReg=ekle('<< /Type /Font /Subtype /Type1 /BaseFont /Times-Roman /Encoding /WinAnsiEncoding >>'),
+        fBold=ekle('<< /Type /Font /Subtype /Type1 /BaseFont /Times-Bold /Encoding /WinAnsiEncoding >>');
+  const sayfaRef=[];
+  for(const sf of sayfalar){
+    let akis='';
+    for(const l of sf){
+      akis+='BT /'+(l.bold?'F2':'F1')+' '+l.size+' Tf 1 0 0 1 '+
+            l.x.toFixed(2)+' '+l.y.toFixed(2)+' Tm ('+pdfEscape(l.t)+') Tj ET\n';
+    }
+    const icerik=ekle('<< /Length '+akis.length+' >>\nstream\n'+akis+'endstream');
+    const sayfa=ekle('<< /Type /Page /Parent '+sayfaAgac+' 0 R /MediaBox [0 0 '+W.toFixed(2)+' '+H.toFixed(2)+']'+
+      ' /Resources << /Font << /F1 '+fReg+' 0 R /F2 '+fBold+' 0 R >> >> /Contents '+icerik+' 0 R >>');
+    sayfaRef.push(sayfa);
+  }
+  objs[katalog-1]='<< /Type /Catalog /Pages '+sayfaAgac+' 0 R >>';
+  objs[sayfaAgac-1]='<< /Type /Pages /Kids ['+sayfaRef.map(r=>r+' 0 R').join(' ')+
+                    '] /Count '+sayfaRef.length+' >>';
+
+  let pdf='%PDF-1.4\n';const ofs=[];
+  objs.forEach((o,i)=>{ofs[i]=pdf.length;pdf+=(i+1)+' 0 obj\n'+o+'\nendobj\n';});
+  const xref=pdf.length;
+  pdf+='xref\n0 '+(objs.length+1)+'\n0000000000 65535 f \n';
+  ofs.forEach(o=>{pdf+=('0000000000'+o).slice(-10)+' 00000 n \n';});
+  pdf+='trailer\n<< /Size '+(objs.length+1)+' /Root '+katalog+' 0 R >>\nstartxref\n'+xref+'\n%%EOF';
+  const bytes=new Uint8Array(pdf.length);
+  for(let i=0;i<pdf.length;i++)bytes[i]=pdf.charCodeAt(i)&0xFF;
+  return new Blob([bytes],{type:'application/pdf'});
 }
 
 /* ---- Cover letter: ilana göre uyarlanır, PDF olarak kaydedilir.
@@ -1540,44 +1651,31 @@ function buildLetter(j){
    (Kadıköy, Sabancı) doğru çıkıyor. */
 function coverLetter(j){
   const p=jobProfile;
-  if(!p||!p.name){openJobsCfg();alert('Önce ⚙ Profil bölümünü doldur — mektup senin yazdığın bloklardan kuruluyor.');return;}
+  if(!p||!p.name){
+    openJobsCfg();
+    alert('Profil henüz yüklü değil.\n\n⚙ Profil bölümünü açtım — en üstteki kutudan '+
+          'profil.json dosyanı seç. Alanları elle doldurmana gerek yok.');
+    return;
+  }
   const L=buildLetter(j);
-  const w=window.open('','_blank');
-  if(!w){alert('Tarayıcı yeni sekmeyi engelledi — bu site için pop-up izni ver.');return;}
-  const st='<style>@page{size:A4;margin:22mm 20mm;}'+
-    'html{background:#fff;}'+/* zemin acikca beyaz olmali: kullanicinin tarayicisi koyu moddaysa varsayilan tuval siyah oluyor ve #111 yazi okunmuyordu */
-    'body{font-family:Georgia,"Times New Roman",serif;font-size:11.2pt;line-height:1.62;color:#111;background:#fff;margin:0;color-scheme:light;}'+
-    '.n{font-size:19pt;font-weight:700;letter-spacing:.02em;margin:0 0 3px;}'+
-    '.c{font-size:9.2pt;color:#444;margin:0 0 26px;font-family:Helvetica,Arial,sans-serif;}'+
-    '.d{margin:0 0 20px;font-size:10pt;color:#333;}'+
-    '.to{margin:0 0 22px;font-size:10.6pt;}.to b{display:block;font-weight:600;}'+
-    'p{margin:0 0 13px;text-align:justify;}'+
-    '.sig{margin-top:26px;}.sig span{display:block;}'+
-    '@media screen{body{max-width:750px;margin:34px auto;padding:0 22px;}'+
-    '.bar{position:fixed;top:0;left:0;right:0;background:#111;color:#fff;padding:9px 16px;'+
-    'font-family:Helvetica,Arial,sans-serif;font-size:13px;display:flex;gap:12px;align-items:center;}'+
-    '.bar button{font:inherit;padding:5px 13px;border:0;border-radius:4px;background:#35E0D4;cursor:pointer;}'+
-    'body{padding-top:56px;}}@media print{.bar{display:none;}}</style>';
-  const esc2=s=>String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
-  w.document.write('<!doctype html><html lang="en"><head><meta charset="utf-8">'+
-    '<title>Cover Letter — '+esc2(L.company)+'</title>'+st+'</head><body>'+
-    '<div class="bar"><b>Cover letter hazır</b><button onclick="window.print()">PDF olarak kaydet</button>'+
-    '<span>Yazdırma penceresinde hedefi “PDF olarak kaydet” seç</span></div>'+
-    '<p class="n">'+esc2(L.name)+'</p><p class="c">'+esc2(L.contact)+'</p>'+
-    '<p class="d">'+esc2(L.date)+'</p>'+
-    '<p class="to"><b>'+esc2(L.to)+'</b>'+esc2(L.company)+'</p>'+
-    '<p>Dear Hiring Team,</p>'+
-    L.paras.map(t=>'<p>'+esc2(t)+'</p>').join('')+
-    '<div class="sig"><span>Best regards,</span><span>'+esc2(L.name)+'</span></div>'+
-    '</body></html>');
-  w.document.close();
-  w.document.title='Cover Letter — '+L.company;   // PDF dosya adı bu başlıktan gelir
-  setTimeout(()=>{try{w.focus();w.print();}catch(e){}},450);
+  const bloklar=[
+    {t:L.name,size:17,bold:1,gapAfter:2},
+    {t:L.contact,size:9,gapAfter:22},
+    {t:L.date,size:10,gapAfter:16},
+    {t:L.to,size:11,bold:1,gapAfter:1},
+    {t:L.company,size:11,gapAfter:18},
+    {t:'Dear Hiring Team,',size:11,gapAfter:11},
+  ];
+  L.paras.forEach(t=>bloklar.push({t:t,size:11,gapAfter:11}));
+  bloklar.push({t:'Best regards,',size:11,gapAfter:2},{t:L.name,size:11});
+  const ad='cover-letter-'+(j.company||'ilan').replace(/[^A-Za-z0-9]+/g,'-')
+    .replace(/^-|-$/g,'').toLowerCase()+'.pdf';
+  const url=URL.createObjectURL(makePDF(bloklar));
+  const a=document.createElement('a');a.href=url;a.download=ad;
+  document.body.appendChild(a);a.click();a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),4000);
 }
 
-/* ---- "Başvurdum": Google Form önden doldurulmuş link + yerel işaretleme.
-   Sheet'e yazma yetkisi panele GÖMÜLMEZ (repo public olduğu için) — Form
-   kullanıcının kendi hesabıyla, kendi tıklamasıyla yazar. */
 async function toggleApplied(j){
   const k=jobKey(j),i=jobsApplied.indexOf(k);
   if(i>-1){
@@ -1598,16 +1696,31 @@ async function toggleApplied(j){
 function openJobsCfg(){
   const box=document.getElementById('jobsCfgBox');
   if(box.style.display==='block'){box.style.display='none';return;}
-  const p=jobProfile||{};
+  const p=jobProfile||{},dolu=!!(p&&p.name);
   const f=(id,l,v,ta)=>'<label>'+l+'</label>'+(ta
     ?'<textarea id="'+id+'">'+esc(v||'')+'</textarea>'
     :'<input id="'+id+'" value="'+esc(v||'')+'">');
+  /* İçe aktarma EN ÜSTTE: önceki sürümde en alttaydı ve kullanıcı önce on tane
+     boş alan görüp hepsini elle doldurması gerektiğini sanıyordu. */
   box.innerHTML='<div class="cfgbox">'+
+    '<div class="imp">'+
+      '<div class="imp-h">'+(dolu?'✓ Profil yüklü — '+esc(p.name):'1 · Hazır profil dosyanı yükle')+'</div>'+
+      '<div class="imp-b">'+(dolu
+        ? 'Cover letter düğmesi artık hazır. Değiştirmek istersen yeni dosya seçebilir ya da aşağıdaki alanları düzenleyebilirsin.'
+        : '<b>profil.json</b> dosyasını seç — alanları tek tek doldurman gerekmez. (Dosyayı açıp içeriğini kutuya yapıştırmak da olur.)')+'</div>'+
+      '<div class="imp-row"><input type="file" id="cfFile" accept=".json,application/json"></div>'+
+      '<textarea id="cfIO" placeholder="…veya JSON metnini buraya yapıştır"></textarea>'+
+      '<div class="add-row" style="margin-top:8px"><button id="cfImp">İçe aktar</button>'+
+      '<button class="ibtn" id="cfExp">Yedeğini al</button></div>'+
+      '<div id="cfMsg" class="cfg-note" style="margin-top:8px"></div>'+
+    '</div>'+
+    '<div class="cfg-note" style="margin:14px 0 2px"><b>'+(dolu?'Alanlar':'2 · Ya da elle doldur')+'</b> — '+
+      'buradaki her şey yalnızca bu tarayıcıda saklanır; repoya veya sunucuya gitmez.</div>'+
     f('cfName','Ad Soyad',p.name)+
     f('cfContact','İletişim satırı (mektup başlığında görünür)',p.contact)+
     f('cfOpening','Açılış cümlesi — ne yaptığın',p.opening,1)+
     '<div class="cfg-note" style="margin:12px 0 0">Aşağıdaki dört blok ilanın odağına göre seçiliyor: '+
-    'ilan pipeline ağırlıklıysa o blok, ML ağırlıklıysa ML bloğu öne çıkıyor. En az ikisini doldur.</div>'+
+    'ilan pipeline ağırlıklıysa o blok, ML ağırlıklıysa ML bloğu öne çıkar. En az ikisi dolu olmalı.</div>'+
     f('cfBPipe','Deneyim · veri mühendisliği / pipeline',(p.blocks||{}).pipeline||p.exp1,1)+
     f('cfBMl','Deneyim · ML / AI',(p.blocks||{}).ml,1)+
     f('cfBBi','Deneyim · BI / raporlama',(p.blocks||{}).bi,1)+
@@ -1615,14 +1728,39 @@ function openJobsCfg(){
     f('cfSkills','Teknik beceriler (virgülle)',p.skills)+
     f('cfEdu','Eğitim cümlesi (ops.)',p.education,1)+
     f('cfClosing','Kapanış — konum / müsaitlik',p.closing,1)+
-    '<div class="cfg-note">Buradaki her şey yalnızca bu tarayıcıda saklanır; repoya veya sunucuya gitmez. '+
-    'Hazır profil metnini yapıştırıp <b>İçe aktar</b>\'a basman yeterli — alanları tek tek doldurman gerekmez.</div>'+
-    '<label>Profili içe aktar / dışa aktar (JSON)</label><textarea id="cfIO" placeholder=\'{"name": ...}\'></textarea>'+
-    '<div class="add-row" style="margin-top:8px"><button class="ibtn" id="cfImp">İçe aktar</button>'+
-    '<button class="ibtn" id="cfExp">Dışa aktar</button></div>'+
     '<div class="add-row" style="margin-top:11px"><button id="cfSave">Kaydet</button>'+
     '<button class="ibtn" id="cfClose">Kapat</button></div></div>';
   box.style.display='block';
+  const msg=(t,ok)=>{const m=document.getElementById('cfMsg');
+    m.innerHTML=t;m.style.color=ok?'var(--up)':'var(--down)';m.style.fontStyle='normal';};
+  async function uygula(metin){
+    try{
+      const o=JSON.parse(metin);
+      if(!o||!o.name)throw new Error('name yok');
+      jobProfile=o;await sSet(K.jobProfile,jobProfile);
+      renderJobs();
+      box.style.display='none';openJobsCfg();        // dolu hâlde yeniden çiz
+      msg('✓ Profil yüklendi: '+esc(o.name)+'. Artık "Cover letter → PDF" hazır.',1);
+    }catch(e){
+      msg('Dosya okunamadı ('+esc(e.message||'geçersiz JSON')+'). profil.json dosyasını olduğu gibi seç.',0);
+    }
+  }
+  document.getElementById('cfFile').onchange=e=>{
+    const dosya=e.target.files&&e.target.files[0];if(!dosya)return;
+    const fr=new FileReader();
+    fr.onload=()=>uygula(String(fr.result));
+    fr.onerror=()=>msg('Dosya açılamadı.',0);
+    fr.readAsText(dosya);
+  };
+  document.getElementById('cfImp').onclick=()=>{
+    const t=document.getElementById('cfIO').value.trim();
+    if(!t){msg('Önce dosya seç ya da JSON metnini kutuya yapıştır.',0);return;}
+    uygula(t);
+  };
+  document.getElementById('cfExp').onclick=()=>{
+    document.getElementById('cfIO').value=JSON.stringify(jobProfile||{},null,1);
+    msg('Mevcut profil kutuya yazıldı — kopyalayıp saklayabilirsin.',1);
+  };
   document.getElementById('cfSave').onclick=async()=>{
     jobProfile={name:v('cfName'),contact:v('cfContact'),opening:v('cfOpening'),
       blocks:{pipeline:v('cfBPipe'),ml:v('cfBMl'),bi:v('cfBBi'),business:v('cfBBus')},
@@ -1631,19 +1769,6 @@ function openJobsCfg(){
     box.style.display='none';renderJobs();
   };
   document.getElementById('cfClose').onclick=()=>{box.style.display='none';};
-  document.getElementById('cfImp').onclick=async()=>{
-    const ta=document.getElementById('cfIO');
-    try{
-      const o=JSON.parse(ta.value);
-      if(!o||!o.name)throw 0;
-      jobProfile=o;await sSet(K.jobProfile,jobProfile);
-      box.style.display='none';openJobsCfg();          // alanlar dolu hâlde yeniden çiz
-      renderJobs();
-    }catch(e){alert('JSON okunamadı — metnin tamamını { ile } arası yapıştırdığından emin ol.');}
-  };
-  document.getElementById('cfExp').onclick=()=>{
-    document.getElementById('cfIO').value=JSON.stringify(jobProfile||{},null,1);
-  };
   function v(id){const e=document.getElementById(id);return e?e.value.trim():'';}
 }
 
