@@ -149,6 +149,28 @@
   .wglasses{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px;}
   .wglass{width:19px;height:24px;border:1.5px solid var(--muted);border-radius:3px 3px 6px 6px;background:transparent;cursor:pointer;padding:0;}
   .wglass.on{background:var(--accent);border-color:var(--accent);}
+  /* uyku takibi */
+  .slp-ask{display:flex;gap:16px;flex-wrap:wrap;align-items:center;}
+  .slp-fld{display:flex;align-items:center;gap:7px;}
+  .slp-fld label{font-size:13px;color:var(--muted);}
+  .slp-in{background:#fff;border:1px solid var(--line);border-radius:4px;padding:5px 7px;font-family:var(--mono);font-size:13px;color:var(--ink);}
+  .slp-in:focus{outline:none;border-color:var(--accent);}
+  .slp-chips{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px;}
+  .slp-chip{background:none;border:1px solid var(--line);color:var(--muted);font-family:var(--mono);font-size:10.5px;padding:3px 7px;border-radius:4px;cursor:pointer;}
+  .slp-chip:hover{border-color:var(--accent);color:var(--accent);}
+  .slp-chip.on{background:var(--accent);border-color:var(--accent);color:var(--card);}
+  .slp-sum{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;margin-top:13px;border-top:1px solid var(--line2);padding-top:11px;flex-wrap:wrap;}
+  .slp-dur{font-family:var(--serif);font-weight:900;font-size:26px;line-height:1;}
+  .slp-note{font-family:var(--mono);font-size:10.5px;color:var(--muted);letter-spacing:.06em;margin-top:5px;}
+  .slp-streak{font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:.09em;text-transform:uppercase;text-align:right;}
+  .slp-habit{font-size:12.5px;color:var(--muted);line-height:1.5;margin-top:10px;}
+  .slp-habit b{color:var(--ink);font-weight:600;}
+  .slp-bars{display:flex;gap:6px;align-items:flex-end;height:62px;margin-top:13px;}
+  .slp-bar{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:4px;height:100%;}
+  .slp-bar i{display:block;width:100%;background:var(--line);border-radius:2px 2px 0 0;}
+  .slp-bar.ok i{background:var(--accent);}
+  .slp-bar.miss i{background:var(--down);opacity:.55;}
+  .slp-bar span{font-family:var(--mono);font-size:9px;color:var(--muted);}
   footer{margin-top:26px;padding-top:14px;border-top:1px solid var(--line);font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;}
   @media (max-width:640px){body{padding:16px 14px 34px;}.clock{text-align:left;}}
 
@@ -284,7 +306,7 @@
   /* sayılarda hafif parıltı */
   html[data-theme="hud"] .clock,html[data-theme="hud"] .stat-n,html[data-theme="hud"] .mkt-val{text-shadow:0 0 13px color-mix(in srgb,var(--accent) 38%,transparent);}
   /* koyu zeminde beyaz form alanları olmasın */
-  html[data-theme="hud"] .wtin,html[data-theme="hud"] .pin,html[data-theme="hud"] .mkt-in,html[data-theme="hud"] .macros input,html[data-theme="hud"] .tgt input,html[data-theme="hud"] .runbox input,html[data-theme="hud"] .add-row input,html[data-theme="hud"] .paste,html[data-theme="hud"] .stat,html[data-theme="hud"] .recipe{background:#0A111C;}
+  html[data-theme="hud"] .wtin,html[data-theme="hud"] .pin,html[data-theme="hud"] .mkt-in,html[data-theme="hud"] .macros input,html[data-theme="hud"] .tgt input,html[data-theme="hud"] .runbox input,html[data-theme="hud"] .slp-in,html[data-theme="hud"] .add-row input,html[data-theme="hud"] .paste,html[data-theme="hud"] .stat,html[data-theme="hud"] .recipe{background:#0A111C;}
   html[data-theme="hud"] .check.on::after{border-color:var(--paper);}
   html[data-theme="hud"] .add-row button,html[data-theme="hud"] .pchip.on{color:var(--paper);}
   /* durum rozetleri iki temada da okunur kalsın */
@@ -369,6 +391,9 @@
       <div class="tgt" id="tgt"></div><div id="bars"></div><div style="height:6px"></div><div id="mealList"></div>
       <div id="waterBox"></div></section>
 
+    <section class="card"><div class="card-head"><div><p class="kicker">Uyku &middot; D&uuml;n gece</p><h2 class="card-title">Uyku Takibi</h2></div><div class="meta" id="slpMeta">&mdash;</div></div>
+      <div id="sleepBox"></div></section>
+
     <section class="card"><div class="card-head"><div><p class="kicker">Piyasa</p><h2 class="card-title">Borsa Durumu</h2></div><div class="meta"><span id="fxTime">—</span><br><button class="ibtn" id="fxRefresh">Yenile</button></div></div>
       <div id="marketList"><div class="loading">Kur çekiliyor…</div></div>
       <div id="goldRow"></div>
@@ -427,7 +452,7 @@
   <footer><span>Antrenman & yemek programından · gün gün otomatik</span><span>Döviz canlı · yatırım tavsiyesi değildir</span></footer>
 </div>
 <script>
-const K={tasks:'d:tasks',targets:'d:targets',bist:'d:bist',altin:'d:altin',news:'d:news',fx:'d:fx',de:'d:de',gmailDone:'d:gmailDone',targetsVer:'d:targetsVer',water:'d:water',theme:'d:theme',agents:'d:agents',wx:'d:wx',deWrong:'d:deWrong',jobProfile:'d:jobProfile',jobsApplied:'d:jobsApplied',myApps:'d:myApps'};
+const K={tasks:'d:tasks',targets:'d:targets',bist:'d:bist',altin:'d:altin',news:'d:news',fx:'d:fx',de:'d:de',gmailDone:'d:gmailDone',targetsVer:'d:targetsVer',water:'d:water',sleep:'d:sleepLog',theme:'d:theme',agents:'d:agents',wx:'d:wx',deWrong:'d:deWrong',jobProfile:'d:jobProfile',jobsApplied:'d:jobsApplied',myApps:'d:myApps'};
 /* Konum tek yerde — taşınırsan sadece burayı değiştir (dateline + hava durumu birlikte gelir). */
 const PLACE={name:'İstanbul, Kadıköy',lat:40.9833,lon:29.0333};
 const mem={};
@@ -783,6 +808,73 @@ function renderWater(){
     const n=+b.dataset.w;
     waterCount=(waterCount===n)?n-1:n;      // dolu son bardağa basınca geri al
     await sSet(K.water+':'+todayKey(),waterCount);renderWater();});
+}
+
+/* ===== UYKU TAKIBI =====
+   Gece, uyanilan gune yazilir: sleepLog['2026-08-20']={bed:'23:30',wake:'07:10'}.
+   Aliskanlik disaridan hedef dayatmaz; kullanicinin kendi girdigi saatlerin
+   medyanindan turer. 3 geceden az kayitla medyan anlamsiz oldugu icin gosterilmez.
+   Yatis saati gece yarisini astigi icin karsilastirmalar bedScale ile 18:00
+   referansli olceje tasinir (00:30, 23:30'dan SONRA sayilmali). */
+const SLEEP_TOL=45;      // dk - yatis saatinde aliskanliga tolerans
+const SLEEP_DUR_TOL=45;  // dk - sure aliskanligin bu kadar altina duserse seri kirilir
+const BED_CHIPS=['22:30','23:00','23:30','00:00','00:30','01:00'];
+const WAKE_CHIPS=['06:00','06:30','07:00','07:30','08:00','09:00'];
+const SLP_DAYS=['Pzr','Pzt','Sal','Çar','Per','Cum','Cmt'];  /* Pazar/Pazartesi ve Cuma/Cumartesi 2 harfte cakisiyor */
+let sleepLog={};
+const hm2min=s=>{const m=/^(\d{1,2}):(\d{2})$/.exec(s||'');return m?(+m[1])*60+(+m[2]):null;};
+const min2hm=m=>{m=((Math.round(m)%1440)+1440)%1440;return String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60).padStart(2,'0');};
+const slpDur=(bed,wake)=>{const b=hm2min(bed),w=hm2min(wake);if(b===null||w===null)return null;return ((w-b)+1440)%1440;};
+const slpTxt=m=>m===null?'—':Math.floor(m/60)+'s '+String(Math.round(m)%60).padStart(2,'0')+'d';
+const bedScale=m=>m<720?m+1440:m;
+const slpMedian=a=>{const x=a.slice().sort((p,q)=>p-q),n=x.length;return n?(n%2?x[(n-1)/2]:(x[n/2-1]+x[n/2])/2):null;};
+const dayBack=n=>{const d=new Date();d.setDate(d.getDate()-n);return d.toLocaleDateString('sv-SE');};
+function slpKeys(limit){const ks=Object.keys(sleepLog).filter(k=>sleepLog[k]&&sleepLog[k].bed&&sleepLog[k].wake).sort();
+  return limit?ks.slice(-limit):ks;}
+function slpHabit(){const ks=slpKeys(14);if(ks.length<3)return null;
+  return {bed:min2hm(slpMedian(ks.map(k=>bedScale(hm2min(sleepLog[k].bed))))),
+          wake:min2hm(slpMedian(ks.map(k=>hm2min(sleepLog[k].wake)))),
+          dur:slpMedian(ks.map(k=>slpDur(sleepLog[k].bed,sleepLog[k].wake))),n:ks.length};}
+function slpFits(e,h){if(!e||!h||!e.bed||!e.wake)return false;
+  const db=Math.abs(bedScale(hm2min(e.bed))-bedScale(hm2min(h.bed)));
+  return db<=SLEEP_TOL && slpDur(e.bed,e.wake)>=h.dur-SLEEP_DUR_TOL;}
+function slpStreak(h){if(!h)return 0;let n=0;
+  let i=(sleepLog[todayKey()]&&sleepLog[todayKey()].bed&&sleepLog[todayKey()].wake)?0:1;  // bugun girilmediyse dunden say
+  for(;i<400;i++){if(!slpFits(sleepLog[dayBack(i)],h))break;n++;}
+  return n;}
+async function loadSleep(){sleepLog=await sGet(K.sleep)||{};renderSleep();}
+function renderSleep(){
+  const el=document.getElementById('sleepBox');if(!el)return;
+  const tk=todayKey(),e=sleepLog[tk]||{bed:'',wake:''},d=slpDur(e.bed,e.wake),h=slpHabit();
+  const chips=(arr,cur,attr)=>'<div class="slp-chips">'+arr.map(t=>'<button class="slp-chip'+(cur===t?' on':'')+'" '+attr+'="'+t+'">'+t+'</button>').join('')+'</div>';
+  let html='<div class="slp-ask">'+
+    '<div class="slp-fld"><label>Kaçta yattın?</label><input class="slp-in" type="time" id="slpBed" value="'+esc(e.bed||'')+'"></div>'+
+    '<div class="slp-fld"><label>Kaçta kalktın?</label><input class="slp-in" type="time" id="slpWake" value="'+esc(e.wake||'')+'"></div></div>'+
+    chips(BED_CHIPS,e.bed,'data-sb')+chips(WAKE_CHIPS,e.wake,'data-sw');
+  let sag;
+  if(h) sag=slpStreak(h)+' gece üst üste';
+  else sag=(3-slpKeys().length)+' gece sonra alışkanlık çıkar';
+  html+='<div class="slp-sum"><div><div class="slp-dur">'+slpTxt(d)+'</div>'+
+    '<div class="slp-note">'+(d===null?'saatleri seç':esc(e.bed)+' → '+esc(e.wake))+'</div></div>'+
+    '<div class="slp-streak">'+sag+'</div></div>';
+  if(h) html+='<div class="slp-habit">Alışkanlığın: <b>'+h.bed+' → '+h.wake+'</b> · tipik süre <b>'+slpTxt(h.dur)+
+    '</b> <span class="slp-note" style="display:inline;margin:0">('+h.n+' geceden, ±'+SLEEP_TOL+' dk tolerans)</span></div>';
+  let bars='<div class="slp-bars">';
+  for(let i=6;i>=0;i--){
+    const k=dayBack(i),en=sleepLog[k],dm=(en&&en.bed&&en.wake)?slpDur(en.bed,en.wake):null;
+    const pct=dm===null?0:Math.max(8,Math.min(dm/600*100,100));
+    const cls=dm===null?'':(h?(slpFits(en,h)?' ok':' miss'):' ok');
+    const lbl=SLP_DAYS[new Date(k+'T12:00:00').getDay()];
+    bars+='<div class="slp-bar'+cls+'" title="'+k+(dm===null?' · kayıt yok':' · '+slpTxt(dm)+' ('+en.bed+'→'+en.wake+')')+'">'+
+      '<i style="height:'+pct+'%"></i><span>'+lbl+'</span></div>';}
+  html+=bars+'</div>';
+  el.innerHTML=html;
+  const meta=document.getElementById('slpMeta');if(meta)meta.textContent=(d===null?'kayıt bekliyor':slpTxt(d));
+  const save=async(f,v)=>{const cur=sleepLog[tk]||{bed:'',wake:''};cur[f]=v;sleepLog[tk]=cur;await sSet(K.sleep,sleepLog);renderSleep();};
+  el.querySelector('#slpBed').onchange=ev=>save('bed',ev.target.value);
+  el.querySelector('#slpWake').onchange=ev=>save('wake',ev.target.value);
+  el.querySelectorAll('[data-sb]').forEach(b=>b.onclick=()=>save('bed',e.bed===b.dataset.sb?'':b.dataset.sb));
+  el.querySelectorAll('[data-sw]').forEach(b=>b.onclick=()=>save('wake',e.wake===b.dataset.sw?'':b.dataset.sw));
 }
 function renderBars(){const c=consumed();document.getElementById('bars').innerHTML=bar('Kalori',c.kcal,num(targets.kcal),'')+bar('Protein',c.p,num(targets.p),'g')+bar('Karbonhidrat',c.c,num(targets.c),'g');}
 function renderMeals(){const el=document.getElementById('mealList');el.innerHTML='';
@@ -1808,7 +1900,7 @@ function openJobsCfg(){
   document.getElementById('jobsCfg').onclick=openJobsCfg;
   jobProfile=await sGet(K.jobProfile)||null;jobsApplied=await sGet(K.jobsApplied)||[];myApps=await sGet(K.myApps)||[];
   document.getElementById('placeName').textContent=PLACE.name;
-  renderTasks();await loadSched();await loadMorning();await renderRun();await loadWorkout();renderWtLog();await loadMeals();await loadWater();await loadMoney();
+  renderTasks();await loadSched();await loadMorning();await renderRun();await loadWorkout();renderWtLog();await loadMeals();await loadWater();await loadSleep();await loadMoney();
   renderFacts();renderFilm();renderArtist();renderBook();renderHistory();renderGerman();renderNews();renderWatch();renderUS();renderGold();renderWorld();renderMktSummary();renderFinNote();
   loadFX(false);loadBorsaJson();loadBasvuru();loadGmailJson();loadFactsJson();loadAgents(false);loadWx();loadJobsJson();
   setInterval(loadBorsaJson,15*60*1000);setInterval(loadBasvuru,15*60*1000);setInterval(loadGmailJson,15*60*1000);setInterval(()=>loadAgents(false),15*60*1000);setInterval(loadWx,30*60*1000);setInterval(loadJobsJson,60*60*1000);
