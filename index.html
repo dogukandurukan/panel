@@ -422,7 +422,7 @@
   <footer><span>Antrenman & yemek programından · gün gün otomatik</span><span>Döviz canlı · yatırım tavsiyesi değildir</span></footer>
 </div>
 <script>
-const K={tasks:'d:tasks',targets:'d:targets',bist:'d:bist',altin:'d:altin',news:'d:news',fx:'d:fx',de:'d:de',gmailDone:'d:gmailDone',targetsVer:'d:targetsVer',water:'d:water',theme:'d:theme',agents:'d:agents',wx:'d:wx',deWrong:'d:deWrong',jobProfile:'d:jobProfile',jobsApplied:'d:jobsApplied'};
+const K={tasks:'d:tasks',targets:'d:targets',bist:'d:bist',altin:'d:altin',news:'d:news',fx:'d:fx',de:'d:de',gmailDone:'d:gmailDone',targetsVer:'d:targetsVer',water:'d:water',theme:'d:theme',agents:'d:agents',wx:'d:wx',deWrong:'d:deWrong',jobProfile:'d:jobProfile',jobsApplied:'d:jobsApplied',myApps:'d:myApps'};
 /* Konum tek yerde — taşınırsan sadece burayı değiştir (dateline + hava durumu birlikte gelir). */
 const PLACE={name:'İstanbul, Kadıköy',lat:40.9833,lon:29.0333};
 const mem={};
@@ -1026,7 +1026,22 @@ function loadBasvuru(){
   s.onerror=function(){statsEl.innerHTML='<div class="empty">Sheet çekilemedi — bağlantı paylaşımını (bağlantıya sahip olan görüntüleyebilir) kontrol et.</div>';};
   document.body.appendChild(s);
 }
+let sheetRows=[],myApps=[];
+/* Panelden "Başvurdum" denen ilanlar burada tutulur ve Sheet satırlarıyla
+   BİRLEŞTİRİLİR. Sheet'e yazmak için kimlik bilgisi gerekiyor ve panel public
+   bir sitede -> yazma yetkisi gömülemez. Bu yüzden panel kendi kaydını tutuyor;
+   Sheet'i istediğinde elle güncellersin, çift kayıt olursa aşağıda ayıklanıyor. */
+function appRows(){
+  const anahtar=r=>((r[0]||'')+'|'+(r[1]||'')).toLowerCase().replace(/\s+/g,' ').trim();
+  const varOlan=new Set(sheetRows.map(anahtar));
+  const yerel=myApps
+    .map(a=>[a.company,a.position,a.location,a.date,a.status||'Bekliyor'])
+    .filter(r=>!varOlan.has(anahtar(r)));   // Sheet'e de eklediysen iki kez sayma
+  return sheetRows.concat(yerel);
+}
 function renderBasvuru(data){
+  sheetRows=data;
+  data=appRows();
   const toplam=data.length;
   /* "Ret" dışında "Reddedildi"/"Olumsuz" gibi elle yazılmış varyantları da say —
      "Reddedildi" kelimesi "ret" harf dizisini İÇERMEZ, bu yüzden ayrı kalıp gerekli. */
@@ -1042,9 +1057,15 @@ function renderBasvuru(data){
   listEl.innerHTML=last5.map(r=>{
     const durum=(r[4]||'').trim();
     const cls=RET_RE.test(durum)?'ret':'bekliyor';
-    return '<div class="app-item"><div class="app-top"><span class="app-co">'+esc(r[0]||'—')+'</span><span class="app-status '+cls+'">'+esc(durum||'—')+'</span></div>'+
-      '<div class="app-sub"><span>'+esc(r[1]||'')+(r[2]?' · '+esc(r[2]):'')+'</span><span>'+esc(r[3]||'')+'</span></div></div>';
+    const yi=myApps.findIndex(a=>a.company===r[0]&&a.position===r[1]);
+    return '<div class="app-item"><div class="app-top"><span class="app-co">'+esc(r[0]||'—')+
+      (yi>-1?' <span class="jb" style="margin-left:5px">panelden</span>':'')+'</span>'+
+      '<span class="app-status '+cls+'">'+esc(durum||'—')+'</span></div>'+
+      '<div class="app-sub"><span>'+esc(r[1]||'')+(r[2]?' · '+esc(r[2]):'')+'</span>'+
+      '<span>'+esc(r[3]||'')+(yi>-1?' <button class="del" data-dapp="'+yi+'">×</button>':'')+'</span></div></div>';
   }).join('');
+  listEl.querySelectorAll('[data-dapp]').forEach(b=>b.onclick=async()=>{
+    myApps.splice(+b.dataset.dapp,1);await sSet(K.myApps,myApps);renderBasvuru(sheetRows);renderJobs();});
 }
 
 /* gmail okunmamışlar: gmail_feed.py'nin GitHub Actions'ta ürettiği gmail.json,
@@ -1412,7 +1433,6 @@ const SKILL_LABEL={'ci/cd':'CI/CD','sql':'SQL','dbt':'dbt','power bi':'Power BI'
  'data warehouse':'Data Warehouse','git':'Git','azure':'Azure','airflow':'Airflow','spark':'Spark',
  'databricks':'Databricks','python':'Python','tableau':'Tableau','looker':'Looker','snowflake':'Snowflake'};
 function skillLabel(s){return SKILL_LABEL[s]||String(s).replace(/\b\w/g,c=>c.toUpperCase());}
-const JOB_MARK={SIRKET:'company',POZISYON:'title',KONUM:'location',TARIH:'date',DURUM:'status'};
 
 async function loadJobsJson(){
   const el=document.getElementById('jobsList'),t=document.getElementById('jobsTime');
@@ -1558,41 +1578,20 @@ function coverLetter(j){
 /* ---- "Başvurdum": Google Form önden doldurulmuş link + yerel işaretleme.
    Sheet'e yazma yetkisi panele GÖMÜLMEZ (repo public olduğu için) — Form
    kullanıcının kendi hesabıyla, kendi tıklamasıyla yazar. */
-function formUrl(j){
-  const p=jobProfile;
-  if(!p||!p.form)return null;
-  try{
-    const u=new URL(p.form);
-    const bugun=todayKey();
-    u.searchParams.forEach?0:0;
-    const yeni=new URLSearchParams();
-    for(const[k,v]of u.searchParams.entries()){
-      const alan=JOB_MARK[String(v).trim().toUpperCase()];
-      if(alan==='company')yeni.set(k,j.company);
-      else if(alan==='title')yeni.set(k,j.title);
-      else if(alan==='location')yeni.set(k,j.location+(j.remote?' (Remote)':''));
-      else if(alan==='date')yeni.set(k,bugun);
-      else if(alan==='status')yeni.set(k,'Bekliyor');
-      else yeni.set(k,v);
-    }
-    return u.origin+u.pathname+'?'+yeni.toString();
-  }catch(e){return null;}
-}
 async function toggleApplied(j){
   const k=jobKey(j),i=jobsApplied.indexOf(k);
-  if(i>-1){jobsApplied.splice(i,1);}
-  else{
+  if(i>-1){
+    jobsApplied.splice(i,1);
+    myApps=myApps.filter(a=>a.key!==k);
+  }else{
     jobsApplied.push(k);jobsApplied=jobsApplied.slice(-200);
-    const fu=formUrl(j);
-    if(fu)window.open(fu,'_blank','noopener');
-    else{
-      /* Form kurulmamış: satırı panoya kopyala, Sheet'i aç — elle yapıştırılır */
-      const satir=[j.company,j.title,j.location+(j.remote?' (Remote)':''),todayKey(),'Bekliyor'].join('\t');
-      try{await navigator.clipboard.writeText(satir);}catch(e){}
-      window.open('https://docs.google.com/spreadsheets/d/'+BASVURU_SHEET_ID+'/edit','_blank','noopener');
-    }
+    myApps.push({key:k,company:j.company,position:j.title,
+      location:j.location+(j.remote?' (Remote)':''),date:todayKey(),status:'Bekliyor',url:j.url});
+    myApps=myApps.slice(-200);
   }
-  await sSet(K.jobsApplied,jobsApplied);renderJobs();
+  await sSet(K.jobsApplied,jobsApplied);await sSet(K.myApps,myApps);
+  renderJobs();
+  renderBasvuru(sheetRows);      // alttaki İş Başvuruları kartı hemen güncellensin
 }
 
 /* ---- profil / form ayarları (hepsi yalnızca bu tarayıcıda) */
@@ -1616,22 +1615,35 @@ function openJobsCfg(){
     f('cfSkills','Teknik beceriler (virgülle)',p.skills)+
     f('cfEdu','Eğitim cümlesi (ops.)',p.education,1)+
     f('cfClosing','Kapanış — konum / müsaitlik',p.closing,1)+
-    f('cfForm','Google Form önden doldurulmuş link (ops.)',p.form,1)+
-    '<div class="cfg-note">Form kurulumu: Sheet\'ine bağlı bir Google Form aç → "Önceden doldurulmuş bağlantı al" → alanlara sırasıyla '+
-    '<b>SIRKET</b>, <b>POZISYON</b>, <b>KONUM</b>, <b>TARIH</b>, <b>DURUM</b> yaz → çıkan linki buraya yapıştır. '+
-    'Panel bu işaretleri gerçek değerlerle değiştirir. Form kurmazsan "Başvurdum" satırı panoya kopyalayıp Sheet\'i açar.<br><br>'+
-    'Buradaki her şey yalnızca bu tarayıcıda saklanır; repoya veya sunucuya gitmez.</div>'+
+    '<div class="cfg-note">Buradaki her şey yalnızca bu tarayıcıda saklanır; repoya veya sunucuya gitmez. '+
+    'Hazır profil metnini yapıştırıp <b>İçe aktar</b>\'a basman yeterli — alanları tek tek doldurman gerekmez.</div>'+
+    '<label>Profili içe aktar / dışa aktar (JSON)</label><textarea id="cfIO" placeholder=\'{"name": ...}\'></textarea>'+
+    '<div class="add-row" style="margin-top:8px"><button class="ibtn" id="cfImp">İçe aktar</button>'+
+    '<button class="ibtn" id="cfExp">Dışa aktar</button></div>'+
     '<div class="add-row" style="margin-top:11px"><button id="cfSave">Kaydet</button>'+
     '<button class="ibtn" id="cfClose">Kapat</button></div></div>';
   box.style.display='block';
   document.getElementById('cfSave').onclick=async()=>{
     jobProfile={name:v('cfName'),contact:v('cfContact'),opening:v('cfOpening'),
       blocks:{pipeline:v('cfBPipe'),ml:v('cfBMl'),bi:v('cfBBi'),business:v('cfBBus')},
-      skills:v('cfSkills'),education:v('cfEdu'),closing:v('cfClosing'),form:v('cfForm')};
+      skills:v('cfSkills'),education:v('cfEdu'),closing:v('cfClosing')};
     await sSet(K.jobProfile,jobProfile);
     box.style.display='none';renderJobs();
   };
   document.getElementById('cfClose').onclick=()=>{box.style.display='none';};
+  document.getElementById('cfImp').onclick=async()=>{
+    const ta=document.getElementById('cfIO');
+    try{
+      const o=JSON.parse(ta.value);
+      if(!o||!o.name)throw 0;
+      jobProfile=o;await sSet(K.jobProfile,jobProfile);
+      box.style.display='none';openJobsCfg();          // alanlar dolu hâlde yeniden çiz
+      renderJobs();
+    }catch(e){alert('JSON okunamadı — metnin tamamını { ile } arası yapıştırdığından emin ol.');}
+  };
+  document.getElementById('cfExp').onclick=()=>{
+    document.getElementById('cfIO').value=JSON.stringify(jobProfile||{},null,1);
+  };
   function v(id){const e=document.getElementById(id);return e?e.value.trim():'';}
 }
 
@@ -1669,7 +1681,7 @@ function openJobsCfg(){
   document.getElementById('gmailRefresh').onclick=loadGmailJson;
   document.getElementById('agentRefresh').onclick=()=>loadAgents(true);
   document.getElementById('jobsCfg').onclick=openJobsCfg;
-  jobProfile=await sGet(K.jobProfile)||null;jobsApplied=await sGet(K.jobsApplied)||[];
+  jobProfile=await sGet(K.jobProfile)||null;jobsApplied=await sGet(K.jobsApplied)||[];myApps=await sGet(K.myApps)||[];
   document.getElementById('placeName').textContent=PLACE.name;
   renderTasks();await loadSched();await loadMorning();await renderRun();await loadWorkout();renderWtLog();await loadMeals();await loadWater();await loadMoney();
   renderFacts();renderFilm();renderArtist();renderBook();renderHistory();renderGerman();renderNews();renderWatch();renderUS();renderGold();renderWorld();renderMktSummary();renderFinNote();
