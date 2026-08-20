@@ -138,6 +138,15 @@
   /* besleme bayatladığında: sayılar soluklaşır, zaman damgası uyarı rengine döner */
   .feed-stale .statrow,.feed-stale #gmailList{opacity:.5;}
   .feed-stale .meta #gmailTime{color:#a8442a;}
+  /* su takibi */
+  #waterBox{margin-top:13px;border-top:1px solid var(--line2);padding-top:11px;}
+  .wrow{display:flex;justify-content:space-between;align-items:baseline;gap:8px;}
+  .wlbl{font-size:13px;font-weight:600;}
+  .wval{font-family:var(--mono);font-size:10.5px;color:var(--muted);}
+  .wval em{font-style:normal;color:var(--accent);}
+  .wglasses{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px;}
+  .wglass{width:19px;height:24px;border:1.5px solid var(--muted);border-radius:3px 3px 6px 6px;background:transparent;cursor:pointer;padding:0;}
+  .wglass.on{background:var(--accent);border-color:var(--accent);}
   footer{margin-top:26px;padding-top:14px;border-top:1px solid var(--line);font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;}
   @media (max-width:640px){body{padding:16px 14px 34px;}.clock{text-align:left;}}
   @media (prefers-reduced-motion:reduce){*{transition:none!important;}}
@@ -173,7 +182,8 @@
       <div id="exList"></div></section>
 
     <section class="card"><div class="card-head"><div><p class="kicker">Beslenme · Bugün</p><h2 class="card-title">Bugünün Yemekleri</h2></div><div class="meta">hedefi düzenle ↓</div></div>
-      <div class="tgt" id="tgt"></div><div id="bars"></div><div style="height:6px"></div><div id="mealList"></div></section>
+      <div class="tgt" id="tgt"></div><div id="bars"></div><div style="height:6px"></div><div id="mealList"></div>
+      <div id="waterBox"></div></section>
 
     <section class="card"><div class="card-head"><div><p class="kicker">Piyasa</p><h2 class="card-title">Borsa Durumu</h2></div><div class="meta"><span id="fxTime">—</span><br><button class="ibtn" id="fxRefresh">Yenile</button></div></div>
       <div id="marketList"><div class="loading">Kur çekiliyor…</div></div>
@@ -216,7 +226,7 @@
   <footer><span>Antrenman & yemek programından · gün gün otomatik</span><span>Döviz canlı · yatırım tavsiyesi değildir</span></footer>
 </div>
 <script>
-const K={tasks:'d:tasks',targets:'d:targets',bist:'d:bist',altin:'d:altin',news:'d:news',fx:'d:fx',de:'d:de',gmailDone:'d:gmailDone'};
+const K={tasks:'d:tasks',targets:'d:targets',bist:'d:bist',altin:'d:altin',news:'d:news',fx:'d:fx',de:'d:de',gmailDone:'d:gmailDone',targetsVer:'d:targetsVer',water:'d:water'};
 const mem={};
 async function sGet(k){try{if(window.storage){const r=await window.storage.get(k,false);return r?JSON.parse(r.value):null;}}catch(e){}
   try{const v=localStorage.getItem(k);return v?JSON.parse(v):null;}catch(e){}return (k in mem)?mem[k]:null;}
@@ -231,33 +241,42 @@ const DAYNAMES=['Pazar','Pazartesi','Salı','Çarşamba','Perşembe','Cuma','Cum
 
 /* ===== ANTRENMAN (gün gün, programdan) ===== */
 const WK={
- 1:{title:'Üst Vücut A — İtiş (+ koşu)',run:true,ex:[['Bench press','4 × 6-8'],['Overhead press','3 × 8'],['Incline dumbbell press','3 × 10'],['Dips','3 × 10'],['Overhead triceps extension','3 × 12'],['Lateral raise','3 × 12'],['Koşu','20-25 dk kolay tempo']]},
- 2:{title:'Alt Vücut A — Tek Bacak',run:false,ex:[['Back squat','3 × 6-8'],['Bulgar split squat (inişte 3 sn)','3 × 8 / bacak'],['Step-up','3 × 10 / bacak'],['Leg extension','3 × 12 / bacak'],['Tek ayak denge (gözler kapalı dahil)','3 × 30 sn / ayak']]},
- 3:{title:'Kürek (sabah) + Basket/Tenis (akşam)',run:false,ex:[['Sabah: kürek','20-30 dk'],['Akşam: basketbol / tenis','serbest']]},
- 4:{title:'Üst Vücut B — Çekiş (+ koşu)',run:true,ex:[['Barfiks / lat pulldown','4 × 8'],['Barbell row','3 × 8'],['Face pull','3 × 15'],['Biceps curl','3 × 10'],['Hammer curl','3 × 12'],['Plank','3 × 45 sn'],['Koşu','20-25 dk kolay tempo']]},
- 5:{title:'Alt Vücut B — Klasik',run:false,ex:[['Romanian deadlift','3 × 8'],['Hip thrust','3 × 10'],['Leg curl','3 × 12'],['Calf raise (tek ayak)','4 × 15 / ayak']]},
- 6:{title:'Kısa Koşu / Dinlenme',run:true,ex:[['Kısa koşu (opsiyonel)','15-20 dk kolay tempo']]},
- 0:{title:'Tam Dinlenme',run:false,ex:[['Dinlenme','—'],['İstersen hafif yürüyüş','serbest']]}
+ 1:{title:'PUSH — Ağır Bileşik',run:false,ex:[['Bench press','4 × 5-8'],['Overhead press (BB/DB)','3 × 6-10'],['Incline DB press','3 × 8-12'],['Lateral raise','3 × 12-15'],['Dips (ağırlıklı)','3 × 8-12'],['Overhead triceps extension','3 × 10-12']]},
+ 2:{title:'PULL — Ağır Bileşik',run:false,ex:[['Barfiks veya lat pulldown','4 × 6-10'],['Barbell row','4 × 6-10'],['Seated cable row','3 × 10-12'],['Face pull','3 × 15-20'],['Barbell curl','3 × 8-12'],['Hammer curl','3 × 10-12']]},
+ 3:{title:'LEGS — Ağır Bileşik',run:false,ex:[['Back squat veya front squat','4 × 5-8'],['Romanian deadlift (RDL)','4 × 6-10'],['Leg press','3 × 10-12'],['Leg curl','3 × 10-12'],['Standing calf raise','4 × 10-15'],['Plank + dead bug (core)','3 set']]},
+ 4:{title:'AKTİVİTE (Off) — Toparlanma',run:false,ex:[['Basket / tenis / kürek','seçime bağlı'],['Ağırlık antrenmanı yok','aktif toparlanma'],['Sabah kısa dinamik ısınma','yeterli']]},
+ 5:{title:'UPPER — Hacim / Zayıf Halka',run:false,ex:[['Incline DB press','4 × 8-12'],['Chest-supported row','4 × 10-12'],['Lateral raise (son set dropset)','4 × 12-15'],['Rear delt fly','3 × 15-20'],['Incline DB curl','3 × 10-12'],['Cable triceps pushdown','3 × 12-15'],['Face pull','3 × 15-20']]},
+ 6:{title:'Sabah Koşu + Öğlen LOWER',run:true,ex:[['Sabah: koşu (kolay-orta tempo)','20-30 dk'],['Bulgar split squat (eksantrik)','4 × 8-10'],['Hip thrust','4 × 8-12'],['Step-up','3 × 10-12'],['Leg extension','3 × 12-15'],['Seated calf raise','4 × 12-15']]},
+ 0:{title:'FULL OFF — Tam Dinlenme',run:false,ex:[['Antrenman yok','—'],['İsteğe bağlı hafif yürüyüş / esneme','serbest'],['Uzun sabah rutini (mobilite + core)','opsiyonel']]}
 };
 const MORNING_LONG=[['Kedi-inek','10 tekrar'],['Kalça fleksör esnetme (diz üstü lunge)','2 × 30 sn / bacak'],['Güneş selamı','3-4 tur'],['Plank','3 × 45 sn'],['Dead bug','3 × 10 / taraf'],['Side plank','2 × 30 sn / taraf'],['Ayak bileği çemberi + tek ayak denge','3 dk']];
+/* Yeni programa göre: Pzt/Çarş/Cuma/Paz uzun (~12-15 dk), Sal/Cmt kısa hedefli
+   (~5-7 dk), Perş dinamik ısınma (aktivite günü). Burada olmayan günler MORNING_LONG. */
 const MORNING_SHORT={
- 2:[["World's greatest stretch",'2 tur / taraf'],['Ayak bileği çemberi','1 dk'],['Glute bridge','15 tekrar'],['Tek ayak denge','30 sn / ayak']],
- 4:[['Thoracic rotation (kedi-inek + thread the needle)','2 tur'],['Band pull-apart','2 × 15'],['Omuz çemberi','1 dk'],['Wall slide','2 × 10']],
+ 2:[['Thoracic rotation (kedi-inek + thread the needle)','2 tur'],['Band pull-apart','2 × 15'],['Omuz çemberi','1 dk'],['Wall slide','2 × 10']],
+ 4:[['Yerinde koşu / ip atlama','2-3 dk'],['Kol çemberi (ön-arka)','1 dk'],['Yürüyerek dinamik lunge','10 tekrar'],['Yan adım + kalça açma','1 dk']],
  6:[['Ayak bileği çemberi','1 dk'],['Kalça fleksör esnetme','2 × 30 sn / bacak'],['Yürüyerek dinamik lunge','10 tekrar'],['Tek ayak denge','30 sn / ayak']]
 };
 const MORNING=(MORNING_SHORT[new Date().getDay()]||MORNING_LONG);
 
 /* ===== YEMEK (gün gün, 7 günlük plandan) ===== */
 const MP={
- 1:[['Kahvaltı','3 yumurta omlet + 40g beyaz peynir + 50g yulaf (200ml sütle) + 1 muz',520,34,55],['Öğle / PW','180g ızgara tavuk + 1 kase bulgur pilavı (~150g) + çoban salata (1 yemek kaşığı zeytinyağı)',720,48,90],['Ara öğün','250g süzme yoğurt + 30g ceviz (~1 avuç) + 1 elma',410,22,35],['Akşam','150g fırın somon + ~200g fırın sebze + yeşil salata',700,41,80]],
- 2:[['Kahvaltı','Menemen (3 yumurta) + 2 dilim tam buğday ekmek + 30g beyaz peynir',500,32,55],['Öğle / PW','180g ızgara hindi + 1 kase pirinç pilavı (~150g) + ~150g zeytinyağlı sebze',700,45,88],['Ara öğün','250g yoğurt + 20g badem (~15 adet) + 1 armut',420,20,38],['Akşam','150g yağsız dana köfte + 1 kase bulgur (~150g) + salata',700,43,78]],
- 3:[['Kahvaltı','60g yulaf + 200ml süt + 1 muz + 1 yemek kaşığı (15g) fıstık ezmesi',560,38,72],['Öğle / PW','180g tavuk + 80g (kuru) tam buğday makarna + domates sos + 20g rende peynir',730,48,95],['Ara öğün','200g yoğurt + 1 porsiyon mevsim meyvesi',360,16,40],['Akşam','2 kutu ton (~160g) + ~200g patates salatası + yeşillik',620,40,55]],
- 4:[['Kahvaltı','3 yumurta + 30g peynir + 5-6 zeytin + domates-salatalık + 2 dilim ekmek',520,30,55],['Öğle / PW','180g dana bonfile + 1 kase pirinç (~150g) + ~200g fırın sebze',720,46,85],['Ara öğün','250g yoğurt + 30g ceviz (~1 avuç) + 1 elma',410,22,35],['Akşam','150g tavuk sote + 1 kase bulgur (~150g) + salata',700,42,80]],
- 5:[['Kahvaltı','2 yumurta + 50g yulaf (200ml sütle) + 1 muz + 25g badem',540,34,62],['Öğle / PW','180g somon + 200g haşlanmış patates + yeşil salata',690,40,80],['Ara öğün','200g süzme yoğurt + 1 porsiyon mevsim meyvesi',380,18,40],['Akşam','180g hindi + 1 kase bulgur (~150g) + zeytinyağlı sebze',700,48,75]],
- 6:[['Kahvaltı','Ölçülü serpme: 2 yumurta, 40g peynir, 5-6 zeytin, 2 dilim ekmek, domates',480,25,50],['Öğle','180g ızgara tavuk/köfte + 1 kase pilav (~150g) + salata',700,45,85],['Ara öğün','1 meyve + 150g yoğurt + 1 avuç (~25g) kuruyemiş',400,18,42],['Akşam','Dışarıda esnek: ~180g ızgara balık/et + salata + az karbonhidrat',620,40,45]],
- 0:[['Kahvaltı','3 yumurta + 50g yulaf + 1 meyve',500,30,55],['Öğle','180g tavuk/et + 1 kase pirinç veya bulgur (~150g) + sebze',700,45,85],['Ara öğün','250g yoğurt + 30g ceviz (~1 avuç)',400,22,38],['Akşam','Hafif: 1 kase mercimek çorbası + 150g tavuk/balık + salata',560,38,55]]
+ 1:[['Kahvaltı ~09:30','3 yumurta omlet + 40g beyaz peynir + 60g yulaf (250ml sütle) + 1 muz',620,40,72],['Öğle ~13:00 / PW','200g ızgara tavuk + 1.5 kase bulgur pilavı (~200g) + çoban salata (1 yemek kaşığı zeytinyağı)',820,55,105],['Ara öğün ~17:00','250g süzme yoğurt + 25g ceviz (~1 avuç) + 1 elma',385,21,34],['Akşam ~20:00','160g fırın somon + 300g fırın patates + yeşil salata',660,38,82],['Gece (ops.)','250ml kefir + 1 muz',220,11,40]],
+ 2:[['Kahvaltı ~09:30','Menemen (3 yumurta) + 3 dilim tam buğday ekmek + 30g beyaz peynir',620,36,72],['Öğle ~13:00 / PW','200g ızgara hindi + 1.5 kase pirinç pilavı (~200g) + ~150g zeytinyağlı sebze',800,52,108],['Ara öğün ~17:00','250g yoğurt + 20g badem (~15 adet) + 1 armut',400,20,38],['Akşam ~20:00','180g yağsız dana köfte + 1.5 kase bulgur (~200g) + salata',710,48,84],['Gece (ops.)','250ml süt + 1 elma',200,9,32]],
+ 3:[['Kahvaltı ~09:30','70g yulaf + 250ml süt + 1 muz + 15g fıstık ezmesi',640,40,82],['Öğle ~13:00 / PW','200g tavuk + 100g (kuru) tam buğday makarna + domates sos + 20g rende peynir',800,53,106],['Ara öğün ~17:00','250g yoğurt + 1 porsiyon mevsim meyvesi',400,18,45],['Akşam ~20:00','2 kutu ton (~160g) + 300g patates salatası + yeşillik',660,42,70],['Gece (ops.)','250ml kefir + 1 elma',200,10,32]],
+ 4:[['Kahvaltı ~09:30','3 yumurta + 30g peynir + 5-6 zeytin + domates-salatalık + 3 dilim ekmek',620,34,70],['Öğle ~13:00','200g dana bonfile + 1 kase pirinç (~180g) + ~200g fırın sebze',780,51,93],['Ara öğün ~17:00','250g yoğurt + 20g ceviz + 1 elma',360,20,34],['Akşam ~20:00','170g tavuk sote + 1 kase bulgur (~180g) + salata',720,47,88],['Gece (ops.)','250ml kefir + 1 muz',220,11,40]],
+ 5:[['Kahvaltı ~09:30','3 yumurta + 60g yulaf (250ml sütle) + 1 muz + 15g badem',650,40,72],['Öğle ~13:00 / PW','200g somon + 250g haşlanmış patates + yeşil salata',740,44,78],['Ara öğün ~17:00','250g süzme yoğurt + 1 porsiyon mevsim meyvesi',420,22,42],['Akşam ~20:00','190g hindi + 1.5 kase bulgur (~200g) + zeytinyağlı sebze',760,52,88],['Gece (ops.)','200ml süt + 1 meyve',180,8,30]],
+ 6:[['Kahvaltı ~09:30','Ölçülü serpme: 3 yumurta, 40g peynir, zeytin, 3 dilim ekmek, domates',620,33,68],['Öğle ~13:00 / Lower sonrası','200g ızgara tavuk/köfte + 1.5 kase pilav (~200g) + salata',820,52,105],['Ara öğün ~17:00','1 meyve + 250g süzme yoğurt + 20g kuruyemiş',430,28,42],['Akşam ~20:00','Dışarıda esnek: ~200g ızgara balık/et + salata + orta karbonhidrat',660,45,58],['Gece (ops.)','250ml kefir + 1 muz',220,11,40]],
+ 0:[['Kahvaltı ~09:30','3 yumurta + 50g yulaf + 1 meyve',560,34,60],['Öğle ~13:00','200g tavuk/et + 1 kase pirinç veya bulgur (~180g) + sebze',780,50,90],['Ara öğün ~17:00','250g süzme yoğurt + 20g ceviz (~1 avuç)',400,28,34],['Akşam ~20:00','Hafif: 1 kase mercimek çorbası + 170g tavuk/balık + salata',620,42,60],['Gece (ops.)','250ml kefir',150,9,15]]
 };
-const DEFAULT_TARGETS={kcal:2350,p:148,c:285,y:67};
+/* Yeni program hedefleri (haftalık ortalama). Karb güne göre ayarlanıyor:
+   ağır bileşik günleri (Pzt/Sal/Çarş) ~340, hacim/aktivite ~320, off günü ~280. */
+const DEFAULT_TARGETS={kcal:2650,p:165,c:320,y:75};
+const CARB_BY_DAY={1:340,2:340,3:340,4:320,5:320,6:320,0:280};
+/* Hedefler localStorage'da saklandığı için DEFAULT_TARGETS'ı değiştirmek tek başına
+   yetmez — eski kayıt yenisinin üzerine biner. Sürüm etiketi değişince bir kez
+   yeni varsayılanlara geçilir (kullanıcı sonradan elle değiştirirse o korunur). */
+const TARGETS_VERSION='2026-08-ppl';
 
 const RECIPES=[[/tavuk|hindi/i,'Tavuğu tuz, karabiber, kekikle 10 dk marine et; tavada orta-yüksek ateşte her yüzünü 6-7 dk kızart.'],
  [/bulgur/i,'Soğanı zeytinyağında kavur, salçayı ekle; 1 ölçü bulgura 2 ölçü sıcak su, kısık ateşte demlendir.'],
@@ -448,7 +467,7 @@ let morningDone={};
 async function loadMorning(){morningDone=await sGet('d:morning:'+todayKey())||{};renderMorning();}
 function renderMorning(){const el=document.getElementById('morningList');el.innerHTML='';
   const sub=document.getElementById('morningSub');if(sub){const d=new Date().getDay();
-    const focus={2:'Alt vücut hazırlığı (~5-7 dk)',4:'Üst çekiş hazırlığı (~5-7 dk)',6:'Koşu ısınması (~5-7 dk)'};
+    const focus={2:'PULL hazırlığı (~5-7 dk)',4:'Dinamik ısınma — aktivite günü',6:'Koşu ısınması (~5-7 dk)'};
     sub.textContent=focus[d]||'Uzun rutin: mobilite + core (~12-15 dk)';}
   MORNING.forEach((m,i)=>{const done=!!morningDone[i];const d=document.createElement('div');d.className='ex'+(done?' done':'');
     d.innerHTML='<div class="check '+(done?'on':'')+'" data-m="'+i+'"></div><div class="ex-body"><span class="ex-n">'+esc(m[0])+'</span><span class="ex-s">'+esc(m[1])+'</span></div>';el.appendChild(d);});
@@ -498,6 +517,26 @@ function renderTargets(){const el=document.getElementById('tgt');el.innerHTML=''
 function consumed(){return meals.reduce((a,m)=>{const f=num(m.portion)/100;return{kcal:a.kcal+f*num(m.kcal),p:a.p+f*num(m.p),c:a.c+f*num(m.c)};},{kcal:0,p:0,c:0});}
 function bar(l,cn,tg,u){const pct=tg>0?Math.min(cn/tg*100,100):0;const ov=tg>0&&cn>tg;const rem=Math.max(tg-cn,0);
   return '<div class="bar-wrap"><div class="bar-top"><span>'+l+'</span><span class="num">'+Math.round(cn)+' / '+tg+u+'</span></div><div class="bar"><i class="'+(ov?'over':'')+'" style="width:'+(ov?100:pct)+'%"></i></div><div class="rem">'+(ov?'hedef aşıldı +'+Math.round(cn-tg)+u:'kalan '+Math.round(rem)+u)+'</div></div>';}
+/* ===== SU TAKİBİ =====
+   Hedef: normalde 3 L; Cumartesi sabah koşu + öğlen Lower olduğu için 3.5 L.
+   1 bardak = 250 ml. Gün değişince kendiliğinden sıfırlanır (anahtar tarih içeriyor). */
+const WATER_GLASS_ML=250;
+function waterTargetL(){return new Date().getDay()===6?3.5:3;}
+let waterCount=0;
+async function loadWater(){waterCount=await sGet(K.water+':'+todayKey())||0;renderWater();}
+function renderWater(){
+  const el=document.getElementById('waterBox');if(!el)return;
+  const hedefL=waterTargetL(), toplam=Math.ceil(hedefL*1000/WATER_GLASS_ML);
+  const icilenL=(waterCount*WATER_GLASS_ML/1000).toFixed(2).replace(/\.?0+$/,'');
+  let g='';
+  for(let i=0;i<toplam;i++)g+='<button class="wglass'+(i<waterCount?' on':'')+'" data-w="'+(i+1)+'" title="'+((i+1)*WATER_GLASS_ML)+' ml"></button>';
+  el.innerHTML='<div class="wrow"><span class="wlbl">Su</span><span class="wval">'+icilenL+' / '+hedefL+' L'+
+    (new Date().getDay()===6?' <em>koşu günü</em>':'')+'</span></div><div class="wglasses">'+g+'</div>';
+  el.querySelectorAll('[data-w]').forEach(b=>b.onclick=async()=>{
+    const n=+b.dataset.w;
+    waterCount=(waterCount===n)?n-1:n;      // dolu son bardağa basınca geri al
+    await sSet(K.water+':'+todayKey(),waterCount);renderWater();});
+}
 function renderBars(){const c=consumed();document.getElementById('bars').innerHTML=bar('Kalori',c.kcal,num(targets.kcal),'')+bar('Protein',c.p,num(targets.p),'g')+bar('Karbonhidrat',c.c,num(targets.c),'g');}
 function renderMeals(){const el=document.getElementById('mealList');el.innerHTML='';
   meals.forEach((m,i)=>{const rc=recipeFor(m.text);const open=!!openRec[i];const d=document.createElement('div');d.className='meal';
@@ -764,7 +803,12 @@ function parseMail(){const ta=document.getElementById('mailPaste');const txt=ta.
 
 /* init */
 (async function(){tick();setInterval(tick,1000);
-  tasks=await sGet(K.tasks)||[];targets=await sGet(K.targets)||{...DEFAULT_TARGETS};news=await sGet(K.news)||[];watch=await sGet('d:watch')||[];world=await sGet('d:world')||[];us=await sGet('d:us')||[];gold=await sGet('d:gold')||null;gmailDone=await sGet(K.gmailDone)||[];
+  tasks=await sGet(K.tasks)||[];
+  targets=await sGet(K.targets)||{...DEFAULT_TARGETS};
+  if((await sGet(K.targetsVer))!==TARGETS_VERSION){    // program değişti -> hedefleri tazele
+    targets={...DEFAULT_TARGETS,c:CARB_BY_DAY[new Date().getDay()]??DEFAULT_TARGETS.c};
+    await sSet(K.targets,targets);await sSet(K.targetsVer,TARGETS_VERSION);
+  }news=await sGet(K.news)||[];watch=await sGet('d:watch')||[];world=await sGet('d:world')||[];us=await sGet('d:us')||[];gold=await sGet('d:gold')||null;gmailDone=await sGet(K.gmailDone)||[];
   const de=await sGet(K.de);deExtra=(de&&de.date===todayKey())?de.extra:0;
   document.getElementById('taskAdd').onclick=addTask;document.getElementById('taskInput').onkeydown=e=>{if(e.key==='Enter')addTask();};
   document.getElementById('newsAdd').onclick=addNews;document.getElementById('newsInput').onkeydown=e=>{if(e.key==='Enter')addNews();};
@@ -778,7 +822,7 @@ function parseMail(){const ta=document.getElementById('mailPaste');const txt=ta.
   document.getElementById('wtExport').onclick=exportCSV;
   document.getElementById('basvuruRefresh').onclick=loadBasvuru;
   document.getElementById('gmailRefresh').onclick=loadGmailJson;
-  renderTasks();await loadMorning();await renderRun();await loadWorkout();renderWtLog();await loadMeals();
+  renderTasks();await loadMorning();await renderRun();await loadWorkout();renderWtLog();await loadMeals();await loadWater();
   renderFacts();renderFilm();renderArtist();renderBook();renderHistory();renderGerman();renderNews();renderWatch();renderUS();renderGold();renderWorld();loadFX(false);loadBorsaJson();loadBasvuru();loadGmailJson();loadFactsJson();
   setInterval(loadBorsaJson,15*60*1000);setInterval(loadBasvuru,15*60*1000);setInterval(loadGmailJson,15*60*1000);
   document.addEventListener('visibilitychange',()=>{if(!document.hidden){loadBorsaJson();loadFX(false);loadBasvuru();loadGmailJson();}});
