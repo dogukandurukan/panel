@@ -1,103 +1,95 @@
 {
- "updated": "2026-08-20 21:42",
+ "updated": "2026-08-21 08:30",
  "ok": true,
  "count": 3,
- "pool": 16,
+ "pool": 17,
  "items": [
   {
-   "title": "Senior Data Engineer (f/m/d)",
-   "company": "Enpal",
+   "title": "Working Student Data Engineer (m/f/d)",
+   "company": "raisin",
    "location": "Berlin",
-   "loc_raw": "Berlin",
+   "loc_raw": "Berlin, Berlin",
    "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/enpal/senior-data-engineer-metrify-berlin-61854",
+   "url": "https://www.arbeitnow.com/jobs/companies/raisin/working-student-data-engineer-berlin-berlin-303757",
    "source": "Arbeitnow",
    "posted": "2026-08-20",
-   "days": 0,
+   "days": 1,
    "skills": [
-    "azure",
+    "python",
+    "sql",
     "airflow",
+    "looker",
     "dbt",
-    "snowflake",
-    "ci/cd",
-    "git"
+    "snowflake"
    ],
    "german": false,
    "focus": "pipeline",
-   "summary": "Our goal is to have a solar system on every roof, a storage unit in every house, and an electric car in every garage. Enpal makes this possible with an integrated total solution for decentralized energy—from solar systems and battery storage to wall boxes, sma",
+   "summary": "Raisin is the world’s leading platform for savings and investment products. Founded in 2012, the FinTech connects consumers with banks in the EU, the UK and the US. This gives consumers better interest rates and banks a diversified form of refinancing . Our vi",
    "keywords": [
-    "energy",
-    "scalab",
-    "dashboard",
-    "pipeline",
     "stakeholder",
-    "self-service",
-    "governance"
-   ],
-   "score": 112
-  },
-  {
-   "title": "Staff Data Engineer (f/m/d)",
-   "company": "Enpal",
-   "location": "Berlin",
-   "loc_raw": "Berlin",
-   "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/enpal/staff-data-engineer-metrify-berlin-347291",
-   "source": "Arbeitnow",
-   "posted": "2026-08-20",
-   "days": 0,
-   "skills": [
-    "azure",
-    "airflow",
-    "dbt",
-    "snowflake",
-    "ci/cd",
-    "git"
-   ],
-   "german": false,
-   "focus": "pipeline",
-   "summary": "Our goal is to have a solar system on every roof, a storage unit in every house, and an electric car in every garage. Enpal makes this possible with an integrated total solution for decentralized energy—from solar systems and battery storage to wall boxes, sma",
-   "keywords": [
-    "energy",
     "scalab",
-    "dashboard",
     "pipeline",
-    "stakeholder",
-    "self-service",
-    "governance"
+    "automation"
    ],
    "score": 100
   },
   {
-   "title": "Data Platform & Data Architecture Consultant",
-   "company": "Netlight",
+   "title": "Senior Data Scientist/ML Engineer - Financial Crime",
+   "company": "sumup",
    "location": "Berlin",
    "loc_raw": "Berlin",
    "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/netlight/data-platform-data-architecture-consultant-berlin-248331",
+   "url": "https://www.arbeitnow.com/jobs/companies/sumup/senior-data-scientist-ml-engineer-financial-crime-berlin-185839",
    "source": "Arbeitnow",
    "posted": "2026-08-20",
-   "days": 0,
+   "days": 1,
    "skills": [
-    "databricks",
-    "azure",
-    "snowflake",
-    "etl",
+    "python",
     "ci/cd"
    ],
    "german": false,
-   "focus": "pipeline",
-   "summary": "About the role As a Data Platform & Data Architecture Consultant , you are the person clients trust to turn their data infrastructure from a bottleneck into a competitive advantage. You design data landscapes, stand up and scale cloud data platforms, and set t",
+   "focus": "ml",
+   "summary": "Help build ML systems that make financial crime harder to hide Financial crime is constantly changing. New patterns and behaviours emerge all the time, and the data we work with is complex. Our work helps make financial activity safer and more trustworthy for ",
    "keywords": [
-    "cost",
+    "pipeline",
+    "scalab",
     "governance",
     "stakeholder",
-    "enterprise"
+    "experimentation"
    ],
-   "score": 94
+   "score": 88
+  },
+  {
+   "title": "Senior Data Analyst - Operations (m/f/x)",
+   "company": "FINN",
+   "location": "Almanya",
+   "loc_raw": "Germany",
+   "remote": false,
+   "url": "https://www.arbeitnow.com/jobs/companies/finn/senior-data-analyst-operations-germany-49920",
+   "source": "Arbeitnow",
+   "posted": "2026-08-20",
+   "days": 1,
+   "skills": [
+    "python",
+    "sql",
+    "looker",
+    "dbt"
+   ],
+   "german": false,
+   "focus": "business",
+   "summary": "Your Role As Data Analyst in Operations at FINN, you will be at the heart of driving our business operations through data-driven insights. By leveraging advanced analytics tools and techniques, you will uncover trends, forecast outcomes, and provide actionable",
+   "keywords": [
+    "forecast",
+    "dashboard",
+    "energy"
+   ],
+   "score": 80
   }
  ],
  "seen": [
+  "https://www.arbeitnow.com/jobs/companies/raisin/working-student-data-engineer-berlin-berlin-303757",
+  "https://www.arbeitnow.com/jobs/companies/sumup/senior-data-scientist-ml-engineer-financial-crime-berlin-185839",
+  "https://www.arbeitnow.com/jobs/companies/finn/senior-data-analyst-operations-germany-49920",
   "https://www.arbeitnow.com/jobs/companies/enpal/senior-data-engineer-metrify-berlin-61854",
   "https://www.arbeitnow.com/jobs/companies/enpal/staff-data-engineer-metrify-berlin-347291",
   "https://www.arbeitnow.com/jobs/companies/netlight/data-platform-data-architecture-consultant-berlin-248331"
