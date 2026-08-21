@@ -212,6 +212,14 @@
     border-radius:4px;padding:7px 9px;font-family:var(--sans);font-size:13px;color:var(--ink);resize:vertical;}
   .cfgbox textarea{min-height:52px;}
   .cfgbox input:focus,.cfgbox textarea:focus{outline:none;border-color:var(--accent);}
+  /* senkron kutusu */
+  #syncBox{margin-bottom:20px;}
+  .sync-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:9px;}
+  .sync-st{font-family:var(--mono);font-size:10.5px;color:var(--muted);letter-spacing:.05em;}
+  .sync-st b{color:var(--accent);font-weight:600;}
+  .sync-warn{color:var(--down);}
+  #syncBtn{margin-right:8px;}
+  .cfgbox a{color:var(--accent);}   /* HUD'da varsayılan mavi link koyu zeminde okunmuyordu */
   .imp{border:1px solid var(--accent);border-radius:5px;padding:12px 13px;margin-bottom:6px;background:color-mix(in srgb,var(--accent) 7%,transparent);}
   .imp-h{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;}
   .imp-b{font-size:12.5px;line-height:1.5;margin-bottom:9px;}
@@ -363,12 +371,13 @@
     <div class="mast-top">
       <h1 class="mast-title">Daily<span class="sub">Kişisel Kontrol Panosu</span></h1>
       <div style="display:flex;flex-direction:column;align-items:flex-end;gap:9px;">
-        <button class="theme-toggle" id="themeToggle" title="Tema değiştir"><span class="tt-dot"></span><span id="themeLabel">HUD</span></button>
+        <button class="ibtn" id="syncBtn" title="Cihazlar arası senkron">&#8645; Senkron</button><button class="theme-toggle" id="themeToggle" title="Tema değiştir"><span class="tt-dot"></span><span id="themeLabel">HUD</span></button>
         <div class="clock"><span id="clock">--:--:--</span><span class="cd" id="clockDate">—</span><span class="wx" id="wx">hava alınıyor…</span></div>
       </div>
     </div>
     <div class="dateline"><span id="greeting">Günaydın</span><span class="dot"></span><span id="placeName">İstanbul, Kadıköy</span><span class="dot"></span><span id="weekno">—</span></div>
   </header>
+  <div id="syncBox" style="display:none"></div>
   <section class="card" id="agentCard" style="margin-bottom:20px">
     <div class="card-head"><div><p class="kicker">Sistem · GitHub Actions</p><h2 class="card-title">Ajan Telemetrisi</h2></div>
       <div class="meta"><span id="agentTime">—</span><br><button class="ibtn" id="agentRefresh">Yenile</button></div></div>
@@ -464,16 +473,16 @@
   <section class="card" style="margin-top:20px"><div class="card-head"><div><p class="kicker">Kariyer</p><h2 class="card-title">İş Başvuruları</h2></div><div class="meta"><span id="basvuruTime">—</span><br><button class="ibtn" id="basvuruRefresh">Yenile</button></div></div>
     <div id="basvuruStats" class="statrow"><div class="loading">Başvurular çekiliyor…</div></div>
     <div id="basvuruList"></div></section>
-  <footer><span>Antrenman & yemek programından · gün gün otomatik</span><span>Döviz canlı · yatırım tavsiyesi değildir</span></footer>
+  <footer><span>Antrenman &amp; yemek programından · gün gün otomatik</span><span id="syncFoot">senkron kapalı</span><span>Döviz canlı · yatırım tavsiyesi değildir</span></footer>
 </div>
 <script>
-const K={tasks:'d:tasks',targets:'d:targets',bist:'d:bist',altin:'d:altin',news:'d:news',fx:'d:fx',de:'d:de',gmailDone:'d:gmailDone',targetsVer:'d:targetsVer',water:'d:water',sleep:'d:sleepLog',theme:'d:theme',agents:'d:agents',wx:'d:wx',deWrong:'d:deWrong',jobProfile:'d:jobProfile',jobsApplied:'d:jobsApplied',myApps:'d:myApps'};
+const K={tasks:'d:tasks',targets:'d:targets',bist:'d:bist',altin:'d:altin',news:'d:news',fx:'d:fx',de:'d:de',gmailDone:'d:gmailDone',targetsVer:'d:targetsVer',water:'d:water',sleep:'d:sleepLog',sync:'d:sync',theme:'d:theme',agents:'d:agents',wx:'d:wx',deWrong:'d:deWrong',jobProfile:'d:jobProfile',jobsApplied:'d:jobsApplied',myApps:'d:myApps'};
 /* Konum tek yerde — taşınırsan sadece burayı değiştir (dateline + hava durumu birlikte gelir). */
 const PLACE={name:'İstanbul, Kadıköy',lat:40.9833,lon:29.0333};
 const mem={};
 async function sGet(k){try{if(window.storage){const r=await window.storage.get(k,false);return r?JSON.parse(r.value):null;}}catch(e){}
   try{const v=localStorage.getItem(k);return v?JSON.parse(v):null;}catch(e){}return (k in mem)?mem[k]:null;}
-async function sSet(k,val){mem[k]=val;try{if(window.storage){await window.storage.set(k,JSON.stringify(val),false);return;}}catch(e){}
+async function sSet(k,val){mem[k]=val;touchKey(k);try{if(window.storage){await window.storage.set(k,JSON.stringify(val),false);return;}}catch(e){}
   try{localStorage.setItem(k,JSON.stringify(val));}catch(e){}}
 const todayKey=()=>new Date().toLocaleDateString('sv-SE');
 const doy=()=>{const d=new Date();return Math.floor((d-new Date(d.getFullYear(),0,0))/86400000);};
@@ -1936,6 +1945,182 @@ function openJobsCfg(){
   function v(id){const e=document.getElementById(id);return e?e.value.trim():'';}
 }
 
+/* ===== CIHAZLAR ARASI SENKRON (gizli GitHub Gist) =====
+   Panelin sunucusu yok; veri her cihazin kendi localStorage'inda durur - bu yuzden
+   Mac'te girilen sey telefonda gorunmuyordu. Cozum: veriyi GIZLI bir gist'te tutmak.
+   - Token repoya GIRMEZ ve gist'e yazilan yedege de konmaz; yalnizca o cihazin
+     localStorage'inda (d:sync) durur. Kaybolursa GitHub'dan iptal edilir.
+   - Cakisma: anahtar basina son yazma kazanir. Her sSet, d:mtime'a zaman damgasi
+     yazar; uzaktaki damga daha yeniyse yerel deger onun uzerine yazilir.
+   - Senkron localStorage'i DOGRUDAN okur (sGet/sSet degil): tum d: anahtarlarini
+     tek tek bilmeden gezebilmek icin. Canli sitede sGet zaten localStorage kullanir.
+   - Feed onbellekleri (borsa/haber/hava/ajan) senkrona girmez; her cihaz onlari
+     kendi ceker, bosuna trafik olmasin. */
+const SYNC_FILE='panel-data.json';
+const SYNC_SKIP=['d:sync','d:mtime','d:theme','d:news','d:fx','d:agents','d:wx','d:bist','d:altin','d:watch','d:world','d:us','d:gold','d:facts'];
+const SYNC_POLL=5*60*1000;
+let syncCfg=null,syncTimer=null,syncBusy=false,syncMsg='';
+const syncable=k=>k&&k.indexOf('d:')===0&&SYNC_SKIP.indexOf(k)<0;
+function mtimes(){try{return JSON.parse(localStorage.getItem('d:mtime')||'{}');}catch(e){return{};}}
+function saveMtimes(m){try{localStorage.setItem('d:mtime',JSON.stringify(m));}catch(e){}}
+function touchKey(k){
+  if(!syncable(k))return;
+  const m=mtimes();m[k]=Date.now();saveMtimes(m);
+  if(syncCfg&&syncCfg.token)schedulePush();
+}
+function localSnapshot(){
+  const m=mtimes(),out={};
+  for(let i=0;i<localStorage.length;i++){
+    const k=localStorage.key(i);if(!syncable(k))continue;
+    out[k]={v:localStorage.getItem(k),t:m[k]||1};
+  }
+  return out;
+}
+function mergeRemote(data){
+  const m=mtimes();let degisen=0;
+  Object.keys(data||{}).forEach(k=>{
+    if(!syncable(k))return;
+    const r=data[k];if(!r||typeof r.v!=='string')return;
+    if((r.t||0)<=(m[k]||0))return;            // yerel daha yeni -> dokunma
+    if(localStorage.getItem(k)!==r.v){try{localStorage.setItem(k,r.v);}catch(e){return;}degisen++;}
+    m[k]=r.t;
+  });
+  saveMtimes(m);
+  return degisen;
+}
+async function ghApi(yol,opt){
+  const r=await fetch('https://api.github.com'+yol,Object.assign({},opt,{headers:Object.assign(
+    {Authorization:'Bearer '+syncCfg.token,Accept:'application/vnd.github+json','Content-Type':'application/json'},(opt&&opt.headers)||{})}));
+  if(!r.ok)throw new Error(r.status===401?'token geçersiz ya da süresi dolmuş'
+    :r.status===403?'GitHub isteği reddetti (token izni "Gists: read and write" olmalı)'
+    :'GitHub '+r.status);
+  return r.json();
+}
+async function syncFindGist(){
+  const list=await ghApi('/gists?per_page=100');
+  const g=(list||[]).find(x=>x&&x.files&&x.files[SYNC_FILE]);
+  return g?g.id:null;
+}
+async function syncSaveCfg(){await sSet(K.sync,syncCfg);}
+async function syncPull(sessiz){
+  if(!syncCfg||!syncCfg.token||syncBusy)return 0;
+  syncBusy=true;
+  try{
+    if(!syncCfg.gistId){syncCfg.gistId=await syncFindGist();await syncSaveCfg();}
+    if(!syncCfg.gistId){syncBusy=false;return 0;}          // henüz yedek yok
+    const g=await ghApi('/gists/'+syncCfg.gistId);
+    const f=g.files&&g.files[SYNC_FILE];
+    if(!f)throw new Error('gist içinde '+SYNC_FILE+' yok');
+    if(f.truncated)throw new Error('yedek çok büyük (1 MB üstü)');
+    const paket=JSON.parse(f.content||'{}');
+    const degisen=mergeRemote(paket.data);
+    syncCfg.last=Date.now();await syncSaveCfg();
+    syncMsg='';renderSyncState();
+    if(degisen&&!sessiz)syncReload();
+    return degisen;
+  }catch(e){syncMsg=e.message;renderSyncState();return 0;}
+  finally{syncBusy=false;}
+}
+async function syncPush(){
+  if(!syncCfg||!syncCfg.token||syncBusy)return false;
+  syncBusy=true;
+  try{
+    const govde={files:{}};
+    govde.files[SYNC_FILE]={content:JSON.stringify({v:1,updated:Date.now(),data:localSnapshot()},null,1)};
+    if(syncCfg.gistId){await ghApi('/gists/'+syncCfg.gistId,{method:'PATCH',body:JSON.stringify(govde)});}
+    else{
+      govde.public=false;govde.description='Daily panel verisi — özel, panelin senkronu kullanır';
+      const g=await ghApi('/gists',{method:'POST',body:JSON.stringify(govde)});
+      syncCfg.gistId=g.id;
+    }
+    syncCfg.last=Date.now();await syncSaveCfg();
+    syncMsg='';renderSyncState();return true;
+  }catch(e){syncMsg=e.message;renderSyncState();return false;}
+  finally{syncBusy=false;}
+}
+function schedulePush(){clearTimeout(syncTimer);syncTimer=setTimeout(()=>{syncPush();},4000);}
+function syncReload(){
+  /* Uzaktan yeni veri geldi: her karti tek tek tazelemek yerine sayfayi yenile.
+     Döngüye girmesin diye 20 sn'de birden fazla yenileme yok. */
+  const son=+(sessionStorage.getItem('d:syncReload')||0);
+  if(Date.now()-son<20000)return;
+  try{sessionStorage.setItem('d:syncReload',String(Date.now()));}catch(e){}
+  location.reload();
+}
+const zamanFarki=t=>{if(!t)return 'hiç';const d=Math.round((Date.now()-t)/60000);
+  return d<1?'az önce':d<60?d+' dk önce':Math.round(d/60)+' sa önce';};
+function renderSyncState(){
+  const f=document.getElementById('syncFoot');
+  if(f)f.innerHTML=!syncCfg||!syncCfg.token?'senkron kapalı · veri yalnız bu cihazda'
+    :(syncMsg?'<span class="sync-warn">senkron hatası: '+esc(syncMsg)+'</span>':'senkron açık · '+zamanFarki(syncCfg.last));
+  const b=document.getElementById('syncBtn');
+  if(b)b.textContent=(!syncCfg||!syncCfg.token)?'⇅ Senkron':(syncMsg?'⇅ Senkron ⚠':'⇅ Senkron ✓');
+  const st=document.getElementById('syncSt');
+  if(st)st.innerHTML=syncDurumMetni();
+}
+function syncDurumMetni(){
+  if(!syncCfg||!syncCfg.token)return 'Bu cihaz bağlı değil.';
+  return 'Bağlı · gist <b>'+esc((syncCfg.gistId||'—').slice(0,8))+'</b> · son senkron <b>'+zamanFarki(syncCfg.last)+'</b>'+
+    (syncMsg?'<br><span class="sync-warn">Hata: '+esc(syncMsg)+'</span>':'');
+}
+function openSyncBox(){
+  const box=document.getElementById('syncBox');
+  if(box.style.display==='block'){box.style.display='none';return;}
+  const bagli=!!(syncCfg&&syncCfg.token);
+  box.innerHTML='<div class="cfgbox">'+
+    '<div class="imp-h">Cihazlar arası senkron</div>'+
+    '<div class="cfg-note" style="margin:6px 0 10px">Panelin sunucusu yok; girdiğin veri normalde yalnızca o cihazda durur. '+
+      'Senkron açıkken tüm panel verisi (başvurular, bütçe, su, uyku, alışkanlık, kilo, görevler, profil) '+
+      '<b>gizli</b> bir GitHub gist\'inde saklanır ve her cihazda aynı görünür. '+
+      'Token repoya girmez, yedeğin içine de yazılmaz — yalnız bu tarayıcıda kalır.</div>'+
+    (bagli?'':'<div class="cfg-note" style="margin-bottom:10px">1 · <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">GitHub → fine-grained token</a> oluştur: '+
+      '<b>Account permissions → Gists: Read and write</b> (başka izin verme). 2 · Token\'ı aşağıya yapıştır.</div>')+
+    '<label>GitHub token</label><input id="syncTok" type="password" placeholder="github_pat_… / ghp_…" value="'+(bagli?'••••••••••••':'')+'">'+
+    '<div class="sync-row"><button class="ibtn" id="syncSave">'+(bagli?'Token\'ı değiştir':'Bağla')+'</button>'+
+    (bagli?'<button class="ibtn" id="syncNow">Şimdi çek</button><button class="ibtn" id="syncUp">Şimdi gönder</button>'+
+      '<button class="ibtn" id="syncOff">Bu cihazdan çıkar</button>':'')+
+    '<button class="ibtn" id="syncClose">Kapat</button></div>'+
+    '<div class="sync-st" id="syncSt" style="margin-top:10px">'+syncDurumMetni()+'</div>'+
+    (bagli?'':'<div class="cfg-note" style="margin-top:10px">İş bilgisayarında kullanacaksan: token yalnız gist izni taşısın, '+
+      'işin bitince "Bu cihazdan çıkar" de ya da GitHub\'dan iptal et.</div>')+
+    '</div>';
+  box.style.display='block';
+  const not=t=>{const el=document.getElementById('syncSt');if(el)el.innerHTML=t;};
+  document.getElementById('syncClose').onclick=()=>{box.style.display='none';};
+  document.getElementById('syncSave').onclick=async()=>{
+    const t=document.getElementById('syncTok').value.trim();
+    if(!t||t.indexOf('•')>-1){not('Token yapıştırılmadı.');return;}
+    syncCfg={token:t,gistId:(syncCfg&&syncCfg.gistId)||null,last:0};
+    await syncSaveCfg();not('Bağlanıyor…');
+    try{
+      syncCfg.gistId=await syncFindGist();await syncSaveCfg();
+      if(syncCfg.gistId){const d=await syncPull(1);await syncPush();
+        not('Bağlandı. Yedek bulundu, '+d+' kayıt bu cihaza indi.');if(d)setTimeout(syncReload,900);}
+      else{await syncPush();not('Bağlandı. Bu cihazın verisinden yeni bir gizli gist oluşturuldu.');}
+      renderSyncState();
+    }catch(e){syncCfg=null;await syncSaveCfg();not('<span class="sync-warn">Olmadı: '+esc(e.message)+'</span>');renderSyncState();}
+  };
+  if(bagli){
+    document.getElementById('syncNow').onclick=async()=>{not('Çekiliyor…');const d=await syncPull(1);
+      not(d?d+' kayıt güncellendi, sayfa yenileniyor…':(syncMsg?'<span class="sync-warn">'+esc(syncMsg)+'</span>':'Zaten güncel.'));if(d)setTimeout(syncReload,700);};
+    document.getElementById('syncUp').onclick=async()=>{not('Gönderiliyor…');const ok=await syncPush();
+      not(ok?'Gönderildi.':'<span class="sync-warn">'+esc(syncMsg||'olmadı')+'</span>');};
+    document.getElementById('syncOff').onclick=async()=>{syncCfg=null;await sSet(K.sync,null);
+      renderSyncState();not('Bu cihazdan çıkarıldı. Veri silinmedi, yalnız senkron durdu.');};
+  }
+}
+async function initSync(){
+  syncCfg=await sGet(K.sync)||null;
+  renderSyncState();
+  document.getElementById('syncBtn').onclick=openSyncBox;
+  if(!syncCfg||!syncCfg.token)return;
+  await syncPull();
+  await syncPush();                                    // bu cihazda biriken yenilikleri de gönder
+  setInterval(()=>syncPull(),SYNC_POLL);
+  document.addEventListener('visibilitychange',()=>{if(!document.hidden)syncPull();});
+  window.addEventListener('beforeunload',()=>{if(syncTimer){clearTimeout(syncTimer);syncPush();}});
+}
+
 /* init */
 (async function(){tick();setInterval(tick,1000);await initTheme();
   tasks=await sGet(K.tasks)||[];
@@ -1972,7 +2157,7 @@ function openJobsCfg(){
   document.getElementById('jobsCfg').onclick=openJobsCfg;
   jobProfile=await sGet(K.jobProfile)||null;jobsApplied=await sGet(K.jobsApplied)||[];myApps=await sGet(K.myApps)||[];
   document.getElementById('placeName').textContent=PLACE.name;
-  renderTasks();await loadSched();await loadMorning();await renderRun();await loadWorkout();renderWtLog();await loadMeals();await loadWater();await loadSleep();await loadMoney();loadHabits();
+  renderTasks();await loadSched();await loadMorning();await renderRun();await loadWorkout();renderWtLog();await loadMeals();await loadWater();await loadSleep();await loadMoney();loadHabits();await initSync();
   renderFacts();renderFilm();renderArtist();renderBook();renderHistory();renderGerman();renderNews();renderWatch();renderUS();renderGold();renderWorld();renderMktSummary();renderFinNote();
   loadFX(false);loadBorsaJson();loadBasvuru();loadGmailJson();loadFactsJson();loadAgents(false);loadWx();loadJobsJson();
   setInterval(loadBorsaJson,15*60*1000);setInterval(loadBasvuru,15*60*1000);setInterval(loadGmailJson,15*60*1000);setInterval(()=>loadAgents(false),15*60*1000);setInterval(loadWx,30*60*1000);setInterval(loadJobsJson,60*60*1000);
