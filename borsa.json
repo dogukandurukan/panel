@@ -1,97 +1,97 @@
 {
-  "updated": "2026-08-20 14:25",
+  "updated": "2026-08-21 09:39",
   "watch": [
     {
-      "code": "SASA",
-      "price": "2.26",
-      "chg": "-0.44%",
-      "avg1w": "2.30",
-      "avg1m": "2.47"
-    },
-    {
       "code": "ALARK",
-      "price": "109.40",
-      "chg": "-3.27%",
-      "avg1w": "107.34",
-      "avg1m": "104.06"
+      "price": "113.10",
+      "chg": "+5.70%",
+      "avg1w": "105.96",
+      "avg1m": "103.98"
     },
     {
       "code": "GUBRF",
-      "price": "458.50",
-      "chg": "-2.81%",
-      "avg1w": "444.75",
-      "avg1m": "427.56"
+      "price": "471.75",
+      "chg": "+9.97%",
+      "avg1w": "436.75",
+      "avg1m": "424.70"
+    },
+    {
+      "code": "TUPRS",
+      "price": "395.50",
+      "chg": "+5.75%",
+      "avg1w": "369.20",
+      "avg1m": "323.93"
     },
     {
       "code": "KONTR",
-      "price": "3.86",
-      "chg": "-2.28%",
+      "price": "3.95",
+      "chg": "-1.25%",
       "avg1w": "4.00",
-      "avg1m": "4.27"
+      "avg1m": "4.31"
     },
     {
       "code": "YEOTK",
-      "price": "36.62",
-      "chg": "+1.33%",
-      "avg1w": "38.55",
-      "avg1m": "39.77"
+      "price": "36.14",
+      "chg": "-2.64%",
+      "avg1w": "38.93",
+      "avg1m": "40.00"
     }
   ],
   "us": [
     {
       "code": "AAPL",
-      "price": "316.83",
-      "chg": "+2.19%",
-      "avg1w": "308.73",
-      "avg1m": "316.51"
+      "price": "311.30",
+      "chg": "-1.75%",
+      "avg1w": "309.94",
+      "avg1m": "315.81"
     },
     {
       "code": "MSFT",
-      "price": "484.31",
-      "chg": "+0.56%",
-      "avg1w": "487.71",
-      "avg1m": "459.57"
+      "price": "481.15",
+      "chg": "-0.65%",
+      "avg1w": "484.57",
+      "avg1m": "463.90"
     },
     {
       "code": "NVDA",
-      "price": "217.56",
-      "chg": "-0.99%",
-      "avg1w": "222.55",
-      "avg1m": "212.36"
+      "price": "216.85",
+      "chg": "-0.33%",
+      "avg1w": "220.86",
+      "avg1m": "212.59"
     },
     {
       "code": "AMZN",
-      "price": "265.84",
-      "chg": "+2.46%",
-      "avg1w": "262.88",
-      "avg1m": "258.07"
+      "price": "260.11",
+      "chg": "-2.16%",
+      "avg1w": "261.87",
+      "avg1m": "258.80"
     },
     {
       "code": "TSLA",
-      "price": "351.12",
-      "chg": "+4.23%",
-      "avg1w": "341.90",
-      "avg1m": "326.74"
+      "price": "345.13",
+      "chg": "-1.71%",
+      "avg1w": "342.94",
+      "avg1m": "325.37"
     }
   ],
   "gold": {
-    "price": "7,000.54",
-    "chg": "+1.23%"
+    "price": "7,121.82",
+    "chg": "+2.30%"
   },
   "news": [
-    "⚪ Sasa Polyester, 7,185 milyar TL tahsisli sermaye artırımı kararı aldı  (Investing.com Türkiye)",
-    "⚪ SASA'dan sermaye artırımı kararı  (Bloomberght)",
-    "⚪ SASA'dan dev sermaye hamlesi: 7,2 milyar TL'lik artırım kararı  (CNBC-e)",
     "🟢 Alarko Holding'den güçlü bilanço: 4,36 milyar TL net kâr  (CNBC-e)",
     "⚪ KAP *** ALARKO HOLDİNG A.Ş. *** ALARK *** Özel Durum Açıklaması (Genel)  (Yeni Şafak)",
-    "⚪ KAP *** ALARKO HOLDİNG A.Ş. *** ALARK *** Faaliyet Raporu (Konsolide)  (GZT)",
-    "⚪ KAP *** YEO TEKNOLOJİ ENERJİ VE ENDÜSTRİ A.Ş. *** YEOTK *** Faaliyet Raporu (Konsolide)  (Yeni Şafak)",
-    "⚪ KAP *** YEO TEKNOLOJİ ENERJİ VE ENDÜSTRİ A.Ş. *** YEOTK *** İhraç Tavanına İlişkin Bildirim  (GZT)"
+    "⚪ KAP *** ALARKO HOLDİNG A.Ş. *** ALARK *** Katılım Finansı İlkeleri Bilgi Formu  (GZT)",
+    "⚪ KAP *** YEO TEKNOLOJİ ENERJİ VE ENDÜSTRİ A.Ş. *** YEOTK *** Faaliyet Raporu (Konsolide)  (GZT)",
+    "⚪ YEO TEKNOLOJİ ENERJİ VE ENDÜSTRİ A.Ş.(YEOTK) Katılım Finansı İlkeleri Bilgi Formu 19 Ağustos 2026  (Mynet Finans)",
+    "⚪ KAP *** YEO TEKNOLOJİ ENERJİ VE ENDÜSTRİ A.Ş. *** YEOTK *** İhraç Tavanına İlişkin Bildirim  (GZT)",
+    "⚪ ENKAI için hedef fiyat 2Ç26 bilançosuyla 126 TL’ye indi  (Paratic Haber)",
+    "⚪ Enka İnşaat (ENKAI) hisseleri için hedef fiyatlar güncellendi  (Rota Borsa)"
   ],
   "world": [
-    "🌍 MSB'den İsrail'in İdlib saldırısına ilişkin açıklama: Üste Türk askeri var mıydı? - NTV Haber  (NTV Haber)",
-    "🌍 Furkan Vakfı’na operasyon: Kuytul’a gözaltı - Hürriyet  (Hürriyet)",
-    "🌍 Trump, İran'a yönelik eşi benzeri görülmemiş \"ekonomik operasyon\" ilan etti - Bloomberght  (Bloomberght)",
-    "🌍 İstanbul'da korku dolu sabah: Tramvay raydan çıktı! - Sözcü Gazetesi  (Sözcü Gazetesi)"
+    "🌍 İmamoğlu'ndan İBB davasında sürpriz Karadeniz fıkrası - T24  (T24)",
+    "🌍 Adalar’da deprem fırtınası korkuttu... Öncü değil - Hürriyet  (Hürriyet)",
+    "🌍 Kocaeli'de sahilde üç ceset bulundu - Diken  (Diken)",
+    "🌍 Ev alıp satacaklar dikkat: Zorunlu Deprem Sigortası'nda yıllardır uygulanan sistem değişti - Sözcü Gazetesi  (Sözcü Gazetesi)"
   ]
 }
