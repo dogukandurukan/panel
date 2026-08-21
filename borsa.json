@@ -1,40 +1,40 @@
 {
-  "updated": "2026-08-21 09:39",
+  "updated": "2026-08-21 14:24",
   "watch": [
     {
+      "code": "SASA",
+      "price": "2.31",
+      "chg": "+1.76%",
+      "avg1w": "2.29",
+      "avg1m": "2.45"
+    },
+    {
       "code": "ALARK",
-      "price": "113.10",
-      "chg": "+5.70%",
-      "avg1w": "105.96",
-      "avg1m": "103.98"
+      "price": "107.80",
+      "chg": "+0.09%",
+      "avg1w": "107.88",
+      "avg1m": "104.01"
     },
     {
-      "code": "GUBRF",
-      "price": "471.75",
-      "chg": "+9.97%",
-      "avg1w": "436.75",
-      "avg1m": "424.70"
+      "code": "TOASO",
+      "price": "282.00",
+      "chg": "+4.06%",
+      "avg1w": "271.05",
+      "avg1m": "268.70"
     },
     {
-      "code": "TUPRS",
-      "price": "395.50",
-      "chg": "+5.75%",
-      "avg1w": "369.20",
-      "avg1m": "323.93"
-    },
-    {
-      "code": "KONTR",
-      "price": "3.95",
-      "chg": "-1.25%",
-      "avg1w": "4.00",
-      "avg1m": "4.31"
+      "code": "ASTOR",
+      "price": "336.00",
+      "chg": "+2.67%",
+      "avg1w": "330.95",
+      "avg1m": "311.39"
     },
     {
       "code": "YEOTK",
-      "price": "36.14",
-      "chg": "-2.64%",
-      "avg1w": "38.93",
-      "avg1m": "40.00"
+      "price": "35.78",
+      "chg": "-0.72%",
+      "avg1w": "37.26",
+      "avg1m": "39.40"
     }
   ],
   "us": [
@@ -75,23 +75,23 @@
     }
   ],
   "gold": {
-    "price": "7,121.82",
-    "chg": "+2.30%"
+    "price": "7,181.44",
+    "chg": "+3.16%"
   },
   "news": [
+    "⚪ SASA Polyester’e S&P’den ’B-’ notu, görünüm ’Durağan’  (Investing.com Türkiye)",
+    "⚪ Günün öne çıkan gelişmeleri: AKBNK, GSRAY, AEFES, ISCTR, SASA  (getmidas.com)",
+    "⚪ Sasa Polyester, 7,185 milyar TL tahsisli sermaye artırımı kararı aldı  (Investing.com Türkiye)",
     "🟢 Alarko Holding'den güçlü bilanço: 4,36 milyar TL net kâr  (CNBC-e)",
     "⚪ KAP *** ALARKO HOLDİNG A.Ş. *** ALARK *** Özel Durum Açıklaması (Genel)  (Yeni Şafak)",
     "⚪ KAP *** ALARKO HOLDİNG A.Ş. *** ALARK *** Katılım Finansı İlkeleri Bilgi Formu  (GZT)",
-    "⚪ KAP *** YEO TEKNOLOJİ ENERJİ VE ENDÜSTRİ A.Ş. *** YEOTK *** Faaliyet Raporu (Konsolide)  (GZT)",
-    "⚪ YEO TEKNOLOJİ ENERJİ VE ENDÜSTRİ A.Ş.(YEOTK) Katılım Finansı İlkeleri Bilgi Formu 19 Ağustos 2026  (Mynet Finans)",
-    "⚪ KAP *** YEO TEKNOLOJİ ENERJİ VE ENDÜSTRİ A.Ş. *** YEOTK *** İhraç Tavanına İlişkin Bildirim  (GZT)",
-    "⚪ ENKAI için hedef fiyat 2Ç26 bilançosuyla 126 TL’ye indi  (Paratic Haber)",
-    "⚪ Enka İnşaat (ENKAI) hisseleri için hedef fiyatlar güncellendi  (Rota Borsa)"
+    "🟢 ASTOR Enerji'nin Yatırım Planları Neler? ASTOR CFO'su Olcay Doğan Açıkladı I Piyasa Gündemi | A Para  (A Para)",
+    "🟢 Güçlü Bilanço ve Yatırımlar  (Yatırımlar Dergisi)"
   ],
   "world": [
-    "🌍 İmamoğlu'ndan İBB davasında sürpriz Karadeniz fıkrası - T24  (T24)",
-    "🌍 Adalar’da deprem fırtınası korkuttu... Öncü değil - Hürriyet  (Hürriyet)",
-    "🌍 Kocaeli'de sahilde üç ceset bulundu - Diken  (Diken)",
-    "🌍 Ev alıp satacaklar dikkat: Zorunlu Deprem Sigortası'nda yıllardır uygulanan sistem değişti - Sözcü Gazetesi  (Sözcü Gazetesi)"
+    "🌍 Bahçeli'den Netanyahu'nun Türkiye'yi hedef alan sözlerine tepki: 'Ankara Deklarasyonu' ilan etmeliyiz, bütün insanlık için tehditler! - T24  (T24)",
+    "🌍 CHP'nin kalesi düştü: Büyükşehir Belediye Başkanı istifa edip parti değiştirdi | Politika Haberleri - Yeni Şafak  (Yeni Şafak)",
+    "🌍 Çok sayıda ülkeden son dakika İsrail bildirisi: Derhal geri çekin! - Haber 7  (Haber 7)",
+    "🌍 2 taraftar grubuna operasyon: 28 şüpheli yakalandı - CNN Türk  (CNN Türk)"
   ]
 }
