@@ -1997,9 +1997,14 @@ async function ghApi(yol,opt){
   return r.json();
 }
 async function syncFindGist(){
+  /* Birden fazla panel gist'i olabilir: bir cihaz digerinden once baglanip bos bir
+     yedek olusturmussa iki tane olur. En BUYUK dosyayi (en cok kayit tasiyani) sec;
+     esitlikte en son guncelleneni. Ilk bulunani almak bos yedegi secebiliyordu. */
   const list=await ghApi('/gists?per_page=100');
-  const g=(list||[]).find(x=>x&&x.files&&x.files[SYNC_FILE]);
-  return g?g.id:null;
+  const aday=(list||[]).filter(x=>x&&x.files&&x.files[SYNC_FILE])
+    .sort((a,b)=>(b.files[SYNC_FILE].size||0)-(a.files[SYNC_FILE].size||0)
+      ||(new Date(b.updated_at)-new Date(a.updated_at)));
+  return aday.length?aday[0].id:null;
 }
 async function syncSaveCfg(){await sSet(K.sync,syncCfg);}
 async function syncPull(sessiz){
@@ -2013,6 +2018,13 @@ async function syncPull(sessiz){
     if(!f)throw new Error('gist içinde '+SYNC_FILE+' yok');
     if(f.truncated)throw new Error('yedek çok büyük (1 MB üstü)');
     const paket=JSON.parse(f.content||'{}');
+    syncCfg.uzakN=Object.keys(paket.data||{}).length;
+    if(syncCfg.uzakN===0){
+      /* Kendi kendini toparlama: bu cihaz once baglanip BOS bir yedek olusturduysa,
+         dolu gist sonradan ortaya cikar. Bos yedek gorunce bir kez daha ara. */
+      const baska=await syncFindGist();
+      if(baska&&baska!==syncCfg.gistId){syncCfg.gistId=baska;await syncSaveCfg();syncBusy=false;return syncPull(sessiz);}
+    }
     const degisen=mergeRemote(paket.data);
     syncCfg.last=Date.now();await syncSaveCfg();
     syncMsg='';renderSyncState();
@@ -2060,7 +2072,10 @@ function renderSyncState(){
 }
 function syncDurumMetni(){
   if(!syncCfg||!syncCfg.token)return 'Bu cihaz bağlı değil.';
+  const yerelN=Object.keys(localSnapshot()).length;
   return 'Bağlı · gist <b>'+esc((syncCfg.gistId||'—').slice(0,8))+'</b> · son senkron <b>'+zamanFarki(syncCfg.last)+'</b>'+
+    '<br>bu cihazda <b>'+yerelN+'</b> kayıt · yedekte <b>'+(syncCfg.uzakN==null?'?':syncCfg.uzakN)+'</b> kayıt'+
+    (syncCfg.uzakN===0?' <span class="sync-warn">— yedek boş: verinin durduğu cihazda \u201cŞimdi gönder\u201d de</span>':'')+
     (syncMsg?'<br><span class="sync-warn">Hata: '+esc(syncMsg)+'</span>':'');
 }
 function openSyncBox(){
