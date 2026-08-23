@@ -45,6 +45,14 @@ Günün Filmi/Sanatçısı/Kitabı kartları `index.html` içindeki kürasyonlu 
 beslenir — Vikipedi özeti tanım üretiyor, ilginç bilgi değil.
 | `jobs.json` | `jobs_feed.py` | `jobs-feed.yml` | her gün 08:00 |
 
+Bir istisna: `push_feed.py` dosya üretmez, telefona web push bildirimi gönderir
+(`push.yml`, yoklama saatlerinde). Abonelik bilgisi **repoya değil, senkronun
+kullandığı gizli gist'e** yazılır — uç nokta cihazı tanımlayan kalıcı bir adres
+ve bu repo herkese açık. VAPID gizli anahtarı yalnızca Actions secret'ında durur;
+panel onu üretip bir kez gösterir, saklamaz. Bildirimin hangi saatte ne soracağı
+`index.html`'deki SCHED + YOK tablolarından panel tarafından üretilip gist'e
+yazılır; program Python tarafına kopyalanmaz.
+
 Ayrıca doğrudan tarayıcıdan, anahtarsız: Google Sheets (gviz/JSONP, salt
 okunur), GitHub Actions API (15 dk), Open-Meteo (30 dk).
 
