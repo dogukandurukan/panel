@@ -29,8 +29,13 @@ import requests
 
 IST = dt.timezone(dt.timedelta(hours=3))
 API = "https://tr.wikipedia.org/api/rest_v1/page/summary/"
+ONTHISDAY_API = "https://tr.wikipedia.org/api/rest_v1/feed/onthisday/events/"
 SEARCH_API = "https://tr.wikipedia.org/w/api.php"
 UA = "panel-facts/1.0 (https://github.com/dogukandurukan/panel)"
+
+HISTORY_DAYS = 10     # feed haftalık çalışıyor; bir hafta atlansa da panel boşta kalmasın
+HISTORY_PER_DAY = 3   # "Başka" düğmesinin gezinebilmesi için gün başına birkaç olay
+HISTORY_MIN_EXTRACT = 80
 
 MIN_LEN = 110         # bundan kısa özetler "bilgi" sayılmayacak kadar cılız (tautolojik tanımlar)
 MAX_LEN = 340         # kartta 2-3 satırı geçmesin
@@ -210,6 +215,69 @@ def fetch_summary(session, topic):
     return item2, None
 
 
+def fetch_onthisday(session, ay, gun):
+    """Vikipedi'nin "bugün tarihte" uç noktasından o günün olaylarını çeker.
+
+    Panel bunu tarayıcıdan doğrudan çağırmıyor: CORS davranışı doğrulanamadı ve
+    kart tek bir dış servise bağımlı kalmasın. Diğer feed'lerle aynı desen —
+    Actions çeker, panel statik JSON okur.
+    """
+    r = session.get(f"{ONTHISDAY_API}{ay:02d}/{gun:02d}", timeout=25)
+    r.raise_for_status()
+    olaylar = []
+    for ev in r.json().get("events", []):
+        yil, metin = ev.get("year"), (ev.get("text") or "").strip()
+        if not yil or not metin:
+            continue
+        # Olayı anlatan sayfa: özeti olan ilkini seç, kartta "detay" o olacak
+        sayfa = None
+        for p in ev.get("pages") or []:
+            ozet = (p.get("extract") or "").strip()
+            if len(ozet) >= HISTORY_MIN_EXTRACT:
+                sayfa = p
+                break
+        olaylar.append({
+            "year": yil,
+            "text": metin,
+            "title": (sayfa or {}).get("title", ""),
+            "extract": kisalt((sayfa or {}).get("extract", "")),
+            "url": (((sayfa or {}).get("content_urls") or {}).get("desktop") or {}).get("page", ""),
+        })
+    # Detayı olanlar önce; sonra yüzyıla göre dağıt ki üçü de aynı dönemden olmasın
+    detayli = [o for o in olaylar if o["extract"]]
+    havuz = detayli or olaylar
+    if len(havuz) <= HISTORY_PER_DAY:
+        return havuz
+    adim = len(havuz) / HISTORY_PER_DAY
+    return [havuz[int(i * adim)] for i in range(HISTORY_PER_DAY)]
+
+
+def kisalt(metin, sinir=320):
+    metin = re.sub(r"\s+", " ", (metin or "").strip())
+    if len(metin) <= sinir:
+        return metin
+    kesit = metin[:sinir]
+    nokta = kesit.rfind(". ")
+    return (kesit[:nokta + 1] if nokta > sinir * 0.5 else kesit.rstrip() + "…")
+
+
+def build_history(session):
+    """Bugünden başlayarak HISTORY_DAYS günün olaylarını {"AA-GG": [...]} olarak."""
+    bugun = dt.datetime.now(IST).date()
+    out, atlanan = {}, []
+    for i in range(HISTORY_DAYS):
+        g = bugun + dt.timedelta(days=i)
+        try:
+            olaylar = fetch_onthisday(session, g.month, g.day)
+        except Exception as e:
+            atlanan.append(f"{g:%m-%d} ({e})")
+            continue
+        if olaylar:
+            out[f"{g:%m-%d}"] = olaylar
+        time.sleep(REQUEST_PAUSE)
+    return out, atlanan
+
+
 def build():
     session = requests.Session()
     session.headers.update({"User-Agent": UA, "Accept": "application/json"})
@@ -230,12 +298,20 @@ def build():
             items.append(item)
         time.sleep(REQUEST_PAUSE)
 
+    try:
+        history, history_skipped = build_history(session)
+    except Exception as e:
+        history, history_skipped = {}, [f"tamami: {e}"]
+    skipped += [f"tarihte {x}" for x in history_skipped]
+
     return {
         "updated": dt.datetime.now(IST).strftime("%Y-%m-%d %H:%M"),
         "ok": len(items) > 0,
         "count": len(items),
         "requested": len(TOPICS),
         "items": items,
+        "history": history,
+        "history_days": len(history),
     }, skipped
 
 
