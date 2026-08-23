@@ -16,6 +16,8 @@ self.addEventListener('push', event => {
   const secenek = {
     body: d.body || 'Sıra sende.',
     tag: d.tag || 'yoklama',
+    icon: d.icon || 'icon-192.png',
+    badge: d.icon || 'icon-192.png',
     renotify: true,
     requireInteraction: !!d.sticky,
     data: { url: d.url || './index.html' }
