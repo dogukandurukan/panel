@@ -40,6 +40,7 @@ IST = dt.timezone(dt.timedelta(hours=3))
 WINDOW_DAYS = 7       # aksiyon gerektiren mail 3 günde kaybolmasın diye 7
 MAX_FETCH = 100       # primary'de header çekilecek üst sınır (API kotası)
 MAX_UPDATES = 40      # Updates sekmesinde taranacak üst sınır
+MAX_READ = 60         # okunmuş ama kapanmamış aksiyon taraması üst sınırı
 CAP = {"action": 8, "reply": 8, "job": 5, "info": 5}   # kova başına gösterim
 
 MAX_DRAFTS = 5        # tur başına en fazla kaç maile taslak yazılsın
@@ -377,8 +378,9 @@ def err(msg):
     }
 
 
-def collect(headers, ids, only_action):
-    """id listesini sınıflandırılmış kayıtlara çevirir."""
+def collect(headers, ids, only_action, seen=False):
+    """id listesini sınıflandırılmış kayıtlara çevirir.
+    seen=True ise mail okunmuş demektir; panel bunu ayrı işaretler."""
     out = []
     for mid in ids:
         try:
@@ -397,7 +399,7 @@ def collect(headers, ids, only_action):
             "from": name, "email": email,
             "subject": subject,
             "date": hdrs.get("Date", ""),
-            "bucket": bucket, "why": why,
+            "bucket": bucket, "why": why, "seen": seen,
             "ts": internal_date,
         })
     return out
@@ -406,7 +408,8 @@ def collect(headers, ids, only_action):
 def dedupe(records):
     """Aynı gönderenden aynı konu = tek satır + kaç kez geldiği."""
     seen = {}
-    for r in sorted(records, key=lambda x: x["ts"], reverse=True):
+    # Aynı mailin hem okunmamış hem okunmuş kopyası varsa okunmamış kazansın.
+    for r in sorted(records, key=lambda x: (not x.get("seen"), x["ts"]), reverse=True):
         key = ((r["email"] or "").lower(), norm_subject(r["subject"]))
         if key in seen:
             seen[key]["dupes"] += 1
@@ -424,6 +427,7 @@ def build():
     headers = {"Authorization": f"Bearer {token}"}
 
     base = f"is:unread in:inbox newer_than:{WINDOW_DAYS}d -in:chats"
+    read_base = f"-is:unread in:inbox newer_than:{WINDOW_DAYS}d -in:chats"
     try:
         primary_ids = list_ids(headers, f"{base} category:primary", MAX_FETCH)
     except Exception as e:
@@ -434,9 +438,18 @@ def build():
         update_ids = list_ids(headers, f"{base} category:updates", MAX_UPDATES)
     except Exception:
         update_ids = []
+    # OKUNMUŞ ama kapanmamış aksiyonlar. Bir maili açmış olmak onu halletmiş
+    # olmak değil: bankanın "gecikmiş ödemeniz var" uyarısı okundu diye borç
+    # kapanmıyor. Aksiyon kovasının ölçütü okunma durumu değil, senin "Hallettim"
+    # demen (panelde d:gmailDone). Diğer kovalar okunmamışla sınırlı kalır.
+    try:
+        read_ids = list_ids(headers, f"{read_base} category:primary", MAX_READ)
+    except Exception:
+        read_ids = []
 
     records = collect(headers, primary_ids, False)
     records += collect(headers, update_ids, True)
+    records += collect(headers, read_ids, True, seen=True)
     records = dedupe(records)
     records.sort(key=lambda x: x["ts"], reverse=True)
 

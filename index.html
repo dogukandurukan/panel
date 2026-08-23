@@ -129,6 +129,7 @@
   .app-status.ret{background:rgba(180,70,47,.12);color:var(--down);}
   .app-status.bekliyor{background:rgba(28,78,72,.1);color:var(--accent);}
   .app-sub{font-family:var(--mono);font-size:10.5px;color:var(--muted);display:flex;justify-content:space-between;gap:8px;margin-top:3px;}
+  .app-sub>span:last-child{white-space:nowrap;}
   /* Gmail cevap taslağı */
   .dr-box{margin-top:8px;border-left:2px solid var(--accent);background:var(--paper);border-radius:0 4px 4px 0;padding:8px 10px;}
   .dr-sum{font-size:12.5px;line-height:1.45;margin-bottom:7px;}
@@ -1294,6 +1295,7 @@ function feedAge(s){
 const GM_SEC=[['action','Aksiyon bekliyor','gm-act'],['reply','Cevap bekliyor','gm-rep'],
               ['job','İş / başvuru','gm-job'],['info','Bilgi','gm-inf']];
 const GM_ARAMA='https://mail.google.com/mail/u/0/#search/';
+const GM_ILETI='https://mail.google.com/mail/u/0/#all/';
 
 /* mail başlığındaki RFC tarihini "3 sa" gibi kısa yaşa çevirir */
 function mailAge(s){
@@ -1321,20 +1323,29 @@ function gmItem(it,renk){
       '</div>';
   }
   const rozet=[];
+  /* Okunmuş aksiyon: mail açılmış ama iş kapanmamış. Feed bunları yalnızca
+     aksiyon kovası için tarıyor; kapatma ölçütü okunma değil, senin tikin. */
+  if(it.seen)rozet.push('<span class="gm-why gm-inf">okundu</span>');
   if(it.why)rozet.push('<span class="gm-why '+renk+'">'+esc(it.why)+'</span>');
   if((it.dupes||1)>1)rozet.push('<span class="gm-dup">×'+it.dupes+'</span>');
   const yas=mailAge(it.date);
   return '<div class="app-item gm-item'+(acil?' gm-hot':'')+(done?' dr-done':'')+'">'+
     '<div class="app-top"><span class="app-co">'+esc(it.from||it.email||'—')+'</span>'+
     '<span style="display:flex;gap:6px;align-items:center">'+rozet.join('')+'</span></div>'+
-    '<div class="app-sub"><span>'+esc(it.subject||'(konu yok)')+'</span><span>'+esc(yas)+'</span></div>'+
+    '<div class="app-sub"><span>'+(it.bucket==='info'&&tid
+        ? '<a href="'+GM_ILETI+encodeURIComponent(tid)+'" target="_blank" rel="noopener" style="color:inherit">'+esc(it.subject||'(konu yok)')+'</a>'
+        : esc(it.subject||'(konu yok)'))+'</span><span>'+esc(yas)+'</span></div>'+
     (it.i_replied_before?'<div class="app-sub" style="margin-top:2px"><span>daha önce yazışmışsınız</span></div>':'')+
     box+
-    '<div class="dr-act">'+
-      (showDraft?'<button class="ibtn" data-drcopy="'+esc(tid)+'">Kopyala</button>':'')+
-      (tid?'<a class="ibtn" style="text-decoration:none" target="_blank" rel="noopener" href="https://mail.google.com/mail/u/0/#all/'+encodeURIComponent(tid)+'">Gmail\'de aç</a>':'')+
-      '<button class="ibtn" data-drdone="'+esc(tid)+'">'+(done?'Geri al':'Hallettim ✓')+'</button>'+
-    '</div></div>';
+    /* Bilgi satırında "Hallettim" anlamsız — kapatılacak bir iş yok. Konu
+       satırı zaten Gmail'e bağlanıyor, düğme sırası gürültü olurdu. */
+    (it.bucket==='info'?'':
+      '<div class="dr-act">'+
+        (showDraft?'<button class="ibtn" data-drcopy="'+esc(tid)+'">Kopyala</button>':'')+
+        (tid?'<a class="ibtn" style="text-decoration:none" target="_blank" rel="noopener" href="'+GM_ILETI+encodeURIComponent(tid)+'">Gmail\'de aç</a>':'')+
+        '<button class="ibtn" data-drdone="'+esc(tid)+'">'+(done?'Geri al':'Hallettim ✓')+'</button>'+
+      '</div>')+
+    '</div>';
 }
 
 function renderGmail(d){
