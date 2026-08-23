@@ -143,6 +143,35 @@
   .yok-row.bekle .yi{color:var(--accent);}
   .yok-row .ynot{font-size:11.5px;color:var(--muted);font-style:italic;}
   .yok-bildir{margin-top:11px;font-family:var(--mono);font-size:9px;letter-spacing:.08em;color:var(--muted);}
+  /* Antrenman modu: salonda tek elle kullanılacak, hedefler büyük */
+  .ss-bas{width:100%;margin-top:11px;padding:11px;border:1px solid var(--accent);background:none;color:var(--accent);
+    font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;border-radius:5px;cursor:pointer;}
+  .ss-bas:hover{background:color-mix(in srgb,var(--accent) 10%,transparent);}
+  .ss-ust{display:flex;justify-content:space-between;align-items:baseline;gap:8px;font-family:var(--mono);font-size:10px;
+    letter-spacing:.13em;text-transform:uppercase;color:var(--muted);}
+  .ss-ad{font-family:var(--serif);font-weight:600;font-size:23px;line-height:1.2;margin:5px 0 2px;}
+  .ss-hedef{font-family:var(--mono);font-size:11.5px;color:var(--accent);}
+  .ss-gecmis{font-size:12px;color:var(--muted);margin-top:3px;}
+  .ss-giris{display:flex;gap:8px;align-items:flex-end;margin-top:13px;}
+  .ss-f{flex:1;} .ss-f label{display:block;font-family:var(--mono);font-size:9px;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
+  .ss-f input{width:100%;background:var(--paper);border:1px solid var(--line);border-radius:5px;color:var(--ink);
+    font-family:var(--mono);font-size:19px;padding:9px 10px;text-align:center;}
+  .ss-f input:focus{outline:none;border-color:var(--accent);}
+  .ss-kaydet{flex:0 0 auto;padding:11px 15px;border:1px solid var(--accent);background:var(--accent);color:var(--card);
+    font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;border-radius:5px;cursor:pointer;}
+  .ss-setler{display:flex;flex-wrap:wrap;gap:6px;margin-top:11px;}
+  .ss-set{font-family:var(--mono);font-size:11px;border:1px solid var(--line2);border-radius:4px;padding:4px 8px;color:var(--muted);}
+  .ss-set b{color:var(--ink);font-weight:600;}
+  .ss-set.bos{opacity:.45;border-style:dashed;}
+  .ss-rest{margin-top:13px;border:1px solid var(--accent);border-radius:6px;padding:13px;text-align:center;}
+  .ss-rest .rk{font-family:var(--mono);font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);}
+  .ss-rest .rn{font-family:var(--mono);font-size:40px;line-height:1.05;color:var(--accent);margin:3px 0 8px;font-variant-numeric:tabular-nums;}
+  .ss-rest.bitti .rn{color:var(--up);}
+  .ss-alt{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px;}
+  .ss-alt .ibtn{padding:7px 11px;}
+  .ss-ozet{font-size:13.5px;line-height:1.6;}
+  .ss-ozet b{font-family:var(--serif);font-size:18px;display:block;margin-bottom:4px;}
   .de{padding:9px 0;border-bottom:1px dotted var(--line2);} .de:last-child{border-bottom:none;}
   .de-word{font-family:var(--serif);font-weight:600;font-size:18px;} .de-tr{color:var(--muted);font-size:13.5px;} .de-ex{font-size:12.5px;margin-top:3px;font-style:italic;opacity:.82;}
   .gram-head{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);border-top:1px solid var(--line2);padding-top:11px;margin-top:12px;margin-bottom:5px;}
@@ -809,7 +838,8 @@ function tick(){const n=new Date();document.getElementById('clock').textContent=
   document.getElementById('clockDate').textContent=n.toLocaleDateString('tr-TR',{weekday:'long',day:'numeric',month:'long'});
   const h=n.getHours();document.getElementById('greeting').textContent=h<6?'İyi geceler':h<12?'Günaydın':h<18?'İyi günler':'İyi akşamlar';
   /* dilim değişince programı tazele — her saniye değil, yalnızca gerçekten değiştiğinde */
-  if(activeSlot()!==schedShown&&document.getElementById('schedList')){renderSched();renderYok();}}
+  if(activeSlot()!==schedShown&&document.getElementById('schedList')){renderSched();renderYok();}
+  restTick();}
 document.getElementById('weekno').textContent=weekKey();
 
 /* tasks */
@@ -875,6 +905,14 @@ async function yokCevapla(i,a){
   /* "Evet" programdaki tiki de atıyor — tek gerçek, iki görünüm. */
   if(a==='ok'&&!schedDone[i]){schedDone[i]=true;await sSet('d:sched:'+todayKey(),schedDone);renderSched();}
   yokSonCevap=i;              // not kutusu az önce cevapladığın işe bağlansın
+  /* Spor dilimine "Evet" demek "antrenmana başladım" demektir: antrenman modunu
+     doğrudan açar, böylece salonda ikinci bir düğme aramaya gerek kalmaz.
+     Yalnızca ağırlık günlerinde — kürek/koşu gününde kaydedilecek set yok. */
+  if(a==='ok'&&YOK[SCHED[dow][i]]==='spor'&&!sess.on&&WK[dow].ex.some(e=>setHedef(e[1]))){
+    await sessBaslat();
+    const k=document.getElementById('exList');
+    if(k)k.scrollIntoView({behavior:'smooth',block:'center'});
+  }
   await yokKaydet();renderYok();
 }
 
@@ -994,15 +1032,181 @@ async function renderRun(){const km=await sGet('d:runkm:'+todayKey())||'';runKmT
 
 /* workout (today) */
 let exDone={},wtlog={};
-async function loadWorkout(){exDone=await sGet('d:ex:'+todayKey())||{};wtlog=await sGet('d:wtlog')||{};
+async function loadWorkout(){exDone=await sGet('d:ex:'+todayKey())||{};wtlog=await sGet('d:wtlog')||{};await loadSess();
   document.getElementById('wkTitle').textContent=DAYNAMES[dow];
   document.getElementById('wkSub').textContent=WK[dow].title;renderEx();}
 function prevWeight(name){let best=null;const tk=todayKey();for(const dk in wtlog){if(dk>=tk)continue;const v=wtlog[dk]&&wtlog[dk][name];if(v!==undefined&&v!==''&&v!=null){if(!best||dk>best.date)best={date:dk,kg:v};}}return best;}
-function renderEx(){const el=document.getElementById('exList');el.innerHTML='';const ex=WK[dow].ex;
-  ex.forEach((e,i)=>{const done=!!exDone[i];const d=document.createElement('div');d.className='ex'+(done?' done':'');
-    d.innerHTML='<div class="check '+(done?'on':'')+'" data-x="'+i+'"></div><div class="ex-body"><span class="ex-n">'+esc(e[0])+'</span><span class="ex-s">'+esc(e[1])+'</span></div>';el.appendChild(d);});
+/* ===== ANTRENMAN MODU =====
+   Salonda telefonu tek elle kullanırken liste işe yaramıyor: sırayla hangi
+   harekette olduğunu, kaçıncı sette olduğunu ve dinlenmenin bitip bitmediğini
+   takip etmek gerekiyor. Bu mod tek hareketi büyük gösterir, set kaydedilince
+   dinlenme sayacını kendiliğinden başlatır ve hedef set sayısı dolunca sıradaki
+   harekete geçirir.
+
+   Kayıt iki yere birden yazılır:
+   - d:sess:GG   set set (kg, tekrar, saat) — yeni ve ayrıntılı olan
+   - d:wtlog     günün en ağır seti — Ağırlık Takibi kartı ve Excel çıktısı
+                 bu biçimi okuyor, bozulmasın diye korunuyor
+   - d:ex:GG     hedef set sayısı dolunca tik — alışkanlık serisi buna bakıyor
+
+   Dinlenme sayacı BİTİŞ DAMGASI tutar, geri sayan sayaç değil: tarayıcı arka
+   planda zamanlayıcıyı kıstığında bile geri dönünce doğru süreyi gösterir. */
+const REST_SEC=[60,90,120,180];
+let sess={},restBip=false;
+
+/* '4 × 5-8' -> {set:4,tekrar:'5-8'} ; '3 set', '20-30 dk' gibi olanlar null */
+function setHedef(s){const m=/^(\d+)\s*×\s*(.+)$/.exec(String(s).trim());
+  return m?{set:+m[1],tekrar:m[2].trim()}:null;}
+
+async function loadSess(){sess=await sGet('d:sess:'+todayKey())||{};}
+async function saveSess(){await sSet('d:sess:'+todayKey(),sess);}
+
+function beep(){
+  try{const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;
+    const c=new AC(),o=c.createOscillator(),g=c.createGain();
+    o.connect(g);g.connect(c.destination);o.frequency.value=880;o.type='sine';
+    g.gain.setValueAtTime(.0001,c.currentTime);
+    g.gain.exponentialRampToValueAtTime(.25,c.currentTime+.02);
+    g.gain.exponentialRampToValueAtTime(.0001,c.currentTime+.5);
+    o.start();o.stop(c.currentTime+.55);}catch(e){}
+  try{navigator.vibrate&&navigator.vibrate([180,90,180]);}catch(e){}
+}
+
+const restKalan=()=>sess.rest?Math.max(0,Math.ceil((sess.rest-Date.now())/1000)):0;
+const mmss=n=>Math.floor(n/60)+':'+String(n%60).padStart(2,'0');
+
+/* Saniyede bir yalnızca sayaç metnini günceller — kartı yeniden çizmez,
+   yoksa kg/tekrar kutularındaki odak her saniye kaybolur. */
+function restTick(){
+  const el=document.getElementById('ssRestN');if(!el)return;
+  const k=restKalan();el.textContent=mmss(k);
+  const kut=document.getElementById('ssRest');
+  if(k===0&&kut&&!kut.classList.contains('bitti')){
+    kut.classList.add('bitti');
+    if(!restBip){restBip=true;beep();}
+  }
+}
+
+async function sessBaslat(){
+  sess.on=true;restBip=false;
+  if(!sess.bas)sess.bas=new Date().toTimeString().slice(0,5);
+  if(sess.i===undefined)sess.i=0;
+  if(!sess.s)sess.s={};
+  await saveSess();renderEx();
+}
+async function sessCik(){sess.on=false;await saveSess();renderEx();}
+
+async function sessSetKaydet(kg,tekrar){
+  const ex=WK[dow].ex,i=sess.i,ad=ex[i][0];
+  if(!sess.s[i])sess.s[i]=[];
+  sess.s[i].push({kg:kg,rep:tekrar,t:new Date().toTimeString().slice(0,5)});
+  /* Ağırlık Takibi kartı tek değer okuyor: günün en ağır setini yaz. */
+  const enAgir=Math.max.apply(null,sess.s[i].map(x=>num(x.kg)));
+  const tk=todayKey();
+  if(enAgir>0){if(!wtlog[tk])wtlog[tk]={};wtlog[tk][ad]=String(enAgir);await sSet('d:wtlog',wtlog);}
+  /* Hedef set sayısı dolduysa hareketi tamamlanmış say — seri hesabı buna bakar. */
+  const h=setHedef(ex[i][1]);
+  if(h&&sess.s[i].length>=h.set&&!exDone[i]){exDone[i]=true;await sSet('d:ex:'+tk,exDone);renderHabits();}
+  sess.rest=Date.now()+(sess.restSn||90)*1000;restBip=false;
+  await saveSess();renderEx();renderWtLog();
+}
+
+async function sessGit(yon){
+  const n=WK[dow].ex.length;
+  sess.i=Math.min(n-1,Math.max(0,(sess.i||0)+yon));
+  sess.rest=null;restBip=false;await saveSess();renderEx();
+}
+async function sessRestAyar(sn){sess.restSn=sn;sess.rest=Date.now()+sn*1000;restBip=false;await saveSess();renderEx();}
+async function sessRestUzat(sn){if(!sess.rest)return;sess.rest+=sn*1000;await saveSess();restTick();}
+async function sessRestAtla(){sess.rest=null;restBip=false;await saveSess();renderEx();}
+async function sessBitir(){sess.on=false;sess.bitti=new Date().toTimeString().slice(0,5);sess.rest=null;await saveSess();renderEx();}
+
+/* ---- çizim ---- */
+function renderEx(){
+  const el=document.getElementById('exList');if(!el)return;
+  const ex=WK[dow].ex;
   document.getElementById('wkCount').textContent=Object.values(exDone).filter(Boolean).length+'/'+ex.length;
-  el.querySelectorAll('[data-x]').forEach(c=>c.onclick=()=>{const i=+c.dataset.x;exDone[i]=!exDone[i];sSet('d:ex:'+todayKey(),exDone);renderEx();renderHabits();});}
+  if(sess.on){renderSess(el,ex);return;}
+
+  /* Liste görünümü — hızlı bakış ve elle tik için korunuyor. */
+  el.innerHTML=ex.map((e,i)=>{
+    const done=!!exDone[i],adet=(sess.s&&sess.s[i]||[]).length;
+    return '<div class="ex'+(done?' done':'')+'"><div class="check '+(done?'on':'')+'" data-x="'+i+'"></div>'+
+      '<div class="ex-body"><span class="ex-n">'+esc(e[0])+'</span><span class="ex-s">'+esc(e[1])+
+      (adet?' · '+adet+' set kayıtlı':'')+'</span></div></div>';
+  }).join('');
+  /* Ağırlıklı gün değilse (kürek/koşu/dinlenme) mod açılmaz: kaydedilecek set yok. */
+  if(ex.some(e=>setHedef(e[1]))){
+    el.innerHTML+='<button class="ss-bas" id="ssBas">'+(sess.bas?'Antrenmana devam et':'Antrenmana başla')+'</button>';
+    document.getElementById('ssBas').onclick=sessBaslat;
+  }
+  el.querySelectorAll('[data-x]').forEach(c=>c.onclick=()=>{const i=+c.dataset.x;exDone[i]=!exDone[i];sSet('d:ex:'+todayKey(),exDone);renderEx();renderHabits();});
+}
+
+function renderSess(el,ex){
+  const i=sess.i||0,e=ex[i],ad=e[0],h=setHedef(e[1]);
+  const setler=(sess.s&&sess.s[i])||[];
+  const sonSet=setler[setler.length-1];
+  const gecen=prevWeight(ad);
+  /* kg önerisi: bugün girilen son set > geçmiş kayıt > boş. Uydurma yok. */
+  const kgOner=sonSet?sonSet.kg:(gecen?gecen.kg:'');
+  const repOner=sonSet?sonSet.rep:(h?String(h.tekrar).split('-')[0]:'');
+
+  let html='<div class="ss-ust"><span>'+(i+1)+' / '+ex.length+'</span><span>'+
+    (sess.bas?'başlangıç '+esc(sess.bas):'')+'</span></div>'+
+    '<div class="ss-ad">'+esc(ad)+'</div>'+
+    '<div class="ss-hedef">hedef '+esc(e[1])+'</div>'+
+    '<div class="ss-gecmis">'+(gecen
+      ? 'önceki: '+esc(gecen.kg)+' kg ('+gecen.date.slice(8,10)+'.'+gecen.date.slice(5,7)+')'
+      : 'bu hareket için ilk kayıt')+'</div>';
+
+  if(h){
+    html+='<div class="ss-giris">'+
+      '<div class="ss-f"><label>kg</label><input id="ssKg" type="number" inputmode="decimal" step="0.5" value="'+esc(kgOner)+'"></div>'+
+      '<div class="ss-f"><label>tekrar</label><input id="ssRep" type="number" inputmode="numeric" value="'+esc(repOner)+'"></div>'+
+      '<button class="ss-kaydet" id="ssKaydet">Set ✓</button></div>';
+    /* Hedef set sayısı kadar kutu: kaç set kaldığı sayılmadan görünsün. */
+    html+='<div class="ss-setler">'+Array.from({length:Math.max(h.set,setler.length)},(_,k)=>{
+      const st=setler[k];
+      return st?'<span class="ss-set"><b>'+esc(st.kg)+'</b> kg × <b>'+esc(st.rep)+'</b></span>'
+               :'<span class="ss-set bos">'+(k+1)+'. set</span>';
+    }).join('')+'</div>';
+  }else{
+    html+='<div class="ss-gecmis" style="margin-top:10px">Bu hareket set/kg ile kaydedilmiyor.</div>';
+  }
+
+  if(sess.rest){
+    const k=restKalan();
+    html+='<div class="ss-rest'+(k===0?' bitti':'')+'" id="ssRest">'+
+      '<div class="rk">'+(k===0?'dinlenme bitti':'dinlenme')+'</div>'+
+      '<div class="rn" id="ssRestN">'+mmss(k)+'</div>'+
+      '<div class="ss-alt" style="justify-content:center;margin-top:0">'+
+      '<button class="ibtn" id="ssArti">+30 sn</button>'+
+      '<button class="ibtn" id="ssAtla">Bitir</button></div></div>';
+  }else if(h){
+    html+='<div class="ss-alt">'+REST_SEC.map(sn=>
+      '<button class="ibtn" data-rest="'+sn+'">'+(sn<120?sn+' sn':(sn/60)+' dk')+' dinlen</button>').join('')+'</div>';
+  }
+
+  const bittiMi=setler.length&&h&&setler.length>=h.set;
+  html+='<div class="ss-alt">'+
+    (i>0?'<button class="ibtn" id="ssOnceki">← Önceki</button>':'')+
+    (i<ex.length-1?'<button class="ibtn'+(bittiMi?' ana':'')+'" id="ssSonraki">Sonraki hareket →</button>':
+                   '<button class="ibtn ana" id="ssBitir">Antrenmanı bitir</button>')+
+    '<button class="ibtn" id="ssCik">Listeye dön</button></div>';
+  el.innerHTML=html;
+
+  const kg=document.getElementById('ssKg'),rep=document.getElementById('ssRep');
+  const kaydet=()=>{const k=kg?kg.value.trim():'',r=rep?rep.value.trim():'';
+    if(!k&&!r)return; sessSetKaydet(k,r);};
+  const kb=document.getElementById('ssKaydet');if(kb)kb.onclick=kaydet;
+  [kg,rep].forEach(inp=>{if(inp)inp.onkeydown=ev=>{if(ev.key==='Enter'){ev.preventDefault();kaydet();}};});
+  el.querySelectorAll('[data-rest]').forEach(b=>b.onclick=()=>sessRestAyar(+b.dataset.rest));
+  const g=(id,fn)=>{const x=document.getElementById(id);if(x)x.onclick=fn;};
+  g('ssArti',()=>sessRestUzat(30)); g('ssAtla',sessRestAtla);
+  g('ssOnceki',()=>sessGit(-1)); g('ssSonraki',()=>sessGit(1));
+  g('ssBitir',sessBitir); g('ssCik',sessCik);
+}
 function dateShift(k,days){const d=new Date(k+'T00:00');d.setDate(d.getDate()+days);return d.toLocaleDateString('sv-SE');}
 function renderWtLog(){const el=document.getElementById('wtList');if(!el)return;const ex=WK[dow].ex.filter(e=>String(e[1]).indexOf('×')>-1);
   const tk=todayKey();const today=wtlog[tk]||{};const lw=wtlog[dateShift(tk,-7)]||{};
