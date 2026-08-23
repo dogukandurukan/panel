@@ -119,6 +119,30 @@
   .day1 .d-detay{font-size:13px;line-height:1.6;color:var(--muted);margin-top:9px;padding-top:9px;border-top:1px dotted var(--line2);}
   .day1 .d-kaynak{display:inline-block;margin-top:10px;font-family:var(--mono);font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px;}
   .day1 .d-kaynak:hover{color:var(--accent);border-color:var(--accent);}
+  /* Yoklama: o an sırası gelmiş tek soruyu sorar. */
+  .yok-q{border-left:2px solid var(--accent);padding:2px 0 2px 11px;}
+  .yok-when{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);}
+  .yok-ne{font-family:var(--serif);font-weight:600;font-size:20px;line-height:1.25;margin:3px 0 2px;}
+  .yok-soru{font-size:13.5px;color:var(--muted);margin-bottom:10px;}
+  .yok-btns{display:flex;gap:7px;flex-wrap:wrap;}
+  .yok-btns .ibtn{padding:6px 11px;font-size:10.5px;}
+  .yok-btns .ibtn.ana{border-color:var(--accent);color:var(--accent);}
+  .yok-notbas{font-family:var(--mono);font-size:9px;letter-spacing:.13em;text-transform:uppercase;color:var(--accent);margin-top:13px;}
+  .yok-not{width:100%;margin-top:5px;background:var(--paper);border:1px solid var(--line);border-radius:4px;
+    color:var(--ink);font-family:var(--sans);font-size:13px;padding:7px 9px;line-height:1.5;resize:vertical;min-height:52px;}
+  .yok-not:focus{outline:none;border-color:var(--accent);}
+  .yok-bos{padding:4px 0 2px;}
+  .yok-bos b{display:block;font-family:var(--serif);font-size:17px;font-weight:600;margin-bottom:3px;}
+  .yok-bos span{font-size:13px;color:var(--muted);}
+  .yok-log{margin-top:14px;padding-top:10px;border-top:1px dotted var(--line2);display:flex;flex-direction:column;gap:5px;}
+  .yok-row{display:flex;align-items:baseline;gap:8px;font-size:12.5px;}
+  .yok-row .yt{font-family:var(--mono);font-size:10px;color:var(--muted);min-width:38px;}
+  .yok-row .yi{width:13px;text-align:center;font-size:11px;}
+  .yok-row.ok .yi{color:var(--up);} .yok-row.skip .yi{color:var(--down);}
+  .yok-row.skip .yn,.yok-row.ok .yn{color:var(--muted);}
+  .yok-row.bekle .yi{color:var(--accent);}
+  .yok-row .ynot{font-size:11.5px;color:var(--muted);font-style:italic;}
+  .yok-bildir{margin-top:11px;font-family:var(--mono);font-size:9px;letter-spacing:.08em;color:var(--muted);}
   .de{padding:9px 0;border-bottom:1px dotted var(--line2);} .de:last-child{border-bottom:none;}
   .de-word{font-family:var(--serif);font-weight:600;font-size:18px;} .de-tr{color:var(--muted);font-size:13.5px;} .de-ex{font-size:12.5px;margin-top:3px;font-style:italic;opacity:.82;}
   .gram-head{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);border-top:1px solid var(--line2);padding-top:11px;margin-top:12px;margin-bottom:5px;}
@@ -418,6 +442,9 @@
   </div>
 
   <div class="grid">
+    <section class="card"><div class="card-head"><div><p class="kicker">Yoklama</p><h2 class="card-title">Şu An Ne Yapıyorsun?</h2></div><div class="meta" id="yokMeta">0/0</div></div>
+      <div id="yokBody"></div></section>
+
     <section class="card"><div class="card-head"><div><p class="kicker">Plan · <span id="schedDay">—</span></p><h2 class="card-title">Günün Programı</h2></div><div class="meta" id="schedCount">0/0</div></div>
       <div class="wtitle" id="schedNow">—</div>
       <div id="schedList"></div></section>
@@ -782,7 +809,7 @@ function tick(){const n=new Date();document.getElementById('clock').textContent=
   document.getElementById('clockDate').textContent=n.toLocaleDateString('tr-TR',{weekday:'long',day:'numeric',month:'long'});
   const h=n.getHours();document.getElementById('greeting').textContent=h<6?'İyi geceler':h<12?'Günaydın':h<18?'İyi günler':'İyi akşamlar';
   /* dilim değişince programı tazele — her saniye değil, yalnızca gerçekten değiştiğinde */
-  if(activeSlot()!==schedShown&&document.getElementById('schedList'))renderSched();}
+  if(activeSlot()!==schedShown&&document.getElementById('schedList')){renderSched();renderYok();}}
 document.getElementById('weekno').textContent=weekKey();
 
 /* tasks */
@@ -811,10 +838,122 @@ const SCHED={
  0:['','','Bisiklet + bobo + kahve','Kahvaltı','Dinlenme','Dinlenme','Dinlenme','Dinlenme','Dinlenme','Dinlenme','Dinlenme','Dinlenme']
 };
 const hhmm=s=>{const[h,m]=s.split(':').map(Number);return h*60+m;};
+const nowMin=()=>{const d=new Date();return d.getHours()*60+d.getMinutes();};
 function activeSlot(){const d=new Date(),n=d.getHours()*60+d.getMinutes();
   for(let i=0;i<SLOTS.length;i++){if(n>=hhmm(SLOTS[i][0])&&n<hhmm(SLOTS[i][1]))return i;}
   return -1;}   // 00:00-08:00 arası: aktif dilim yok
 let schedDone={},schedShown=-2;
+
+/* ===== YOKLAMA =====
+   Günün Programı'ndaki tik "yaptım mı" sorusunu cevaplıyor ama "yapmadım"ı
+   "henüz sırası gelmedi"den ayıramıyor. Yoklama bu ayrımı kuruyor: sırası gelen
+   işi tek tek sorar, cevabı saatiyle birlikte kaydeder. Atlamak açıkça
+   işaretlendiği için istikrar verisi dürüst kalır — ileride antrenman/yemek
+   programının kendini ayarlaması bu veriye dayanacak.
+
+   Her dilim sorulmaz. "İş", "TV", "Yemek", "Dinlenme" için yoklamanın anlamı
+   yok; yalnızca gerçekten takip edilmek istenen işler sorulur. */
+const YOK={
+  'Sabah rutini':'rutin','Kürek':'spor','Antrenman':'spor','Antrenman + yemek':'spor',
+  'Koşu + kahve + kahvaltı':'spor','Bisiklet + bobo + kahve':'spor','Basket / tenis':'spor',
+  'Gitar':'öğrenme','DJ':'öğrenme','Kişisel proje':'üretim','Kitap':'okuma','Yatış':'uyku'
+};
+const YOK_SORU={spor:'Antrenmana başladın mı?',rutin:'Rutini yaptın mı?',
+  'öğrenme':'Çalıştın mı?','üretim':'Üzerinde çalıştın mı?',okuma:'Okudun mu?',uyku:'Yatağa girdin mi?'};
+
+let yok={},yokBildirilen={},yokIlkRender=true,yokSonCevap=null;
+const yokSlotlari=()=>SCHED[dow].map((is,i)=>YOK[is]?i:-1).filter(i=>i>-1);
+/* Cevaplanmış sayılma: açık yoklama cevabı VEYA programdan tiklenmiş olması.
+   İki kart aynı gerçeği göstersin, kullanıcı iki yerde işaretlemek zorunda kalmasın. */
+const yokCevap=i=>yok[i]||(schedDone[i]?{a:'ok',t:''}:null);
+
+async function loadYok(){yok=await sGet('d:yok:'+todayKey())||{};renderYok();}
+async function yokKaydet(){await sSet('d:yok:'+todayKey(),yok);}
+
+async function yokCevapla(i,a){
+  yok[i]=Object.assign({},yok[i],{a:a,t:new Date().toTimeString().slice(0,5)});
+  /* "Evet" programdaki tiki de atıyor — tek gerçek, iki görünüm. */
+  if(a==='ok'&&!schedDone[i]){schedDone[i]=true;await sSet('d:sched:'+todayKey(),schedDone);renderSched();}
+  yokSonCevap=i;              // not kutusu az önce cevapladığın işe bağlansın
+  await yokKaydet();renderYok();
+}
+
+/* Tarayıcı bildirimi yalnızca panel AÇIKKEN çalışır; kart bunu açıkça yazıyor
+   ki kapalı sekmede bildirim bekleyip kaçırma olmasın. */
+function yokBildir(i,ad){
+  if(!('Notification' in window)||Notification.permission!=='granted'||yokBildirilen[i])return;
+  yokBildirilen[i]=true;
+  try{new Notification('Yoklama · '+ad,{body:SLOTS[i][0]+'–'+SLOTS[i][1]+' · başladın mı?',tag:'yok-'+i});}catch(e){}
+}
+
+function renderYok(){
+  const el=document.getElementById('yokBody');if(!el)return;
+  const plan=SCHED[dow],slotlar=yokSlotlari(),simdi=nowMin();
+  const basladi=i=>simdi>=hhmm(SLOTS[i][0]);
+  const bekleyen=slotlar.filter(i=>basladi(i)&&!yokCevap(i));
+
+  /* Sayfa ilk açıldığında geçmiş dilimler için bildirim yağmuru olmasın:
+     yalnızca panel açıkken sırası gelenler bildirilir. */
+  if(yokIlkRender){bekleyen.forEach(i=>yokBildirilen[i]=true);yokIlkRender=false;}
+  else bekleyen.forEach(i=>yokBildir(i,plan[i]));
+
+  const cevapli=slotlar.filter(i=>yokCevap(i)).length;
+  document.getElementById('yokMeta').textContent=cevapli+'/'+slotlar.length;
+
+  let html='';
+  if(bekleyen.length){
+    const i=bekleyen[0],ad=plan[i],tur=YOK[ad];
+    html+='<div class="yok-q">'+
+      '<div class="yok-when">'+SLOTS[i][0]+'–'+SLOTS[i][1]+(basladi(i)&&simdi>=hhmm(SLOTS[i][1])?' · geçti':' · şu an')+'</div>'+
+      '<div class="yok-ne">'+esc(ad)+'</div>'+
+      '<div class="yok-soru">'+(YOK_SORU[tur]||'Yaptın mı?')+'</div>'+
+      '<div class="yok-btns"><button class="ibtn ana" data-yok="ok" data-i="'+i+'">Evet ✓</button>'+
+      '<button class="ibtn" data-yok="skip" data-i="'+i+'">Atladım</button></div></div>';
+  }else{
+    const sirada=slotlar.find(i=>!basladi(i));
+    html+='<div class="yok-bos"><b>Şu an yoklama yok.</b><span>'+
+      (sirada?'Sıradaki: '+SLOTS[sirada][0]+' · '+esc(plan[sirada]):
+       slotlar.length?'Bugünün tamamı cevaplandı.':'Bugün için takip edilen iş yok.')+'</span></div>';
+  }
+
+  /* Günlük döküm: cevaplananlar notuyla, sırası gelmeyenler soluk. */
+  if(slotlar.length){
+    html+='<div class="yok-log">'+slotlar.map(i=>{
+      const c=yokCevap(i),bekliyor=!c&&basladi(i);
+      const sinif=c?(c.a==='ok'?'ok':'skip'):(bekliyor?'bekle':'');
+      const im=c?(c.a==='ok'?'✓':'✗'):(bekliyor?'?':'·');
+      const not=(yok[i]&&yok[i].n)?'<span class="ynot">— '+esc(yok[i].n)+'</span>':'';
+      return '<div class="yok-row '+sinif+'"><span class="yt">'+SLOTS[i][0]+'</span>'+
+        '<span class="yi">'+im+'</span><span class="yn">'+esc(plan[i])+
+        (c&&c.t?' <span class="yt">'+c.t+'</span>':'')+'</span>'+not+'</div>';
+    }).join('')+'</div>';
+  }
+
+  /* Not kutusu: "hareketleri panele gir" isteğinin karşılığı. AZ ÖNCE
+     cevapladığın işe bağlanır — sabah rutinini cevaplayıp antrenmanı düşünürken
+     kutu yanlış işin adını yazmasın. Sayfa yeni açıldıysa (henüz cevap
+     verilmediyse) günün son cevaplanan işine düşer, sonradan not eklenebilsin. */
+  const notlanabilir = (yokSonCevap!==null&&yokCevap(yokSonCevap)) ? yokSonCevap
+    : slotlar.filter(i=>yokCevap(i)).pop();
+  if(notlanabilir!==undefined){
+    /* Etiket şart: kutuya yazı girince placeholder kaybolur ve notun hangi işe
+       ait olduğu görünmez olur. */
+    html+='<div class="yok-notbas">'+esc(plan[notlanabilir])+' · not</div>'+
+      '<textarea class="yok-not" id="yokNot" data-i="'+notlanabilir+'" placeholder="'+
+      'hareket, set, ağırlık, nasıl geçti">'+
+      esc((yok[notlanabilir]&&yok[notlanabilir].n)||'')+'</textarea>';
+  }
+  if('Notification' in window && Notification.permission!=='granted'){
+    html+='<div class="yok-bildir"><button class="ibtn" id="yokIzin">Bildirimleri aç</button> · yalnızca panel açıkken çalışır</div>';
+  }
+  el.innerHTML=html;
+
+  el.querySelectorAll('[data-yok]').forEach(b=>b.onclick=()=>yokCevapla(+b.dataset.i,b.dataset.yok));
+  const nt=document.getElementById('yokNot');
+  if(nt)nt.oninput=()=>{const i=+nt.dataset.i;yok[i]=Object.assign({},yok[i],{n:nt.value});yokKaydet();};
+  const iz=document.getElementById('yokIzin');
+  if(iz)iz.onclick=()=>Notification.requestPermission().then(()=>renderYok());
+}
 async function loadSched(){schedDone=await sGet('d:sched:'+todayKey())||{};renderSched();}
 function renderSched(){
   const el=document.getElementById('schedList');if(!el)return;
@@ -2371,6 +2510,7 @@ async function initSync(){
   if((await sGet(K.targetsVer))!==TARGETS_VERSION){    // program değişti -> hedefleri tazele
     targets={...DEFAULT_TARGETS,c:CARB_BY_DAY[new Date().getDay()]??DEFAULT_TARGETS.c};
     await sSet(K.targets,targets);await sSet(K.targetsVer,TARGETS_VERSION);
+  await loadYok();
   }news=await sGet(K.news)||[];watch=await sGet('d:watch')||[];world=await sGet('d:world')||[];us=await sGet('d:us')||[];gold=await sGet('d:gold')||null;gmailDone=await sGet(K.gmailDone)||[];
   const de=await sGet(K.de);deExtra=(de&&de.date===todayKey())?de.extra:0;
   deWrong=await sGet(K.deWrong)||[];await loadQuiz();
@@ -2400,7 +2540,7 @@ async function initSync(){
   document.getElementById('jobsCfg').onclick=openJobsCfg;
   jobProfile=await sGet(K.jobProfile)||null;jobsApplied=await sGet(K.jobsApplied)||[];myApps=await sGet(K.myApps)||[];
   document.getElementById('placeName').textContent=PLACE.name;
-  renderTasks();await loadSched();await loadMorning();await renderRun();await loadWorkout();renderWtLog();await loadMeals();await loadWater();await loadSleep();await loadMoney();loadHabits();await initSync();
+  renderTasks();await loadSched();await loadYok();await loadMorning();await renderRun();await loadWorkout();renderWtLog();await loadMeals();await loadWater();await loadSleep();await loadMoney();loadHabits();await initSync();
   renderFacts();renderFilm();renderArtist();renderBook();renderHistory();renderGerman();renderNews();renderWatch();renderUS();renderGold();renderWorld();renderMktSummary();renderFinNote();
   loadFX(false);loadBorsaJson();loadBasvuru();loadGmailJson();loadFactsJson();loadAgents(false);loadWx();loadJobsJson();
   setInterval(loadBorsaJson,15*60*1000);setInterval(loadBasvuru,15*60*1000);setInterval(loadGmailJson,15*60*1000);setInterval(()=>loadAgents(false),15*60*1000);setInterval(loadWx,30*60*1000);setInterval(loadJobsJson,60*60*1000);
