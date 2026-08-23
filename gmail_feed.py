@@ -82,9 +82,11 @@ BULK_DOMAIN_RE = re.compile(
 # indirim maili aksiyon değil. Buradakiler bir hesabın/belgenin durumunu bildirir.
 ACTION_SUBJECT = [
     (re.compile(r"(verify|confirm)\s+(your|the)\b|doğrula(y|n)|teyit ed|onayınız", re.I), "doğrulama"),
-    (re.compile(r"action required|immediate action|aksiyon gerek|işlem yapmanız", re.I), "aksiyon"),
-    (re.compile(r"(suspend|deactivat|clos|restrict|delet)\w*\s+(your|the)\s+account"
-                r"|keep your account active|hesabınız(ın)? (kapat|askıya|dondur)", re.I), "hesap riski"),
+    (re.compile(r"action (required|needed)|immediate action|aksiyon gerek|işlem yapmanız", re.I), "aksiyon"),
+    (re.compile(r"(suspend|deactivat|clos|restrict|delet)\w*\s+(your|the)\s+(account|shop|store|listing)"
+                r"|(your|the)\s+(account|shop|store)\s+will\s+(close|be closed|be suspended)"
+                r"|keep your account active|hesabınız(ın)? (kapat|askıya|dondur)"
+                r"|üyeliğiniz(in)? (sonland|iptal)", re.I), "hesap riski"),
     (re.compile(r"security alert|new sign-?in|unusual (activity|sign)|personal access token"
                 r"|two-?factor|güvenlik uyar|şüpheli (giriş|hareket)", re.I), "güvenlik"),
     (re.compile(r"password reset|reset your password|şifre(ni|nizi)? (sıfırla|yenile)", re.I), "şifre"),
@@ -105,17 +107,22 @@ ACTION_SNIPPET = [
     (re.compile(r"ödemeniz alınamadı|payment (was )?(declined|failed)", re.I), "ödeme"),
     # Banka gecikme maillerinin konusu çoğu zaman sadece marka adı ("GARANTİ BBVA")
     # oluyor; aksiyon ancak gövde önizlemesinden anlaşılıyor.
-    (re.compile(r"gecikmiş (bir )?ödeme|ödemesi gecikmiş|borcunuz bulunmakta"
-                r"|son ödeme tarihi geç", re.I), "gecikmiş ödeme"),
+    # "gecikmiş / geciken / geciken bir ödeme" — banka her mailde farklı çekim
+    # kullanıyor, kök üzerinden yakalanıyor. Asgari ödeme uyarısı da buraya girer.
+    (re.compile(r"gecik(miş|en)\s+(bir\s+)?ödeme|ödemeniz gecik|ödemesi gecikmiş"
+                r"|borcunuz bulunmakta|son ödeme tarihi geç"
+                r"|(asgari|minimum) ödeme\w*[^.]{0,40}ödenmemiş", re.I), "gecikmiş ödeme"),
     (re.compile(r"action is required|acil işlem", re.I), "aksiyon"),
 ]
 JOB_DOMAIN_RE = re.compile(
     r"(jobs-noreply@linkedin|greenhouse\.io|myworkday|lever\.co|smartrecruiters"
-    r"|taleo|workable|jobvite|icims|kariyer\.net|hiring)", re.I)
+    r"|taleo|workable|jobvite|icims|kariyer\.net|hiring|ashbyhq|teamtailor"
+    r"|personio|recruitee|breezy\.hr|bamboohr)", re.I)
 JOB_SUBJECT_RE = re.compile(
     r"application (was |has been )?(sent|received|submitted|update)|your application"
+    r"|thank you for (your |)(applying|application|interest in joining)"
     r"|başvurun(uz)?|başvuru(nuz)? (alınmış|iletil)|mülakat|interview|pozisyon(unuz)?"
-    r"|candidate|aday(lığınız)?", re.I)
+    r"|bewerbung|candidate|aday(lığınız)?", re.I)
 # "özet / summary / haftalık rapor" KASITEN yok: bülten dilinin ta kendisi.
 # Midas'ın "son 7 günün özeti" maili bu yüzden info sanılıyordu.
 INFO_SUBJECT_RE = re.compile(
