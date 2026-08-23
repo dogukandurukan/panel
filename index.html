@@ -143,9 +143,14 @@
   .gm-sec-t{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);white-space:nowrap;}
   .gm-sec-l{flex:1;height:1px;background:var(--line2);}
   .gm-why{font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;border:1px solid currentColor;border-radius:3px;padding:1px 5px;white-space:nowrap;}
-  .gm-act{color:var(--down);} .gm-job{color:var(--accent);} .gm-inf{color:var(--muted);}
-  .gm-item.gm-hot{border-left:2px solid var(--down);padding-left:9px;}
-  .gm-dup{font-family:var(--mono);font-size:9.5px;color:var(--down);letter-spacing:.05em;}
+  .gm-job{color:var(--accent);} .gm-inf{color:var(--muted);}
+  /* Vurgu insan mailinde: aksiyon = bir insanın yazmış olması. Otomatik mail
+     ne kadar acil görünürse görünsün sakin kalır. */
+  .gm-item.gm-hot{border-left:2px solid var(--accent);padding-left:9px;}
+  .gm-dup{font-family:var(--mono);font-size:9.5px;color:var(--muted);letter-spacing:.05em;}
+  .gm-clean{padding:10px 0 4px;}
+  .gm-clean b{display:block;font-family:var(--serif);font-size:17px;font-weight:600;margin-bottom:3px;}
+  .gm-clean span{font-size:13px;color:var(--muted);}
   .gm-bulk{margin-top:13px;padding-top:9px;border-top:1px dotted var(--line2);font-family:var(--mono);font-size:10px;color:var(--muted);line-height:1.6;}
   .gm-bulk a{color:var(--muted);}
   .gm-note{font-family:var(--mono);font-size:9px;letter-spacing:.06em;color:var(--muted);margin-top:9px;}
@@ -1289,11 +1294,13 @@ function feedAge(s){
   if(sa<24)return{txt:sa+' sa önce',dk};
   return{txt:Math.floor(sa/24)+' gün önce',dk};
 }
-/* Kovalar: gmail_feed.py her maili action/reply/job/info/bulk diye etiketliyor.
-   Kart bunları ayrı bölümler halinde gösterir; bulk yalnızca sayılır — amaç
-   "kaç okunmamışın var" değil, "senden ne bekleniyor" sorusunu cevaplamak. */
-const GM_SEC=[['action','Aksiyon bekliyor','gm-act'],['reply','Cevap bekliyor','gm-rep'],
-              ['job','İş / başvuru','gm-job'],['info','Bilgi','gm-inf']];
+/* Kartın tek sorusu: BANA BİR İNSAN YAZDI MI?
+   gmail_feed.py maili reply/job/info/bulk diye etiketliyor. Yalnızca reply
+   (bir insanın yazdığı, cevap bekleyen mail) öne çıkar. Otomatik bildirimler
+   "hesabınız kapanacak" dese bile alarm üretmez: cevap yazılacak muhatabı yok,
+   yapılacak iş varsa o iş ilgili uygulamada yapılır, gelen kutusunda değil. */
+const GM_SEC=[['reply','Cevap bekliyor','gm-rep'],['job','İş / başvuru','gm-job'],
+              ['info','Otomatik bildirim','gm-inf']];
 const GM_ARAMA='https://mail.google.com/mail/u/0/#search/';
 const GM_ILETI='https://mail.google.com/mail/u/0/#all/';
 
@@ -1314,7 +1321,7 @@ function gmItem(it,renk){
   /* Taslak yalnızca: cevap bekliyorsa (konuşmanın son mesajı senden DEĞİLSE),
      model "cevap gerekiyor" dediyse ve sen tikle kapatmadıysan gösterilir. */
   const showDraft=!done && it.awaiting_reply!==false && it.draft;
-  const acil=it.bucket==='action' && !done;
+  const oneCikan=it.bucket==='reply' && !done;
   let box='';
   if(!done && (it.summary||showDraft)){
     box='<div class="dr-box">'+
@@ -1323,13 +1330,11 @@ function gmItem(it,renk){
       '</div>';
   }
   const rozet=[];
-  /* Okunmuş aksiyon: mail açılmış ama iş kapanmamış. Feed bunları yalnızca
-     aksiyon kovası için tarıyor; kapatma ölçütü okunma değil, senin tikin. */
-  if(it.seen)rozet.push('<span class="gm-why gm-inf">okundu</span>');
+  /* Etiket bilgilendirmedir, alarm değil: nötr renkte durur. */
   if(it.why)rozet.push('<span class="gm-why '+renk+'">'+esc(it.why)+'</span>');
   if((it.dupes||1)>1)rozet.push('<span class="gm-dup">×'+it.dupes+'</span>');
   const yas=mailAge(it.date);
-  return '<div class="app-item gm-item'+(acil?' gm-hot':'')+(done?' dr-done':'')+'">'+
+  return '<div class="app-item gm-item'+(oneCikan?' gm-hot':'')+(done?' dr-done':'')+'">'+
     '<div class="app-top"><span class="app-co">'+esc(it.from||it.email||'—')+'</span>'+
     '<span style="display:flex;gap:6px;align-items:center">'+rozet.join('')+'</span></div>'+
     '<div class="app-sub"><span>'+(it.bucket==='info'&&tid
@@ -1370,9 +1375,9 @@ function renderGmail(d){
   const c=d.counts||items.reduce((a,it)=>{const b=it.bucket||'reply';a[b]=(a[b]||0)+1;return a;},{});
   const gun=d.window_days||7;
   statsEl.innerHTML=
-    '<div class="stat"><div class="stat-n" style="color:'+((c.action||0)?'var(--down)':'inherit')+'">'+(c.action||0)+'</div><div class="stat-l">Aksiyon</div></div>'+
-    '<div class="stat"><div class="stat-n">'+(c.reply||0)+'</div><div class="stat-l">Cevap</div></div>'+
+    '<div class="stat"><div class="stat-n" style="color:'+((c.reply||0)?'var(--accent)':'inherit')+'">'+(c.reply||0)+'</div><div class="stat-l">İnsandan</div></div>'+
     '<div class="stat"><div class="stat-n">'+(c.job||0)+'</div><div class="stat-l">İş</div></div>'+
+    '<div class="stat"><div class="stat-n">'+(c.info||0)+'</div><div class="stat-l">Bildirim</div></div>'+
     '<div class="stat"><div class="stat-n">'+(c.bulk||0)+'</div><div class="stat-l">Bülten</div></div>';
 
   let html='';
@@ -1383,10 +1388,14 @@ function renderGmail(d){
           '<span class="gm-sec-t">'+grup.length+'</span></div>'+
           grup.map(it=>gmItem(it,renk)).join('');
   });
-  if(!html){
-    html='<div class="empty">'+((c.bulk||0)
-      ? 'Senden bir şey bekleyen mail yok — kalan '+c.bulk+' mail bülten.'
-      : 'Gelen kutusu temiz.')+'</div>';
+  /* Cevap bekleyen sıfırsa bu bir eksiklik değil, kartın verdiği asıl haber:
+     kimse senden bir şey istemiyor. Bunu sessiz bir "boş liste" olarak değil,
+     açık bir cümle olarak söylüyoruz. */
+  if(!(c.reply||0)){
+    const kalan=(c.job||0)+(c.info||0)+(c.bulk||0);
+    html='<div class="gm-clean"><b>Cevap bekleyen mail yok.</b><span>Son '+gun+
+      ' günde sana bir insan yazmamış'+(kalan?' — kalan '+kalan+' mail otomatik.':'.')+
+      '</span></div>'+html;
   }
   /* Bülten yığını: tek satır özet. Amaç okumak değil, "arkada ne birikti"yi
      görüp gerekirse Gmail'de toplu temizlemek. */

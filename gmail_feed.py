@@ -3,20 +3,23 @@
 gmail_feed.py — Gmail'deki okunmamış maillerden gmail.json üretir.
 MAIL GÖNDERMEZ, hiçbir maili değiştirmez/okundu işaretlemez (salt-okunur scope).
 
-NEDEN SINIFLANDIRMA VAR
------------------------
-Önceki sürüm maili ikiye ayırıyordu: "kişisel" ya da "toplu". Gerçek kutuda
-kişisel mail çoğu gün sıfır olduğu için panel "24 okunmamış / 0 önemli" yazıp
-hiçbir şey göstermiyordu — halbuki o 24 mailin içinde hesap doğrulama, güvenlik
-uyarısı ve hatalı belge raporu vardı. Toplu gönderilmiş olmak "önemsiz" demek
-değil; ölçüt SENDEN BİR ŞEY İSTİYOR MU olmalı.
+AKSİYONUN TANIMI
+----------------
+Panel sahibinin kuralı: AKSİYON = GERÇEK BİR İNSANIN YAZDIĞI MAİL. Otomatik
+gönderilmiş bir mail ne kadar acil görünürse görünsün ("hesabınız kapanacak",
+"gecikmiş ödemeniz var") cevap yazılacak bir muhatabı yoktur; yapılacak iş varsa
+o işi bankanın/sitenin kendi uygulamasında yaparsın, gelen kutusunda değil.
+Bu yüzden kart tek bir soruyu öne alır: BANA BİR İNSAN YAZDI MI?
 
 Kova (bucket) sırası — ilk eşleşen kazanır:
-  action  senden bir işlem bekliyor (doğrulama, güvenlik, ödeme, belge, süre)
-  reply   gerçek bir insandan gelmiş, cevap bekliyor
+  reply   gerçek bir insandan gelmiş, cevap bekliyor  <- kartta öne çıkan tek kova
   job     başvuru / mülakat / ATS bildirimi
-  info    sipariş, kargo, makbuz — bilgi amaçlı, aksiyon yok
+  info    otomatik bildirim: sipariş, kargo, belge, ödeme, güvenlik uyarısı
   bulk    bülten / pazarlama — sayılır, listelenmez
+
+info içindeki mailler bir "etiket" taşıyabilir (doğrulama, gecikmiş ödeme,
+güvenlik...). Bu etiket bilgilendirmedir, alarm değil: sıralamayı değiştirmez,
+kartta nötr renkte durur.
 
 Ayrıca aynı mailin tekrarları (Monese 4 kez, GitHub 4 kez) tek satırda
 birleştirilir; yoksa kart aynı şeyi dört kere gösteriyor.
@@ -40,8 +43,7 @@ IST = dt.timezone(dt.timedelta(hours=3))
 WINDOW_DAYS = 7       # aksiyon gerektiren mail 3 günde kaybolmasın diye 7
 MAX_FETCH = 100       # primary'de header çekilecek üst sınır (API kotası)
 MAX_UPDATES = 40      # Updates sekmesinde taranacak üst sınır
-MAX_READ = 60         # okunmuş ama kapanmamış aksiyon taraması üst sınırı
-CAP = {"action": 8, "reply": 8, "job": 5, "info": 5}   # kova başına gösterim
+CAP = {"reply": 10, "job": 5, "info": 6}   # kova başına gösterim
 
 MAX_DRAFTS = 5        # tur başına en fazla kaç maile taslak yazılsın
 MAX_THREAD_MSGS = 6   # konuşmanın son kaç mesajı modele verilsin
@@ -77,12 +79,13 @@ BULK_DOMAIN_RE = re.compile(
     re.IGNORECASE,
 )
 
-# --- kova kalıpları ---
-# Konu satırında aranır. Pazarlama dili ("son gün", "%50 indirim") KASITEN yok:
-# indirim maili aksiyon değil. Buradakiler bir hesabın/belgenin durumunu bildirir.
+# --- info etiketleri ---
+# Otomatik maili sınıflandırmaz, yalnızca "ne hakkında" olduğunu adlandırır.
+# Pazarlama dili ("son gün", "%50 indirim") KASITEN yok: etiket taşımayan
+# otomatik mail zaten bülten sayılır.
 ACTION_SUBJECT = [
     (re.compile(r"(verify|confirm)\s+(your|the)\b|doğrula(y|n)|teyit ed|onayınız", re.I), "doğrulama"),
-    (re.compile(r"action (required|needed)|immediate action|aksiyon gerek|işlem yapmanız", re.I), "aksiyon"),
+    (re.compile(r"action (required|needed)|immediate action|aksiyon gerek|işlem yapmanız", re.I), "bildirim"),
     (re.compile(r"(suspend|deactivat|clos|restrict|delet)\w*\s+(your|the)\s+(account|shop|store|listing)"
                 r"|(your|the)\s+(account|shop|store)\s+will\s+(close|be closed|be suspended)"
                 r"|keep your account active|hesabınız(ın)? (kapat|askıya|dondur)"
@@ -112,7 +115,7 @@ ACTION_SNIPPET = [
     (re.compile(r"gecik(miş|en)\s+(bir\s+)?ödeme|ödemeniz gecik|ödemesi gecikmiş"
                 r"|borcunuz bulunmakta|son ödeme tarihi geç"
                 r"|(asgari|minimum) ödeme\w*[^.]{0,40}ödenmemiş", re.I), "gecikmiş ödeme"),
-    (re.compile(r"action is required|acil işlem", re.I), "aksiyon"),
+    (re.compile(r"action is required|acil işlem", re.I), "bildirim"),
 ]
 JOB_DOMAIN_RE = re.compile(
     r"(jobs-noreply@linkedin|greenhouse\.io|myworkday|lever\.co|smartrecruiters"
@@ -184,20 +187,31 @@ def is_bulk(hdrs):
     return bool(BULK_LOCALPART_RE.search(sender) or BULK_DOMAIN_RE.search(sender))
 
 
-def classify(subject, snippet, sender, bulk):
-    """(kova, gerekçe) döndürür. Sıra önemli: aksiyon her şeyin önünde."""
+def notify_tag(subject, snippet):
+    """Otomatik mailin konusunu adlandırır: doğrulama / ödeme / güvenlik ...
+    Kovayı DEĞİŞTİRMEZ; yalnızca kartta gösterilecek nötr bir etikettir."""
     for rx, why in ACTION_SUBJECT:
         if rx.search(subject):
-            return "action", why
+            return why
     for rx, why in ACTION_SNIPPET:
         if rx.search(snippet):
-            return "action", why
+            return why
+    return ""
+
+
+def classify(subject, snippet, sender, bulk):
+    """(kova, etiket) döndürür.
+
+    İlk ve belirleyici soru: bunu bir insan mı yazdı? Evetse cevap bekleyen
+    maildir, konusu ne olursa olsun. Hayırsa otomatik gönderimdir ve hiçbir
+    konu kalıbı onu "aksiyon" seviyesine çıkarmaz."""
     if not bulk:
         return "reply", ""
     if JOB_DOMAIN_RE.search(sender) or JOB_SUBJECT_RE.search(subject):
         return "job", ""
-    if INFO_SUBJECT_RE.search(subject):
-        return "info", ""
+    etiket = notify_tag(subject, snippet)
+    if etiket or INFO_SUBJECT_RE.search(subject):
+        return "info", etiket
     return "bulk", ""
 
 
@@ -380,14 +394,14 @@ def err(msg):
         "updated": dt.datetime.now(IST).strftime("%Y-%m-%d %H:%M"),
         "ok": False, "error": msg,
         "total_unread": 0, "important_unread": 0,
-        "counts": {"action": 0, "reply": 0, "job": 0, "info": 0, "bulk": 0},
+        "counts": {"reply": 0, "job": 0, "info": 0, "bulk": 0},
         "items": [], "bulk_top": [],
     }
 
 
-def collect(headers, ids, only_action, seen=False):
+def collect(headers, ids, only_bucket):
     """id listesini sınıflandırılmış kayıtlara çevirir.
-    seen=True ise mail okunmuş demektir; panel bunu ayrı işaretler."""
+    only_bucket verilirse yalnızca o kovaya düşenler alınır."""
     out = []
     for mid in ids:
         try:
@@ -398,15 +412,15 @@ def collect(headers, ids, only_action, seen=False):
         subject = hdrs.get("Subject", "(konu yok)")
         snippet = hdrs.get("__snippet", "")
         bucket, why = classify(subject, snippet, hdrs.get("From", ""), is_bulk(hdrs))
-        if only_action and bucket != "action":
-            continue                       # Updates sekmesinden yalnız aksiyon alınır
+        if only_bucket and bucket != only_bucket:
+            continue
         out.append({
             "id": mid,
             "thread_id": hdrs.get("__thread_id", ""),
             "from": name, "email": email,
             "subject": subject,
             "date": hdrs.get("Date", ""),
-            "bucket": bucket, "why": why, "seen": seen,
+            "bucket": bucket, "why": why,
             "ts": internal_date,
         })
     return out
@@ -416,7 +430,7 @@ def dedupe(records):
     """Aynı gönderenden aynı konu = tek satır + kaç kez geldiği."""
     seen = {}
     # Aynı mailin hem okunmamış hem okunmuş kopyası varsa okunmamış kazansın.
-    for r in sorted(records, key=lambda x: (not x.get("seen"), x["ts"]), reverse=True):
+    for r in sorted(records, key=lambda x: x["ts"], reverse=True):
         key = ((r["email"] or "").lower(), norm_subject(r["subject"]))
         if key in seen:
             seen[key]["dupes"] += 1
@@ -434,29 +448,20 @@ def build():
     headers = {"Authorization": f"Bearer {token}"}
 
     base = f"is:unread in:inbox newer_than:{WINDOW_DAYS}d -in:chats"
-    read_base = f"-is:unread in:inbox newer_than:{WINDOW_DAYS}d -in:chats"
     try:
         primary_ids = list_ids(headers, f"{base} category:primary", MAX_FETCH)
     except Exception as e:
         return err(f"list_failed: {e}")
-    # Updates sekmesi: fatura / güvenlik / doğrulama mailleri buraya da düşüyor.
-    # Yalnızca "action" çıkanlar alınır, yoksa kart bülten çöplüğüne döner.
+    # Updates sekmesi: insan yazdıysa buraya düşmez, o yüzden yalnızca insan
+    # çıkanlar alınıyor. Gmail nadiren de olsa kişisel maili Updates'e atıyor;
+    # bültenleri almamak için diğer kovalar eleniyor.
     try:
         update_ids = list_ids(headers, f"{base} category:updates", MAX_UPDATES)
     except Exception:
         update_ids = []
-    # OKUNMUŞ ama kapanmamış aksiyonlar. Bir maili açmış olmak onu halletmiş
-    # olmak değil: bankanın "gecikmiş ödemeniz var" uyarısı okundu diye borç
-    # kapanmıyor. Aksiyon kovasının ölçütü okunma durumu değil, senin "Hallettim"
-    # demen (panelde d:gmailDone). Diğer kovalar okunmamışla sınırlı kalır.
-    try:
-        read_ids = list_ids(headers, f"{read_base} category:primary", MAX_READ)
-    except Exception:
-        read_ids = []
 
-    records = collect(headers, primary_ids, False)
-    records += collect(headers, update_ids, True)
-    records += collect(headers, read_ids, True, seen=True)
+    records = collect(headers, primary_ids, None)
+    records += collect(headers, update_ids, "reply")
     records = dedupe(records)
     records.sort(key=lambda x: x["ts"], reverse=True)
 
@@ -492,7 +497,7 @@ def build():
 
     drafted = 0
     for it in shown:
-        if it["bucket"] not in ("reply", "action") or not it.get("thread_id"):
+        if it["bucket"] != "reply" or not it.get("thread_id"):
             continue
         try:
             msgs = fetch_thread(headers, it["thread_id"], my_address)
@@ -503,7 +508,7 @@ def build():
         it["awaiting_reply"] = bool(msgs) and not msgs[-1]["is_me"]
         it["i_replied_before"] = any(m["is_me"] for m in msgs)
 
-        if it["bucket"] != "reply" or not it["awaiting_reply"] or not model or drafted >= MAX_DRAFTS:
+        if not it["awaiting_reply"] or not model or drafted >= MAX_DRAFTS:
             continue
         try:
             res = generate_draft(api_key, model, it["subject"], build_transcript(msgs))
@@ -522,9 +527,9 @@ def build():
         "ok": True,
         "window_days": WINDOW_DAYS,
         "total_unread": len(primary_ids),
-        "counts": {k: counts.get(k, 0) for k in ("action", "reply", "job", "info", "bulk")},
+        "counts": {k: counts.get(k, 0) for k in ("reply", "job", "info", "bulk")},
         # geriye dönük uyum: eski panel sürümü bu alanı okuyor
-        "important_unread": counts.get("action", 0) + counts.get("reply", 0),
+        "important_unread": counts.get("reply", 0),
         "drafts": drafted,
         "model": model or "",
         "items": shown,
@@ -542,7 +547,7 @@ if __name__ == "__main__":
     if d.get("ok"):
         c = d["counts"]
         print(f"gmail.json: {d['total_unread']} okunmamış (son {d['window_days']} gün) — "
-              f"aksiyon {c['action']}, cevap {c['reply']}, iş {c['job']}, "
+              f"cevap bekleyen {c['reply']}, iş {c['job']}, "
               f"bilgi {c['info']}, bülten {c['bulk']}")
     else:
         print(f"gmail.json: HATA - {d.get('error')}")
