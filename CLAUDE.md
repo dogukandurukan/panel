@@ -1,5 +1,8 @@
 # panel (Daily) — katkı kuralları
 
+> Nerede kalındığı ve sıradaki işler: **`DEVAM.md`**. Yeni bir oturuma
+> başlarken önce onu oku.
+
 Tek dosyalık kişisel kontrol panosu. GitHub Pages'ten yayınlanıyor:
 https://dogukandurukan.github.io/panel/
 
