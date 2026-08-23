@@ -39,6 +39,10 @@ JSON okur.
 | `borsa.json` | `panel_feed.py` | `feed.yml` | hafta içi 09:00 / 14:00 |
 | `gmail.json` | `gmail_feed.py` | `gmail-feed.yml` | her gün 09:00 / 14:00 |
 | `facts.json` | `facts_feed.py` | `facts-feed.yml` | Pazartesi 09:00 |
+
+`facts.json` yalnızca "bugün tarihte" verisi taşır (10 gün önden). Günün Bilgisi,
+Günün Filmi/Sanatçısı/Kitabı kartları `index.html` içindeki kürasyonlu listelerden
+beslenir — Vikipedi özeti tanım üretiyor, ilginç bilgi değil.
 | `jobs.json` | `jobs_feed.py` | `jobs-feed.yml` | her gün 08:00 |
 
 Ayrıca doğrudan tarayıcıdan, anahtarsız: Google Sheets (gviz/JSONP, salt

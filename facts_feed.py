@@ -1,270 +1,104 @@
 # -*- coding: utf-8 -*-
 """
-facts_feed.py — Türkçe Vikipedi'den "İlginç Bilgiler" havuzunu (facts.json) üretir.
+facts_feed.py — "Tarihten Bir Not" kartını besleyen facts.json'u üretir.
 
-NEDEN KÜRATÖRLÜ KONU LİSTESİ, RASTGELE MAKALE DEĞİL:
-Vikipedi'nin random uç noktası ağırlıklı olarak köy / canlı türü taslakları döndürür;
-ayrıca sıradan bir makalenin özeti "ilginç bilgi" değil sadece bir tanımdır
-("X, Y familyasından bir kuş türüdür"). Bu yüzden burada, ÖZETİN KENDİSİ zaten
-şaşırtıcı olan konular seçildi (Tardigrad, Antikythera düzeneği, Mpemba etkisi,
-Dunning-Kruger etkisi, Turritopsis dohrnii ...). Böylece hem otomatik/güncel kalıyor
-hem de kalite garanti altına alınıyor.
+NE ÜRETİR
+---------
+Vikipedi'nin "bugün tarihte" uç noktasından, bugünden başlayarak HISTORY_DAYS
+günlük olayları çeker ve facts.json'a şu biçimde yazar:
+
+    {"history": {"08-24": [{"year": 2023, "text": "...", "title": "...",
+                            "url": "..."}, ...], ...}}
+
+Feed haftada bir (Pazartesi) çalıştığı için 10 gün önden alınır; bir hafta
+atlansa bile kart boşta kalmaz.
+
+NEDEN SADECE TARİH VERİSİ
+-------------------------
+Bu dosya eskiden ayrıca kürasyonlu bir konu listesinden (Tardigrad, Antikythera
+düzeneği, Mpemba etkisi...) Vikipedi özetleri çekip "İlginç Bilgiler" kartını
+besliyordu. O yaklaşım bırakıldı: Vikipedi özeti bir TANIMDIR, ilginç bilgi
+değil. "Entropi, bir sistemin mekanik işe çevrilemeyecek termal enerjisini
+temsil eden termodinamik terimidir..." cümlesi doğrudur ama kimse okumaz.
+Günün Bilgisi kartı artık index.html içindeki kürasyonlu tek cümlelik listeyi
+kullanıyor. Eski konu listesi git geçmişinde duruyor.
+
+Buradaki olay metinleri ise zaten kısa ve doğrudan ("Hindistan, Chandrayaan-3
+aracı ile Ay'ın güney kutbuna inen ilk ülke oldu.") — kartın istediği biçim bu.
+
+NEDEN TARAYICIDAN DEĞİL
+-----------------------
+Panel bu uç noktayı doğrudan çağırmıyor: CORS davranışı doğrulanamadı ve kartın
+tek bir dış servise canlı bağımlı olması istenmedi. Diğer feed'lerle aynı desen —
+Actions çeker, panel statik JSON okur. facts.json yoksa panel index.html içindeki
+gömülü HISTORY listesine düşer (o liste tarihe bağlı değildir, "bugün" demez).
 
 Vikipedi REST API'si (anahtar gerektirmez):
-  https://tr.wikipedia.org/api/rest_v1/page/summary/<baslik>
-
-Üretilen facts.json paneldeki "İlginç Bilgiler" kartını besler. Dosya yoksa panel
-index.html içine gömülü kısa listeye geri düşer (borsa.json / gmail.json ile aynı desen).
+  https://tr.wikipedia.org/api/rest_v1/feed/onthisday/events/<AA>/<GG>
 
 Çalıştırma: python facts_feed.py
 """
 import datetime as dt
-import difflib
 import json
 import re
 import time
-import urllib.parse
 
 import requests
 
 IST = dt.timezone(dt.timedelta(hours=3))
-API = "https://tr.wikipedia.org/api/rest_v1/page/summary/"
 ONTHISDAY_API = "https://tr.wikipedia.org/api/rest_v1/feed/onthisday/events/"
-SEARCH_API = "https://tr.wikipedia.org/w/api.php"
 UA = "panel-facts/1.0 (https://github.com/dogukandurukan/panel)"
 
-HISTORY_DAYS = 10     # feed haftalık çalışıyor; bir hafta atlansa da panel boşta kalmasın
-HISTORY_PER_DAY = 3   # "Başka" düğmesinin gezinebilmesi için gün başına birkaç olay
-HISTORY_MIN_EXTRACT = 80
-
-MIN_LEN = 110         # bundan kısa özetler "bilgi" sayılmayacak kadar cılız (tautolojik tanımlar)
-MAX_LEN = 340         # kartta 2-3 satırı geçmesin
-REQUEST_PAUSE = 0.15  # Vikipedi'ye kibar davran
-
-# Özeti kendi başına ilginç olan konular. 404 olanlar sessizce atlanır ve raporlanır.
-TOPICS = [
-    # --- Zihin / algı / davranış ---
-    "Dunning-Kruger etkisi", "Plasebo etkisi", "Nosebo etkisi", "Stockholm sendromu",
-    "Sinestezi", "Déjà vu", "Pareidoli", "Tekinsiz vadi", "Doğrulama yanlılığı",
-    "Seyirci etkisi", "Zeigarnik etkisi", "Kelebek etkisi", "Mandela etkisi",
-    "Fantom uzuv", "Hafıza sarayı", "Uyku felci", "Lucid rüya", "Ayna nöron",
-    # --- Fizik / kozmoloji ---
-    "Kara delik", "Solucan deliği", "Kuantum dolanıklığı", "Schrödinger'in kedisi",
-    "Fermi paradoksu", "Karanlık madde", "Karanlık enerji", "Nötron yıldızı",
-    "Olay ufku", "Büyük Patlama", "Genel görelilik", "Özel görelilik", "Işık yılı",
-    "Antimadde", "Higgs bozonu", "Süperiletkenlik", "Mpemba etkisi", "Casimir etkisi",
-    "Nötrino", "Entropi", "Termodinamiğin ikinci yasası", "Süperakışkanlık",
-    "Zaman genişlemesi", "Belirsizlik ilkesi", "Çift yarık deneyi",
-    # --- Uzay / gök cisimleri ---
-    "Voyager 1", "Oort bulutu", "Kuiper kuşağı", "Olympus Mons", "Europa (uydu)",
-    "Titan (uydu)", "Enceladus", "Halley Kuyruklu Yıldızı", "Uluslararası Uzay İstasyonu",
-    "Hubble Uzay Teleskobu", "James Webb Uzay Teleskobu", "Güneş tutulması",
-    "Kuzey ışıkları", "Samanyolu", "Andromeda Gökadası", "Süpernova", "Pulsar",
-    "Kızıl dev", "Beyaz cüce", "Ay", "Mars", "Venüs", "Jüpiter", "Satürn",
-    # --- Canlılar ---
-    "Su ayısı", "Ahtapot", "Aksolotl", "Turritopsis dohrnii", "Çıplak köstebek faresi",
-    "Biyolüminesans", "Elektrikli yılan balığı", "Ekolokasyon", "Ornitorenk",
-    "Bal arısı", "Karınca", "Mavi balina", "Deniz atı", "Kutup ayısı", "Yarasa",
-    "Mikoriza", "Fotosentez", "Pando (ağaç)", "General Sherman (ağaç)",
-    "Bakteriyofaj", "Mercan resifi", "Göç (hayvan)", "Kış uykusu", "Kamuflaj",
-    "Simbiyoz", "Bağırsak mikrobiyotası", "Ölümsüzlük",
-    # --- Genetik / hücre ---
-    "DNA", "CRISPR", "Telomer", "Mitokondri", "Kök hücre", "İnsan Genom Projesi",
-    "Epigenetik", "Kromozom", "Ribozom", "Apoptoz",
-    # --- Tarih / arkeoloji ---
-    "Antikythera düzeneği", "Rosetta Taşı", "Göbekli Tepe", "Çatalhöyük",
-    "Terracotta Ordusu", "Pompeii", "Machu Picchu", "Nazca çizgileri", "Stonehenge",
-    "İpek Yolu", "Kara Ölüm", "Truva", "Efes", "Derinkuyu Yeraltı Şehri", "Ayasofya",
-    "Büyük İskenderiye Kütüphanesi", "Hammurabi Kanunları", "Çivi yazısı",
-    "Hiyeroglif", "Mumyalama", "Vikingler", "Rönesans", "Sanayi Devrimi",
-    "Berlin Duvarı", "Çernobil felaketi", "Titanic", "Manhattan Projesi",
-    # --- Teknoloji / bilgisayar ---
-    "Enigma makinesi", "Turing testi", "ARPANET", "Moore yasası", "Transistör",
-    "Kriptografi", "Küresel Konumlandırma Sistemi", "Lityum iyon pil", "Yapay zekâ",
-    "Makine öğrenimi", "Blok zinciri", "Açık kaynak", "Unicode", "QR kod",
-    "Bilgisayar virüsü", "Kuantum bilgisayar", "Matbaa",
-    # --- Malzeme / kimya ---
-    "Aerojel", "Grafen", "Vantablack", "Elmas", "Helyum", "Cıva", "Titanyum",
-    "Periyodik tablo", "Radyokarbon tarihleme", "Süper yapıştırıcı", "Kevlar",
-    "Nanoteknoloji", "Sıvı kristal", "Ozon tabakası",
-    # --- Yer / jeoloji ---
-    "Mariana Çukuru", "Everest Dağı", "Atacama Çölü", "Ölü Deniz", "Baykal Gölü",
-    "Amazon Nehri", "Sahra Çölü", "Antarktika", "Yellowstone Kalderası", "Pamukkale",
-    "Van Gölü", "Kapadokya", "Levha tektoniği", "Deprem", "Volkan", "Ay tutulması",
-    "Gayzer", "Mağara", "Buzul", "Tsunami", "Kasırga",
-    # --- Matematik ---
-    "Altın oran", "Fibonacci dizisi", "Pi sayısı", "Fraktal", "Möbius şeridi",
-    "Monty Hall problemi", "Doğum günü problemi", "Gödel'in eksiklik teoremleri",
-    "Asal sayı", "Sonsuzluk", "Kaos teorisi", "Dört renk teoremi", "Öklid",
-    "Sıfır", "Oyun teorisi", "Büyük sayılar yasası",
-    # --- Dil / kültür / insan ---
-    "Esperanto", "Sesli harf", "Yazının tarihi", "Rüya", "Müzik kuramı",
-    "Umami", "Kahve", "Çay", "Baharat ticareti", "Zeytin", "Ekmek", "Peynir",
-    "Olimpiyat Oyunları", "Satranç", "Go (oyun)",
-]
+HISTORY_DAYS = 10        # haftalık çalışıyor; bir hafta atlansa da açık kalmasın
+HISTORY_PER_DAY = 3      # "Başka" düğmesinin gezinebilmesi için gün başına birkaç olay
+MIN_EXTRACT = 80         # bu uzunlukta özeti olan sayfa "olayı gerçekten anlatıyor" sayılır
+REQUEST_PAUSE = 0.15     # Vikipedi'ye kibar davran
 
 
-def clean(text: str) -> str:
-    """Vikipedi özetini kart için sadeleştir."""
-    t = re.sub(r"\s+", " ", text or "").strip()
-    t = re.sub(r"\[\d+\]", "", t)              # dipnot izleri
-    t = re.sub(r"\s*\([^)]{0,30}dinle[^)]*\)", "", t, flags=re.I)  # "(telaffuz: ... dinle)"
-    return t.strip()
-
-
-def first_sentences(text: str, min_len: int = 150, max_sentences: int = 3) -> str:
-    """
-    İlk cümlelerden, en az min_len karaktere ulaşacak kadarını al.
-    Kısaltmalarda ve ondalıklarda bölmemek için nokta+boşluk+büyük harf kalıbı kullanılır.
-    """
-    parts = re.split(r"(?<=[.!?])\s+(?=[A-ZÇĞİÖŞÜ])", text)
-    out = ""
-    for i, p in enumerate(parts):
-        out = (out + " " + p).strip() if out else p
-        if len(out) >= min_len or i + 1 >= max_sentences:
-            break
-    return out
-
-
-def summary_by_title(session, title):
-    """Verilen başlığın özetini getirir. Bulunamazsa (None, sebep) döner."""
-    url = API + urllib.parse.quote(title.replace(" ", "_"), safe="")
-    r = session.get(url, timeout=20)
-    if r.status_code != 200:
-        return None, f"http {r.status_code}"
-    d = r.json()
-    if d.get("type") != "standard":
-        return None, f"tip: {d.get('type')}"          # disambiguation vb.
-    extract = clean(d.get("extract", ""))
-    if len(extract) < MIN_LEN:
-        return None, f"cok kisa ({len(extract)})"
-    text = first_sentences(extract)
-    if len(text) > MAX_LEN:
-        cut = text[:MAX_LEN]
-        text = cut[: cut.rfind(" ")].rstrip(" ,;:") + "…"   # kelime ortasında kesme
-    return {
-        "text": text,
-        "title": d.get("titles", {}).get("normalized") or d.get("title") or title,
-        "url": d.get("content_urls", {}).get("desktop", {}).get("page", ""),
-    }, None
-
-
-def _norm(s):
-    s = (s or "").lower()
-    for a, b in (("ı", "i"), ("ğ", "g"), ("ü", "u"), ("ş", "s"), ("ö", "o"), ("ç", "c"), ("â", "a"), ("î", "i")):
-        s = s.replace(a, b)
-    return "".join(c if (c.isalnum() or c == " ") else " " for c in s)
-
-
-def is_relevant(term, item):
-    """
-    Arama sonucunun gerçekten aranan konu olduğunu doğrula.
-
-    Sadece başlık benzerliğine bakmak yetmiyor: Vikipedi araması 'Hurrikan' için
-    'Harry Kane'i (futbolcu) döndürüyor ve benzerlik oranı 0.67 çıkıyor — doğru
-    eşleşme olan 'QR kod' -> 'Karekod' (0.62) ile ayrışmıyor. Bu yüzden asıl ölçüt
-    konunun ÖZET METİNDE geçmesi: doğru makale konudan bahseder, futbolcu bahsetmez.
-    """
-    hay = _norm(item.get("title", "") + " " + item.get("text", ""))
-    if "listesi" in _norm(item.get("title", "")):
-        return False                      # "En yaşlı ağaçlar listesi" bir bilgi değil
-    tokens = [t for t in _norm(term).split() if len(t) >= 4]
-    if not tokens:
-        return True
-    longest = max(tokens, key=len)
-    if longest[:5] in hay:
-        return True
-    # yazım farkı olan doğru eşleşmeler için ikinci yol ('Lucid rüya' -> 'Lüsid rüya').
-    # Eşik 0.8: bu çifti (0.90) geçirir, 'Hurrikan' -> 'Harry Kane'i (0.67) geçirmez.
-    sim = difflib.SequenceMatcher(None, _norm(term), _norm(item.get("title", ""))).ratio()
-    return sim >= 0.80
-
-
-def search_title(session, term):
-    """
-    Başlık birebir tutmadığında Vikipedi aramasıyla doğru makaleyi bul.
-    tr.wikipedia başlıkları tahmin edilenden farklı olabiliyor
-    ('Su ayısı' -> 'Tardigrada', 'Çernobil felaketi' -> 'Çernobil faciası' gibi),
-    bu yedek olmadan en ilginç konuların çoğu 404 ile düşüyordu.
-    """
-    r = session.get(SEARCH_API, timeout=20, params={
-        "action": "query", "list": "search", "srsearch": term,
-        "srlimit": 1, "srnamespace": 0, "format": "json",
-    })
-    if r.status_code != 200:
-        return None
-    hits = r.json().get("query", {}).get("search", [])
-    return hits[0]["title"] if hits else None
-
-
-def fetch_summary(session, topic):
-    item, why = summary_by_title(session, topic)
-    if item is not None:
-        return item, None
-    # birebir başlık tutmadı -> arama ile dene
-    found = search_title(session, topic)
-    time.sleep(REQUEST_PAUSE)
-    if not found or found.lower() == topic.lower():
-        return None, why
-    item2, why2 = summary_by_title(session, found)
-    if item2 is None:
-        return None, f"{why} / arama '{found}': {why2}"
-    if not is_relevant(topic, item2):
-        return None, f"{why} / arama '{found}': alakasiz"
-    item2["via_search"] = topic
-    return item2, None
+def temizle(metin):
+    return re.sub(r"\s+", " ", (metin or "").strip())
 
 
 def fetch_onthisday(session, ay, gun):
-    """Vikipedi'nin "bugün tarihte" uç noktasından o günün olaylarını çeker.
-
-    Panel bunu tarayıcıdan doğrudan çağırmıyor: CORS davranışı doğrulanamadı ve
-    kart tek bir dış servise bağımlı kalmasın. Diğer feed'lerle aynı desen —
-    Actions çeker, panel statik JSON okur.
-    """
+    """Bir günün olaylarını çeker ve HISTORY_PER_DAY tanesini seçer."""
     r = session.get(f"{ONTHISDAY_API}{ay:02d}/{gun:02d}", timeout=25)
     r.raise_for_status()
+
     olaylar = []
     for ev in r.json().get("events", []):
-        yil, metin = ev.get("year"), (ev.get("text") or "").strip()
+        yil, metin = ev.get("year"), temizle(ev.get("text"))
         if not yil or not metin:
             continue
-        # Olayı anlatan sayfa: özeti olan ilkini seç, kartta "detay" o olacak
-        sayfa = None
-        for p in ev.get("pages") or []:
-            ozet = (p.get("extract") or "").strip()
-            if len(ozet) >= HISTORY_MIN_EXTRACT:
-                sayfa = p
-                break
+        # Olaya bağlı sayfalardan özeti olan ilkini seç. Panel bu sayfayı BAŞLIK
+        # olarak kullanmıyor — Vikipedi olayı sık sık yanlış özneye bağlıyor
+        # (Chandrayaan-3 inişine "Hindistan") — yalnızca bağlantı olarak veriyor.
+        sayfa = next(
+            (p for p in (ev.get("pages") or [])
+             if len(temizle(p.get("extract"))) >= MIN_EXTRACT),
+            None,
+        ) or {}
         olaylar.append({
             "year": yil,
             "text": metin,
-            "title": (sayfa or {}).get("title", ""),
-            "extract": kisalt((sayfa or {}).get("extract", "")),
-            "url": (((sayfa or {}).get("content_urls") or {}).get("desktop") or {}).get("page", ""),
+            "title": sayfa.get("title", ""),
+            "url": ((sayfa.get("content_urls") or {}).get("desktop") or {}).get("page", ""),
         })
-    # Detayı olanlar önce; sonra yüzyıla göre dağıt ki üçü de aynı dönemden olmasın
-    detayli = [o for o in olaylar if o["extract"]]
-    havuz = detayli or olaylar
+
+    # Bağlantısı olanlar önce; sonra listeye eşit aralıkla yayılarak seç ki
+    # gün başına düşen üç olay da aynı dönemden çıkmasın.
+    havuz = [o for o in olaylar if o["url"]] or olaylar
     if len(havuz) <= HISTORY_PER_DAY:
         return havuz
     adim = len(havuz) / HISTORY_PER_DAY
     return [havuz[int(i * adim)] for i in range(HISTORY_PER_DAY)]
 
 
-def kisalt(metin, sinir=320):
-    metin = re.sub(r"\s+", " ", (metin or "").strip())
-    if len(metin) <= sinir:
-        return metin
-    kesit = metin[:sinir]
-    nokta = kesit.rfind(". ")
-    return (kesit[:nokta + 1] if nokta > sinir * 0.5 else kesit.rstrip() + "…")
+def build():
+    session = requests.Session()
+    session.headers.update({"User-Agent": UA, "Accept": "application/json"})
 
-
-def build_history(session):
-    """Bugünden başlayarak HISTORY_DAYS günün olaylarını {"AA-GG": [...]} olarak."""
     bugun = dt.datetime.now(IST).date()
-    out, atlanan = {}, []
+    history, atlanan = {}, []
     for i in range(HISTORY_DAYS):
         g = bugun + dt.timedelta(days=i)
         try:
@@ -273,54 +107,23 @@ def build_history(session):
             atlanan.append(f"{g:%m-%d} ({e})")
             continue
         if olaylar:
-            out[f"{g:%m-%d}"] = olaylar
+            history[f"{g:%m-%d}"] = olaylar
         time.sleep(REQUEST_PAUSE)
-    return out, atlanan
-
-
-def build():
-    session = requests.Session()
-    session.headers.update({"User-Agent": UA, "Accept": "application/json"})
-
-    items, skipped = [], []
-    seen_titles = set()
-    for topic in TOPICS:
-        try:
-            item, why = fetch_summary(session, topic)
-        except Exception as e:
-            item, why = None, f"hata: {e}"
-        if item is None:
-            skipped.append(f"{topic} ({why})")
-        elif item["title"].lower() in seen_titles:
-            skipped.append(f"{topic} (yinelenen -> {item['title']})")
-        else:
-            seen_titles.add(item["title"].lower())
-            items.append(item)
-        time.sleep(REQUEST_PAUSE)
-
-    try:
-        history, history_skipped = build_history(session)
-    except Exception as e:
-        history, history_skipped = {}, [f"tamami: {e}"]
-    skipped += [f"tarihte {x}" for x in history_skipped]
 
     return {
         "updated": dt.datetime.now(IST).strftime("%Y-%m-%d %H:%M"),
-        "ok": len(items) > 0,
-        "count": len(items),
-        "requested": len(TOPICS),
-        "items": items,
-        "history": history,
+        # Tek bir gün bile gelmediyse ok=False: panel gömülü listeye düşsün.
+        "ok": len(history) > 0,
         "history_days": len(history),
-    }, skipped
+        "history": history,
+    }, atlanan
 
 
 if __name__ == "__main__":
-    data, skipped = build()
+    d, atlanan = build()
     with open("facts.json", "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=1)
-    print(f"facts.json: {data['count']}/{data['requested']} bilgi yazildi")
-    if skipped:
-        print(f"atlanan {len(skipped)}:")
-        for s in skipped:
-            print("  -", s)
+        json.dump(d, f, ensure_ascii=False, indent=1)
+    toplam = sum(len(v) for v in d["history"].values())
+    print(f"facts.json: {d['history_days']} gün, {toplam} olay")
+    if atlanan:
+        print("atlanan günler: " + ", ".join(atlanan))
