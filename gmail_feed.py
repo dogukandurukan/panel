@@ -223,6 +223,20 @@ def parse_from(raw):
     return raw, raw
 
 
+def hide_key(bucket, msg_id, email, subject):
+    """Panelde "Hallettim" tikinin kalıcı anahtarı.
+
+    İki farklı davranış gerekiyor:
+      reply -> MESAJ kimliği. İnsan tekrar yazarsa yeni mesaj yeni kimlik alır
+               ve mail tekrar görünür; kapattığın şey o tek mesajdır.
+      diğer -> GÖNDEREN + konu. ELOGO her gün aynı maili yolluyor; bunu bir kez
+               kapatınca yarınki kopyası da gelmesin isteniyor.
+    """
+    if bucket == "reply":
+        return "m:" + msg_id
+    return "s:" + (email or "").lower() + "|" + norm_subject(subject)
+
+
 def norm_subject(s):
     """Tekrar tespiti için konu normalizasyonu: Re:/Fwd: ve sayılar atılır."""
     s = re.sub(r"^\s*((re|fw|fwd|yan|ilt)\s*:\s*)+", "", (s or ""), flags=re.I)
@@ -421,6 +435,7 @@ def collect(headers, ids, only_bucket):
             "subject": subject,
             "date": hdrs.get("Date", ""),
             "bucket": bucket, "why": why,
+            "key": hide_key(bucket, mid, email, subject),
             "ts": internal_date,
         })
     return out

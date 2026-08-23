@@ -1315,43 +1315,44 @@ function mailAge(s){
   return Math.floor(sa/24)+' gün';
 }
 
-function gmItem(it,renk){
+function gmHidden(it){
+  /* Eski sürüm thread_id biriktiriyordu; kayıtlı tikler boşa gitmesin diye
+     ikisi de kontrol ediliyor (bkz. CLAUDE.md - veri biçimi geçişi). */
+  return gmailDone.indexOf(it.key)>-1 || (it.thread_id&&gmailDone.indexOf(it.thread_id)>-1);
+}
+
+function gmItem(it,renk,gizliMod){
+  const anahtar=it.key||it.thread_id||it.id||'';
   const tid=it.thread_id||it.id||'';
-  const done=gmailDone.indexOf(tid)>-1;
   /* Taslak yalnızca: cevap bekliyorsa (konuşmanın son mesajı senden DEĞİLSE),
-     model "cevap gerekiyor" dediyse ve sen tikle kapatmadıysan gösterilir. */
-  const showDraft=!done && it.awaiting_reply!==false && it.draft;
-  const oneCikan=it.bucket==='reply' && !done;
+     model "cevap gerekiyor" dediyse gösterilir. */
+  const showDraft=it.awaiting_reply!==false && it.draft;
+  const oneCikan=it.bucket==='reply' && !gizliMod;
   let box='';
-  if(!done && (it.summary||showDraft)){
+  if(!gizliMod && (it.summary||showDraft)){
     box='<div class="dr-box">'+
       (it.summary?'<div class="dr-sum">'+esc(it.summary)+'</div>':'')+
-      (showDraft?'<div class="dr-tag">Önerilen cevap</div><div class="dr-txt" id="drt-'+esc(tid)+'">'+esc(it.draft)+'</div>':'')+
+      (showDraft?'<div class="dr-tag">Önerilen cevap</div><div class="dr-txt" id="drt-'+esc(anahtar)+'">'+esc(it.draft)+'</div>':'')+
       '</div>';
   }
   const rozet=[];
   /* Etiket bilgilendirmedir, alarm değil: nötr renkte durur. */
   if(it.why)rozet.push('<span class="gm-why '+renk+'">'+esc(it.why)+'</span>');
   if((it.dupes||1)>1)rozet.push('<span class="gm-dup">×'+it.dupes+'</span>');
-  const yas=mailAge(it.date);
-  return '<div class="app-item gm-item'+(oneCikan?' gm-hot':'')+(done?' dr-done':'')+'">'+
+  return '<div class="app-item gm-item'+(oneCikan?' gm-hot':'')+(gizliMod?' dr-done':'')+'">'+
     '<div class="app-top"><span class="app-co">'+esc(it.from||it.email||'—')+'</span>'+
     '<span style="display:flex;gap:6px;align-items:center">'+rozet.join('')+'</span></div>'+
-    '<div class="app-sub"><span>'+(it.bucket==='info'&&tid
-        ? '<a href="'+GM_ILETI+encodeURIComponent(tid)+'" target="_blank" rel="noopener" style="color:inherit">'+esc(it.subject||'(konu yok)')+'</a>'
-        : esc(it.subject||'(konu yok)'))+'</span><span>'+esc(yas)+'</span></div>'+
+    '<div class="app-sub"><span>'+esc(it.subject||'(konu yok)')+'</span><span>'+esc(mailAge(it.date))+'</span></div>'+
     (it.i_replied_before?'<div class="app-sub" style="margin-top:2px"><span>daha önce yazışmışsınız</span></div>':'')+
     box+
-    /* Bilgi satırında "Hallettim" anlamsız — kapatılacak bir iş yok. Konu
-       satırı zaten Gmail'e bağlanıyor, düğme sırası gürültü olurdu. */
-    (it.bucket==='info'?'':
-      '<div class="dr-act">'+
-        (showDraft?'<button class="ibtn" data-drcopy="'+esc(tid)+'">Kopyala</button>':'')+
-        (tid?'<a class="ibtn" style="text-decoration:none" target="_blank" rel="noopener" href="'+GM_ILETI+encodeURIComponent(tid)+'">Gmail\'de aç</a>':'')+
-        '<button class="ibtn" data-drdone="'+esc(tid)+'">'+(done?'Geri al':'Hallettim ✓')+'</button>'+
-      '</div>')+
-    '</div>';
+    '<div class="dr-act">'+
+      (showDraft&&!gizliMod?'<button class="ibtn" data-drcopy="'+esc(anahtar)+'">Kopyala</button>':'')+
+      (tid?'<a class="ibtn" style="text-decoration:none" target="_blank" rel="noopener" href="'+GM_ILETI+encodeURIComponent(tid)+'">Gmail\'de aç</a>':'')+
+      '<button class="ibtn" data-drdone="'+esc(anahtar)+'">'+(gizliMod?'Geri al':'Hallettim ✓')+'</button>'+
+    '</div></div>';
 }
+
+let gmGizliAcik=false;   // "gizlenenleri göster" durumu (kalıcı değil)
 
 function renderGmail(d){
   const statsEl=document.getElementById('gmailStats');
@@ -1369,30 +1370,34 @@ function renderGmail(d){
     listEl.innerHTML='';
     return;
   }
-  /* Eski gmail.json'da counts yok (feed henüz yeni sürümle çalışmadı):
-     items'tan türet ki kart bir tur boyunca boş kalmasın. */
-  const items=d.items||[];
-  const c=d.counts||items.reduce((a,it)=>{const b=it.bucket||'reply';a[b]=(a[b]||0)+1;return a;},{});
+  const tumu=d.items||[];
+  const gizli=tumu.filter(gmHidden);
+  const acik=tumu.filter(it=>!gmHidden(it));
   const gun=d.window_days||7;
+  /* Sayaçlar GÖRÜNENDEN sayılıyor: 4 bildirimi de kapattıysan kart hâlâ "4"
+     yazmamalı. Bülten sayısı feed'den gelir, listelenmediği için tiklenmez. */
+  const c={reply:0,job:0,info:0,bulk:(d.counts&&d.counts.bulk)||0};
+  acik.forEach(it=>{const b=it.bucket||'reply';if(c[b]!==undefined)c[b]++;});
+
   statsEl.innerHTML=
-    '<div class="stat"><div class="stat-n" style="color:'+((c.reply||0)?'var(--accent)':'inherit')+'">'+(c.reply||0)+'</div><div class="stat-l">İnsandan</div></div>'+
-    '<div class="stat"><div class="stat-n">'+(c.job||0)+'</div><div class="stat-l">İş</div></div>'+
-    '<div class="stat"><div class="stat-n">'+(c.info||0)+'</div><div class="stat-l">Bildirim</div></div>'+
-    '<div class="stat"><div class="stat-n">'+(c.bulk||0)+'</div><div class="stat-l">Bülten</div></div>';
+    '<div class="stat"><div class="stat-n" style="color:'+(c.reply?'var(--accent)':'inherit')+'">'+c.reply+'</div><div class="stat-l">İnsandan</div></div>'+
+    '<div class="stat"><div class="stat-n">'+c.job+'</div><div class="stat-l">İş</div></div>'+
+    '<div class="stat"><div class="stat-n">'+c.info+'</div><div class="stat-l">Bildirim</div></div>'+
+    '<div class="stat"><div class="stat-n">'+c.bulk+'</div><div class="stat-l">Bülten</div></div>';
 
   let html='';
   GM_SEC.forEach(([kova,baslik,renk])=>{
-    const grup=items.filter(it=>(it.bucket||'reply')===kova);
+    const grup=acik.filter(it=>(it.bucket||'reply')===kova);
     if(!grup.length)return;
     html+='<div class="gm-sec"><span class="gm-sec-t">'+baslik+'</span><span class="gm-sec-l"></span>'+
           '<span class="gm-sec-t">'+grup.length+'</span></div>'+
-          grup.map(it=>gmItem(it,renk)).join('');
+          grup.map(it=>gmItem(it,renk,false)).join('');
   });
   /* Cevap bekleyen sıfırsa bu bir eksiklik değil, kartın verdiği asıl haber:
      kimse senden bir şey istemiyor. Bunu sessiz bir "boş liste" olarak değil,
      açık bir cümle olarak söylüyoruz. */
-  if(!(c.reply||0)){
-    const kalan=(c.job||0)+(c.info||0)+(c.bulk||0);
+  if(!c.reply){
+    const kalan=c.job+c.info+c.bulk;
     html='<div class="gm-clean"><b>Cevap bekleyen mail yok.</b><span>Son '+gun+
       ' günde sana bir insan yazmamış'+(kalan?' — kalan '+kalan+' mail otomatik.':'.')+
       '</span></div>'+html;
@@ -1405,10 +1410,20 @@ function renderGmail(d){
     html+='<div class="gm-bulk">'+c.bulk+' bülten sessizde'+(kimler?' — '+kimler:'')+
       ' · <a target="_blank" rel="noopener" href="'+GM_ARAMA+q+'">Gmail\'de aç</a></div>';
   }
+  /* Tik kalıcı: kapatılan mail bir daha listeye girmez. Yanlış tiki geri
+     alabilmek için tek çıkış kapısı burası. */
+  if(gizli.length){
+    html+='<div class="gm-bulk">'+gizli.length+' mail kapatıldı · '+
+      '<a href="#" id="gmGizliTgl">'+(gmGizliAcik?'gizle':'göster')+'</a></div>';
+    if(gmGizliAcik)html+=gizli.map(it=>gmItem(it,'gm-inf',true)).join('');
+  }
   if((c.reply||0)>0 && d.draft_note && d.draft_note.indexOf('ANTHROPIC_API_KEY')>-1){
     html+='<div class="gm-note">cevap taslağı kapalı · ANTHROPIC_API_KEY tanımlı değil</div>';
   }
   listEl.innerHTML=html;
+
+  const tgl=document.getElementById('gmGizliTgl');
+  if(tgl)tgl.onclick=e=>{e.preventDefault();gmGizliAcik=!gmGizliAcik;renderGmail(d);};
 
   listEl.querySelectorAll('[data-drcopy]').forEach(b=>b.onclick=()=>{
     const el=document.getElementById('drt-'+b.dataset.drcopy);
@@ -1418,10 +1433,9 @@ function renderGmail(d){
     }).catch(()=>{});
   });
   listEl.querySelectorAll('[data-drdone]').forEach(b=>b.onclick=async()=>{
-    const tid=b.dataset.drdone;
-    const i=gmailDone.indexOf(tid);
-    if(i>-1)gmailDone.splice(i,1); else gmailDone.push(tid);
-    gmailDone=gmailDone.slice(-200);            // listeyi sınırsız büyütme
+    const k=b.dataset.drdone,i=gmailDone.indexOf(k);
+    if(i>-1)gmailDone.splice(i,1); else gmailDone.push(k);
+    gmailDone=gmailDone.slice(-400);   // listeyi sınırsız büyütme
     await sSet(K.gmailDone,gmailDone);
     renderGmail(d);
   });
