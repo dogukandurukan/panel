@@ -1,11 +1,100 @@
 {
-  "updated": "2026-08-23 14:11",
+  "updated": "2026-08-23 16:09",
   "ok": true,
-  "window_days": 3,
-  "total_unread": 24,
+  "window_days": 7,
+  "total_unread": 17,
+  "counts": {
+    "reply": 0,
+    "job": 1,
+    "info": 4,
+    "bulk": 8
+  },
   "important_unread": 0,
   "drafts": 0,
   "model": "",
-  "items": [],
+  "items": [
+    {
+      "id": "1a02c4cefd9e3214",
+      "thread_id": "1a02c4cefd9e3214",
+      "from": "Bilgilendirme",
+      "email": "bilgilendirme@ebelgemail.com",
+      "subject": "ELOGO Bilgilendirme",
+      "date": "Sun, 23 Aug 2026 04:43:21 +0300",
+      "bucket": "info",
+      "why": "belge",
+      "key": "s:bilgilendirme@ebelgemail.com|elogo bilgilendirme",
+      "dupes": 2
+    },
+    {
+      "id": "1a02bcd59440f56f",
+      "thread_id": "1a02bcd59440f56f",
+      "from": "Zalando Team",
+      "email": "info@service-mail.zalando.de",
+      "subject": "Thanks for your order",
+      "date": "Sat, 22 Aug 2026 23:27:52 +0000",
+      "bucket": "info",
+      "why": "",
+      "key": "s:info@service-mail.zalando.de|thanks for your order",
+      "dupes": 1
+    },
+    {
+      "id": "1a02b34d10171218",
+      "thread_id": "1a02b34d10171218",
+      "from": "LinkedIn",
+      "email": "jobs-noreply@linkedin.com",
+      "subject": "Dogukan, your application was sent to Turkcell",
+      "date": "Sat, 22 Aug 2026 20:41:16 +0000 (UTC)",
+      "bucket": "job",
+      "why": "",
+      "key": "s:jobs-noreply@linkedin.com|dogukan, your application was sent to turkcell",
+      "dupes": 1
+    },
+    {
+      "id": "1a029f242a96abb9",
+      "thread_id": "1a029f23d43e0007",
+      "from": "Monese",
+      "email": "support@monese.com",
+      "subject": "Important: Verify Your Details to Keep Your Account Active",
+      "date": "Sat, 22 Aug 2026 14:48:57 +0000",
+      "bucket": "info",
+      "why": "doğrulama",
+      "key": "s:support@monese.com|important: verify your details to keep your account active",
+      "dupes": 4
+    },
+    {
+      "id": "1a02505bf34cf9fc",
+      "thread_id": "1a02505bf34cf9fc",
+      "from": "Your Zalando Team",
+      "email": "info@service-mail.zalando.de",
+      "subject": "We will send you an email when the item is available again.",
+      "date": "Fri, 21 Aug 2026 15:52:08 +0000",
+      "bucket": "info",
+      "why": "",
+      "key": "s:info@service-mail.zalando.de|we will send you an email when the item is available again.",
+      "dupes": 1
+    }
+  ],
+  "bulk_top": [
+    [
+      "Midas",
+      2
+    ],
+    [
+      "Duolingo",
+      2
+    ],
+    [
+      "Benjamin Bennett Alexand",
+      1
+    ],
+    [
+      "TikTok",
+      1
+    ],
+    [
+      "James Hu",
+      1
+    ]
+  ],
   "draft_note": "ANTHROPIC_API_KEY yok - taslak uretilmedi"
 }
