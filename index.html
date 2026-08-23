@@ -137,6 +137,17 @@
   .dr-act .ibtn{padding:3px 8px;}
   .dr-tag{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);border:1px solid var(--line2);border-radius:3px;padding:2px 6px;}
   .dr-done{opacity:.45;}
+  /* Gelen kutusu kovaları — renkler değişkenden geliyor, iki temada da çalışır */
+  .gm-sec{display:flex;align-items:center;gap:8px;margin:15px 0 3px;}
+  .gm-sec-t{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);white-space:nowrap;}
+  .gm-sec-l{flex:1;height:1px;background:var(--line2);}
+  .gm-why{font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;border:1px solid currentColor;border-radius:3px;padding:1px 5px;white-space:nowrap;}
+  .gm-act{color:var(--down);} .gm-job{color:var(--accent);} .gm-inf{color:var(--muted);}
+  .gm-item.gm-hot{border-left:2px solid var(--down);padding-left:9px;}
+  .gm-dup{font-family:var(--mono);font-size:9.5px;color:var(--down);letter-spacing:.05em;}
+  .gm-bulk{margin-top:13px;padding-top:9px;border-top:1px dotted var(--line2);font-family:var(--mono);font-size:10px;color:var(--muted);line-height:1.6;}
+  .gm-bulk a{color:var(--muted);}
+  .gm-note{font-family:var(--mono);font-size:9px;letter-spacing:.06em;color:var(--muted);margin-top:9px;}
   /* besleme bayatladığında: sayılar soluklaşır, zaman damgası uyarı rengine döner */
   .feed-stale .statrow,.feed-stale #gmailList{opacity:.5;}
   .feed-stale .meta #gmailTime{color:#a8442a;}
@@ -389,7 +400,7 @@
       <div id="taskList"></div>
       <div class="add-row"><input id="taskInput" placeholder="Yeni iş ekle…" maxlength="120"><button id="taskAdd">Ekle</button></div></section>
 
-    <section class="card"><div class="card-head"><div><p class="kicker">Gmail</p><h2 class="card-title">Okunmamış Mailler</h2></div><div class="meta"><span id="gmailTime">—</span><br><button class="ibtn" id="gmailRefresh">Yenile</button></div></div>
+    <section class="card"><div class="card-head"><div><p class="kicker">Gmail</p><h2 class="card-title">Gelen Kutusu</h2></div><div class="meta"><span id="gmailTime">—</span><br><button class="ibtn" id="gmailRefresh">Yenile</button></div></div>
       <div id="gmailStats" class="statrow"><div class="loading">gmail.json çekiliyor…</div></div>
       <div id="gmailList"></div></section>
   </div>
@@ -1277,6 +1288,55 @@ function feedAge(s){
   if(sa<24)return{txt:sa+' sa önce',dk};
   return{txt:Math.floor(sa/24)+' gün önce',dk};
 }
+/* Kovalar: gmail_feed.py her maili action/reply/job/info/bulk diye etiketliyor.
+   Kart bunları ayrı bölümler halinde gösterir; bulk yalnızca sayılır — amaç
+   "kaç okunmamışın var" değil, "senden ne bekleniyor" sorusunu cevaplamak. */
+const GM_SEC=[['action','Aksiyon bekliyor','gm-act'],['reply','Cevap bekliyor','gm-rep'],
+              ['job','İş / başvuru','gm-job'],['info','Bilgi','gm-inf']];
+const GM_ARAMA='https://mail.google.com/mail/u/0/#search/';
+
+/* mail başlığındaki RFC tarihini "3 sa" gibi kısa yaşa çevirir */
+function mailAge(s){
+  const t=Date.parse(s||'');
+  if(!t||isNaN(t))return '';
+  const dk=Math.floor((Date.now()-t)/60000);
+  if(dk<60)return Math.max(dk,1)+' dk';
+  const sa=Math.floor(dk/60);
+  if(sa<24)return sa+' sa';
+  return Math.floor(sa/24)+' gün';
+}
+
+function gmItem(it,renk){
+  const tid=it.thread_id||it.id||'';
+  const done=gmailDone.indexOf(tid)>-1;
+  /* Taslak yalnızca: cevap bekliyorsa (konuşmanın son mesajı senden DEĞİLSE),
+     model "cevap gerekiyor" dediyse ve sen tikle kapatmadıysan gösterilir. */
+  const showDraft=!done && it.awaiting_reply!==false && it.draft;
+  const acil=it.bucket==='action' && !done;
+  let box='';
+  if(!done && (it.summary||showDraft)){
+    box='<div class="dr-box">'+
+      (it.summary?'<div class="dr-sum">'+esc(it.summary)+'</div>':'')+
+      (showDraft?'<div class="dr-tag">Önerilen cevap</div><div class="dr-txt" id="drt-'+esc(tid)+'">'+esc(it.draft)+'</div>':'')+
+      '</div>';
+  }
+  const rozet=[];
+  if(it.why)rozet.push('<span class="gm-why '+renk+'">'+esc(it.why)+'</span>');
+  if((it.dupes||1)>1)rozet.push('<span class="gm-dup">×'+it.dupes+'</span>');
+  const yas=mailAge(it.date);
+  return '<div class="app-item gm-item'+(acil?' gm-hot':'')+(done?' dr-done':'')+'">'+
+    '<div class="app-top"><span class="app-co">'+esc(it.from||it.email||'—')+'</span>'+
+    '<span style="display:flex;gap:6px;align-items:center">'+rozet.join('')+'</span></div>'+
+    '<div class="app-sub"><span>'+esc(it.subject||'(konu yok)')+'</span><span>'+esc(yas)+'</span></div>'+
+    (it.i_replied_before?'<div class="app-sub" style="margin-top:2px"><span>daha önce yazışmışsınız</span></div>':'')+
+    box+
+    '<div class="dr-act">'+
+      (showDraft?'<button class="ibtn" data-drcopy="'+esc(tid)+'">Kopyala</button>':'')+
+      (tid?'<a class="ibtn" style="text-decoration:none" target="_blank" rel="noopener" href="https://mail.google.com/mail/u/0/#all/'+encodeURIComponent(tid)+'">Gmail\'de aç</a>':'')+
+      '<button class="ibtn" data-drdone="'+esc(tid)+'">'+(done?'Geri al':'Hallettim ✓')+'</button>'+
+    '</div></div>';
+}
+
 function renderGmail(d){
   const statsEl=document.getElementById('gmailStats');
   const listEl=document.getElementById('gmailList');
@@ -1293,33 +1353,42 @@ function renderGmail(d){
     listEl.innerHTML='';
     return;
   }
+  /* Eski gmail.json'da counts yok (feed henüz yeni sürümle çalışmadı):
+     items'tan türet ki kart bir tur boyunca boş kalmasın. */
+  const items=d.items||[];
+  const c=d.counts||items.reduce((a,it)=>{const b=it.bucket||'reply';a[b]=(a[b]||0)+1;return a;},{});
+  const gun=d.window_days||7;
   statsEl.innerHTML=
-    '<div class="stat"><div class="stat-n">'+(d.total_unread||0)+'</div><div class="stat-l">Primary · '+(d.window_days||3)+'g</div></div>'+
-    '<div class="stat"><div class="stat-n">'+(d.important_unread||0)+'</div><div class="stat-l">Önemli/Kişisel</div></div>';
-  const items=(d.items||[]).slice(0,5);
-  if(!items.length){listEl.innerHTML='<div class="empty">Cevap bekleyen önemli mail yok.</div>';return;}
-  listEl.innerHTML=items.map(it=>{
-    const tid=it.thread_id||it.id||'';
-    const done=gmailDone.indexOf(tid)>-1;
-    /* Taslak yalnızca: cevap bekliyorsa (konuşmanın son mesajı senden DEĞİLSE),
-       model "cevap gerekiyor" dediyse ve sen tikle kapatmadıysan gösterilir. */
-    const showDraft=!done && it.awaiting_reply!==false && it.draft;
-    let box='';
-    if(!done && (it.summary||showDraft)){
-      box='<div class="dr-box">'+
-        (it.summary?'<div class="dr-sum">'+esc(it.summary)+'</div>':'')+
-        (showDraft?'<div class="dr-tag">Önerilen cevap</div><div class="dr-txt" id="drt-'+esc(tid)+'">'+esc(it.draft)+'</div>':'')+
-        '<div class="dr-act">'+
-          (showDraft?'<button class="ibtn" data-drcopy="'+esc(tid)+'">Kopyala</button>':'')+
-          (tid?'<a class="ibtn" style="text-decoration:none" target="_blank" rel="noopener" href="https://mail.google.com/mail/u/0/#all/'+encodeURIComponent(tid)+'">Gmail\'de aç</a>':'')+
-          '<button class="ibtn" data-drdone="'+esc(tid)+'">Hallettim ✓</button>'+
-        '</div></div>';
-    }
-    return '<div class="app-item'+(done?' dr-done':'')+'"><div class="app-top"><span class="app-co">'+esc(it.from||it.email||'—')+'</span>'+
-      (it.i_replied_before?'<span class="app-sub" style="margin:0">daha önce yazışmışsınız</span>':'')+'</div>'+
-      '<div class="app-sub"><span>'+esc(it.subject||'(konu yok)')+'</span><span>'+esc((it.date||'').slice(0,22))+'</span></div>'+
-      box+'</div>';
-  }).join('');
+    '<div class="stat"><div class="stat-n" style="color:'+((c.action||0)?'var(--down)':'inherit')+'">'+(c.action||0)+'</div><div class="stat-l">Aksiyon</div></div>'+
+    '<div class="stat"><div class="stat-n">'+(c.reply||0)+'</div><div class="stat-l">Cevap</div></div>'+
+    '<div class="stat"><div class="stat-n">'+(c.job||0)+'</div><div class="stat-l">İş</div></div>'+
+    '<div class="stat"><div class="stat-n">'+(c.bulk||0)+'</div><div class="stat-l">Bülten</div></div>';
+
+  let html='';
+  GM_SEC.forEach(([kova,baslik,renk])=>{
+    const grup=items.filter(it=>(it.bucket||'reply')===kova);
+    if(!grup.length)return;
+    html+='<div class="gm-sec"><span class="gm-sec-t">'+baslik+'</span><span class="gm-sec-l"></span>'+
+          '<span class="gm-sec-t">'+grup.length+'</span></div>'+
+          grup.map(it=>gmItem(it,renk)).join('');
+  });
+  if(!html){
+    html='<div class="empty">'+((c.bulk||0)
+      ? 'Senden bir şey bekleyen mail yok — kalan '+c.bulk+' mail bülten.'
+      : 'Gelen kutusu temiz.')+'</div>';
+  }
+  /* Bülten yığını: tek satır özet. Amaç okumak değil, "arkada ne birikti"yi
+     görüp gerekirse Gmail'de toplu temizlemek. */
+  if(c.bulk){
+    const kimler=(d.bulk_top||[]).map(x=>esc(x[0])+' '+x[1]).join(' · ');
+    const q=encodeURIComponent('is:unread in:inbox category:primary newer_than:'+gun+'d');
+    html+='<div class="gm-bulk">'+c.bulk+' bülten sessizde'+(kimler?' — '+kimler:'')+
+      ' · <a target="_blank" rel="noopener" href="'+GM_ARAMA+q+'">Gmail\'de aç</a></div>';
+  }
+  if((c.reply||0)>0 && d.draft_note && d.draft_note.indexOf('ANTHROPIC_API_KEY')>-1){
+    html+='<div class="gm-note">cevap taslağı kapalı · ANTHROPIC_API_KEY tanımlı değil</div>';
+  }
+  listEl.innerHTML=html;
 
   listEl.querySelectorAll('[data-drcopy]').forEach(b=>b.onclick=()=>{
     const el=document.getElementById('drt-'+b.dataset.drcopy);
@@ -1330,7 +1399,8 @@ function renderGmail(d){
   });
   listEl.querySelectorAll('[data-drdone]').forEach(b=>b.onclick=async()=>{
     const tid=b.dataset.drdone;
-    if(gmailDone.indexOf(tid)===-1)gmailDone.push(tid);
+    const i=gmailDone.indexOf(tid);
+    if(i>-1)gmailDone.splice(i,1); else gmailDone.push(tid);
     gmailDone=gmailDone.slice(-200);            // listeyi sınırsız büyütme
     await sSet(K.gmailDone,gmailDone);
     renderGmail(d);
