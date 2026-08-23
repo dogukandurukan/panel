@@ -1,0 +1,34 @@
+name: push-yoklama
+on:
+  # Saatler Türkiye'ye göre; cron UTC olduğu için 3 saat geri yazıldı.
+  # Yoklama dilimlerinin başlangıç saatleri (index.html SLOTS + YOK tablosu):
+  schedule:
+    - cron: '0 5 * * *'      # 08:00 TR — sabah rutini / kürek
+    - cron: '30 5 * * *'     # 08:30 TR — kürek (Perşembe)
+    - cron: '0 6 * * 0,6'    # 09:00 TR — koşu / bisiklet (hafta sonu)
+    - cron: '15 9 * * *'     # 12:15 TR — antrenman
+    - cron: '45 10 * * 6'    # 13:45 TR — antrenman + yemek (Cumartesi)
+    - cron: '30 15 * * *'    # 18:30 TR — gitar / DJ
+    - cron: '0 17 * * 4'     # 20:00 TR — basket / tenis (Perşembe)
+    - cron: '30 18 * * *'    # 21:30 TR — kişisel proje
+    - cron: '0 20 * * *'     # 23:00 TR — yatış
+    - cron: '30 20 * * *'    # 23:30 TR — kitap
+  workflow_dispatch:          # elle deneme
+jobs:
+  gonder:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      # pywebpush KASITEN ortak requirements.txt'te değil: bir alt bağımlılığı
+      # (http-ece) bazı ortamlarda derlenmiyor ve bu iş akışı çökerse diğer
+      # feed'ler (gmail, borsa, jobs, facts) etkilenmemeli.
+      - run: pip install requests pywebpush
+      - run: python push_feed.py
+        env:
+          # Gists okuma izinli token — abonelik gizli gist'te duruyor
+          PANEL_GIST_TOKEN: ${{ secrets.PANEL_GIST_TOKEN }}
+          # Panelin kurulum sırasında bir kez gösterdiği VAPID gizli anahtarı
+          VAPID_PRIVATE: ${{ secrets.VAPID_PRIVATE }}

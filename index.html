@@ -172,6 +172,17 @@
   .ss-alt .ibtn{padding:7px 11px;}
   .ss-ozet{font-size:13.5px;line-height:1.6;}
   .ss-ozet b{font-family:var(--serif);font-size:18px;display:block;margin-bottom:4px;}
+  /* Telefon bildirimi kurulumu */
+  .pw{margin-top:12px;padding-top:10px;border-top:1px dotted var(--line2);}
+  .pw-bas{font-family:var(--mono);font-size:9px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);}
+  .pw-mesaj{font-size:12.5px;line-height:1.55;color:var(--muted);margin-top:6px;}
+  .pw-mesaj b{color:var(--ink);}
+  .pw-ad{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px;}
+  .pw-key{margin-top:9px;background:var(--paper);border:1px solid var(--line);border-radius:5px;padding:9px 10px;
+    font-family:var(--mono);font-size:11px;word-break:break-all;line-height:1.5;color:var(--ink);}
+  .pw-adim{font-size:12.5px;line-height:1.7;margin-top:9px;padding-left:17px;}
+  .pw-adim li{margin-bottom:3px;}
+  .pw-ok{color:var(--up);} .pw-uyari{color:var(--down);}
   .de{padding:9px 0;border-bottom:1px dotted var(--line2);} .de:last-child{border-bottom:none;}
   .de-word{font-family:var(--serif);font-weight:600;font-size:18px;} .de-tr{color:var(--muted);font-size:13.5px;} .de-ex{font-size:12.5px;margin-top:3px;font-style:italic;opacity:.82;}
   .gram-head{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);border-top:1px solid var(--line2);padding-top:11px;margin-top:12px;margin-bottom:5px;}
@@ -897,7 +908,173 @@ const yokSlotlari=()=>SCHED[dow].map((is,i)=>YOK[is]?i:-1).filter(i=>i>-1);
    İki kart aynı gerçeği göstersin, kullanıcı iki yerde işaretlemek zorunda kalmasın. */
 const yokCevap=i=>yok[i]||(schedDone[i]?{a:'ok',t:''}:null);
 
-async function loadYok(){yok=await sGet('d:yok:'+todayKey())||{};renderYok();}
+async function loadYok(){yok=await sGet('d:yok:'+todayKey())||{};pushCfg=await sGet('d:push')||null;renderYok();}
+
+/* ===== TELEFON BİLDİRİMİ (Web Push) =====
+   Tarayıcı bildirimi yalnızca panel açıkken çalışıyordu. Gerçek bildirim için
+   üç parça gerekiyor: kapalıyken de dinleyen bir service worker (sw.js), bir
+   VAPID anahtar çifti ve mesajı gönderen bir sunucu (burada GitHub Actions).
+
+   ANAHTAR: tarayıcıda WebCrypto ile üretilir. Açık anahtar panelde durur ve
+   abonelik onunla kurulur; GİZLİ anahtar hiçbir yere kaydedilmez, bir kez
+   ekranda gösterilip kullanıcının GitHub secret'ına yapıştırması istenir.
+   Panel onu saklasaydı public repoya senkronlanma riski doğardı.
+
+   ABONELİK: repoya DEĞİL, senkronun kullandığı gizli gist'e yazılır. Repo
+   herkese açık; abonelik uç noktası cihazı tanımlayan kalıcı bir adres.
+
+   Bu yüzden push, senkron kurulu değilken kurulamaz — yazacak yeri yok. */
+const PUSH_FILE='panel-push.json';
+let pushCfg=null,pushDurum='',pushGizli='';
+
+const b64url=buf=>btoa(String.fromCharCode.apply(null,new Uint8Array(buf)))
+  .replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+function b64urlToBytes(s){
+  const p=(s+'==='.slice((s.length+3)%4)).replace(/-/g,'+').replace(/_/g,'/');
+  const bin=atob(p),out=new Uint8Array(bin.length);
+  for(let i=0;i<bin.length;i++)out[i]=bin.charCodeAt(i);
+  return out;
+}
+
+/* Gönderici hangi saatte neyi soracağını bilmeli. Programı Python tarafına
+   kopyalamak iki gerçek yaratırdı; onun yerine panel kendi tablosundan üretip
+   gist'e yazıyor — tek kaynak index.html'de kalıyor. */
+function yokPlanUret(){
+  const p={};
+  /* [saat, iş adı, dilim no] — dilim no şart: gönderici "bu zaten işaretlenmiş"
+     kontrolünü d:yok / d:sched kayıtlarında bu numarayla yapıyor. */
+  for(let d=0;d<7;d++)p[d]=(SCHED[d]||[]).map((is,i)=>YOK[is]?[SLOTS[i][0],is,i]:null).filter(Boolean);
+  return p;
+}
+
+async function pushAnahtarUret(){
+  const pair=await crypto.subtle.generateKey({name:'ECDSA',namedCurve:'P-256'},true,['sign','verify']);
+  const acik=b64url(await crypto.subtle.exportKey('raw',pair.publicKey));
+  const jwk=await crypto.subtle.exportKey('jwk',pair.privateKey);
+  return {acik:acik,gizli:jwk.d};      // jwk.d = 32 baytlık gizli skaler, base64url
+}
+
+/* Gist'teki push dosyasını oku-birleştir-yaz. Birden fazla cihaz olabilir;
+   uç noktaya göre tekilleştirilir. */
+async function pushGisteYaz(sub,acikAnahtar){
+  if(!syncCfg||!syncCfg.token||!syncCfg.gistId)throw new Error('önce senkronu kur');
+  let mevcut={subs:[]};
+  try{
+    const g=await ghApi('/gists/'+syncCfg.gistId);
+    const f=g.files&&g.files[PUSH_FILE];
+    if(f&&f.content)mevcut=JSON.parse(f.content);
+  }catch(e){}
+  const subs=(mevcut.subs||[]).filter(x=>x&&x.endpoint!==sub.endpoint);
+  subs.push({
+    endpoint:sub.endpoint,
+    keys:{p256dh:b64url(sub.getKey('p256dh')),auth:b64url(sub.getKey('auth'))},
+    cihaz:(navigator.userAgent.match(/iPhone|iPad|Android|Macintosh|Windows/)||['bilinmeyen'])[0],
+    eklendi:new Date().toISOString().slice(0,16)
+  });
+  const govde={files:{}};
+  govde.files[PUSH_FILE]={content:JSON.stringify(
+    {v:1,vapidPublic:acikAnahtar,updated:Date.now(),plan:yokPlanUret(),subs:subs},null,1)};
+  await ghApi('/gists/'+syncCfg.gistId,{method:'PATCH',body:JSON.stringify(govde)});
+  return subs.length;
+}
+
+async function pushKur(){
+  try{
+    pushDurum='Bildirim izni isteniyor…';renderYok();
+    const izin=await Notification.requestPermission();
+    if(izin!=='granted'){pushDurum='İzin verilmedi. Tarayıcı ayarlarından bu siteye bildirim izni vermen gerekiyor.';renderYok();return;}
+
+    pushDurum='Service worker kaydediliyor…';renderYok();
+    const reg=await navigator.serviceWorker.register('sw.js');
+    await navigator.serviceWorker.ready;
+
+    /* Anahtar bir kez üretilir. Yeniden üretmek eski abonelikleri geçersiz
+       kılar, o yüzden zaten varsa dokunulmaz. */
+    if(!pushCfg||!pushCfg.vapidPublic){
+      pushDurum='Anahtar üretiliyor…';renderYok();
+      const a=await pushAnahtarUret();
+      pushCfg={vapidPublic:a.acik};pushGizli=a.gizli;
+      await sSet('d:push',pushCfg);
+    }
+
+    pushDurum='Abone olunuyor…';renderYok();
+    let sub=await reg.pushManager.getSubscription();
+    if(sub&&sub.options&&sub.options.applicationServerKey){
+      const mevcutAcik=b64url(sub.options.applicationServerKey);
+      if(mevcutAcik!==pushCfg.vapidPublic){await sub.unsubscribe();sub=null;}
+    }
+    if(!sub){
+      sub=await reg.pushManager.subscribe({
+        userVisibleOnly:true,
+        applicationServerKey:b64urlToBytes(pushCfg.vapidPublic)
+      });
+    }
+
+    pushDurum='Gist\'e yazılıyor…';renderYok();
+    const adet=await pushGisteYaz(sub,pushCfg.vapidPublic);
+    pushCfg.kuruldu=true;pushCfg.cihaz=adet;await sSet('d:push',pushCfg);
+    pushDurum='';renderYok();
+  }catch(e){
+    pushDurum='Kurulamadı: '+(e&&e.message?e.message:e);renderYok();
+  }
+}
+
+async function pushKaldir(){
+  try{
+    const reg=await navigator.serviceWorker.getRegistration();
+    const sub=reg&&await reg.pushManager.getSubscription();
+    if(sub){
+      await sub.unsubscribe();
+      if(syncCfg&&syncCfg.gistId){
+        const g=await ghApi('/gists/'+syncCfg.gistId);
+        const f=g.files&&g.files[PUSH_FILE];
+        if(f&&f.content){
+          const d=JSON.parse(f.content);
+          d.subs=(d.subs||[]).filter(x=>x.endpoint!==sub.endpoint);
+          const govde={files:{}};govde.files[PUSH_FILE]={content:JSON.stringify(d,null,1)};
+          await ghApi('/gists/'+syncCfg.gistId,{method:'PATCH',body:JSON.stringify(govde)});
+        }
+      }
+    }
+    pushCfg=Object.assign({},pushCfg,{kuruldu:false});await sSet('d:push',pushCfg);
+    pushDurum='Bu cihaz bildirim listesinden çıkarıldı.';renderYok();
+  }catch(e){pushDurum='Kaldırılamadı: '+e.message;renderYok();}
+}
+
+/* Kartın alt kısmı: durumu ve yapılacak adımı gösterir. */
+function pushHTML(){
+  const destek=('serviceWorker' in navigator)&&('PushManager' in window)&&('Notification' in window);
+  if(!destek)return '<div class="pw"><div class="pw-bas">Telefon bildirimi</div>'+
+    '<div class="pw-mesaj">Bu tarayıcı web push desteklemiyor. iPhone\'da çalışması için paneli '+
+    '<b>Ana Ekrana Ekle</b> ile kurup oradan açman gerekiyor.</div></div>';
+
+  let h='<div class="pw"><div class="pw-bas">Telefon bildirimi</div>';
+  if(pushDurum)h+='<div class="pw-mesaj'+(pushDurum.indexOf('Kurulamadı')===0||pushDurum.indexOf('Kaldırılamadı')===0?' pw-uyari':'')+'">'+esc(pushDurum)+'</div>';
+
+  if(!syncCfg||!syncCfg.token||!syncCfg.gistId){
+    h+='<div class="pw-mesaj">Önce <b>⇅ Senkron</b> kurulmalı: abonelik bilgisi repoya değil, senkronun kullandığı gizli gist\'e yazılıyor. Repo herkese açık.</div></div>';
+    return h;
+  }
+  /* Gizli anahtar yalnızca üretildiği anda, bir kez gösterilir. */
+  if(pushGizli){
+    h+='<div class="pw-mesaj pw-uyari"><b>Gizli anahtarı şimdi kopyala.</b> Bir daha gösterilmeyecek ve panel onu saklamıyor.</div>'+
+      '<div class="pw-key" id="pwKey">'+esc(pushGizli)+'</div>'+
+      '<ol class="pw-adim"><li>Kopyala</li><li>GitHub → panel deposu → Settings → Secrets and variables → Actions</li>'+
+      '<li>New repository secret, ad: <b>VAPID_PRIVATE</b>, değer: kopyaladığın metin</li></ol>'+
+      '<div class="pw-ad"><button class="ibtn" id="pwKopya">Kopyala</button>'+
+      '<button class="ibtn" id="pwTamam">Secret\'ı ekledim</button></div></div>';
+    return h;
+  }
+  if(pushCfg&&pushCfg.kuruldu){
+    h+='<div class="pw-mesaj pw-ok">Bu cihaz bildirim listesinde'+(pushCfg.cihaz>1?' ('+pushCfg.cihaz+' cihaz kayıtlı)':'')+'.</div>'+
+      '<div class="pw-ad"><button class="ibtn" id="pwKaldir">Bu cihazı çıkar</button></div></div>';
+    return h;
+  }
+  h+='<div class="pw-mesaj">Panel kapalıyken de yoklama saatinde telefonuna bildirim gelsin.'+
+    (pushCfg&&pushCfg.vapidPublic?'':' Kurulumda bir kez gizli anahtar üretilecek ve GitHub secret\'ına eklemen istenecek.')+'</div>'+
+    '<div class="pw-ad"><button class="ibtn" id="pwKur">Telefon bildirimini kur</button></div></div>';
+  return h;
+}
 async function yokKaydet(){await sSet('d:yok:'+todayKey(),yok);}
 
 async function yokCevapla(i,a){
@@ -981,16 +1158,17 @@ function renderYok(){
       'hareket, set, ağırlık, nasıl geçti">'+
       esc((yok[notlanabilir]&&yok[notlanabilir].n)||'')+'</textarea>';
   }
-  if('Notification' in window && Notification.permission!=='granted'){
-    html+='<div class="yok-bildir"><button class="ibtn" id="yokIzin">Bildirimleri aç</button> · yalnızca panel açıkken çalışır</div>';
-  }
+  html+=pushHTML();
   el.innerHTML=html;
 
   el.querySelectorAll('[data-yok]').forEach(b=>b.onclick=()=>yokCevapla(+b.dataset.i,b.dataset.yok));
   const nt=document.getElementById('yokNot');
   if(nt)nt.oninput=()=>{const i=+nt.dataset.i;yok[i]=Object.assign({},yok[i],{n:nt.value});yokKaydet();};
-  const iz=document.getElementById('yokIzin');
-  if(iz)iz.onclick=()=>Notification.requestPermission().then(()=>renderYok());
+  const b=(id,fn)=>{const x=document.getElementById(id);if(x)x.onclick=fn;};
+  b('pwKur',pushKur); b('pwKaldir',pushKaldir);
+  b('pwTamam',()=>{pushGizli='';pushDurum='';renderYok();});
+  b('pwKopya',()=>{const k=document.getElementById('pwKey');if(!k)return;
+    navigator.clipboard.writeText(k.textContent).then(()=>{pushDurum='Kopyalandı.';renderYok();}).catch(()=>{});});
 }
 async function loadSched(){schedDone=await sGet('d:sched:'+todayKey())||{};renderSched();}
 function renderSched(){
