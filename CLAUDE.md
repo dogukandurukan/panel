@@ -20,7 +20,13 @@ https://dogukandurukan.github.io/panel/
    değişkenlerinde; HUD `html[data-theme="hud"]` altında izole. Yeni kart
    eklerken iki temada da kontrol et. `prefers-reduced-motion` yeni
    animasyonları da kapsamalı.
-5. **LinkedIn otomasyonu yok.** Bireysel iş arama API'si yok ve otomatik erişim
+5. **Gelen kutusunda aksiyon = insan maili.** Bir maili "aksiyon bekliyor"
+   diye öne çıkarmanın tek ölçütü, onu gerçek bir insanın yazmış olmasıdır.
+   Otomatik gönderim ne kadar acil dille yazılırsa yazılsın ("hesabınız
+   kapanacak", "gecikmiş ödemeniz var") kartta alarm üretmez: cevap yazılacak
+   bir muhatabı yoktur, yapılacak iş varsa o iş ilgili uygulamada yapılır.
+   Bunlar "Otomatik bildirim" bölümünde nötr etiketle durur.
+6. **LinkedIn otomasyonu yok.** Bireysel iş arama API'si yok ve otomatik erişim
    Kullanıcı Sözleşmesi'ne aykırı. Panel yalnızca ilana bağlantı verir.
 
 ## Veri akışı
