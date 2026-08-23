@@ -1,93 +1,97 @@
 {
- "updated": "2026-08-22 08:24",
+ "updated": "2026-08-23 08:27",
  "ok": true,
  "count": 3,
- "pool": 20,
+ "pool": 21,
  "items": [
   {
-   "title": "Senior Data Engineer",
-   "company": "Lemon.io",
-   "location": "Remote",
-   "loc_raw": "LATAM, Europe, USA, Canada, APAC",
-   "remote": true,
-   "url": "https://remotive.com/remote-jobs/software-development/senior-data-engineer-2091097",
-   "source": "Remotive",
-   "posted": "2026-08-19T12:12:11",
-   "days": 2,
-   "skills": [
-    "python",
-    "sql",
-    "databricks",
-    "azure",
-    "airflow",
-    "dbt"
-   ],
-   "german": false,
-   "focus": "ml",
-   "summary": "Are you a talented Senior Data Engineer looking for a remote job that lets you show your skills and get decent compensation? Look no further than Lemon.io — the marketplace that connects you with hand-picked startups in the US and Europe. What we offer: The ra",
-   "keywords": [
-    "startup",
-    "automation"
-   ],
-   "score": 97
-  },
-  {
-   "title": "Senior Data Analyst (m/f/d)",
-   "company": "Westwing Group SE",
-   "location": "Almanya",
-   "loc_raw": "Munich Office",
+   "title": "Senior AI Engineer (m/f/d)",
+   "company": "Artefact",
+   "location": "Berlin",
+   "loc_raw": "Berlin, Berlin; Hamburg, Hamburg; München, Bavaria",
    "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/westwing-group-se/senior-data-analyst-munich-office-472692",
+   "url": "https://www.arbeitnow.com/jobs/companies/artefact/senior-ai-engineer-berlin-berlin-hamburg-hamburg-munchen-bavaria-74951",
    "source": "Arbeitnow",
-   "posted": "2026-08-21",
+   "posted": "2026-08-22",
    "days": 1,
    "skills": [
     "python",
-    "sql",
-    "spark",
-    "snowflake",
+    "azure",
+    "ci/cd",
     "llm"
    ],
    "german": false,
-   "focus": "business",
-   "summary": "JOIN OUR TEAM As a Senior Data Analyst within the Marketing Analytics team, you will play a pivotal role in helping the marketing leadership team and marketing departments make better data-driven decisions. You will own several important data products (dashboa",
+   "focus": "ml",
+   "summary": "Artefact , a global AI and data consulting company with rapid growth, is looking for a creative and tech-savvy Senior AI Engineer (m/f/d) to join the tech team full-time. Ideally, you are located in Hamburg, Munich, Berlin or nearby - but if you're based elsew",
    "keywords": [
-    "dashboard",
+    "scalab",
+    "optimization",
     "stakeholder",
-    "optimisation"
+    "automation",
+    "pipeline"
    ],
-   "score": 86
+   "score": 100
   },
   {
-   "title": "DevOps/ML Engineer (m/f/d)",
-   "company": "Machine Learning Reply",
-   "location": "Almanya",
-   "loc_raw": "Munich, Bayern, Germany",
+   "title": "Product Data Analyst (m/f/d) - Berlin",
+   "company": "freenow",
+   "location": "Berlin",
+   "loc_raw": "Berlin",
    "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/machine-learning-reply/devops-ml-engineer-munich-201312",
+   "url": "https://www.arbeitnow.com/jobs/companies/freenow/product-data-analyst-berlin-56919",
    "source": "Arbeitnow",
-   "posted": "2026-08-21",
+   "posted": "2026-08-22",
    "days": 1,
    "skills": [
     "python",
     "sql",
-    "spark",
-    "databricks",
-    "azure",
-    "airflow"
+    "tableau",
+    "etl",
+    "a/b test"
+   ],
+   "german": false,
+   "focus": "business",
+   "summary": "Location : We are flexible! Come and join us either in Hamburg, Berlin or Barcelona. Freenow empowers smarter mobility decisions helping people to move freely and cities to thrive. We are looking for a Product Data Analyst (m/f/d) to collaborate with our produ",
+   "keywords": [
+    "stakeholder",
+    "a/b",
+    "dashboard"
+   ],
+   "score": 94
+  },
+  {
+   "title": "Senior Data Scientist (m/f/x)",
+   "company": "Makersite GmbH",
+   "location": "Remote",
+   "loc_raw": "Remote job",
+   "remote": true,
+   "url": "https://www.arbeitnow.com/jobs/companies/makersite-gmbh/remote-senior-data-scientist-berlin-309145",
+   "source": "Arbeitnow",
+   "posted": "2026-08-22",
+   "days": 1,
+   "skills": [
+    "python",
+    "ci/cd",
+    "git",
+    "llm"
    ],
    "german": false,
    "focus": "ml",
-   "summary": "At Machine Learning Reply, we work with our customers on cutting-edge projects for which we are looking for DevOps and ML Engineers to support our customer projects around machine learning and data processing across various industries. To expand our team, we a",
+   "summary": "Data Scientist (m/f/x) Location: EU (Remote) Who You’ll Work For : At Makersite, we're pioneering the future of sustainable product development and digital collaboration. As a leading platform for product lifecycle management (PLM), we empower companies to mak",
    "keywords": [
-    "stakeholder",
-    "enterprise",
-    "retail"
+    "supply chain",
+    "scalab",
+    "cost",
+    "pipeline",
+    "experimentation"
    ],
-   "score": 80
+   "score": 90
   }
  ],
  "seen": [
+  "https://www.arbeitnow.com/jobs/companies/artefact/senior-ai-engineer-berlin-berlin-hamburg-hamburg-munchen-bavaria-74951",
+  "https://www.arbeitnow.com/jobs/companies/freenow/product-data-analyst-berlin-56919",
+  "https://www.arbeitnow.com/jobs/companies/makersite-gmbh/remote-senior-data-scientist-berlin-309145",
   "https://remotive.com/remote-jobs/software-development/senior-data-engineer-2091097",
   "https://www.arbeitnow.com/jobs/companies/westwing-group-se/senior-data-analyst-munich-office-472692",
   "https://www.arbeitnow.com/jobs/companies/machine-learning-reply/devops-ml-engineer-munich-201312",
