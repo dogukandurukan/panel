@@ -1,1037 +1,25 @@
 {
- "updated": "2026-08-23 17:19",
+ "updated": "2026-08-23 17:55",
  "ok": true,
- "count": 199,
- "requested": 214,
- "items": [
-  {
-   "text": "Dunning-Kruger etkisi, bir görevde düşük yeterliliğe sahip kişilerin yeterliliklerini abarttığı bilişsel bir önyargı varsayımıdır. Varsayım, birçok insanın adaletli dünya kuramlarıyla uyumludur ancak matematiksel çözümleme ve kültürler arası karşılaştırmalar tarafından itirazlarla karşı karşıya kalır.",
-   "title": "Dunning-Kruger etkisi",
-   "url": "https://tr.wikipedia.org/wiki/Dunning-Kruger_etkisi"
-  },
-  {
-   "text": "Plasebo etkisi, farmakolojik olarak etkisiz bir ilacın telkine dayalı bir etki ortaya çıkarma halidir. Latince kökenli bir kelime olup hoşnut etmek anlamına gelir.",
-   "title": "Plasebo etkisi",
-   "url": "https://tr.wikipedia.org/wiki/Plasebo_etkisi"
-  },
-  {
-   "text": "Nosebo etkisi, hastanın, ilacın kendisine yan etkiler getireceğine inanması nedeniyle, farmakolojik olarak etkisiz bir ilaç verilse bile hastada hastanın beklediği bazı yan etkilerin görülmesi durumudur.",
-   "title": "Nosebo etkisi",
-   "url": "https://tr.wikipedia.org/wiki/Nosebo_etkisi"
-  },
-  {
-   "text": "Stockholm sendromu, mağdurun kendisine zarar veren, rehin alan ya da istismarda bulunan kişiye karşı zamanla güven, yakınlık veya duygusal bağlılık geliştirmesi olarak tanımlanan bir psikolojik savunma tepkisidir.",
-   "title": "Stockholm sendromu",
-   "url": "https://tr.wikipedia.org/wiki/Stockholm_sendromu"
-  },
-  {
-   "text": "Sinestezi veya duyum ikiliği, kişilerde herhangi bir duyunun uyarımı otomatik olarak başka bir duyu algısını tetiklemektedir.",
-   "title": "Sinestezi",
-   "url": "https://tr.wikipedia.org/wiki/Sinestezi"
-  },
-  {
-   "text": "Déjà vu, yaşanılan bir olayı daha önceden yaşamışlık veya görülen bir yeri daha önceden görmüş olma duygusu. Anı daha önceden yaşamışlık hâlidir. Fransızca; déjà ve voir (görmek) kelimelerinden oluşmaktadır.",
-   "title": "Déjà vu",
-   "url": "https://tr.wikipedia.org/wiki/D%C3%A9j%C3%A0_vu"
-  },
-  {
-   "text": "Pareidolia, kişinin karşılaştığı bir duyumu, bildiği bir nesne, örüntü ya da anlam olarak yanlış algılamasıdır. Bulutları nesnelere benzetmek, cansız nesneleri ya da soyut görüntüleri insan yüzüne benzetmek ve müzik dinlerken olmayan bir kelime duymak yaygın pareidolia örnekleridir.",
-   "title": "Pareidolia",
-   "url": "https://tr.wikipedia.org/wiki/Pareidolia",
-   "via_search": "Pareidoli"
-  },
-  {
-   "text": "Estetik olarak, tekinsiz vadi bir nesnenin insan benzerliği derecesi ile nesneye duyulan duygusal tepki arasındaki hipoteze dayalı bir ilişki olarak kabul edilir.",
-   "title": "Tekinsiz vadi",
-   "url": "https://tr.wikipedia.org/wiki/Tekinsiz_vadi"
-  },
-  {
-   "text": "Doğrulama yanlılığı ya da teyit yanlılığı, kişilerin kendi inançlarını, düşüncelerini ve varsayımlarını destekleyen ya da teyit eden bilgileri kayırma, dikkate alma ve öne çıkarma eğilimidir.",
-   "title": "Doğrulama yanlılığı",
-   "url": "https://tr.wikipedia.org/wiki/Do%C4%9Frulama_yanl%C4%B1l%C4%B1%C4%9F%C4%B1"
-  },
-  {
-   "text": "Seyirci etkisi, yardıma ihtiyaç duyulan bir durumda, çevrede olaya tanıklık eden kişi sayısı ne kadar fazla ise, müdahale eden kişi sayısının o oranda düştüğünü belirten psikolojik terim.",
-   "title": "Seyirci etkisi",
-   "url": "https://tr.wikipedia.org/wiki/Seyirci_etkisi"
-  },
-  {
-   "text": "Zeigarnik etkisi; kişilerin tamamlanmamış veya bölünmüş-yarıda kesilmiş etkinlikleri, tamamlananlara göre daha kolay hatırladığını ifade eden psikolojik bir kavram.",
-   "title": "Zeigarnik etkisi",
-   "url": "https://tr.wikipedia.org/wiki/Zeigarnik_etkisi"
-  },
-  {
-   "text": "Kelebek etkisi bir sistemin başlangıç verilerindeki küçük değişikliklerin büyük ve öngörülemez sonuçlar doğurabilmesine verilen addır. Edward N. Lorenz'in çalışmalarından biri olan Kaos Teorisi ile ilgilidir.",
-   "title": "Kelebek etkisi",
-   "url": "https://tr.wikipedia.org/wiki/Kelebek_etkisi"
-  },
-  {
-   "text": "Sahte anı, bir insanın olmamış bir anıyı anımsamasıyla meydana gelen psikolojik bir olaydır. Sahte anı genelde, çocukluktaki cinsel istismarlar ile ilgili adli durumlarda göz önüne alınır.",
-   "title": "Sahte anı",
-   "url": "https://tr.wikipedia.org/wiki/Sahte_an%C4%B1"
-  },
-  {
-   "text": "Hayalet uzuv veya Fantom organ, kesilen bir vücut parçasının sanki yerindeymiş gibi hissedilmesidir. Genellikle karıncalanma, yanma, kaşıntı şeklinde kendini gösterir.",
-   "title": "Hayalet uzuv",
-   "url": "https://tr.wikipedia.org/wiki/Hayalet_uzuv"
-  },
-  {
-   "text": "Loci Yöntemi, hafıza sarayı veya zihin sarayı tekniği diye de geçer, Kadim Roma ve Yunan belâgat anlaşmalarında benimsenmiş bir nimonik cihazdır. Basitçe, bilgi organize etmek ve hatırlamak için görselleştirmeyi kullanan bir hafıza geliştirme metodu.",
-   "title": "Loci Metodu",
-   "url": "https://tr.wikipedia.org/wiki/Loci_Metodu",
-   "via_search": "Hafıza sarayı"
-  },
-  {
-   "text": "Uyku felci, uyandıktan hemen sonra veya seyrek olarak, uykuya dalmadan hemen önce, bedenin geçici olarak hareket edememesi ile karakterize edilen bir durumdur.",
-   "title": "Uyku felci",
-   "url": "https://tr.wikipedia.org/wiki/Uyku_felci"
-  },
-  {
-   "text": "Lüsid rüya veya berrak rüya, kişinin rüya gördüğü sırada, rüya gördüğünün farkında olması hâline ve rüya gördüğünün bilincinde olduğu bu tür rüyalara verilen addır.",
-   "title": "Lüsid rüya",
-   "url": "https://tr.wikipedia.org/wiki/L%C3%BCsid_r%C3%BCya",
-   "via_search": "Lucid rüya"
-  },
-  {
-   "text": "Ayna nöron, bir canlının herhangi bir hareketi kendisi yaptığında ve aynı hareketi yapan birini gözlemlediği durumların her ikisinde de ateşlenen nöronlar için kullanılan terimdir.",
-   "title": "Ayna nöron",
-   "url": "https://tr.wikipedia.org/wiki/Ayna_n%C3%B6ron"
-  },
-  {
-   "text": "Kara delik, kütleçekiminin hiçbir madde veya elektromanyetik enerjinin kaçamayacağı kadar güçlü olduğu bir uzay-zaman bölgesidir. Albert Einstein’ın genel görelilik teorisi, yeterince yoğun bir kütlenin uzay-zamanı bükerek bir kara delik oluşturabileceğini öngörmektedir.",
-   "title": "Kara delik",
-   "url": "https://tr.wikipedia.org/wiki/Kara_delik"
-  },
-  {
-   "text": "Solucan deliği, uzayzamandaki farklı noktaları birbirine bağlayan kurgusal bir yapıdır ve Einstein alan denklemlerinin özel bir çözümüne dayanır.",
-   "title": "Solucan deliği",
-   "url": "https://tr.wikipedia.org/wiki/Solucan_deli%C4%9Fi"
-  },
-  {
-   "text": "Kuantum dolanıklığı, bir parçacık grubu oluşturulduğunda, etkileşime girdiğinde veya uzamsal yakınlığı paylaştığında, grubun her bir parçacığının kuantum durumunun, parçacıkların büyük bir mesafe ile ayrıldığı durumlar da dahil olmak üzere, diğerlerinin durumundan bağımsız olarak tanımlanamayacak şekilde meydana gelen olgudur.",
-   "title": "Kuantum dolanıklığı",
-   "url": "https://tr.wikipedia.org/wiki/Kuantum_dolan%C4%B1kl%C4%B1%C4%9F%C4%B1"
-  },
-  {
-   "text": "Schrödinger'in kedisi, Avusturyalı fizikçi Erwin Schrödinger tarafından ortaya atılmış, kuantum fiziğiyle ilgili olan, hakkında çok tartışma yapılmış bir düşünce deneyidir.",
-   "title": "Schrödinger'in kedisi",
-   "url": "https://tr.wikipedia.org/wiki/Schr%C3%B6dinger'in_kedisi"
-  },
-  {
-   "text": "Fermi paradoksu, dünya dışı uygarlıkların var olma olasılığının gayet yüksek olduğuna dair tahminlerin varlığı ile bunu doğrulayacak herhangi bir kanıtın ya da temasın yokluğu arasındaki çelişkiyi ifade eder.",
-   "title": "Fermi paradoksu",
-   "url": "https://tr.wikipedia.org/wiki/Fermi_paradoksu"
-  },
-  {
-   "text": "Karanlık madde, astrofizikte, elektromanyetik dalgalarla etkileşime girmeyen, varlığı yalnız diğer maddeler üzerindeki kütleçekimsel etkisi ile belirlenebilen varsayımsal maddelere denir.",
-   "title": "Karanlık madde",
-   "url": "https://tr.wikipedia.org/wiki/Karanl%C4%B1k_madde"
-  },
-  {
-   "text": "Karanlık enerji, fiziksel evrenbilimde, astronomide, astrofizikte ve gök mekaniğinde, evreni sürekli genişlettiği ve galaksileri birbirlerinden uzaklaştırdığı varsayılan bir enerji türüdür.",
-   "title": "Karanlık enerji",
-   "url": "https://tr.wikipedia.org/wiki/Karanl%C4%B1k_enerji"
-  },
-  {
-   "text": "Nötron yıldızı, yıldızların yaşamlarının son bulabileceği biçimlerden biridir. Bir nötron yıldızı, dev bir yıldızın Tip II, Tip Ib veya Tip Ic süpernova olarak patladıktan sonra geri kalan kısmın kendi içine çökmesiyle oluşur.",
-   "title": "Nötron yıldızı",
-   "url": "https://tr.wikipedia.org/wiki/N%C3%B6tron_y%C4%B1ld%C4%B1z%C4%B1"
-  },
-  {
-   "text": "Genel görelilikte olay ufku, ışık ve maddenin artık kaçamadığı bölgeyi sınırlayan kuşağa denir. Olay ufku, herhangi bir fiziksel incelemede bulunamadığımız bir uzay parçasıdır.",
-   "title": "Olay ufku",
-   "url": "https://tr.wikipedia.org/wiki/Olay_ufku"
-  },
-  {
-   "text": "Büyük Patlama, evrenin en eski 13,8 milyar yıl önce tekillik noktası denilen bir noktadan itibaren genişlediğini varsayan evrenin evrimi kuramı ve geniş şekilde kabul gören kozmolojik modeldir.",
-   "title": "Büyük Patlama",
-   "url": "https://tr.wikipedia.org/wiki/B%C3%BCy%C3%BCk_Patlama"
-  },
-  {
-   "text": "Genel görelilik teorisi, 1915'te Albert Einstein tarafından yayımlanan, kütleçekimin geometrik teorisidir ve modern fizikte kütle çekiminin güncel açıklamasıdır.",
-   "title": "Genel görelilik",
-   "url": "https://tr.wikipedia.org/wiki/Genel_g%C3%B6relilik"
-  },
-  {
-   "text": "Fizikte, özel görelilik teorisi veya izafiyet teorisi, uzay ve zaman arasındaki ilişkiyi açıklayan bir bilimsel teoridir. Albert Einstein'ın orijinal çalışmalarında teori, iki varsayıma dayanmaktadır:Fizik yasaları, tüm süredurum referans çerçevelerinde değişmezdir.",
-   "title": "Özel görelilik",
-   "url": "https://tr.wikipedia.org/wiki/%C3%96zel_g%C3%B6relilik"
-  },
-  {
-   "text": "Işık yılı, astronomide uzaklıkları ifade etmek için kullanılan ve yaklaşık 9,46 trilyon kilometreye (9,46×1012 km) karşılık gelen uzunluk birimi. Uluslararası Astronomi Birliğinin (IAU) tanımına göre bir ışık yılı, ışığın bir Jülyen yılında (365,25 gün) boşlukta katettiği mesafedir.",
-   "title": "Işık yılı",
-   "url": "https://tr.wikipedia.org/wiki/I%C5%9F%C4%B1k_y%C4%B1l%C4%B1"
-  },
-  {
-   "text": "Antimadde, karşı madde veya karşıt madde, maddenin ters ikizi. Paul Dirac denklemiyle ortaya çıkarılmış ve daha sonraki gözlemlerle de varlığı doğrulanmıştır.",
-   "title": "Antimadde",
-   "url": "https://tr.wikipedia.org/wiki/Antimadde"
-  },
-  {
-   "text": "Higgs bozonu; Peter Higgs, Gerald Guralnik, Richard Hagen, Tom Kibble, François Englert ve Robert Brout tarafından Standart Model'deki fermiyonlara kütle kazandırmak için varlığı öne sürülmüş, spini 0 (sıfır) olan parçacık.",
-   "title": "Higgs bozonu",
-   "url": "https://tr.wikipedia.org/wiki/Higgs_bozonu"
-  },
-  {
-   "text": "Süperiletkenlik, süperiletken adı verilen maddelerin karakteristik bir kritik sıcaklığın (Tc) altında derecelere soğutulmasıyla ortaya çıkan, maddenin elektriksel direncinin sıfır olması ve manyetik değişim alanlarının ortadan kalkması şeklinde görülen bir fenomendir. 8 Nisan 1911 tarihinde Hollandalı fizikçi Heike Kamerlingh Onnes…",
-   "title": "Süperiletkenlik",
-   "url": "https://tr.wikipedia.org/wiki/S%C3%BCperiletkenlik"
-  },
-  {
-   "text": "Casimir kuvveti, 1948'de keşfedilip ilk kez 1997'de ölçülmüştür. Bir kertenkelenin yüzeye sadece tek bir parmağının ucuyla yapışabilme becerisinde görülebilir.",
-   "title": "Casimir kuvveti",
-   "url": "https://tr.wikipedia.org/wiki/Casimir_kuvveti"
-  },
-  {
-   "text": "Nötrino, ışık hızına yakın hıza sahip olan, elektriksel yükü sıfır olan ve maddelerin içinden neredeyse hiç etkileşmeden geçebilen temel parçacıklardandır.",
-   "title": "Nötrino",
-   "url": "https://tr.wikipedia.org/wiki/N%C3%B6trino"
-  },
-  {
-   "text": "Entropi, fizikte bir sistemin mekanik işe çevrilemeyecek termal enerjisini temsil eden termodinamik terimidir. Çoğunlukla bir sistemdeki rastgelelik ve düzensizlik (kaos) olarak tanımlanır ve istatistikten teolojiye birçok alanda yararlanılır.",
-   "title": "Entropi",
-   "url": "https://tr.wikipedia.org/wiki/Entropi"
-  },
-  {
-   "text": "Termodinamiğin ikinci yasası, izole sistemlerin entropisinin asla azalamayacağını belirtir. Bunun sebebini izole sistemlerin termodinamik dengeden spontane olarak oluşmasıyla açıklar.",
-   "title": "Termodinamiğin ikinci yasası",
-   "url": "https://tr.wikipedia.org/wiki/Termodinami%C4%9Fin_ikinci_yasas%C4%B1"
-  },
-  {
-   "text": "Süperakışkanlık maddenin sıfır akmazlığa sahip bir akışkan gibi davrandığı hâlidir. Bu fenomen ilk olarak sıvı helyum ile keşfedildiyse de yalnızca sıvı helyum teorisinde değil aynı zamanda astrofizik, yüksek enerji fiziği ve kuantum kütleçekimi teorilerinde de uygulama alanına girmiştir.",
-   "title": "Süperakışkanlık",
-   "url": "https://tr.wikipedia.org/wiki/S%C3%BCperak%C4%B1%C5%9Fkanl%C4%B1k"
-  },
-  {
-   "text": "Görelilik teorisinde, zaman genişlemesi birbirlerine ya da farklı yerçekimli kütleler, yer göreli hareket ya da gözlemciler olarak ölçülen olaylar arasında geçen zaman gerçek bir farktır.",
-   "title": "Zaman genişlemesi",
-   "url": "https://tr.wikipedia.org/wiki/Zaman_geni%C5%9Flemesi"
-  },
-  {
-   "text": "Belirsizlik ilkesi, Heisenberg belirsizlik ilkesi ya da belirlenemezlik ilkesi; bir cismin belirli bir andaki konumu ile momentumunun aynı anda ve kesin değerlerle kuramsal olarak bile ölçülemeyeceğini öne süren ilkedir. 1927'de Werner Heisenberg tarafından ortaya atılmıştır.",
-   "title": "Belirsizlik ilkesi",
-   "url": "https://tr.wikipedia.org/wiki/Belirsizlik_ilkesi"
-  },
-  {
-   "text": "Modern fizikte Young deneyi olarak da bilinen çift-yarık deneyi, ışığın dalga özelliği sergilediğini gösterir. Fotoelektrik etkisi ışığın dalga özelliğinin yanı sıra parçacık özelliği de sergilediğini gösterir.",
-   "title": "Çift yarık deneyi",
-   "url": "https://tr.wikipedia.org/wiki/%C3%87ift_yar%C4%B1k_deneyi"
-  },
-  {
-   "text": "Voyager 1, Voyager programı kapsamında NASA tarafından dış Güneş Sistemi'ni ve Güneş'in heliosferinin ötesindeki yıldızlararası uzayı araştırmak için 5 Eylül 1977'de fırlatılan uzay sondasıdır.",
-   "title": "Voyager 1",
-   "url": "https://tr.wikipedia.org/wiki/Voyager_1"
-  },
-  {
-   "text": "Oort Bulutu veya Öpik-Oort Bulutu, Güneş'in etrafında dönen kuyruklu yıldız kümesi. Bu kuyruklu yıldızların enberi ölçeği 5-50 AB ve enöte ölçeği ise 30.000-100.000 AB'dir.",
-   "title": "Oort bulutu",
-   "url": "https://tr.wikipedia.org/wiki/Oort_bulutu"
-  },
-  {
-   "text": "Kuiper Kuşağı, Güneş Sistemi'nin kenarında bulunan bir halkadır. Esas olarak uzay kayaları ve cüce gezegenlerden oluşur. Neptün'ün yörüngesinin ötesine oturur.",
-   "title": "Kuiper Kuşağı",
-   "url": "https://tr.wikipedia.org/wiki/Kuiper_Ku%C5%9Fa%C4%9F%C4%B1"
-  },
-  {
-   "text": "Olympus Mons, Güneş Sistemi'nde bilinen en yüksek volkan ve en yüksek dağdır. Son patlaması 25 milyon yıl önce olmuştur.",
-   "title": "Olympus Mons",
-   "url": "https://tr.wikipedia.org/wiki/Olympus_Mons"
-  },
-  {
-   "text": "Europa, Jüpiter'in yörüngesinde bulunan dört Galilei uydusunun en küçüğüdür. Galileo Galilei tarafından keşfedilen dört büyük uydudan gezegene yakınlık açısından ikinci sırada bulunur, bu nedenle Jüpiter'in \"II\" numaralı uydusu olarak adlandırılmıştır.",
-   "title": "Europa (uydu)",
-   "url": "https://tr.wikipedia.org/wiki/Europa_(uydu)"
-  },
-  {
-   "text": "Titan, Satürn'ün en büyük uydusu ve yoğun bir atmosferi olduğu bilinen tek doğal uydudur. Dünya dışında, yüzeyinde kararlı sıvı bulundurduğu kanıtlanan 2. gök cismi olan Titan'daki büyük su kütleleri gibi görünen okyanusların, metan gazının sıvı hali olduğu görülmüştür.",
-   "title": "Titan (uydu)",
-   "url": "https://tr.wikipedia.org/wiki/Titan_(uydu)"
-  },
-  {
-   "text": "Enceladus Satürn'ün en büyük altıncı uydusudur. Yaklaşık 500 kilometre çapında olan Enceladus Satürn'ün en büyük uydusu olan Titan'ın onda biri büyüklüğündedir.",
-   "title": "Enceladus",
-   "url": "https://tr.wikipedia.org/wiki/Enceladus"
-  },
-  {
-   "text": "Halley kuyruklu yıldızı, resmî adıyla 1P/Halley veya bu kuyruklu yıldızlar üzerine çalışmalar yapan Edmond Halley'e ithafen Comet Halley, Güneş'in yörüngesinde hareket eden ve her 75–76 yılda bir görünen kuyruklu yıldızdır.",
-   "title": "Halley kuyruklu yıldızı",
-   "url": "https://tr.wikipedia.org/wiki/Halley_kuyruklu_y%C4%B1ld%C4%B1z%C4%B1"
-  },
-  {
-   "text": "Uluslararası Uzay İstasyonu,, insanlığın bugüne kadarki en büyük ve en uzun ömürlü uzay istasyonudur. Başlangıçta ABD tarafından askerî bir istasyon olarak planlanan uydu, yapımına başlandığı 1998 yılından bu yana 16 ülke ve 5 uzay ajansı tarafından uluslararası işbirliği içinde işletilmekte ve geliştirilmektedir.",
-   "title": "Uluslararası Uzay İstasyonu",
-   "url": "https://tr.wikipedia.org/wiki/Uluslararas%C4%B1_Uzay_%C4%B0stasyonu"
-  },
-  {
-   "text": "Hubble Uzay Teleskobu (HUT), ismi Amerikalı astronom Edwin Hubble'ın anısına verilmiş; Nisan 1990'da STS-31 Görevi esnasında Uzay Mekiği Discovery tarafından Dünya etrafındaki yörüngesine taşınmış bir uzay teleskobudur.",
-   "title": "Hubble Uzay Teleskobu",
-   "url": "https://tr.wikipedia.org/wiki/Hubble_Uzay_Teleskobu"
-  },
-  {
-   "text": "James Webb Uzay Teleskobu, kızılötesi astronomiye yönelik bir uzay teleskobudur. Uzaya gönderilmiş en güçlü teleskoptur. Eskiyen Hubble Uzay Teleskobu'nun kısmen ardılı olacak şekilde planlanmış, NASA öncülüğünde ve ESA ile CSA'nın desteğiyle geliştirilmiştir.",
-   "title": "James Webb Uzay Teleskobu",
-   "url": "https://tr.wikipedia.org/wiki/James_Webb_Uzay_Teleskobu"
-  },
-  {
-   "text": "Güneş tutulması, Ay'ın yörünge hareketi sırasında Dünya ile Güneş arasına girmesi ve dolayısıyla Ay'ın Güneş'i kısmen ya da tümüyle örtmesi sonucunda gözlemlenen doğa olayıdır.",
-   "title": "Güneş tutulması",
-   "url": "https://tr.wikipedia.org/wiki/G%C3%BCne%C5%9F_tutulmas%C4%B1"
-  },
-  {
-   "text": "Kutup ışıkları ya da kutup aurorası, Kuzey ve Güney kutup bölgelerinde gökyüzünde görülen, yeryüzünün manyetik alanı ile Güneş'ten gelen yüklü parçacıkların etkileşimi sonucu ortaya çıkan doğal ışımalardır.",
-   "title": "Kutup ışıkları",
-   "url": "https://tr.wikipedia.org/wiki/Kutup_%C4%B1%C5%9F%C4%B1klar%C4%B1"
-  },
-  {
-   "text": "Samanyolu, Samanyolu Galaksisi veya Kehkeşan, Güneş Sistemi'ni içeren bir galaksidir. Galaksinin ismi Dünya'dan görünüşünü betimleyecek şekilde gece gökyüzünde görülen ve çıplak gözle tek tek ayırt edilemeyen yıldızlardan oluşan puslu bir ışık şeridi olarak tanımlanmaktadır.",
-   "title": "Samanyolu",
-   "url": "https://tr.wikipedia.org/wiki/Samanyolu"
-  },
-  {
-   "text": "Andromeda Galaksisi, Andromeda Takımyıldızı'nda bulunan sarmal bir galaksidir. Mitolojik bir kavram olan Andromeda'nın Türkçedeki karşılığı, zincire vurulmuş kız anlamına gelmektedir.",
-   "title": "Andromeda Galaksisi",
-   "url": "https://tr.wikipedia.org/wiki/Andromeda_Galaksisi"
-  },
-  {
-   "text": "Süpernova, bir yıldızın son derece güçlü ve parlak bir şekilde patlamasıdır. Bir süpernova, büyük kütleli bir yıldızın evriminin son aşamalarında veya bir beyaz cücede kontrolsüz nükleer füzyonun tetiklenmesiyle meydana gelir.",
-   "title": "Süpernova",
-   "url": "https://tr.wikipedia.org/wiki/S%C3%BCpernova"
-  },
-  {
-   "text": "Atarca ya da pulsar [İngilizce: pulsating radio source'dan ], mıknatısal kutuplarından elektromanyetik ışınım yayan, oldukça mıknatıslanmış, dönen bir nötron yıldızıdır.",
-   "title": "Pulsar",
-   "url": "https://tr.wikipedia.org/wiki/Pulsar"
-  },
-  {
-   "text": "Kırmızı dev, yıldız evriminin geç aşamalarında ve düşük ya da orta kütlede olan bir dev yıldız. 4.700 °C ya da daha düşük sıcaklıkta olabilir. Dış atmosferi şişkin ve seyrektir.",
-   "title": "Kırmızı dev",
-   "url": "https://tr.wikipedia.org/wiki/K%C4%B1rm%C4%B1z%C4%B1_dev"
-  },
-  {
-   "text": "Beyaz cüce, termonükleer reaksiyonların meydana geldiği aşamadan sonra orta kütleli bir yıldızın evriminden kaynaklanan küçük ama yüksek yoğunluğa sahip yaşlı bir yıldızdır.",
-   "title": "Beyaz cüce",
-   "url": "https://tr.wikipedia.org/wiki/Beyaz_c%C3%BCce"
-  },
-  {
-   "text": "Ay, Dünya'nın tek doğal uydusu ve Güneş Sistemi içindeki beşinci büyük doğal uydudur. Dünya ile Ay arasında ortalama merkezden merkeze uzaklık 384.403 km, yani Dünya'nın çapının yaklaşık otuz katı kadardır.",
-   "title": "Ay",
-   "url": "https://tr.wikipedia.org/wiki/Ay"
-  },
-  {
-   "text": "Mars, Güneş Sistemi'nin Güneş'ten itibaren dördüncü gezegeni. Roma mitolojisindeki savaş tanrısı Mars'a ithafen adlandırılmıştır. Yüzeyindeki yaygın demir oksitten dolayı kızılımsı bir görünüme sahip olduğu için \"Kızıl Gezegen\" olarak da bilinmektedir.",
-   "title": "Mars",
-   "url": "https://tr.wikipedia.org/wiki/Mars"
-  },
-  {
-   "text": "Venüs, Güneş Sistemi'nde Güneş'e uzaklık bakımından ikinci sıradaki, sıcaklık bakımından ise birinci sıradaki gezegendir.",
-   "title": "Venüs",
-   "url": "https://tr.wikipedia.org/wiki/Ven%C3%BCs"
-  },
-  {
-   "text": "Jüpiter veya Eski Türkçedeki adıyla Erendiz ya da Öngey, Güneş'e en yakın beşinci gezegen ve Güneş Sistemi'nin en büyük gezegenidir. Gaz devi olan Jüpiter'in kütlesi, Güneş Sistemi'ndeki diğer tüm gezegenlerin toplam kütlesinin yaklaşık 2,5 katıdır ve Güneş'in kütlesinin binde birinden biraz daha azdır.",
-   "title": "Jüpiter",
-   "url": "https://tr.wikipedia.org/wiki/J%C3%BCpiter"
-  },
-  {
-   "text": "Satürn veya Eski Türkçedeki adıyla Sekentir ya da Sekendiz, Güneş'e en yakın altıncı gezegen ve Jüpiter'den sonra Güneş Sistemi'ndeki en büyük ikinci gezegendir.",
-   "title": "Satürn",
-   "url": "https://tr.wikipedia.org/wiki/Sat%C3%BCrn"
-  },
-  {
-   "text": "Tardigrad, Ecdysozoa üstşubesine bağlı bir hayvan şubesidir. Tardigrad bilinen en dayanıklı hayvanlardan biri olup, bilinen diğer yaşam biçimlerine ölümcül olan aşırı koşullara dayanabilmektedirler. 1 K ila yaklaşık 420 K arasında değişen sıcaklıklarda hayatta kalabildikleri tespit edilmiştir.",
-   "title": "Tardigrada",
-   "url": "https://tr.wikipedia.org/wiki/Tardigrada"
-  },
-  {
-   "text": "Ahtapot; yumuşak gövdeli, sekiz kollu, Octopoda takımında sınıflandırılan yumuşakçaların genel adı. Kabul görmüş 300 civarında türü bulunan ahtapotlar kalamarlar, mürekkep balıkları ve nautiloidler ile birlikte kafadan bacaklılar (Cephalopoda) sınıfında gruplandırılırlar.",
-   "title": "Ahtapot",
-   "url": "https://tr.wikipedia.org/wiki/Ahtapot"
-  },
-  {
-   "text": "Turritopsis dohrnii, ayrıca bilinen adıyla ölümsüz denizanası, biyolojik olarak ölümsüz bir denizanası türüdür. Küçük bir denizanası türü olan dohrnii, Akdeniz ve Japonya sularında yaşar.",
-   "title": "Turritopsis dohrnii",
-   "url": "https://tr.wikipedia.org/wiki/Turritopsis_dohrnii"
-  },
-  {
-   "text": "Çıplak kör fare, Doğu Afrika'nın kurak bölgelerinde yaşayan çıplak kör fareler, kemirgen takımından hayvanlardır. Uzun ömürleri ve kanserojen maddelerle aynı ortamda bulunsalar dahi kanser geliştirmemeleri ile bilim dünyasının ilgisini cezbetmektedirler.",
-   "title": "Çıplak kör fare",
-   "url": "https://tr.wikipedia.org/wiki/%C3%87%C4%B1plak_k%C3%B6r_fare"
-  },
-  {
-   "text": "Biyolüminesans, bazı canlı organizmaların gerçekleştirdiği, kimyasal reaksiyonlar sırasında kimyasal enerjinin ışık enerjisine dönüştürülmesi ile ışık üretilmesi ve yayılması olayına verilen isimdir.",
-   "title": "Biyolüminesans",
-   "url": "https://tr.wikipedia.org/wiki/Biyol%C3%BCminesans"
-  },
-  {
-   "text": "Elektrikli yılan balığı, Yeni dünya bıçak balıkları takımından elektrik üreten sıra dışı bir tür. Bu yetenek hem avlanırken hem de savunma anında kullanılabilir.",
-   "title": "Elektrikli yılan balığı",
-   "url": "https://tr.wikipedia.org/wiki/Elektrikli_y%C4%B1lan_bal%C4%B1%C4%9F%C4%B1"
-  },
-  {
-   "text": "Ekolokasyon veya biyosonar, yarasa, yunus ve balina gibi bazı memelilerin kullandığı biyolojik sonardır. Terimin adı, ekolokasyonun yarasalardaki varlığını kanıtlayan Donald Griffindir.",
-   "title": "Hayvan ekolokasyonu",
-   "url": "https://tr.wikipedia.org/wiki/Hayvan_ekolokasyonu"
-  },
-  {
-   "text": "Ornitorenk, platipus veya gagalı memeli, 39–60 cm boylarında, Doğu Avustralya ve Tasmanya'ya özgü bir yarı-deniz memelisidir.",
-   "title": "Ornitorenk",
-   "url": "https://tr.wikipedia.org/wiki/Ornitorenk"
-  },
-  {
-   "text": "Apis mellifera veya bal arısı, Apis cinsine bağlı bir arı türüdür. Dünya çapında 7-12 bal arısı türü arasında en yaygın olanıdır. Apis cins adı Latince \"arı\" anlamına gelir ve mellifera Latince \"bal taşıyan\" anlamına gelir ve türün bal üretimine atıfta bulunur.",
-   "title": "Bal arısı",
-   "url": "https://tr.wikipedia.org/wiki/Bal_ar%C4%B1s%C4%B1"
-  },
-  {
-   "text": "Karınca, karıncalar (Formicidae) familyasını oluşturan, yaban arıları ve arılarla birlikte zar kanatlılar (Hymenoptera) takımında yer alan, sosyal yaşam gösteren böceklere verilen ortak addır.",
-   "title": "Karınca",
-   "url": "https://tr.wikipedia.org/wiki/Kar%C4%B1nca"
-  },
-  {
-   "text": "Mavibalina ya da gökbalina, en büyükleri 35 metreyi bulan boyu ve 150-200 ton ağırlığıyla, yaşayan en büyük hayvandır. Cetacea takımının Mysticeti alt takımına dahil türlerden olan mavi balina, Arktik Okyanusu dışındaki tüm dünya denizlerinde yayılım gösterir.",
-   "title": "Mavi balina",
-   "url": "https://tr.wikipedia.org/wiki/Mavi_balina"
-  },
-  {
-   "text": "Denizatı, yılan iğnesinin de dahil olduğu Syngnathidae familyasından Hippocampus cinsine ait olan balıklardır. Tüm dünyada ılıman ve tropikal sularda bulunurlar.",
-   "title": "Denizatı",
-   "url": "https://tr.wikipedia.org/wiki/Denizat%C4%B1"
-  },
-  {
-   "text": "Kutup ayısı aynı zamanda beyaz ayı ya da deniz ayısı, ayıgiller (Ursidae) familyasından soğuk kuzey kutup bölgesinin karlı sahillerinde ve buzullar üzerinde yaşayan ayı türüdür.",
-   "title": "Kutup ayısı",
-   "url": "https://tr.wikipedia.org/wiki/Kutup_ay%C4%B1s%C4%B1"
-  },
-  {
-   "text": "Yarasalar, ön ayakları kanat olarak uyarlanmış ve doğal olarak gerçekten uçabilen Chiroptera takımında sınıflandırılan memelilerdir. Yarasalar, üzerleri zar ve patagium ile kaplı çok uzun ve yayılmış parmaklarıyla kuşlardan daha kolay manevra yaparak uçabilirler.",
-   "title": "Yarasa",
-   "url": "https://tr.wikipedia.org/wiki/Yarasa"
-  },
-  {
-   "text": "Mikoriza ; bazı bitkilerin kökleriyle ortak yaşam, simbiyoz ilişkisi geliştirmiş olan mantarlara verilen isimdir.",
-   "title": "Mikoriza",
-   "url": "https://tr.wikipedia.org/wiki/Mikoriza"
-  },
-  {
-   "text": "Fotosentez, bitkiler ve diğer canlılar tarafından, ışık enerjisini organizmaların yaşamsal eylemlerine enerji sağlamak için daha sonra serbest bırakılabilecek kimyasal enerjiye dönüştürmek için kullanılan bir işlemdir.",
-   "title": "Fotosentez",
-   "url": "https://tr.wikipedia.org/wiki/Fotosentez"
-  },
-  {
-   "text": "Bakteriyofaj, bakterileri enfekte eden bir virüstür. Terim genelde kısaltılmış hali olan faj olarak kullanılır.",
-   "title": "Bakteriyofaj",
-   "url": "https://tr.wikipedia.org/wiki/Bakteriyofaj"
-  },
-  {
-   "text": "Mercan resifleri canlı organizmaların ürettiği aragonit yapılardır. Az miktar besin içeren deniz sularında bulunur. Çoğu resifte, baskın organizmalar kalsiyum karbonattan oluşan bir dış iskelete sahip taş mercanları, kolonyal sölenterlerdir.",
-   "title": "Mercan resifi",
-   "url": "https://tr.wikipedia.org/wiki/Mercan_resifi"
-  },
-  {
-   "text": "Hayvan göçü, hayvanlarda da çeşitli sebeplerden dolayı göçe rastlanmaktadır. Bunların bir kısmı geçicidir. Bir sebebe bağlı olarak ve çoğunlukla bir defa yaptıkları göçlerdir.",
-   "title": "Hayvan göçü",
-   "url": "https://tr.wikipedia.org/wiki/Hayvan_g%C3%B6%C3%A7%C3%BC",
-   "via_search": "Göç (hayvan)"
-  },
-  {
-   "text": "Kış uykusu, soğuk ve kurak mevsimlere karşı koyabilmek için canlı varlıkların yapısında görülen olayların tümü olarak tanımlanır.",
-   "title": "Kış uykusu",
-   "url": "https://tr.wikipedia.org/wiki/K%C4%B1%C5%9F_uykusu"
-  },
-  {
-   "text": "Kamuflaj bir gizlenme, saklanma yöntemidir. Özden gizlenmek, saklanmak anlamına gelir ve normalde kolaylıkla görünür olan bir organizma veya objenin çevreyle kendini bir ederek fark edilmesinin zorlaşmasını sağlar.",
-   "title": "Kamuflaj",
-   "url": "https://tr.wikipedia.org/wiki/Kamuflaj"
-  },
-  {
-   "text": "Ortakyaşam, ortakyaşarlık ya da simbiyoz, iki canlının tek bir organizma gibi birbirleriyle yardımlaşarak bir arada yaşamalarıdır.",
-   "title": "Ortakyaşam",
-   "url": "https://tr.wikipedia.org/wiki/Ortakya%C5%9Fam"
-  },
-  {
-   "text": "Bakteriyoterapi, bir hastalığın tedavisinde bakterilerin veya ürünlerinin amaca yönelik olarak kullanılmasıdır. Bakteriyoterapi biçimleri arasında, tüketildiğinde sağlığa fayda sağlayan mikroorganizmalar olan probiyotiklerin kullanımı; gaita nakli (FMT) /bağırsak mikrobiyota nakli (IMT), mikrobiyotayı eski haline getirmek için bağırsak…",
-   "title": "Bakteriyoterapi",
-   "url": "https://tr.wikipedia.org/wiki/Bakteriyoterapi",
-   "via_search": "Bağırsak mikrobiyotası"
-  },
-  {
-   "text": "Ölümsüzlük, sonsuz yaşam, ölümden muaf olma, bitmeyen varoluştur. Bazı modern türler biyolojik ölümsüzlüğe sahip olabilir. Ölümsüz denizanası benzeri canlılar ise biyolojik ölümsüzlüğe sahiptir, yani gerekli koşullar oluşturulduğu takdirde teorik olarak sonsuza dek yaşamlarını sürdürebilirler.",
-   "title": "Ölümsüzlük",
-   "url": "https://tr.wikipedia.org/wiki/%C3%96l%C3%BCms%C3%BCzl%C3%BCk"
-  },
-  {
-   "text": "Deoksiriboz nükleik asit veya kısaca DNA, tüm organizmaların ve bazı virüslerin canlılık işlevleri ve biyolojik gelişmeleri için gerekli olan genetik talimatları taşıyan bir nükleik asittir.",
-   "title": "DNA",
-   "url": "https://tr.wikipedia.org/wiki/DNA"
-  },
-  {
-   "text": "Telomer, ökaryotik doğrusal kromozomların uçlarında bulunan, herhangi bir gen kodlamayan, özelleşmiş heterokromatin yapılarıdır.",
-   "title": "Telomer",
-   "url": "https://tr.wikipedia.org/wiki/Telomer"
-  },
-  {
-   "text": "Mitokondri, hücre organellerinden biridir. Yunanca mitos (iplik) ve khondrion (tane) sözcüklerinden türetilmiştir. Boyları 0,2-5 mikron arasında değişir.",
-   "title": "Mitokondri",
-   "url": "https://tr.wikipedia.org/wiki/Mitokondri"
-  },
-  {
-   "text": "Kök hücre, mitoz bölünmeyle özelleşmiş hücre tiplerine farklılaşabilen ve daha fazla kök hücre üretmek için kendini yenileme yeteneğine sahip olan, bütün çok hücreli canlıların doku ve organlarını oluşturan ana hücre türleridir.",
-   "title": "Kök hücre",
-   "url": "https://tr.wikipedia.org/wiki/K%C3%B6k_h%C3%BCcre"
-  },
-  {
-   "text": "İnsan Genom Projesi, insan DNA'sını oluşturan baz çiftlerini belirlemek, insan genomunun tüm genlerini fiziksel ve işlevsel açıdan tanımlamak ve gen haritasını çıkarmak amacını güden uluslararası bir bilimsel araştırma projesi.",
-   "title": "İnsan Genom Projesi",
-   "url": "https://tr.wikipedia.org/wiki/%C4%B0nsan_Genom_Projesi"
-  },
-  {
-   "text": "Epigenetik, biyolojide, DNA dizisindeki değişikliklerden kaynaklanmayan ama aynı zamanda kalıtımsal olan gen ifadesi değişikliklerini inceleyen bilim dalıdır.",
-   "title": "Epigenetik",
-   "url": "https://tr.wikipedia.org/wiki/Epigenetik"
-  },
-  {
-   "text": "Kromozom, ; DNA'nın \"histon\" proteinleri etrafına sarılmasıyla, yoğunlaşarak oluşturduğu, canlılarda kalıtımı sağlayan genetik birimlerdir. Kromozomlar mikrometre boyutunda olup hücre bölünmesinin metafaz aşamasında ışık mikroskobu ile görüntülenebilmektedirler.",
-   "title": "Kromozom",
-   "url": "https://tr.wikipedia.org/wiki/Kromozom"
-  },
-  {
-   "text": "Ribozom, tüm canlı hücrelerde bulunan karmaşık moleküler yapıya sahip ve protein oluşturma sürecinde hayati bir rol oynayan bir hücresel yapıdır. Bu süreç, mRNA çevirisi olarak bilinen bir biyolojik mekanizma aracılığıyla gerçekleşir.",
-   "title": "Ribozom",
-   "url": "https://tr.wikipedia.org/wiki/Ribozom"
-  },
-  {
-   "text": "Apoptozis veya Apoptoz, programlanmış hücre ölümünün ana tiplerinden biridir; genetik sistemde kodlanmış kendi kendini yok etme programını içeren mekanizmanın aktifleşmesiyle tetiklenir.",
-   "title": "Apoptoz",
-   "url": "https://tr.wikipedia.org/wiki/Apoptoz"
-  },
-  {
-   "text": "Antikitera düzeneği, astronomik konumları hesaplamak için tasarlanan eski mekanik bir hesap makinesidir. 1900-1901 yılları arasında Girit ve Mora Yarımadası arasında bulunan Yunan Küçük Çuha (Antikitera) adası yakınlarında keşfedilmiş Antikitera batığından çıkarılmıştır.",
-   "title": "Antikitera düzeneği",
-   "url": "https://tr.wikipedia.org/wiki/Antikitera_d%C3%BCzene%C4%9Fi"
-  },
-  {
-   "text": "Rosetta Taşı ya da Reşid Taşı, MÖ 196 yılında Antik Mısır'daki Ptolemaios Hanedanı döneminde Kral V. Ptolemaios adına çıkarılan bir kararnamenin iki dilde ve üç yazıda yazılı olduğu granodiyoritten yapılmış bir dikilitaştır.",
-   "title": "Rosetta Taşı",
-   "url": "https://tr.wikipedia.org/wiki/Rosetta_Ta%C5%9F%C4%B1"
-  },
-  {
-   "text": "Göbeklitepe veya Göbekli Tepe, Türkiye'nin Güneydoğu Anadolu Bölgesi'ndeki Şanlıurfa ilinin 18 km kuzeydoğusunda, Haliliye ilçesine bağlı Örencik köyü yakınlarında yer alan Neolitik bir arkeolojik sit alanıdır.",
-   "title": "Göbeklitepe",
-   "url": "https://tr.wikipedia.org/wiki/G%C3%B6beklitepe"
-  },
-  {
-   "text": "Çatalhöyük, bugün Konya'nın Çumra ilçesine bağlı Küçükköy yakınlarında, milattan önce 7000 yıllarından itibaren Cilalı Taş Devri ve Bakır Çağı'nda yerleşim yeri olarak kullanılmış arkeolojik kalıntılardır.",
-   "title": "Çatalhöyük",
-   "url": "https://tr.wikipedia.org/wiki/%C3%87atalh%C3%B6y%C3%BCk"
-  },
-  {
-   "text": "Pompeii, Pompei komünü sınırları içerisinde, İtalya'nın kısmi özerk bölgesi Campania'da, Napoli şehri yakınlarında bulunan ve hâlâ kısmen gömülü olan yıkıntı halindeki antik Roma kentidir.",
-   "title": "Pompeii",
-   "url": "https://tr.wikipedia.org/wiki/Pompeii"
-  },
-  {
-   "text": "Machu Picchu, bugüne kadar çok iyi korunarak gelmiş olan bir İnka antik şehridir. 7 Temmuz 2007 tarihinde Dünyanın Yeni Yedi Harikası'ndan biri olarak seçilmiştir.",
-   "title": "Machu Picchu",
-   "url": "https://tr.wikipedia.org/wiki/Machu_Picchu"
-  },
-  {
-   "text": "Nazca Çizgileri, Güney Peru'daki Nazca Çölü'nde bazı canlı biçimlerini ya da çeşitli geometrik biçimleri betimler tarzda yere çizilmiş, bazıları kilometrelerce uzunlukta olan çizgilere verilen genel addır.",
-   "title": "Nazca çizgileri",
-   "url": "https://tr.wikipedia.org/wiki/Nazca_%C3%A7izgileri"
-  },
-  {
-   "text": "Stonehenge, İngiltere'nin Wiltshire kenti Salisbury Düzlüğü'nde bulunan, Amesbury'nin 3 km batısında yer alan tarih öncesi bir anıt. Yapı, her biri yaklaşık 4.1 m yüksekliğinde, 2.1 m genişliğinde ve yaklaşık 25 ton ağırlığında bir dikili taş halkasından oluşur.",
-   "title": "Stonehenge",
-   "url": "https://tr.wikipedia.org/wiki/Stonehenge"
-  },
-  {
-   "text": "İpek Yolu, Çin'den başlayarak Anadolu ve Akdeniz aracılığıyla Avrupa'ya kadar uzanan ve dünyaca ünlü ticaret yoludur.",
-   "title": "İpek Yolu",
-   "url": "https://tr.wikipedia.org/wiki/%C4%B0pek_Yolu"
-  },
-  {
-   "text": "Kara Veba olarak da bilinen Kara Ölüm, insanlık tarihinde kaydedilen en ölümcül salgındır. Avrasya ve Kuzey Afrika'da 75-200 milyon kadar insanın ölümüne yol açtığı düşünülmektedir. 1346-1353 yılları arasında Avrupa'da zirveye ulaşan salgın, insanlık tarihinde kaydedilen en ölümcül salgındır.",
-   "title": "Kara Ölüm",
-   "url": "https://tr.wikipedia.org/wiki/Kara_%C3%96l%C3%BCm"
-  },
-  {
-   "text": "Troya veya Truva, Kaz Dağı (İda) eteklerinde tarihî bir kenttir. Çanakkale il sınırları içinde, günümüzde Hisarlık olarak adlandırılan arkeolojik bölgede yer alır.",
-   "title": "Troya",
-   "url": "https://tr.wikipedia.org/wiki/Troya"
-  },
-  {
-   "text": "Efes, Anadolu'nun batı kıyısında, bugünkü İzmir ilinin Selçuk ilçesinin üç kilometre güneybatısında yer alan antik bir Luvi şehriydi. Şehir Anadolu'da Yunan sömürgeciliğinin başlamasıyla birlikte İyonya ve daha sonra Roma dönemlerinde de önemini korumuştur.",
-   "title": "Efes",
-   "url": "https://tr.wikipedia.org/wiki/Efes"
-  },
-  {
-   "text": "Derinkuyu Yeraltı Şehri, Kapadokya bölgesinde bulunan, Nevşehir- Niğde kara yolu üzerinde ve Nevşehir'e 30 km uzaklıkta bulunan Derinkuyu ilçesinde, kayalara oyulmuş yeraltı şehridir.",
-   "title": "Derinkuyu Yeraltı Şehri",
-   "url": "https://tr.wikipedia.org/wiki/Derinkuyu_Yeralt%C4%B1_%C5%9Eehri"
-  },
-  {
-   "text": "Ayasofya, resmî adıyla Ayasofya-i Kebîr Câmi-i Şerîfi, İstanbul'un Fatih ilçesinde kiliseden çevrilmiş bir camidir. Bizans İmparatoru I. Justinianus tarafından, 532-537 yılları arasında inşa ettirilmiş bazilika planlı bir patrik katedrali olmuştur. 1453 yılında İstanbul'un Osmanlılar tarafından fethedilmesinden sonra II.",
-   "title": "Ayasofya",
-   "url": "https://tr.wikipedia.org/wiki/Ayasofya"
-  },
-  {
-   "text": "Büyük İskenderiye Kütüphanesi, Antik Dünya'nın en büyük ve en önemli kütüphanelerinden biri. Kütüphane, Müzler'e, sanatın dokuz tanrıçasına adanmış daha geniş bir araştırma enstitüsü olan İskenderiye Müzesi'nin bir parçasıydı.",
-   "title": "İskenderiye Kütüphanesi",
-   "url": "https://tr.wikipedia.org/wiki/%C4%B0skenderiye_K%C3%BCt%C3%BCphanesi",
-   "via_search": "Büyük İskenderiye Kütüphanesi"
-  },
-  {
-   "text": "Hammurabi Kanunları, MÖ 1760 yılı civarında Mezopotamya'nın Babil ülkesinde ortaya çıkan, tarihin en eski ve en iyi korunmuş yazılı yasalarından biridir.",
-   "title": "Hammurabi Kanunları",
-   "url": "https://tr.wikipedia.org/wiki/Hammurabi_Kanunlar%C4%B1"
-  },
-  {
-   "text": "Çivi yazısı, kilden yapılma tabletlerin üzerine resimler ya da harf görevi gören ve sesleri temsil eden semboller ile özel bir teknikle yazılan; papirüsün bulunması ile son bulan tarihteki ilk yazı sistemidir.",
-   "title": "Çivi yazısı",
-   "url": "https://tr.wikipedia.org/wiki/%C3%87ivi_yaz%C4%B1s%C4%B1"
-  },
-  {
-   "text": "Hiyeroglif, antik döneme ait bir yazı sistemi. Birçok türü olan hiyerogliflerin en bilinen türü Mısır hiyeroglifleridir. Ayrıca Luvi hiyeroglifleri ve Urartu hiyeroglifleri de bu yazı sisteminin Mezopotamya'da kullanılan diğer örneklerindendir.",
-   "title": "Hiyeroglif",
-   "url": "https://tr.wikipedia.org/wiki/Hiyeroglif"
-  },
-  {
-   "text": "Vikingler ya da Norslar, İskandinavyalı korsan ve tüccar kavimlerdir. Aslında \"Viking\" veya \"Nors\" bir millet adı değildir; Danlara, Norveçlilere, İsveçlilere ve diğer İskandinavlara kim olduklarına bakmaksızın verilen isimdir.",
-   "title": "Vikingler",
-   "url": "https://tr.wikipedia.org/wiki/Vikingler"
-  },
-  {
-   "text": "Rönesans, Orta Çağ ve Reform arasındaki tarihsel dönem olarak bilinir. 15 - 16. yüzyıl İtalya'sında batı ile klasik İlk Çağ arasında güzel sanatlar, bilim, felsefe ve mimarlıkta bağın tekrar kurulmasını sağlayan, Antik Yunan filozoflarının ve bilim insanlarının çalışmalarının çeviri yoluyla alındığı, deneysel düşüncenin canlandığı, insan…",
-   "title": "Rönesans",
-   "url": "https://tr.wikipedia.org/wiki/R%C3%B6nesans"
-  },
-  {
-   "text": "Sanayi Devrimi veya Endüstri Devrimi, insanlık tarihinin Tarım Devrimi'nden sonraki en köklü dönüşümlerinden biri olarak kabul edilen; üretim süreçlerinin daha yaygın, verimli ve mekanikleşmiş bir yapıya evrilmesiyle karakterize edilen küresel bir ekonomik ve toplumsal değişim dönemidir Büyük Britanya'da başlayan Sanayi Devrimi, yaklaşık…",
-   "title": "Sanayi Devrimi",
-   "url": "https://tr.wikipedia.org/wiki/Sanayi_Devrimi"
-  },
-  {
-   "text": "Berlin Duvarı, Doğu Almanya vatandaşlarının Batı Almanya'ya kaçmalarını önlemek için Doğu Alman meclisinin kararı ile 13 Ağustos 1961 tarihinde Berlin'de yapımına başlanan 46 km uzunluğundaki duvar.",
-   "title": "Berlin Duvarı",
-   "url": "https://tr.wikipedia.org/wiki/Berlin_Duvar%C4%B1"
-  },
-  {
-   "text": "Çernobil Faciası, 26 Nisan 1986 tarihinde Sovyetler Birliği'ne bağlı Ukrayna Sovyet Sosyalist Cumhuriyeti'nin Pripyat şehri yakınlarındaki Çernobil Nükleer Santrali'nin 4 numaralı reaktöründe gerçekleşen nükleer kazadır.",
-   "title": "Çernobil Faciası",
-   "url": "https://tr.wikipedia.org/wiki/%C3%87ernobil_Facias%C4%B1"
-  },
-  {
-   "text": "RMS Titanic, 15 Nisan 1912 tarihinde Southampton, İngiltere'den New York City, Amerika Birleşik Devletleri'ne yaptığı ilk seferinde bir buzdağına çarpması sonucu batan bir İngiliz okyanus gemisiydi.",
-   "title": "RMS Titanic",
-   "url": "https://tr.wikipedia.org/wiki/RMS_Titanic"
-  },
-  {
-   "text": "Manhattan Projesi, II. Dünya Savaşı sırasında ilk nükleer silahları üretmek amacıyla yürütülen bir araştırma ve geliştirme programıydı. Amerika Birleşik Devletleri liderliğinde, Birleşik Krallık ve Kanada ile iş birliği içinde gerçekleştirildi.",
-   "title": "Manhattan Projesi",
-   "url": "https://tr.wikipedia.org/wiki/Manhattan_Projesi"
-  },
-  {
-   "text": "Enigma; II. Dünya Savaşı sırasında Nazi Almanyası tarafından gizli mesajların şifrelenmesi ve tekrar çözülmesi amacı ile kullanılan bir şifre makinesidir.",
-   "title": "Enigma makinesi",
-   "url": "https://tr.wikipedia.org/wiki/Enigma_makinesi"
-  },
-  {
-   "text": "Turing testi, ilk olarak 1950 yılında Mind adlı felsefe dergisinde ünlü İngiliz matematikçi ve bilgisayar bilimcisi Alan Turing'in Computing Machinery and Intelligence başlıklı ünlü makalesinde sözü edilen kavram.",
-   "title": "Turing testi",
-   "url": "https://tr.wikipedia.org/wiki/Turing_testi"
-  },
-  {
-   "text": "ARPANET, bir bilgisayar ağıdır ve ilk olarak 1968'den itibaren Amerika Birleşik Devletleri Hava Kuvvetleri adına Massachusetts Teknoloji Enstitüsü ve ABD Savunma Bakanlığı liderliğindeki küçük bir araştırmacı grubu tarafından geliştirilmiştir.",
-   "title": "ARPANET",
-   "url": "https://tr.wikipedia.org/wiki/ARPANET"
-  },
-  {
-   "text": "Moore Yasası, Intel şirketinin kurucularından Gordon Moore'un 19 Nisan 1965 tarihinde Electronics Magazine dergisinde yayınlanan makalesi ile teknoloji tarihine kendi adıyla geçen yasa.",
-   "title": "Moore yasası",
-   "url": "https://tr.wikipedia.org/wiki/Moore_yasas%C4%B1"
-  },
-  {
-   "text": "Transistör veya geçirgeç girişine uygulanan sinyali yükselterek gerilim ve akım kazancı sağlayan, gerektiğinde anahtarlama elemanı olarak kullanılan yarı iletken bir elektronik devre elemanıdır.",
-   "title": "Transistör",
-   "url": "https://tr.wikipedia.org/wiki/Transist%C3%B6r"
-  },
-  {
-   "text": "Kriptografi, kriptoloji ya da şifreleme, okunabilir durumdaki bir verinin içerdiği bilginin istenmeyen taraflarca anlaşılamayacak bir hale dönüştürülmesinde kullanılan yöntemlerin tümüdür.",
-   "title": "Kriptografi",
-   "url": "https://tr.wikipedia.org/wiki/Kriptografi"
-  },
-  {
-   "text": "Global Positioning System, ABD hükümetine ait ve ABD Uzay Kuvvetleri tarafından yönetilen uydu tabanlı radyonavigasyon sistemidir. Dünya'daki ve Dünya yakınındaki GPS alıcılarına, en az dört GPS uydusunu görebilmeleri şartıyla coğrafi konum ve saat bilgisi sağlayan küresel uydu navigasyon sistemlerinden biridir.",
-   "title": "GPS",
-   "url": "https://tr.wikipedia.org/wiki/GPS"
-  },
-  {
-   "text": "Bir lityum-iyon veya Li-ion pil, enerji depolamak için lityum iyonlarının tersine çevrilebilir indirgemesini kullanan şarj edilebilir pil türüdür. Geleneksel lityum iyon pilinin anodu genelde karbon'dan yapılan grafit'tir.",
-   "title": "Lityum iyon pil",
-   "url": "https://tr.wikipedia.org/wiki/Lityum_iyon_pil"
-  },
-  {
-   "text": "Yapay zekâ ; hesaplama sistemlerinin öğrenme, akıl, problem çözme, algılama ve karar verme gibi tipik olarak insan zekâsıyla ilişkilendirilen görevleri yerine getirme yeteneğidir.",
-   "title": "Yapay zekâ",
-   "url": "https://tr.wikipedia.org/wiki/Yapay_zek%C3%A2"
-  },
-  {
-   "text": "Makine öğrenimi (ML), veriden öğrenebilen ve görünmeyen verilere genelleştirebilen ve dolayısıyla açık talimatlar olmadan görevleri yerine getirebilen istatistiksel algoritmaların geliştirilmesi ve incelenmesiyle ilgilenen, yapay zekâda akademik bir disiplindir.",
-   "title": "Makine öğrenimi",
-   "url": "https://tr.wikipedia.org/wiki/Makine_%C3%B6%C4%9Frenimi"
-  },
-  {
-   "text": "Blok zinciri, blokzincir ya da özgün İngilizce tabiriyle blockchain, kriptografi kullanılarak bağlanan ve güvenli hale getirilen, bloklar adı verilen, sürekli büyüyen bir kayıt listesidir.",
-   "title": "Blok zinciri",
-   "url": "https://tr.wikipedia.org/wiki/Blok_zinciri"
-  },
-  {
-   "text": "Açık kaynak, kaynak kodun; kopyalanması, değiştirilebilmesi ve yeniden dağıtım için serbestçe kullanıma sunulmasıdır. Açık kaynak yalnızca kaynak koda erişim anlamına gelmez.",
-   "title": "Açık kaynak",
-   "url": "https://tr.wikipedia.org/wiki/A%C3%A7%C4%B1k_kaynak"
-  },
-  {
-   "text": "Unicode, Unicode Consortium organizasyonu tarafından geliştirilen ve her karaktere bir sayı değeri karşılığı atayan bir endüstri standardıdır. Sistemin amacı farklı karakter kodlama sistemlerinin birbiriyle tutarlı çalışmasını ve dünyadaki tüm yazım sistemlerinden metinlerin bilgisayar ortamında tek bir standart altında temsil…",
-   "title": "Unicode",
-   "url": "https://tr.wikipedia.org/wiki/Unicode"
-  },
-  {
-   "text": "Karekod veya QR kod; belli bir algoritma ile şifrelenmiş, metin veya metin ile temsil edilebilecek verileri depolayabilen iki boyutlu matristir. Özelleşmiş bir veri matrisi türüdür. 1994 yılında Japon Denso firması tarafından geliştirilmiştir.",
-   "title": "Karekod",
-   "url": "https://tr.wikipedia.org/wiki/Karekod",
-   "via_search": "QR kod"
-  },
-  {
-   "text": "Bilgisayar virüsü, içinde bulunduğu bilgisayardaki başka programlara ve dosyalara kendi kodunu enjekte eden ve kendini bu programları kullanarak çoğaltan bir kötü amaçlı yazılım türüdür.",
-   "title": "Bilgisayar virüsü",
-   "url": "https://tr.wikipedia.org/wiki/Bilgisayar_vir%C3%BCs%C3%BC"
-  },
-  {
-   "text": "Kuantum bilgisayarı, süperpozisyon ve kuantum dolanıklığı durumlarını kullanan bir bilgisayardır. Kuantum bilgisayarları, kuantum sistemlerinden örnekleme yapan sistemler olarak da görülebilir.",
-   "title": "Kuantum hesaplama",
-   "url": "https://tr.wikipedia.org/wiki/Kuantum_hesaplama"
-  },
-  {
-   "text": "Matbaacılık ya da basımcılık, metin ve görüntülerin genellikle kâğıt gibi yüzeyler üzerine basılarak çoğaltılma işidir.",
-   "title": "Matbaacılık",
-   "url": "https://tr.wikipedia.org/wiki/Matbaac%C4%B1l%C4%B1k"
-  },
-  {
-   "text": "Aerojel, bir jelin içerisindeki sıvı bileşenin hava ile değiştirilmiş olan katı maddelerdir. Duman gibi görüntü verdikleri için Donmuş duman veya mavi duman diye de adlandırılırlar.",
-   "title": "Aerojel",
-   "url": "https://tr.wikipedia.org/wiki/Aerojel"
-  },
-  {
-   "text": "Vantablack, karbon nanotüplerden yapılmış ve [[görünür tayftaki ışınımın azami %99.965'ini yuttuğu için]] bilinen en siyah maddedir. Yapısı itibarıyla, yapay olarak \"büyütülen\" bir \"dikey tüp\" ormanıdır.",
-   "title": "Vantablack",
-   "url": "https://tr.wikipedia.org/wiki/Vantablack"
-  },
-  {
-   "text": "Elmas, bilinen en sert maddelerden biridir ve değerli bir taştır. Karbon elementinin bir modifikasyonu grafit, diğeri ise elmastır.",
-   "title": "Elmas",
-   "url": "https://tr.wikipedia.org/wiki/Elmas"
-  },
-  {
-   "text": "Helyum, sembolü He ve atom numarası 2 olan kimyasal element. Periyodik cetvelin birinci periyot 8A grubunda yer alan bir gazdır. Kokusuz, renksiz bir gazdır ve yanmaz.",
-   "title": "Helyum",
-   "url": "https://tr.wikipedia.org/wiki/Helyum"
-  },
-  {
-   "text": "Cıva sembolü \"Hg\" ve atom numarası 80 olan kimyasal element. \"Hg\" sembolü, Latincedeki hydrargyrum sözcüğünden gelir. Oda sıcaklığında sıvı hâlde bulunan Cıva için İngilizcede iki sözcük kullanılır: \"mercury\" ve \"quicksilver\".",
-   "title": "Cıva",
-   "url": "https://tr.wikipedia.org/wiki/C%C4%B1va"
-  },
-  {
-   "text": "Periyodik tablo, periyodik cetvel ya da mendeleyev cetveli, kimyasal elementlerin sınıflandırılması için geliştirilmiş tablodur. Bu tablo bilinen bütün elementlerin artan atom numaralarına göre sıralanışıdır.",
-   "title": "Periyodik tablo",
-   "url": "https://tr.wikipedia.org/wiki/Periyodik_tablo"
-  },
-  {
-   "text": "Arkeolojik kazılarda ele geçen buluntuların bir kısmı, içinde karbon elementi bulunan çeşitli organik buluntulardır. Karbon içeren organik buluntularda eser olarak bulunan radyoaktif 14C (radyokarbon) izotopunun yoğunluğu ya da radyoaktivitesi ölçülerek söz konusu buluntular ve bu buluntuların ele geçtiği tabakalar ve kontekstler…",
-   "title": "Radyokarbon tarihleme yöntemi",
-   "url": "https://tr.wikipedia.org/wiki/Radyokarbon_tarihleme_y%C3%B6ntemi",
-   "via_search": "Radyokarbon tarihleme"
-  },
-  {
-   "text": "Siyanoakrilat veya Türkçedeki yaygın adıyla Japon yapıştırıcı; tek bileşenli, çözücü (solvent) içermeyen, çabuk kuruyan, ısı direnci yüksek olan, az bir miktarla yapışma sağlayan, çok küçük boşluklara bile nüfuz eden bir yapıştırıcı.",
-   "title": "Japon yapıştırıcısı",
-   "url": "https://tr.wikipedia.org/wiki/Japon_yap%C4%B1%C5%9Ft%C4%B1r%C4%B1c%C4%B1s%C4%B1"
-  },
-  {
-   "text": "Kevlar, çok hafif karbon kökenli çok sağlam liflerden oluşan bir malzemedir. DuPont firması tarafından 1965 yılında icat edilmiş, patentlenmiş ticari bir markadır.",
-   "title": "Kevlar",
-   "url": "https://tr.wikipedia.org/wiki/Kevlar"
-  },
-  {
-   "text": "Sıvı kristaller, sıvıların ve katı kristallerin özellikleri arasında özelliklere sahip olan kimyasal maddelerdir. Örneğin, bir sıvı kristal (SK) bir sıvı gibi akar ama molekülleri bir kristalinki gibi yönlüdür.",
-   "title": "Sıvı kristal",
-   "url": "https://tr.wikipedia.org/wiki/S%C4%B1v%C4%B1_kristal"
-  },
-  {
-   "text": "Ozonosfer veya ozon tabakası, stratosferin üst kısmında bulunan tabakadır. Ozon tabakası Güneş'ten gelen morötesi ışınlardan olan UV-B ve UV-C gibi zararlı ışınları tutar.",
-   "title": "Ozonosfer",
-   "url": "https://tr.wikipedia.org/wiki/Ozonosfer"
-  },
-  {
-   "text": "Mariana Çukuru , Dünya üzerinde bilinen en derin noktadır. Büyük Okyanus'ta, Guam Adası'nın güney batısında, Japonya ve Endonezya arasında, iki ülkeye de aşağı yukarı eşit uzaklıkta yer alır.",
-   "title": "Mariana Çukuru",
-   "url": "https://tr.wikipedia.org/wiki/Mariana_%C3%87ukuru"
-  },
-  {
-   "text": "Everest Dağı, Himalayalar'ın Mahalangur Himal alt bölgesinde yer alan, Dünya'nın deniz seviyesinden en yüksek dağıdır. Çin-Nepal sınırı, zirve noktasından geçmektedir. 2020 yılında Çinli ve Nepalli yetkililer tarafından tespit edilen yüksekliği 8.848,86 m 'dir.",
-   "title": "Everest Dağı",
-   "url": "https://tr.wikipedia.org/wiki/Everest_Da%C4%9F%C4%B1"
-  },
-  {
-   "text": "Atacama Çölü, Güney Amerika'nın Pasifik kıyısında, Şili'nin kuzeyinde, And Dağları'nın batısında, 1.600 kilometre uzunluğunda bir kara şeridi boyunca uzanan bir çöl platosudur. 105.000 km2 alanı kaplar ve And Dağları'nın çorak alt yamaçları da dahil edilirse 128.000 km2'ye ulaşır.",
-   "title": "Atacama Çölü",
-   "url": "https://tr.wikipedia.org/wiki/Atacama_%C3%87%C3%B6l%C3%BC"
-  },
-  {
-   "text": "Baykal Gölü, Dünya'nın en derin gölüdür ve tektonik kökenlidir. Sibirya'nın güneyinde, İrkutsk Oblastı ve Buryatya arasında yer alır. İrkutsk şehrinin yakınında bulunan göl, \"Sibirya'nın Mavi Gözü\" diye adlandırılır.",
-   "title": "Baykal Gölü",
-   "url": "https://tr.wikipedia.org/wiki/Baykal_G%C3%B6l%C3%BC"
-  },
-  {
-   "text": "Güney Amerika'da bulunan Amazon nehri, Afrika'daki Nil Nehri'nden sonra dünyanın en uzun ikinci nehridir. Büyük Okyanus'a 160 km. mesafede, Peru'daki And Dağları'nın doruklarından doğarak doğuya doğru bir seyir izleyip Atlas Okyanusu'na dökülür. 6.400 km uzunluğundaki Amazon'un taşıdığı su miktarı Mississippi, Nil ve Yangtze nehirlerinin…",
-   "title": "Amazon Nehri",
-   "url": "https://tr.wikipedia.org/wiki/Amazon_Nehri"
-  },
-  {
-   "text": "Sahra ya da Büyük Sahra, Afrika'nın kuzeyinde yer alan, kıtanın ortası ile kuzeyini ayıran 9 milyon km² büyüklüğünde bir çöl. Dünyanın en büyük sıcak çölüdür.",
-   "title": "Sahra",
-   "url": "https://tr.wikipedia.org/wiki/Sahra"
-  },
-  {
-   "text": "Antarktika, Güney yarımküre'nin en güneyinde bulunan ve Güney Kutbu'nu içeren kıta. Afrika ve Okyanusya'nın güneyinde olan ve içinde ülke bulunmayan tek kıta.",
-   "title": "Antarktika",
-   "url": "https://tr.wikipedia.org/wiki/Antarktika"
-  },
-  {
-   "text": "Pamukkale, Türkiye'nin güneybatısındaki Denizli ilinde yer alan doğal bir mevkidir. Kent, termal suyun akışıyla kalan karbonat mineralleriyle oluşan travertenleri ve teraslarıyla ünlüdür.",
-   "title": "Pamukkale",
-   "url": "https://tr.wikipedia.org/wiki/Pamukkale"
-  },
-  {
-   "text": "Van Gölü, Van ve Bitlis illeri sınırları içerisinde bulunan Nemrut volkanik dağının patlaması sonucu, bölgedeki tektonik çöküntü alanının önünün kapanmasıyla oluşmuş bir volkanik set gölüdür.",
-   "title": "Van Gölü",
-   "url": "https://tr.wikipedia.org/wiki/Van_G%C3%B6l%C3%BC"
-  },
-  {
-   "text": "Kapadokya, Türkiye'nin İç Anadolu Bölgesi'nde yer alan tarihî bölgedir. Nevşehir, Kayseri, Aksaray, Kırşehir, Sivas ve Niğde illeri sınırlarında bulunmaktadır.",
-   "title": "Kapadokya",
-   "url": "https://tr.wikipedia.org/wiki/Kapadokya"
-  },
-  {
-   "text": "Levha tektoniği, Dünya'nın litosferinin yaklaşık 3,4 milyar yıl öncesinden beri yavaş hareket eden birçok büyük tektonik levha içerdiği düşünülen genel kabul görmüş bilimsel bir teoridir.",
-   "title": "Levha tektoniği",
-   "url": "https://tr.wikipedia.org/wiki/Levha_tektoni%C4%9Fi"
-  },
-  {
-   "text": "Deprem, yer sarsıntısı, seizma veya zelzele, yer kabuğunda beklenmedik bir anda ortaya çıkan enerji sonucunda meydana gelen sismik dalgalanmalar ve bu dalgaların yeryüzünü sarsması olayıdır.",
-   "title": "Deprem",
-   "url": "https://tr.wikipedia.org/wiki/Deprem"
-  },
-  {
-   "text": "Yanardağ ya da volkanik dağ, magmanın yeryüzünden dışarı püskürerek çıktığı coğrafi yer şekilleridir. Güneş Sistemi'nde bulunan kayalık gezegen ve uydularda birçok yanardağ olmasına rağmen, bu olgu, en azından Dünya'da, genellikle tektonik plaka sınırlarında görülür.",
-   "title": "Yanardağ",
-   "url": "https://tr.wikipedia.org/wiki/Yanarda%C4%9F"
-  },
-  {
-   "text": "Ay, kendi yörüngesinde dolanırken, kimi zaman Dünya'nın gölgesine girer. Buna Ay tutulması denir. Ay tutulması, dolunay zamanında ve Ay'ın düğüm noktalarına yakın olması durumunda meydana gelir.",
-   "title": "Ay tutulması",
-   "url": "https://tr.wikipedia.org/wiki/Ay_tutulmas%C4%B1"
-  },
-  {
-   "text": "Mağara, yüzeyle bağlantısı olan ve gün ışığı ile bağlantısı kaybolacak derinliğe ve en az bir insanın sürünerek girebilmesine olanak verecek genişlik ve yüksekliğe sahip olan yeraltı boşluklarıdır.",
-   "title": "Mağara",
-   "url": "https://tr.wikipedia.org/wiki/Ma%C4%9Fara"
-  },
-  {
-   "text": "Buzul, dağ zirvelerinde yaz kış erimeyen ve yer çekiminin etkisiyle yer değiştiren büyük kar ve buz kütlesidir. Eğimli arazilerde yıllar boyunca biriken kar kütlesinin önce buzkar, sonra da buza dönüşmesiyle oluşur.",
-   "title": "Buzul",
-   "url": "https://tr.wikipedia.org/wiki/Buzul"
-  },
-  {
-   "text": "Tsunami [Japoncada liman dalgası anlamına gelen \"津波\" (つなみ) sözcüğünden] ya da dev dalga, okyanus ya da denizlerin tabanında oluşan deprem, gök taşı düşmesi, deniz altındaki nükleer patlamalar, yanardağ patlaması ve bunlara bağlı taban çökmesi, zemin kaymaları gibi tektonik olaylar sonucu denize geçen enerji nedeniyle oluşan uzun…",
-   "title": "Tsunami",
-   "url": "https://tr.wikipedia.org/wiki/Tsunami"
-  },
-  {
-   "text": "Kasırga ya da tropikal siklon, büyük çaplı ve çok şiddetli, Beaufort ölçeğine göre saatte 118 km'den fazla hızla ve dönerek esen tropik rüzgârdır.",
-   "title": "Tropikal siklon",
-   "url": "https://tr.wikipedia.org/wiki/Tropikal_siklon"
-  },
-  {
-   "text": "Altın oran, matematikte iki miktardan büyük olanın küçüğe oranı, miktarların toplamının miktarları büyük olanına oranı ile aynı ise altın orandır. Altın oran aynı zamanda antik çağdan bu yana sanat ve mimaride en iyi uyum ve oranları veren düzen bağıntısı olarak kabul edilmekteydi.",
-   "title": "Altın oran",
-   "url": "https://tr.wikipedia.org/wiki/Alt%C4%B1n_oran"
-  },
-  {
-   "text": "Fibonacci dizisi, her sayının kendinden önceki ile toplanması sonucu oluşan bir sayı dizisidir. Ayrıca ardışık her iki sayının bölümü altın orana yakın bir değer vermektedir değer ne kadar büyük olursa altın orana o kadar yakın olur örneğin:55:34=1,617... 1, 2, 3, 5, 8, 13, 21, 34, 55, 89... şeklinde devam eden bu dizide sayılar…",
-   "title": "Fibonacci dizisi",
-   "url": "https://tr.wikipedia.org/wiki/Fibonacci_dizisi"
-  },
-  {
-   "text": "Pi sayısı , bir dairenin çevresinin çapına bölümü ile elde edilen irrasyonel matematik sabitidir. İsmini, Yunanca περίμετρον (çevre) sözcüğünün ilk harfi olan π harfinden alır.",
-   "title": "Pi sayısı",
-   "url": "https://tr.wikipedia.org/wiki/Pi_say%C4%B1s%C4%B1"
-  },
-  {
-   "text": "Fraktal; matematikte, çoğunlukla kendine benzeme veya oransal kırılma özelliği gösteren karmaşık geometrik şekillerin ortak adıdır. Fraktallar, klasik, yani Öklid (Euklides) geometrideki kare, daire, küre gibi basit şekillerden çok farklıdır.",
-   "title": "Fraktal",
-   "url": "https://tr.wikipedia.org/wiki/Fraktal"
-  },
-  {
-   "text": "Möbius şeridi, geometrik olarak uzunca bir şeridin bir ucunu 180 derece bükerek diğer ucu ile birleştirilmesiyle elde edilen yüzeydir. İlk olarak 1861'de Johann Benedict Listing tarafından tanımlanmıştır.",
-   "title": "Möbius şeridi",
-   "url": "https://tr.wikipedia.org/wiki/M%C3%B6bius_%C5%9Feridi"
-  },
-  {
-   "text": "Monty Hall problemi, Amerikan TV yarışma programı Let's Make a Deal'a dayanan bir olasılık bulmacasıdır. Problem adını, yarışmanın sunucusu Monty Hall'dan alır.",
-   "title": "Monty Hall problemi",
-   "url": "https://tr.wikipedia.org/wiki/Monty_Hall_problemi"
-  },
-  {
-   "text": "Olasılık teorisinde, doğum günü problemi veya doğum günü paradoksu, n adet rastgele seçilmiş kişiden oluşan bir grup içindeki bazı çiftlerin doğum gününün aynı olma olasılığını inceler.",
-   "title": "Doğum günü problemi",
-   "url": "https://tr.wikipedia.org/wiki/Do%C4%9Fum_g%C3%BCn%C3%BC_problemi"
-  },
-  {
-   "text": "Eksiklik Teoremi, Kurt Gödel'in 1931 yılında doktorasında yer verdiği \"Principia Mathematica Gibi Dizgelerin Biçimsel Olarak Karar Verilemeyen Önermeleri Üzerine\" başlıklı makalesinde 4. önerme olarak geçer.",
-   "title": "Gödel'in eksiklik teoremi",
-   "url": "https://tr.wikipedia.org/wiki/G%C3%B6del'in_eksiklik_teoremi",
-   "via_search": "Gödel'in eksiklik teoremleri"
-  },
-  {
-   "text": "Bir asal sayı, yalnızca 1'den büyük olup kendisinden küçük iki doğal sayının çarpımı olarak ifade edilemeyen bir doğal sayıdır. 1'den büyük ve asal olmayan doğal sayılara bileşik sayı adı verilir.",
-   "title": "Asal sayı",
-   "url": "https://tr.wikipedia.org/wiki/Asal_say%C4%B1"
-  },
-  {
-   "text": "Sonsuzluk, her ne kadar popüler düşüncede bitmeyen, zamansız ve zamanla tanımlansa da; birçok kişiye göre zamanın dışında bir zamansızlık varoluşu olarak tanımlanmıştır.",
-   "title": "Sonsuzluk",
-   "url": "https://tr.wikipedia.org/wiki/Sonsuzluk"
-  },
-  {
-   "text": "Kaos teorisi, kaos kuramı veya kargaşa kuramı; yapısal olarak bir fizik teorisi ya da matematiksel bir tümevarım değil, fiziksel gerçeklik parçalarının bir bütün olarak eğilimini açıklamaya yarayan bir yöntemdir.",
-   "title": "Kaos teorisi",
-   "url": "https://tr.wikipedia.org/wiki/Kaos_teorisi"
-  },
-  {
-   "text": "Teorem: Sonlu sayıda bölgeden oluşan bir harita, birbirine sonsuz sayıda nokta boyunca komşu olan iki bölgenin renkleri birbirinden farklı olmak üzere, boyanacaksa bu işlem için dört rengin yeterli olacağı bir strateji vardır.",
-   "title": "Dört renk teoremi",
-   "url": "https://tr.wikipedia.org/wiki/D%C3%B6rt_renk_teoremi"
-  },
-  {
-   "text": "Öklid (Grekçe: Εὐκλείδης Eukleídēs; MÖ 330 - 275 yılları arasında yaşamış, İskenderiyeli bir matematikçidir. Megaralı Öklid'den ayırmak için bazen İskenderiyeli Öklid olarak anılır, genellikle \"geometrinin kurucusu\" veya \"geometrinin babası\" olarak anılan bir Yunan matematikçiydi.",
-   "title": "Öklid",
-   "url": "https://tr.wikipedia.org/wiki/%C3%96klid"
-  },
-  {
-   "text": "0 (sıfır), etkisiz bir rakamı temsil eden bir niceliktir. Herhangi bir sayıya 0 eklemek veya çıkarmak o sayıyı değiştirmez; matematiksel terminolojide 0, tam sayılar, rasyonel sayılar, reel sayılar ve karmaşık sayıların yanı sıra diğer cebirsel yapıların da toplamsal birimidir.",
-   "title": "0",
-   "url": "https://tr.wikipedia.org/wiki/0"
-  },
-  {
-   "text": "Oyun teorisi veya Oyun kuramı, istatistik, sosyal bilimler, biyoloji, mühendislik, siyasi bilimler, bilgisayar bilimleri kullanılan meşhur teoridir. Oyun teorisi, bireyin başarısının diğerlerinin seçimlerine dayalı olduğu seçimler yapması olan bazı stratejik durumların matematiksel olarak davranış biçimlerini yakalamaya çalışır.",
-   "title": "Oyun teorisi",
-   "url": "https://tr.wikipedia.org/wiki/Oyun_teorisi"
-  },
-  {
-   "text": "Büyük Sayılar Kanunu ya da Büyük Sayılar Yasası, bir rassal değişkenin uzun vadede kararlı bir ortalamaya yaklaşacağını ifade eden bir olasılık teoremidir.",
-   "title": "Büyük sayılar yasası",
-   "url": "https://tr.wikipedia.org/wiki/B%C3%BCy%C3%BCk_say%C4%B1lar_yasas%C4%B1"
-  },
-  {
-   "text": "Ünlü, sesli veya vokal; ses yolu görece açık durumda iken, ses tellerinin titreşmesi ile bir engele takılmadan oluşan; hecenin en küçük birimini oluşturan konuşma sesi.",
-   "title": "Ünlü (dilbilim)",
-   "url": "https://tr.wikipedia.org/wiki/%C3%9Cnl%C3%BC_(dilbilim)"
-  },
-  {
-   "text": "Yazı, ağızdan çıkan seslerin, fikirlerin ve görüşlerin mimik yardımı olmaksızın iletilmesini sağlayan, insanlar tarafından bulunan belirli işaret ve işaret sistemleridir.",
-   "title": "Yazı tarihi",
-   "url": "https://tr.wikipedia.org/wiki/Yaz%C4%B1_tarihi",
-   "via_search": "Yazının tarihi"
-  },
-  {
-   "text": "Rüya ya da düş, uykunun genel ve karakteristik özelliklerinden biri olup, uykunun hızlı göz hareketi (REM) adlı evreleriyle yakından ilişkili bulunan, görsel ve işitsel algı ve duygulardır.",
-   "title": "Rüya",
-   "url": "https://tr.wikipedia.org/wiki/R%C3%BCya"
-  },
-  {
-   "text": "Müzik kuramı terimi genel olarak iki farklı ama birbiriyle ilgili anlamda kullanılır:Müziğin temel yapıtaşları. Bu yapıtaşları ile müziğin incelenmesi, sınıflandırılması ve hatta bestelenmesini konu alan bilim dalı.",
-   "title": "Müzik teorisi",
-   "url": "https://tr.wikipedia.org/wiki/M%C3%BCzik_teorisi"
-  },
-  {
-   "text": "Umami ; tatlı, ekşi, bitter (acımtırak/buruk) ve tuzlu ile birlikte beş temel tattan biridir. Umami Japonca \"hoşa giden tat\" anlamına gelen \"うま味\" kelimesinden alıntıdır.",
-   "title": "Umami",
-   "url": "https://tr.wikipedia.org/wiki/Umami"
-  },
-  {
-   "text": "Kahve, kökboyasıgiller (Rubiaceae) familyasının Coffea cinsinde yer alan bir ağaç ve bu ağacın meyve çekirdeklerinin kavrulup öğütülmesi ile elde edilen tozun su ya da süt ile karıştırılmasıyla yapılan içecektir.",
-   "title": "Kahve",
-   "url": "https://tr.wikipedia.org/wiki/Kahve"
-  },
-  {
-   "text": "Baharat Yolu, eski çağlarda, Uzak Doğu'yu Batı'ya bağlayan ticaret yollarından biriydi. Baharat günümüzden binlerce yıl önce Doğu ülkelerinde kullanılıyordu.",
-   "title": "Baharat Yolu",
-   "url": "https://tr.wikipedia.org/wiki/Baharat_Yolu",
-   "via_search": "Baharat ticareti"
-  },
-  {
-   "text": "Zeytin, zeytingiller Oleaceae familyasından meyvesi yenen ve geleneksel olarak Akdeniz iklimine özgü bir ağaç türüdür. Tür, tüm Akdeniz ülkelerinin yanı sıra Güney Amerika, Güney Afrika, Çin, Avustralya, Yeni Zelanda, Meksika ve Amerika Birleşik Devletleri'nde yetiştirilir.",
-   "title": "Zeytin",
-   "url": "https://tr.wikipedia.org/wiki/Zeytin"
-  },
-  {
-   "text": "Ekmek, genellikle buğday, un ve su ile hazırlanan hamurun pişirilmesiyle elde edilen temel bir besindir. Tarih boyunca ve dünya genelinde birçok kültürün beslenme düzeninde önemli bir yere sahip olmuştur.",
-   "title": "Ekmek",
-   "url": "https://tr.wikipedia.org/wiki/Ekmek"
-  },
-  {
-   "text": "Peynir, süt proteini kazeinin pıhtılaştırılmasıyla çeşitli tat, doku ve formlarda üretilen bir süt ürünüdür. Genellikle inek, manda, keçi veya koyun sütünden elde edilen proteinler ve yağdan oluşur.",
-   "title": "Peynir",
-   "url": "https://tr.wikipedia.org/wiki/Peynir"
-  },
-  {
-   "text": "Olimpiyat Oyunları veya kısaca Olimpiyatlar, Yaz ve Kış Olimpiyat Oyunları olmak üzere iki ayrı kategoride, dört yılda bir düzenlenen uluslararası çok sporlu etkinlik. 200'ün üzerinde ülkeyi temsil eden sporcuların katıldığı etkinlikler, dünyanın en kapsamlı spor etkinliği konumundadır.",
-   "title": "Olimpiyat Oyunları",
-   "url": "https://tr.wikipedia.org/wiki/Olimpiyat_Oyunlar%C4%B1"
-  },
-  {
-   "text": "Satranç, iki oyuncu arasında oynanan, gizli bilgi ve şansa dayanmayan bir soyut strateji oyunudur. Aynı zamanda en yaygın masa oyunlarından biri olarak kabul edilmektedir.",
-   "title": "Satranç",
-   "url": "https://tr.wikipedia.org/wiki/Satran%C3%A7"
-  },
-  {
-   "text": "Go, tahta üzerinde oynanan iki kişilik çok eski bir strateji oyunudur. Çin kökenli bir oyun olmakla birlikte bütün Doğu Asya'da tanınır ve yaygın bir şekilde oynanır.",
-   "title": "Go",
-   "url": "https://tr.wikipedia.org/wiki/Go"
-  }
- ],
+ "history_days": 10,
  "history": {
   "08-23": [
    {
     "year": 2023,
     "text": "Hindistan, Chandrayaan-3 aracı ile Ay'ın güney kutbuna inen ilk ülke oldu.",
     "title": "Hindistan",
-    "extract": "Hindistan, resmî adıyla Hindistan Cumhuriyeti, Güney Asya'da bir ülkedir. Alan bakımından yedinci en büyük ülkedir; 2023'ten beri en kalabalık ülkedir; ve 1947'deki bağımsızlığından bu yana dünyanın en kalabalık demokrasisidir.",
     "url": "https://tr.wikipedia.org/wiki/Hindistan"
    },
    {
     "year": 1990,
     "text": "Saddam Hüseyin, Kuveyt'teki Batılı ülkelerin elçiliklerinin boşaltılmasını istedi.",
     "title": "Saddam_Hüseyin",
-    "extract": "Saddam Hüseyin Abdülmecid et-Tikriti, 1979'dan 2003'te devrilene kadar Irak'ın beşinci cumhurbaşkanı olarak görev yapmış Iraklı bir siyasetçi ve devrimcidir. Daha önce 1968'den 1979'a kadar başkan yardımcılığı ve 1979'dan 1991'e ve daha sonra 1994'ten 2003'e kadar başbakanlık yapmıştır.",
     "url": "https://tr.wikipedia.org/wiki/Saddam_H%C3%BCseyin"
    },
    {
     "year": 1928,
-    "text": "Amasya-Zile demiryolu (82 km.) hizmete girdi.",
+    "text": "Amasya-Zile demiryolu (82 km.) hizmete girdi.",
     "title": "Amasya",
-    "extract": "Amasya, Amasya ilinin merkezi olan şehirdir. 2020 itibarıyla Amasya şehir merkezi 147.266 kişilik nüfusa sahiptir.",
     "url": "https://tr.wikipedia.org/wiki/Amasya"
    }
   ],
@@ -1040,21 +28,18 @@
     "year": 2016,
     "text": "İtalya'da 6,2 büyüklüğünde deprem meydana geldi. 250'den fazla kişi hayatını kaybetti.",
     "title": "İtalya",
-    "extract": "İtalya, resmî adıyla İtalyan Cumhuriyeti, Güney Avrupa'da, büyük ölçüde İtalya Yarımadası üzerinde yer alan bir ülke. Akdeniz'in en büyük iki adası Sicilya ve Sardinya da İtalyan topraklarıdır. Yüzölçümü 301.340 km2 olan ülkenin kuzeyde Alpler bölgesinde Fransa, İsviçre, Avusturya ve Slovenya'yla kara sınırı vardır.",
     "url": "https://tr.wikipedia.org/wiki/%C4%B0talya"
    },
    {
     "year": 1963,
     "text": "200 metre serbest stil yüzmede rekor: Don Schollander (1:58).",
     "title": "Serbest_stil_yüzme",
-    "extract": "Serbest stil yüzme, yüzücünün kulaçlarla ve ayak vuruşlarıyla yüzdüğü bir stildir. Ayak vuruşları yüzücüye ancak %10 civarında hız kazandırmakta, büyük hızı ise kulaçlar kazandırmaktadır.",
     "url": "https://tr.wikipedia.org/wiki/Serbest_stil_y%C3%BCzme"
    },
    {
     "year": 1919,
     "text": "Şarkî Anadolu Müdâfaa-i Hukuk Cemiyeti kuruldu.",
     "title": "Şarkî_Anadolu_Müdâfaa-i_Hukuk_Cemiyeti",
-    "extract": "Şarkî Anadolu Müdâfaa-i Hukuk Cemiyeti, Ağustos 1919 tarihinde, Erzurum merkezli kurulmuştur. Elazığ'da da şubesi vardır. Bu cemiyet, önce İstanbul'da kurulmuş olan Vilâyât-ı Şarkiye Müdâfaa-i Hukuk-ı Milliye Cemiyeti'ne bağlı olarak açılmış, daha sonra Şarkî Anadolu Müdafaa-i Hukuk Cemiyeti adı ile İstanbul'dan ayrılm…",
     "url": "https://tr.wikipedia.org/wiki/%C5%9Eark%C3%AE_Anadolu_M%C3%BCd%C3%A2faa-i_Hukuk_Cemiyeti"
    }
   ],
@@ -1063,21 +48,18 @@
     "year": 2010,
     "text": "Çin'de, içinde 91 kişinin bulunduğu Henan Havayolları'na ait Brezilya yapımı Ebmraer 190 tipi yolcu uçağı, ülkenin kuzeydoğusunda düştü. 43 yolcunun öldüğü kazada, 53 yolcu kurtuldu.",
     "title": "Çin",
-    "extract": "Çin, resmî adıyla Çin Halk Cumhuriyeti, Doğu Asya'da Çin Komünist Partisi tarafından tek parti rejimiyle yönetilen üniter egemen devlet. 1,4 milyarı aşkın nüfusuyla Hindistan'dan sonra dünyanın en kalabalık ikinci ülkesidir ve dünya nüfusunun %17'sini temsil etmektedir.",
     "url": "https://tr.wikipedia.org/wiki/%C3%87in"
    },
    {
     "year": 1968,
     "text": "Koç Grubu, 'Diners Club' kredi kartı ile alışverişi Türkiye'ye getirdi.",
     "title": "Koç_Holding",
-    "extract": "Koç Holding, 1963 yılında Vehbi Koç tarafından kurulan holdingdir. Türkiye'nin ilk holdingi ve en büyük özel kuruluşlarından birisidir. Holding merkez binası Üsküdar, Nakkaştepe'dedir.",
     "url": "https://tr.wikipedia.org/wiki/Ko%C3%A7_Holding"
    },
    {
     "year": 1933,
     "text": "İtalya ile Sovyetler Birliği saldırmazlık antlaşması imzaladı.",
     "title": "İtalya",
-    "extract": "İtalya, resmî adıyla İtalyan Cumhuriyeti, Güney Avrupa'da, büyük ölçüde İtalya Yarımadası üzerinde yer alan bir ülke. Akdeniz'in en büyük iki adası Sicilya ve Sardinya da İtalyan topraklarıdır. Yüzölçümü 301.340 km2 olan ülkenin kuzeyde Alpler bölgesinde Fransa, İsviçre, Avusturya ve Slovenya'yla kara sınırı vardır.",
     "url": "https://tr.wikipedia.org/wiki/%C4%B0talya"
    }
   ],
@@ -1086,21 +68,18 @@
     "year": 2021,
     "text": "Zafer Partisi, Ümit Özdağ tarafından kuruldu.",
     "title": "Zafer_Partisi",
-    "extract": "Zafer Partisi, Türkiye'de faaliyet gösteren milliyetçi bir siyasi partidir. 26 Ağustos 2021'de Ümit Özdağ tarafından kurulan parti, Ayyıldız Hareketi'nin devamı niteliğindedir ve ambleminde ay yıldız şeklinde tasarlanan bir meşale bulunmaktadır.",
     "url": "https://tr.wikipedia.org/wiki/Zafer_Partisi"
    },
    {
     "year": 1936,
     "text": "Birleşik Krallık, -Süveyş Kanalı dışında- Mısır'a bağımsızlığını verdi.",
     "title": "Birleşik_Krallık",
-    "extract": "Birleşik Krallık, resmî adıyla Büyük Britanya ve Kuzey İrlanda Birleşik Krallığı, Avrupa anakarasının kuzeybatı kıyılarında, Kuzeybatı Avrupa'da egemen bir ülkedir. Birleşik Krallık; İngiltere, İskoçya, Galler ve diğer ülkelerden İrlanda Denizi ile ayrılan Kuzey İrlanda olmak üzere dört kurucu ülkeden oluşur.",
     "url": "https://tr.wikipedia.org/wiki/Birle%C5%9Fik_Krall%C4%B1k"
    },
    {
     "year": 1896,
     "text": "Ermeni Devrimci Federasyonu (Taşnak Partisi) üyesi 28 kişi, İstanbul'da Galata semtindeki Osmanlı Bankası'nı bastı. 14 saatlik çatışma ve pazarlıklardan sonra, sağ kalan militanlar banka müdürünün yatıyla İstanbul'dan kaçtı.",
     "title": "Ermeni_Devrimci_Federasyonu",
-    "extract": "Ermeni Devrimci Federasyonu, Ermeni siyasi partisi. Ermenistan'ın bağımsızlığını sağlamak amacıyla 1890'da kuruldu. Hâlen gerek Ermenistan Cumhuriyeti'nde gerek diasporadaki Ermeniler arasında aktif bir siyasi partidir.",
     "url": "https://tr.wikipedia.org/wiki/Ermeni_Devrimci_Federasyonu"
    }
   ],
@@ -1109,21 +88,18 @@
     "year": 2007,
     "text": "Yunanistan'daki orman yangınları ülkenin 3'te birinin bulunduğu Mora Yarımadası'nın 3'te 2'sini vurdu. 62 kişinin hayatını kaybetmesi ve yangının kontrol altına alınamamasıyla olağanüstü hâl ilan edildi.",
     "title": "Yunanistan",
-    "extract": "Yunanistan, resmî adıyla Helen Cumhuriyeti, Güneydoğu Avrupa'da yer alan bir ülkedir. Balkan Yarımadası'nın güney ucunda bulunan ülke, kuzeybatıda Arnavutluk, kuzeyde Kuzey Makedonya ve Bulgaristan, doğuda ise Türkiye ile kara sınırlarını paylaşmaktadır.",
     "url": "https://tr.wikipedia.org/wiki/Yunanistan"
    },
    {
     "year": 1964,
     "text": "Türkiye'deki ilk ABD aleyhtarı gösteri, ABD'nin Kıbrıs konusundaki tutumu nedeniyle Ankara'da yapıldı.",
     "title": "Amerika_Birleşik_Devletleri",
-    "extract": "Amerika Birleşik Devletleri (ABD), daha yaygın kullanılan adıyla Amerika veya Birleşik Devletler, Kuzey Amerika kıtasında Kanada ve Meksika arasında bulunan bir ülkedir. 50 eyaletin birleşiminden meydana gelen federal anayasal bir cumhuriyet ile yönetilir.",
     "url": "https://tr.wikipedia.org/wiki/Amerika_Birle%C5%9Fik_Devletleri"
    },
    {
     "year": 1922,
     "text": "Türk Kurtuluş Savaşı: Türk Ordusu, Yunan işgali altında bulunan Afyon'u geri aldı.",
     "title": "Türk_Kurtuluş_Savaşı",
-    "extract": "Türk Kurtuluş Savaşı, I. Dünya Savaşı'ndan yenik çıkan Osmanlı İmparatorluğu'nun İtilaf Devletleri'nce işgali sonucunda Mîsâk-ı Millî sınırları içinde ülke bütünlüğünü korumak için 1919-1922 yılları arasında gerçekleştirilen çok cepheli siyasi ve askeri mücadeledir.",
     "url": "https://tr.wikipedia.org/wiki/T%C3%BCrk_Kurtulu%C5%9F_Sava%C5%9F%C4%B1"
    }
   ],
@@ -1132,21 +108,18 @@
     "year": 2007,
     "text": "Abdullah Gül, 339 oyla TBMM tarafından 11. Cumhurbaşkanı seçildi.",
     "title": "Abdullah_Gül",
-    "extract": "Abdullah Gül, 2007'den 2014'e kadar 11. Türkiye cumhurbaşkanı olarak görev yapan Türk ekonomist, akademisyen ve siyasetçidir. Adalet ve Kalkınma Partisinin (AKP) kurucularından olan Gül, daha önce 2002-2003 yıllarında başbakanlık ve 2003-2007 yıllarında dışişleri bakanlığı da yaptı.",
     "url": "https://tr.wikipedia.org/wiki/Abdullah_G%C3%BCl"
    },
    {
     "year": 1990,
     "text": "Illinois'te kasırga: 28 kişi öldü.",
     "title": "Illinois",
-    "extract": "Illinois, Amerika Birleşik Devletleri'nin Orta Batı bölgesinde yer alan bir eyalettir. Kuzeydoğusunda Michigan Gölü, batısında Mississippi Nehri ve güneyinde Wabash ve Ohio nehirleri ile sınırlıdır.",
     "url": "https://tr.wikipedia.org/wiki/Illinois"
    },
    {
     "year": 1934,
     "text": "Üsküdar-Kadıköy tramvay hattının ilk denemesi yapıldı.",
     "title": "Üsküdar",
-    "extract": "Üsküdar, İstanbul'un Anadolu Yakası'nda yer alan ilçedir. Kocaeli Yarımadası'nın batı kesiminde yer alan Üsküdar, kuzeyden Beykoz, kuzeydoğudan Ümraniye, doğudan Ataşehir, güneyden Kadıköy ilçeleri ve batıdan İstanbul Boğazıyla çevrilidir. İlçe 33 tane mahalleden oluşmaktadır.",
     "url": "https://tr.wikipedia.org/wiki/%C3%9Csk%C3%BCdar"
    }
   ],
@@ -1155,21 +128,18 @@
     "year": 2014,
     "text": "Ensaru'l İslam, Adlı Birlik Feshedildi",
     "title": "Ensaru'l_İslam",
-    "extract": "Kürdistan'da Ensaru'l İslam, veya Ensaru'l İslam veya Kürt Talibanı Irak merkezli, Suriye ve Irak'ta faaliyet gösteren Kürt cihatçı Selefi ve silahlı bir örgüttür. Şeriat kanunlarına göre bir İslam devleti kurmak, Kürtleri korumak ve haklarını elde etmek ve korumak için kuruldular.",
     "url": "https://tr.wikipedia.org/wiki/Ensaru'l_%C4%B0slam"
    },
    {
     "year": 1955,
     "text": "Kıbrıs Konferansı Londra'da toplandı.",
     "title": "Kıbrıs",
-    "extract": "Kıbrıs, Güneybatı Asya'da bulunan ve Akdeniz'deki Sicilya ve Sardinya'dan sonra gelen üçüncü büyük adadır. Kıbrıs Cumhuriyeti, Birleşik Krallık'a bağlı üs bölgeleri dışında de jure olarak adanın tamamını, fiilî olarak adanın %59'luk güney kesmini yönetir.",
     "url": "https://tr.wikipedia.org/wiki/K%C4%B1br%C4%B1s"
    },
    {
     "year": 1898,
     "text": "Goodyear şirketinin kuruluşu.",
     "title": "Goodyear_(şirket)",
-    "extract": "The Goodyear Tire & Rubber Company, merkezi Akron, Ohio'da bulunan çok uluslu bir Amerikan lastik üreticisidir. Goodyear binek araçlar, havacılık, ticari kamyonlar, askeri ve polis araçları, motosikletler, RV'ler, yarış arabaları ve ağır arazi makineleri için lastik üretmektedir.",
     "url": "https://tr.wikipedia.org/wiki/Goodyear_(%C5%9Firket)"
    }
   ],
@@ -1178,21 +148,18 @@
     "year": 2021,
     "text": "ABD başkanı Joe Biden'nın orduyu Afganistan'dan çekmesi üzerine, 20 yıl sürmüş olan Afganistan Savaşı sona erdi.",
     "title": "Amerika_Birleşik_Devletleri",
-    "extract": "Amerika Birleşik Devletleri (ABD), daha yaygın kullanılan adıyla Amerika veya Birleşik Devletler, Kuzey Amerika kıtasında Kanada ve Meksika arasında bulunan bir ülkedir. 50 eyaletin birleşiminden meydana gelen federal anayasal bir cumhuriyet ile yönetilir.",
     "url": "https://tr.wikipedia.org/wiki/Amerika_Birle%C5%9Fik_Devletleri"
    },
    {
     "year": 1974,
     "text": "BM Güvenlik Konseyi, Kıbrıs'taki çarpışmalar yüzünden evlerini terk edenlerin güven içinde geri dönmelerine izin verilmesini öngören Fransa, İngiltere, Avusturya ortak karar tasarısını oy birliğiyle kabul etti.",
     "title": "Birleşmiş_Milletler_Güvenlik_Konseyi",
-    "extract": "Birleşmiş Milletler Güvenlik Konseyi (BMGK), Birleşmiş Milletler'in üye ülkeler arasında güvenlik ve barışı korumakla yükümlü en güçlü organı. Birleşmiş Milletler'in diğer organları sadece tavsiye kararı alabilirken, Uluslararası Adalet Divanı ile birlikte bağlayıcı karar alma yetkisine sahip iki Birleşmiş Milletler or…",
     "url": "https://tr.wikipedia.org/wiki/Birle%C5%9Fmi%C5%9F_Milletler_G%C3%BCvenlik_Konseyi"
    },
    {
     "year": 1930,
     "text": "Ankara-Sivas demiryolu hattı ve Sivas İstasyonu, Başbakan İsmet Paşa'nın konuşmasıyla hizmete açıldı.",
     "title": "Ankara",
-    "extract": "Ankara, Türkiye'nin başkenti ve Ankara ilinin merkezi olan şehirdir. Coğrafi olarak Türkiye'nin merkezine yakın bir konumda bulunur ve İç Anadolu Bölgesi'nde yer alır. Türkiye İstatistik Kurumu'nun 2025 sonuçlarına göre 5.910.320 nüfusuyla ülkenin İstanbul'dan sonra nüfus bakımından ikinci büyük şehridir.",
     "url": "https://tr.wikipedia.org/wiki/Ankara"
    }
   ],
@@ -1201,21 +168,18 @@
     "year": 2010,
     "text": "Irak Savaşı, ABD Başkanı Barack Obama'nın konuşmasıyla resmen bitti.",
     "title": "Irak_Savaşı",
-    "extract": "Irak Savaşı, 20 Mart 2003'te Amerika Birleşik Devletleri ve Birleşik Krallık önderliğinde oluşturulmuş Çok Uluslu Koalisyon Kuvvetleri'nin bir askerî harekâtla Irak'a girmesiyle başlayan ve devam eden savaş.",
     "url": "https://tr.wikipedia.org/wiki/Irak_Sava%C5%9F%C4%B1"
    },
    {
     "year": 1986,
     "text": "Bir Meksika yolcu uçağı ile küçük bir uçak, Kaliforniya'nın Cerritos şehri üzerinde havada çarpıştı. Uçaklardaki 67 kişi ile yerdeki 15 kişi öldü.",
     "title": "Meksika",
-    "extract": "Meksika, resmî adıyla Birleşik Meksika Devletleri, Kuzey Amerika'da bir ülkedir. Kuzeyde Amerika Birleşik Devletleri; güney ve batıda Büyük Okyanus; güneydoğuda Guatemala, Belize ve Karayip Denizi; doğuda ise Meksika Körfezi ile komşudur. 1.972.550 km² yüzölçümü ile Amerika kıtasındaki altıncı, dünyada ise 13.",
     "url": "https://tr.wikipedia.org/wiki/Meksika"
    },
    {
     "year": 1939,
     "text": "Gleiwitz Vakası: II. Dünya Savaşı'nın Avrupa'da başlamasının arefesinde, Polonyalı kılığına bürünmüş Alman güçlerince düzmece bir saldırı düzenlendi.",
     "title": "Gleiwitz_Vakası",
-    "extract": "Gleiwitz Vakası, 31 Ağustos 1939'da, II. Dünya Savaşı'nın Avrupa'da başlamasının arefesinde, Polonyalı kılığına bürünmüş Alman güçlerince Yukarı Silezya'nın Gleiwitz kentindeki Gleiwitz Radyo İstasyonu'na yapılan düzmece saldırıdır.",
     "url": "https://tr.wikipedia.org/wiki/Gleiwitz_Vakas%C4%B1"
    }
   ],
@@ -1224,24 +188,20 @@
     "year": 2006,
     "text": "İran'da bir yolcu uçağının ülkenin kuzey doğusundaki Meşhed kenti hava alanına inişi sırasında alev alması sonucu en az 29 kişi öldü.",
     "title": "İran",
-    "extract": "İran, resmî adıyla İran İslam Cumhuriyeti, Batı Asya'da yer alan bir ülkedir. Kuzeybatıda Türkiye ve batıda Irak, kuzeyde Azerbaycan, Ermenistan, Hazar Denizi ve Türkmenistan, doğuda Afganistan, güneydoğuda Pakistan, güneyde Umman Körfezi ve Basra Körfezi ile komşudur.",
     "url": "https://tr.wikipedia.org/wiki/%C4%B0ran"
    },
    {
     "year": 1974,
     "text": "Muratağa, Sandallar ve Atlılar Katliamı: Mağusa'ya bağlı Muratağa ve Sandallar köylerinden 88 Türk'ün, öldürülüp yakılarak çukura gömüldükleri anlaşıldı.",
     "title": "Muratağa,_Sandallar_ve_Atlılar_Katliamı",
-    "extract": "Muratağa, Sandallar ve Atlılar Katliamı, 14 Ağustos 1974 tarihinde EOKA-B tarafından Kıbrıs'ın Muratağa, Sandallar ve Atlılar köylerinde Kıbrıs Türklerine karşı gerçekleştirilen katliam. Katliamda en genci 16 günlük, en yaşlısı ise 95 yaşında olmak üzere silahsız 126 Türk öldürülmüştür.",
     "url": "https://tr.wikipedia.org/wiki/Murata%C4%9Fa%2C_Sandallar_ve_Atl%C4%B1lar_Katliam%C4%B1"
    },
    {
     "year": 1927,
     "text": "Türkiye'de medeni nikâh zorunlu hâle getirildi.",
     "title": "Türkiye",
-    "extract": "Türkiye, resmî adıyla Türkiye Cumhuriyeti, topraklarının büyük bölümü Batı Asya'da Anadolu'da, diğer bir bölümü ise Güneydoğu Avrupa'nın uzantısı Doğu Trakya'da olan kıtalararası bir ülkedir.",
     "url": "https://tr.wikipedia.org/wiki/T%C3%BCrkiye"
    }
   ]
- },
- "history_days": 10
+ }
 }
