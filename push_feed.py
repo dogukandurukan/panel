@@ -135,6 +135,7 @@ def main():
         "body": f"{saat} · başladın mı?",
         "tag": f"yok-{gun_anahtari}-{dilim}",
         "url": "./index.html",
+        "icon": "icon-192.png",
     }, ensure_ascii=False)
 
     basarili, olu = 0, []

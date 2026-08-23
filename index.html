@@ -3,6 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Web push iOS'ta yalnızca Ana Ekrana eklenmiş sitelerde çalışıyor; manifest
+       ve apple-touch-icon olmadan iOS ikon yerine sayfanın ekran görüntüsünü
+       kullanıyor ve bildirimde jenerik simge çıkıyor. -->
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icon-180.png">
+  <link rel="icon" href="icon-192.png">
+  <meta name="theme-color" content="#1C4E48">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Daily">
 <title>Daily</title>
 <script>/* temayı boyamadan önce uygula — FOUC olmasın (canlı sitede localStorage kullanılıyor) */
   try{var _t=localStorage.getItem('d:theme');if(_t)document.documentElement.setAttribute('data-theme',JSON.parse(_t));}catch(e){}</script>
