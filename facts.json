@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-19 19:46",
+ "updated": "2026-08-23 17:19",
  "ok": true,
  "count": 199,
  "requested": 214,
@@ -328,7 +328,7 @@
    "url": "https://tr.wikipedia.org/wiki/Ven%C3%BCs"
   },
   {
-   "text": "Jüpiter, Güneş Sistemi'nin en büyük gezegenidir. Güneş'ten uzaklığa göre beşinci sırada yer alır. Adını Roma mitolojisindeki tanrıların en büyüğü olan Jüpiter'den alır.",
+   "text": "Jüpiter veya Eski Türkçedeki adıyla Erendiz ya da Öngey, Güneş'e en yakın beşinci gezegen ve Güneş Sistemi'nin en büyük gezegenidir. Gaz devi olan Jüpiter'in kütlesi, Güneş Sistemi'ndeki diğer tüm gezegenlerin toplam kütlesinin yaklaşık 2,5 katıdır ve Güneş'in kütlesinin binde birinden biraz daha azdır.",
    "title": "Jüpiter",
    "url": "https://tr.wikipedia.org/wiki/J%C3%BCpiter"
   },
@@ -1010,5 +1010,238 @@
    "title": "Go",
    "url": "https://tr.wikipedia.org/wiki/Go"
   }
- ]
+ ],
+ "history": {
+  "08-23": [
+   {
+    "year": 2023,
+    "text": "Hindistan, Chandrayaan-3 aracı ile Ay'ın güney kutbuna inen ilk ülke oldu.",
+    "title": "Hindistan",
+    "extract": "Hindistan, resmî adıyla Hindistan Cumhuriyeti, Güney Asya'da bir ülkedir. Alan bakımından yedinci en büyük ülkedir; 2023'ten beri en kalabalık ülkedir; ve 1947'deki bağımsızlığından bu yana dünyanın en kalabalık demokrasisidir.",
+    "url": "https://tr.wikipedia.org/wiki/Hindistan"
+   },
+   {
+    "year": 1990,
+    "text": "Saddam Hüseyin, Kuveyt'teki Batılı ülkelerin elçiliklerinin boşaltılmasını istedi.",
+    "title": "Saddam_Hüseyin",
+    "extract": "Saddam Hüseyin Abdülmecid et-Tikriti, 1979'dan 2003'te devrilene kadar Irak'ın beşinci cumhurbaşkanı olarak görev yapmış Iraklı bir siyasetçi ve devrimcidir. Daha önce 1968'den 1979'a kadar başkan yardımcılığı ve 1979'dan 1991'e ve daha sonra 1994'ten 2003'e kadar başbakanlık yapmıştır.",
+    "url": "https://tr.wikipedia.org/wiki/Saddam_H%C3%BCseyin"
+   },
+   {
+    "year": 1928,
+    "text": "Amasya-Zile demiryolu (82 km.) hizmete girdi.",
+    "title": "Amasya",
+    "extract": "Amasya, Amasya ilinin merkezi olan şehirdir. 2020 itibarıyla Amasya şehir merkezi 147.266 kişilik nüfusa sahiptir.",
+    "url": "https://tr.wikipedia.org/wiki/Amasya"
+   }
+  ],
+  "08-24": [
+   {
+    "year": 2016,
+    "text": "İtalya'da 6,2 büyüklüğünde deprem meydana geldi. 250'den fazla kişi hayatını kaybetti.",
+    "title": "İtalya",
+    "extract": "İtalya, resmî adıyla İtalyan Cumhuriyeti, Güney Avrupa'da, büyük ölçüde İtalya Yarımadası üzerinde yer alan bir ülke. Akdeniz'in en büyük iki adası Sicilya ve Sardinya da İtalyan topraklarıdır. Yüzölçümü 301.340 km2 olan ülkenin kuzeyde Alpler bölgesinde Fransa, İsviçre, Avusturya ve Slovenya'yla kara sınırı vardır.",
+    "url": "https://tr.wikipedia.org/wiki/%C4%B0talya"
+   },
+   {
+    "year": 1963,
+    "text": "200 metre serbest stil yüzmede rekor: Don Schollander (1:58).",
+    "title": "Serbest_stil_yüzme",
+    "extract": "Serbest stil yüzme, yüzücünün kulaçlarla ve ayak vuruşlarıyla yüzdüğü bir stildir. Ayak vuruşları yüzücüye ancak %10 civarında hız kazandırmakta, büyük hızı ise kulaçlar kazandırmaktadır.",
+    "url": "https://tr.wikipedia.org/wiki/Serbest_stil_y%C3%BCzme"
+   },
+   {
+    "year": 1919,
+    "text": "Şarkî Anadolu Müdâfaa-i Hukuk Cemiyeti kuruldu.",
+    "title": "Şarkî_Anadolu_Müdâfaa-i_Hukuk_Cemiyeti",
+    "extract": "Şarkî Anadolu Müdâfaa-i Hukuk Cemiyeti, Ağustos 1919 tarihinde, Erzurum merkezli kurulmuştur. Elazığ'da da şubesi vardır. Bu cemiyet, önce İstanbul'da kurulmuş olan Vilâyât-ı Şarkiye Müdâfaa-i Hukuk-ı Milliye Cemiyeti'ne bağlı olarak açılmış, daha sonra Şarkî Anadolu Müdafaa-i Hukuk Cemiyeti adı ile İstanbul'dan ayrılm…",
+    "url": "https://tr.wikipedia.org/wiki/%C5%9Eark%C3%AE_Anadolu_M%C3%BCd%C3%A2faa-i_Hukuk_Cemiyeti"
+   }
+  ],
+  "08-25": [
+   {
+    "year": 2010,
+    "text": "Çin'de, içinde 91 kişinin bulunduğu Henan Havayolları'na ait Brezilya yapımı Ebmraer 190 tipi yolcu uçağı, ülkenin kuzeydoğusunda düştü. 43 yolcunun öldüğü kazada, 53 yolcu kurtuldu.",
+    "title": "Çin",
+    "extract": "Çin, resmî adıyla Çin Halk Cumhuriyeti, Doğu Asya'da Çin Komünist Partisi tarafından tek parti rejimiyle yönetilen üniter egemen devlet. 1,4 milyarı aşkın nüfusuyla Hindistan'dan sonra dünyanın en kalabalık ikinci ülkesidir ve dünya nüfusunun %17'sini temsil etmektedir.",
+    "url": "https://tr.wikipedia.org/wiki/%C3%87in"
+   },
+   {
+    "year": 1968,
+    "text": "Koç Grubu, 'Diners Club' kredi kartı ile alışverişi Türkiye'ye getirdi.",
+    "title": "Koç_Holding",
+    "extract": "Koç Holding, 1963 yılında Vehbi Koç tarafından kurulan holdingdir. Türkiye'nin ilk holdingi ve en büyük özel kuruluşlarından birisidir. Holding merkez binası Üsküdar, Nakkaştepe'dedir.",
+    "url": "https://tr.wikipedia.org/wiki/Ko%C3%A7_Holding"
+   },
+   {
+    "year": 1933,
+    "text": "İtalya ile Sovyetler Birliği saldırmazlık antlaşması imzaladı.",
+    "title": "İtalya",
+    "extract": "İtalya, resmî adıyla İtalyan Cumhuriyeti, Güney Avrupa'da, büyük ölçüde İtalya Yarımadası üzerinde yer alan bir ülke. Akdeniz'in en büyük iki adası Sicilya ve Sardinya da İtalyan topraklarıdır. Yüzölçümü 301.340 km2 olan ülkenin kuzeyde Alpler bölgesinde Fransa, İsviçre, Avusturya ve Slovenya'yla kara sınırı vardır.",
+    "url": "https://tr.wikipedia.org/wiki/%C4%B0talya"
+   }
+  ],
+  "08-26": [
+   {
+    "year": 2021,
+    "text": "Zafer Partisi, Ümit Özdağ tarafından kuruldu.",
+    "title": "Zafer_Partisi",
+    "extract": "Zafer Partisi, Türkiye'de faaliyet gösteren milliyetçi bir siyasi partidir. 26 Ağustos 2021'de Ümit Özdağ tarafından kurulan parti, Ayyıldız Hareketi'nin devamı niteliğindedir ve ambleminde ay yıldız şeklinde tasarlanan bir meşale bulunmaktadır.",
+    "url": "https://tr.wikipedia.org/wiki/Zafer_Partisi"
+   },
+   {
+    "year": 1936,
+    "text": "Birleşik Krallık, -Süveyş Kanalı dışında- Mısır'a bağımsızlığını verdi.",
+    "title": "Birleşik_Krallık",
+    "extract": "Birleşik Krallık, resmî adıyla Büyük Britanya ve Kuzey İrlanda Birleşik Krallığı, Avrupa anakarasının kuzeybatı kıyılarında, Kuzeybatı Avrupa'da egemen bir ülkedir. Birleşik Krallık; İngiltere, İskoçya, Galler ve diğer ülkelerden İrlanda Denizi ile ayrılan Kuzey İrlanda olmak üzere dört kurucu ülkeden oluşur.",
+    "url": "https://tr.wikipedia.org/wiki/Birle%C5%9Fik_Krall%C4%B1k"
+   },
+   {
+    "year": 1896,
+    "text": "Ermeni Devrimci Federasyonu (Taşnak Partisi) üyesi 28 kişi, İstanbul'da Galata semtindeki Osmanlı Bankası'nı bastı. 14 saatlik çatışma ve pazarlıklardan sonra, sağ kalan militanlar banka müdürünün yatıyla İstanbul'dan kaçtı.",
+    "title": "Ermeni_Devrimci_Federasyonu",
+    "extract": "Ermeni Devrimci Federasyonu, Ermeni siyasi partisi. Ermenistan'ın bağımsızlığını sağlamak amacıyla 1890'da kuruldu. Hâlen gerek Ermenistan Cumhuriyeti'nde gerek diasporadaki Ermeniler arasında aktif bir siyasi partidir.",
+    "url": "https://tr.wikipedia.org/wiki/Ermeni_Devrimci_Federasyonu"
+   }
+  ],
+  "08-27": [
+   {
+    "year": 2007,
+    "text": "Yunanistan'daki orman yangınları ülkenin 3'te birinin bulunduğu Mora Yarımadası'nın 3'te 2'sini vurdu. 62 kişinin hayatını kaybetmesi ve yangının kontrol altına alınamamasıyla olağanüstü hâl ilan edildi.",
+    "title": "Yunanistan",
+    "extract": "Yunanistan, resmî adıyla Helen Cumhuriyeti, Güneydoğu Avrupa'da yer alan bir ülkedir. Balkan Yarımadası'nın güney ucunda bulunan ülke, kuzeybatıda Arnavutluk, kuzeyde Kuzey Makedonya ve Bulgaristan, doğuda ise Türkiye ile kara sınırlarını paylaşmaktadır.",
+    "url": "https://tr.wikipedia.org/wiki/Yunanistan"
+   },
+   {
+    "year": 1964,
+    "text": "Türkiye'deki ilk ABD aleyhtarı gösteri, ABD'nin Kıbrıs konusundaki tutumu nedeniyle Ankara'da yapıldı.",
+    "title": "Amerika_Birleşik_Devletleri",
+    "extract": "Amerika Birleşik Devletleri (ABD), daha yaygın kullanılan adıyla Amerika veya Birleşik Devletler, Kuzey Amerika kıtasında Kanada ve Meksika arasında bulunan bir ülkedir. 50 eyaletin birleşiminden meydana gelen federal anayasal bir cumhuriyet ile yönetilir.",
+    "url": "https://tr.wikipedia.org/wiki/Amerika_Birle%C5%9Fik_Devletleri"
+   },
+   {
+    "year": 1922,
+    "text": "Türk Kurtuluş Savaşı: Türk Ordusu, Yunan işgali altında bulunan Afyon'u geri aldı.",
+    "title": "Türk_Kurtuluş_Savaşı",
+    "extract": "Türk Kurtuluş Savaşı, I. Dünya Savaşı'ndan yenik çıkan Osmanlı İmparatorluğu'nun İtilaf Devletleri'nce işgali sonucunda Mîsâk-ı Millî sınırları içinde ülke bütünlüğünü korumak için 1919-1922 yılları arasında gerçekleştirilen çok cepheli siyasi ve askeri mücadeledir.",
+    "url": "https://tr.wikipedia.org/wiki/T%C3%BCrk_Kurtulu%C5%9F_Sava%C5%9F%C4%B1"
+   }
+  ],
+  "08-28": [
+   {
+    "year": 2007,
+    "text": "Abdullah Gül, 339 oyla TBMM tarafından 11. Cumhurbaşkanı seçildi.",
+    "title": "Abdullah_Gül",
+    "extract": "Abdullah Gül, 2007'den 2014'e kadar 11. Türkiye cumhurbaşkanı olarak görev yapan Türk ekonomist, akademisyen ve siyasetçidir. Adalet ve Kalkınma Partisinin (AKP) kurucularından olan Gül, daha önce 2002-2003 yıllarında başbakanlık ve 2003-2007 yıllarında dışişleri bakanlığı da yaptı.",
+    "url": "https://tr.wikipedia.org/wiki/Abdullah_G%C3%BCl"
+   },
+   {
+    "year": 1990,
+    "text": "Illinois'te kasırga: 28 kişi öldü.",
+    "title": "Illinois",
+    "extract": "Illinois, Amerika Birleşik Devletleri'nin Orta Batı bölgesinde yer alan bir eyalettir. Kuzeydoğusunda Michigan Gölü, batısında Mississippi Nehri ve güneyinde Wabash ve Ohio nehirleri ile sınırlıdır.",
+    "url": "https://tr.wikipedia.org/wiki/Illinois"
+   },
+   {
+    "year": 1934,
+    "text": "Üsküdar-Kadıköy tramvay hattının ilk denemesi yapıldı.",
+    "title": "Üsküdar",
+    "extract": "Üsküdar, İstanbul'un Anadolu Yakası'nda yer alan ilçedir. Kocaeli Yarımadası'nın batı kesiminde yer alan Üsküdar, kuzeyden Beykoz, kuzeydoğudan Ümraniye, doğudan Ataşehir, güneyden Kadıköy ilçeleri ve batıdan İstanbul Boğazıyla çevrilidir. İlçe 33 tane mahalleden oluşmaktadır.",
+    "url": "https://tr.wikipedia.org/wiki/%C3%9Csk%C3%BCdar"
+   }
+  ],
+  "08-29": [
+   {
+    "year": 2014,
+    "text": "Ensaru'l İslam, Adlı Birlik Feshedildi",
+    "title": "Ensaru'l_İslam",
+    "extract": "Kürdistan'da Ensaru'l İslam, veya Ensaru'l İslam veya Kürt Talibanı Irak merkezli, Suriye ve Irak'ta faaliyet gösteren Kürt cihatçı Selefi ve silahlı bir örgüttür. Şeriat kanunlarına göre bir İslam devleti kurmak, Kürtleri korumak ve haklarını elde etmek ve korumak için kuruldular.",
+    "url": "https://tr.wikipedia.org/wiki/Ensaru'l_%C4%B0slam"
+   },
+   {
+    "year": 1955,
+    "text": "Kıbrıs Konferansı Londra'da toplandı.",
+    "title": "Kıbrıs",
+    "extract": "Kıbrıs, Güneybatı Asya'da bulunan ve Akdeniz'deki Sicilya ve Sardinya'dan sonra gelen üçüncü büyük adadır. Kıbrıs Cumhuriyeti, Birleşik Krallık'a bağlı üs bölgeleri dışında de jure olarak adanın tamamını, fiilî olarak adanın %59'luk güney kesmini yönetir.",
+    "url": "https://tr.wikipedia.org/wiki/K%C4%B1br%C4%B1s"
+   },
+   {
+    "year": 1898,
+    "text": "Goodyear şirketinin kuruluşu.",
+    "title": "Goodyear_(şirket)",
+    "extract": "The Goodyear Tire & Rubber Company, merkezi Akron, Ohio'da bulunan çok uluslu bir Amerikan lastik üreticisidir. Goodyear binek araçlar, havacılık, ticari kamyonlar, askeri ve polis araçları, motosikletler, RV'ler, yarış arabaları ve ağır arazi makineleri için lastik üretmektedir.",
+    "url": "https://tr.wikipedia.org/wiki/Goodyear_(%C5%9Firket)"
+   }
+  ],
+  "08-30": [
+   {
+    "year": 2021,
+    "text": "ABD başkanı Joe Biden'nın orduyu Afganistan'dan çekmesi üzerine, 20 yıl sürmüş olan Afganistan Savaşı sona erdi.",
+    "title": "Amerika_Birleşik_Devletleri",
+    "extract": "Amerika Birleşik Devletleri (ABD), daha yaygın kullanılan adıyla Amerika veya Birleşik Devletler, Kuzey Amerika kıtasında Kanada ve Meksika arasında bulunan bir ülkedir. 50 eyaletin birleşiminden meydana gelen federal anayasal bir cumhuriyet ile yönetilir.",
+    "url": "https://tr.wikipedia.org/wiki/Amerika_Birle%C5%9Fik_Devletleri"
+   },
+   {
+    "year": 1974,
+    "text": "BM Güvenlik Konseyi, Kıbrıs'taki çarpışmalar yüzünden evlerini terk edenlerin güven içinde geri dönmelerine izin verilmesini öngören Fransa, İngiltere, Avusturya ortak karar tasarısını oy birliğiyle kabul etti.",
+    "title": "Birleşmiş_Milletler_Güvenlik_Konseyi",
+    "extract": "Birleşmiş Milletler Güvenlik Konseyi (BMGK), Birleşmiş Milletler'in üye ülkeler arasında güvenlik ve barışı korumakla yükümlü en güçlü organı. Birleşmiş Milletler'in diğer organları sadece tavsiye kararı alabilirken, Uluslararası Adalet Divanı ile birlikte bağlayıcı karar alma yetkisine sahip iki Birleşmiş Milletler or…",
+    "url": "https://tr.wikipedia.org/wiki/Birle%C5%9Fmi%C5%9F_Milletler_G%C3%BCvenlik_Konseyi"
+   },
+   {
+    "year": 1930,
+    "text": "Ankara-Sivas demiryolu hattı ve Sivas İstasyonu, Başbakan İsmet Paşa'nın konuşmasıyla hizmete açıldı.",
+    "title": "Ankara",
+    "extract": "Ankara, Türkiye'nin başkenti ve Ankara ilinin merkezi olan şehirdir. Coğrafi olarak Türkiye'nin merkezine yakın bir konumda bulunur ve İç Anadolu Bölgesi'nde yer alır. Türkiye İstatistik Kurumu'nun 2025 sonuçlarına göre 5.910.320 nüfusuyla ülkenin İstanbul'dan sonra nüfus bakımından ikinci büyük şehridir.",
+    "url": "https://tr.wikipedia.org/wiki/Ankara"
+   }
+  ],
+  "08-31": [
+   {
+    "year": 2010,
+    "text": "Irak Savaşı, ABD Başkanı Barack Obama'nın konuşmasıyla resmen bitti.",
+    "title": "Irak_Savaşı",
+    "extract": "Irak Savaşı, 20 Mart 2003'te Amerika Birleşik Devletleri ve Birleşik Krallık önderliğinde oluşturulmuş Çok Uluslu Koalisyon Kuvvetleri'nin bir askerî harekâtla Irak'a girmesiyle başlayan ve devam eden savaş.",
+    "url": "https://tr.wikipedia.org/wiki/Irak_Sava%C5%9F%C4%B1"
+   },
+   {
+    "year": 1986,
+    "text": "Bir Meksika yolcu uçağı ile küçük bir uçak, Kaliforniya'nın Cerritos şehri üzerinde havada çarpıştı. Uçaklardaki 67 kişi ile yerdeki 15 kişi öldü.",
+    "title": "Meksika",
+    "extract": "Meksika, resmî adıyla Birleşik Meksika Devletleri, Kuzey Amerika'da bir ülkedir. Kuzeyde Amerika Birleşik Devletleri; güney ve batıda Büyük Okyanus; güneydoğuda Guatemala, Belize ve Karayip Denizi; doğuda ise Meksika Körfezi ile komşudur. 1.972.550 km² yüzölçümü ile Amerika kıtasındaki altıncı, dünyada ise 13.",
+    "url": "https://tr.wikipedia.org/wiki/Meksika"
+   },
+   {
+    "year": 1939,
+    "text": "Gleiwitz Vakası: II. Dünya Savaşı'nın Avrupa'da başlamasının arefesinde, Polonyalı kılığına bürünmüş Alman güçlerince düzmece bir saldırı düzenlendi.",
+    "title": "Gleiwitz_Vakası",
+    "extract": "Gleiwitz Vakası, 31 Ağustos 1939'da, II. Dünya Savaşı'nın Avrupa'da başlamasının arefesinde, Polonyalı kılığına bürünmüş Alman güçlerince Yukarı Silezya'nın Gleiwitz kentindeki Gleiwitz Radyo İstasyonu'na yapılan düzmece saldırıdır.",
+    "url": "https://tr.wikipedia.org/wiki/Gleiwitz_Vakas%C4%B1"
+   }
+  ],
+  "09-01": [
+   {
+    "year": 2006,
+    "text": "İran'da bir yolcu uçağının ülkenin kuzey doğusundaki Meşhed kenti hava alanına inişi sırasında alev alması sonucu en az 29 kişi öldü.",
+    "title": "İran",
+    "extract": "İran, resmî adıyla İran İslam Cumhuriyeti, Batı Asya'da yer alan bir ülkedir. Kuzeybatıda Türkiye ve batıda Irak, kuzeyde Azerbaycan, Ermenistan, Hazar Denizi ve Türkmenistan, doğuda Afganistan, güneydoğuda Pakistan, güneyde Umman Körfezi ve Basra Körfezi ile komşudur.",
+    "url": "https://tr.wikipedia.org/wiki/%C4%B0ran"
+   },
+   {
+    "year": 1974,
+    "text": "Muratağa, Sandallar ve Atlılar Katliamı: Mağusa'ya bağlı Muratağa ve Sandallar köylerinden 88 Türk'ün, öldürülüp yakılarak çukura gömüldükleri anlaşıldı.",
+    "title": "Muratağa,_Sandallar_ve_Atlılar_Katliamı",
+    "extract": "Muratağa, Sandallar ve Atlılar Katliamı, 14 Ağustos 1974 tarihinde EOKA-B tarafından Kıbrıs'ın Muratağa, Sandallar ve Atlılar köylerinde Kıbrıs Türklerine karşı gerçekleştirilen katliam. Katliamda en genci 16 günlük, en yaşlısı ise 95 yaşında olmak üzere silahsız 126 Türk öldürülmüştür.",
+    "url": "https://tr.wikipedia.org/wiki/Murata%C4%9Fa%2C_Sandallar_ve_Atl%C4%B1lar_Katliam%C4%B1"
+   },
+   {
+    "year": 1927,
+    "text": "Türkiye'de medeni nikâh zorunlu hâle getirildi.",
+    "title": "Türkiye",
+    "extract": "Türkiye, resmî adıyla Türkiye Cumhuriyeti, topraklarının büyük bölümü Batı Asya'da Anadolu'da, diğer bir bölümü ise Güneydoğu Avrupa'nın uzantısı Doğu Trakya'da olan kıtalararası bir ülkedir.",
+    "url": "https://tr.wikipedia.org/wiki/T%C3%BCrkiye"
+   }
+  ]
+ },
+ "history_days": 10
 }
