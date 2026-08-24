@@ -1,33 +1,40 @@
 {
-  "updated": "2026-08-24 09:51",
+  "updated": "2026-08-24 13:12",
   "watch": [
     {
+      "code": "SASA",
+      "price": "2.37",
+      "chg": "+2.16%",
+      "avg1w": "2.30",
+      "avg1m": "2.43"
+    },
+    {
       "code": "GUBRF",
-      "price": "475.75",
-      "chg": "+2.81%",
-      "avg1w": "456.90",
-      "avg1m": "428.67"
+      "price": "484.25",
+      "chg": "+1.79%",
+      "avg1w": "464.70",
+      "avg1m": "431.60"
     },
     {
-      "code": "ALARK",
-      "price": "106.30",
-      "chg": "-1.30%",
-      "avg1w": "107.58",
-      "avg1m": "103.94"
+      "code": "EKGYO",
+      "price": "20.66",
+      "chg": "+6.22%",
+      "avg1w": "19.50",
+      "avg1m": "18.52"
     },
     {
-      "code": "TOASO",
-      "price": "281.25",
-      "chg": "+3.78%",
-      "avg1w": "270.90",
-      "avg1m": "268.67"
+      "code": "AKBNK",
+      "price": "72.55",
+      "chg": "+4.09%",
+      "avg1w": "69.88",
+      "avg1m": "67.32"
     },
     {
       "code": "YEOTK",
-      "price": "34.84",
-      "chg": "-3.33%",
-      "avg1w": "37.08",
-      "avg1m": "39.35"
+      "price": "34.80",
+      "chg": "-0.11%",
+      "avg1w": "35.79",
+      "avg1m": "39.01"
     }
   ],
   "us": [
@@ -68,19 +75,19 @@
     }
   ],
   "gold": {
-    "price": "7,275.09",
-    "chg": "+1.86%"
+    "price": "7,270.85",
+    "chg": "+1.80%"
   },
   "news": [
-    "⚪ Alarko Holding için 2Ç26 bilanço sonrası hedef fiyatlar  (Paratic Haber)",
-    "⚪ #ALARKO HOLDING HISSE #ALARK HİSSE NET KAR BEKLENTISI 2024 HEDEF FIYAT 5 FK YA GÖRE Game Informer (9CngJIV22g)  (Mshale)",
-    "⚪ KAP *** VESTEL ELEKTRONİK SANAYİ VE TİCARET A.Ş. *** VESTL *** Pay Dışında Sermaye Piyasası Aracı İşlemlerine İlişkin Bildirim (Faiz  (Yeni Şafak)",
-    "🟢 ASTOR Enerji'nin Yatırım Planları Neler? ASTOR CFO'su Olcay Doğan Açıkladı I Piyasa Gündemi | A Para  (A Para)"
+    "⚪ KAP *** SASA POLYESTER SANAYİ A.Ş. *** SASA *** Sermaye Artırımı - Azaltımı İşlemlerine İlişkin Bildirim  (Yeni Şafak)",
+    "⚪ KAP *** EMLAK KONUT GAYRİMENKUL YATIRIM ORTAKLIĞI A.Ş. *** EKGYO *** Özel Durum Açıklaması (Genel)  (Yeni Şafak)",
+    "⚪ KAP *** AKBANK T.A.Ş. *** AKBNK *** İhraç Tavanına İlişkin Bildirim  (Yeni Şafak)",
+    "🟢 İş Yatırım 21 Ağustos Cuma alım satım verileri: AKBNK ve ASTOR öne çıktı  (YatırımX)"
   ],
   "world": [
-    "🌍 FAST işlem limiti yüzde 200 yükseliyor - NTV Haber  (NTV Haber)",
-    "🌍 'Kuytulcular' yapılanmasına yönelik soruşturmada Alparslan Kuytul ve eşi tutuklandı - TRT Haber  (TRT Haber)",
-    "🌍 Netanyahu'ya Türkiye uyarısı: Karşı karşıya gelmekten kaçınmalı - CNN Türk  (CNN Türk)",
-    "🌍 BUGÜN KANDİL Mİ, NE KANDİLİ? | Mevlid Kandili bu gece mi, ne zaman, hangi gün idrak edilecek? 24 Ağustos Pazartesi ne kandili? İşte 2026 Diyanet takvimi ve kandil günleri... - Hürriyet  (Hürriyet)"
+    "🌍 PKK'nın fesih sürecini takip edecek kurul mesaiye başlıyor  (DW Türkçe)",
+    "🌍 Alman aşırı sağcı lider: Euro ve Schengen'den çıkacağız  (DW Türkçe)",
+    "🌍 Suriye ve İsrail heyetleri Ürdün'de görüştü  (DW Türkçe)",
+    "🌍 Hürmüz'de gemi trafiği hafta sonu durma noktasına geldi  (DW Türkçe)"
   ]
 }
