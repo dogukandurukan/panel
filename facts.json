@@ -1,28 +1,8 @@
 {
- "updated": "2026-08-23 17:55",
+ "updated": "2026-08-24 09:47",
  "ok": true,
  "history_days": 10,
  "history": {
-  "08-23": [
-   {
-    "year": 2023,
-    "text": "Hindistan, Chandrayaan-3 aracı ile Ay'ın güney kutbuna inen ilk ülke oldu.",
-    "title": "Hindistan",
-    "url": "https://tr.wikipedia.org/wiki/Hindistan"
-   },
-   {
-    "year": 1990,
-    "text": "Saddam Hüseyin, Kuveyt'teki Batılı ülkelerin elçiliklerinin boşaltılmasını istedi.",
-    "title": "Saddam_Hüseyin",
-    "url": "https://tr.wikipedia.org/wiki/Saddam_H%C3%BCseyin"
-   },
-   {
-    "year": 1928,
-    "text": "Amasya-Zile demiryolu (82 km.) hizmete girdi.",
-    "title": "Amasya",
-    "url": "https://tr.wikipedia.org/wiki/Amasya"
-   }
-  ],
   "08-24": [
    {
     "year": 2016,
@@ -201,6 +181,26 @@
     "text": "Türkiye'de medeni nikâh zorunlu hâle getirildi.",
     "title": "Türkiye",
     "url": "https://tr.wikipedia.org/wiki/T%C3%BCrkiye"
+   }
+  ],
+  "09-02": [
+   {
+    "year": 2011,
+    "text": "Türkiye, BM'nin Mavi Marmara Raporunu açıklaması üzerine, İsrail'e karşı 5 maddelik yaptırım kararı aldı.",
+    "title": "Türkiye",
+    "url": "https://tr.wikipedia.org/wiki/T%C3%BCrkiye"
+   },
+   {
+    "year": 1947,
+    "text": "İstanbul Emniyeti Kaçakçılık Bürosu Şefi, işkence suçundan mahkûm oldu.",
+    "title": "İstanbul",
+    "url": "https://tr.wikipedia.org/wiki/%C4%B0stanbul"
+   },
+   {
+    "year": 1922,
+    "text": "Türk Kurtuluş Savaşı: Türk Silahlı Kuvvetleri, Yunanistan hakimiyeti altındaki Eskişehir'i aldı.",
+    "title": "Türk_Kurtuluş_Savaşı",
+    "url": "https://tr.wikipedia.org/wiki/T%C3%BCrk_Kurtulu%C5%9F_Sava%C5%9F%C4%B1"
    }
   ]
  }
