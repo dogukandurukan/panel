@@ -70,21 +70,116 @@ def fetch_gold():
         return None
 
 
-def fetch_world(n=4):
-    url = "https://news.google.com/rss?hl=tr&gl=TR&ceid=TR:tr"
+# ===== DÜNYA GÜNDEMİ =====
+# Eskiden Google News Türkiye'nin GENEL akışı çekiliyordu; "Dünya Gündemi"
+# başlığı altına FAST işlem limiti, kandil takvimi ve yurt içi asayiş düşüyordu.
+# Kaynak yanlıştı: genel akış yerel manşet akışıdır. Artık doğrudan dış haber
+# servislerinin dünya bölümleri okunuyor. Hepsi anahtarsız RSS.
+WORLD_FEEDS = [
+    ("BBC Türkçe", "https://feeds.bbci.co.uk/turkce/rss.xml"),
+    ("DW Türkçe", "https://rss.dw.com/rdf/rss-tur-all"),
+    ("BBC World", "http://feeds.bbci.co.uk/news/world/rss.xml"),
+    ("Al Jazeera", "https://www.aljazeera.com/xml/rss/all.xml"),
+    ("Guardian World", "https://www.theguardian.com/world/rss"),
+]
+
+# Manşet gibi görünüp haber taşımayan kalıplar. Hisse akışında da aynı süzgeç
+# çalışıyor: oradaki gürültü büyük ölçüde KAP bildirimi ve etiket yığını.
+COP_KALIP = (
+    "kandil", "burç", "hava durumu", "namaz vakti", "iftar", "sahur",
+    "maç kaç kaç", "canlı anlatım", "puan durumu", "ne zaman, saat kaçta",
+    "işte o anlar", "sosyal medya yıkıldı", "olay yarattı", "şoke etti",
+    "bomba iddia", "son dakika haberi:", "tıkla öğren", "işte detaylar",
+    "kaçıncı bölüm", "fragman", "çekiliş", "zam geldi mi",
+)
+# Hisse haberlerine özgü gürültü
+COP_HISSE = ("hisse #", "#hisse", "hedef fiyat 5 fk", "game informer",
+             "sermaye piyasası aracı işlemlerine ilişkin bildirim")
+
+
+def _kucult(metin):
+    """Türkçe güvenli küçültme.
+
+    Python'un lower()'ı 'İ' harfini 'i' + birleşen nokta (U+0307) olarak
+    çeviriyor; bu yüzden 'İlişkin' içeren bir başlıkta 'ilişkin' kalıbı
+    eşleşmiyor ve süzgeç sessizce boşa çalışıyordu.
+    """
+    return (metin or "").replace("İ", "i").replace("I", "ı").lower()
+
+
+def _cop_mu(baslik, ekstra=()):
+    """Manşet gerçekten haber mi, tıklama yemi mi?"""
+    d = _kucult(baslik)
+    if len(d) < 25:                       # tek kelimelik etiket yığınları
+        return True
+    if d.count("#") >= 2:                 # #ALARK #HISSE #HEDEF ...
+        return True
+    if sum(1 for c in baslik if c.isupper()) > len(baslik) * 0.6:
+        return True                       # TAMAMI BÜYÜK HARF
+    return any(k in d for k in COP_KALIP + tuple(ekstra))
+
+
+def _rss_basliklar(url, n):
     try:
         req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
-        root = ET.fromstring(urllib.request.urlopen(req, timeout=12).read())
-    except Exception:
+        ham = urllib.request.urlopen(req, timeout=12).read()
+        root = ET.fromstring(ham)
+    except Exception as e:
+        print(f"  {url} okunamadı: {e}")
         return []
+    # RSS 2.0 (item) ve RDF/RSS 1.0 (rdf:item) birlikte
+    ogeler = root.findall(".//item") or root.findall(
+        ".//{http://purl.org/rss/1.0/}item")
     out = []
-    for it in root.findall(".//item")[:n]:
-        t = it.find("title"); s = it.find("source")
+    for it in ogeler:
+        t = it.find("title") or it.find("{http://purl.org/rss/1.0/}title")
         if t is None or not t.text:
             continue
-        src = s.text if s is not None and s.text else ""
-        out.append("🌍 " + t.text + (f"  ({src})" if src else ""))
+        baslik = " ".join(t.text.split())
+        if _cop_mu(baslik):
+            continue
+        out.append(baslik)
+        if len(out) >= n:
+            break
     return out
+
+
+def _benzer(a, b):
+    """Aynı olayın iki kaynaktaki hâli: kelime örtüşmesi yüksekse tekrar sayılır."""
+    ka = {w for w in _kucult(a).split() if len(w) > 4}
+    kb = {w for w in _kucult(b).split() if len(w) > 4}
+    if not ka or not kb:
+        return False
+    return len(ka & kb) / min(len(ka), len(kb)) > 0.6
+
+
+def fetch_world(n=5):
+    """Her kaynaktan sırayla alıp harmanlar; tek kaynak çökerse diğerleri taşır."""
+    havuz = []
+    for ad, url in WORLD_FEEDS:
+        for baslik in _rss_basliklar(url, 4):
+            havuz.append((ad, baslik))
+    # Kaynakları dönüşümlü gez ki liste tek servisten dolmasın
+    sirali, i = [], 0
+    while havuz and len(sirali) < n * 3:
+        for ad, _ in WORLD_FEEDS:
+            for k, (a, b) in enumerate(havuz):
+                if a == ad:
+                    sirali.append(havuz.pop(k))
+                    break
+        i += 1
+        if i > 20:
+            break
+    out = []
+    for ad, baslik in sirali:
+        if any(_benzer(baslik, x[1]) for x in out):
+            continue
+        out.append((ad, baslik))
+        if len(out) >= n:
+            break
+    print(f"  dünya: {len(out)} haber, kaynaklar: "
+          + ", ".join(sorted({a for a, _ in out})))
+    return [f"🌍 {b}  ({a})" for a, b in out]
 
 
 def build():
@@ -113,6 +208,9 @@ def build():
         for title, src, rel, link in B.fetch_news(
                 code, getattr(C, "NEWS_PER_STOCK", 2),
                 getattr(C, "NEWS_MAX_AGE_DAYS", 3)):
+            # Hisse akışı etiket yığını ve KAP bildirimiyle doluyordu
+            if _cop_mu(title, COP_HISSE):
+                continue
             emoji, _ = B.news_tone(title)
             news_items.append(f"{emoji} {title}" + (f"  ({src})" if src else ""))
         if len(news_items) >= 8:
@@ -124,7 +222,7 @@ def build():
         "us": us_rows,
         "gold": fetch_gold(),
         "news": news_items[:8],
-        "world": fetch_world(4),
+        "world": fetch_world(5),
     }
 
 
