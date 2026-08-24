@@ -1,83 +1,100 @@
 {
-  "updated": "2026-08-24 16:36",
+  "updated": "2026-08-24 16:48",
   "watch": [
     {
       "code": "SASA",
-      "price": "2.35",
-      "chg": "+1.29%",
+      "price": "2.36",
+      "chg": "+1.72%",
       "avg1w": "2.29",
       "avg1m": "2.43"
     },
     {
       "code": "GUBRF",
-      "price": "480.75",
-      "chg": "+1.05%",
-      "avg1w": "464.00",
-      "avg1m": "431.43"
+      "price": "490.25",
+      "chg": "+3.05%",
+      "avg1w": "465.90",
+      "avg1m": "431.88"
     },
     {
       "code": "EKGYO",
-      "price": "20.56",
-      "chg": "+5.71%",
-      "avg1w": "19.48",
+      "price": "20.66",
+      "chg": "+6.22%",
+      "avg1w": "19.50",
       "avg1m": "18.52"
     },
     {
       "code": "SMRTG",
-      "price": "10.20",
-      "chg": "+3.98%",
-      "avg1w": "9.91",
-      "avg1m": "10.68"
+      "price": "10.26",
+      "chg": "+4.59%",
+      "avg1w": "9.92",
+      "avg1m": "10.69"
     },
     {
-      "code": "ASTOR",
-      "price": "346.50",
-      "chg": "+3.20%",
-      "avg1w": "332.30",
-      "avg1m": "313.74"
+      "code": "YEOTK",
+      "price": "34.74",
+      "chg": "-0.29%",
+      "avg1w": "35.78",
+      "avg1m": "39.01"
     }
   ],
   "us": [
     {
       "code": "AAPL",
-      "price": "310.67",
-      "chg": "+0.43%",
+      "price": "310.66",
+      "chg": "+0.42%",
       "avg1w": "311.63",
       "avg1m": "314.16"
     },
     {
       "code": "MSFT",
-      "price": "483.92",
-      "chg": "+0.14%",
-      "avg1w": "482.85",
-      "avg1m": "473.61"
+      "price": "484.15",
+      "chg": "+0.19%",
+      "avg1w": "482.90",
+      "avg1m": "473.62"
     },
     {
       "code": "NVDA",
-      "price": "213.29",
-      "chg": "-0.66%",
-      "avg1w": "216.43",
-      "avg1m": "213.18"
+      "price": "210.06",
+      "chg": "-2.17%",
+      "avg1w": "215.79",
+      "avg1m": "213.03"
     },
     {
       "code": "AMZN",
-      "price": "260.20",
-      "chg": "+0.61%",
-      "avg1w": "260.85",
-      "avg1m": "261.32"
+      "price": "261.71",
+      "chg": "+1.19%",
+      "avg1w": "261.15",
+      "avg1m": "261.39"
     },
     {
       "code": "TSLA",
-      "price": "354.90",
-      "chg": "-2.19%",
-      "avg1w": "350.18",
-      "avg1m": "329.42"
+      "price": "353.41",
+      "chg": "-2.60%",
+      "avg1w": "349.88",
+      "avg1m": "329.35"
     }
   ],
   "gold": {
-    "price": "7,306.83",
-    "chg": "+2.30%"
+    "price": "7,309.72",
+    "chg": "+2.34%"
   },
   "news": [],
-  "world": []
+  "world": [],
+  "_teshis": {
+    "dunya": [
+      "BBC World: 27 öğe / 0 alındı / 0 elendi",
+      "Guardian World: 45 öğe / 0 alındı / 0 elendi",
+      "Al Jazeera: 25 öğe / 0 alındı / 0 elendi",
+      "NPR World: 10 öğe / 0 alındı / 0 elendi",
+      "DW Türkçe: 15 öğe / 0 alındı / 0 elendi",
+      "BBC Türkçe: 20 öğe / 0 alındı / 0 elendi",
+      "SONUÇ: 0 haber · veren: yok · boş dönen: BBC World, Guardian World, Al Jazeera, NPR World, DW Türkçe, BBC Türkçe"
+    ],
+    "hisse": "3 başlık geldi, 3 elendi",
+    "hisse_ham": [
+      "KAP *** SASA POLYESTER SANAYİ A.Ş. *** SASA *** Sermaye Artırımı - Aza",
+      "SASA'dan SPK başvurusu",
+      "KAP *** EMLAK KONUT GAYRİMENKUL YATIRIM ORTAKLIĞI A.Ş. *** EKGYO *** Ö"
+    ]
+  }
 }
