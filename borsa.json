@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-24 14:27",
+  "updated": "2026-08-24 16:36",
   "watch": [
     {
       "code": "SASA",
@@ -10,84 +10,74 @@
     },
     {
       "code": "GUBRF",
-      "price": "483.25",
-      "chg": "+1.58%",
-      "avg1w": "464.50",
-      "avg1m": "431.55"
+      "price": "480.75",
+      "chg": "+1.05%",
+      "avg1w": "464.00",
+      "avg1m": "431.43"
     },
     {
       "code": "EKGYO",
-      "price": "20.52",
-      "chg": "+5.50%",
+      "price": "20.56",
+      "chg": "+5.71%",
       "avg1w": "19.48",
-      "avg1m": "18.51"
+      "avg1m": "18.52"
     },
     {
-      "code": "YKBNK",
-      "price": "36.42",
-      "chg": "+3.76%",
-      "avg1w": "35.36",
-      "avg1m": "34.23"
+      "code": "SMRTG",
+      "price": "10.20",
+      "chg": "+3.98%",
+      "avg1w": "9.91",
+      "avg1m": "10.68"
     },
     {
-      "code": "YEOTK",
-      "price": "34.62",
-      "chg": "-0.63%",
-      "avg1w": "35.75",
-      "avg1m": "39.00"
+      "code": "ASTOR",
+      "price": "346.50",
+      "chg": "+3.20%",
+      "avg1w": "332.30",
+      "avg1m": "313.74"
     }
   ],
   "us": [
     {
       "code": "AAPL",
-      "price": "309.35",
-      "chg": "-0.63%",
-      "avg1w": "310.62",
-      "avg1m": "315.23"
+      "price": "310.67",
+      "chg": "+0.43%",
+      "avg1w": "311.63",
+      "avg1m": "314.16"
     },
     {
       "code": "MSFT",
-      "price": "483.24",
-      "chg": "+0.43%",
-      "avg1w": "482.14",
-      "avg1m": "468.74"
+      "price": "483.92",
+      "chg": "+0.14%",
+      "avg1w": "482.85",
+      "avg1m": "473.61"
     },
     {
       "code": "NVDA",
-      "price": "214.72",
-      "chg": "-0.98%",
-      "avg1w": "218.78",
-      "avg1m": "212.88"
+      "price": "213.29",
+      "chg": "-0.66%",
+      "avg1w": "216.43",
+      "avg1m": "213.18"
     },
     {
       "code": "AMZN",
-      "price": "258.63",
-      "chg": "-0.57%",
-      "avg1w": "261.07",
-      "avg1m": "259.98"
+      "price": "260.20",
+      "chg": "+0.61%",
+      "avg1w": "260.85",
+      "avg1m": "261.32"
     },
     {
       "code": "TSLA",
-      "price": "362.86",
-      "chg": "+5.14%",
-      "avg1w": "347.06",
-      "avg1m": "327.42"
+      "price": "354.90",
+      "chg": "-2.19%",
+      "avg1w": "350.18",
+      "avg1m": "329.42"
     }
   ],
   "gold": {
-    "price": "7,263.35",
-    "chg": "+1.90%"
+    "price": "7,306.83",
+    "chg": "+2.30%"
   },
-  "news": [
-    "⚪ KAP *** SASA POLYESTER SANAYİ A.Ş. *** SASA *** Sermaye Artırımı - Azaltımı İşlemlerine İlişkin Bildirim  (Yeni Şafak)",
-    "⚪ KAP *** EMLAK KONUT GAYRİMENKUL YATIRIM ORTAKLIĞI A.Ş. *** EKGYO *** Özel Durum Açıklaması (Genel)  (Yeni Şafak)",
-    "⚪ KAP *** AKBANK T.A.Ş. *** AKBNK *** İhraç Tavanına İlişkin Bildirim  (Yeni Şafak)",
-    "🟢 İş Yatırım 21 Ağustos Cuma alım satım verileri: AKBNK ve ASTOR öne çıktı  (YatırımX)"
-  ],
-  "world": [
-    "🌍 AB'de petrol devlerine \"olağanüstü kâr vergisi\" talebi  (DW Türkçe)",
-    "🌍 Aziz İhsan Aktaş davasında kritik gün: Karar bekleniyor  (DW Türkçe)",
-    "🌍 Hollanda gelecek yıl da Eurovision'a katılmıyor  (DW Türkçe)",
-    "🌍 PKK'nın fesih sürecini takip edecek kurul mesaiye başlıyor  (DW Türkçe)"
-  ]
+  "news": [],
+  "world": []
 }
