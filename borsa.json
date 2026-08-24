@@ -1,40 +1,40 @@
 {
-  "updated": "2026-08-24 13:12",
+  "updated": "2026-08-24 14:27",
   "watch": [
     {
       "code": "SASA",
-      "price": "2.37",
-      "chg": "+2.16%",
-      "avg1w": "2.30",
+      "price": "2.35",
+      "chg": "+1.29%",
+      "avg1w": "2.29",
       "avg1m": "2.43"
     },
     {
       "code": "GUBRF",
-      "price": "484.25",
-      "chg": "+1.79%",
-      "avg1w": "464.70",
-      "avg1m": "431.60"
+      "price": "483.25",
+      "chg": "+1.58%",
+      "avg1w": "464.50",
+      "avg1m": "431.55"
     },
     {
       "code": "EKGYO",
-      "price": "20.66",
-      "chg": "+6.22%",
-      "avg1w": "19.50",
-      "avg1m": "18.52"
+      "price": "20.52",
+      "chg": "+5.50%",
+      "avg1w": "19.48",
+      "avg1m": "18.51"
     },
     {
-      "code": "AKBNK",
-      "price": "72.55",
-      "chg": "+4.09%",
-      "avg1w": "69.88",
-      "avg1m": "67.32"
+      "code": "YKBNK",
+      "price": "36.42",
+      "chg": "+3.76%",
+      "avg1w": "35.36",
+      "avg1m": "34.23"
     },
     {
       "code": "YEOTK",
-      "price": "34.80",
-      "chg": "-0.11%",
-      "avg1w": "35.79",
-      "avg1m": "39.01"
+      "price": "34.62",
+      "chg": "-0.63%",
+      "avg1w": "35.75",
+      "avg1m": "39.00"
     }
   ],
   "us": [
@@ -75,8 +75,8 @@
     }
   ],
   "gold": {
-    "price": "7,270.85",
-    "chg": "+1.80%"
+    "price": "7,263.35",
+    "chg": "+1.90%"
   },
   "news": [
     "⚪ KAP *** SASA POLYESTER SANAYİ A.Ş. *** SASA *** Sermaye Artırımı - Azaltımı İşlemlerine İlişkin Bildirim  (Yeni Şafak)",
@@ -85,9 +85,9 @@
     "🟢 İş Yatırım 21 Ağustos Cuma alım satım verileri: AKBNK ve ASTOR öne çıktı  (YatırımX)"
   ],
   "world": [
-    "🌍 PKK'nın fesih sürecini takip edecek kurul mesaiye başlıyor  (DW Türkçe)",
-    "🌍 Alman aşırı sağcı lider: Euro ve Schengen'den çıkacağız  (DW Türkçe)",
-    "🌍 Suriye ve İsrail heyetleri Ürdün'de görüştü  (DW Türkçe)",
-    "🌍 Hürmüz'de gemi trafiği hafta sonu durma noktasına geldi  (DW Türkçe)"
+    "🌍 AB'de petrol devlerine \"olağanüstü kâr vergisi\" talebi  (DW Türkçe)",
+    "🌍 Aziz İhsan Aktaş davasında kritik gün: Karar bekleniyor  (DW Türkçe)",
+    "🌍 Hollanda gelecek yıl da Eurovision'a katılmıyor  (DW Türkçe)",
+    "🌍 PKK'nın fesih sürecini takip edecek kurul mesaiye başlıyor  (DW Türkçe)"
   ]
 }
