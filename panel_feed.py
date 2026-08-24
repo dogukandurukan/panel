@@ -83,8 +83,10 @@ WORLD_FEEDS = [
     ("Guardian World", "https://www.theguardian.com/world/rss"),
     ("Al Jazeera", "https://www.aljazeera.com/xml/rss/all.xml"),
     ("NPR World", "https://feeds.npr.org/1004/rss.xml"),
+    # Türkçe kaynaklarda genel akış yurt içi manşetle doluyor; bu ikisi
+    # dünya/Avrupa ağırlıklı. BBC Türkçe genel akışı bu yüzden çıkarıldı.
+    ("Euronews", "https://tr.euronews.com/rss?level=theme&name=news"),
     ("DW Türkçe", "https://rss.dw.com/rdf/rss-tur-all"),
-    ("BBC Türkçe", "https://feeds.bbci.co.uk/turkce/rss.xml"),
 ]
 # Tek kaynak listeyi doldurmasın
 KAYNAK_BASI_MAX = 2
