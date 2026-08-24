@@ -88,8 +88,11 @@ def cevaplanmis(veri, gun_anahtari, dilim):
 def main():
     token = os.environ.get("PANEL_GIST_TOKEN", "").strip()
     gizli = os.environ.get("VAPID_PRIVATE", "").strip()
-    if not token or not gizli:
-        print("PANEL_GIST_TOKEN veya VAPID_PRIVATE tanımlı değil — atlandı.")
+    # Hangisinin eksik olduğunu adıyla söyle: kurulum log'a tek bakışta anlaşılsın.
+    eksik = [ad for ad, deger in (("PANEL_GIST_TOKEN", token),
+                                  ("VAPID_PRIVATE", gizli)) if not deger]
+    if eksik:
+        print("secret tanımlı değil: " + ", ".join(eksik) + " — atlandı.")
         return 0
 
     try:

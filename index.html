@@ -161,6 +161,13 @@
   .ss-ad{font-family:var(--serif);font-weight:600;font-size:23px;line-height:1.2;margin:5px 0 2px;}
   .ss-hedef{font-family:var(--mono);font-size:11.5px;color:var(--accent);}
   .ss-gecmis{font-size:12px;color:var(--muted);margin-top:3px;}
+  .ss-recete{font-size:12px;color:var(--ink);margin-top:5px;padding:6px 8px;border-left:2px solid var(--accent);
+    background:color-mix(in srgb,var(--accent) 7%,transparent);border-radius:0 4px 4px 0;}
+  .ss-recete b{font-family:var(--mono);}
+  .ss-artis{font-size:12px;color:var(--up);margin-top:5px;font-family:var(--mono);}
+  .tgt-neden{font-size:11.5px;color:var(--muted);margin-top:8px;line-height:1.45;}
+  .tgt-oto{font-family:var(--mono);font-size:8.5px;letter-spacing:.08em;color:var(--accent);text-transform:none;}
+  .ex-up{color:var(--up);}
   .ss-giris{display:flex;gap:8px;align-items:flex-end;margin-top:13px;}
   .ss-f{flex:1;} .ss-f label{display:block;font-family:var(--mono);font-size:9px;letter-spacing:.12em;
     text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
@@ -608,7 +615,6 @@ const MORNING_SHORT={
  4:[['Yerinde koşu / ip atlama','2-3 dk'],['Kol çemberi (ön-arka)','1 dk'],['Yürüyerek dinamik lunge','10 tekrar'],['Yan adım + kalça açma','1 dk']],
  6:[['Ayak bileği çemberi','1 dk'],['Kalça fleksör esnetme','2 × 30 sn / bacak'],['Yürüyerek dinamik lunge','10 tekrar'],['Tek ayak denge','30 sn / ayak']]
 };
-const MORNING=(MORNING_SHORT[new Date().getDay()]||MORNING_LONG);
 
 /* ===== YEMEK (gün gün, 7 günlük plandan) ===== */
 const MP={
@@ -987,6 +993,25 @@ async function pushGisteYaz(sub,acikAnahtar){
   return subs.length;
 }
 
+/* Plan kurulum anında yazılıyordu; program sonradan değişirse gist'te bayat
+   kalır ve telefon aylarca eski işi sorar. Açılışta karşılaştırıp yalnızca
+   değiştiyse yazar — bedava PATCH atmaz. */
+async function pushPlanTazele(){
+  if(!pushCfg||!pushCfg.kuruldu)return;
+  if(!syncCfg||!syncCfg.token||!syncCfg.gistId)return;
+  try{
+    const g=await ghApi('/gists/'+syncCfg.gistId);
+    const f=g.files&&g.files[PUSH_FILE];
+    if(!f||!f.content)return;                 // kurulum yapılmamış; yazacak bir şey yok
+    const d=JSON.parse(f.content);
+    const plan=yokPlanUret();
+    if(JSON.stringify(d.plan||null)===JSON.stringify(plan))return;
+    d.plan=plan;d.updated=Date.now();
+    const govde={files:{}};govde.files[PUSH_FILE]={content:JSON.stringify(d,null,1)};
+    await ghApi('/gists/'+syncCfg.gistId,{method:'PATCH',body:JSON.stringify(govde)});
+  }catch(e){}                                  // sessiz: bildirim kurulumu bozulmasın
+}
+
 async function pushKur(){
   try{
     pushDurum='Bildirim izni isteniyor…';renderYok();
@@ -1100,6 +1125,7 @@ async function yokCevapla(i,a){
     if(k)k.scrollIntoView({behavior:'smooth',block:'center'});
   }
   await yokKaydet();renderYok();
+  if(document.getElementById('bars'))renderBars();   // atlanan antrenman karb hedefini düşürüyor
 }
 
 /* Tarayıcı bildirimi yalnızca panel AÇIKKEN çalışır; kart bunu açıkça yazıyor
@@ -1203,15 +1229,96 @@ function renderSched(){
 
 /* morning + run */
 let morningDone={};
-async function loadMorning(){morningDone=await sGet('d:morning:'+todayKey())||{};renderMorning();}
-function renderMorning(){const el=document.getElementById('morningList');el.innerHTML='';
-  const sub=document.getElementById('morningSub');if(sub){const d=new Date().getDay();
+
+/* ===== SABAH RUTİNİ (uykuya ve o günkü antrenmana göre) =====
+   Rutin gün tipine göre zaten değişiyordu; artık iki gerçek veriye daha bakıyor:
+
+   1. UYKU — dün gece kısa uyunduysa (medyan alışkanlığın 1 saat altı ya da 6
+      saatin altı) ağır core işi düşer, yerinde hafif mobilite kalır. Kısa uykuda
+      plank/dead bug yapmamak "programı boz" değil, programın kendisi.
+   2. O GÜNKÜ ANTRENMAN — bacak günü sabahı kalça fleksörü ve ayak bileği listede
+      olmak zorunda; ısınmadan squat'a girilmesin diye başa alınıyor.
+   3. İHMAL — son 7 günde hiç tiklenmemiş hareket başa taşınır.
+
+   Uyku girilmemişse hiçbir varsayım yapılmaz: liste gün tipinin listesidir.
+
+   TİKLER AD İLE ANAHTARLANIYOR (eskiden sıra numarasıyla). Liste artık güne göre
+   değiştiği için sıra numarası kaydığında yanlış hareket tikli görünürdü.
+   __n = o günün planlanan hareket sayısı; alışkanlık serisi oranı bundan hesaplar. */
+const MORN_AGIR=/plank|dead ?bug|güneş selamı/i;
+/* Adlar günden güne farklı yazılmış ('Ayak bileği çemberi' / '... + tek ayak
+   denge'), o yüzden eşleşme kalıpla: zaten varsa başa taşınır, yoksa eklenir. */
+const MORN_BACAK=[[/kalça fleksör/i,['Kalça fleksör esnetme (diz üstü lunge)','2 × 30 sn / bacak']],
+                  [/ayak bileği/i,['Ayak bileği çemberi + tek ayak denge','3 dk']]];
+
+/* Dün gece kısa mı uyundu? Kayıt yoksa null — varsayım üretme. */
+function kisaUyku(){
+  const e=sleepLog[todayKey()];if(!e||!e.bed||!e.wake)return null;
+  const d=slpDur(e.bed,e.wake);if(d===null)return null;
+  const h=slpHabit();
+  return (d<360||(h&&d<h.dur-60))?d:false;
+}
+/* Son 7 günde bir kez bile tiklenmemiş hareket adları (yalnızca ad ile
+   anahtarlanmış kayıtlardan; eski sıra numaralı kayıtlar sessizce atlanır). */
+function mornIhmal(){
+  const g=new Set();
+  (habPast||[]).slice(0,7).forEach(v=>{const o=v.m;if(!o)return;
+    Object.keys(o).forEach(k=>{if(k!=='__n'&&!/^\d+$/.test(k)&&o[k])g.add(k);});});
+  return g;
+}
+function morningPlan(){
+  let liste=(MORNING_SHORT[dow]||MORNING_LONG).slice();
+  const notlar=[];
+  if(/LEGS|LOWER/i.test(WK[dow].title||'')){
+    const onceki=liste.map(x=>x[0]).join('|');
+    MORN_BACAK.slice().reverse().forEach(([re,varsayilan])=>{
+      const v=liste.find(x=>re.test(x[0]));
+      liste=[v||varsayilan].concat(liste.filter(x=>!re.test(x[0])));
+    });
+    /* Zaten baştaysa not yazma — değişmemiş bir şeyi değişmiş gibi göstermeyelim. */
+    if(liste.map(x=>x[0]).join('|')!==onceki)notlar.push('bacak günü: kalça ve ayak bileği başta');
+  }
+  const ku=kisaUyku();
+  if(ku){
+    const hafif=liste.filter(m=>!MORN_AGIR.test(m[0]));
+    liste=(hafif.length?hafif:liste).slice(0,4);
+    notlar.push('kısa uyku ('+slpTxt(ku)+') — ağır core bugün yok');
+  }
+  const ihmal=mornIhmal();
+  if(ihmal.size){
+    const unutulan=liste.filter(m=>!ihmal.has(m[0]));
+    if(unutulan.length&&unutulan.length<liste.length){
+      liste=unutulan.concat(liste.filter(m=>ihmal.has(m[0])));
+      notlar.push('son 7 günde atladığın hareket başa alındı');
+    }
+  }
+  return {liste:liste,not:notlar.join(' · ')};
+}
+
+async function loadMorning(){
+  const kayit=await sGet('d:morning:'+todayKey())||{};
+  /* Sıra numaralı eski kayıtları ada çevir — tikler kaybolmasın. */
+  if(Object.keys(kayit).some(k=>/^\d+$/.test(k))){
+    const eski=MORNING_SHORT[dow]||MORNING_LONG,yeni={};
+    Object.keys(kayit).forEach(k=>{const i=+k;
+      if(/^\d+$/.test(k)&&eski[i]&&kayit[k])yeni[eski[i][0]]=true;
+      else if(!/^\d+$/.test(k))yeni[k]=kayit[k];});
+    morningDone=yeni;await sSet('d:morning:'+todayKey(),morningDone);
+  }else morningDone=kayit;
+  renderMorning();
+}
+function renderMorning(){const el=document.getElementById('morningList');if(!el)return;el.innerHTML='';
+  const plan=morningPlan(),liste=plan.liste;
+  const sub=document.getElementById('morningSub');if(sub){
     const focus={2:'PULL hazırlığı (~5-7 dk)',4:'Dinamik ısınma — aktivite günü',6:'Koşu ısınması (~5-7 dk)'};
-    sub.textContent=focus[d]||'Uzun rutin: mobilite + core (~12-15 dk)';}
-  MORNING.forEach((m,i)=>{const done=!!morningDone[i];const d=document.createElement('div');d.className='ex'+(done?' done':'');
-    d.innerHTML='<div class="check '+(done?'on':'')+'" data-m="'+i+'"></div><div class="ex-body"><span class="ex-n">'+esc(m[0])+'</span><span class="ex-s">'+esc(m[1])+'</span></div>';el.appendChild(d);});
-  document.getElementById('morningCount').textContent=Object.values(morningDone).filter(Boolean).length+'/'+MORNING.length;
-  el.querySelectorAll('[data-m]').forEach(c=>c.onclick=()=>{const i=+c.dataset.m;morningDone[i]=!morningDone[i];sSet('d:morning:'+todayKey(),morningDone);renderMorning();renderHabits();});}
+    sub.textContent=(focus[dow]||'Uzun rutin: mobilite + core (~12-15 dk)')+(plan.not?' · '+plan.not:'');}
+  liste.forEach(m=>{const done=!!morningDone[m[0]];const d=document.createElement('div');d.className='ex'+(done?' done':'');
+    d.innerHTML='<div class="check '+(done?'on':'')+'" data-m="'+encodeURIComponent(m[0])+'"></div><div class="ex-body"><span class="ex-n">'+esc(m[0])+'</span><span class="ex-s">'+esc(m[1])+'</span></div>';el.appendChild(d);});
+  /* Planlanan sayı kayda yazılır: seri hesabı o günün kendi listesine göre oranlansın. */
+  if(num(morningDone.__n)!==liste.length){morningDone.__n=liste.length;sSet('d:morning:'+todayKey(),morningDone);}
+  document.getElementById('morningCount').textContent=liste.filter(m=>morningDone[m[0]]).length+'/'+liste.length;
+  el.querySelectorAll('[data-m]').forEach(c=>c.onclick=()=>{const ad=decodeURIComponent(c.dataset.m);
+    morningDone[ad]=!morningDone[ad];sSet('d:morning:'+todayKey(),morningDone);renderMorning();renderHabits();});}
 async function renderRun(){const km=await sGet('d:runkm:'+todayKey())||'';runKmToday=km;const isRun=WK[dow].run;const el=document.getElementById('runArea');
   el.innerHTML='<div class="runbox"><label>Bugün koştuğun mesafe</label><input type="number" id="runIn" placeholder="0" value="'+esc(km)+'"><span class="mkt-sub">km</span></div>'+
     (isRun?'<div class="runnote">Bugün koşu günü — protokol: 2 dk yürü / 1-2 dk koş × 8 tur (5. haftadan sonra kesintisiz 20 dk).</div>':'');
@@ -1219,7 +1326,8 @@ async function renderRun(){const km=await sGet('d:runkm:'+todayKey())||'';runKmT
 
 /* workout (today) */
 let exDone={},wtlog={};
-async function loadWorkout(){exDone=await sGet('d:ex:'+todayKey())||{};wtlog=await sGet('d:wtlog')||{};await loadSess();
+async function loadWorkout(){exDone=await sGet('d:ex:'+todayKey())||{};wtlog=await sGet('d:wtlog')||{};
+  prog=await sGet(PROG_KEY)||{};vol=await sGet(VOL_KEY)||{};await loadSess();
   document.getElementById('wkTitle').textContent=DAYNAMES[dow];
   document.getElementById('wkSub').textContent=WK[dow].title;renderEx();}
 function prevWeight(name){let best=null;const tk=todayKey();for(const dk in wtlog){if(dk>=tk)continue;const v=wtlog[dk]&&wtlog[dk][name];if(v!==undefined&&v!==''&&v!=null){if(!best||dk>best.date)best={date:dk,kg:v};}}return best;}
@@ -1244,6 +1352,67 @@ let sess={},restBip=false;
 /* '4 × 5-8' -> {set:4,tekrar:'5-8'} ; '3 set', '20-30 dk' gibi olanlar null */
 function setHedef(s){const m=/^(\d+)\s*×\s*(.+)$/.exec(String(s).trim());
   return m?{set:+m[1],tekrar:m[2].trim()}:null;}
+
+/* ===== ÇİFT İLERLEME (yük artışı) =====
+   Kural: bir seansta hedef set sayısı kadar ÇALIŞMA seti (ısınma değil, reçete
+   kilosunda ya da üstünde) tekrar aralığının ÜST ucunda tamamlanırsa, o hareketin
+   reçetesi bir sonraki sefere artar. Tutmazsa kg aynı kalır — geri düşürme yok,
+   kötü bir gün programı bozmasın.
+
+   Neden set sayısı ve üst uç birlikte: tek ağır sette 8 tekrar çıkarmak ilerleme
+   değil; dördünde birden çıkarmak ilerleme. Bu yüzden tek seans yetiyor.
+
+   Reçete d:prog'da tek anahtarda durur: {hareket:{kg, tarih, eski}}. Geçmiş
+   seansları gün gün okumak pahalı olurdu (d:sess günlük anahtar).
+   'x sn / taraf' gibi sayısal aralığı olmayan hareketlerde ilerleme hesaplanmaz. */
+const PROG_KEY='d:prog', VOL_KEY='d:vol';
+let prog={},vol={};
+const ALT_GOVDE=/squat|deadlift|rdl|leg press|leg curl|leg extension|hip thrust|step-?up|calf|calf raise|bulgar/i;
+/* Alt gövdede en küçük anlamlı sıçrama daha büyük; üst gövdede 2.5 kg bile çok. */
+const kgAdim=ad=>ALT_GOVDE.test(ad)?5:2.5;
+
+/* '4 × 5-8' -> {set:4,lo:5,hi:8} ; '3 × 8-12' olur, '2 × 30 sn / taraf' olmaz */
+function repAralik(spec){const h=setHedef(spec);if(!h)return null;
+  const m=/^(\d+)\s*-\s*(\d+)$/.exec(h.tekrar);
+  return m?{set:h.set,lo:+m[1],hi:+m[2]}:null;}
+
+/* Bugün geçerli reçete: varsa d:prog, yoksa bu hareketin son kaydı (tohum). */
+function progKg(ad){
+  if(prog[ad]&&prog[ad].kg!==''&&prog[ad].kg!=null)return num(prog[ad].kg);
+  const p=prevWeight(ad);return p?num(p.kg):0;
+}
+/* Bugün artmış mı? (kartta '↑ 40 → 42.5' satırı için) */
+const progBugun=ad=>(prog[ad]&&prog[ad].tarih===todayKey()&&prog[ad].eski!=null)?prog[ad]:null;
+
+function progHesap(ad,spec,setler){
+  const r=repAralik(spec);if(!r)return null;
+  const taban=progKg(ad);
+  if(!taban)return null;                                  // kg bilinmiyorsa artıracak bir şey yok
+  const calisan=(setler||[]).filter(x=>num(x.kg)>=taban); // ısınma setleri sayılmaz
+  if(calisan.length<r.set)return null;
+  const enAz=Math.min.apply(null,calisan.slice(-r.set).map(x=>num(x.rep)));
+  if(!(enAz>=r.hi))return null;                           // üst uç tutmadı: kg sabit
+  return {eski:taban,yeni:taban+kgAdim(ad)};
+}
+
+async function progIsle(ad,spec,setler){
+  if(progBugun(ad))return;                                 // gün içinde bir kez
+  const a=progHesap(ad,spec,setler);if(!a)return;
+  prog[ad]={kg:a.yeni,tarih:todayKey(),eski:a.eski};
+  await sSet(PROG_KEY,prog);
+}
+
+/* Günün toplam tonajı (kg × tekrar). Yemek hedefi bunu okuyor; gün gün d:sess
+   açmak pahalı olduğu için tek anahtarda özetleniyor. */
+function gunTonaj(){
+  let t=0;
+  for(const i in (sess.s||{}))(sess.s[i]||[]).forEach(x=>{t+=num(x.kg)*num(x.rep);});
+  return Math.round(t);
+}
+async function volKaydet(){
+  const t=gunTonaj();if(!t)return;
+  vol[todayKey()]=t;await sSet(VOL_KEY,vol);
+}
 
 async function loadSess(){sess=await sGet('d:sess:'+todayKey())||{};}
 async function saveSess(){await sSet('d:sess:'+todayKey(),sess);}
@@ -1294,8 +1463,11 @@ async function sessSetKaydet(kg,tekrar){
   /* Hedef set sayısı dolduysa hareketi tamamlanmış say — seri hesabı buna bakar. */
   const h=setHedef(ex[i][1]);
   if(h&&sess.s[i].length>=h.set&&!exDone[i]){exDone[i]=true;await sSet('d:ex:'+tk,exDone);renderHabits();}
+  /* Hedef setler dolduysa çift ilerleme kuralını uygula; tonaj yemek hedefini besliyor. */
+  await progIsle(ad,ex[i][1],sess.s[i]);
+  await volKaydet();
   sess.rest=Date.now()+(sess.restSn||90)*1000;restBip=false;
-  await saveSess();renderEx();renderWtLog();
+  await saveSess();renderEx();renderWtLog();renderBars();
 }
 
 async function sessGit(yon){
@@ -1318,8 +1490,10 @@ function renderEx(){
   /* Liste görünümü — hızlı bakış ve elle tik için korunuyor. */
   el.innerHTML=ex.map((e,i)=>{
     const done=!!exDone[i],adet=(sess.s&&sess.s[i]||[]).length;
+    const r=repAralik(e[1])?progKg(e[0]):0,art=progBugun(e[0]);
     return '<div class="ex'+(done?' done':'')+'"><div class="check '+(done?'on':'')+'" data-x="'+i+'"></div>'+
       '<div class="ex-body"><span class="ex-n">'+esc(e[0])+'</span><span class="ex-s">'+esc(e[1])+
+      (r?' · '+r+' kg':'')+(art?' <b class="ex-up">↑</b>':'')+
       (adet?' · '+adet+' set kayıtlı':'')+'</span></div></div>';
   }).join('');
   /* Ağırlıklı gün değilse (kürek/koşu/dinlenme) mod açılmaz: kaydedilecek set yok. */
@@ -1335,9 +1509,11 @@ function renderSess(el,ex){
   const setler=(sess.s&&sess.s[i])||[];
   const sonSet=setler[setler.length-1];
   const gecen=prevWeight(ad);
-  /* kg önerisi: bugün girilen son set > geçmiş kayıt > boş. Uydurma yok. */
-  const kgOner=sonSet?sonSet.kg:(gecen?gecen.kg:'');
-  const repOner=sonSet?sonSet.rep:(h?String(h.tekrar).split('-')[0]:'');
+  const rec=progKg(ad),ar=repAralik(e[1]),artis=progBugun(ad);
+  /* kg önerisi: bugün girilen son set > çift ilerleme reçetesi > geçmiş kayıt > boş.
+     Uydurma yok; reçete de geçmiş setlerden türüyor. */
+  const kgOner=sonSet?sonSet.kg:(rec?String(rec):(gecen?gecen.kg:''));
+  const repOner=sonSet?sonSet.rep:(ar?String(ar.lo):(h?String(h.tekrar).split('-')[0]:''));
 
   let html='<div class="ss-ust"><span>'+(i+1)+' / '+ex.length+'</span><span>'+
     (sess.bas?'başlangıç '+esc(sess.bas):'')+'</span></div>'+
@@ -1346,6 +1522,12 @@ function renderSess(el,ex){
     '<div class="ss-gecmis">'+(gecen
       ? 'önceki: '+esc(gecen.kg)+' kg ('+gecen.date.slice(8,10)+'.'+gecen.date.slice(5,7)+')'
       : 'bu hareket için ilk kayıt')+'</div>';
+  /* Reçete yalnızca geçmiş kaydı olan harekette gösterilir — veri yoksa satır yok. */
+  /* Artış olduğu gün reçeteyi tekrar yazma: yeni kg bugünün değil, sonraki
+     seansın kilosu — 'bugün 105 kg' yanlış olurdu. ↑ satırı zaten anlatıyor. */
+  if(ar&&rec&&!artis)html+='<div class="ss-recete">bugün <b>'+rec+' kg</b> · '+ar.set+' seti de '+
+    ar.hi+' tekrar tamamlarsan '+(rec+kgAdim(ad))+' kg\'a çıkar</div>';
+  if(artis)html+='<div class="ss-artis">↑ '+artis.eski+' → <b>'+artis.kg+' kg</b> · üst ucu tutturdun, sonraki seans bu kilodan</div>';
 
   if(h){
     html+='<div class="ss-giris">'+
@@ -1415,10 +1597,14 @@ function exportCSV(){const rows=[['Tarih','Gün','Hareket','kg']];Object.keys(wt
 /* meals (today, day-aware) + macros */
 async function loadMeals(){const key='d:meals:'+todayKey();meals=await sGet(key)||MP[dow].map(m=>({slot:m[0],text:m[1],kcal:m[2],p:m[3],c:m[4],portion:0}));renderTargets();renderBars();renderMeals();}
 async function saveMeals(){await sSet('d:meals:'+todayKey(),meals);}
-function renderTargets(){const el=document.getElementById('tgt');el.innerHTML='';
+function renderTargets(){const el=document.getElementById('tgt');el.innerHTML='';const g=gunlukHedef();
   [['kcal','Kalori'],['p','Protein g'],['c','Karb g'],['y','Yağ g']].forEach(([k,l])=>{const f=document.createElement('div');f.className='f';
-    f.innerHTML='<label>'+l+'</label><input type="number" data-t="'+k+'" value="'+num(targets[k])+'">';el.appendChild(f);});
-  el.querySelectorAll('[data-t]').forEach(inp=>inp.oninput=()=>{targets[inp.dataset.t]=inp.value;sSet(K.targets,targets);renderBars();});}
+    /* Karb kutusu gün tipinin tabanını gösterir; elle yazılırsa o değer sabitlenir. */
+    const v=(k==='c'&&targets.cAuto!==false)?g.bazC:num(targets[k]);
+    f.innerHTML='<label>'+l+(k==='c'&&targets.cAuto!==false?' <span class="tgt-oto">gün tipine göre</span>':'')+
+      '</label><input type="number" data-t="'+k+'" value="'+v+'">';el.appendChild(f);});
+  el.querySelectorAll('[data-t]').forEach(inp=>inp.oninput=()=>{targets[inp.dataset.t]=inp.value;
+    if(inp.dataset.t==='c')targets.cAuto=false;sSet(K.targets,targets);renderBars();});}
 function consumed(){return meals.reduce((a,m)=>{const f=num(m.portion)/100;return{kcal:a.kcal+f*num(m.kcal),p:a.p+f*num(m.p),c:a.c+f*num(m.c)};},{kcal:0,p:0,c:0});}
 function bar(l,cn,tg,u){const pct=tg>0?Math.min(cn/tg*100,100):0;const ov=tg>0&&cn>tg;const rem=Math.max(tg-cn,0);
   return '<div class="bar-wrap"><div class="bar-top"><span>'+l+'</span><span class="num">'+Math.round(cn)+' / '+tg+u+'</span></div><div class="bar"><i class="'+(ov?'over':'')+'" style="width:'+(ov?100:pct)+'%"></i></div><div class="rem">'+(ov?'hedef aşıldı +'+Math.round(cn-tg)+u:'kalan '+Math.round(rem)+u)+'</div></div>';}
@@ -1434,10 +1620,16 @@ function bar(l,cn,tg,u){const pct=tg>0?Math.min(cn/tg*100,100):0;const ov=tg>0&&
 const HAB_LOOKBACK=90, HAB_MIN=.8, HAB_DOTS=14;
 let habPast=null,runKmToday='';
 const morningFor=d=>MORNING_SHORT[d]||MORNING_LONG;
+/* Payda o günün kendi planı (__n); eski sıra numaralı kayıtlarda gün tipinin
+   sabit listesi. __n sayaç değil etiket, tik sayısına katılmaz. */
+function mornRatio(o,d){if(!o)return 0;
+  const n=num(o.__n)||morningFor(d).length;
+  const t=Object.keys(o).filter(k=>k!=='__n'&&o[k]).length;
+  return n?t/n:0;}
 const waterGoalFor=d=>Math.ceil((d===6?3.5:3)*1000/WATER_GLASS_ML);
 const tickRatio=(o,n)=>n?Object.values(o||{}).filter(Boolean).length/n:0;
 const HABITS=[
- {ad:'Sabah rutini',birim:'gün',st:v=>tickRatio(v.m,morningFor(v.d).length)>=HAB_MIN?'ok':'miss'},
+ {ad:'Sabah rutini',birim:'gün',st:v=>mornRatio(v.m,v.d)>=HAB_MIN?'ok':'miss'},
  {ad:'Koşu',birim:'hafta',st:v=>WK[v.d].run?(num(v.r)>0?'ok':'miss'):'skip'},
  {ad:'Antrenman',birim:'gün',st:v=>v.d===0?'skip':(tickRatio(v.x,WK[v.d].ex.length)>=HAB_MIN?'ok':'miss')},
  {ad:'Su hedefi',birim:'gün',st:v=>num(v.w)>=waterGoalFor(v.d)?'ok':'miss'},
@@ -1451,7 +1643,7 @@ async function loadHabits(){
     const [m,x,w,q,r]=await Promise.all([sGet('d:morning:'+k),sGet('d:ex:'+k),sGet(K.water+':'+k),sGet('d:dequiz:'+k),sGet('d:runkm:'+k)]);
     habPast.push({k,d,m,x,w,q,r});
   }
-  renderHabits();
+  renderHabits();renderMorning();   // ihmal edilen hareket ancak geçmiş okununca bilinir
 }
 const habToday=()=>({k:todayKey(),d:dow,m:morningDone,x:exDone,w:waterCount,q:deQuiz,r:runKmToday});
 function habDays(){return [habToday()].concat(habPast||[]);}
@@ -1532,7 +1724,7 @@ function slpStreak(h){if(!h)return 0;let n=0;
   let i=(sleepLog[todayKey()]&&sleepLog[todayKey()].bed&&sleepLog[todayKey()].wake)?0:1;  // bugun girilmediyse dunden say
   for(;i<400;i++){if(!slpFits(sleepLog[dayBack(i)],h))break;n++;}
   return n;}
-async function loadSleep(){sleepLog=await sGet(K.sleep)||{};renderSleep();}
+async function loadSleep(){sleepLog=await sGet(K.sleep)||{};renderSleep();renderMorning();}  // uyku sabah rutinini belirliyor
 function renderSleep(){
   const el=document.getElementById('sleepBox');if(!el)return;
   const tk=todayKey(),e=sleepLog[tk]||{bed:'',wake:''},d=slpDur(e.bed,e.wake),h=slpHabit();
@@ -1560,13 +1752,61 @@ function renderSleep(){
   html+=bars+'</div>';
   el.innerHTML=html;
   const meta=document.getElementById('slpMeta');if(meta)meta.textContent=(d===null?'kayıt bekliyor':slpTxt(d));
-  const save=async(f,v)=>{const cur=sleepLog[tk]||{bed:'',wake:''};cur[f]=v;sleepLog[tk]=cur;await sSet(K.sleep,sleepLog);renderSleep();renderHabits();};
+  const save=async(f,v)=>{const cur=sleepLog[tk]||{bed:'',wake:''};cur[f]=v;sleepLog[tk]=cur;await sSet(K.sleep,sleepLog);renderSleep();renderHabits();renderMorning();};
   el.querySelector('#slpBed').onchange=ev=>save('bed',ev.target.value);
   el.querySelector('#slpWake').onchange=ev=>save('wake',ev.target.value);
   el.querySelectorAll('[data-sb]').forEach(b=>b.onclick=()=>save('bed',e.bed===b.dataset.sb?'':b.dataset.sb));
   el.querySelectorAll('[data-sw]').forEach(b=>b.onclick=()=>save('wake',e.wake===b.dataset.sw?'':b.dataset.sw));
 }
-function renderBars(){const c=consumed();document.getElementById('bars').innerHTML=bar('Kalori',c.kcal,num(targets.kcal),'')+bar('Protein',c.p,num(targets.p),'g')+bar('Karbonhidrat',c.c,num(targets.c),'g');}
+/* ===== GÜNLÜK HEDEF (antrenman yoğunluğuna göre) =====
+   Karbonhidrat tabanı gün tipinden gelir (CARB_BY_DAY), üstüne o günün GERÇEK
+   hacmi biner: d:vol'daki kg×tekrar toplamı, aynı haftagününün son 4 kaydının
+   medyanıyla karşılaştırılır. Atlanan antrenman günü kendiliğinden düşük
+   karbonhidrat günü olur — yoklamada 'Atladım' demek yetiyor.
+
+   Hedef d:targets'a YAZILMAZ: orası kullanıcının tabanı. Günlük kayma
+   hesaplanıp gösterilir, yoksa elle girilen değerin üstüne biner (CLAUDE.md,
+   bilinen tuzak 1). Karb kutusuna elle dokunulursa cAuto kapanır ve gün tipi
+   devreye girmez. */
+function gunHacimTaban(){
+  const tk=todayKey();
+  const ks=Object.keys(vol||{}).filter(k=>k<tk&&new Date(k+'T12:00:00').getDay()===dow).sort();
+  const son=ks.slice(-4).map(k=>num(vol[k])).filter(x=>x>0);
+  return son.length>=2?slpMedian(son):null;
+}
+const yokSporAtlandi=()=>(SCHED[dow]||[]).some((is,i)=>YOK[is]==='spor'&&yok[i]&&yok[i].a==='skip');
+/* Antrenmanın ortasında hacim doğal olarak düşük görünür; hedefi o an kırpmak
+   yanlış sinyal olur. Aşağı yönlü ayar yalnızca seans bittiğinde ya da spor
+   dilimi geçtiğinde uygulanır. Yukarı yönlü ayar beklemez: hacim zaten aşılmış. */
+function sporBitti(){
+  if(sess.bitti)return true;
+  let son=null;(SCHED[dow]||[]).forEach((is,i)=>{if(YOK[is]==='spor')son=hhmm(SLOTS[i][1]);});
+  return son!==null&&nowMin()>=son;
+}
+
+function gunlukHedef(){
+  const bazKcal=num(targets.kcal),bazC=targets.cAuto===false?num(targets.c):(CARB_BY_DAY[dow]??num(targets.c));
+  const o={kcal:bazKcal,p:num(targets.p),c:bazC,y:num(targets.y),bazKcal:bazKcal,bazC:bazC,neden:''};
+  if(!WK[dow].ex.some(e=>setHedef(e[1]))){o.neden=dow===0?'tam dinlenme günü':'ağırlık antrenmanı olmayan gün';return o;}
+  const t=gunTonaj(),taban=gunHacimTaban();
+  if(yokSporAtlandi()&&!t){o.c=bazC-40;o.kcal=bazKcal-250;o.neden='antrenman atlandı';return o;}
+  if(!t){o.neden='antrenman bekleniyor';return o;}
+  if(!taban){o.neden='bugün '+t.toLocaleString('tr-TR')+' kg·tekrar — karşılaştırma için en az 2 '+DAYNAMES[dow]+' kaydı gerekiyor';return o;}
+  const yuzde=Math.round(t/taban*100),bitti=sporBitti();
+  if(yuzde>=110){o.c=bazC+25;o.kcal=bazKcal+150;}
+  else if(yuzde<=70&&bitti){o.c=bazC-25;o.kcal=bazKcal-150;}
+  o.neden=(bitti?'hacim':'antrenman sürüyor · hacim')+' son '+DAYNAMES[dow]+' günlerinin %'+yuzde+'\u2019i';
+  return o;
+}
+function hedefNot(g){
+  const p=[];
+  if(g.c!==g.bazC)p.push('Karb '+g.bazC+' → '+g.c+' g');
+  if(g.kcal!==g.bazKcal)p.push('Kalori '+g.bazKcal+' → '+g.kcal);
+  return (p.length?p.join(' · ')+' · ':'')+g.neden;
+}
+function renderBars(){const c=consumed(),g=gunlukHedef();
+  document.getElementById('bars').innerHTML=bar('Kalori',c.kcal,g.kcal,'')+bar('Protein',c.p,g.p,'g')+bar('Karbonhidrat',c.c,g.c,'g')+
+    (g.neden?'<div class="tgt-neden">'+esc(hedefNot(g))+'</div>':'');}
 function renderMeals(){const el=document.getElementById('mealList');el.innerHTML='';
   meals.forEach((m,i)=>{const rc=recipeFor(m.text);const open=!!openRec[i];const d=document.createElement('div');d.className='meal';
     d.innerHTML='<div class="meal-top"><span class="meal-slot">'+esc(m.slot)+'</span><div class="portions">'+
@@ -2892,6 +3132,7 @@ async function initSync(){
   setInterval(()=>syncPull(),SYNC_POLL);
   document.addEventListener('visibilitychange',()=>{if(!document.hidden)syncPull();});
   window.addEventListener('beforeunload',()=>{if(syncTimer){clearTimeout(syncTimer);syncPush();}});
+  await pushPlanTazele();
 }
 
 /* init */
@@ -2901,7 +3142,6 @@ async function initSync(){
   if((await sGet(K.targetsVer))!==TARGETS_VERSION){    // program değişti -> hedefleri tazele
     targets={...DEFAULT_TARGETS,c:CARB_BY_DAY[new Date().getDay()]??DEFAULT_TARGETS.c};
     await sSet(K.targets,targets);await sSet(K.targetsVer,TARGETS_VERSION);
-  await loadYok();
   }news=await sGet(K.news)||[];watch=await sGet('d:watch')||[];world=await sGet('d:world')||[];us=await sGet('d:us')||[];gold=await sGet('d:gold')||null;gmailDone=await sGet(K.gmailDone)||[];
   const de=await sGet(K.de);deExtra=(de&&de.date===todayKey())?de.extra:0;
   deWrong=await sGet(K.deWrong)||[];await loadQuiz();
