@@ -147,6 +147,17 @@
   .day1 .d-bas{font-family:var(--serif);font-weight:600;font-size:20px;line-height:1.25;margin:3px 0 7px;}
   .day1 .d-metin{font-size:14px;line-height:1.6;}
   .day1 .d-detay{font-size:13px;line-height:1.6;color:var(--muted);margin-top:9px;padding-top:9px;border-top:1px dotted var(--line2);}
+  .d-ac{display:inline-block;margin-top:10px;margin-right:12px;font-family:var(--mono);font-size:9.5px;
+    letter-spacing:.11em;text-transform:uppercase;color:var(--accent);background:none;border:none;
+    border-bottom:1px solid var(--accent);padding:0 0 2px;cursor:pointer;}
+  .d-derin{margin-top:11px;padding:11px 12px;border-left:2px solid var(--accent);border-radius:0 5px 5px 0;
+    background:color-mix(in srgb,var(--accent) 6%,transparent);font-size:13.5px;line-height:1.65;}
+  .d-derin p{margin:0 0 8px;}
+  .d-derin p:last-child{margin-bottom:0;}
+  .d-oner{margin-top:9px;padding-top:8px;border-top:1px dotted var(--line2);}
+  .d-oner-b{font-family:var(--mono);font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);}
+  .d-oner ul{margin:5px 0 0;padding-left:16px;}
+  .d-oner li{font-size:13px;line-height:1.55;margin-bottom:3px;}
   .day1 .d-kaynak{display:inline-block;margin-top:10px;font-family:var(--mono);font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px;}
   .day1 .d-kaynak:hover{color:var(--accent);border-color:var(--accent);}
   /* Yoklama: o an sırası gelmiş tek soruyu sorar. */
@@ -676,90 +687,90 @@ function recipeFor(t){const o=[];RECIPES.forEach(([re,tip])=>{if(re.test(t||''))
 
 /* ===== İLGİNÇ BİLGİLER ===== */
 const FACTS=[
- 'Bal asla bozulmaz; antik Mısır mezarlarında bulunan 3000 yıllık bal hâlâ yenebilir durumdaydı.',
- 'Ahtapotların üç kalbi ve bakır bazlı mavi kanı vardır.',
- 'Eyfel Kulesi yazın metalin genleşmesiyle ~15 cm uzayabilir.',
- 'Uzay boşluğunda ses yayılmaz; sesi taşıyacak molekül yoktur.',
- 'Bir çay kaşığı nötron yıldızı maddesi yaklaşık 6 milyar ton çeker.',
- 'Wombatların dışkısı küp şeklindedir.',
- 'Deniz atlarında yavruyu erkek taşır ve doğurur.',
- 'Kleopatra zaman olarak piramitlerin yapımından çok, modern çağa daha yakın yaşadı.',
- 'Vikinglerin boynuzlu miğfer taktığına dair arkeolojik kanıt yoktur; bu bir 19. yüzyıl mitidir.',
- 'Oxford Üniversitesi, Aztek İmparatorluğu\'ndan daha eskidir.',
- 'Zürafaların boyun omuru sayısı insanla aynıdır: yedi.',
- 'Antarktika, Dünya\'nın en büyük çölüdür — çöl, sıcaklıkla değil yağış azlığıyla tanımlanır.',
- 'Bir yıl Venüs\'te, bir Venüs gününden daha kısa sürer.',
- 'Ay her yıl Dünya\'dan yaklaşık 3,8 cm uzaklaşıyor.',
- 'Sıcak su bazı koşullarda soğuk sudan daha hızlı donabilir (Mpemba etkisi).',
- 'Bir grup flamingoya İngilizcede "flamboyance" denir.',
- 'Muz botanik olarak bir meyvedir ve bitkisi devasa bir ottur.',
- 'Shakespeare İngilizceye 1700\'den fazla yeni kelime kazandırmıştır.',
- 'Bilinen en yaşlı ağaçlardan biri (bristlecone çamı) ~4800 yaşındadır.',
- 'Bir insanın tüm kan damarları uç uca eklenirse Dünya\'yı birkaç kez sarabilir.',
- 'Karıncaların toplam biyokütlesi, tüm insanlarınkiyle yarışacak düzeydedir.',
- 'Nutella için kullanılan fındığın büyük bölümü Türkiye\'den gelir.',
- 'İnsan mide asidi metali aşındıracak kadar güçlüdür (pH ~1,5-3).',
- 'Pisa Kulesi daha inşa hâlindeyken eğilmeye başlamıştı; sebep zemindi.',
- 'Bazı ağustosböceği türleri tam 13 veya 17 yılda bir topluca çıkar — asal sayı stratejisi.',
- 'Her kaplanın çizgi deseni, tıpkı parmak izi gibi benzersizdir.',
- 'Bir bulut yüzlerce ton su taşıyabilir.',
- 'Balın bakteri öldüren asidik yapısı, onu doğal bir koruyucu yapar.',
- 'Köpek balıkları ağaçlardan eskidir: yaklaşık 450 milyon yaşındalar, ilk ağaçlar 350 milyon.',
- 'Plüton keşfedildiğinden beri Güneş çevresindeki turunu hâlâ tamamlamadı; bir turu 248 yıl.',
- 'Havuç eskiden mordu; turuncu havuç 17. yüzyıl Hollanda\'sında yaygınlaştı.',
- 'Everest\'in zirvesindeki kayalar deniz canlısı fosilleri taşır.',
- 'Sahra\'dan kalkan toz Atlantik\'i aşıp Amazon yağmur ormanlarını gübreliyor.',
- 'Kuzey Kutbu\'nda hiç penguen yoktur; hepsi güney yarımkürede yaşar.',
- 'Deniz yıldızının beyni yoktur.',
- 'Ahtapotun nöronlarının üçte ikisi beyninde değil, kollarındadır.',
- 'Ahtapotlar renk körüdür ama derilerinin rengini değiştirebilirler.',
- 'Bal arıları insan yüzlerini tanıyıp hatırlayabiliyor.',
- 'Bir çay kaşığı bal, on iki işçi arının bütün ömrü boyunca ürettiği miktardır.',
- 'Gökkuşağı aslında tam bir dairedir; alt yarısını yer keser.',
- 'Yıldırımın geçtiği hava, Güneş\'in yüzeyinden birkaç kat daha sıcak olur.',
- 'Dünyaya her saniye ortalama yüze yakın yıldırım düşer.',
- '620 milyon yıl önce bir gün 21 saatti; Ay uzaklaştıkça günler uzuyor.',
- 'Satürn\'ün yoğunluğu suyunkinden düşüktür; yeterince büyük bir küvette yüzerdi.',
- 'Satürn\'ün uydusu Titan\'ın yüzeyinde sıvı metan gölleri var.',
- 'Dünya\'nın çekirdeği yaklaşık olarak Güneş\'in yüzeyi kadar sıcaktır.',
- 'Rusya\'nın yüzölçümü, Plüton\'un tüm yüzey alanından büyüktür.',
- 'Uzayda ağlarsanız gözyaşı akmaz, gözünüzün üstünde bir top hâlinde durur.',
- 'Astronotların boyu uzayda birkaç santim uzar, Dünya\'ya dönünce geri kısalır.',
- 'Uzay boşluğunda birbirine değen iki temiz metal parçası kendiliğinden kaynar.',
- 'Vücudumuzdaki atomların neredeyse tamamı yıldızların içinde üretildi.',
- 'Su, katı hâli sıvısından hafif olan ender maddelerdendir; buz bu yüzden yüzer.',
- 'Ses suda havadakinden yaklaşık dört kat hızlı yayılır.',
- 'İnsan burnu bir trilyondan fazla farklı kokuyu ayırt edebiliyor.',
- 'İnsan kalbi ortalama bir ömürde yaklaşık 2,5 milyar kez atar.',
- 'Şempanzelerle DNA\'mızın yaklaşık yüzde 98\'i ortaktır.',
- 'Uykuda beyin, gün boyunca biriken atıkları temizleyen bir yıkama döngüsüne geçer.',
- 'Yunuslar beyinlerinin yarısını uyutup diğer yarısıyla yüzmeye devam eder.',
- 'Denizanasının yüzde 95\'i sudur; beyni, kalbi ve kemiği yoktur.',
- 'Turritopsis dohrnii denizanası olgunluğa erişince yeniden gençlik evresine dönebilir.',
- 'Tardigradlar uzay boşluğuna çıkarıldıkları deneyden sağ döndü.',
- 'Balinaların şarkıları moda gibi değişir ve sürüden sürüye yayılır.',
- 'Fil, zıplayamayan birkaç memeliden biridir.',
- 'Karıncalar uyur, ama günde yüzlerce kez birkaç dakikalık şekerlemelerle.',
- 'Dünyadaki karınca sayısı yaklaşık 20 katrilyon olarak tahmin ediliyor.',
- 'Kelebekler ayaklarıyla tat alır.',
- 'Salyangozun dili üzerinde binlerce mikroskobik diş sıralanır.',
- 'Bir avuç toprakta, dünyadaki insan sayısından fazla mikroorganizma bulunur.',
- 'İlk fotoğraf sekiz saatlik pozlama gerektiriyordu.',
- 'İlk bilgisayar arızası gerçekten bir böcekti: Harvard Mark II\'nin rölesine sıkışmış bir güve.',
- 'Google adını googol\'dan alır: 1\'in ardında yüz sıfır.',
- 'Nintendo 1889\'da oyun kâğıdı üreticisi olarak kuruldu.',
- 'Wi-Fi bir kısaltma değildir; pazarlama için uydurulmuş bir isimdir.',
- 'Tarihin en kısa savaşı 1896\'da İngiltere ile Zanzibar arasında yaklaşık 38 dakika sürdü.',
- 'Vikingler Amerika\'ya Kolomb\'dan yaklaşık 500 yıl önce ulaştı.',
- 'Domates Avrupa\'da uzun süre zehirli sanıldı; suçlu domates değil, kurşunlu tabaklardı.',
- 'Tuvalet kâğıdı Çin\'de 6. yüzyılda kullanılıyordu, Avrupa\'ya 1800\'lerde geldi.',
- 'Fransa\'nın en uzun kara sınırı Brezilya iledir.',
- 'Amazon Nehri\'nin ana kolu üzerinde tek bir köprü yoktur.',
- 'Bir kâğıdı 42 kez katlayabilseydiniz kalınlığı Ay\'a ulaşırdı.',
- 'Karadeniz\'in 200 metre altı oksijensizdir; batıklar bu yüzden neredeyse hiç bozulmadan durur.',
- 'Göbeklitepe, Stonehenge\'den yaklaşık 6.000 yıl eskidir.',
- 'Kapadokya\'daki Derinkuyu yeraltı şehri yaklaşık 20 bin kişiyi barındırabiliyordu.',
- 'Kahve Avrupa\'ya İstanbul üzerinden yayıldı; ilk kahvehaneler 16. yüzyıl Osmanlı\'sında açıldı.',
+ ["Bal asla bozulmaz; antik Mısır mezarlarında bulunan 3000 yıllık bal hâlâ yenebilir durumdaydı.", ["Balın bozulmamasının sebebi üç şeyin birleşimi: su içeriği çok düşük olduğu için bakteri gelişemez, pH'ı 3-4 aralığında asidiktir, ve arıların salgıladığı bir enzim az miktarda hidrojen peroksit üretir. Mısır mezarlarında bulunan kavanozlardaki bal bu yüzden binlerce yıl sonra hâlâ yenebilir durumdaydı. Aynı sebeple bal, tarih boyunca yara pansumanında kullanıldı.", []]],
+ ["Ahtapotların üç kalbi ve bakır bazlı mavi kanı vardır.", ["Ahtapotun üç kalbinden ikisi solungaçlara, biri vücudun geri kalanına kan pompalar. Yüzerken ana kalp durur, bu yüzden ahtapotlar yüzmek yerine yürümeyi tercih eder. Kanın mavi olması bakır bazlı hemosiyanin proteininden gelir; soğuk ve düşük oksijenli suda demirden daha verimli çalışır.", []]],
+ ["Eyfel Kulesi yazın metalin genleşmesiyle ~15 cm uzayabilir.", ["Eyfel Kulesi 300 metreden uzun ve neredeyse tamamen demirden. Metal yazın genleşip kışın büzüldüğü için kulenin boyu yıl içinde yaklaşık 15 santim değişir. Güneş gören yüz daha çok genleştiğinden kule gölgeli tarafa doğru birkaç santim eğilir — mühendisi Gustave Eiffel bunu tasarımda hesaba katmıştı.", []]],
+ ["Uzay boşluğunda ses yayılmaz; sesi taşıyacak molekül yoktur.", ["Ses, moleküllerin birbirini itmesiyle yayılır; uzay boşluğunda taşıyacak molekül olmadığı için sessizlik mutlaktır. Ama uzay tamamen boş değildir: plazma dalgaları vardır ve bunların frekansı insan kulağının duyabileceği aralığa taşınabilir. NASA'nın yayımladığı 'gezegen sesleri' bu dönüştürmeyle üretilir.", []]],
+ ["Bir çay kaşığı nötron yıldızı maddesi yaklaşık 6 milyar ton çeker.", ["Nötron yıldızı, ömrünü tüketen büyük bir yıldızın çekirdeğinin kendi üzerine çökmesiyle oluşur. Elektronlar protonlara sıkışıp nötrona dönüşür ve madde atom çekirdeği yoğunluğuna ulaşır. Bir çay kaşığı bu maddeden yaklaşık 6 milyar ton çeker — Everest'in ağırlığının birkaç katı.", []]],
+ ["Wombatların dışkısı küp şeklindedir.", ["Wombat bağırsağının son bölümü düzgün değil, farklı esneklikte bölgelerden oluşur; dışkı ilerlerken bazı yerlerde daha çok sıkışır ve köşeli bir kesit alır. Sonuç küp şeklinde dışkıdır. İşe yaramasının sebebi basit: küpler yuvarlanmaz, böylece wombat bölgesini işaretlediği taşların üstünde kalırlar.", []]],
+ ["Deniz atlarında yavruyu erkek taşır ve doğurur.", ["Deniz atlarında dişi yumurtaları erkeğin karnındaki keseye bırakır; erkek onları döller, taşır ve doğurur. Kese sadece koruma değil, besin ve oksijen de sağlar. Çiftler her sabah birbirine dolanıp bir tür dans yapar — bu, eşin hâlâ orada olduğunu doğrulama davranışı sayılıyor.", []]],
+ ["Kleopatra zaman olarak piramitlerin yapımından çok, modern çağa daha yakın yaşadı.", ["Kleopatra MÖ 69-30 arasında yaşadı. Giza piramitleri MÖ 2560 civarında yapıldı, yani Kleopatra'dan yaklaşık 2500 yıl önce. Bugünle Kleopatra arasındaki mesafe ise yaklaşık 2050 yıl. Piramitler onun için de çoktan antik bir kalıntıydı.", []]],
+ ["Vikinglerin boynuzlu miğfer taktığına dair arkeolojik kanıt yoktur; bu bir 19. yüzyıl mitidir.", ["Boynuzlu miğfer imgesi 19. yüzyılda, Wagner'in operalarının sahne kostümlerinden yayıldı. Arkeolojik kazılarda bulunan Viking miğferleri sade ve boynuzsuzdur; savaşta boynuz zaten işe yaramaz, rakibe tutamak verir. Efsanenin bu kadar yerleşmesi, tarihin çoğu zaman sahneden öğrenildiğinin iyi bir örneği.", []]],
+ ["Oxford Üniversitesi, Aztek İmparatorluğu'ndan daha eskidir.", ["Oxford'da öğretimin başlangıcı 1096'ya kadar götürülür ve 1167'de kurumsallaşır. Aztek İmparatorluğu'nun başkenti Tenochtitlan 1325'te kuruldu. Yani Oxford'da ders verilmeye başlandığında Aztek İmparatorluğu henüz yoktu — arada iki yüzyıldan fazla var.", []]],
+ ["Zürafaların boyun omuru sayısı insanla aynıdır: yedi.", ["Zürafanın boynu iki metreye yakındır ama yedi omurdan oluşur; insanınkiyle aynı sayı. Fark omurların uzunluğunda: her biri yaklaşık 25 santim. Bu, memelilerde omur sayısının ne kadar sabit olduğunu gösteren en çarpıcı örnek — istisnası birkaç tembel hayvan türüdür.", []]],
+ ["Antarktika, Dünya'nın en büyük çölüdür — çöl, sıcaklıkla değil yağış azlığıyla tanımlanır.", ["Çöl tanımı yağış miktarına dayanır: yılda 250 milimetreden az yağış alan yerler çöldür. Antarktika'nın iç kesimleri yılda 50 milimetreden az alır ve kıta 14 milyon kilometrekaredir; Sahra'nın yaklaşık bir buçuk katı. Buz kalın olabilir ama yeni yağış neredeyse yoktur, bu yüzden orası dünyanın en büyük çölüdür.", []]],
+ ["Bir yıl Venüs'te, bir Venüs gününden daha kısa sürer.", ["Venüs kendi ekseni etrafında 243 Dünya gününde döner; Güneş çevresindeki turunu ise 225 günde tamamlar. Yani bir Venüs günü, bir Venüs yılından uzundur. Üstelik dönüşü ters yöndedir: Venüs'te Güneş batıdan doğar.", []]],
+ ["Ay her yıl Dünya'dan yaklaşık 3,8 cm uzaklaşıyor.", ["Ay'ın uzaklaşmasının sebebi gelgitler. Dünya, Ay'ın çektiği su kütlesinin altında kendi ekseninde daha hızlı döner; bu sürtünme Dünya'nın dönüşünü yavaşlatır ve kaybedilen açısal momentum Ay'a aktarılır. Sonuç: Ay yılda 3,8 santim uzaklaşıyor ve Dünya'da gün uzunluğu her yüzyılda yaklaşık 1,8 milisaniye artıyor. Ölçüm tahmin değil — Apollo görevlerinin Ay'a bıraktığı aynalara lazer gönderilerek yapılıyor.", []]],
+ ["Sıcak su bazı koşullarda soğuk sudan daha hızlı donabilir (Mpemba etkisi).", ["Mpemba etkisi adını 1963'te Tanzanya'da bunu fark eden bir lise öğrencisinden alır; öğretmeni önce ona inanmadı. Etki her koşulda görülmez ve sebebi hâlâ tartışmalıdır: buharlaşmayla kütle kaybı, çözünmüş gazların farkı, konveksiyon akımları ve kabın altındaki buz tabakası öne sürülen açıklamalar arasında. Bazı araştırmacılar etkinin ölçüm hatası olduğunu savunuyor — yani bu, hâlâ kapanmamış bir tartışma.", []]],
+ ["Bir grup flamingoya İngilizcede \"flamboyance\" denir.", ["İngilizcede hayvan topluluklarının kendine özgü adları çoğunlukla 15. yüzyıl av kitaplarından gelir; bunlar bir tür süslü dil oyunuydu ve çoğu gündelik kullanıma hiç girmedi. Flamingolar için 'flamboyance', kargalar için 'murder', baykuşlar için 'parliament' aynı geleneğin ürünü. Türkçede bu tür bir adlandırma geleneği yok; sürü, küme gibi genel kelimeler kullanılıyor.", []]],
+ ["Muz botanik olarak bir meyvedir ve bitkisi devasa bir ottur.", ["Botanikte meyve, çiçeğin döllenmiş yumurtalığından gelişen yapıdır; bu tanıma göre muz meyvedir ve üstelik bir çilek türüdür (berry). Muz bitkisinin gövdesi odunlaşmaz, yaprak kınlarının sıkıca sarılmasından oluşur — yani ağaç değil dev bir ot. Yediğimiz muzların neredeyse tamamı Cavendish çeşidi ve tohumsuzdur; çoğaltma sürgünle yapılır, bu da tüm ürünü aynı hastalığa açık bırakır.", []]],
+ ["Shakespeare İngilizceye 1700'den fazla yeni kelime kazandırmıştır.", ["Shakespeare'e atfedilen kelimelerin çoğu aslında onun icadı değil, ilk yazılı kaydı ondadır — sözlü dilde zaten dolaşıyor olabilirler. Oxford İngilizce Sözlüğü ilk kullanım kaydını esas aldığı için sayı ona yazılır. Yine de 'eyeball', 'lonely', 'bedroom' gibi kelimelerin yaygınlaşmasında payı büyük. Asıl katkısı kelime değil, kalıp: bugün deyim olarak kullandığımız onlarca ifade oyunlarından geliyor.", []]],
+ ["Bilinen en yaşlı ağaçlardan biri (bristlecone çamı) ~4800 yaşındadır.", ["Bristlecone çamları Kaliforniya'nın yüksek ve kurak dağlarında yetişir; zor koşullar yavaş büyümeye, yavaş büyüme de çok yoğun ve reçineli odun yapısına yol açar. Bu odun çürümeye ve böceğe direnir. En yaşlı örneklerin yeri gizli tutulur — 1964'te bir araştırmacı yaşını ölçmek için o güne dek bilinen en yaşlı ağacı kesmişti.", []]],
+ ["Bir insanın tüm kan damarları uç uca eklenirse Dünya'yı birkaç kez sarabilir.", ["Yetişkin bir insanın kılcal damarları dahil tüm damar ağı yaklaşık 100 bin kilometre uzunluğundadır; Dünya'nın çevresi 40 bin kilometre. Uzunluğun neredeyse tamamı kılcallardan gelir, atar ve toplardamarlar toplamın küçük bir kısmıdır. Kılcalların çapı bazen bir alyuvardan dardır, bu yüzden hücreler oradan geçerken şekil değiştirir.", []]],
+ ["Karıncaların toplam biyokütlesi, tüm insanlarınkiyle yarışacak düzeydedir.", ["Karıncaların toplam kütlesine dair tahminler geniş bir aralıkta; 2022'de yapılan kapsamlı bir çalışma yeryüzünde yaklaşık 20 katrilyon karınca olduğunu ve kuru kütlelerinin tüm yabani kuş ve memelilerin toplamını aştığını hesapladı. İnsanla karşılaştırma yönteme göre değişiyor. Kesin olan şu: karıncalar toprak havalandırma ve tohum taşımada ekosistemin en yoğun çalışan grubu.", []]],
+ "Nutella için kullanılan fındığın büyük bölümü Türkiye'den gelir.",
+ "İnsan mide asidi metali aşındıracak kadar güçlüdür (pH ~1,5-3).",
+ "Pisa Kulesi daha inşa hâlindeyken eğilmeye başlamıştı; sebep zemindi.",
+ "Bazı ağustosböceği türleri tam 13 veya 17 yılda bir topluca çıkar — asal sayı stratejisi.",
+ "Her kaplanın çizgi deseni, tıpkı parmak izi gibi benzersizdir.",
+ "Bir bulut yüzlerce ton su taşıyabilir.",
+ "Balın bakteri öldüren asidik yapısı, onu doğal bir koruyucu yapar.",
+ "Köpek balıkları ağaçlardan eskidir: yaklaşık 450 milyon yaşındalar, ilk ağaçlar 350 milyon.",
+ "Plüton keşfedildiğinden beri Güneş çevresindeki turunu hâlâ tamamlamadı; bir turu 248 yıl.",
+ "Havuç eskiden mordu; turuncu havuç 17. yüzyıl Hollanda'sında yaygınlaştı.",
+ "Everest'in zirvesindeki kayalar deniz canlısı fosilleri taşır.",
+ "Sahra'dan kalkan toz Atlantik'i aşıp Amazon yağmur ormanlarını gübreliyor.",
+ "Kuzey Kutbu'nda hiç penguen yoktur; hepsi güney yarımkürede yaşar.",
+ "Deniz yıldızının beyni yoktur.",
+ "Ahtapotun nöronlarının üçte ikisi beyninde değil, kollarındadır.",
+ "Ahtapotlar renk körüdür ama derilerinin rengini değiştirebilirler.",
+ "Bal arıları insan yüzlerini tanıyıp hatırlayabiliyor.",
+ "Bir çay kaşığı bal, on iki işçi arının bütün ömrü boyunca ürettiği miktardır.",
+ "Gökkuşağı aslında tam bir dairedir; alt yarısını yer keser.",
+ "Yıldırımın geçtiği hava, Güneş'in yüzeyinden birkaç kat daha sıcak olur.",
+ "Dünyaya her saniye ortalama yüze yakın yıldırım düşer.",
+ "620 milyon yıl önce bir gün 21 saatti; Ay uzaklaştıkça günler uzuyor.",
+ "Satürn'ün yoğunluğu suyunkinden düşüktür; yeterince büyük bir küvette yüzerdi.",
+ "Satürn'ün uydusu Titan'ın yüzeyinde sıvı metan gölleri var.",
+ "Dünya'nın çekirdeği yaklaşık olarak Güneş'in yüzeyi kadar sıcaktır.",
+ "Rusya'nın yüzölçümü, Plüton'un tüm yüzey alanından büyüktür.",
+ "Uzayda ağlarsanız gözyaşı akmaz, gözünüzün üstünde bir top hâlinde durur.",
+ "Astronotların boyu uzayda birkaç santim uzar, Dünya'ya dönünce geri kısalır.",
+ "Uzay boşluğunda birbirine değen iki temiz metal parçası kendiliğinden kaynar.",
+ "Vücudumuzdaki atomların neredeyse tamamı yıldızların içinde üretildi.",
+ "Su, katı hâli sıvısından hafif olan ender maddelerdendir; buz bu yüzden yüzer.",
+ "Ses suda havadakinden yaklaşık dört kat hızlı yayılır.",
+ "İnsan burnu bir trilyondan fazla farklı kokuyu ayırt edebiliyor.",
+ "İnsan kalbi ortalama bir ömürde yaklaşık 2,5 milyar kez atar.",
+ "Şempanzelerle DNA'mızın yaklaşık yüzde 98'i ortaktır.",
+ "Uykuda beyin, gün boyunca biriken atıkları temizleyen bir yıkama döngüsüne geçer.",
+ "Yunuslar beyinlerinin yarısını uyutup diğer yarısıyla yüzmeye devam eder.",
+ "Denizanasının yüzde 95'i sudur; beyni, kalbi ve kemiği yoktur.",
+ "Turritopsis dohrnii denizanası olgunluğa erişince yeniden gençlik evresine dönebilir.",
+ "Tardigradlar uzay boşluğuna çıkarıldıkları deneyden sağ döndü.",
+ "Balinaların şarkıları moda gibi değişir ve sürüden sürüye yayılır.",
+ "Fil, zıplayamayan birkaç memeliden biridir.",
+ "Karıncalar uyur, ama günde yüzlerce kez birkaç dakikalık şekerlemelerle.",
+ "Dünyadaki karınca sayısı yaklaşık 20 katrilyon olarak tahmin ediliyor.",
+ "Kelebekler ayaklarıyla tat alır.",
+ "Salyangozun dili üzerinde binlerce mikroskobik diş sıralanır.",
+ "Bir avuç toprakta, dünyadaki insan sayısından fazla mikroorganizma bulunur.",
+ "İlk fotoğraf sekiz saatlik pozlama gerektiriyordu.",
+ "İlk bilgisayar arızası gerçekten bir böcekti: Harvard Mark II'nin rölesine sıkışmış bir güve.",
+ "Google adını googol'dan alır: 1'in ardında yüz sıfır.",
+ "Nintendo 1889'da oyun kâğıdı üreticisi olarak kuruldu.",
+ "Wi-Fi bir kısaltma değildir; pazarlama için uydurulmuş bir isimdir.",
+ "Tarihin en kısa savaşı 1896'da İngiltere ile Zanzibar arasında yaklaşık 38 dakika sürdü.",
+ "Vikingler Amerika'ya Kolomb'dan yaklaşık 500 yıl önce ulaştı.",
+ "Domates Avrupa'da uzun süre zehirli sanıldı; suçlu domates değil, kurşunlu tabaklardı.",
+ "Tuvalet kâğıdı Çin'de 6. yüzyılda kullanılıyordu, Avrupa'ya 1800'lerde geldi.",
+ "Fransa'nın en uzun kara sınırı Brezilya iledir.",
+ "Amazon Nehri'nin ana kolu üzerinde tek bir köprü yoktur.",
+ "Bir kâğıdı 42 kez katlayabilseydiniz kalınlığı Ay'a ulaşırdı.",
+ "Karadeniz'in 200 metre altı oksijensizdir; batıklar bu yüzden neredeyse hiç bozulmadan durur.",
+ "Göbeklitepe, Stonehenge'den yaklaşık 6.000 yıl eskidir.",
+ "Kapadokya'daki Derinkuyu yeraltı şehri yaklaşık 20 bin kişiyi barındırabiliyordu.",
+ "Kahve Avrupa'ya İstanbul üzerinden yayıldı; ilk kahvehaneler 16. yüzyıl Osmanlı'sında açıldı.",
  "Ahtapotun beyninin üçte ikisi kollarındadır; her kol kısmen kendi başına karar verir.",
  "Uyurken kalp atışını yavaşlatan yunuslar beynin yarısını uyanık tutar, böylece nefes almayı unutmaz.",
  "Flamingolar pembe doğmaz; rengi yedikleri karidesteki pigmentten alırlar.",
@@ -912,37 +923,35 @@ const FACTS=[
  "Pamukkale'nin beyaz travertenleri, sudaki kalsiyum karbonatın çökelmesiyle her yıl biraz daha büyüyor.",
  "Van Gölü'nün suyu sodalıdır; bu yüzden çamaşır yıkamakta kullanılırdı.",
  "Türkiye üç farklı iklim kuşağının kesiştiği yerde olduğu için bitki çeşitliliği bütün Avrupa'ya yakındır."];
-
-/* ===== GÜNÜN FİLMİ ===== */
 const FILMS=[
- ['Esaretin Bedeli (The Shawshank Redemption)','1994','Frank Darabont','Tim Robbins, Morgan Freeman','Umut üzerine, çoğu listede tüm zamanların en iyisi sayılan hapishane draması.'],
- ['Baba (The Godfather)','1972','Francis Ford Coppola','Marlon Brando, Al Pacino, James Caan','Bir mafya ailesinin destanı; sinemanın en etkili yapıtlarından.'],
- ['Başlangıç (Inception)','2010','Christopher Nolan','Leonardo DiCaprio, Joseph Gordon-Levitt, Tom Hardy','Rüya içinde rüya kurgusuyla zihin büken bir soygun filmi.'],
- ['Pulp Fiction','1994','Quentin Tarantino','John Travolta, Samuel L. Jackson, Uma Thurman','Kesişen hikâyeler ve keskin diyaloglarla bir kült klasik.'],
- ['Matrix','1999','Wachowski Kardeşler','Keanu Reeves, Laurence Fishburne, Carrie-Anne Moss','Gerçeklik nedir sorusunu soran çığır açıcı bilimkurgu.'],
- ['Dövüş Kulübü (Fight Club)','1999','David Fincher','Brad Pitt, Edward Norton, Helena Bonham Carter','Tüketim çağına isyanı anlatan, finaliyle sarsan bir kült.'],
- ['Forrest Gump','1994','Robert Zemeckis','Tom Hanks, Robin Wright, Gary Sinise','Saf bir adamın gözünden Amerikan tarihinde bir yolculuk.'],
- ['Sıkı Dostlar (Goodfellas)','1990','Martin Scorsese','Robert De Niro, Ray Liotta, Joe Pesci','Mafya dünyasının içeriden, hızlı ve acımasız anlatımı.'],
- ['Yıldızlararası (Interstellar)','2014','Christopher Nolan','Matthew McConaughey, Anne Hathaway, Jessica Chastain','Zaman, yerçekimi ve baba-kız bağını işleyen destansı bilimkurgu.'],
- ['Parazit (Parasite)','2019','Bong Joon-ho','Song Kang-ho, Lee Sun-kyun','Sınıf uçurumunu anlatan, Oscar\'lı Güney Kore filmi.'],
- ['Kara Şövalye (The Dark Knight)','2008','Christopher Nolan','Christian Bale, Heath Ledger, Aaron Eckhart','Ledger\'ın efsanevi Joker\'iyle bir süper kahraman başyapıtı.'],
- ['Schindler\'in Listesi','1993','Steven Spielberg','Liam Neeson, Ben Kingsley, Ralph Fiennes','Holokost sırasında yüzlerce hayatı kurtaran bir adamın gerçek hikâyesi.'],
- ['Yedi (Se7en)','1995','David Fincher','Brad Pitt, Morgan Freeman, Kevin Spacey','Yedi ölümcül günah üzerine karanlık bir polisiye gerilim.'],
- ['Gladyatör (Gladiator)','2000','Ridley Scott','Russell Crowe, Joaquin Phoenix','İntikam peşindeki bir Romalı generalin destanı.'],
- ['Whiplash','2014','Damien Chazelle','Miles Teller, J.K. Simmons','Mükemmeliyet takıntısını işleyen, gergin bir müzik draması.'],
- ['İhtiyarlara Yer Yok (No Country for Old Men)','2007','Coen Kardeşler','Javier Bardem, Tommy Lee Jones, Josh Brolin','Kaderi ve şiddeti soğukkanlılıkla anlatan Oscar\'lı gerilim.'],
- ['Köstebek (The Departed)','2006','Martin Scorsese','Leonardo DiCaprio, Matt Damon, Jack Nicholson','Polis ve mafya arasında çifte ajanların gerilimi.'],
- ['Zincirsiz (Django Unchained)','2012','Quentin Tarantino','Jamie Foxx, Christoph Waltz, Leonardo DiCaprio','Kölelik dönemi Amerika\'sında bir intikam western\'i.'],
- ['Joker','2019','Todd Phillips','Joaquin Phoenix, Robert De Niro','Bir adamın çöküşünü anlatan karanlık karakter çalışması.'],
- ['Blade Runner 2049','2017','Denis Villeneuve','Ryan Gosling, Harrison Ford, Ana de Armas','Görsel şölen niteliğinde, düşündüren bir bilimkurgu devamı.'],
- ['Dune (Çöl Gezegeni)','2021','Denis Villeneuve','Timothée Chalamet, Rebecca Ferguson, Oscar Isaac','Frank Herbert\'in destansı bilimkurgu evreninin uyarlaması.'],
- ['Para Avcısı (The Wolf of Wall Street)','2013','Martin Scorsese','Leonardo DiCaprio, Jonah Hill, Margot Robbie','Borsanın açgözlü dünyasında bir yükseliş ve düşüş.'],
- ['Er Ryan\'ı Kurtarmak','1998','Steven Spielberg','Tom Hanks, Matt Damon','II. Dünya Savaşı\'nı çarpıcı gerçekçilikle anlatan bir klasik.'],
- ['Kuzuların Sessizliği','1991','Jonathan Demme','Jodie Foster, Anthony Hopkins','Hannibal Lecter\'la unutulmaz bir psikolojik gerilim.'],
- ['Büyük Budapeşte Oteli','2014','Wes Anderson','Ralph Fiennes, Tony Revolori','Simetrik görselliği ve mizahıyla kendine has bir Anderson filmi.'],
- ['Oldboy','2003','Park Chan-wook','Choi Min-sik, Yoo Ji-tae','İntikam üzerine sarsıcı, kült Güney Kore filmi.'],
- ['Amélie','2001','Jean-Pierre Jeunet','Audrey Tautou, Mathieu Kassovitz','Paris\'te iyilik yapan bir kızın rengârenk masalı.'],
- ['Şüpheliler (The Usual Suspects)','1995','Bryan Singer','Kevin Spacey, Gabriel Byrne, Benicio del Toro','Finaldeki twist\'iyle akıllarda kalan bir polisiye.'],
+ ["Esaretin Bedeli (The Shawshank Redemption)", "1994", "Frank Darabont", "Tim Robbins, Morgan Freeman", "Umut üzerine, çoğu listede tüm zamanların en iyisi sayılan hapishane draması."],
+ ["Baba (The Godfather)", "1972", "Francis Ford Coppola", "Marlon Brando, Al Pacino, James Caan", "Bir mafya ailesinin destanı; sinemanın en etkili yapıtlarından."],
+ ["Başlangıç (Inception)", "2010", "Christopher Nolan", "Leonardo DiCaprio, Joseph Gordon-Levitt, Tom Hardy", "Rüya içinde rüya kurgusuyla zihin büken bir soygun filmi."],
+ ["Pulp Fiction", "1994", "Quentin Tarantino", "John Travolta, Samuel L. Jackson, Uma Thurman", "Kesişen hikâyeler ve keskin diyaloglarla bir kült klasik."],
+ ["Matrix", "1999", "Wachowski Kardeşler", "Keanu Reeves, Laurence Fishburne, Carrie-Anne Moss", "Gerçeklik nedir sorusunu soran çığır açıcı bilimkurgu."],
+ ["Dövüş Kulübü (Fight Club)", "1999", "David Fincher", "Brad Pitt, Edward Norton, Helena Bonham Carter", "Tüketim çağına isyanı anlatan, finaliyle sarsan bir kült."],
+ ["Forrest Gump", "1994", "Robert Zemeckis", "Tom Hanks, Robin Wright, Gary Sinise", "Saf bir adamın gözünden Amerikan tarihinde bir yolculuk."],
+ ["Sıkı Dostlar (Goodfellas)", "1990", "Martin Scorsese", "Robert De Niro, Ray Liotta, Joe Pesci", "Mafya dünyasının içeriden, hızlı ve acımasız anlatımı."],
+ ["Yıldızlararası (Interstellar)", "2014", "Christopher Nolan", "Matthew McConaughey, Anne Hathaway, Jessica Chastain", "Zaman, yerçekimi ve baba-kız bağını işleyen destansı bilimkurgu."],
+ ["Parazit (Parasite)", "2019", "Bong Joon-ho", "Song Kang-ho, Lee Sun-kyun", "Sınıf uçurumunu anlatan, Oscar'lı Güney Kore filmi."],
+ ["Kara Şövalye (The Dark Knight)", "2008", "Christopher Nolan", "Christian Bale, Heath Ledger, Aaron Eckhart", "Ledger'ın efsanevi Joker'iyle bir süper kahraman başyapıtı."],
+ ["Schindler'in Listesi", "1993", "Steven Spielberg", "Liam Neeson, Ben Kingsley, Ralph Fiennes", "Holokost sırasında yüzlerce hayatı kurtaran bir adamın gerçek hikâyesi."],
+ ["Yedi (Se7en)", "1995", "David Fincher", "Brad Pitt, Morgan Freeman, Kevin Spacey", "Yedi ölümcül günah üzerine karanlık bir polisiye gerilim."],
+ ["Gladyatör (Gladiator)", "2000", "Ridley Scott", "Russell Crowe, Joaquin Phoenix", "İntikam peşindeki bir Romalı generalin destanı."],
+ ["Whiplash", "2014", "Damien Chazelle", "Miles Teller, J.K. Simmons", "Mükemmeliyet takıntısını işleyen, gergin bir müzik draması."],
+ ["İhtiyarlara Yer Yok (No Country for Old Men)", "2007", "Coen Kardeşler", "Javier Bardem, Tommy Lee Jones, Josh Brolin", "Kaderi ve şiddeti soğukkanlılıkla anlatan Oscar'lı gerilim."],
+ ["Köstebek (The Departed)", "2006", "Martin Scorsese", "Leonardo DiCaprio, Matt Damon, Jack Nicholson", "Polis ve mafya arasında çifte ajanların gerilimi."],
+ ["Zincirsiz (Django Unchained)", "2012", "Quentin Tarantino", "Jamie Foxx, Christoph Waltz, Leonardo DiCaprio", "Kölelik dönemi Amerika'sında bir intikam western'i."],
+ ["Joker", "2019", "Todd Phillips", "Joaquin Phoenix, Robert De Niro", "Bir adamın çöküşünü anlatan karanlık karakter çalışması."],
+ ["Blade Runner 2049", "2017", "Denis Villeneuve", "Ryan Gosling, Harrison Ford, Ana de Armas", "Görsel şölen niteliğinde, düşündüren bir bilimkurgu devamı."],
+ ["Dune (Çöl Gezegeni)", "2021", "Denis Villeneuve", "Timothée Chalamet, Rebecca Ferguson, Oscar Isaac", "Frank Herbert'in destansı bilimkurgu evreninin uyarlaması."],
+ ["Para Avcısı (The Wolf of Wall Street)", "2013", "Martin Scorsese", "Leonardo DiCaprio, Jonah Hill, Margot Robbie", "Borsanın açgözlü dünyasında bir yükseliş ve düşüş."],
+ ["Er Ryan'ı Kurtarmak", "1998", "Steven Spielberg", "Tom Hanks, Matt Damon", "II. Dünya Savaşı'nı çarpıcı gerçekçilikle anlatan bir klasik."],
+ ["Kuzuların Sessizliği", "1991", "Jonathan Demme", "Jodie Foster, Anthony Hopkins", "Hannibal Lecter'la unutulmaz bir psikolojik gerilim."],
+ ["Büyük Budapeşte Oteli", "2014", "Wes Anderson", "Ralph Fiennes, Tony Revolori", "Simetrik görselliği ve mizahıyla kendine has bir Anderson filmi."],
+ ["Oldboy", "2003", "Park Chan-wook", "Choi Min-sik, Yoo Ji-tae", "İntikam üzerine sarsıcı, kült Güney Kore filmi."],
+ ["Amélie", "2001", "Jean-Pierre Jeunet", "Audrey Tautou, Mathieu Kassovitz", "Paris'te iyilik yapan bir kızın rengârenk masalı."],
+ ["Şüpheliler (The Usual Suspects)", "1995", "Bryan Singer", "Kevin Spacey, Gabriel Byrne, Benicio del Toro", "Finaldeki twist'iyle akıllarda kalan bir polisiye."],
  ["Yedi Samuray", "1954", "Akira Kurosawa", "Toshiro Mifune, Takashi Shimura", "Sonraki bütün 'ekip toplama' filmlerinin şablonunu kuran destan."],
  ["Rashomon", "1950", "Akira Kurosawa", "Toshiro Mifune, Machiko Kyo", "Aynı olayı dört tanıktan dinletir; adı bir anlatı kavramına dönüştü."],
  ["Bisiklet Hırsızları", "1948", "Vittorio De Sica", "Lamberto Maggiorani, Enzo Staiola", "İtalyan yeni gerçekçiliğinin en sade ve en yıkıcı örneği."],
@@ -1018,27 +1027,27 @@ const FILMS=[
  ["Vizontele", "2001", "Yılmaz Erdoğan / Ömer Faruk Sorak", "Yılmaz Erdoğan, Demet Akbağ", "Bir kasabaya televizyonun gelişi; mizahla hüznü birlikte taşır."],
  ["Babam ve Oğlum", "2005", "Çağan Irmak", "Çetin Tekindor, Fikret Kuşkan", "Darbe sonrası bir baba-oğul hesaplaşması."],
  ["Ayla", "2017", "Can Ulkay", "İsmail Hacıoğlu, Çetin Tekindor", "Kore Savaşı'nda bir Türk askeri ile küçük bir kızın gerçek hikâyesi."],
- ["La La Land", "2016", "Damien Chazelle", "Ryan Gosling, Emma Stone", "Müzikali bugüne taşıyan, hüzünlü bir final barındıran film."],
- ["Kayıp Balık Nemo", "2003", "Andrew Stanton", "Albert Brooks, Ellen DeGeneres", "Bir babanın okyanusu aşan arayışı."],
- ["Ruhların Kaçışı", "2001", "Hayao Miyazaki", "Rumi Hiiragi", "Oscar kazanan ilk Japon animasyonu; çocukluğun eşiği üzerine."],
- ["Komşum Totoro", "1988", "Hayao Miyazaki", "Noriko Hidaka", "Kötü adamı olmayan, saf bir çocukluk masalı."],
- ["Prenses Mononoke", "1997", "Hayao Miyazaki", "Yoji Matsuda", "Doğa ile insan arasındaki çatışmayı kolay bir taraf tutmadan anlatır."],
- ["Akira", "1988", "Katsuhiro Otomo", "Mitsuo Iwata", "Anime'yi Batı'ya tanıtan, siberpunk görselliğin kaynağı."],
- ["Yukarı Bak (Up)", "2009", "Pete Docter", "Ed Asner", "İlk on dakikası, çoğu filmin tamamından daha etkili."],
- ["WALL-E", "2008", "Andrew Stanton", "Ben Burtt", "İlk yarısı neredeyse diyaloğsuz; animasyonun cesur örneği."],
- ["Ratatuy", "2007", "Brad Bird", "Patton Oswalt", "Yaratıcılığın nereden çıkabileceği üzerine neşeli bir film."],
- ["Toy Story", "1995", "John Lasseter", "Tom Hanks, Tim Allen", "İlk tamamen bilgisayar üretimi uzun metraj."],
- ["Coco", "2017", "Lee Unkrich", "Anthony Gonzalez", "Ölüler Günü üzerinden hafıza ve aile."],
- ["Aslan Kral", "1994", "Roger Allers / Rob Minkoff", "Matthew Broderick, Jeremy Irons", "Disney'in çizgi dönemindeki zirvesi."],
- ["Kelebek (Papillon)", "1973", "Franklin J. Schaffner", "Steve McQueen, Dustin Hoffman", "Kaçış üzerine, dayanıklılığın filmi."],
- ["Guguk Kuşu", "1975", "Miloš Forman", "Jack Nicholson, Louise Fletcher", "Kurumsal otoriteye direnişin klasiği; beş büyük Oscar aldı."],
- ["Amadeus", "1984", "Miloš Forman", "F. Murray Abraham, Tom Hulce", "Kıskançlık üzerinden anlatılan bir Mozart portresi."],
- ["12 Öfkeli Adam", "1957", "Sidney Lumet", "Henry Fonda, Lee J. Cobb", "Neredeyse tamamı tek odada geçen, ikna üzerine bir ders."],
- ["Network", "1976", "Sidney Lumet", "Peter Finch, Faye Dunaway", "Televizyon haberciliğinin ticarileşmesini 1976'da öngören hiciv."],
- ["Chinatown", "1974", "Roman Polanski", "Jack Nicholson, Faye Dunaway", "Neo-noir'ın en iyi senaryolarından biri sayılır."],
- ["Kayıp Kız (Gone Girl)", "2014", "David Fincher", "Ben Affleck, Rosamund Pike", "Evlilik ve medya üzerine soğuk bir gerilim."],
- ["Zodiac", "2007", "David Fincher", "Jake Gyllenhaal, Mark Ruffalo", "Çözülemeyen bir vakanın araştırmacıları nasıl tükettiği."],
- ["Sosyal Ağ", "2010", "David Fincher", "Jesse Eisenberg, Andrew Garfield", "Facebook'un kuruluşunu bir ihanet hikâyesi olarak anlatır."],
+ ["La La Land", "2016", "Damien Chazelle", "Ryan Gosling, Emma Stone", "Müzikali bugüne taşıyan, hüzünlü bir final barındıran film.", ["Chazelle filmi altı yıl kapı kapı dolaştırdı; kimse orijinal bir müzikali finanse etmek istemedi. Whiplash'in başarısı kapıyı açtı. Açılış otoyol sahnesi tek plan izlenimi verir ama birkaç çekimin birleşimidir ve iki gün boyunca kapatılan bir viyadükte çekildi. Filmin asıl meselesi aşk değil, hayalle uzlaşmanın bedeli — final bunu şarkı söylemeden anlatır.", ["Whiplash — aynı yönetmen, aynı takıntı", "Yağmurda Şarkı — La La Land'in açıkça selam durduğu klasik"]]],
+ ["Kayıp Balık Nemo", "2003", "Andrew Stanton", "Albert Brooks, Ellen DeGeneres", "Bir babanın okyanusu aşan arayışı.", ["Pixar okyanusu inandırıcı kılmak için ekibi dalış eğitimine gönderdi. Suyun ışığı kırma biçimi o güne kadar animasyonda çözülmemiş bir problemdi. Filmin duygusal merkezi Nemo değil Marlin: aşırı korumacı bir babanın çocuğunu bırakmayı öğrenmesi.", ["WALL-E — az diyalogla çok şey anlatan Pixar", "Yukarı Bak — yine bir kayıp ve yola çıkma hikâyesi"]]],
+ ["Ruhların Kaçışı", "2001", "Hayao Miyazaki", "Rumi Hiiragi", "Oscar kazanan ilk Japon animasyonu; çocukluğun eşiği üzerine.", ["Miyazaki filmi, tatilde tanıştığı on yaşındaki bir kız arkadaşının kızı için yaptı: ona 'senin gibi biri de kahraman olabilir' demek istedi. Chihiro özel yetenekleri olmayan, korkak bir çocuktur; tek gücü çalışmayı ve söz vermeyi sürdürmesidir. Adının elinden alınması filmin merkezindeki fikir — kim olduğunu unutursan geri dönemezsin.", ["Komşum Totoro — Miyazaki'nin en sakin filmi", "Prenses Mononoke — aynı yönetmen, çok daha sert"]]],
+ ["Komşum Totoro", "1988", "Hayao Miyazaki", "Noriko Hidaka", "Kötü adamı olmayan, saf bir çocukluk masalı.", ["Filmde kötü adam yok, gerilim de yok; olay örgüsü iki kız kardeşin hasta annelerini beklemesinden ibaret. Miyazaki bunu bilerek yaptı — çocukluğun kendisi yeterince olaylıdır. Totoro'nun tasarımı bir baykuş, bir ayı ve bir rakundan derlendi. Kedi otobüs sahnesi, animasyonun gerçekçilik iddiasından tamamen vazgeçtiği andır.", ["Ruhların Kaçışı — aynı dünyanın daha karanlık hâli", "Kikuçiyo değil: Ponyo — küçük çocuklar için Miyazaki"]]],
+ ["Prenses Mononoke", "1997", "Hayao Miyazaki", "Yoji Matsuda", "Doğa ile insan arasındaki çatışmayı kolay bir taraf tutmadan anlatır.", ["Miyazaki burada taraf tutmayı reddeder: ormanı yok eden Demir Kasaba, aynı zamanda cüzzamlıları ve dışlanmış kadınları koruyan tek yerdir. Lady Eboshi hem sömürücü hem kurtarıcıdır. Film Japonya'da o yıl gişe rekoru kırdı ve animasyonun yalnızca çocuk işi olmadığını kanıtladı.", ["Ruhların Kaçışı — aynı yönetmen, daha erişilebilir", "Akira — animenin diğer büyük dönüm noktası"]]],
+ ["Akira", "1988", "Katsuhiro Otomo", "Mitsuo Iwata", "Anime'yi Batı'ya tanıtan, siberpunk görselliğin kaynağı.", ["Otomo kendi mangasını uyarlarken hikâyeyi yarısında bırakmak zorunda kaldı; manga henüz bitmemişti. Film 160 bin çizimle yapıldı ve o dönem için görülmemiş bir bütçeye sahipti. Sesin ağız hareketleriyle birebir uyuşması için diyaloglar animasyondan ÖNCE kaydedildi — Japon animasyonunda alışılmadık bir yöntem. Neo-Tokyo'nun neon estetiği sonraki otuz yılın siberpunk görselliğini belirledi.", ["Ghost in the Shell — siberpunk animenin öteki direği", "Blade Runner — Akira'nın beslendiği görsel kaynak"]]],
+ ["Yukarı Bak (Up)", "2009", "Pete Docter", "Ed Asner", "İlk on dakikası, çoğu filmin tamamından daha etkili.", ["İlk on dakikadaki 'Married Life' bölümü diyalogsuzdur ve bir evliliğin tamamını dört dakikada anlatır; senaryo ekibi bu bölümü defalarca yeniden yazdı. Filmin geri kalanı o kaybın üzerine kurulur — balonlar bir kaçış değil, verilmiş bir sözün ödenmesidir. Carl'ın evi gerçekte uçmak için yaklaşık 10 milyon balon gerektirirdi; film 20 bin gösterir.", ["Coco — Pixar'ın ölüm ve hatırlama üzerine öteki filmi", "WALL-E — yine neredeyse sessiz bir açılış"]]],
+ ["WALL-E", "2008", "Andrew Stanton", "Ben Burtt", "İlk yarısı neredeyse diyaloğsuz; animasyonun cesur örneği.", ["İlk 39 dakikada neredeyse hiç diyalog yok; Pixar bunu stüdyo içinde bile zor savundu. Ses tasarımını Ben Burtt yaptı — Star Wars'ta R2-D2'yi yaratan kişi. Filmin ikinci yarısındaki insan tasviri çıktığında tartışma yarattı ama asıl hedefi tembellik değil, seçim yapmayı bırakmaktı.", ["Yukarı Bak — sessizlikle anlatmanın öteki örneği", "2001: Bir Uzay Destanı — WALL-E'nin açıkça andığı film"]]],
+ ["Ratatuy", "2007", "Brad Bird", "Patton Oswalt", "Yaratıcılığın nereden çıkabileceği üzerine neşeli bir film.", ["Filmin asıl cümlesi 'herkes sanatçı olabilir' değil; eleştirmen Ego'nun finalde söylediği gibi 'sanatçı her yerden çıkabilir'. Fark önemli. Ego'nun ratatuy'u tattığı andaki geri dönüş, tüm filmin özeti: yemek hafızadır. Mutfak sahneleri için ekip gerçek restoran mutfaklarında staj yaptı.", ["Coco — yine bir yetenek ve aile çatışması", "Yukarı Bak — Pixar'ın duygusal doruğu"]]],
+ ["Toy Story", "1995", "John Lasseter", "Tom Hanks, Tim Allen", "İlk tamamen bilgisayar üretimi uzun metraj.", ["İlk tamamen bilgisayarda üretilen uzun metraj. Disney baskısıyla Woody bir ara o kadar aksi yazıldı ki test gösterimi felaket oldu ve proje durduruldu; karakter baştan yumuşatıldı. Oyuncakların insan yokken canlanması fikri basit ama filmin gerçek konusu yerinden edilme korkusudur.", ["Toy Story 3 — serinin en olgun ve en acı filmi", "Ratatuy — Pixar'ın en zarif senaryolarından"]]],
+ ["Coco", "2017", "Lee Unkrich", "Anthony Gonzalez", "Ölüler Günü üzerinden hafıza ve aile.", ["Ekip Meksika'da yıllarca alan araştırması yaptı ve filmi İspanyolca isimlerle, yerel müzik gelenekleriyle kurdu. Ölüler Günü'nün merkezindeki fikir şu: insan iki kez ölür, ikincisi onu hatırlayan kimse kalmadığında. Filmin tüm duygusal yükü bu tek cümlede toplanır.", ["Yukarı Bak — hatırlama ve yas üzerine", "Ruhların Kaçışı — isim ve kimlik üzerine"]]],
+ ["Aslan Kral", "1994", "Roger Allers / Rob Minkoff", "Matthew Broderick, Jeremy Irons", "Disney'in çizgi dönemindeki zirvesi.", ["Hikâye açıkça Hamlet'ten alınır: öldürülen kral, tahtı gasp eden amca, sürgündeki oğul. Yapım sırasında stüdyonun A takımı Pocahontas'ta çalışıyordu; Aslan Kral ikinci takımın işiydi ve beklenmedik biçimde Disney'in en büyük gişesi oldu. Açılış 'Circle of Life' sekansı, hiçbir diyalog olmadan tüm evreni kurar.", ["Prenses Mononoke — doğa ve iktidar üzerine daha sert bakış", "Amadeus — kıskançlık ve miras üzerine"]]],
+ ["Kelebek (Papillon)", "1973", "Franklin J. Schaffner", "Steve McQueen, Dustin Hoffman", "Kaçış üzerine, dayanıklılığın filmi.", ["Henri Charrière'in anılarına dayanır; anlatılanların ne kadarının gerçek olduğu hâlâ tartışılır. Filmin gücü kaçış planlarında değil, tecrit sahnelerinde: McQueen'in hücrede geçirdiği aylar, izleyiciyi de zamanı kaybetmeye zorlar. Dustin Hoffman'ın gözlüklü, kırılgan Dega'sı McQueen'in sertliğine karşı dengeyi kurar.", ["Esaretin Bedeli — aynı temanın en bilinen hâli", "Guguk Kuşu — kurumsal otoriteye direniş"]]],
+ ["Guguk Kuşu", "1975", "Miloš Forman", "Jack Nicholson, Louise Fletcher", "Kurumsal otoriteye direnişin klasiği; beş büyük Oscar aldı.", ["Beş büyük Oscar'ı (film, yönetmen, senaryo, erkek ve kadın oyuncu) kazanan üç filmden biri. Çekimler gerçek bir akıl hastanesinde yapıldı ve bazı hastalar figüran olarak yer aldı. Kitabın anlatıcısı Şef Bromden'dır; film bunu değiştirip McMurphy'yi merkeze alınca Ken Kesey filmi hiç izlemedi.", ["Kelebek — kapatılma ve direnç", "12 Öfkeli Adam — kurum içinde tek kişinin direnişi"]]],
+ ["Amadeus", "1984", "Miloš Forman", "F. Murray Abraham, Tom Hulce", "Kıskançlık üzerinden anlatılan bir Mozart portresi.", ["Film tarihsel bir belge değil, Salieri'nin bakış açısından bir itiraf. Gerçek Salieri saygın bir besteciydi ve Mozart'ı öldürdüğü iddiası bir efsanedir; Peter Shaffer bunu bilerek bir kıskançlık meseline çevirdi. F. Murray Abraham rolü için Oscar aldı ve filmin asıl kahramanı odur — Mozart yalnızca yeteneğin kendisini temsil eder.", ["Whiplash — yetenek ve takıntı üzerine", "Aslan Kral — kıskançlık ve gasp edilen miras"]]],
+ ["12 Öfkeli Adam", "1957", "Sidney Lumet", "Henry Fonda, Lee J. Cobb", "Neredeyse tamamı tek odada geçen, ikna üzerine bir ders.", ["Neredeyse tamamı tek bir jüri odasında geçer. Lumet ilerledikçe daha uzun odaklı lensler kullandı ve kamerayı yavaşça alçalttı; oda film boyunca giderek daralır, bu tamamen bilinçlidir. Film ikna üzerine bir ders olduğu kadar önyargının nasıl kanıt kılığına girdiği üzerine de bir çalışmadır.", ["Network — Lumet'nin öteki keskin filmi", "Guguk Kuşu — çoğunluğa karşı tek kişi"]]],
+ ["Network", "1976", "Sidney Lumet", "Peter Finch, Faye Dunaway", "Televizyon haberciliğinin ticarileşmesini 1976'da öngören hiciv.", ["1976'da yazılmış bir hiciv ama bugünkü haber televizyonunu neredeyse birebir tarif eder: reyting için öfkenin paketlenmesi, haber bölümünün eğlenceye devri. Paddy Chayefsky'nin senaryosu abartı olsun diye yazılmıştı; sonraki elli yıl onu gerçeğe dönüştürdü. 'I'm as mad as hell' sahnesi sinemanın en çok alıntılanan monologlarından.", ["12 Öfkeli Adam — aynı yönetmen", "Sosyal Ağ — medyanın yeni hâli üzerine"]]],
+ ["Chinatown", "1974", "Roman Polanski", "Jack Nicholson, Faye Dunaway", "Neo-noir'ın en iyi senaryolarından biri sayılır.", ["Robert Towne'ın senaryosu film okullarında hâlâ örnek metin olarak okutulur. Hikâye gerçek bir olaydan, Los Angeles'ın su kaynaklarının ele geçirilmesinden beslenir. Polanski finali değiştirdi ve Towne'ın daha umutlu sonunu reddetti; filmin kalıcı olmasının sebebi büyük ölçüde bu karar.", ["Zodiac — çözülmeyen vakanın ağırlığı", "Kayıp Yolda — Los Angeles'ın karanlık yüzü"]]],
+ ["Kayıp Kız (Gone Girl)", "2014", "David Fincher", "Ben Affleck, Rosamund Pike", "Evlilik ve medya üzerine soğuk bir gerilim.", ["Gillian Flynn kendi romanını uyarladı ve finali değiştirmeyi düşündü, sonra vazgeçti. Film bir kayıp vakası gibi başlar ama asıl konusu medyanın bir insanı nasıl suçlu ilan ettiğidir. Rosamund Pike'ın 'cool girl' monologu, kitabın en çok alıntılanan bölümüdür.", ["Zodiac — aynı yönetmen, gerçek vaka", "Sosyal Ağ — Fincher'ın öteki soğuk portresi"]]],
+ ["Zodiac", "2007", "David Fincher", "Jake Gyllenhaal, Mark Ruffalo", "Çözülemeyen bir vakanın araştırmacıları nasıl tükettiği.", ["Fincher bazı sahneleri yetmişten fazla kez çekti; oyuncular bundan şikâyetçiydi. Film katili bulmakla ilgilenmez, takıntının insanları nasıl tükettiğiyle ilgilenir — gazeteci içki batağına düşer, dedektif kariyerini kaybeder, karikatürist ailesini. Vaka gerçekten çözülmedi ve film bunu bir eksiklik gibi değil, konunun kendisi gibi kullanır.", ["Chinatown — çözümün huzur getirmediği polisiye", "Kayıp Kız — aynı yönetmen"]]],
+ ["Sosyal Ağ", "2010", "David Fincher", "Jesse Eisenberg, Andrew Garfield", "Facebook'un kuruluşunu bir ihanet hikâyesi olarak anlatır.", ["Aaron Sorkin'in senaryosu neredeyse tamamen ifade tutanaklarının kurgusal yeniden düzenlemesi. Fincher açılış diyaloğunu 99 kez çekti. Film Facebook'un kuruluşunu bir teknoloji hikâyesi olarak değil, dışlanma ve ihanet hikâyesi olarak anlatır; son sahnede kurulan şey bir imparatorluk değil, bir yalnızlıktır.", ["Zodiac — aynı yönetmen", "Network — medyanın gücü üzerine"]]],
  ["Truman Show", "1998", "Peter Weir", "Jim Carrey, Ed Harris", "Gerçeklik televizyonunu, tür yaygınlaşmadan önce anlatan film."],
  ["Ölü Ozanlar Derneği", "1989", "Peter Weir", "Robin Williams, Ethan Hawke", "Öğretmenlik ve bağımsız düşünme üzerine."],
  ["Yeşil Yol", "1999", "Frank Darabont", "Tom Hanks, Michael Clarke Duncan", "İdam koğuşunda geçen, uzun ve duygusal bir anlatı."],
@@ -1048,8 +1057,6 @@ const FILMS=[
  ["Hereditary: Kalıtım", "2018", "Ari Aster", "Toni Collette, Alex Wolff", "Yas ve aile travmasını korkuya çeviren modern klasik."],
  ["Deniz Feneri (The Lighthouse)", "2019", "Robert Eggers", "Robert Pattinson, Willem Dafoe", "Siyah beyaz, dar kadraj, iki adam ve delilik."],
  ["Everything Everywhere All at Once", "2022", "Daniels", "Michelle Yeoh, Ke Huy Quan", "Paralel evrenleri bir aile hikâyesine bağlayan, yedi Oscar'lı film."]];
-
-/* ===== GÜNÜN SANATÇISI ===== */
 const ARTISTS=[
  ["The Beatles", "Rock · 1960'lar", "Abbey Road, Sgt. Pepper's", "A Day in the Life", "Sekiz yılda stüdyoyu bir enstrümana çevirdiler; popüler müzik öncesi ve sonrası diye ikiye ayrılır."],
  ["Pink Floyd", "Progressive rock · 1970'ler", "The Dark Side of the Moon", "Comfortably Numb", "Albümü bir bütün olarak dinletmeyi başardılar; Dark Side listelerde 900 hafta kaldı."],
@@ -1103,27 +1110,27 @@ const ARTISTS=[
  ["Public Enemy", "Hip-hop · 1980-90'lar", "It Takes a Nation of Millions...", "Fight the Power", "Hip-hop'ı doğrudan politik bir araca çevirdiler."],
  ["The Notorious B.I.G.", "Hip-hop · 1990'lar", "Ready to Die", "Juicy", "Anlatıcılığı ve akış rahatlığıyla rap yazımını etkiledi."],
  ["Lauryn Hill", "Hip-hop / soul · 1990'lar", "The Miseducation of Lauryn Hill", "Doo Wop (That Thing)", "Tek solo albümüyle beş Grammy aldı ve bir daha benzerini yapmadı."],
- ["Outkast", "Hip-hop · 1990-2000'ler", "Aquemini", "Ms. Jackson", "Güney rap'ini funk, caz ve psikedeliyle harmanladılar."],
- ["Metallica", "Metal · 1980-90'lar", "Master of Puppets", "Nothing Else Matters", "Thrash metali stadyumlara taşıyan grup."],
- ["Black Sabbath", "Metal · 1970'ler", "Paranoid", "Iron Man", "Ağır, karanlık riff'leriyle heavy metalin başlangıç noktası sayılır."],
- ["Tool", "Progressive metal · 1990'lar-", "Lateralus", "Schism", "Karmaşık ölçüleri ana akım metale sokabilen nadir gruplardan."],
- ["Rage Against the Machine", "Rap metal · 1990'lar", "Rage Against the Machine", "Killing in the Name", "Rap ile metali birleştirip her ikisini de politikleştirdiler."],
- ["Red Hot Chili Peppers", "Funk rock · 1990'lar", "Blood Sugar Sex Magik", "Under the Bridge", "Funk bas hattını alternatif rock'ın merkezine koydular."],
- ["Arcade Fire", "Indie rock · 2000'ler", "Funeral", "Wake Up", "Kalabalık kadrolu, orkestral indie rock'ın 2000'lerdeki simgesi."],
- ["The Strokes", "Indie rock · 2000'lar", "Is This It", "Last Nite", "2000'lerin başında gitar müziğini geri getiren grup."],
- ["The White Stripes", "Garage rock · 2000'ler", "Elephant", "Seven Nation Army", "İki kişi, davul ve gitarla stadyum sesi çıkarmayı başardılar."],
- ["Pixies", "Alternatif rock · 1980-90'lar", "Doolittle", "Where Is My Mind?", "Sessiz kıta-gürültülü nakarat kalıbı Nirvana'nın açıkça örnek aldığı şeydi."],
- ["R.E.M.", "Alternatif rock · 1980-90'lar", "Automatic for the People", "Everybody Hurts", "Kollejde başlayıp ana akıma geçen alternatif rock'ın öncüsü."],
- ["Oasis", "Britpop · 1990'lar", "(What's the Story) Morning Glory?", "Wonderwall", "Britpop'ın en gürültülü ve en çok satan yüzü."],
- ["Blur", "Britpop · 1990'lar", "Parklife", "Song 2", "Britpop'un gözlemci ve ironik kanadı."],
- ["Amy Winehouse", "Soul / caz · 2000'ler", "Back to Black", "Valerie", "60'lar soul'unu bugüne taşıdı; iki albümle kalıcı oldu."],
- ["Adele", "Pop · 2010'lar", "21", "Someone Like You", "Dijital çağda fiziksel satış rekorları kıran nadir isim."],
- ["Beyoncé", "Pop / R&B · 2000'ler-", "Lemonade", "Crazy in Love", "Albümü görsel bir bütün olarak yayımlama biçimini popülerleştirdi."],
- ["Frank Ocean", "R&B · 2010'lar", "Blonde", "Nights", "R&B'yi anlatıya ve boşluğa açtı; az ürettiği hâlde etkisi büyük."],
- ["Thom Yorke", "Elektronik · solo", "The Eraser", "Black Swan", "Radiohead dışındaki işlerinde ritmi ve elektroniği öne çıkarır."],
- ["Leonard Cohen", "Folk · 1960'lar-", "Songs of Leonard Cohen", "Hallelujah", "Önce şair, sonra şarkıcı; Hallelujah'ı yazması yıllar sürdü."],
- ["Joni Mitchell", "Folk · 1970'ler", "Blue", "A Case of You", "Alışılmadık gitar akortlarıyla şarkı yazımını genişletti."],
- ["Neil Young", "Folk rock · 1970'ler-", "Harvest", "Heart of Gold", "Akustik kırılganlık ile gürültülü gitar arasında ömür boyu gidip geldi."],
+ ["Outkast", "Hip-hop · 1990-2000'ler", "Aquemini", "Ms. Jackson", "Güney rap'ini funk, caz ve psikedeliyle harmanladılar.", ["André 3000 ve Big Boi'nin gücü zıtlıklarındaydı: biri deneysel ve tuhaf, diğeri klasik Güney rap'inin ustası. 2003'te çıkardıkları çift albüm aslında iki solo albümdü ve bu ayrılığın habercisiydi. Güney rap'i o dönem New York ve Los Angeles'ın gölgesindeydi; Outkast bunu tek başına değiştirdi.", ["A Tribe Called Quest — caz örneklemeli hip-hop", "Frank Ocean — türün sınırlarını zorlayan yeni kuşak"]]],
+ ["Metallica", "Metal · 1980-90'lar", "Master of Puppets", "Nothing Else Matters", "Thrash metali stadyumlara taşıyan grup.", ["İlk dört albüm thrash metalin tanımı sayılır. 1991'deki siyah albüm tempoyu düşürüp grubu stadyumlara taşıdı ve eski hayranların bir kısmını kaybettirdi — tür tarihindeki en tartışmalı yön değişikliklerinden. Basçı Cliff Burton'ın 1986'daki ölümü grubun sesini kalıcı olarak değiştirdi.", ["Black Sabbath — metalin başlangıç noktası", "Tool — metali karmaşık ritimlere taşıyanlar"]]],
+ ["Black Sabbath", "Metal · 1970'ler", "Paranoid", "Iron Man", "Ağır, karanlık riff'leriyle heavy metalin başlangıç noktası sayılır.", ["Tony Iommi bir fabrika kazasında iki parmağının ucunu kaybetti; tellerin gerginliğini azaltmak için akordu düşürdü ve metalin o ağır, karanlık tınısı bu zorunluluktan doğdu. Grup adını bir korku filminden aldı ve kasten tekinsiz bir imaj kurdu. 'Iron Man' riffi türün en çok taklit edilen açılışlarından.", ["Metallica — Sabbath'ın doğrudan mirasçısı", "Led Zeppelin — aynı dönemin öteki ağır kanadı"]]],
+ ["Tool", "Progressive metal · 1990'lar-", "Lateralus", "Schism", "Karmaşık ölçüleri ana akım metale sokabilen nadir gruplardan.", ["Şarkı süreleri sıklıkla on dakikayı aşar ve ölçü değişimleri şarkı içinde defalarca olur; 'Schism' 47 kez ölçü değiştirir. Grup uzun süre kliplerinde yüzünü göstermedi ve albüm aralarına yıllar koydu. Danny Carey'in davulu türün en çok incelenen performanslarından.", ["Metallica — daha doğrudan bir giriş", "Radiohead — deneyselliği ana akıma taşıyanlar"]]],
+ ["Rage Against the Machine", "Rap metal · 1990'lar", "Rage Against the Machine", "Killing in the Name", "Rap ile metali birleştirip her ikisini de politikleştirdiler.", ["Tom Morello gitardan çıkardığı sesleri hiçbir sentezleyici kullanmadan üretti — pedal, seçici anahtarı ve plak kaşıma taklidiyle. Grup politik duruşunu hiç yumuşatmadı ve büyük bir plak şirketinde kalarak bunu yapmanın çelişkisini kendisi de tartıştı. İlk albümün kapağında yanan keşiş fotoğrafı 1963'te çekilmiş gerçek bir protestodur.", ["Public Enemy — hip-hop'ın politik kanadı", "Red Hot Chili Peppers — aynı sahneden çıkan funk rock"]]],
+ ["Red Hot Chili Peppers", "Funk rock · 1990'lar", "Blood Sugar Sex Magik", "Under the Bridge", "Funk bas hattını alternatif rock'ın merkezine koydular.", ["Flea'nin bas çalışı funk'tan gelir ve grubun asıl imzasıdır; gitar çoğu şarkıda basın etrafında kurulur. 'Under the Bridge' Anthony Kiedis'in bağımlılık dönemindeki yalnızlığını anlatan bir şiirdi ve şarkı olması hiç planlanmamıştı. Grup dört gitaristle dört farklı döneme girdi.", ["Rage Against the Machine — aynı sahne, farklı yön", "Prince — funk'ın ustası"]]],
+ ["Arcade Fire", "Indie rock · 2000'ler", "Funeral", "Wake Up", "Kalabalık kadrolu, orkestral indie rock'ın 2000'lerdeki simgesi.", ["İlk albüm Funeral, kayıt sırasında grup üyelerinin birkaç yakınını kaybetmesinin ardından adını aldı. Sahnede yedi-sekiz kişi çalarlar ve enstrümanları şarkı ortasında değiştirirler. 2011'de Grammy'de yılın albümünü kazandıklarında çoğu izleyici gruba dair hiçbir şey bilmiyordu.", ["The Strokes — aynı on yılın öteki yüzü", "Talking Heads — kalabalık kadro geleneğinin atası"]]],
+ ["The Strokes", "Indie rock · 2000'lar", "Is This It", "Last Nite", "2000'lerin başında gitar müziğini geri getiren grup.", ["2001'de çıkan Is This It, gitar müziğinin bittiği söylenen bir anda çıktı ve bir kuşağı geri getirdi. Kayıtlar kasten kirli tutuldu; Julian Casablancas'ın vokali telefon konuşması gibi sıkıştırıldı. Albümün Amerika baskısı, 11 Eylül'den günler sonra çıktığı için bir şarkısı değiştirildi.", ["The White Stripes — aynı dalganın öteki grubu", "Velvet Underground — Strokes'un açık kaynağı"]]],
+ ["The White Stripes", "Garage rock · 2000'ler", "Elephant", "Seven Nation Army", "İki kişi, davul ve gitarla stadyum sesi çıkarmayı başardılar.", ["Jack ve Meg White kendilerini kardeş olarak tanıttı; aslında boşanmış bir çiftti ve bu yıllarca bilinmedi. Bas gitar hiç kullanmadılar — Jack alt frekansları oktav pedalıyla üretti. Meg'in basit davul çalışı sürekli eleştirildi ama grubun sesi tam olarak o boşluğun üzerine kuruluydu.", ["The Strokes — aynı dönem", "Led Zeppelin — blues kökenli ağır riff geleneği"]]],
+ ["Pixies", "Alternatif rock · 1980-90'lar", "Doolittle", "Where Is My Mind?", "Sessiz kıta-gürültülü nakarat kalıbı Nirvana'nın açıkça örnek aldığı şeydi.", ["Sessiz kıta ile gürültülü nakarat arasındaki keskin geçiş onların imzasıydı; Kurt Cobain 'Smells Like Teen Spirit'i yazarken Pixies'i taklit etmeye çalıştığını açıkça söyledi. Black Francis'in çığlığı ve Kim Deal'in sakin vokali arasındaki gerilim grubun motoru. 1993'te dağıldıklarında Black Francis kararı diğerlerine faksla bildirdi.", ["Nirvana — doğrudan mirasçı", "The Velvet Underground — alternatifin kökü"]]],
+ ["R.E.M.", "Alternatif rock · 1980-90'lar", "Automatic for the People", "Everybody Hurts", "Kollejde başlayıp ana akıma geçen alternatif rock'ın öncüsü.", ["İlk albümlerde Michael Stipe'ın sözleri kasten anlaşılmaz söylenirdi; bu bir üslup tercihiydi. Kolej radyolarından çıkıp ana akıma geçen ilk alternatif gruplardan oldular ve 'alternatif rock' teriminin yerleşmesinde payları var. 'Everybody Hurts' özellikle basit yazıldı — herkesin anlayabilmesi için.", ["Pixies — aynı sahnenin sert kanadı", "Radiohead — sonraki kuşağın karşılığı"]]],
+ ["Oasis", "Britpop · 1990'lar", "(What's the Story) Morning Glory?", "Wonderwall", "Britpop'ın en gürültülü ve en çok satan yüzü.", ["Gallagher kardeşlerin kavgaları müzikleri kadar ünlüydü ve grubu iki kez bitirdi. Noel şarkıları yazıyor, Liam söylüyordu; ikisinin bir arada durması grubun hem gücü hem sınırıydı. 1995'te Blur ile aynı gün single çıkarmaları Britpop'un doruk anı olarak anılır.", ["Blur — dönemin öteki tarafı", "The Beatles — Oasis'in açıkça taklit ettiği kaynak"]]],
+ ["Blur", "Britpop · 1990'lar", "Parklife", "Song 2", "Britpop'un gözlemci ve ironik kanadı.", ["Oasis işçi sınıfı kuzeyini temsil ederken Blur güney ve sanat okulu tarafındaydı; rekabet müzikten çok sınıf üzerineydi. Damon Albarn sonradan Gorillaz'ı kurup tamamen farklı bir yöne gitti. Parklife albümü İngiliz gündelik hayatını gözlemci ve alaycı bir dille anlatır.", ["Oasis — rekabetin öteki yarısı", "Talking Heads — sanat okulu pop geleneği"]]],
+ ["Amy Winehouse", "Soul / caz · 2000'ler", "Back to Black", "Valerie", "60'lar soul'unu bugüne taşıdı; iki albümle kalıcı oldu.", ["Sadece iki albüm yaptı. Back to Black'in sesi 60'lar Motown'ına dayanır ve kayıtta gerçek bir grup, Dap-Kings, çalar — dijital üretim neredeyse yok. Şarkı sözleri doğrudan kendi hayatından alınmıştır ve bu hem gücü hem yıkımı oldu.", ["Aretha Franklin — soul'un kaynağı", "Adele — aynı geleneğin sonraki sesi"]]],
+ ["Adele", "Pop · 2010'lar", "21", "Someone Like You", "Dijital çağda fiziksel satış rekorları kıran nadir isim.", ["21 albümü dijital çağda fiziksel satış rekorları kırdı ve bunu tek bir dans şarkısı olmadan yaptı. Sesini bir ameliyat sonrası neredeyse kaybediyordu ve aylarca hiç konuşmadan iyileşti. Albümlerini yaşına göre isimlendirmesi, her birini belli bir dönemin günlüğü hâline getiriyor.", ["Amy Winehouse — aynı damar", "Aretha Franklin — ölçüt"]]],
+ ["Beyoncé", "Pop / R&B · 2000'ler-", "Lemonade", "Crazy in Love", "Albümü görsel bir bütün olarak yayımlama biçimini popülerleştirdi.", ["Lemonade bir albümden çok görsel bir bütün olarak yayımlandı ve bu biçimi popülerleştirdi. 2013'te albümünü hiç duyurmadan gece yarısı yayımlaması, müzik endüstrisinin tanıtım takvimini kalıcı olarak değiştirdi. Sahne performanslarının provaları aylar sürer ve bandosuyla birlikte çalışır.", ["Frank Ocean — aynı kuşağın deneysel kanadı", "Prince — sahne ve üretim ustası"]]],
+ ["Frank Ocean", "R&B · 2010'lar", "Blonde", "Nights", "R&B'yi anlatıya ve boşluğa açtı; az ürettiği hâlde etkisi büyük.", ["Channel Orange'ı çıkarmadan önce yayımladığı kısa metin, R&B'de kimlik üzerine bir dönüm noktası sayıldı. Blonde neredeyse ritimsizdir; şarkılar bitmemiş gibi durur ve bu bilinçlidir. Nadiren röportaj verir, nadiren albüm çıkarır; bu suskunluk işinin bir parçası hâline geldi.", ["Beyoncé — aynı sahnenin öteki ucu", "Radiohead — boşluğu malzeme olarak kullanmak"]]],
+ ["Thom Yorke", "Elektronik · solo", "The Eraser", "Black Swan", "Radiohead dışındaki işlerinde ritmi ve elektroniği öne çıkarır.", ["Radiohead dışındaki işlerinde ritim ve elektronik öne çıkar; The Eraser neredeyse tamamen laptop'ta kuruldu. Sahnede sesini bir enstrüman gibi kullanır ve sözlerin anlaşılırlığını sık sık feda eder. Atoms for Peace projesinde Flea ile çalıştı.", ["Radiohead — asıl kaynak", "Aphex Twin — İngiliz elektroniğinin öteki ucu"]]],
+ ["Leonard Cohen", "Folk · 1960'lar-", "Songs of Leonard Cohen", "Hallelujah", "Önce şair, sonra şarkıcı; Hallelujah'ı yazması yıllar sürdü.", ["Otuzlu yaşlarına kadar şair ve romancıydı; müziğe geç başladı. Hallelujah'ı yazması yıllar sürdü ve seksenden fazla kıta yazdığı söylenir; şarkı ancak Jeff Buckley yorumundan sonra tanındı. Yetmişli yaşlarında menajerinin servetini boşaltması üzerine yeniden turneye çıktı ve o turneler kariyerinin en güçlü dönemi oldu.", ["Bob Dylan — sözü edebiyata taşıyan öteki isim", "Nick Cave — aynı damarın sonraki sesi"]]],
+ ["Joni Mitchell", "Folk · 1970'ler", "Blue", "A Case of You", "Alışılmadık gitar akortlarıyla şarkı yazımını genişletti.", ["Çocuklukta geçirdiği çocuk felci parmaklarını zayıflattığı için alışılmadık gitar akortları geliştirdi; elli kadar farklı akort kullandı ve bu onun armonik dilini kurdu. Blue albümü, kendini bu kadar açan bir kayıt olduğu için çıktığında bazı dinleyicileri rahatsız etti. Sonraki yıllarda cazın içine doğru yürüdü.", ["Leonard Cohen — aynı kuşağın söz ustası", "Nina Simone — türler arasında gezinen öteki isim"]]],
+ ["Neil Young", "Folk rock · 1970'ler-", "Harvest", "Heart of Gold", "Akustik kırılganlık ile gürültülü gitar arasında ömür boyu gidip geldi.", ["Aynı yıl içinde akustik bir albümle gürültülü bir gitar albümü çıkarabilecek kadar iki uçlu. Crazy Horse ile çalarken kayıtları çoğunlukla ilk denemede bırakır; kusurları düzeltmez. Plak şirketi 1980'lerde onu 'kendi gibi olmayan müzik yapmakla' dava etti.", ["Bob Dylan — aynı kuşak", "Leonard Cohen — sözün ağırlığı"]]],
  ["Johnny Cash", "Country · 1950'ler-", "At Folsom Prison", "Hurt", "Kariyerinin sonunda yaptığı yeniden yorumlar ilk döneminden ünlü oldu."],
  ["Ennio Morricone", "Film müziği · İtalya", "Il buono, il brutto, il cattivo", "The Ecstasy of Gold", "500'den fazla filme müzik yazdı; western'in sesini o kurdu."],
  ["Hans Zimmer", "Film müziği", "Interstellar", "Time", "Orkestrayı elektronikle birleştirme biçimi modern film müziğinin standardı oldu."],
@@ -1143,46 +1150,44 @@ const ARTISTS=[
  ["Fikret Kızılok", "Anadolu rock", "Yadigar", "Not Defterimden", "Anadolu rock'ın sakin ve şiirsel kanadı."],
  ["Mercan Dede", "Elektronik / sufi", "Nefes", "Ab-ı Hayat", "Ney ve elektroniği aynı parçada buluşturdu."],
  ["İlhan Erşahin", "Caz · Türkiye/ABD", "Istanbul Sessions", "Nublu Song", "Caz ile Anadolu ritimlerini New York'ta buluşturan projesiyle tanınır."]];
-
-/* ===== GÜNÜN KİTABI ===== */
 const BOOKS=[
- ['Suç ve Ceza','Fyodor Dostoyevski','1866','Rus romanı','Bir cinayetin ardından gelen vicdan hesaplaşması; suçun cezası hapisten önce zihinde başlar.'],
- ['1984','George Orwell','1949','Distopya','Gerçeğin sürekli yeniden yazıldığı bir devlette düşünmenin kendisi suç.'],
- ['Yüzyıllık Yalnızlık','Gabriel García Márquez','1967','Büyülü gerçekçilik','Bir ailenin yedi kuşağı, aynı isimler ve aynı hataların tekrarı.'],
- ['Sefiller','Victor Hugo','1862','Fransız romanı','Bir somun ekmek yüzünden ömrü kovalanmakla geçen adamın destanı.'],
- ['Dönüşüm','Franz Kafka','1915','Novella','Bir sabah böceğe dönüşen adamın asıl trajedisi ailesinin tepkisi.'],
- ['Küçük Prens','Antoine de Saint-Exupéry','1943','Modern masal','Çocuk gözünden bakınca yetişkinlerin ne kadar tuhaf olduğunu anlatır.'],
- ['Hayvan Çiftliği','George Orwell','1945','Siyasi alegori','Devrim yapan hayvanlar, devirdiklerine adım adım benzer.'],
- ['Fareler ve İnsanlar','John Steinbeck','1937','Amerikan romanı','Buhran döneminde iki mevsimlik işçinin küçük hayali ve büyük yıkımı.'],
- ['Bülbülü Öldürmek','Harper Lee','1960','Amerikan romanı','Irkçı bir kasabada adaleti savunmanın bedeli, bir çocuğun gözünden.'],
- ['Cesur Yeni Dünya','Aldous Huxley','1932','Distopya','Baskıyla değil, hazla ve konforla teslim alınmış bir gelecek.'],
- ['Anna Karenina','Lev Tolstoy','1878','Rus romanı','Aşkın toplumsal baskıyla çarpıştığı yerde kimsenin kazanmadığı bir hikâye.'],
- ['Simyacı','Paulo Coelho','1988','Alegorik roman','Aradığın hazinenin yolculuğun kendisi olduğunu söyleyen bir masal.'],
- ['Uçurtma Avcısı','Khaled Hosseini','2003','Roman','Çocuklukta yapılan bir ihanetin otuz yıl sonra ödenen bedeli.'],
- ['Sapiens','Yuval Noah Harari','2011','Tarih / deneme','İnsanı diğer türlerden ayıran şeyin ortak kurgulara inanmak olduğu tezi.'],
- ['Otostopçunun Galaksi Rehberi','Douglas Adams','1979','Bilimkurgu / mizah','Dünya bir baypas için yıkılır ve her şeyin cevabı 42 çıkar.'],
- ['Fahrenheit 451','Ray Bradbury','1953','Distopya','Kitapların yakıldığı bir gelecekte itfaiyecinin işi ateşi söndürmek değil.'],
- ['Şeker Portakalı','José Mauro de Vasconcelos','1968','Brezilya romanı','Yoksul bir çocuğun tek arkadaşı bahçedeki portakal ağacıdır.'],
- ['Satranç','Stefan Zweig','1942','Novella','Hücrede tek başına satranç oynayarak akıl sağlığını koruyan adamın öyküsü.'],
- ['Momo','Michael Ende','1973','Felsefi masal','Gri adamlar insanların zamanını çalar; kimse fark etmez çünkü herkes çok meşguldür.'],
- ['Kürk Mantolu Madonna','Sabahattin Ali','1943','Türk romanı','Silik görünen bir adamın defterinden çıkan büyük ve yenilgili aşk.'],
- ['Tutunamayanlar','Oğuz Atay','1972','Türk romanı','Türk edebiyatının deneysel başyapıtı; hayata uyum sağlayamayanların ansiklopedisi.'],
- ['Saatleri Ayarlama Enstitüsü','Ahmet Hamdi Tanpınar','1961','Türk romanı','Saatleri ayarlamak için kurulan koca bir kurum: bürokrasi ironisinin zirvesi.'],
- ['İnce Memed','Yaşar Kemal','1955','Türk romanı','Çukurova\'da ağaya başkaldıran bir eşkıyanın efsaneye dönüşmesi.'],
- ['Savaş ve Barış','Lev Tolstoy','1869','Rus romanı','Napolyon istilası arka planında yüzlerce hayatın kesiştiği insanlık panoraması.'],
- ['Görme Biçimleri','John Berger','1972','Sanat denemesi','Bir tabloya bakarken aslında ne gördüğümüzü sorgulatan kısa dersler.'],
- ["Karamazov Kardeşler", "Fyodor Dostoyevski", "1880", "Rus romanı", "Bir baba cinayeti etrafında inanç, şüphe ve özgürlük tartışması."],
- ["Ölü Canlar", "Nikolay Gogol", "1842", "Rus romanı", "Ölmüş serflerin kaydını satın alan bir dolandırıcı üzerinden Rusya hicvi."],
- ["Babalar ve Oğullar", "İvan Turgenyev", "1862", "Rus romanı", "Kuşak çatışmasını ve nihilizmi edebiyata sokan roman."],
- ["Usta ile Margarita", "Mihail Bulgakov", "1967", "Rus romanı", "Şeytan 1930'lar Moskova'sına gelir; sansür yıllarında gizlice yazıldı."],
- ["Madame Bovary", "Gustave Flaubert", "1857", "Fransız romanı", "Taşra hayatının sıkıcılığından romanlara kaçan bir kadının çöküşü."],
- ["Kırmızı ve Siyah", "Stendhal", "1830", "Fransız romanı", "Sınıf atlama hırsının psikolojik anatomisi."],
- ["Goriot Baba", "Honoré de Balzac", "1835", "Fransız romanı", "Paris'te para, itibar ve kızları tarafından terk edilen bir baba."],
- ["Yabancı", "Albert Camus", "1942", "Felsefi roman", "Annesinin cenazesinde ağlamayan adam; absürdün en bilinen anlatısı."],
- ["Veba", "Albert Camus", "1947", "Felsefi roman", "Karantinaya alınan bir şehirde dayanışma ve anlam arayışı."],
- ["Bulantı", "Jean-Paul Sartre", "1938", "Felsefi roman", "Varoluşun kendisinin mide bulandırıcı fazlalığı üzerine bir günlük."],
- ["Monte Kristo Kontu", "Alexandre Dumas", "1844", "Macera", "Haksız yere hapsedilen bir adamın sabırla kurduğu intikam."],
- ["Denemeler", "Michel de Montaigne", "1580", "Deneme", "Deneme türünü icat eden kitap; 'ben ne biliyorum?' sorusu üzerine kurulu."],
+ ["Suç ve Ceza", "Fyodor Dostoyevski", "1866", "Rus romanı", "Bir cinayetin ardından gelen vicdan hesaplaşması; suçun cezası hapisten önce zihinde başlar."],
+ ["1984", "George Orwell", "1949", "Distopya", "Gerçeğin sürekli yeniden yazıldığı bir devlette düşünmenin kendisi suç."],
+ ["Yüzyıllık Yalnızlık", "Gabriel García Márquez", "1967", "Büyülü gerçekçilik", "Bir ailenin yedi kuşağı, aynı isimler ve aynı hataların tekrarı."],
+ ["Sefiller", "Victor Hugo", "1862", "Fransız romanı", "Bir somun ekmek yüzünden ömrü kovalanmakla geçen adamın destanı."],
+ ["Dönüşüm", "Franz Kafka", "1915", "Novella", "Bir sabah böceğe dönüşen adamın asıl trajedisi ailesinin tepkisi."],
+ ["Küçük Prens", "Antoine de Saint-Exupéry", "1943", "Modern masal", "Çocuk gözünden bakınca yetişkinlerin ne kadar tuhaf olduğunu anlatır."],
+ ["Hayvan Çiftliği", "George Orwell", "1945", "Siyasi alegori", "Devrim yapan hayvanlar, devirdiklerine adım adım benzer."],
+ ["Fareler ve İnsanlar", "John Steinbeck", "1937", "Amerikan romanı", "Buhran döneminde iki mevsimlik işçinin küçük hayali ve büyük yıkımı."],
+ ["Bülbülü Öldürmek", "Harper Lee", "1960", "Amerikan romanı", "Irkçı bir kasabada adaleti savunmanın bedeli, bir çocuğun gözünden."],
+ ["Cesur Yeni Dünya", "Aldous Huxley", "1932", "Distopya", "Baskıyla değil, hazla ve konforla teslim alınmış bir gelecek."],
+ ["Anna Karenina", "Lev Tolstoy", "1878", "Rus romanı", "Aşkın toplumsal baskıyla çarpıştığı yerde kimsenin kazanmadığı bir hikâye."],
+ ["Simyacı", "Paulo Coelho", "1988", "Alegorik roman", "Aradığın hazinenin yolculuğun kendisi olduğunu söyleyen bir masal."],
+ ["Uçurtma Avcısı", "Khaled Hosseini", "2003", "Roman", "Çocuklukta yapılan bir ihanetin otuz yıl sonra ödenen bedeli."],
+ ["Sapiens", "Yuval Noah Harari", "2011", "Tarih / deneme", "İnsanı diğer türlerden ayıran şeyin ortak kurgulara inanmak olduğu tezi."],
+ ["Otostopçunun Galaksi Rehberi", "Douglas Adams", "1979", "Bilimkurgu / mizah", "Dünya bir baypas için yıkılır ve her şeyin cevabı 42 çıkar."],
+ ["Fahrenheit 451", "Ray Bradbury", "1953", "Distopya", "Kitapların yakıldığı bir gelecekte itfaiyecinin işi ateşi söndürmek değil."],
+ ["Şeker Portakalı", "José Mauro de Vasconcelos", "1968", "Brezilya romanı", "Yoksul bir çocuğun tek arkadaşı bahçedeki portakal ağacıdır.", ["Vasconcelos kitabın büyük ölçüde kendi çocukluğu olduğunu söyler; Zezé'nin yoksulluğu ve dayak yediği sahneler otobiyografiktir. Kitabın gücü acıyı çocuk diliyle anlatmasında: Zezé olan biteni tam kavramaz, okur kavrar. Portekizce aslı 12 günde yazılmış.", ["Momo — çocuk gözünden yetişkin dünyası", "Bülbülü Öldürmek — yine bir çocuk anlatıcı"]]],
+ ["Satranç", "Stefan Zweig", "1942", "Novella", "Hücrede tek başına satranç oynayarak akıl sağlığını koruyan adamın öyküsü.", ["Zweig'in son eseri; Brezilya'da sürgündeyken yazdı ve teslim ettikten kısa süre sonra eşiyle birlikte yaşamına son verdi. Novella bir gemide geçen satranç maçı gibi görünür ama asıl konusu Gestapo'nun tecrit yoluyla uyguladığı psikolojik işkencedir. Kısalığı bilinçli: hikâye tek oturuşta okunacak biçimde kurulmuş.", ["Dönüşüm — aynı uzunlukta, aynı ağırlıkta", "İnsanın Anlam Arayışı — kamp deneyiminden çıkan öteki metin"]]],
+ ["Momo", "Michael Ende", "1973", "Felsefi masal", "Gri adamlar insanların zamanını çalar; kimse fark etmez çünkü herkes çok meşguldür.", ["Ende'nin 'gri adamlar'ı zamanı biriktirmeye ikna ederek çalar; kimse soyulduğunu fark etmez çünkü herkes verimli olmaya çalışmaktadır. Kitap 1973'te yazıldı ve bugünkü üretkenlik kültürünü tarif eder. Momo'nun tek yeteneği dinlemektir — Ende bunu bilerek en pasif görünen şeyi kahramanlık yapar.", ["Küçük Prens — aynı damar", "Şeker Portakalı — çocuk gözünden dünya"]]],
+ ["Kürk Mantolu Madonna", "Sabahattin Ali", "1943", "Türk romanı", "Silik görünen bir adamın defterinden çıkan büyük ve yenilgili aşk.", ["Kitap yayımlandığında pek ilgi görmedi; 2000'lerde beklenmedik biçimde en çok satanlar listesine girdi ve bir kuşağın kitabı oldu. Raif Efendi'nin sessizliği romanın merkezi: anlatıcı onu silik bir memur sanır, defteri okuyunca yanıldığını anlar. Sabahattin Ali'nin Berlin yılları romanın atmosferini besler.", ["Yabancı — içe kapanmış bir anlatıcı", "Kuyucaklı Yusuf — aynı yazarın sert romanı"]]],
+ ["Tutunamayanlar", "Oğuz Atay", "1972", "Türk romanı", "Türk edebiyatının deneysel başyapıtı; hayata uyum sağlayamayanların ansiklopedisi.", ["Yayımlandığında anlaşılmadı ve yıllarca baskısı yapılmadı. Roman biçimiyle oynar: şiir, sözlük maddesi, dipnot, mektup iç içe geçer ve bir yerde sayfa iki sütuna bölünür. Atay'ın hedefi yalnızca bir karakter değil, kendini anlatamayan bir kuşaktır. Türkçede biçimsel olarak en cesur roman sayılır.", ["Tehlikeli Oyunlar — aynı yazar, aynı damar", "Ulysses — biçimsel cesaretin kaynağı"]]],
+ ["Saatleri Ayarlama Enstitüsü", "Ahmet Hamdi Tanpınar", "1961", "Türk romanı", "Saatleri ayarlamak için kurulan koca bir kurum: bürokrasi ironisinin zirvesi.", ["Bir bürokrasi hicvi gibi okunur ama asıl konusu Türkiye'nin saatini Batı'ya göre ayarlama çabasıdır. Hayri İrdal ne tam eski ne tam yeni; roman onu yargılamaz, o boşlukta yaşamayı anlatır. Tanpınar hicvi kolay bir mizaha düşürmez, bu yüzden kitap ilk okuyuşta yavaş gelir.", ["Huzur — aynı yazarın öteki büyük romanı", "Ölü Canlar — bürokrasi hicvinin klasiği"]]],
+ ["İnce Memed", "Yaşar Kemal", "1955", "Türk romanı", "Çukurova'da ağaya başkaldıran bir eşkıyanın efsaneye dönüşmesi.", ["Yaşar Kemal Çukurova'yı gazetecilik yıllarında karış karış gezdi; romandaki coğrafya kurgu değil. Memed'in eşkıyalığı bir kahramanlık değil, başka seçenek kalmamasıdır — kitap bunu romantikleştirmeden anlatır. Dört cilde yayıldı ve kırktan fazla dile çevrildi.", ["Yol — aynı coğrafyanın filmi", "Gazap Üzümleri — topraksız kalmanın öteki destanı"]]],
+ ["Savaş ve Barış", "Lev Tolstoy", "1869", "Rus romanı", "Napolyon istilası arka planında yüzlerce hayatın kesiştiği insanlık panoraması.", ["Tolstoy kitabı roman saymadı; kendi deyimiyle 'bu bir roman değil'. Kurgunun arasına uzun tarih denemeleri yerleştirir ve büyük adamların tarihi yönlendirdiği fikrine doğrudan saldırır. Yedi kez baştan yazdığı söylenir. Savaş sahneleri kadar balo sahneleri de aynı ayrıntıyla kurulmuştur.", ["Anna Karenina — aynı yazar, daha odaklı", "Karamazov Kardeşler — Rus romanının öteki zirvesi"]]],
+ ["Görme Biçimleri", "John Berger", "1972", "Sanat denemesi", "Bir tabloya bakarken aslında ne gördüğümüzü sorgulatan kısa dersler.", ["Önce BBC'de dört bölümlük bir televizyon programıydı, kitap sonra geldi. Berger'in asıl iddiası şu: bir imgeyi nasıl gördüğümüz masum değildir, sahiplik ve iktidar tarafından biçimlenir. Kitabın bazı bölümleri tamamen görsellerden oluşur ve tek kelime yoktur.", ["Denemeler — düşünmeyi düşünen metin", "Dorian Gray'in Portresi — bakış ve imge üzerine"]]],
+ ["Karamazov Kardeşler", "Fyodor Dostoyevski", "1880", "Rus romanı", "Bir baba cinayeti etrafında inanç, şüphe ve özgürlük tartışması.", ["Dostoyevski'nin son romanı; tamamladıktan dört ay sonra öldü. 'Büyük Engizisyoncu' bölümü romandan bağımsız olarak felsefe derslerinde okutulur. Üç kardeş üç ayrı dünya görüşünü taşır: akıl, inanç ve arzu. Baba cinayeti bir polisiye kurgusu değil, bu üç görüşün sınavıdır.", ["Suç ve Ceza — aynı yazar, daha doğrudan", "Savaş ve Barış — Rus romanının öteki kutbu"]]],
+ ["Ölü Canlar", "Nikolay Gogol", "1842", "Rus romanı", "Ölmüş serflerin kaydını satın alan bir dolandırıcı üzerinden Rusya hicvi.", ["Gogol ikinci cildi yazdı ve ölümünden kısa süre önce yaktı; elimizde yalnızca birinci cilt ve parçalar var. Çiçikov ölmüş serflerin kaydını satın alır çünkü nüfus sayımı arasında onlar hâlâ 'canlı' sayılıp teminat gösterilebilir — dolandırıcılık tamamen yasaldır. Rusya'nın taşra portresi bu yüzden bir hiciv olduğu kadar bir muhasebe belgesidir.", ["Saatleri Ayarlama Enstitüsü — bürokrasi hicvi", "Babalar ve Oğullar — aynı dönemin Rusya'sı"]]],
+ ["Babalar ve Oğullar", "İvan Turgenyev", "1862", "Rus romanı", "Kuşak çatışmasını ve nihilizmi edebiyata sokan roman.", ["'Nihilist' kelimesini yaygınlaştıran roman. Bazarov'un hiçbir otoriteyi kabul etmeyen tavrı hem gençliği hem muhafazakârları kızdırdı; Turgenyev iki taraftan da saldırı gördü ve bir süre Rusya'yı terk etti. Kuşak çatışması burada bir aile meselesi değil, bir ülkenin yön tartışmasıdır.", ["Ölü Canlar — aynı Rusya", "Karamazov Kardeşler — inanç ve şüphe"]]],
+ ["Usta ile Margarita", "Mihail Bulgakov", "1967", "Rus romanı", "Şeytan 1930'lar Moskova'sına gelir; sansür yıllarında gizlice yazıldı.", ["Bulgakov romanı on iki yıl yazdı, bir defasında müsveddeyi yaktı ve yeniden başladı; 'el yazmaları yanmaz' cümlesi buradan gelir. Kitap ölümünden 26 yıl sonra, sansürlü olarak yayımlandı. Şeytan'ın Moskova'ya gelişi bir korku değil bir komedi olarak kurulur ve asıl korkunç olan bürokrasidir.", ["Dava — aynı absürt bürokrasi", "Yüzyıllık Yalnızlık — büyülü gerçekçiliğin öteki kutbu"]]],
+ ["Madame Bovary", "Gustave Flaubert", "1857", "Fransız romanı", "Taşra hayatının sıkıcılığından romanlara kaçan bir kadının çöküşü.", ["Yayımlandığında Flaubert ahlaka aykırılıktan yargılandı ve beraat etti; dava kitabı ünlü yaptı. Flaubert doğru kelimeyi bulmak için günlerce tek cümle üzerinde çalışırdı. Emma'nın trajedisi aldatma değil, hayatın romanlarda anlatıldığı gibi olmamasıdır.", ["Anna Karenina — aynı meselenin Rus hâli", "Kırmızı ve Siyah — taşradan yükselme arzusu"]]],
+ ["Kırmızı ve Siyah", "Stendhal", "1830", "Fransız romanı", "Sınıf atlama hırsının psikolojik anatomisi.", ["Başlıktaki iki renk iki kariyer yolunu temsil eder: asker üniforması ve rahip cübbesi. Julien Sorel yükselmek için ikiyüzlülüğü bilinçli bir strateji olarak seçer ve Stendhal bunu yargılamadan anlatır. Roman kendi döneminde az okundu; Stendhal 'ben 1880'de okunacağım' demişti ve haklı çıktı.", ["Goriot Baba — aynı Paris", "Madame Bovary — aynı hayal kırıklığı"]]],
+ ["Goriot Baba", "Honoré de Balzac", "1835", "Fransız romanı", "Paris'te para, itibar ve kızları tarafından terk edilen bir baba.", ["Balzac'ın doksandan fazla romanı aynı evrende geçer ve karakterler kitaplar arasında dolaşır; Rastignac ilk kez burada belirir. Goriot kızlarına her şeyini verir ve karşılığında terk edilir — Balzac bunu Kral Lear'a bilinçli bir gönderme olarak kurar. Pansiyon tasviri romanın en ünlü açılışlarından.", ["Kırmızı ve Siyah — aynı dönem", "Sefiller — Paris'in öteki yüzü"]]],
+ ["Yabancı", "Albert Camus", "1942", "Felsefi roman", "Annesinin cenazesinde ağlamayan adam; absürdün en bilinen anlatısı.", ["İlk cümle Fransız edebiyatının en çok tartışılan açılışlarından. Meursault suçlanır ama yargılandığı şey cinayet değil, annesinin cenazesinde ağlamamasıdır. Camus romanı 'absürt' üçlemesinin ilk halkası olarak yazdı; ikincisi Sisifos Söyleni denemesidir.", ["Veba — aynı yazar, karşıt tavır", "Bulantı — varoluşçu romanın öteki metni"]]],
+ ["Veba", "Albert Camus", "1947", "Felsefi roman", "Karantinaya alınan bir şehirde dayanışma ve anlam arayışı.", ["Salgın açık bir alegoridir: Camus işgal altındaki Fransa'yı ve faşizmi anlatır. Ama roman alegoriye sıkışmaz; karantinanın gündelik ayrıntıları bugün okununca fazlasıyla tanıdık gelir. Dr. Rieux kahraman olmayı reddeder — 'bu sadece dürüstlük meselesi' der.", ["Yabancı — aynı yazarın karşıt kutbu", "Körlük — salgın alegorisinin öteki hâli"]]],
+ ["Bulantı", "Jean-Paul Sartre", "1938", "Felsefi roman", "Varoluşun kendisinin mide bulandırıcı fazlalığı üzerine bir günlük.", ["Roquentin'in mide bulantısı mecaz değil, fiziksel bir tepkidir: nesnelerin varlığının fazlalığına karşı. Sartre romanı günlük biçiminde yazdı, böylece felsefeyi bir olay örgüsüne yaymak zorunda kalmadı. Kitap varoluşçuluğun edebiyattaki ilk büyük ifadesi sayılır.", ["Yabancı — aynı dönem, farklı ton", "Dönüşüm — bedenin yabancılaşması"]]],
+ ["Monte Kristo Kontu", "Alexandre Dumas", "1844", "Macera", "Haksız yere hapsedilen bir adamın sabırla kurduğu intikam.", ["Dumas gazete tefrikası olarak yazdı ve bölüm sonlarını okuyucuyu bağlamak için kurguladı; romanın hızı buradan gelir. Edmond Dantès'in intikamı yıllara yayılır ve Dumas onu yavaş yavaş bir kahramandan rahatsız edici bir yargıca dönüştürür. Kitabın son cümlesi tüm intikam edebiyatının özeti sayılır.", ["Sefiller — aynı dönemin Fransa'sı", "Kelebek — kaçış ve intikam"]]],
+ ["Denemeler", "Michel de Montaigne", "1580", "Deneme", "Deneme türünü icat eden kitap; 'ben ne biliyorum?' sorusu üzerine kurulu.", ["Montaigne 'deneme' türünü icat etti; kelimenin kökü 'denemek, tartmak' demek. Kitap boyunca fikrini değiştirir ve bunu gizlemez — sayfa kenarına yıllar sonra eklediği itirazlar basılı metnin parçasıdır. 'Ben ne biliyorum?' sorusu armasına kazınmıştı.", ["Kendime Düşünceler — aynı damarda antik bir metin", "Görme Biçimleri — düşünmeyi düşünen modern metin"]]],
  ["Don Kişot", "Miguel de Cervantes", "1605", "İspanyol romanı", "Şövalye romanları okuyup gerçeği kaybeden adam; ilk modern roman sayılır."],
  ["Aylak Adam", "Yusuf Atılgan", "1959", "Türk romanı", "İstanbul'da bir yere ait olamayan adamın iç sesi."],
  ["Tehlikeli Oyunlar", "Oğuz Atay", "1973", "Türk romanı", "Gerçekle kurgunun iç içe geçtiği, oyun kurarak yaşayan bir adam."],
@@ -1256,8 +1261,6 @@ const BOOKS=[
  ["Karanlığın Sol Eli", "Ursula K. Le Guin", "1969", "Bilimkurgu", "Cinsiyetin sabit olmadığı bir gezegende diplomasi."],
  ["Mülksüzler", "Ursula K. Le Guin", "1974", "Bilimkurgu", "İki karşıt toplum düzenini yan yana koyan düşünce deneyi."],
  ["Sıfır'ın Tarihi", "Charles Seife", "2000", "Popüler bilim", "Sıfır fikrinin matematiği ve felsefeyi nasıl sarstığı."]];
-
-/* ===== TARİHTEN ===== */
 const HISTORY=[
  '1969\'da Apollo 11 ile insan ilk kez Ay\'a ayak bastı.',
  'İstanbul 1453\'te fethedildi ve Doğu Roma İmparatorluğu sona erdi.',
@@ -2396,9 +2399,45 @@ function kaynakLink(url,etiket){
 /* Elimizde hazır bağlantı yoksa Vikipedi aramasına yolla — uydurma URL üretme. */
 function wikiAra(q){return 'https://tr.wikipedia.org/w/index.php?search='+encodeURIComponent(q);}
 
+/* ===== KATMANLI DERİNLİK =====
+   Kartlar tek cümleyle açılıyor; isteyen "devamı"na basıp paragrafı, neye
+   dikkat edileceğini ve iki öneriyi görüyor. Kart kısa kalsın ama merak
+   edildiğinde karşılığı olsun diye böyle.
+
+   Derinlik OPSİYONEL bir alan: yoksa düğme de çıkmaz. Bu, CLAUDE.md'nin
+   2. kuralının gereği — arkasında içerik olmayan bir "devamı" düğmesi
+   dekoratif göstergedir. Derinlik önce bugünden itibaren sırası gelen
+   kayıtlara yazıldı; kalanlar doldukça düğme kendiliğinden görünür.
+
+   Biçim: [paragraf, [öneri, öneri]] */
+let derinAcik={};
+function derinDugme(anahtar){
+  return '<button class="d-ac" data-derin="'+anahtar+'">'+
+    (derinAcik[anahtar]?'gizle ▴':'devamı ▾')+'</button>';
+}
+function derinKutu(d,anahtar){
+  if(!d||!derinAcik[anahtar])return '';
+  const oneri=(d[1]||[]);
+  return '<div class="d-derin"><p>'+esc(d[0])+'</p>'+
+    (oneri.length?'<div class="d-oner"><span class="d-oner-b">bunu sevdiysen</span><ul>'+
+      oneri.map(o=>'<li>'+esc(o)+'</li>').join('')+'</ul></div>':'')+'</div>';
+}
+/* Düğmeler her çizimde yeniden bağlanır. */
+function derinBagla(kutuId,yenidenCiz){
+  const el=document.getElementById(kutuId);if(!el)return;
+  el.querySelectorAll('[data-derin]').forEach(b=>b.onclick=()=>{
+    const k=b.dataset.derin;derinAcik[k]=!derinAcik[k];yenidenCiz();});
+}
+/* FACTS öğesi ya düz metin ya da [metin, derin] */
+const factMetin=x=>Array.isArray(x)?x[0]:x;
+const factDerin=x=>Array.isArray(x)?x[1]:null;
+
 function renderFacts(){
+  const f=FACTS[(doy()+factOff)%FACTS.length],d=factDerin(f);
   document.getElementById('factList').innerHTML=
-    '<div class="day1"><div class="d-metin">'+esc(FACTS[(doy()+factOff)%FACTS.length])+'</div></div>';
+    '<div class="day1"><div class="d-metin">'+esc(factMetin(f))+'</div>'+
+    (d?derinDugme('fact')+derinKutu(d,'fact'):'')+'</div>';
+  derinBagla('factList',renderFacts);
 }
 
 function renderHistory(){
@@ -2432,7 +2471,10 @@ function renderFilm(){
     '<div class="film-row"><b>Yönetmen</b>'+esc(f[2])+'</div>'+
     '<div class="film-row"><b>Oyuncular</b>'+esc(f[3])+'</div>'+
     '<div class="d-detay">'+esc(f[4])+'</div>'+
-    kaynakLink(wikiAra(f[0].replace(/\s*\(.*?\)\s*/,' ').trim()+' film'))+'</div>';
+    (f[5]?derinDugme('film'):'')+
+    kaynakLink(wikiAra(f[0].replace(/\s*\(.*?\)\s*/,' ').trim()+' film'))+
+    derinKutu(f[5],'film')+'</div>';
+  derinBagla('filmBox',renderFilm);
 }
 
 function renderArtist(){
@@ -2443,7 +2485,10 @@ function renderArtist(){
     '<div class="film-row"><b>Öne çıkan</b>'+esc(a[2])+'</div>'+
     '<div class="film-row"><b>Buradan başla</b>'+esc(a[3])+'</div>'+
     '<div class="d-detay">'+esc(a[4])+'</div>'+
-    kaynakLink(wikiAra(a[0]))+'</div>';
+    (a[5]?derinDugme('art'):'')+
+    kaynakLink(wikiAra(a[0]))+
+    derinKutu(a[5],'art')+'</div>';
+  derinBagla('artBox',renderArtist);
 }
 
 function renderBook(){
@@ -2453,7 +2498,10 @@ function renderBook(){
     '<div class="d-bas">'+esc(b[0])+'</div>'+
     '<div class="film-row"><b>Yazar</b>'+esc(b[1])+'</div>'+
     '<div class="d-detay">'+esc(b[4])+'</div>'+
-    kaynakLink(wikiAra(b[0]+' '+b[1]))+'</div>';
+    (b[5]?derinDugme('book'):'')+
+    kaynakLink(wikiAra(b[0]+' '+b[1]))+
+    derinKutu(b[5],'book')+'</div>';
+  derinBagla('bookBox',renderBook);
 }
 
 /* ===== ALMANCA: katmanlı havuz + gramer + mini quiz =====
