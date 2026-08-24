@@ -222,6 +222,10 @@
   .pw-ok{color:var(--up);} .pw-uyari{color:var(--down);}
   .de{padding:9px 0;border-bottom:1px dotted var(--line2);} .de:last-child{border-bottom:none;}
   .de-word{font-family:var(--serif);font-weight:600;font-size:18px;} .de-tr{color:var(--muted);font-size:13.5px;} .de-ex{font-size:12.5px;margin-top:3px;font-style:italic;opacity:.82;}
+  .de-lvl{font-family:var(--mono);font-size:8.5px;letter-spacing:.06em;padding:1px 4px;border-radius:3px;
+    margin-left:6px;border:1px solid var(--line2);color:var(--muted);vertical-align:middle;}
+  .de-lvl.lB1,.de-lvl.lB2{color:var(--accent);border-color:var(--accent);}
+  .de-lvl.lC1{color:var(--card);background:var(--accent);border-color:var(--accent);}
   .gram-head{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);border-top:1px solid var(--line2);padding-top:11px;margin-top:12px;margin-bottom:5px;}
   .gram{display:flex;gap:8px;padding:5px 0;font-size:13px;line-height:1.45;} .gram .gi{font-family:var(--mono);color:var(--accent);font-size:12px;margin-top:1px;}
   .loading{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.06em;padding:12px 0;}
@@ -2452,74 +2456,536 @@ function renderBook(){
     kaynakLink(wikiAra(b[0]+' '+b[1]))+'</div>';
 }
 
-/* ===== ALMANCA: temalı kelime havuzu + haftalık gramer + mini quiz =====
-   Eski hâlde 41 kelime vardı ve setler birbirine çok benziyordu. Havuz 14 temaya
-   bölündü (140 kelime); her gün BİR tema işleniyor, o günün 5 kelimesi aynı temadan
-   geliyor — dağınık kelimeler yerine anlamlı bir set. Quizde yanlış bilinen kelime
-   d:deWrong havuzuna düşüyor ve sonraki günlerin setine geri karışıyor. */
+/* ===== ALMANCA: katmanlı havuz + gramer + mini quiz =====
+   Havuz A1-A2'de sıkışmıştı (140 kelime, 14 tema) ve tekrar aralığı kısaydı.
+   Şimdi 34 tema / 380 kelime ve her kelime KENDİ seviyesini taşıyor
+   [almanca, türkçe, örnek, seviye]: A1 70, A2 86, B1 96, B2 104, C1 24.
+
+   Seviye yükseliyor ama sıfırdan atlamıyor: her gün bir tema işleniyor, tema
+   sırası A1'den C1'e doğru gidiyor. Yeni temalar fiil+edat, isim-fiil kalıpları,
+   bağlaçlar, ekonomi/politika/hukuk dili, konuşma nüansları (doch/eben/halt)
+   gibi ilerleme noktalarında.
+
+   Zor kelime daha sık döner: yanlış bilinen kelime d:deWrong'a düşüyor ve
+   setlere geri karışırken B2/C1 olanlar öne alınıyor — A1 kelimesiyle C1
+   kelimesi aynı sıklıkta tekrar etmemeli. */
 const DE_THEMES=[
- {t:'Ev & Eşya',lvl:'A1',w:[['das Haus','ev','Das Haus ist sehr groß.'],['die Wohnung','daire','Meine Wohnung hat drei Zimmer.'],['das Zimmer','oda','Das Zimmer ist hell.'],['die Küche','mutfak','Die Küche ist klein aber schön.'],['das Bett','yatak','Das Bett ist sehr bequem.'],['der Tisch','masa','Der Tisch steht am Fenster.'],['der Stuhl','sandalye','Der Stuhl ist aus Holz.'],['die Tür','kapı','Bitte mach die Tür zu.'],['das Fenster','pencere','Das Fenster ist offen.'],['der Schlüssel','anahtar','Ich suche meinen Schlüssel.']]},
- {t:'Yemek & İçecek',lvl:'A1',w:[['das Brot','ekmek','Das Brot ist frisch.'],['der Apfel','elma','Der Apfel ist rot.'],['die Milch','süt','Die Milch ist kalt.'],['der Kaffee','kahve','Ich trinke Kaffee ohne Zucker.'],['das Wasser','su','Ich trinke viel Wasser.'],['das Fleisch','et','Das Fleisch ist noch nicht fertig.'],['der Käse','peynir','Der Käse kommt aus der Türkei.'],['das Gemüse','sebze','Ich esse jeden Tag Gemüse.'],['das Frühstück','kahvaltı','Das Frühstück ist um neun.'],['der Zucker','şeker','Ich nehme keinen Zucker.']]},
- {t:'Aile & İnsanlar',lvl:'A1',w:[['die Familie','aile','Meine Familie ist groß.'],['die Mutter','anne','Meine Mutter kocht sehr gut.'],['der Vater','baba','Mein Vater arbeitet in Istanbul.'],['die Schwester','kız kardeş','Meine Schwester studiert Medizin.'],['der Bruder','erkek kardeş','Mein Bruder ist jünger als ich.'],['das Kind','çocuk','Das Kind spielt im Garten.'],['die Frau','kadın','Die Frau liest ein Buch.'],['der Mann','adam','Der Mann wartet draußen.'],['der Freund','arkadaş','Mein Freund kommt heute.'],['die Eltern','anne baba','Meine Eltern wohnen in Izmir.']]},
- {t:'Zaman & Takvim',lvl:'A1',w:[['die Zeit','zaman','Ich habe keine Zeit.'],['der Tag','gün','Der Tag war sehr lang.'],['die Woche','hafta','Nächste Woche fahre ich weg.'],['der Monat','ay','Der Monat ist fast vorbei.'],['das Jahr','yıl','Das Jahr geht schnell vorbei.'],['heute','bugün','Heute ist Montag.'],['morgen','yarın','Morgen habe ich frei.'],['gestern','dün','Gestern war ich krank.'],['die Stunde','saat (süre)','Ich warte seit einer Stunde.'],['immer','her zaman','Er kommt immer zu spät.']]},
- {t:'Şehir & Yol',lvl:'A1',w:[['die Stadt','şehir','Die Stadt ist sehr laut.'],['die Straße','sokak','Die Straße ist lang.'],['der Platz','meydan','Der Platz ist voll mit Menschen.'],['links','sol','Gehen Sie nach links.'],['rechts','sağ','Die Bank ist rechts.'],['geradeaus','dümdüz','Gehen Sie immer geradeaus.'],['die Brücke','köprü','Die Brücke ist neu.'],['die Ecke','köşe','Das Café ist an der Ecke.'],['weit','uzak','Ist es weit von hier?'],['die Haltestelle','durak','Die Haltestelle ist dort drüben.']]},
- {t:'Alışveriş & Para',lvl:'A2',w:[['das Geld','para','Ich habe kein Geld dabei.'],['kaufen','satın almak','Ich kaufe Brot und Milch.'],['bezahlen','ödemek','Ich möchte bitte bezahlen.'],['teuer','pahalı','Das Auto ist zu teuer.'],['billig','ucuz','Die Jacke war sehr billig.'],['die Rechnung','hesap, fatura','Die Rechnung, bitte!'],['der Preis','fiyat','Der Preis ist zu hoch.'],['das Geschäft','dükkân','Das Geschäft macht um acht zu.'],['die Kasse','kasa','Bitte zahlen Sie an der Kasse.'],['kosten','tutmak (fiyat)','Was kostet das?']]},
- {t:'İş & Meslek',lvl:'A2',w:[['die Arbeit','iş','Meine Arbeit beginnt um acht.'],['arbeiten','çalışmak','Sie arbeitet sehr viel.'],['der Beruf','meslek','Was sind Sie von Beruf?'],['das Büro','ofis','Das Büro ist im dritten Stock.'],['der Chef','patron','Mein Chef ist heute nicht da.'],['die Besprechung','toplantı','Die Besprechung dauert eine Stunde.'],['die Bewerbung','başvuru','Ich schreibe eine Bewerbung.'],['der Kollege','iş arkadaşı','Mein Kollege hilft mir oft.'],['verdienen','kazanmak','Er verdient gut.'],['der Vertrag','sözleşme','Ich habe den Vertrag unterschrieben.']]},
- {t:'Sağlık & Vücut',lvl:'A2',w:[['der Kopf','baş','Mein Kopf tut weh.'],['die Hand','el','Gib mir deine Hand.'],['das Auge','göz','Mein linkes Auge ist rot.'],['der Arzt','doktor','Ich gehe morgen zum Arzt.'],['krank','hasta','Ich bin seit gestern krank.'],['gesund','sağlıklı','Obst ist gesund.'],['der Rücken','sırt','Mein Rücken tut weh.'],['das Herz','kalp','Mein Herz schlägt schnell.'],['die Schmerzen','ağrılar','Ich habe starke Schmerzen.'],['sich fühlen','hissetmek','Ich fühle mich heute besser.']]},
- {t:'Seyahat & Ulaşım',lvl:'A2',w:[['die Reise','yolculuk','Die Reise war sehr lang.'],['der Zug','tren','Der Zug kommt spät.'],['das Flugzeug','uçak','Das Flugzeug landet um sechs.'],['der Bahnhof','tren garı','Wo ist der Bahnhof?'],['das Auto','araba','Das Auto ist neu.'],['die Fahrkarte','bilet','Ich habe eine Fahrkarte gekauft.'],['der Koffer','bavul','Mein Koffer ist zu schwer.'],['abfahren','hareket etmek','Der Bus fährt um acht ab.'],['ankommen','varmak','Wir kommen um zehn an.'],['der Flughafen','havalimanı','Der Flughafen ist weit.']]},
- {t:'Duygular & Kişilik',lvl:'A2',w:[['glücklich','mutlu','Ich bin heute sehr glücklich.'],['traurig','üzgün','Warum bist du traurig?'],['müde','yorgun','Ich bin immer müde.'],['wütend','öfkeli','Er ist wütend auf mich.'],['ruhig','sakin','Bleib bitte ruhig.'],['freundlich','cana yakın','Die Verkäuferin war sehr freundlich.'],['nervös','gergin','Vor der Prüfung bin ich nervös.'],['stolz','gururlu','Ich bin stolz auf dich.'],['die Angst','korku','Ich habe Angst vor Hunden.'],['sich freuen','sevinmek','Ich freue mich auf das Wochenende.']]},
- {t:'Okul & Öğrenme',lvl:'A2',w:[['lernen','öğrenmek','Ich lerne seit einem Jahr Deutsch.'],['die Schule','okul','Die Schule ist neu.'],['das Buch','kitap','Das Buch ist interessant.'],['die Frage','soru','Ich habe eine Frage.'],['die Antwort','cevap','Deine Antwort war richtig.'],['verstehen','anlamak','Ich verstehe das nicht.'],['üben','alıştırma yapmak','Du musst jeden Tag üben.'],['der Fehler','hata','Das war mein Fehler.'],['die Prüfung','sınav','Die Prüfung war schwer.'],['erklären','açıklamak','Können Sie das erklären?']]},
- {t:'Doğa & Hava',lvl:'A1',w:[['das Wetter','hava durumu','Wie ist das Wetter heute?'],['die Sonne','güneş','Die Sonne scheint.'],['der Regen','yağmur','Der Regen hört nicht auf.'],['der Schnee','kar','Der Schnee ist geschmolzen.'],['der Wind','rüzgâr','Der Wind ist heute stark.'],['kalt','soğuk','Heute ist es sehr kalt.'],['warm','sıcak','Das Wasser ist warm.'],['der Baum','ağaç','Der Baum ist sehr alt.'],['das Meer','deniz','Das Meer ist ruhig.'],['der Himmel','gökyüzü','Der Himmel ist blau.']]},
- {t:'Günlük Fiiller',lvl:'A1',w:[['gehen','gitmek','Ich gehe nach Hause.'],['kommen','gelmek','Er kommt morgen.'],['essen','yemek','Wir essen zusammen.'],['trinken','içmek','Ich trinke Kaffee.'],['schlafen','uyumak','Das Kind schläft jetzt.'],['lesen','okumak','Ich lese die Zeitung.'],['schreiben','yazmak','Sie schreibt einen Brief.'],['sprechen','konuşmak','Wir sprechen Deutsch.'],['sehen','görmek','Ich sehe dich morgen.'],['machen','yapmak','Was machst du heute?']]},
- {t:'Sık Sıfatlar',lvl:'A2',w:[['groß','büyük','Das Haus ist sehr groß.'],['klein','küçük','Mein Zimmer ist klein.'],['neu','yeni','Mein Handy ist neu.'],['alt','eski, yaşlı','Das Auto ist ziemlich alt.'],['schnell','hızlı','Der Zug ist sehr schnell.'],['langsam','yavaş','Bitte sprich langsam.'],['wichtig','önemli','Das ist sehr wichtig.'],['schwer','zor, ağır','Die Aufgabe ist schwer.'],['einfach','kolay, basit','Die Frage war einfach.'],['schön','güzel','Das Wetter ist heute schön.']]}
-];
+ {t:"Ev & Eşya",lvl:"A1",w:[
+   ["das Haus", "ev", "Das Haus ist sehr groß.", "A1"],
+   ["die Wohnung", "daire", "Meine Wohnung hat drei Zimmer.", "A1"],
+   ["das Zimmer", "oda", "Das Zimmer ist hell.", "A1"],
+   ["die Küche", "mutfak", "Die Küche ist klein aber schön.", "A1"],
+   ["das Bett", "yatak", "Das Bett ist sehr bequem.", "A1"],
+   ["der Tisch", "masa", "Der Tisch steht am Fenster.", "A1"],
+   ["der Stuhl", "sandalye", "Der Stuhl ist aus Holz.", "A1"],
+   ["die Tür", "kapı", "Bitte mach die Tür zu.", "A1"],
+   ["das Fenster", "pencere", "Das Fenster ist offen.", "A1"],
+   ["der Schlüssel", "anahtar", "Ich suche meinen Schlüssel.", "A1"]]},
+ {t:"Yemek & İçecek",lvl:"A1",w:[
+   ["das Brot", "ekmek", "Das Brot ist frisch.", "A1"],
+   ["der Apfel", "elma", "Der Apfel ist rot.", "A1"],
+   ["die Milch", "süt", "Die Milch ist kalt.", "A1"],
+   ["der Kaffee", "kahve", "Ich trinke Kaffee ohne Zucker.", "A1"],
+   ["das Wasser", "su", "Ich trinke viel Wasser.", "A1"],
+   ["das Fleisch", "et", "Das Fleisch ist noch nicht fertig.", "A1"],
+   ["der Käse", "peynir", "Der Käse kommt aus der Türkei.", "A1"],
+   ["das Gemüse", "sebze", "Ich esse jeden Tag Gemüse.", "A1"],
+   ["das Frühstück", "kahvaltı", "Das Frühstück ist um neun.", "A1"],
+   ["der Zucker", "şeker", "Ich nehme keinen Zucker.", "A1"]]},
+ {t:"Aile & İnsanlar",lvl:"A1",w:[
+   ["die Familie", "aile", "Meine Familie ist groß.", "A1"],
+   ["die Mutter", "anne", "Meine Mutter kocht sehr gut.", "A1"],
+   ["der Vater", "baba", "Mein Vater arbeitet in Istanbul.", "A1"],
+   ["die Schwester", "kız kardeş", "Meine Schwester studiert Medizin.", "A1"],
+   ["der Bruder", "erkek kardeş", "Mein Bruder ist jünger als ich.", "A1"],
+   ["das Kind", "çocuk", "Das Kind spielt im Garten.", "A1"],
+   ["die Frau", "kadın", "Die Frau liest ein Buch.", "A1"],
+   ["der Mann", "adam", "Der Mann wartet draußen.", "A1"],
+   ["der Freund", "arkadaş", "Mein Freund kommt heute.", "A1"],
+   ["die Eltern", "anne baba", "Meine Eltern wohnen in Izmir.", "A1"]]},
+ {t:"Zaman & Takvim",lvl:"A1",w:[
+   ["die Zeit", "zaman", "Ich habe keine Zeit.", "A1"],
+   ["der Tag", "gün", "Der Tag war sehr lang.", "A1"],
+   ["die Woche", "hafta", "Nächste Woche fahre ich weg.", "A1"],
+   ["der Monat", "ay", "Der Monat ist fast vorbei.", "A1"],
+   ["das Jahr", "yıl", "Das Jahr geht schnell vorbei.", "A1"],
+   ["heute", "bugün", "Heute ist Montag.", "A1"],
+   ["morgen", "yarın", "Morgen habe ich frei.", "A1"],
+   ["gestern", "dün", "Gestern war ich krank.", "A1"],
+   ["die Stunde", "saat (süre)", "Ich warte seit einer Stunde.", "A1"],
+   ["immer", "her zaman", "Er kommt immer zu spät.", "A1"]]},
+ {t:"Şehir & Yol",lvl:"A1",w:[
+   ["die Stadt", "şehir", "Die Stadt ist sehr laut.", "A1"],
+   ["die Straße", "sokak", "Die Straße ist lang.", "A1"],
+   ["der Platz", "meydan", "Der Platz ist voll mit Menschen.", "A1"],
+   ["links", "sol", "Gehen Sie nach links.", "A1"],
+   ["rechts", "sağ", "Die Bank ist rechts.", "A1"],
+   ["geradeaus", "dümdüz", "Gehen Sie immer geradeaus.", "A1"],
+   ["die Brücke", "köprü", "Die Brücke ist neu.", "A1"],
+   ["die Ecke", "köşe", "Das Café ist an der Ecke.", "A1"],
+   ["weit", "uzak", "Ist es weit von hier?", "A1"],
+   ["die Haltestelle", "durak", "Die Haltestelle ist dort drüben.", "A1"]]},
+ {t:"Alışveriş & Para",lvl:"A2",w:[
+   ["das Geld", "para", "Ich habe kein Geld dabei.", "A2"],
+   ["kaufen", "satın almak", "Ich kaufe Brot und Milch.", "A2"],
+   ["bezahlen", "ödemek", "Ich möchte bitte bezahlen.", "A2"],
+   ["teuer", "pahalı", "Das Auto ist zu teuer.", "A2"],
+   ["billig", "ucuz", "Die Jacke war sehr billig.", "A2"],
+   ["die Rechnung", "hesap, fatura", "Die Rechnung, bitte!", "A2"],
+   ["der Preis", "fiyat", "Der Preis ist zu hoch.", "A2"],
+   ["das Geschäft", "dükkân", "Das Geschäft macht um acht zu.", "A2"],
+   ["die Kasse", "kasa", "Bitte zahlen Sie an der Kasse.", "A2"],
+   ["kosten", "tutmak (fiyat)", "Was kostet das?", "A2"]]},
+ {t:"İş & Meslek",lvl:"A2",w:[
+   ["die Arbeit", "iş", "Meine Arbeit beginnt um acht.", "A2"],
+   ["arbeiten", "çalışmak", "Sie arbeitet sehr viel.", "A2"],
+   ["der Beruf", "meslek", "Was sind Sie von Beruf?", "A2"],
+   ["das Büro", "ofis", "Das Büro ist im dritten Stock.", "A2"],
+   ["der Chef", "patron", "Mein Chef ist heute nicht da.", "A2"],
+   ["die Besprechung", "toplantı", "Die Besprechung dauert eine Stunde.", "A2"],
+   ["die Bewerbung", "başvuru", "Ich schreibe eine Bewerbung.", "A2"],
+   ["der Kollege", "iş arkadaşı", "Mein Kollege hilft mir oft.", "A2"],
+   ["verdienen", "kazanmak", "Er verdient gut.", "A2"],
+   ["der Vertrag", "sözleşme", "Ich habe den Vertrag unterschrieben.", "A2"]]},
+ {t:"Sağlık & Vücut",lvl:"A2",w:[
+   ["der Kopf", "baş", "Mein Kopf tut weh.", "A2"],
+   ["die Hand", "el", "Gib mir deine Hand.", "A2"],
+   ["das Auge", "göz", "Mein linkes Auge ist rot.", "A2"],
+   ["der Arzt", "doktor", "Ich gehe morgen zum Arzt.", "A2"],
+   ["krank", "hasta", "Ich bin seit gestern krank.", "A2"],
+   ["gesund", "sağlıklı", "Obst ist gesund.", "A2"],
+   ["der Rücken", "sırt", "Mein Rücken tut weh.", "A2"],
+   ["das Herz", "kalp", "Mein Herz schlägt schnell.", "A2"],
+   ["die Schmerzen", "ağrılar", "Ich habe starke Schmerzen.", "A2"],
+   ["sich fühlen", "hissetmek", "Ich fühle mich heute besser.", "A2"]]},
+ {t:"Seyahat & Ulaşım",lvl:"A2",w:[
+   ["die Reise", "yolculuk", "Die Reise war sehr lang.", "A2"],
+   ["der Zug", "tren", "Der Zug kommt spät.", "A2"],
+   ["das Flugzeug", "uçak", "Das Flugzeug landet um sechs.", "A2"],
+   ["der Bahnhof", "tren garı", "Wo ist der Bahnhof?", "A2"],
+   ["das Auto", "araba", "Das Auto ist neu.", "A2"],
+   ["die Fahrkarte", "bilet", "Ich habe eine Fahrkarte gekauft.", "A2"],
+   ["der Koffer", "bavul", "Mein Koffer ist zu schwer.", "A2"],
+   ["abfahren", "hareket etmek", "Der Bus fährt um acht ab.", "A2"],
+   ["ankommen", "varmak", "Wir kommen um zehn an.", "A2"],
+   ["der Flughafen", "havalimanı", "Der Flughafen ist weit.", "A2"]]},
+ {t:"Duygular & Kişilik",lvl:"A2",w:[
+   ["glücklich", "mutlu", "Ich bin heute sehr glücklich.", "A2"],
+   ["traurig", "üzgün", "Warum bist du traurig?", "A2"],
+   ["müde", "yorgun", "Ich bin immer müde.", "A2"],
+   ["wütend", "öfkeli", "Er ist wütend auf mich.", "A2"],
+   ["ruhig", "sakin", "Bleib bitte ruhig.", "A2"],
+   ["freundlich", "cana yakın", "Die Verkäuferin war sehr freundlich.", "A2"],
+   ["nervös", "gergin", "Vor der Prüfung bin ich nervös.", "A2"],
+   ["stolz", "gururlu", "Ich bin stolz auf dich.", "A2"],
+   ["die Angst", "korku", "Ich habe Angst vor Hunden.", "A2"],
+   ["sich freuen", "sevinmek", "Ich freue mich auf das Wochenende.", "A2"]]},
+ {t:"Okul & Öğrenme",lvl:"A2",w:[
+   ["lernen", "öğrenmek", "Ich lerne seit einem Jahr Deutsch.", "A2"],
+   ["die Schule", "okul", "Die Schule ist neu.", "A2"],
+   ["das Buch", "kitap", "Das Buch ist interessant.", "A2"],
+   ["die Frage", "soru", "Ich habe eine Frage.", "A2"],
+   ["die Antwort", "cevap", "Deine Antwort war richtig.", "A2"],
+   ["verstehen", "anlamak", "Ich verstehe das nicht.", "A2"],
+   ["üben", "alıştırma yapmak", "Du musst jeden Tag üben.", "A2"],
+   ["der Fehler", "hata", "Das war mein Fehler.", "A2"],
+   ["die Prüfung", "sınav", "Die Prüfung war schwer.", "A2"],
+   ["erklären", "açıklamak", "Können Sie das erklären?", "A2"]]},
+ {t:"Doğa & Hava",lvl:"A1",w:[
+   ["das Wetter", "hava durumu", "Wie ist das Wetter heute?", "A1"],
+   ["die Sonne", "güneş", "Die Sonne scheint.", "A1"],
+   ["der Regen", "yağmur", "Der Regen hört nicht auf.", "A1"],
+   ["der Schnee", "kar", "Der Schnee ist geschmolzen.", "A1"],
+   ["der Wind", "rüzgâr", "Der Wind ist heute stark.", "A1"],
+   ["kalt", "soğuk", "Heute ist es sehr kalt.", "A1"],
+   ["warm", "sıcak", "Das Wasser ist warm.", "A1"],
+   ["der Baum", "ağaç", "Der Baum ist sehr alt.", "A1"],
+   ["das Meer", "deniz", "Das Meer ist ruhig.", "A1"],
+   ["der Himmel", "gökyüzü", "Der Himmel ist blau.", "A1"]]},
+ {t:"Günlük Fiiller",lvl:"A1",w:[
+   ["gehen", "gitmek", "Ich gehe nach Hause.", "A1"],
+   ["kommen", "gelmek", "Er kommt morgen.", "A1"],
+   ["essen", "yemek", "Wir essen zusammen.", "A1"],
+   ["trinken", "içmek", "Ich trinke Kaffee.", "A1"],
+   ["schlafen", "uyumak", "Das Kind schläft jetzt.", "A1"],
+   ["lesen", "okumak", "Ich lese die Zeitung.", "A1"],
+   ["schreiben", "yazmak", "Sie schreibt einen Brief.", "A1"],
+   ["sprechen", "konuşmak", "Wir sprechen Deutsch.", "A1"],
+   ["sehen", "görmek", "Ich sehe dich morgen.", "A1"],
+   ["machen", "yapmak", "Was machst du heute?", "A1"]]},
+ {t:"Sık Sıfatlar",lvl:"A2",w:[
+   ["groß", "büyük", "Das Haus ist sehr groß.", "A2"],
+   ["klein", "küçük", "Mein Zimmer ist klein.", "A2"],
+   ["neu", "yeni", "Mein Handy ist neu.", "A2"],
+   ["alt", "eski, yaşlı", "Das Auto ist ziemlich alt.", "A2"],
+   ["schnell", "hızlı", "Der Zug ist sehr schnell.", "A2"],
+   ["langsam", "yavaş", "Bitte sprich langsam.", "A2"],
+   ["wichtig", "önemli", "Das ist sehr wichtig.", "A2"],
+   ["schwer", "zor, ağır", "Die Aufgabe ist schwer.", "A2"],
+   ["einfach", "kolay, basit", "Die Frage war einfach.", "A2"],
+   ["schön", "güzel", "Das Wetter ist heute schön.", "A2"]]},
+ {t:"Fiil + Edat (I)",lvl:"B1",w:[
+   ["warten auf + A", "beklemek", "Ich warte seit zwei Stunden auf den Bus.", "B1"],
+   ["sich freuen auf + A", "(gelecek bir şeye) sevinmek", "Ich freue mich auf den Urlaub.", "B1"],
+   ["sich freuen über + A", "(olmuş bir şeye) sevinmek", "Sie freut sich über das Geschenk.", "B1"],
+   ["denken an + A", "aklında olmak", "Ich denke oft an meine Familie.", "B1"],
+   ["sich interessieren für + A", "ilgi duymak", "Er interessiert sich für Politik.", "B1"],
+   ["bestehen aus + D", "-den oluşmak", "Das Team besteht aus fünf Personen.", "B1"],
+   ["bestehen auf + D", "ısrar etmek", "Sie besteht auf ihrer Meinung.", "B2"],
+   ["abhängen von + D", "-e bağlı olmak", "Das hängt vom Wetter ab.", "B1"],
+   ["sich kümmern um + A", "ilgilenmek, bakmak", "Ich kümmere mich um die Kinder.", "B1"],
+   ["teilnehmen an + D", "katılmak", "Er nimmt an der Sitzung teil.", "B1"],
+   ["sich gewöhnen an + A", "alışmak", "Ich habe mich an das Klima gewöhnt.", "B1"],
+   ["leiden unter + D", "-den muzdarip olmak", "Viele leiden unter dem Lärm.", "B2"]]},
+ {t:"Fiil + Edat (II)",lvl:"B2",w:[
+   ["sich bewerben um + A", "başvurmak", "Ich bewerbe mich um die Stelle.", "B1"],
+   ["sich verlassen auf + A", "güvenmek", "Auf ihn kann man sich verlassen.", "B2"],
+   ["verzichten auf + A", "vazgeçmek", "Ich verzichte auf den Nachtisch.", "B2"],
+   ["hinweisen auf + A", "dikkat çekmek", "Der Bericht weist auf ein Problem hin.", "B2"],
+   ["beruhen auf + D", "-e dayanmak", "Die These beruht auf alten Daten.", "C1"],
+   ["sich beziehen auf + A", "atıfta bulunmak", "Ich beziehe mich auf Ihre E-Mail.", "B2"],
+   ["zweifeln an + D", "şüphe etmek", "Niemand zweifelt an seinem Können.", "B2"],
+   ["sich einigen auf + A", "uzlaşmak", "Sie einigten sich auf einen Kompromiss.", "B2"],
+   ["profitieren von + D", "yararlanmak", "Kleine Firmen profitieren davon.", "B2"],
+   ["gelten als + N", "sayılmak", "Er gilt als bester Kandidat.", "B2"],
+   ["scheitern an + D", "-de başarısız olmak", "Der Plan scheiterte am Geld.", "B2"],
+   ["sich auseinandersetzen mit + D", "derinlemesine ele almak", "Wir müssen uns mit dem Thema auseinandersetzen.", "C1"]]},
+ {t:"Bağlaçlar & Bağlayıcılar",lvl:"B1",w:[
+   ["obwohl", "-e rağmen (yan cümle)", "Obwohl es regnete, gingen wir spazieren.", "B1"],
+   ["trotzdem", "yine de (ana cümle)", "Es regnete. Trotzdem gingen wir spazieren.", "B1"],
+   ["deshalb", "bu yüzden", "Ich war krank, deshalb blieb ich zu Hause.", "A2"],
+   ["falls", "-se, şayet", "Falls du Zeit hast, ruf mich an.", "B1"],
+   ["sobald", "-er etmez", "Sobald ich ankomme, melde ich mich.", "B1"],
+   ["während", "-iken / oysa", "Während ich koche, deckst du den Tisch.", "B1"],
+   ["seitdem", "-den beri", "Seitdem er hier wohnt, ist es lauter.", "B1"],
+   ["dennoch", "buna rağmen", "Der Preis stieg; dennoch kauften viele.", "B2"],
+   ["folglich", "dolayısıyla", "Die Kosten stiegen, folglich sank der Gewinn.", "B2"],
+   ["zumal", "hele ki, üstelik", "Wir sollten früh los, zumal es schneit.", "C1"],
+   ["indem", "-erek (yöntem)", "Man spart Geld, indem man weniger heizt.", "B2"],
+   ["anstatt zu", "-ecek yerde", "Anstatt zu lernen, spielte er.", "B2"]]},
+ {t:"İsim + Fiil Kalıpları",lvl:"B2",w:[
+   ["eine Entscheidung treffen", "karar vermek", "Wir müssen bald eine Entscheidung treffen.", "B1"],
+   ["eine Rolle spielen", "rol oynamak", "Geld spielt hier keine Rolle.", "B1"],
+   ["Rücksicht nehmen auf + A", "-i gözetmek", "Nimm bitte Rücksicht auf die Nachbarn.", "B2"],
+   ["in Frage kommen", "söz konusu olmak", "Diese Lösung kommt nicht in Frage.", "B2"],
+   ["zur Verfügung stehen", "hizmete hazır olmak", "Ich stehe Ihnen gern zur Verfügung.", "B2"],
+   ["in Kauf nehmen", "göze almak", "Wir nehmen Verzögerungen in Kauf.", "B2"],
+   ["Anspruch erheben auf + A", "hak iddia etmek", "Er erhebt Anspruch auf das Erbe.", "C1"],
+   ["Bezug nehmen auf + A", "atıfta bulunmak", "Ich nehme Bezug auf Ihr Schreiben.", "C1"],
+   ["eine Frage aufwerfen", "soru doğurmak", "Das wirft eine wichtige Frage auf.", "B2"],
+   ["Kritik üben an + D", "eleştirmek", "Die Presse übt Kritik an dem Gesetz.", "B2"],
+   ["zum Ausdruck bringen", "dile getirmek", "Er brachte seine Sorge zum Ausdruck.", "C1"],
+   ["in Betracht ziehen", "göz önünde bulundurmak", "Wir ziehen alle Optionen in Betracht.", "B2"]]},
+ {t:"İş & Yazışma Almancası",lvl:"B2",w:[
+   ["die Frist", "süre, son tarih", "Die Frist läuft am Freitag ab.", "B1"],
+   ["der Termin", "randevu, tarih", "Der Termin wurde verschoben.", "A2"],
+   ["die Anfrage", "talep, sorgu", "Vielen Dank für Ihre Anfrage.", "B1"],
+   ["das Angebot", "teklif", "Wir senden Ihnen ein Angebot zu.", "B1"],
+   ["die Kündigung", "fesih, istifa", "Er hat seine Kündigung eingereicht.", "B2"],
+   ["der Umsatz", "ciro", "Der Umsatz ist um 8 Prozent gestiegen.", "B2"],
+   ["die Zuständigkeit", "yetki alanı", "Das fällt nicht in meine Zuständigkeit.", "B2"],
+   ["die Vereinbarung", "anlaşma", "Wir haben eine Vereinbarung getroffen.", "B2"],
+   ["der Vorschlag", "öneri", "Ihr Vorschlag klingt vernünftig.", "B1"],
+   ["die Rückmeldung", "geri bildirim", "Ich warte noch auf Ihre Rückmeldung.", "B1"],
+   ["die Voraussetzung", "önkoşul", "Gute Deutschkenntnisse sind Voraussetzung.", "B2"],
+   ["beauftragen", "görevlendirmek", "Wir haben eine Agentur beauftragt.", "B2"]]},
+ {t:"Ekonomi & Piyasa",lvl:"B2",w:[
+   ["die Inflation", "enflasyon", "Die Inflation ist wieder gestiegen.", "B1"],
+   ["der Zinssatz", "faiz oranı", "Die Bank senkte den Zinssatz.", "B2"],
+   ["die Nachfrage", "talep", "Die Nachfrage nach Wohnungen ist hoch.", "B1"],
+   ["das Angebot", "arz", "Angebot und Nachfrage bestimmen den Preis.", "B1"],
+   ["die Aktie", "hisse senedi", "Die Aktie verlor drei Prozent.", "B1"],
+   ["die Steuer", "vergi", "Die Steuern wurden erhöht.", "A2"],
+   ["die Schulden", "borçlar", "Das Land hat hohe Schulden.", "B1"],
+   ["der Haushalt", "bütçe", "Der Haushalt wurde gekürzt.", "B2"],
+   ["das Wachstum", "büyüme", "Das Wachstum hat sich verlangsamt.", "B1"],
+   ["die Rezession", "durgunluk", "Die Wirtschaft rutschte in eine Rezession.", "B2"],
+   ["die Währung", "para birimi", "Die Währung verlor an Wert.", "B1"],
+   ["schwanken", "dalgalanmak", "Die Kurse schwanken stark.", "B2"]]},
+ {t:"Politika & Toplum",lvl:"B2",w:[
+   ["die Regierung", "hükümet", "Die Regierung plant eine Reform.", "A2"],
+   ["die Wahl", "seçim", "Die Wahl findet im Herbst statt.", "A2"],
+   ["das Gesetz", "kanun", "Das Gesetz tritt im Januar in Kraft.", "B1"],
+   ["die Mehrheit", "çoğunluk", "Die Mehrheit stimmte dafür.", "B1"],
+   ["die Verhandlung", "müzakere", "Die Verhandlungen wurden abgebrochen.", "B2"],
+   ["die Maßnahme", "önlem", "Die Maßnahmen greifen langsam.", "B2"],
+   ["die Auswirkung", "etki, sonuç", "Die Auswirkungen sind noch unklar.", "B2"],
+   ["der Rückgang", "gerileme", "Ein deutlicher Rückgang der Zahlen.", "B2"],
+   ["die Verantwortung", "sorumluluk", "Er übernahm die Verantwortung.", "B1"],
+   ["die Öffentlichkeit", "kamuoyu", "Der Bericht ging an die Öffentlichkeit.", "B2"],
+   ["umstritten", "tartışmalı", "Die Entscheidung bleibt umstritten.", "B2"],
+   ["durchsetzen", "kabul ettirmek", "Sie konnte ihren Vorschlag durchsetzen.", "B2"]]},
+ {t:"Bilim & Teknoloji",lvl:"B2",w:[
+   ["die Forschung", "araştırma", "Die Forschung dauert noch Jahre.", "B1"],
+   ["die Entwicklung", "gelişme", "Die Entwicklung geht schnell voran.", "B1"],
+   ["der Versuch", "deney, deneme", "Der Versuch wurde wiederholt.", "B1"],
+   ["das Ergebnis", "sonuç", "Das Ergebnis war überraschend.", "A2"],
+   ["die Datenbank", "veri tabanı", "Die Datenbank ist neu strukturiert.", "B1"],
+   ["die Schnittstelle", "arayüz", "Die Schnittstelle ist gut dokumentiert.", "B2"],
+   ["die Anwendung", "uygulama", "Die Anwendung läuft auch offline.", "B1"],
+   ["speichern", "kaydetmek", "Speichere die Datei bitte lokal.", "A2"],
+   ["die Sicherheitslücke", "güvenlik açığı", "Die Sicherheitslücke wurde geschlossen.", "B2"],
+   ["künstliche Intelligenz", "yapay zekâ", "Künstliche Intelligenz verändert viele Berufe.", "B1"],
+   ["nachvollziehbar", "izlenebilir, anlaşılır", "Die Entscheidung ist nachvollziehbar.", "B2"],
+   ["zuverlässig", "güvenilir", "Das Verfahren ist sehr zuverlässig.", "B1"]]},
+ {t:"Sık Karıştırılanlar",lvl:"B1",w:[
+   ["legen / liegen", "koymak / yatmak", "Ich lege das Buch auf den Tisch. Es liegt dort.", "B1"],
+   ["setzen / sitzen", "oturtmak / oturuyor olmak", "Setz dich! — Ich sitze schon.", "B1"],
+   ["stellen / stehen", "dikmek / duruyor olmak", "Stell die Flasche hin. Sie steht dort.", "B1"],
+   ["kennen / wissen", "tanımak / bilmek", "Ich kenne ihn, aber ich weiß nichts über ihn.", "A2"],
+   ["bringen / holen", "götürmek / alıp getirmek", "Bring mir das Buch. Hol es aus dem Regal.", "B1"],
+   ["fragen nach / bitten um", "sormak / rica etmek", "Er fragte nach dem Weg und bat um Hilfe.", "B1"],
+   ["als / wenn", "-diğinde (bir kez / tekrarlı)", "Als ich klein war... Wenn ich Zeit habe...", "B1"],
+   ["seit / vor", "-den beri / -önce", "Seit zwei Jahren hier. Vor zwei Jahren gekommen.", "A2"],
+   ["nach / zu", "-e (yer/kişi)", "Ich fahre nach Berlin, aber zu meinem Freund.", "A2"],
+   ["schon / erst", "artık / henüz sadece", "Schon 20 Uhr? — Erst 20 Uhr.", "B1"],
+   ["eigentlich / überhaupt", "aslında / hiç", "Eigentlich ja, aber überhaupt kein Problem.", "B2"],
+   ["scheinbar / anscheinend", "güya / görünüşe göre", "Anscheinend hat er verschlafen.", "C1"]]},
+ {t:"Deyimler & Kalıplar",lvl:"B2",w:[
+   ["Das kommt nicht in Frage.", "Söz konusu bile olamaz.", "Nein, das kommt nicht in Frage.", "B2"],
+   ["Es geht um ...", "Mesele ...", "Es geht um viel Geld.", "B1"],
+   ["Das liegt daran, dass ...", "Bunun sebebi ...", "Das liegt daran, dass wir zu spät waren.", "B1"],
+   ["mit anderen Worten", "başka bir deyişle", "Mit anderen Worten: Es reicht nicht.", "B2"],
+   ["im Großen und Ganzen", "genel olarak", "Im Großen und Ganzen lief es gut.", "B2"],
+   ["auf Anhieb", "ilk denemede", "Es hat auf Anhieb geklappt.", "B2"],
+   ["nach und nach", "yavaş yavaş", "Nach und nach wurde es besser.", "B1"],
+   ["in der Regel", "kural olarak", "In der Regel dauert es zwei Tage.", "B1"],
+   ["unter Umständen", "duruma göre", "Unter Umständen verschieben wir das.", "B2"],
+   ["von vornherein", "en baştan", "Das war von vornherein klar.", "C1"],
+   ["im Grunde genommen", "esasında", "Im Grunde genommen hast du recht.", "B2"],
+   ["den Überblick behalten", "genel görüşü kaybetmemek", "Bei so vielen Daten behält man kaum den Überblick.", "B2"]]},
+ {t:"Soyut Kavramlar",lvl:"B2",w:[
+   ["die Möglichkeit", "olanak", "Es gibt noch eine andere Möglichkeit.", "A2"],
+   ["die Bedeutung", "anlam, önem", "Die Bedeutung des Wortes ist unklar.", "B1"],
+   ["der Zusammenhang", "bağlam, ilişki", "In diesem Zusammenhang ist das wichtig.", "B2"],
+   ["die Erfahrung", "deneyim", "Ich habe damit gute Erfahrungen gemacht.", "B1"],
+   ["der Eindruck", "izlenim", "Ich habe den Eindruck, dass er lügt.", "B1"],
+   ["die Absicht", "niyet", "Das war nicht meine Absicht.", "B1"],
+   ["die Ursache", "neden", "Die Ursache ist noch unbekannt.", "B1"],
+   ["die Folge", "sonuç", "Die Folgen sind schwer abzuschätzen.", "B1"],
+   ["der Widerspruch", "çelişki", "Da liegt ein Widerspruch vor.", "B2"],
+   ["die Wahrnehmung", "algı", "Wahrnehmung und Wirklichkeit sind zweierlei.", "C1"],
+   ["die Rahmenbedingungen", "çerçeve koşullar", "Die Rahmenbedingungen haben sich geändert.", "C1"],
+   ["die Selbstverständlichkeit", "doğal karşılanan şey", "Das ist keine Selbstverständlichkeit.", "C1"]]},
+ {t:"Fiiller: İleri",lvl:"B2",w:[
+   ["erwähnen", "bahsetmek", "Er hat das gar nicht erwähnt.", "B1"],
+   ["vermuten", "tahmin etmek", "Ich vermute, sie kommt später.", "B1"],
+   ["behaupten", "iddia etmek", "Er behauptet, nichts gewusst zu haben.", "B2"],
+   ["berücksichtigen", "dikkate almak", "Wir müssen die Kosten berücksichtigen.", "B2"],
+   ["ermöglichen", "olanak sağlamak", "Das Stipendium ermöglicht das Studium.", "B2"],
+   ["verursachen", "yol açmak", "Der Sturm verursachte große Schäden.", "B2"],
+   ["erfordern", "gerektirmek", "Die Aufgabe erfordert viel Geduld.", "B2"],
+   ["bewältigen", "üstesinden gelmek", "Er hat die Krise gut bewältigt.", "B2"],
+   ["hervorheben", "vurgulamak", "Sie hob die Bedeutung des Themas hervor.", "B2"],
+   ["einschätzen", "değerlendirmek", "Die Lage ist schwer einzuschätzen.", "B2"],
+   ["voraussetzen", "varsaymak, şart koşmak", "Das setzt Erfahrung voraus.", "B2"],
+   ["nachweisen", "kanıtlamak", "Die Studie konnte das nicht nachweisen.", "C1"]]},
+ {t:"Sıfat + Edat",lvl:"B2",w:[
+   ["stolz auf + A", "-le gurur duyan", "Ich bin stolz auf dich.", "A2"],
+   ["zufrieden mit + D", "-den memnun", "Sie ist mit dem Ergebnis zufrieden.", "B1"],
+   ["abhängig von + D", "-e bağımlı", "Wir sind vom Import abhängig.", "B1"],
+   ["verantwortlich für + A", "-den sorumlu", "Wer ist dafür verantwortlich?", "B1"],
+   ["typisch für + A", "-e özgü", "Das ist typisch für ihn.", "B1"],
+   ["reich an + D", "-ce zengin", "Das Land ist reich an Rohstoffen.", "B2"],
+   ["gespannt auf + A", "merakla bekleyen", "Ich bin gespannt auf das Ergebnis.", "B2"],
+   ["überzeugt von + D", "-e ikna olmuş", "Ich bin von dem Plan überzeugt.", "B2"],
+   ["zuständig für + A", "-den yetkili", "Wer ist für diesen Bereich zuständig?", "B2"],
+   ["angewiesen auf + A", "-e muhtaç", "Er ist auf Hilfe angewiesen.", "C1"],
+   ["empfindlich gegenüber + D", "-e karşı hassas", "Die Pflanze ist empfindlich gegenüber Kälte.", "C1"],
+   ["fähig zu + D", "-e muktedir", "Er ist zu großen Leistungen fähig.", "B2"]]},
+ {t:"Sağlık & Spor (ileri)",lvl:"B1",w:[
+   ["die Ausdauer", "dayanıklılık", "Beim Laufen verbessert sich die Ausdauer.", "B1"],
+   ["die Kraft", "güç", "Er trainiert vor allem Kraft.", "A2"],
+   ["die Verletzung", "sakatlık", "Die Verletzung heilte langsam.", "B1"],
+   ["sich aufwärmen", "ısınmak", "Wärm dich vor dem Training auf.", "B1"],
+   ["die Erholung", "toparlanma", "Erholung ist genauso wichtig wie Training.", "B1"],
+   ["der Muskelkater", "kas ağrısı", "Nach dem Training hatte ich Muskelkater.", "B1"],
+   ["die Ernährung", "beslenme", "Eine ausgewogene Ernährung ist wichtig.", "B1"],
+   ["zunehmen", "kilo almak", "Im Winter nehme ich leicht zu.", "B1"],
+   ["abnehmen", "kilo vermek", "Sie hat fünf Kilo abgenommen.", "B1"],
+   ["der Schlafmangel", "uyku eksikliği", "Schlafmangel senkt die Leistung.", "B2"],
+   ["die Belastung", "yüklenme, stres", "Die Belastung war zu hoch.", "B2"],
+   ["regelmäßig", "düzenli", "Ich trainiere regelmäßig.", "A2"]]},
+ {t:"Zaman & Sıklık (ileri)",lvl:"B1",w:[
+   ["gelegentlich", "ara sıra", "Wir treffen uns gelegentlich.", "B2"],
+   ["ständig", "sürekli", "Er beschwert sich ständig.", "B1"],
+   ["vorübergehend", "geçici olarak", "Das Büro ist vorübergehend geschlossen.", "B2"],
+   ["allmählich", "yavaş yavaş", "Allmählich verstehe ich das System.", "B2"],
+   ["inzwischen", "bu arada, artık", "Inzwischen wohnt er in Wien.", "B1"],
+   ["künftig", "bundan böyle", "Künftig gilt eine neue Regel.", "B2"],
+   ["bisher", "şimdiye kadar", "Bisher gab es keine Probleme.", "B1"],
+   ["demnächst", "yakında", "Demnächst eröffnet ein neues Café.", "B2"],
+   ["jeweils", "her seferinde", "Die Kurse dauern jeweils 90 Minuten.", "B2"],
+   ["nachträglich", "sonradan", "Die Rechnung wurde nachträglich korrigiert.", "C1"],
+   ["vorläufig", "şimdilik", "Vorläufig bleibt alles beim Alten.", "B2"],
+   ["unverzüglich", "gecikmeksizin", "Bitte melden Sie sich unverzüglich.", "C1"]]},
+ {t:"Hukuk & Bürokrasi",lvl:"B2",w:[
+   ["der Antrag", "başvuru dilekçesi", "Ich habe einen Antrag gestellt.", "B1"],
+   ["die Genehmigung", "izin, onay", "Die Genehmigung liegt noch nicht vor.", "B2"],
+   ["die Bescheinigung", "belge", "Ich brauche eine Bescheinigung vom Arzt.", "B1"],
+   ["die Behörde", "resmî kurum", "Die Behörde antwortet erst in vier Wochen.", "B2"],
+   ["gültig", "geçerli", "Der Ausweis ist noch zwei Jahre gültig.", "B1"],
+   ["die Unterlagen", "evraklar", "Bitte reichen Sie alle Unterlagen ein.", "B1"],
+   ["einreichen", "teslim etmek", "Ich habe die Unterlagen eingereicht.", "B2"],
+   ["verpflichtet", "yükümlü", "Sie sind zur Auskunft verpflichtet.", "B2"],
+   ["der Nachweis", "kanıt belgesi", "Ein Nachweis über das Einkommen ist nötig.", "B2"],
+   ["die Widerspruchsfrist", "itiraz süresi", "Die Widerspruchsfrist beträgt einen Monat.", "C1"],
+   ["in Kraft treten", "yürürlüğe girmek", "Das Gesetz tritt am 1. Januar in Kraft.", "B2"],
+   ["haften für + A", "sorumlu olmak (hukuki)", "Der Vermieter haftet für den Schaden.", "C1"]]},
+ {t:"Konuşma Nüansları",lvl:"B2",w:[
+   ["doch", "ki, ama, (olumsuza olumlu cevap)", "Komm doch mit! — Hast du keine Zeit? Doch!", "B1"],
+   ["mal", "bir (yumuşatıcı)", "Schau mal!", "A2"],
+   ["eben", "tam da, işte", "Das ist eben das Problem.", "B2"],
+   ["halt", "işte (kabullenme)", "Das ist halt so.", "B2"],
+   ["ja", "ya, hani (vurgu)", "Das ist ja unglaublich!", "B1"],
+   ["wohl", "herhalde", "Er hat wohl verschlafen.", "B2"],
+   ["etwa", "yoksa, yaklaşık", "Bist du etwa müde?", "B2"],
+   ["ruhig", "çekinme (izin)", "Frag ruhig nach.", "B2"],
+   ["zwar ... aber", "gerçi ... ama", "Es ist zwar teuer, aber gut.", "B1"],
+   ["immerhin", "hiç yoktan", "Immerhin hat er sich entschuldigt.", "B2"],
+   ["ohnehin", "zaten", "Ich wollte ohnehin gehen.", "B2"],
+   ["allerdings", "ne var ki", "Das stimmt, allerdings mit einer Ausnahme.", "B2"]]},
+ {t:"Şehir & Konut (ileri)",lvl:"B1",w:[
+   ["die Miete", "kira", "Die Miete steigt jedes Jahr.", "A2"],
+   ["der Vermieter", "ev sahibi", "Der Vermieter hat gekündigt.", "B1"],
+   ["die Nebenkosten", "aidat, ek giderler", "Die Nebenkosten sind nicht enthalten.", "B1"],
+   ["die Umgebung", "çevre", "Die Umgebung ist sehr ruhig.", "B1"],
+   ["der Stadtteil", "semt", "Der Stadtteil hat sich stark verändert.", "B1"],
+   ["die Verkehrsanbindung", "ulaşım bağlantısı", "Die Verkehrsanbindung ist ausgezeichnet.", "B2"],
+   ["renovieren", "yenilemek", "Die Wohnung wurde komplett renoviert.", "B1"],
+   ["der Umzug", "taşınma", "Der Umzug war anstrengend.", "B1"],
+   ["die Kaution", "depozito", "Die Kaution beträgt drei Monatsmieten.", "B2"],
+   ["möbliert", "eşyalı", "Die Wohnung ist möbliert.", "B1"],
+   ["die Wohngemeinschaft (WG)", "ev arkadaşlığı", "Er wohnt in einer WG.", "B1"],
+   ["der Leerstand", "boş durma (konut)", "Der Leerstand in der Innenstadt wächst.", "C1"]]},
+ {t:"Görüş Bildirme",lvl:"B1",w:[
+   ["meiner Meinung nach", "bence", "Meiner Meinung nach ist das falsch.", "B1"],
+   ["ich bin der Ansicht, dass", "kanaatindeyim ki", "Ich bin der Ansicht, dass wir warten sollten.", "B2"],
+   ["es scheint mir, dass", "bana öyle geliyor ki", "Es scheint mir, dass er recht hat.", "B2"],
+   ["einerseits ... andererseits", "bir yandan ... öte yandan", "Einerseits teuer, andererseits sehr gut.", "B1"],
+   ["im Gegensatz zu + D", "-in aksine", "Im Gegensatz zu gestern ist es heute ruhig.", "B2"],
+   ["das spricht dafür, dass", "bu şunu gösteriyor", "Das spricht dafür, dass die Methode wirkt.", "B2"],
+   ["ich bezweifle, dass", "şüpheliyim ki", "Ich bezweifle, dass das reicht.", "B2"],
+   ["es lässt sich sagen, dass", "denebilir ki", "Es lässt sich sagen, dass sich der Aufwand lohnt.", "C1"],
+   ["nicht zuletzt", "özellikle de", "Nicht zuletzt wegen der Kosten.", "C1"],
+   ["im Hinblick auf + A", "-e ilişkin olarak", "Im Hinblick auf die Frist ist das knapp.", "C1"],
+   ["davon ausgehen, dass", "varsaymak", "Ich gehe davon aus, dass alles klappt.", "B2"],
+   ["es kommt darauf an", "duruma bağlı", "Es kommt darauf an, wie viel Zeit wir haben.", "B1"]]},
+ {t:"Duygu & Kişilik (ileri)",lvl:"B2",w:[
+   ["gelassen", "sakin, istifini bozmayan", "Er blieb gelassen.", "B2"],
+   ["ehrgeizig", "hırslı", "Sie ist sehr ehrgeizig.", "B1"],
+   ["gewissenhaft", "titiz, vicdanlı", "Sie arbeitet sehr gewissenhaft.", "B2"],
+   ["neugierig", "meraklı", "Ich bin neugierig auf das Ergebnis.", "B1"],
+   ["großzügig", "cömert", "Ein großzügiges Angebot.", "B1"],
+   ["hartnäckig", "inatçı, azimli", "Er ist hartnäckig geblieben.", "B2"],
+   ["rücksichtsvoll", "düşünceli", "Sei bitte rücksichtsvoll.", "B2"],
+   ["überfordert", "altından kalkamayan", "Ich fühle mich überfordert.", "B2"],
+   ["verunsichert", "tedirgin", "Die Nachricht hat viele verunsichert.", "B2"],
+   ["bescheiden", "alçakgönüllü", "Trotz Erfolg blieb er bescheiden.", "B2"],
+   ["nachsichtig", "hoşgörülü", "Sei nicht zu nachsichtig mit dir.", "C1"],
+   ["verbissen", "takıntılı derecede kararlı", "Er arbeitet verbissen an dem Projekt.", "C1"]]}];
 const ALL_DE=DE_THEMES.reduce((a,t)=>a.concat(t.w),[]);
 /* Gramer: HAFTALIK rotasyon. Günlük değiştirmek öğretmiyordu; aynı üç konuyu
    7 gün görmek kalıcı hâle getiriyor. [başlık, açıklama, örnek] */
 const GRAM=[
- ['Artikel: der / die / das','Almancada her ismin bir cinsiyeti var ve tahmin edilemez. Kelimeyi asla yalnız değil, hep artikeliyle ezberle.','das Haus · die Tür · der Tisch'],
- ['Fiil ikinci sırada','Düz cümlede çekimli fiil her zaman ikinci öğedir. Başa zaman koyarsan özne fiilin arkasına geçer.','Heute gehe ich nach Hause.'],
- ['Akkusativ: der → den','Belirtili nesne Akkusativ olur. Sadece eril artikel değişir; die/das aynı kalır.','Ich sehe den Mann.'],
- ['Çoğul biçimleri düzensiz','Çoğulun tek kuralı yok, kelimeyle birlikte öğrenilir. Çoğulda artikel hep die olur.','das Kind → die Kinder · der Apfel → die Äpfel'],
- ['sein fiili','En sık kullanılan fiil, tamamen düzensiz. Ezbere bilmen şart.','ich bin · du bist · er ist · wir sind · ihr seid · sie sind'],
- ['haben fiili','Sahiplik ve Perfekt için gerekli. du ve er biçimleri düzensiz.','ich habe · du hast · er hat · wir haben'],
- ['Modal fiiller','Modal fiil çekimlenir, asıl fiil mastar hâlinde cümlenin SONUNA gider.','Ich will Deutsch lernen.'],
- ['nicht mi, kein mi?','nicht fiili ve sıfatı olumsuzlar; kein ise isimleri (artikelli olanları).','Ich habe kein Geld. · Ich komme nicht.'],
- ['Ayrılabilen fiiller','Ön ek düz cümlede fiilden ayrılıp sona atılır. Sözlükte aufstehen yazar ama cümlede bölünür.','Ich stehe um sieben auf.'],
- ['Dativ isteyen edatlar','Bu edatlardan sonra isim her zaman Dativ olur. Liste hâlinde ezberle.','mit, nach, aus, bei, von, zu, seit → Ich fahre mit dem Bus.'],
- ['Perfekt (konuşma geçmişi)','Günlük konuşmada geçmiş zaman Perfekt ile kurulur: haben/sein + Partizip II (sonda).','Ich habe gegessen. · Ich bin gegangen.'],
- ['Cümle içi sıra: TeKaMoLo','Birden fazla tümleç varsa sıra: Zaman – Sebep – Tarz – Yer.','Ich fahre morgen mit dem Auto nach Ankara.'],
- ['Akkusativ isteyen edatlar','Bu beş edattan sonra her zaman Akkusativ gelir.','durch, für, gegen, ohne, um → Das ist für dich.'],
- ['Soru kelimeleri','W-sorularında soru kelimesi başa, fiil hemen arkasına gelir.','wer, was, wo, wann, warum, wie → Wann kommst du?'],
- ['Evet/hayır sorusu','Soru kelimesi yoksa fiil cümlenin EN BAŞINA geçer.','Kommst du morgen? · Hast du Zeit?'],
- ['İyelik: mein, dein, sein','İyelik kelimeleri kein gibi çekimlenir; sahip olunan şeyin cinsiyetine uyar.','mein Vater · meine Mutter · mein Kind'],
- ['Dativ: dolaylı nesne','Bir şey birine yapılıyorsa o kişi Dativ olur. der→dem, die→der, das→dem.','Ich helfe dem Mann. · Ich gebe der Frau das Buch.'],
- ['werden: gelecek zaman','werden + mastar gelecek kurar. Ama Almanlar gelecek için çoğu zaman şimdiki zamanı kullanır.','Ich werde morgen arbeiten. / Ich arbeite morgen.'],
- ['Präteritum: war, hatte','Yazı dilinde geçmiş Präteritum ile kurulur; konuşmada ise sein ve haben için bu biçim tercih edilir.','Ich war krank. · Ich hatte keine Zeit.'],
- ['weil: fiil sona gider','weil yan cümle kurar ve çekimli fiili cümlenin sonuna iter.','Ich bleibe zu Hause, weil ich krank bin.'],
- ['dass: fiil sona gider','weil gibi davranır; düşünce ve söyleme fiillerinden sonra gelir.','Ich denke, dass er recht hat.'],
- ['wenn: koşul ve tekrar','wenn hem eğer hem her defasında anlamı taşır; fiil yine sona gider.','Wenn ich Zeit habe, komme ich.'],
- ['Karşılaştırma','Sıfata -er eklenir, karşılaştırmada als kullanılır. Kısa sıfatlar çoğu zaman Umlaut alır.','groß → größer → am größten · Er ist größer als ich.'],
- ['İki şey eşitse: so ... wie','Eşitlik karşılaştırmasında als değil wie kullanılır.','Er ist so alt wie ich.'],
- ['es gibt + Akkusativ','Var anlamı için es gibt kalıbı kullanılır ve ardından Akkusativ gelir.','Es gibt einen Park in der Nähe.'],
- ['Dönüşlü fiiller','Bazı fiiller zorunlu olarak sich ister; özneye göre mich/dich/sich diye çekilir.','Ich freue mich. · Er wäscht sich.'],
- ['zu + Infinitiv','İkinci fiil mastarı çoğu yapıda zu ile ve sonda gelir.','Ich versuche, früh aufzustehen.'],
- ['Wechselpräpositionen','in, an, auf, unter, über gibi edatlar iki yönlü: hareket varsa Akkusativ, konum varsa Dativ.','Ich gehe in die Stadt. (Akk) · Ich bin in der Stadt. (Dat)'],
- ['man: belirsiz özne','Genel ifadelerde man kullanılır, er gibi çekimlenir. Türkçedeki -ilir karşılığı.','Hier darf man nicht rauchen.'],
- ['Emir kipi','du için fiil kökü kullanılır (ek yok), Sie için fiil + Sie.','Geh nach Hause! · Gehen Sie bitte!']
-];
+ ["Artikel: der / die / das", "Almancada her ismin bir cinsiyeti var ve tahmin edilemez. Kelimeyi asla yalnız değil, hep artikeliyle ezberle.", "das Haus · die Tür · der Tisch", "A1"],
+ ["Fiil ikinci sırada", "Düz cümlede çekimli fiil her zaman ikinci öğedir. Başa zaman koyarsan özne fiilin arkasına geçer.", "Heute gehe ich nach Hause.", "A1"],
+ ["Akkusativ: der → den", "Belirtili nesne Akkusativ olur. Sadece eril artikel değişir; die/das aynı kalır.", "Ich sehe den Mann.", "A1"],
+ ["Çoğul biçimleri düzensiz", "Çoğulun tek kuralı yok, kelimeyle birlikte öğrenilir. Çoğulda artikel hep die olur.", "das Kind → die Kinder · der Apfel → die Äpfel", "A1"],
+ ["sein fiili", "En sık kullanılan fiil, tamamen düzensiz. Ezbere bilmen şart.", "ich bin · du bist · er ist · wir sind · ihr seid · sie sind", "A1"],
+ ["haben fiili", "Sahiplik ve Perfekt için gerekli. du ve er biçimleri düzensiz.", "ich habe · du hast · er hat · wir haben", "A1"],
+ ["Modal fiiller", "Modal fiil çekimlenir, asıl fiil mastar hâlinde cümlenin SONUNA gider.", "Ich will Deutsch lernen.", "A2"],
+ ["nicht mi, kein mi?", "nicht fiili ve sıfatı olumsuzlar; kein ise isimleri (artikelli olanları).", "Ich habe kein Geld. · Ich komme nicht.", "A2"],
+ ["Ayrılabilen fiiller", "Ön ek düz cümlede fiilden ayrılıp sona atılır. Sözlükte aufstehen yazar ama cümlede bölünür.", "Ich stehe um sieben auf.", "A2"],
+ ["Dativ isteyen edatlar", "Bu edatlardan sonra isim her zaman Dativ olur. Liste hâlinde ezberle.", "mit, nach, aus, bei, von, zu, seit → Ich fahre mit dem Bus.", "A2"],
+ ["Perfekt (konuşma geçmişi)", "Günlük konuşmada geçmiş zaman Perfekt ile kurulur: haben/sein + Partizip II (sonda).", "Ich habe gegessen. · Ich bin gegangen.", "A2"],
+ ["Cümle içi sıra: TeKaMoLo", "Birden fazla tümleç varsa sıra: Zaman – Sebep – Tarz – Yer.", "Ich fahre morgen mit dem Auto nach Ankara.", "A2"],
+ ["Akkusativ isteyen edatlar", "Bu beş edattan sonra her zaman Akkusativ gelir.", "durch, für, gegen, ohne, um → Das ist für dich.", "A2"],
+ ["Soru kelimeleri", "W-sorularında soru kelimesi başa, fiil hemen arkasına gelir.", "wer, was, wo, wann, warum, wie → Wann kommst du?", "A2"],
+ ["Evet/hayır sorusu", "Soru kelimesi yoksa fiil cümlenin EN BAŞINA geçer.", "Kommst du morgen? · Hast du Zeit?", "A2"],
+ ["İyelik: mein, dein, sein", "İyelik kelimeleri kein gibi çekimlenir; sahip olunan şeyin cinsiyetine uyar.", "mein Vater · meine Mutter · mein Kind", "A2"],
+ ["Dativ: dolaylı nesne", "Bir şey birine yapılıyorsa o kişi Dativ olur. der→dem, die→der, das→dem.", "Ich helfe dem Mann. · Ich gebe der Frau das Buch.", "A2"],
+ ["werden: gelecek zaman", "werden + mastar gelecek kurar. Ama Almanlar gelecek için çoğu zaman şimdiki zamanı kullanır.", "Ich werde morgen arbeiten. / Ich arbeite morgen.", "A2"],
+ ["Präteritum: war, hatte", "Yazı dilinde geçmiş Präteritum ile kurulur; konuşmada ise sein ve haben için bu biçim tercih edilir.", "Ich war krank. · Ich hatte keine Zeit.", "A2"],
+ ["weil: fiil sona gider", "weil yan cümle kurar ve çekimli fiili cümlenin sonuna iter.", "Ich bleibe zu Hause, weil ich krank bin.", "A2"],
+ ["dass: fiil sona gider", "weil gibi davranır; düşünce ve söyleme fiillerinden sonra gelir.", "Ich denke, dass er recht hat.", "A2"],
+ ["wenn: koşul ve tekrar", "wenn hem eğer hem her defasında anlamı taşır; fiil yine sona gider.", "Wenn ich Zeit habe, komme ich.", "A2"],
+ ["Karşılaştırma", "Sıfata -er eklenir, karşılaştırmada als kullanılır. Kısa sıfatlar çoğu zaman Umlaut alır.", "groß → größer → am größten · Er ist größer als ich.", "A2"],
+ ["İki şey eşitse: so ... wie", "Eşitlik karşılaştırmasında als değil wie kullanılır.", "Er ist so alt wie ich.", "A2"],
+ ["es gibt + Akkusativ", "Var anlamı için es gibt kalıbı kullanılır ve ardından Akkusativ gelir.", "Es gibt einen Park in der Nähe.", "A2"],
+ ["Dönüşlü fiiller", "Bazı fiiller zorunlu olarak sich ister; özneye göre mich/dich/sich diye çekilir.", "Ich freue mich. · Er wäscht sich.", "A2"],
+ ["zu + Infinitiv", "İkinci fiil mastarı çoğu yapıda zu ile ve sonda gelir.", "Ich versuche, früh aufzustehen.", "A2"],
+ ["Wechselpräpositionen", "in, an, auf, unter, über gibi edatlar iki yönlü: hareket varsa Akkusativ, konum varsa Dativ.", "Ich gehe in die Stadt. (Akk) · Ich bin in der Stadt. (Dat)", "A2"],
+ ["man: belirsiz özne", "Genel ifadelerde man kullanılır, er gibi çekimlenir. Türkçedeki -ilir karşılığı.", "Hier darf man nicht rauchen.", "A2"],
+ ["Emir kipi", "du için fiil kökü kullanılır (ek yok), Sie için fiil + Sie.", "Geh nach Hause! · Gehen Sie bitte!", "A2"],
+ ["Sıfat çekimi: der/die/das sonrası", "Belirtili artikelden sonra sıfat eki kolaydır: yalın hâlde -e, diğer çoğu yerde -en.", "der große Mann · den großen Mann · die großen Männer", "A2"],
+ ["Komparativ & Superlativ", "Karşılaştırmada 'als', eşitlikte 'so ... wie'. Bazı sıfatlar Umlaut alır.", "größer als · so groß wie · am größten · alt → älter", "A2"],
+ ["Sıfat çekimi: ein/eine sonrası", "Belirsiz artikelden sonra sıfat, artikelin taşımadığı bilgiyi taşır: ein guter Mann, ein gutes Kind.", "ein guter Tag · eine gute Idee · ein gutes Buch", "B1"],
+ ["Dativ mi Akkusativ mi: Wechselpräpositionen", "in, an, auf, über, unter, vor, hinter, neben, zwischen: hareket varsa Akkusativ (wohin?), duruş varsa Dativ (wo?).", "Ich gehe in die Küche. / Ich bin in der Küche.", "B1"],
+ ["Präteritum: yazı dilinin geçmişi", "Konuşmada Perfekt, yazıda ve anlatıda Präteritum. sein/haben/modal fiillerde konuşmada da Präteritum kullanılır.", "Er ging nach Hause. · Ich hatte keine Zeit.", "B1"],
+ ["Nebensatz: fiil sona gider", "weil, dass, wenn, ob, obwohl gibi bağlaçlardan sonra çekimli fiil cümlenin SONUNA gider.", "Ich bleibe zu Hause, weil ich krank bin.", "B1"],
+ ["weil / denn / da farkı", "Üçü de 'çünkü' ama dizilim farklı: weil fiili sona atar, denn atmaz, da genelde cümle başında olur.", "weil ich müde bin · denn ich bin müde · Da es regnet, ...", "B1"],
+ ["Relativsatz: ilgi cümlesi", "İlgi zamiri, ismin cinsiyetini ve sayısını alır; hâli ise YAN cümledeki görevinden gelir.", "Der Mann, der dort steht. · Das Buch, das ich lese.", "B1"],
+ ["Genitiv", "Sahiplik için -s (eril/nötr) veya der (dişil/çoğul). Konuşmada yerini sık sık 'von + Dativ' alır.", "das Auto meines Vaters · die Farbe der Tür", "B1"],
+ ["Konjunktiv II: olsaydı / -ebilir", "Gerçek olmayan durum ve kibar rica: würde + mastar, ya da hätte/wäre/könnte.", "Ich würde gern kommen. · Könnten Sie mir helfen?", "B1"],
+ ["Passiv: werden + Partizip II", "Eylemi yapan değil, eylemin kendisi öne çıkar. Resmî dilde ve haberlerde çok yaygın.", "Das Haus wird gebaut. · Der Brief wurde geschrieben.", "B1"],
+ ["Reflexive fiiller", "Bazı fiiller zorunlu olarak dönüşlüdür ve Türkçeye dönüşlü çevrilmez. Zamir Akkusativ ya da Dativ olur.", "sich freuen · sich vorstellen · Ich wasche mir die Hände.", "B1"],
+ ["Infinitiv mit zu", "Bazı fiil ve sıfatlardan sonra mastar 'zu' ile gelir; ayrılabilen fiilde zu araya girer.", "Ich habe vor, früh aufzustehen.", "B1"],
+ ["um ... zu / damit", "Amaç bildirir. Özne aynıysa 'um ... zu', farklıysa 'damit'.", "Ich lerne, um die Prüfung zu bestehen. · ..., damit du es verstehst.", "B1"],
+ ["n-Deklination", "Bir grup eril isim Nominativ dışında -n/-en alır: der Student → den Studenten.", "Ich sehe den Studenten. · mit dem Kollegen", "B2"],
+ ["Konjunktiv I: dolaylı anlatım", "Gazete ve resmî metinlerde başkasının sözünü aktarırken kullanılır.", "Er sagte, er sei krank. · Sie habe nichts gewusst.", "B2"],
+ ["Passiv çeşitleri", "Zustandspassiv (sein + Partizip II) durumu, Vorgangspassiv (werden) süreci anlatır.", "Die Tür wird geschlossen. / Die Tür ist geschlossen.", "B2"],
+ ["Partizip I ve II sıfat olarak", "Partizip I (-end) etken, Partizip II edilgen anlam taşır ve sıfat gibi çekimlenir.", "das lachende Kind · das geschriebene Wort", "B2"],
+ ["Modalverben: öznel kullanım", "Modal fiiller olasılık ve söylenti de bildirir: 'müssen' kesin tahmin, 'sollen' rivayet.", "Er muss krank sein. · Sie soll reich sein.", "B2"],
+ ["lassen", "Üç anlam: bırakmak, yaptırmak, ve 'sich lassen' ile edilgen olasılık.", "Ich lasse mein Auto reparieren. · Das lässt sich machen.", "B2"],
+ ["Nominalisierung", "Fiil ve sıfatlar isimleştirilir; resmî dilin belkemiği. Fiil isimleşince nötr olur.", "das Lesen · beim Lesen · die Möglichkeit", "B2"],
+ ["Konnektoren: iki dizilim", "deshalb/trotzdem/dennoch ana cümle bağlar (fiil ikinci); weil/obwohl yan cümle kurar (fiil sonda).", "Es regnet, trotzdem gehe ich. / ..., obwohl es regnet.", "B2"],
+ ["je ... desto", "Orantılı artış: je + karşılaştırma + fiil sonda, desto + karşılaştırma + fiil ikinci.", "Je mehr ich übe, desto besser werde ich.", "B2"],
+ ["Futur II ve tahmin", "Gelecekte tamamlanmış eylem; günlük dilde çoğunlukla geçmişe dair tahmin için.", "Er wird es vergessen haben.", "C1"],
+ ["Partizipialkonstruktion", "Yan cümle sıfat öbeğine sıkıştırılır; gazete ve akademik metinde sık.", "die gestern veröffentlichte Studie", "C1"],
+ ["Funktionsverbgefüge", "İsim + soluk fiil kalıpları resmî dilin tonunu belirler; tek fiille eşanlamlıdırlar.", "in Kraft treten (= gelten) · zur Verfügung stellen (= geben)", "C1"],
+ ["Konjunktiv II geçmiş", "Olmamış geçmiş: hätte/wäre + Partizip II. Pişmanlık ve varsayım.", "Ich hätte früher gehen sollen.", "C1"],
+ ["Wortstellung: TeKaMoLo ve vurgu", "Temporal-Kausal-Modal-Lokal varsayılan sıra; vurgulanan öğe cümle başına alınabilir.", "Gestern bin ich wegen des Regens langsam nach Hause gefahren.", "C1"]];
 let deExtra=0,deWrong=[],deQuiz=null;
 function findDE(w){for(const x of ALL_DE){if(x[0]===w)return x;}return null;}
 /* Günün seti: o günün teması + varsa tekrar havuzundan en fazla 2 kelime */
+const DE_AGIRLIK={A1:1,A2:2,B1:3,B2:4,C1:5};
+const deSeviye=w=>(w&&w[3])||'A2';
+/* Temaları sırayla gezmek iki türlü de kötüydü: dizi sırası A1 temalarını
+   arka arkaya getiriyor, seviyeye göre sıralamak da her döngü başında
+   üst üste beş kolay gün yaratıyordu.
+
+   Havuz ikiye ayrıldı ve üç günün BİRİ temel, ikisi ileri: temel unutulmasın
+   ama gün çoğunlukla B1 üstünde geçsin. İki liste kendi içinde ayrı ayrı
+   ilerliyor, böylece hiçbiri diğerini beklemiyor. */
+const DE_TEMEL=DE_THEMES.filter(t=>t.lvl==='A1'||t.lvl==='A2');
+const DE_ILERI=DE_THEMES.filter(t=>t.lvl!=='A1'&&t.lvl!=='A2');
+function deTemaSec(g){
+  if(!DE_ILERI.length)return DE_TEMEL[g%DE_TEMEL.length];
+  if(!DE_TEMEL.length)return DE_ILERI[g%DE_ILERI.length];
+  return (g%3===0) ? DE_TEMEL[Math.floor(g/3)%DE_TEMEL.length]
+                   : DE_ILERI[(g-Math.floor(g/3)-1)%DE_ILERI.length];
+}
 function pickDE(){
-  const th=DE_THEMES[(doy()+deExtra)%DE_THEMES.length];
-  const w=th.w,base=(deExtra*5)%w.length,out=[];
+  const th=deTemaSec(doy()+deExtra);
+  const w=th.w,base=(doy()*2+deExtra*5)%w.length,out=[];
   for(let i=0;i<5;i++)out.push(w[(base+i)%w.length]);
-  deWrong.slice(0,2).forEach((k,i)=>{const r=findDE(k);
-    if(r&&!out.some(x=>x[0]===r[0]))out[4-i]=r;});
+  /* Tekrar havuzu: zor olan önce geri gelsin. */
+  const zor=deWrong.map(findDE).filter(Boolean)
+    .sort((a,b)=>(DE_AGIRLIK[deSeviye(b)]||2)-(DE_AGIRLIK[deSeviye(a)]||2));
+  zor.slice(0,2).forEach((r,i)=>{if(!out.some(x=>x[0]===r[0]))out[4-i]=r;});
   return{theme:th,words:out};
 }
-function pickGram(){const b=(weekNum()*3)%GRAM.length,o=[];for(let i=0;i<3;i++)o.push(GRAM[(b+i)%GRAM.length]);return o;}
+/* Gramer de aynı dengeye tabi: dizi seviyeye göre sıralı olduğu için düz
+   rotasyon aylarca A2 gösteriyordu. Haftada bir temel + iki ileri konu. */
+const GRAM_TEMEL=GRAM.filter(g=>g[3]==='A1'||g[3]==='A2');
+const GRAM_ILERI=GRAM.filter(g=>g[3]!=='A1'&&g[3]!=='A2');
+function pickGram(){
+  const h=weekNum(),o=[];
+  if(GRAM_TEMEL.length)o.push(GRAM_TEMEL[h%GRAM_TEMEL.length]);
+  for(let i=0;i<2&&GRAM_ILERI.length;i++)o.push(GRAM_ILERI[(h*2+i)%GRAM_ILERI.length]);
+  return o;
+}
 function weekNum(){const d=new Date(),s=new Date(d.getFullYear(),0,1);return Math.ceil((((d-s)/86400000)+s.getDay()+1)/7);}
 /* Quiz şıkları: gün + soru sırasına göre deterministik üretilir, yoksa her
    yeniden çizimde şıklar yer değiştirir ve cevap kaybolur. */
@@ -2535,11 +3001,19 @@ function quizOpts(words,idx){
 function renderGerman(){
   const set=pickDE(),el=document.getElementById('germanList');el.innerHTML='';
   const k=document.getElementById('deKicker');
-  if(k)k.textContent='Öğrenme · '+set.theme.lvl+' · '+set.theme.t;
+  /* Başlıkta setin GERÇEK seviye aralığı yazsın — tema etiketi tek başına
+     yanıltıyordu, aynı temada A2 de C1 de olabiliyor. */
+  if(k){const sv=[...new Set(set.words.map(deSeviye))].sort();
+    k.textContent='Öğrenme · '+(sv.length>1?sv[0]+'-'+sv[sv.length-1]:sv[0])+' · '+set.theme.t;}
   set.words.forEach(w=>{const d=document.createElement('div');d.className='de';
-    d.innerHTML='<div class="de-word">'+esc(w[0])+' <span class="de-tr">— '+esc(w[1])+'</span></div><div class="de-ex">'+esc(w[2])+'</div>';el.appendChild(d);});
+    d.innerHTML='<div class="de-word">'+esc(w[0])+' <span class="de-tr">— '+esc(w[1])+'</span>'+
+      '<span class="de-lvl l'+esc(deSeviye(w))+'">'+esc(deSeviye(w))+'</span></div>'+
+      '<div class="de-ex">'+esc(w[2])+'</div>';el.appendChild(d);});
+  const gr=pickGram();
   document.getElementById('gramList').innerHTML='<div class="gram-head">Gramer · bu hafta</div>'+
-    pickGram().map(g=>'<div class="gram"><span class="gi">§</span><span><b>'+esc(g[0])+'</b><br>'+esc(g[1])+'<br><span class="de-ex">'+esc(g[2])+'</span></span></div>').join('');
+    gr.map(g=>'<div class="gram"><span class="gi">§</span><span><b>'+esc(g[0])+'</b>'+
+      '<span class="de-lvl l'+esc(g[3]||'A2')+'">'+esc(g[3]||'A2')+'</span><br>'+esc(g[1])+
+      '<br><span class="de-ex">'+esc(g[2])+'</span></span></div>').join('');
   renderQuiz();
 }
 async function loadQuiz(){
