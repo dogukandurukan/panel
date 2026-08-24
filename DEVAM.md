@@ -170,15 +170,60 @@ Kullanıcının belirlediği sıra: **yoklama → spor/yemek → borsa → harca
 Yoklama ve spor/yemek bitti. Bu oturumun tamamı `main`'de ve canlıda
 (Pages dağıtımı 24.08 10:01 UTC, başarılı).
 
-### 4.1 Borsa kartı (sırada)
-Sparkline/mum grafikleri, hisseye tıklayınca TradingView ya da saatlik veri,
-dünya piyasaları. `borsa.py` daha fazla veri yazacak, panelde elle çizilen SVG.
-Connector gerekmiyor; yfinance/Stooq anahtarsız.
+### 4.1 Borsa kartı (sırada — ayrı oturumda yapılacak)
 
-### 4.2 Harcama / gelir kategorileri
-Garanti bireysel API vermiyor ama **zaten yapılandırılmış bildirim maili
-gönderiyor** (para transferi, HGS ekstre, kart ödeme tutarları). Yeni bir
-`harcama_feed.py` bunları ayrıştırabilir — mevcut Gmail OAuth'u kullanır.
+**Bugün ne var.** `panel_feed.py`, `borsa.py`'yi kütüphane gibi kullanıp
+`borsa.json` üretiyor. Alanlar:
+
+| Alan | İçerik |
+|---|---|
+| `watch` | BIST satırları: `{code, price, chg, avg1w, avg1m}` |
+| `us` | ABD satırları, aynı biçim (`US_WATCH` panel_feed.py içinde) |
+| `gold` | `{price, chg}` — gram altın, `GC=F` × `USDTRY=X` |
+| `news` | hisse haberleri (süzgeçten geçmiş) |
+| `world` | dünya gündemi |
+| `_teshis` | feed sorun ayıklama alanı; panel okumuyor |
+
+`borsa.py` içinde hazır ama panele hiç taşınmamış olanlar: `rsi()`,
+`metrics()`, `condition_flags()`, `ma_label()`, `pick_dynamic_watchlist()`,
+`screen_tables()`. Gösterge hesabı zaten var; panel yalnızca fiyat ve yüzde
+okuyor.
+
+Evren `config.py`'de: `UNIVERSE` 36 hisse, `DYNAMIC_WATCHLIST=True` olduğu
+için izleme listesi her koşuda otomatik seçiliyor. `HOLDINGS` boş — portföy
+girilmemiş; girilirse portföy tablosu da üretilebilir.
+
+**Yapılacaklar (kullanıcının isteği).** Sparkline/mum grafiği, hisseye
+tıklayınca saatlik veri ya da TradingView bağlantısı, dünya piyasaları.
+Grafik `index.html` içinde elle çizilen SVG olmalı (CDN yok — 3. kural);
+Ağırlık Takibi için yazılan `sparkline()` örnek alınabilir. `borsa.py` fiyat
+serisini `borsa.json`'a yazmalı; şu an yalnızca özet yazıyor.
+
+**Karar bekleyen.** Kaç günlük seri (30/90/365)? Mum mu çizgi mi? Portföy
+girilecek mi, yoksa kart izleme listesi olarak mı kalacak?
+
+### 4.2 Harcama / gelir kategorileri (ayrı oturumda yapılacak)
+
+**Bugün ne var.** Bütçe kartı tamamen elle ve tamamen yerel:
+`d:money:YYYY-MM` altında `{k:'in'|'out', c:kategori, a:tutar, n:not, d:tarih}`
+dizisi. Kategoriler `MCATS` sabitinde (gider 8, gelir 4). Aylar arası gezinme
+ve dışa aktarma var.
+
+**Yapılacak.** Garanti bireysel API vermiyor ama **yapılandırılmış bildirim
+maili gönderiyor** (para transferi, HGS ekstre, kart ödeme tutarları). Yeni bir
+`harcama_feed.py` bunları ayrıştırıp kayıt üretebilir — mevcut Gmail OAuth'unu
+kullanır, ek maliyet yok. Ayrıştırma için `gmail_feed.py`'deki `classify()` /
+`notify_tag()` desenine bakılabilir; oradaki "Otomatik bildirim" kovası zaten
+bu mailleri yakalıyor.
+
+**Dikkat — bu, işe başlamadan verilecek ilk karar.** Harcama verisi kişiseldir
+ve bu repo herkese açık (1. kural). `gmail.json` gibi repoya JSON yazılamaz;
+kayıtlar ya senkronun gizli gist'ine yazılmalı ya da panel maili doğrudan
+okumalı.
+
+**Karar bekleyen.** Garanti mobilde "harcama bildirimi e-postası" ayarı açık
+mı? Kartın hangi seviyede çalışabileceğini bu belirliyor.
+
 
 ### 4.3 Dinamik programın açık uçları
 - **Deload yok.** Üst uç tutmayınca kg sabit kalıyor; üst üste 3 seans
