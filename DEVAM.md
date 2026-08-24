@@ -65,6 +65,35 @@ payda alıyor). `loadMorning` eski numaralı kayıtları bir kez ada çeviriyor.
 Ayrıca: init'te `targetsVer` if bloğunun içine düşmüş fazladan `loadYok()`
 çağrısı temizlendi (asıl çağrı zaten init sonunda).
 
+### Ağırlık Takibi'ne ilerleme modu
+Kaydedilen kg dört yerde duruyordu ama hiçbir yerde toplanmıyordu; kart yalnızca
+bugünü ve geçen haftanın aynı gününü gösteriyordu.
+
+- Kart başlığında **Bugün / İlerleme** düğmeleri.
+- **Haftalık tonaj**: son 8 hafta, elle çizilen SVG çubuk; altında "önceki N
+  haftanın ortalaması". Son kova bu hafta değilse "Bu hafta" denmiyor,
+  kovanın tarihi yazılıyor.
+- **Hareket başına değişim**: ilk kayıttan bugüne kg farkı, yüzde, son 8 seansın
+  sparkline'ı, yürürlükteki reçete. `d:wtlog`'dan türüyor.
+- `d:vol` dünden itibaren yazıldığı için eski günler `d:sess`'ten bir kez geri
+  dolduruluyor (`d:volFill` bayrağı). **`d:wtlog`'dan tonaj hesaplanamaz** —
+  orada tekrar sayısı yok, yalnızca kg.
+- Veri yetmiyorsa sayı uydurulmuyor; kart nedenini yazıyor.
+
+### Kültür listeleri kısa devirden çıktı
+Sorun derinlik değil tekrar aralığıydı: 26 sanatçı = ayda bir aynı sanatçı.
+
+- FACTS 84 → **236**, FILMS 28 → **133**, BOOKS 25 → **110**, ARTISTS 26 → **92**.
+- ARTISTS 4 alandan **5**'e çıktı: `[ad, tür·dönem, öne çıkan albüm, buradan
+  başla, not]`. "Buradan başla" tek parça önerisi; kart artık film ve kitap
+  kadar derin (önceden en sığ olan oydu).
+- Mevcut 17 kitapla çakışma elendi, Türkçe adı yanlış hatırlanan filmler
+  düzeltildi.
+- Yazılan bilgiler geri dönülüp denetlendi, **14 madde düzeltildi**: galaksi-kum
+  tanesi karşılaştırması tersti (doğrusu yıldız sayısı), PDF 1980'lerde çıkmadı,
+  Güneş ışığının yolculuğu yüzeyden değil çekirdekten başlıyor. Yedi iddia da
+  yumuşatıldı (Roma betonu, bakteri-hücre oranı, iki dillilik ve bunama).
+
 ---
 
 ## 2. Kullanıcıda bekleyen işler
@@ -85,6 +114,11 @@ Ayrıca: init'te `targetsVer` if bloğunun içine düşmüş fazladan `loadYok()
 **Gerçek push teslimatı hâlâ test edilmedi** — sandbox'ta push servisine erişim
 yok, secret'lar da eksik. Zincirin son halkası ancak telefonda görülür.
 
+**Canlı sayfa sandbox'tan doğrulanamıyor.** Ajan proxy'si `github.io`'ya CONNECT
+isteğini 403 ile reddediyor; dağıtımın başarısı yalnızca Actions kaydından
+okunabiliyor. Değişikliği görmek için tarayıcıda sert yenileme gerekebilir
+(`sw.js` önbellek tutmuyor ama iOS ana ekran kısayolu tutabiliyor).
+
 **Dinamik program gerçek tarayıcıda doğrulandı** (Playwright + `context.clock`,
 iki temada da): 7 günün hepsi JS hatasız; çift ilerleme tetikleniyor (4×8 @100
 → `d:prog` 105) ve tutmayan seansta (4×6) tetiklenmiyor; sonraki Çarşamba kutu
@@ -101,7 +135,8 @@ istiyor, yani hacim ayarı ilk iki hafta devreye girmeyecek. Kart o sırada
 ## 4. Sıradaki yol haritası
 
 Kullanıcının belirlediği sıra: **yoklama → spor/yemek → borsa → harcama.**
-Yoklama ve spor/yemek bitti.
+Yoklama ve spor/yemek bitti. Bu oturumun tamamı `main`'de ve canlıda
+(Pages dağıtımı 24.08 10:01 UTC, başarılı).
 
 ### 4.1 Borsa kartı (sırada)
 Sparkline/mum grafikleri, hisseye tıklayınca TradingView ya da saatlik veri,
@@ -127,7 +162,8 @@ gönderiyor** (para transferi, HGS ekstre, kart ödeme tutarları). Yeni bir
 - Yoklama `YOK` tablosuna eklenecek/çıkarılacak iş var mı? ("bobo" bilerek
   dışarıda.)
 - İnsan maili taraması yalnızca okunmamışları geziyor.
-- Günün Filmi/Sanatçısı listeleri gömülü; kitap gibi genişletilebilir.
+- Kültür listeleri genişletildi ama hâlâ gömülü; büyürse ayrı bir JSON'a
+  taşımak gerekebilir (index.html şu an ~230 KB).
 
 ---
 
