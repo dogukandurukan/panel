@@ -29,7 +29,12 @@ https://dogukandurukan.github.io/panel/
    kapanacak", "gecikmiş ödemeniz var") kartta alarm üretmez: cevap yazılacak
    bir muhatabı yoktur, yapılacak iş varsa o iş ilgili uygulamada yapılır.
    Bunlar "Otomatik bildirim" bölümünde nötr etiketle durur.
-6. **LinkedIn otomasyonu yok.** Bireysel iş arama API'si yok ve otomatik erişim
+6. **Program kendi verisinden ayarlanır, dışarıdan dayatılmaz.** Yük artışı
+   (çift ilerleme), günlük karbonhidrat/kalori ve sabah rutini; `d:sess`,
+   `d:vol`, `d:yok` ve `d:sleepLog` kayıtlarından türer. Veri yoksa ayar da
+   yoktur — kart o zaman tabanı gösterir ve nedenini yazar. Günlük kayma
+   `d:targets`'a **yazılmaz**; orası kullanıcının tabanı.
+7. **LinkedIn otomasyonu yok.** Bireysel iş arama API'si yok ve otomatik erişim
    Kullanıcı Sözleşmesi'ne aykırı. Panel yalnızca ilana bağlantı verir.
 
 ## Veri akışı
@@ -46,6 +51,12 @@ JSON okur.
 `facts.json` yalnızca "bugün tarihte" verisi taşır (10 gün önden). Günün Bilgisi,
 Günün Filmi/Sanatçısı/Kitabı kartları `index.html` içindeki kürasyonlu listelerden
 beslenir — Vikipedi özeti tanım üretiyor, ilginç bilgi değil.
+
+**Kültür listeleri kısa olmamalı.** Liste uzunluğu = tekrar aralığı: 26 sanatçı,
+sanatçının ayda bir dönmesi demekti. Taban 90 öğe (FACTS 236, FILMS 133,
+BOOKS 110, ARTISTS 92). Yeni öğe eklerken alan sayısı sabit: film ve sanatçı 5,
+kitap 5. Eklenen her madde doğrulanabilir olmalı — emin olunmayan iddia
+yumuşatılır ya da yazılmaz.
 | `jobs.json` | `jobs_feed.py` | `jobs-feed.yml` | her gün 08:00 |
 
 Bir istisna: `push_feed.py` dosya üretmez, telefona web push bildirimi gönderir
@@ -56,6 +67,10 @@ panel onu üretip bir kez gösterir, saklamaz. Bildirimin hangi saatte ne soraca
 `index.html`'deki SCHED + YOK tablolarından panel tarafından üretilip gist'e
 yazılır; program Python tarafına kopyalanmaz.
 
+Panelin kendi ürettiği türev anahtarlar (hepsi senkronla taşınır):
+`d:prog` hareket başına çift ilerleme reçetesi, `d:vol` gün başına tonaj
+(kg × tekrar) — yemek hedefi bunu okuyor.
+
 Ayrıca doğrudan tarayıcıdan, anahtarsız: Google Sheets (gviz/JSONP, salt
 okunur), GitHub Actions API (15 dk), Open-Meteo (30 dk).
 
@@ -65,7 +80,12 @@ okunur), GitHub Actions API (15 dk), Open-Meteo (30 dk).
   üzerine biner. `TARGETS_VERSION` sürüm etiketi desenini kullan.
 - **`gviz` fetch() ile çalışmaz** (CORS). İş Başvuruları JSONP kullanıyor.
 - **Veri biçimi değişince geçiş kodu yaz.** Örnek: `renderJobs` içinde eski
-  `jobsApplied` kayıtlarını `myApps`'e taşıyan bir kerelik geçiş var.
+  `jobsApplied` kayıtlarını `myApps`'e taşıyan bir kerelik geçiş var; `loadMorning`
+  sıra numaralı sabah tiklerini ada çeviriyor.
+- **Güne göre değişen listede tikleri sıra numarasıyla anahtarlama.** Sabah
+  rutini dinamikleşince 3. sıradaki hareket değişti; `d:morning:GG` artık ad ile
+  anahtarlanıyor ve `__n` o günün planlanan hareket sayısını tutuyor (seri oranı
+  bunu payda alıyor).
 - **Yeni pencere/belge üretirken `background` açıkça ver** — kullanıcı koyu
   moddaysa varsayılan tuval siyah oluyor.
 - **HTML temizlerken önce unescape, sonra etiket sil.**
