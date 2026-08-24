@@ -51,6 +51,12 @@ JSON okur.
 `facts.json` yalnızca "bugün tarihte" verisi taşır (10 gün önden). Günün Bilgisi,
 Günün Filmi/Sanatçısı/Kitabı kartları `index.html` içindeki kürasyonlu listelerden
 beslenir — Vikipedi özeti tanım üretiyor, ilginç bilgi değil.
+
+**Kültür listeleri kısa olmamalı.** Liste uzunluğu = tekrar aralığı: 26 sanatçı,
+sanatçının ayda bir dönmesi demekti. Taban 90 öğe (FACTS 236, FILMS 133,
+BOOKS 110, ARTISTS 92). Yeni öğe eklerken alan sayısı sabit: film ve sanatçı 5,
+kitap 5. Eklenen her madde doğrulanabilir olmalı — emin olunmayan iddia
+yumuşatılır ya da yazılmaz.
 | `jobs.json` | `jobs_feed.py` | `jobs-feed.yml` | her gün 08:00 |
 
 Bir istisna: `push_feed.py` dosya üretmez, telefona web push bildirimi gönderir
