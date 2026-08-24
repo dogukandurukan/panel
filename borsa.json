@@ -1,97 +1,86 @@
 {
-  "updated": "2026-08-21 14:24",
+  "updated": "2026-08-24 09:51",
   "watch": [
     {
-      "code": "SASA",
-      "price": "2.31",
-      "chg": "+1.76%",
-      "avg1w": "2.29",
-      "avg1m": "2.45"
+      "code": "GUBRF",
+      "price": "475.75",
+      "chg": "+2.81%",
+      "avg1w": "456.90",
+      "avg1m": "428.67"
     },
     {
       "code": "ALARK",
-      "price": "107.80",
-      "chg": "+0.09%",
-      "avg1w": "107.88",
-      "avg1m": "104.01"
+      "price": "106.30",
+      "chg": "-1.30%",
+      "avg1w": "107.58",
+      "avg1m": "103.94"
     },
     {
       "code": "TOASO",
-      "price": "282.00",
-      "chg": "+4.06%",
-      "avg1w": "271.05",
-      "avg1m": "268.70"
-    },
-    {
-      "code": "ASTOR",
-      "price": "336.00",
-      "chg": "+2.67%",
-      "avg1w": "330.95",
-      "avg1m": "311.39"
+      "price": "281.25",
+      "chg": "+3.78%",
+      "avg1w": "270.90",
+      "avg1m": "268.67"
     },
     {
       "code": "YEOTK",
-      "price": "35.78",
-      "chg": "-0.72%",
-      "avg1w": "37.26",
-      "avg1m": "39.40"
+      "price": "34.84",
+      "chg": "-3.33%",
+      "avg1w": "37.08",
+      "avg1m": "39.35"
     }
   ],
   "us": [
     {
       "code": "AAPL",
-      "price": "311.30",
-      "chg": "-1.75%",
-      "avg1w": "309.94",
-      "avg1m": "315.81"
+      "price": "309.35",
+      "chg": "-0.63%",
+      "avg1w": "310.62",
+      "avg1m": "315.23"
     },
     {
       "code": "MSFT",
-      "price": "481.15",
-      "chg": "-0.65%",
-      "avg1w": "484.57",
-      "avg1m": "463.90"
+      "price": "483.24",
+      "chg": "+0.43%",
+      "avg1w": "482.14",
+      "avg1m": "468.74"
     },
     {
       "code": "NVDA",
-      "price": "216.85",
-      "chg": "-0.33%",
-      "avg1w": "220.86",
-      "avg1m": "212.59"
+      "price": "214.72",
+      "chg": "-0.98%",
+      "avg1w": "218.78",
+      "avg1m": "212.88"
     },
     {
       "code": "AMZN",
-      "price": "260.11",
-      "chg": "-2.16%",
-      "avg1w": "261.87",
-      "avg1m": "258.80"
+      "price": "258.63",
+      "chg": "-0.57%",
+      "avg1w": "261.07",
+      "avg1m": "259.98"
     },
     {
       "code": "TSLA",
-      "price": "345.13",
-      "chg": "-1.71%",
-      "avg1w": "342.94",
-      "avg1m": "325.37"
+      "price": "362.86",
+      "chg": "+5.14%",
+      "avg1w": "347.06",
+      "avg1m": "327.42"
     }
   ],
   "gold": {
-    "price": "7,181.44",
-    "chg": "+3.16%"
+    "price": "7,275.09",
+    "chg": "+1.86%"
   },
   "news": [
-    "⚪ SASA Polyester’e S&P’den ’B-’ notu, görünüm ’Durağan’  (Investing.com Türkiye)",
-    "⚪ Günün öne çıkan gelişmeleri: AKBNK, GSRAY, AEFES, ISCTR, SASA  (getmidas.com)",
-    "⚪ Sasa Polyester, 7,185 milyar TL tahsisli sermaye artırımı kararı aldı  (Investing.com Türkiye)",
-    "🟢 Alarko Holding'den güçlü bilanço: 4,36 milyar TL net kâr  (CNBC-e)",
-    "⚪ KAP *** ALARKO HOLDİNG A.Ş. *** ALARK *** Özel Durum Açıklaması (Genel)  (Yeni Şafak)",
-    "⚪ KAP *** ALARKO HOLDİNG A.Ş. *** ALARK *** Katılım Finansı İlkeleri Bilgi Formu  (GZT)",
-    "🟢 ASTOR Enerji'nin Yatırım Planları Neler? ASTOR CFO'su Olcay Doğan Açıkladı I Piyasa Gündemi | A Para  (A Para)",
-    "🟢 Güçlü Bilanço ve Yatırımlar  (Yatırımlar Dergisi)"
+    "⚪ Alarko Holding için 2Ç26 bilanço sonrası hedef fiyatlar  (Paratic Haber)",
+    "⚪ #ALARKO HOLDING HISSE #ALARK HİSSE NET KAR BEKLENTISI 2024 HEDEF FIYAT 5 FK YA GÖRE Game Informer (9CngJIV22g)  (Mshale)",
+    "⚪ KAP *** VESTEL ELEKTRONİK SANAYİ VE TİCARET A.Ş. *** VESTL *** Pay Dışında Sermaye Piyasası Aracı İşlemlerine İlişkin Bildirim (Faiz  (Yeni Şafak)",
+    "🟢 ASTOR Enerji'nin Yatırım Planları Neler? ASTOR CFO'su Olcay Doğan Açıkladı I Piyasa Gündemi | A Para  (A Para)"
   ],
   "world": [
-    "🌍 Bahçeli'den Netanyahu'nun Türkiye'yi hedef alan sözlerine tepki: 'Ankara Deklarasyonu' ilan etmeliyiz, bütün insanlık için tehditler! - T24  (T24)",
-    "🌍 CHP'nin kalesi düştü: Büyükşehir Belediye Başkanı istifa edip parti değiştirdi | Politika Haberleri - Yeni Şafak  (Yeni Şafak)",
-    "🌍 Çok sayıda ülkeden son dakika İsrail bildirisi: Derhal geri çekin! - Haber 7  (Haber 7)",
-    "🌍 2 taraftar grubuna operasyon: 28 şüpheli yakalandı - CNN Türk  (CNN Türk)"
+    "🌍 FAST işlem limiti yüzde 200 yükseliyor - NTV Haber  (NTV Haber)",
+    "🌍 'Kuytulcular' yapılanmasına yönelik soruşturmada Alparslan Kuytul ve eşi tutuklandı - TRT Haber  (TRT Haber)",
+    "🌍 Netanyahu'ya Türkiye uyarısı: Karşı karşıya gelmekten kaçınmalı - CNN Türk  (CNN Türk)",
+    "🌍 BUGÜN KANDİL Mİ, NE KANDİLİ? | Mevlid Kandili bu gece mi, ne zaman, hangi gün idrak edilecek? 24 Ağustos Pazartesi ne kandili? İşte 2026 Diyanet takvimi ve kandil günleri... - Hürriyet  (Hürriyet)"
   ]
 }
