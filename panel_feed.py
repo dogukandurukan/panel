@@ -120,7 +120,10 @@ def _kucult(metin):
 def _cop_mu(baslik, ekstra=()):
     """Manşet gerçekten haber mi, tıklama yemi mi?"""
     d = _kucult(baslik)
-    if len(d) < 25:                       # tek kelimelik etiket yığınları
+    # Uzunluk eşiği 25 karakterdi ve "SASA'dan SPK başvurusu" gibi meşru
+    # manşetleri eliyordu. Ölçü karakter değil kelime: iki kelimeden kısa
+    # başlık haber değil, etiket yığınıdır.
+    if len(d) < 12 or len(d.split()) < 3:
         return True
     if d.count("#") >= 2:                 # #ALARK #HISSE #HEDEF ...
         return True
@@ -152,10 +155,18 @@ def _rss_basliklar(url, n, ad=""):
               or root.findall(".//{http://www.w3.org/2005/Atom}entry"))
     out, elendi, ilk_ham = [], 0, ""
     for it in ogeler:
-        t = (it.find("title")
-             or it.find("{http://purl.org/rss/1.0/}title")
-             or it.find("{http://www.w3.org/2005/Atom}title"))
-        if t is None or not t.text:
+        # DİKKAT: 'a or b' burada çalışmaz. ElementTree'de çocuğu olmayan bir
+        # Element falsy sayılır, <title> de çocuksuzdur — 'or' onu atlayıp
+        # None'a düşer ve HER kaynak sessizce boş döner. Açıkça None kontrolü.
+        t = None
+        for etiket in ("title",
+                       "{http://purl.org/rss/1.0/}title",
+                       "{http://www.w3.org/2005/Atom}title"):
+            bulunan = it.find(etiket)
+            if bulunan is not None and bulunan.text:
+                t = bulunan
+                break
+        if t is None:
             continue
         baslik = " ".join(t.text.split())
         if not ilk_ham:
