@@ -89,6 +89,11 @@ WORLD_FEEDS = [
 # Tek kaynak listeyi doldurmasın
 KAYNAK_BASI_MAX = 2
 
+# Kaynak başına teşhis. Actions log'unun kuyruğu Python çıktısını kesebiliyor,
+# bu yüzden teşhis borsa.json'a da yazılıyor: hangi kaynak kaç öğe verdi, kaçı
+# elendi, ham başlık neydi. Panel bunu okumuyor; sorun ayıklamak için.
+TESHIS = []
+
 # Manşet gibi görünüp haber taşımayan kalıplar. Hisse akışında da aynı süzgeç
 # çalışıyor: oradaki gürültü büyük ölçüde KAP bildirimi ve etiket yığını.
 COP_KALIP = (
@@ -138,14 +143,14 @@ def _rss_basliklar(url, n, ad=""):
         ham = urllib.request.urlopen(req, timeout=12).read()
         root = ET.fromstring(ham)
     except Exception as e:
-        print(f"  {url} okunamadı: {e}")
+        TESHIS.append(f"{ad or url}: OKUNAMADI {type(e).__name__}: {str(e)[:70]}")
         return []
     # RSS 2.0 (item) ve RDF/RSS 1.0 (rdf:item) birlikte
     # RSS 2.0 (item), RDF/RSS 1.0 (rdf:item) ve Atom (entry) birlikte
     ogeler = (root.findall(".//item")
               or root.findall(".//{http://purl.org/rss/1.0/}item")
               or root.findall(".//{http://www.w3.org/2005/Atom}entry"))
-    out, elendi = [], 0
+    out, elendi, ilk_ham = [], 0, ""
     for it in ogeler:
         t = (it.find("title")
              or it.find("{http://purl.org/rss/1.0/}title")
@@ -153,15 +158,16 @@ def _rss_basliklar(url, n, ad=""):
         if t is None or not t.text:
             continue
         baslik = " ".join(t.text.split())
+        if not ilk_ham:
+            ilk_ham = baslik
         if _cop_mu(baslik):
             elendi += 1
             continue
         out.append(baslik)
         if len(out) >= n:
             break
-    # Kaynak başına sayaç: "hepsi DW'den geldi" gibi bir durumda nedeni
-    # log'dan görünsün. Sessizce boş dönen kaynak en pahalı hata oldu.
-    print(f"  {ad or url}: {len(ogeler)} öğe, {len(out)} alındı, {elendi} elendi")
+    TESHIS.append(f"{ad or url}: {len(ogeler)} öğe / {len(out)} alındı / "
+                  f"{elendi} elendi" + (f" | ilk: {ilk_ham[:60]}" if ilk_ham else ""))
     return out
 
 
@@ -196,8 +202,10 @@ def fetch_world(n=6):
 
     calisan = sorted({a for a, _ in out})
     olu = [ad for ad, _ in WORLD_FEEDS if not kaynak.get(ad)]
-    print(f"  dünya: {len(out)} haber · veren: {', '.join(calisan) or 'yok'}"
-          + (f" · boş dönen: {', '.join(olu)}" if olu else ""))
+    ozet = (f"SONUÇ: {len(out)} haber · veren: {', '.join(calisan) or 'yok'}"
+            + (f" · boş dönen: {', '.join(olu)}" if olu else ""))
+    TESHIS.append(ozet)
+    print("  " + ozet)
     return [f"🌍 {b}  ({a})" for a, b in out]
 
 def build():
@@ -219,6 +227,7 @@ def build():
     mentioned = B.pick_dynamic_watchlist(data, n=99, per_cat=C.TOP_N)
     news_codes = [h[0] for h in C.HOLDINGS] + list(watch) + mentioned
     news_items, seen = [], set()
+    hisse_ham, hisse_elenen = [], 0
     for code in news_codes:
         if code in seen:
             continue
@@ -227,12 +236,16 @@ def build():
                 code, getattr(C, "NEWS_PER_STOCK", 2),
                 getattr(C, "NEWS_MAX_AGE_DAYS", 3)):
             # Hisse akışı etiket yığını ve KAP bildirimiyle doluyordu
+            hisse_ham.append(title[:70])
             if _cop_mu(title, COP_HISSE) or _kap_bildirimi(title):
+                hisse_elenen += 1
                 continue
             emoji, _ = B.news_tone(title)
             news_items.append(f"{emoji} {title}" + (f"  ({src})" if src else ""))
         if len(news_items) >= 8:
             break
+
+    dunya = fetch_world(6)
 
     return {
         "updated": dt.datetime.now(IST).strftime("%Y-%m-%d %H:%M"),
@@ -240,7 +253,12 @@ def build():
         "us": us_rows,
         "gold": fetch_gold(),
         "news": news_items[:8],
-        "world": fetch_world(6),
+        "world": dunya,
+        "_teshis": {
+            "dunya": TESHIS,
+            "hisse": f"{len(hisse_ham)} başlık geldi, {hisse_elenen} elendi",
+            "hisse_ham": hisse_ham[:6],
+        },
     }
 
 
