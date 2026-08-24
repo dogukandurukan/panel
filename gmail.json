@@ -1,29 +1,56 @@
 {
-  "updated": "2026-08-23 16:09",
+  "updated": "2026-08-24 09:58",
   "ok": true,
   "window_days": 7,
-  "total_unread": 17,
+  "total_unread": 24,
   "counts": {
-    "reply": 0,
+    "reply": 1,
     "job": 1,
-    "info": 4,
-    "bulk": 8
+    "info": 5,
+    "bulk": 12
   },
-  "important_unread": 0,
+  "important_unread": 1,
   "drafts": 0,
   "model": "",
   "items": [
     {
-      "id": "1a02c4cefd9e3214",
-      "thread_id": "1a02c4cefd9e3214",
+      "id": "1a032706a903c353",
+      "thread_id": "1a032706a903c353",
+      "from": "Franziska Himpele",
+      "email": "Franziska.Himpele@hays.de",
+      "subject": "Hays - Kurzer Profil‑Check – exklusive Data‑Projekte",
+      "date": "Mon, 24 Aug 2026 06:23:39 +0000",
+      "bucket": "reply",
+      "why": "",
+      "key": "m:1a032706a903c353",
+      "dupes": 1,
+      "thread_len": 1,
+      "awaiting_reply": true,
+      "i_replied_before": false
+    },
+    {
+      "id": "1a0324863d053dac",
+      "thread_id": "1a0324863d053dac",
+      "from": "Zalando Team",
+      "email": "info@service-mail.zalando.de",
+      "subject": "Complete your order before the items in your cart are sold out.",
+      "date": "Mon, 24 Aug 2026 05:39:59 +0000",
+      "bucket": "info",
+      "why": "",
+      "key": "s:info@service-mail.zalando.de|complete your order before the items in your cart are sold out.",
+      "dupes": 1
+    },
+    {
+      "id": "1a0316a62c2e74ea",
+      "thread_id": "1a0316a62c2e74ea",
       "from": "Bilgilendirme",
       "email": "bilgilendirme@ebelgemail.com",
       "subject": "ELOGO Bilgilendirme",
-      "date": "Sun, 23 Aug 2026 04:43:21 +0300",
+      "date": "Mon, 24 Aug 2026 04:36:54 +0300",
       "bucket": "info",
       "why": "belge",
       "key": "s:bilgilendirme@ebelgemail.com|elogo bilgilendirme",
-      "dupes": 2
+      "dupes": 3
     },
     {
       "id": "1a02bcd59440f56f",
@@ -76,6 +103,14 @@
   ],
   "bulk_top": [
     [
+      "TikTok",
+      2
+    ],
+    [
+      "Zalando Team",
+      2
+    ],
+    [
       "Midas",
       2
     ],
@@ -84,15 +119,7 @@
       2
     ],
     [
-      "Benjamin Bennett Alexand",
-      1
-    ],
-    [
-      "TikTok",
-      1
-    ],
-    [
-      "James Hu",
+      "Stefan Huber von hokify",
       1
     ]
   ],
