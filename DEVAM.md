@@ -96,6 +96,38 @@ Sorun derinlik değil tekrar aralığıydı: 26 sanatçı = ayda bir aynı sanat
 
 ---
 
+### İçerik kalitesi turu (Dünya Gündemi, Almanca, kültür derinliği)
+Kullanıcının geri bildirimi: haberler okunmaya değmiyor, Almanca hep aynı ve
+çok basit, kültür kartları istenen detayda değil.
+
+**Dünya Gündemi yanlış kaynağa bağlıymış.** Google News Türkiye'nin GENEL
+akışı çekiliyordu; kart "FAST işlem limiti", "Kandil ne zaman", yurt içi
+asayiş gösteriyordu. Artık altı dış kaynağın dünya bölümleri okunuyor
+(BBC World, Guardian World, Al Jazeera, NPR World, Euronews, DW Türkçe),
+kaynak başına en fazla 2 haber, tıklama yemi ve KAP bildirimi süzülüyor.
+
+Canlıda üç tur döndü, her tur bir hata çıkardı:
+1. Hepsi tek kaynaktan geldi — kaynak başına sayaç yoktu, neden görünmüyordu.
+2. Sayaç konunca "her kaynak öğe veriyor, 0 alındı" çıktı: `find(a) or find(b)`
+   zinciri ElementTree'nin falsy Element tuzağına düşüyordu.
+3. Meşru kısa başlıklar eleniyordu (25 karakter alt sınırı).
+Teşhis artık `borsa.json`'daki `_teshis` alanında — Actions log kuyruğu
+Python çıktısını kesebiliyor.
+
+**Almanca A1-A2'de sıkışmıştı.** Havuz 14 tema / 140 kelimeden 34 tema /
+380 kelimeye çıktı ve her kelime kendi seviyesini taşıyor (A1 70, A2 86,
+B1 96, B2 104, C1 24). Gramer 14 -> 58 madde; Konjunktiv I/II, Passiv,
+Relativsatz, n-Deklination, Partizipialkonstruktion dahil.
+
+Asıl mesele havuz büyüklüğü değil seçimdi: diziyi düz gezmek A1 temalarını
+arka arkaya getiriyordu. Temel/ileri ayrımı yapıldı, üç günün biri temel.
+Ölçüm: 30 günün 20'si B1 üstü, üst üste en fazla 1 temel gün.
+
+**Kültür kartlarına katmanlı derinlik.** "devamı" düğmesi paragraf + iki
+öneri açıyor. Derinlik opsiyonel alan; yoksa düğme de yok. İçerik önce
+bugünden itibaren sırası gelen kayıtlara yazıldı — dört kartta da kesintisiz
+**21 gün**. Sonrası doldukça düğme kendiliğinden görünür.
+
 ## 2. Kullanıcıda bekleyen işler
 
 | # | İş | Nerede |
@@ -158,7 +190,16 @@ gönderiyor** (para transferi, HGS ekstre, kart ödeme tutarları). Yeni bir
 - `MORN_AGIR` / `MORN_BACAK` kalıpları elle yazıldı; hareket adı değişirse
   eşleşme sessizce kaybolur.
 
-### 4.4 Küçük açık uçlar (önceki oturumdan)
+### 4.4 İçerik turundan kalanlar
+- **Kültür derinliği 21 gün.** FILMS 21/133, ARTISTS 21/92, BOOKS 21/110,
+  FACTS 21/236. 14 Eylül civarında düğme kaybolmaya başlar; devam yazılmalı.
+- **Diller arası tekrar elenmiyor.** Aynı olay iki dilde gelince ikisi de
+  listeye giriyor (BBC "Ukrainian strikes" + Euronews "Ukrayna ... vurdu").
+  Kelime örtüşmesi diller arasında çalışmıyor; şimdilik bilinçli bırakıldı.
+- **Günün Bilgisi derinliğinde öneri yok**, yalnızca paragraf var — film/kitap
+  /sanatçıda iki öneri çıkıyor.
+
+### 4.5 Küçük açık uçlar (önceki oturumdan)
 - Yoklama `YOK` tablosuna eklenecek/çıkarılacak iş var mı? ("bobo" bilerek
   dışarıda.)
 - İnsan maili taraması yalnızca okunmamışları geziyor.

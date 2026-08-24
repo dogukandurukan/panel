@@ -52,6 +52,22 @@ JSON okur.
 Günün Filmi/Sanatçısı/Kitabı kartları `index.html` içindeki kürasyonlu listelerden
 beslenir — Vikipedi özeti tanım üretiyor, ilginç bilgi değil.
 
+**Dünya Gündemi genel akıştan beslenmez.** Google News Türkiye'nin genel
+akışı yerel manşet akışıdır; kartın altına kandil takvimi ve FAST limiti
+düşüyordu. Kaynaklar dış servislerin **dünya bölümleri** (BBC World, Guardian
+World, Al Jazeera, NPR World, Euronews, DW Türkçe), kaynak başına en fazla 2
+haber. Teşhis `borsa.json`'daki `_teshis` alanına yazılıyor — Actions log'unun
+kuyruğu Python çıktısını kesebiliyor.
+
+**Almanca havuzu seviye dengeli olmalı.** Her kelime kendi seviyesini taşır
+(`[almanca, türkçe, örnek, seviye]`). Temalar temel/ileri diye ikiye ayrılır ve
+üç günün biri temel gelir; diziyi düz gezmek aylarca A1-A2 gösteriyordu. Aynı
+denge gramerde de var: haftada 1 temel + 2 ileri.
+
+**Kültür kartlarında derinlik opsiyoneldir.** 6. alan (`[paragraf, [öneri,
+öneri]]`) yoksa "devamı" düğmesi de çıkmaz — arkasında içerik olmayan düğme
+2. kurala göre dekoratif göstergedir.
+
 **Kültür listeleri kısa olmamalı.** Liste uzunluğu = tekrar aralığı: 26 sanatçı,
 sanatçının ayda bir dönmesi demekti. Taban 90 öğe (FACTS 236, FILMS 133,
 BOOKS 110, ARTISTS 92). Yeni öğe eklerken alan sayısı sabit: film ve sanatçı 5,
@@ -89,6 +105,15 @@ okunur), GitHub Actions API (15 dk), Open-Meteo (30 dk).
 - **Yeni pencere/belge üretirken `background` açıkça ver** — kullanıcı koyu
   moddaysa varsayılan tuval siyah oluyor.
 - **HTML temizlerken önce unescape, sonra etiket sil.**
+- **Türkçe metinde `lower()` kullanma.** Python'un `lower()`'ı `İ` harfini
+  `i` + birleşen nokta (U+0307) yapar; "İlişkin" içeren başlıkta "ilişkin"
+  kalıbı eşleşmez ve süzgeç sessizce boşa çalışır. `panel_feed._kucult()`.
+- **ElementTree'de `elem.find(a) or elem.find(b)` yazma.** Çocuğu olmayan
+  Element falsy sayılır; `<title>` çocuksuzdur, `or` onu atlayıp `None`'a
+  düşer ve bütün kaynaklar sessizce boş döner. Açıkça `is not None` kontrol et.
+- **Feed hatalarında kaynak başına sayaç şart.** "Toplam 4 haber" satırı
+  hangi kaynağın boş döndüğünü göstermiyordu; teşhis eklenene kadar üç tur
+  tahmin yürütüldü.
 - **Test etmeden "çalışıyor" deme.** Tarayıcıda gerçek veriyle doğrula ve 7
   günü de gez — antrenman, yemek ve günlük program güne göre değişiyor.
 
