@@ -76,12 +76,18 @@ def fetch_gold():
 # Kaynak yanlıştı: genel akış yerel manşet akışıdır. Artık doğrudan dış haber
 # servislerinin dünya bölümleri okunuyor. Hepsi anahtarsız RSS.
 WORLD_FEEDS = [
-    ("BBC Türkçe", "https://feeds.bbci.co.uk/turkce/rss.xml"),
-    ("DW Türkçe", "https://rss.dw.com/rdf/rss-tur-all"),
-    ("BBC World", "http://feeds.bbci.co.uk/news/world/rss.xml"),
-    ("Al Jazeera", "https://www.aljazeera.com/xml/rss/all.xml"),
+    # Dünya bölümleri — genel akış değil. Türkçe kaynakların genel akışı
+    # yurt içi manşetle doluyor, o yüzden ağırlık dış servislerin world
+    # bölümlerinde; Türkçe olanlar dengeyi kuruyor.
+    ("BBC World", "https://feeds.bbci.co.uk/news/world/rss.xml"),
     ("Guardian World", "https://www.theguardian.com/world/rss"),
+    ("Al Jazeera", "https://www.aljazeera.com/xml/rss/all.xml"),
+    ("NPR World", "https://feeds.npr.org/1004/rss.xml"),
+    ("DW Türkçe", "https://rss.dw.com/rdf/rss-tur-all"),
+    ("BBC Türkçe", "https://feeds.bbci.co.uk/turkce/rss.xml"),
 ]
+# Tek kaynak listeyi doldurmasın
+KAYNAK_BASI_MAX = 2
 
 # Manşet gibi görünüp haber taşımayan kalıplar. Hisse akışında da aynı süzgeç
 # çalışıyor: oradaki gürültü büyük ölçüde KAP bildirimi ve etiket yığını.
@@ -93,8 +99,7 @@ COP_KALIP = (
     "kaçıncı bölüm", "fragman", "çekiliş", "zam geldi mi",
 )
 # Hisse haberlerine özgü gürültü
-COP_HISSE = ("hisse #", "#hisse", "hedef fiyat 5 fk", "game informer",
-             "sermaye piyasası aracı işlemlerine ilişkin bildirim")
+COP_HISSE = ("hisse #", "#hisse", "game informer")
 
 
 def _kucult(metin):
@@ -119,7 +124,15 @@ def _cop_mu(baslik, ekstra=()):
     return any(k in d for k in COP_KALIP + tuple(ekstra))
 
 
-def _rss_basliklar(url, n):
+def _kap_bildirimi(baslik):
+    """KAP duyuruları haber değil, zorunlu bildirim. Tek bir cümleyi aramak
+    yetmiyordu — biçim sabit: 'KAP *** ŞİRKET *** KOD *** <bildirim türü>'."""
+    d = _kucult(baslik)
+    return d.startswith("kap ") or "***" in baslik or "i̇lişkin bildirim" in d \
+        or "ilişkin bildirim" in d or "özel durum açıklaması" in d
+
+
+def _rss_basliklar(url, n, ad=""):
     try:
         req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
         ham = urllib.request.urlopen(req, timeout=12).read()
@@ -128,19 +141,27 @@ def _rss_basliklar(url, n):
         print(f"  {url} okunamadı: {e}")
         return []
     # RSS 2.0 (item) ve RDF/RSS 1.0 (rdf:item) birlikte
-    ogeler = root.findall(".//item") or root.findall(
-        ".//{http://purl.org/rss/1.0/}item")
-    out = []
+    # RSS 2.0 (item), RDF/RSS 1.0 (rdf:item) ve Atom (entry) birlikte
+    ogeler = (root.findall(".//item")
+              or root.findall(".//{http://purl.org/rss/1.0/}item")
+              or root.findall(".//{http://www.w3.org/2005/Atom}entry"))
+    out, elendi = [], 0
     for it in ogeler:
-        t = it.find("title") or it.find("{http://purl.org/rss/1.0/}title")
+        t = (it.find("title")
+             or it.find("{http://purl.org/rss/1.0/}title")
+             or it.find("{http://www.w3.org/2005/Atom}title"))
         if t is None or not t.text:
             continue
         baslik = " ".join(t.text.split())
         if _cop_mu(baslik):
+            elendi += 1
             continue
         out.append(baslik)
         if len(out) >= n:
             break
+    # Kaynak başına sayaç: "hepsi DW'den geldi" gibi bir durumda nedeni
+    # log'dan görünsün. Sessizce boş dönen kaynak en pahalı hata oldu.
+    print(f"  {ad or url}: {len(ogeler)} öğe, {len(out)} alındı, {elendi} elendi")
     return out
 
 
@@ -153,34 +174,31 @@ def _benzer(a, b):
     return len(ka & kb) / min(len(ka), len(kb)) > 0.6
 
 
-def fetch_world(n=5):
-    """Her kaynaktan sırayla alıp harmanlar; tek kaynak çökerse diğerleri taşır."""
-    havuz = []
+def fetch_world(n=6):
+    """Her kaynaktan en fazla KAYNAK_BASI_MAX haber; dönüşümlü harmanlanır."""
+    kaynak = {}
     for ad, url in WORLD_FEEDS:
-        for baslik in _rss_basliklar(url, 4):
-            havuz.append((ad, baslik))
-    # Kaynakları dönüşümlü gez ki liste tek servisten dolmasın
-    sirali, i = [], 0
-    while havuz and len(sirali) < n * 3:
-        for ad, _ in WORLD_FEEDS:
-            for k, (a, b) in enumerate(havuz):
-                if a == ad:
-                    sirali.append(havuz.pop(k))
-                    break
-        i += 1
-        if i > 20:
-            break
+        kaynak[ad] = _rss_basliklar(url, KAYNAK_BASI_MAX, ad)
+
     out = []
-    for ad, baslik in sirali:
-        if any(_benzer(baslik, x[1]) for x in out):
-            continue
-        out.append((ad, baslik))
+    for tur in range(KAYNAK_BASI_MAX):          # önce herkesin 1., sonra 2.'si
+        for ad, _ in WORLD_FEEDS:
+            if tur >= len(kaynak.get(ad, [])):
+                continue
+            baslik = kaynak[ad][tur]
+            if any(_benzer(baslik, b) for _, b in out):
+                continue
+            out.append((ad, baslik))
+            if len(out) >= n:
+                break
         if len(out) >= n:
             break
-    print(f"  dünya: {len(out)} haber, kaynaklar: "
-          + ", ".join(sorted({a for a, _ in out})))
-    return [f"🌍 {b}  ({a})" for a, b in out]
 
+    calisan = sorted({a for a, _ in out})
+    olu = [ad for ad, _ in WORLD_FEEDS if not kaynak.get(ad)]
+    print(f"  dünya: {len(out)} haber · veren: {', '.join(calisan) or 'yok'}"
+          + (f" · boş dönen: {', '.join(olu)}" if olu else ""))
+    return [f"🌍 {b}  ({a})" for a, b in out]
 
 def build():
     codes = list(dict.fromkeys(
@@ -209,7 +227,7 @@ def build():
                 code, getattr(C, "NEWS_PER_STOCK", 2),
                 getattr(C, "NEWS_MAX_AGE_DAYS", 3)):
             # Hisse akışı etiket yığını ve KAP bildirimiyle doluyordu
-            if _cop_mu(title, COP_HISSE):
+            if _cop_mu(title, COP_HISSE) or _kap_bildirimi(title):
                 continue
             emoji, _ = B.news_tone(title)
             news_items.append(f"{emoji} {title}" + (f"  ({src})" if src else ""))
@@ -222,7 +240,7 @@ def build():
         "us": us_rows,
         "gold": fetch_gold(),
         "news": news_items[:8],
-        "world": fetch_world(5),
+        "world": fetch_world(6),
     }
 
 
