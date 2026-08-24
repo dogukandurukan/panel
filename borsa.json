@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-24 16:50",
+  "updated": "2026-08-24 16:52",
   "watch": [
     {
       "code": "SASA",
@@ -10,24 +10,17 @@
     },
     {
       "code": "GUBRF",
-      "price": "491.75",
-      "chg": "+3.36%",
-      "avg1w": "466.20",
-      "avg1m": "431.95"
+      "price": "495.25",
+      "chg": "+4.10%",
+      "avg1w": "466.90",
+      "avg1m": "432.12"
     },
     {
       "code": "EKGYO",
-      "price": "20.70",
-      "chg": "+6.43%",
+      "price": "20.68",
+      "chg": "+6.32%",
       "avg1w": "19.51",
       "avg1m": "18.52"
-    },
-    {
-      "code": "SMRTG",
-      "price": "10.21",
-      "chg": "+4.08%",
-      "avg1w": "9.91",
-      "avg1m": "10.68"
     },
     {
       "code": "ASTOR",
@@ -40,43 +33,43 @@
   "us": [
     {
       "code": "AAPL",
-      "price": "311.54",
-      "chg": "+0.71%",
-      "avg1w": "311.81",
+      "price": "311.33",
+      "chg": "+0.64%",
+      "avg1w": "311.77",
       "avg1m": "314.20"
     },
     {
       "code": "MSFT",
-      "price": "484.73",
-      "chg": "+0.31%",
-      "avg1w": "483.01",
-      "avg1m": "473.65"
+      "price": "486.35",
+      "chg": "+0.64%",
+      "avg1w": "483.33",
+      "avg1m": "473.72"
     },
     {
       "code": "NVDA",
-      "price": "209.67",
-      "chg": "-2.35%",
-      "avg1w": "215.71",
-      "avg1m": "213.01"
+      "price": "209.11",
+      "chg": "-2.61%",
+      "avg1w": "215.60",
+      "avg1m": "212.98"
     },
     {
       "code": "AMZN",
-      "price": "262.00",
-      "chg": "+1.30%",
-      "avg1w": "261.21",
-      "avg1m": "261.41"
+      "price": "262.41",
+      "chg": "+1.46%",
+      "avg1w": "261.29",
+      "avg1m": "261.43"
     },
     {
       "code": "TSLA",
-      "price": "352.83",
-      "chg": "-2.76%",
-      "avg1w": "349.76",
-      "avg1m": "329.32"
+      "price": "353.43",
+      "chg": "-2.60%",
+      "avg1w": "349.88",
+      "avg1m": "329.35"
     }
   ],
   "gold": {
-    "price": "7,302.50",
-    "chg": "+2.24%"
+    "price": "7,311.89",
+    "chg": "+2.37%"
   },
   "news": [
     "⚪ SASA'dan SPK başvurusu  (hibya.com)"
@@ -86,8 +79,8 @@
     "🌍 Children make up half of mpox cases in Guinea-Bissau as epidemic spreads  (Guardian World)",
     "🌍 Rain and flooding from Typhoon Narra hits China and Vietnam  (Al Jazeera)",
     "🌍 Treasury Secretary Scott Bessent to unveil new economic sanctions on Iran  (NPR World)",
-    "🌍 ABD'nin gazetecilere vize sınırlamasına Almanya'dan tepki  (DW Türkçe)",
-    "🌍 Aziz İhsan Aktaş davasında karar: Tüm sanıklara 'örgüt' suçlamasından beraat  (BBC Türkçe)"
+    "🌍 Ukrayna, St Petersburg yakınında Ozon tesislerini vurdu  (Euronews)",
+    "🌍 ABD'nin gazetecilere vize sınırlamasına Almanya'dan tepki  (DW Türkçe)"
   ],
   "_teshis": {
     "dunya": [
@@ -95,9 +88,9 @@
       "Guardian World: 45 öğe / 2 alındı / 0 elendi | ilk: Children make up half of mpox cases in Guinea-Bissau as epid",
       "Al Jazeera: 25 öğe / 2 alındı / 0 elendi | ilk: Rain and flooding from Typhoon Narra hits China and Vietnam",
       "NPR World: 10 öğe / 2 alındı / 0 elendi | ilk: Treasury Secretary Scott Bessent to unveil new economic sanc",
+      "Euronews: 50 öğe / 2 alındı / 0 elendi | ilk: Ukrayna, St Petersburg yakınında Ozon tesislerini vurdu",
       "DW Türkçe: 15 öğe / 2 alındı / 0 elendi | ilk: ABD'nin gazetecilere vize sınırlamasına Almanya'dan tepki",
-      "BBC Türkçe: 20 öğe / 2 alındı / 0 elendi | ilk: Aziz İhsan Aktaş davasında karar: Tüm sanıklara 'örgüt' suçl",
-      "SONUÇ: 6 haber · veren: Al Jazeera, BBC Türkçe, BBC World, DW Türkçe, Guardian World, NPR World"
+      "SONUÇ: 6 haber · veren: Al Jazeera, BBC World, DW Türkçe, Euronews, Guardian World, NPR World"
     ],
     "hisse": "3 başlık geldi, 2 elendi",
     "hisse_ham": [
