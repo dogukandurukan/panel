@@ -41,11 +41,15 @@ DATA_FILE = "panel-data.json"
 GERI_DK = 35
 ILERI_DK = 5
 
-# VAPID 'sub' iddiası: RFC 8292 mailto: ya da https: ister ve Apple bunu
-# gerçekten doğruluyor. 'mailto:panel@localhost' geçerli bir adres olmadığı
-# için 403 BadJwtToken dönüyordu. Panelin kendi genel adresi kullanılıyor —
-# depo herkese açık olduğu için buraya kişisel e-posta yazılmaz (1. kural).
-VAPID_CLAIMS = {"sub": "https://dogukandurukan.github.io/panel/"}
+# VAPID 'sub' iddiası — iki kere tökezledi, ikisi de log'dan çıktı:
+#   1. 'mailto:panel@localhost' → Apple 403 BadJwtToken. localhost geçerli bir
+#      alan adı değil, Apple bunu doğruluyor.
+#   2. 'https://...' → pywebpush kendi doğrulamasında reddetti: RFC 8292 https'e
+#      izin verse de kütüphane ısrarla mailto: istiyor.
+# Bu yüzden geçerli bir mailto şart. Depo herkese açık olduğundan kişisel
+# e-posta buraya YAZILMAZ (1. kural): varsayılan kişisel olmayan bir adres,
+# gerekirse VAPID_SUB secret'ıyla değiştirilir.
+VAPID_SUB_VARSAYILAN = "mailto:panel@dogukandurukan.github.io"
 
 
 def gh(yol, token):
@@ -181,6 +185,11 @@ def main():
         print(f"{ad} ({saat}) zaten işaretlenmiş — bildirim gönderilmedi.")
         return 0
 
+    sub = os.environ.get("VAPID_SUB", "").strip() or VAPID_SUB_VARSAYILAN
+    if not sub.startswith("mailto:"):
+        sub = "mailto:" + sub
+    vapid_claims = {"sub": sub}
+
     govde = json.dumps({
         "title": ad,
         "body": f"{saat} · başladın mı?",
@@ -196,7 +205,7 @@ def main():
                 subscription_info={"endpoint": s["endpoint"], "keys": s["keys"]},
                 data=govde,
                 vapid_private_key=gizli,
-                vapid_claims=dict(VAPID_CLAIMS),
+                vapid_claims=dict(vapid_claims),
                 ttl=1800,
             )
             basarili += 1

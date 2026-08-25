@@ -37,5 +37,9 @@ jobs:
           PANEL_GIST_TOKEN: ${{ secrets.PANEL_GIST_TOKEN }}
           # Panelin kurulum sırasında bir kez gösterdiği VAPID gizli anahtarı
           VAPID_PRIVATE: ${{ secrets.VAPID_PRIVATE }}
+          # Opsiyonel: VAPID 'sub' adresi. Tanımsızsa kişisel olmayan
+          # varsayılan kullanılır; push servisi reddederse buraya gerçek
+          # e-posta secret olarak konulur (repoya yazılmaz).
+          VAPID_SUB: ${{ secrets.VAPID_SUB }}
           # Test için: pencere ve "zaten işaretlenmiş" kontrolünü atlar
           ZORLA: ${{ inputs.zorla }}
