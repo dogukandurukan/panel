@@ -38,7 +38,15 @@ DATA_FILE = "panel-data.json"
 
 # Zamanlanmış iş akışları gecikebiliyor; dilimin başlangıcına bu kadar yakınsa
 # bildirim gönderilir. Geriye doğru geniş, ileriye dar: erken uyandırma yok.
-GERI_DK = 35
+#
+# 35 dakikaydı ve YETMEDİ: 25 Ağustos'ta 18:30 cron'u 19:06'da çalıştı
+# (GitHub 36 dk geciktirdi) ve DJ bildirimi bir dakikayla kaçtı. GitHub
+# Actions'ta yarım saatlik gecikme istisna değil, olağan.
+#
+# Pencereyi açtım ama sınırsız değil: bir sonraki dilim başladığında kapanıyor.
+# Böylece geç gelen bildirim asla sıradaki işin üstüne binmiyor — 21:30
+# "kişisel proje" hatırlatması 23:00'te düşmez.
+GERI_DK = 120
 ILERI_DK = 5
 
 # VAPID 'sub' iddiası — iki kere tökezledi, ikisi de log'dan çıktı:
@@ -170,10 +178,18 @@ def main():
     # gerçek bir yoklama saatini beklemeden denemek için; günün en yakın
     # dilimini seçer.
     zorla = os.environ.get("ZORLA", "").strip().lower() in ("1", "true", "yes")
-    adaylar = bugun if zorla else [
-        x for x in bugun if -ILERI_DK <= su_an - dakika(x[0]) <= GERI_DK]
+    def pencerede(i):
+        bas = dakika(bugun[i][0])
+        son = bas + GERI_DK
+        if i + 1 < len(bugun):                 # sıradaki iş başlayınca kapan
+            son = min(son, dakika(bugun[i + 1][0]))
+        return bas - ILERI_DK <= su_an <= son
+
+    adaylar = bugun if zorla else [x for i, x in enumerate(bugun) if pencerede(i)]
     if not adaylar:
-        print(f"{simdi:%H:%M} — penceredeki yoklama yok.")
+        sonraki = [x[0] for x in bugun if dakika(x[0]) > su_an]
+        print(f"{simdi:%H:%M} — penceredeki yoklama yok."
+              + (f" Sıradaki dilim {sonraki[0]}." if sonraki else " Günün dilimleri bitti."))
         return 0
     # Birden fazlaysa şu ana en yakını
     saat, ad, dilim = min(adaylar, key=lambda x: abs(su_an - dakika(x[0])))
