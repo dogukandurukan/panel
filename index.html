@@ -134,6 +134,23 @@
   .mkt-in{font-family:var(--mono);font-size:14px;text-align:right;width:110px;background:#fff;border:1px solid var(--line);border-radius:4px;padding:4px 7px;color:var(--ink);}
   .mkt-in:focus{outline:none;border-color:var(--accent);}
   .mkt-chg{font-family:var(--mono);font-size:11px;text-align:right;margin-top:1px;} .up{color:var(--up);} .down{color:var(--down);} .flat{color:var(--muted);}
+  /* hisse satiri: sparkline + tiklayinca acilan detay */
+  .mkt.stk{cursor:pointer;}
+  .mkt.stk:hover .mkt-label{color:var(--accent);}
+  .stk-r{display:flex;align-items:center;gap:9px;}
+  .pspark{vertical-align:middle;}
+  .pspark polyline{fill:none;stroke:var(--accent);stroke-width:1.4;stroke-linejoin:round;stroke-linecap:round;}
+  .pspark circle{fill:var(--accent);}
+  .pspark.up polyline{stroke:var(--up);} .pspark.up circle{fill:var(--up);}
+  .pspark.down polyline{stroke:var(--down);} .pspark.down circle{fill:var(--down);}
+  .stk-det{padding:10px 0 13px;border-bottom:1px dotted var(--line2);}
+  .stk-det[hidden]{display:none;}
+  .stk-det .pspark{width:100%;height:auto;display:block;}
+  .stk-x{display:flex;justify-content:space-between;font-family:var(--mono);font-size:9px;
+        color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin:3px 0 7px;}
+  .tvl{display:inline-block;margin-top:7px;font-family:var(--mono);font-size:10.5px;
+       letter-spacing:.08em;text-transform:uppercase;color:var(--accent);text-decoration:none;}
+  .tvl:hover{text-decoration:underline;}
   .news-item{padding:8px 0;border-bottom:1px dotted var(--line2);display:flex;gap:11px;align-items:flex-start;} .news-item:last-child{border-bottom:none;}
   .news-n{font-family:var(--mono);font-size:12px;color:var(--accent);font-weight:500;min-width:16px;margin-top:2px;}
   .news-t{font-size:14px;line-height:1.4;flex:1;}
@@ -565,6 +582,7 @@
       <div id="goldRow"></div>
       <div id="watchList"></div>
       <div id="usList"></div>
+      <div id="idxList"></div>
       <div id="mktSummary"></div>
       <div id="finNote"></div></section>
 
@@ -3117,19 +3135,91 @@ function renderGold(){const el=document.getElementById('goldRow');if(!el)return;
   if(!gold){el.innerHTML='';return;}
   const neg=/^-/.test(gold.chg||'');const cls=neg?'down':(/^\+/.test(gold.chg||'')?'up':'flat');const ar=neg?'▼':(cls==='up'?'▲':'–');
   el.innerHTML='<div class="mkt"><div><div class="mkt-label">Gram Altın</div><div class="mkt-sub">TL · günlük</div></div><div><div class="mkt-val">'+esc(gold.price||'—')+'</div>'+(gold.chg?'<div class="mkt-chg '+cls+'">'+ar+' '+esc(gold.chg.replace(/^[+-]/,''))+'</div>':'')+'</div></div>';}
-function stockRow(s){const neg=/^-/.test(s.chg);const cls=neg?'down':(/^\+/.test(s.chg)?'up':'flat');const ar=neg?'▼':(cls==='up'?'▲':'–');
+/* Fiyat serisi cizgisi. sparkline() Agirlik kartina ozel (var(--accent) sabit);
+   bu surum yon rengi alabiliyor ve genis surumu CSS ile esniyor. */
+function priceSpark(vals,w,h,cls){
+  if(!vals||vals.length<2)return '';
+  const mn=Math.min.apply(null,vals),mx=Math.max.apply(null,vals),r=(mx-mn)||1;
+  const p=vals.map((v,i)=>[(i/(vals.length-1))*(w-3)+1.5,h-1.5-((v-mn)/r)*(h-3)]);
+  return '<svg class="pspark'+(cls?' '+cls:'')+'" viewBox="0 0 '+w+' '+h+'" width="'+w+'" height="'+h+'" aria-hidden="true">'+
+    '<polyline points="'+p.map(q=>q[0].toFixed(1)+','+q[1].toFixed(1)).join(' ')+'"/>'+
+    '<circle cx="'+p[p.length-1][0].toFixed(1)+'" cy="'+p[p.length-1][1].toFixed(1)+'" r="1.9"/></svg>';
+}
+
+/* TradingView sembolu. Emin olamadigimiz kodda bag verilmiyor (yanlis sayfa acmaktansa
+   hic acmamak). Panel saatlik veri CEKMIYOR; canli grafik icin baglanti yeterli. */
+const TVSYM={'XU100.IS':'BIST-XU100','^GSPC':'SPX','^IXIC':'IXIC','^GDAXI':'DAX','BZ=F':'UKOIL'};
+function tvUrl(code,piyasa){
+  let sym=TVSYM[code]||(piyasa==='bist'?'BIST-'+code:(piyasa==='us'?code:''));
+  if(!sym||!/^[A-Z0-9-]+$/.test(sym))return '';
+  return 'https://www.tradingview.com/symbols/'+sym+'/';
+}
+
+function pctTxt(x){return (x>0?'▲ ':x<0?'▼ ':'– ')+Math.abs(x).toFixed(2)+'%';}
+function pctCls(x){return x>0?'up':x<0?'down':'flat';}
+
+/* Tiklayinca acilan detay: 90 gunluk cizgi + borsa.py'nin zaten hesapladigi
+   gostergeler. Veri yoksa o satir hic yazilmiyor. */
+function stkDetay(s,piyasa){
+  const h=s.hist||[],ind=s.ind||{};let g='',x='';
+  if(h.length>1){
+    const ilk=h[0],son=h[h.length-1],d=ilk?(son-ilk)/ilk*100:0;
+    const mn=Math.min.apply(null,h),mx=Math.max.apply(null,h);
+    g=priceSpark(h,300,88,pctCls(d));
+    x='<div class="stk-x"><span>'+h.length+' gün</span><span>en düşük '+fmtN(mn)+' · en yüksek '+fmtN(mx)+'</span></div>';
+    x+='<div class="sum"><span class="sl">'+h.length+' günlük değişim</span><span class="'+pctCls(d)+'">'+pctTxt(d)+'</span></div>';
+  }
+  const sat=(l,v)=>v?'<div class="sum"><span class="sl">'+l+'</span><span>'+esc(v)+'</span></div>':'';
+  x+=sat('RSI ('+(ind.rsiTxt||'—')+')',ind.rsi!=null?String(ind.rsi):'');
+  x+=sat('Ortalamalara göre',ind.ma&&ind.ma!=='—'?ind.ma:'');
+  x+=sat('Volatilite (14 gün)',ind.volat!=null?ind.volat+'%':'');
+  x+=sat('Hacim / 20 gün ort.',ind.volRatio>0?'×'+ind.volRatio:'');
+  /* Yalnizca TradingView bagi olan bos bir kutu acilmasin: eski bicimli
+     (hist/ind icermeyen) borsa.json onbelleginde satir tiklanabilir olmuyor. */
+  if(!g&&!x)return '';
+  const u=tvUrl(s.code,piyasa);
+  if(u)x+='<a class="tvl" href="'+u+'" target="_blank" rel="noopener">TradingView\'de aç ↗</a>';
+  return '<div class="stk-det" hidden>'+g+x+'</div>';
+}
+function fmtN(v){return v.toLocaleString('tr-TR',{minimumFractionDigits:2,maximumFractionDigits:2});}
+
+function stockRow(s,piyasa){const neg=/^-/.test(s.chg);const cls=neg?'down':(/^\+/.test(s.chg)?'up':'flat');const ar=neg?'▼':(cls==='up'?'▲':'–');
   const avg=(s.avg1w||s.avg1m)?'<div class="mkt-sub" style="margin-top:2px">H.ort '+esc(s.avg1w||'—')+' · A.ort '+esc(s.avg1m||'—')+'</div>':'';
-  return '<div class="mkt"><div><div class="mkt-label">'+esc(s.code)+'</div>'+avg+'</div><div><div class="mkt-val">'+esc(s.price)+'</div><div class="mkt-chg '+cls+'">'+ar+' '+esc(s.chg.replace(/^[+-]/,''))+'</div></div></div>';}
+  const det=stkDetay(s,piyasa),spark=(s.hist&&s.hist.length>1)?priceSpark(s.hist,66,20):'';
+  const ad=esc(s.name||s.code);
+  return '<div class="mkt'+(det?' stk':'')+'"'+(det?' role="button" tabindex="0" aria-expanded="false"':'')+'>'+
+    '<div><div class="mkt-label">'+ad+'</div>'+avg+'</div>'+
+    '<div class="stk-r">'+spark+'<div><div class="mkt-val">'+esc(s.price)+'</div><div class="mkt-chg '+cls+'">'+ar+' '+esc(s.chg.replace(/^[+-]/,''))+'</div></div></div></div>'+det;}
+
+/* Satir <-> detay eslesmesi DOM sirasindan geliyor; kod adi id olarak kullanilamaz
+   (^GSPC, BZ=F gibi kodlar var). Dinleyici kapsayiciya bir kez baglaniyor,
+   render innerHTML'i degistirse de kaliyor. */
+function stkTiklaBagla(id){const el=document.getElementById(id);if(!el||el.dataset.bagli)return;
+  el.dataset.bagli='1';
+  const ac=r=>{const d=r.nextElementSibling;if(!d||!d.classList.contains('stk-det'))return;
+    const kapali=d.hasAttribute('hidden');
+    if(kapali)d.removeAttribute('hidden');else d.setAttribute('hidden','');
+    r.setAttribute('aria-expanded',kapali?'true':'false');};
+  el.addEventListener('click',e=>{const r=e.target.closest('.mkt.stk');if(r&&el.contains(r))ac(r);});
+  el.addEventListener('keydown',e=>{if(e.key!=='Enter'&&e.key!==' ')return;
+    const r=e.target.closest('.mkt.stk');if(r&&el.contains(r)){e.preventDefault();ac(r);}});}
 let watch=[];
 function renderWatch(){const el=document.getElementById('watchList');if(!el)return;
   const head='<div class="wtitle" style="margin-top:12px;border-top:1px solid var(--line2);padding-top:11px">İzleme Listesi · BIST</div>';
   if(!watch.length){el.innerHTML=head+'<div class="empty">Feed çalışınca (09:00/14:00) otomatik dolar.</div>';return;}
-  el.innerHTML=head+watch.map(stockRow).join('');}
+  el.innerHTML=head+watch.map(s=>stockRow(s,'bist')).join('');}
 let us=[];
 function renderUS(){const el=document.getElementById('usList');if(!el)return;
   if(!us.length){el.innerHTML='';return;}
   const head='<div class="wtitle" style="margin-top:12px;border-top:1px solid var(--line2);padding-top:11px">ABD Hisseleri</div>';
-  el.innerHTML=head+us.map(stockRow).join('');}
+  el.innerHTML=head+us.map(s=>stockRow(s,'us')).join('');}
+let worldIdx=[];
+/* Dunya piyasalari: endeks + emtia. borsa.json'daki `world` alani DUNYA HABERI,
+   bu ondan ayri bir alan (`world_idx`). */
+function renderWorldIdx(){const el=document.getElementById('idxList');if(!el)return;
+  if(!worldIdx.length){el.innerHTML='';return;}
+  const head='<div class="wtitle" style="margin-top:12px;border-top:1px solid var(--line2);padding-top:11px">Dünya Piyasaları</div>';
+  el.innerHTML=head+worldIdx.map(s=>stockRow(s,'idx')).join('');}
 
 /* borsa.json otomatik okuma (bot üretiyorsa, elle yapıştırmaya gerek kalmaz) */
 let world=[];
@@ -3138,6 +3228,7 @@ function renderWorld(){const el=document.getElementById('worldList');if(!el)retu
 async function loadBorsaJson(){try{const r=await fetch('borsa.json?_='+Date.now());if(!r.ok)throw 0;const d=await r.json();
     if(d.watch&&d.watch.length){watch=d.watch;await sSet('d:watch',watch);renderWatch();}
     if(d.us&&d.us.length){us=d.us;await sSet('d:us',us);renderUS();}
+    if(d.world_idx&&d.world_idx.length){worldIdx=d.world_idx;await sSet('d:worldIdx',worldIdx);renderWorldIdx();}
     if(d.gold){gold=d.gold;await sSet('d:gold',gold);renderGold();}
     if(d.news&&d.news.length){news=d.news.slice(0,10);await sSet(K.news,news);renderNews();}
     if(d.world&&d.world.length){world=d.world.slice(0,6);await sSet('d:world',world);renderWorld();}
@@ -4014,7 +4105,7 @@ function openJobsCfg(){
    - Feed onbellekleri (borsa/haber/hava/ajan) senkrona girmez; her cihaz onlari
      kendi ceker, bosuna trafik olmasin. */
 const SYNC_FILE='panel-data.json';
-const SYNC_SKIP=['d:sync','d:mtime','d:theme','d:news','d:fx','d:agents','d:wx','d:bist','d:altin','d:watch','d:world','d:us','d:gold','d:facts'];
+const SYNC_SKIP=['d:sync','d:mtime','d:theme','d:news','d:fx','d:agents','d:wx','d:bist','d:altin','d:watch','d:world','d:us','d:worldIdx','d:gold','d:facts'];
 const SYNC_POLL=5*60*1000;
 let syncCfg=null,syncTimer=null,syncBusy=false,syncMsg='';
 const syncable=k=>k&&k.indexOf('d:')===0&&SYNC_SKIP.indexOf(k)<0;
@@ -4207,7 +4298,7 @@ async function initSync(){
   if((await sGet(K.targetsVer))!==TARGETS_VERSION){    // program değişti -> hedefleri tazele
     targets={...DEFAULT_TARGETS,c:CARB_BY_DAY[new Date().getDay()]??DEFAULT_TARGETS.c};
     await sSet(K.targets,targets);await sSet(K.targetsVer,TARGETS_VERSION);
-  }news=await sGet(K.news)||[];watch=await sGet('d:watch')||[];world=await sGet('d:world')||[];us=await sGet('d:us')||[];gold=await sGet('d:gold')||null;gmailDone=await sGet(K.gmailDone)||[];
+  }news=await sGet(K.news)||[];watch=await sGet('d:watch')||[];world=await sGet('d:world')||[];us=await sGet('d:us')||[];worldIdx=await sGet('d:worldIdx')||[];gold=await sGet('d:gold')||null;gmailDone=await sGet(K.gmailDone)||[];
   const de=await sGet(K.de);deExtra=(de&&de.date===todayKey())?de.extra:0;
   deWrong=await sGet(K.deWrong)||[];await loadQuiz();
   mCur=thisMonth();
@@ -4239,7 +4330,8 @@ async function initSync(){
   jobProfile=await sGet(K.jobProfile)||null;jobsApplied=await sGet(K.jobsApplied)||[];myApps=await sGet(K.myApps)||[];
   document.getElementById('placeName').textContent=PLACE.name;
   renderTasks();await loadSched();await loadYok();await loadMorning();await renderRun();await loadWorkout();renderWtLog();await loadMeals();await loadWater();await loadSleep();await loadMoney();loadHabits();await initSync();
-  renderFacts();renderFilm();renderArtist();renderBook();renderHistory();renderGerman();renderNews();renderWatch();renderUS();renderGold();renderWorld();renderMktSummary();renderFinNote();
+  renderFacts();renderFilm();renderArtist();renderBook();renderHistory();renderGerman();renderNews();renderWatch();renderUS();renderWorldIdx();renderGold();renderWorld();renderMktSummary();renderFinNote();
+  ['watchList','usList','idxList'].forEach(stkTiklaBagla);
   loadFX(false);loadBorsaJson();loadBasvuru();loadGmailJson();loadFactsJson();loadAgents(false);loadWx();loadJobsJson();
   setInterval(loadBorsaJson,15*60*1000);setInterval(loadBasvuru,15*60*1000);setInterval(loadGmailJson,15*60*1000);setInterval(()=>loadAgents(false),15*60*1000);setInterval(loadWx,30*60*1000);setInterval(loadJobsJson,60*60*1000);
   document.addEventListener('visibilitychange',()=>{if(!document.hidden){loadBorsaJson();loadFX(false);loadBasvuru();loadGmailJson();loadAgents(false);loadWx();loadJobsJson();}});

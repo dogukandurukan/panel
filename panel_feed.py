@@ -5,6 +5,7 @@ MAIL GÖNDERMEZ. Mevcut mail botuna dokunmaz.
 Çalıştırma: python panel_feed.py
 """
 import json
+import re
 import datetime as dt
 import urllib.request
 import xml.etree.ElementTree as ET
@@ -20,20 +21,63 @@ IST = dt.timezone(dt.timedelta(hours=3))
 # --- Buraya istediğin ABD hisselerini yaz (5 tane) ---
 US_WATCH = ["AAPL", "MSFT", "NVDA", "AMZN", "TSLA"]
 
+# --- Dünya piyasaları: (yfinance kodu, panelde görünen ad) ---
+# `world` alani DUNYA HABERI; bu ayri bir sey: endeks/emtia fiyatlari.
+WORLD_IDX = [
+    ("XU100.IS", "BIST 100"),
+    ("^GSPC", "S&P 500"),
+    ("^IXIC", "Nasdaq"),
+    ("^GDAXI", "DAX"),
+    ("BZ=F", "Brent"),
+]
+
+# Sparkline icin satir basina tutulan kapanis sayisi (~4.5 ay islem gunu).
+HIST_GUN = 90
+
 
 def _fmt(v):
     return f"{v:,.2f}" if v is not None and not pd.isna(v) else "—"
 
 
-def _row(code, m):
+def _hist(df):
+    """Sparkline serisi: son HIST_GUN kapanis. Veri yoksa alan hic yazilmaz —
+    panel `hist` gormezse grafik cizmiyor (uydurma seri yok)."""
+    if df is None or "Close" not in df:
+        return None
+    vals = [round(float(v), 2) for v in df["Close"].tail(HIST_GUN)
+            if v is not None and not pd.isna(v)]
+    return vals if len(vals) >= 5 else None
+
+
+def _ind(m):
+    """metrics() zaten hesapliyordu, panele hic tasinmamisti. Esikler burada
+    kalsin diye etiketler borsa.py'nin kendi fonksiyonlarindan uretiliyor."""
+    d = {"ma": B.ma_label(m), "rsiTxt": B.rsi_label(m["rsi"])}
+    if not pd.isna(m["rsi"]):
+        d["rsi"] = round(float(m["rsi"]), 1)
+    if not pd.isna(m["volat"]):
+        d["volat"] = round(float(m["volat"]), 1)
+    if not pd.isna(m["vol_ratio"]) and m["vol_ratio"] > 0:
+        d["volRatio"] = round(float(m["vol_ratio"]), 2)
+    return d
+
+
+def _row(code, m, df=None, ad=None):
     chg = m["day_chg"]
-    return {
+    r = {
         "code": code,
         "price": _fmt(m["last"]),
         "chg": f"{'+' if chg >= 0 else ''}{chg:.2f}%",
         "avg1w": _fmt(m["avg_1w"]),
         "avg1m": _fmt(m["avg_1m"]),
     }
+    if ad:
+        r["name"] = ad
+    h = _hist(df)
+    if h:
+        r["hist"] = h
+    r["ind"] = _ind(m)
+    return r
 
 
 def download_plain(codes):
@@ -230,11 +274,18 @@ def build():
              if getattr(C, "DYNAMIC_WATCHLIST", False) else list(C.WATCHLIST))
 
     # BIST izleme listesi (+ ortalamalar)
-    watch_rows = [_row(code, B.metrics(data[code])) for code in watch if code in data]
+    watch_rows = [_row(code, B.metrics(data[code]), data[code])
+                  for code in watch if code in data]
 
     # ABD hisseleri
     usdata = download_plain(US_WATCH)
-    us_rows = [_row(code, B.metrics(usdata[code])) for code in US_WATCH if code in usdata]
+    us_rows = [_row(code, B.metrics(usdata[code]), usdata[code])
+               for code in US_WATCH if code in usdata]
+
+    # Dünya piyasaları (endeks + emtia)
+    idxdata = download_plain([c for c, _ in WORLD_IDX])
+    idx_rows = [_row(code, B.metrics(idxdata[code]), idxdata[code], ad)
+                for code, ad in WORLD_IDX if code in idxdata]
 
     # Haberler
     mentioned = B.pick_dynamic_watchlist(data, n=99, per_cat=C.TOP_N)
@@ -264,6 +315,7 @@ def build():
         "updated": dt.datetime.now(IST).strftime("%Y-%m-%d %H:%M"),
         "watch": watch_rows,
         "us": us_rows,
+        "world_idx": idx_rows,
         "gold": fetch_gold(),
         "news": news_items[:8],
         "world": dunya,
@@ -277,7 +329,14 @@ def build():
 
 if __name__ == "__main__":
     d = build()
+    metin = json.dumps(d, ensure_ascii=False, indent=2)
+    # indent=2 her `hist` sayisini ayri satira aliyor: dosya 7 katina cikiyor.
+    # Yalnizca sayi iceren diziler tek satira toplaniyor (okunurluk kaybi yok).
+    metin = re.sub(r"\[\s+((?:-?\d+(?:\.\d+)?,\s+)+-?\d+(?:\.\d+)?)\s+\]",
+                   lambda m: "[" + re.sub(r"\s+", " ", m.group(1)) + "]", metin)
     with open("borsa.json", "w", encoding="utf-8") as f:
-        json.dump(d, f, ensure_ascii=False, indent=2)
+        f.write(metin + "\n")
+    seri = sum(1 for r in d["watch"] + d["us"] + d["world_idx"] if r.get("hist"))
     print(f"borsa.json: {len(d['watch'])} BIST, {len(d['us'])} ABD, "
+          f"{len(d['world_idx'])} endeks, {seri} seri, "
           f"altın={'var' if d['gold'] else 'yok'}, {len(d['news'])} haber, {len(d['world'])} dünya")

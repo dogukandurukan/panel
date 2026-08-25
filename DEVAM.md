@@ -1,4 +1,4 @@
-# Devam notu — 24 Ağustos 2026
+# Devam notu — 25 Ağustos 2026
 
 Bu dosya bir oturumdan diğerine devretmek için. Kalıcı proje kuralları
 `CLAUDE.md`'de; burası **nerede kalındığı** ve **sırada ne olduğu**.
@@ -6,6 +6,45 @@ Bu dosya bir oturumdan diğerine devretmek için. Kalıcı proje kuralları
 ---
 
 ## 1. Bu oturumda ne yapıldı
+
+### 25 Ağustos — Borsa kartı (yol haritası 4.1) bitti
+Kullanıcının kararları: **90 günlük seri · çizgi (sparkline) · portföy YOK,
+izleme listesi kalıyor** (`HOLDINGS` boş bırakıldı, kişisel veri public repoya
+girmesin diye).
+
+**Feed (`panel_feed.py`).** `borsa.py:download()` zaten 8 aylık günlük veri
+indiriyordu; seri yazılmıyordu. Satırlara iki alan eklendi — **ek ağ isteği yok**:
+- `hist`: son 90 kapanış (`HIST_GUN`). 5 kayıttan azsa alan **hiç yazılmıyor**.
+- `ind`: `rsi`, `rsiTxt`, `ma`, `volat`, `volRatio`. Eşikler panelde tekrar
+  yazılmadı; etiketler `B.ma_label()` / `B.rsi_label()`'den geliyor.
+- Yeni `world_idx` alanı: BIST 100, S&P 500, Nasdaq, DAX, Brent (`WORLD_IDX`).
+  `world` alanı dünya HABERİ; karışmasın diye ayrı ad.
+- `indent=2` her `hist` sayısını ayrı satıra alıp dosyayı 7 katına çıkarıyordu;
+  yalnızca sayısal diziler tek satıra toplanıyor. borsa.json 4 KB → 18 KB.
+
+**Panel (`index.html`).** `priceSpark(vals,w,h,cls)` — `sparkline()` Ağırlık
+kartına özel (rengi sabit), bu sürüm yön rengi alıyor ve geniş hâli CSS ile
+esniyor. Satırda 66×20 sparkline; satıra tıklayınca **altında** açılan detay:
+300×88 çizgi, en düşük/en yüksek, 90 günlük değişim, RSI, MA konumu, volatilite,
+hacim oranı ve TradingView bağlantısı. Klavyeyle de açılıyor (`role=button`,
+Enter/Space, `aria-expanded`). Yeni `#idxList` bölümü Dünya Piyasaları'nı basıyor.
+
+**Saatlik veri alınmadı** — bilinçli. Feed günde 2 kez döndüğü için "saatlik"
+zaten bayat olurdu; canlı grafik için TradingView bağlantısı var.
+
+**Çıkan üç tuzak:**
+1. Satır ↔ detay eşleşmesi id ile kurulamıyor: kodlarda `^GSPC`, `BZ=F` var.
+   DOM sırası (`nextElementSibling`) kullanıldı; dinleyici kapsayıcıya bir kez
+   bağlanıyor, `innerHTML` değişince kopmuyor.
+2. Endekslerde Yahoo hacim vermiyor → `volRatio` 0 → detayda "×0" yazıyordu.
+   Hem feed hem panel tarafında sıfır eleniyor.
+3. Eski biçimli (hist/ind içermeyen) `borsa.json` önbelleğinde satır yalnızca
+   TradingView bağı olan boş bir kutu açıyordu; artık gerçek veri yoksa satır
+   tıklanabilir bile olmuyor.
+
+**Doğrulama:** gerçek veriyle (6 BIST + 5 ABD + 5 endeks) Chrome'da; iki temada
+da render edildi, 390 px'te yatay taşma yok, konsol hatası yok; aç/kapa, iç öğeye
+tıklama, Enter, çoklu açık detay ve eski-biçim JSON testleri geçti.
 
 ### Push kurulumunun durumu ölçüldü (kod tamam, secret'lar eksik)
 `push-yoklama` ilk kez çalıştırıldı (iş akışı bir önceki gece 01:21'de main'e
@@ -191,40 +230,22 @@ istiyor, yani hacim ayarı ilk iki hafta devreye girmeyecek. Kart o sırada
 ## 4. Sıradaki yol haritası
 
 Kullanıcının belirlediği sıra: **yoklama → spor/yemek → borsa → harcama.**
-Yoklama ve spor/yemek bitti. Bu oturumun tamamı `main`'de ve canlıda
-(Pages dağıtımı 24.08 10:01 UTC, başarılı).
+Yoklama, spor/yemek ve borsa bitti. **Sırada yalnızca harcama/gelir (4.2) var.**
 
-### 4.1 Borsa kartı (sırada — ayrı oturumda yapılacak)
+### 4.1 Borsa kartı — BİTTİ (25 Ağustos)
 
-**Bugün ne var.** `panel_feed.py`, `borsa.py`'yi kütüphane gibi kullanıp
-`borsa.json` üretiyor. Alanlar:
+Yapılanlar yukarıda. `borsa.json` alanları artık: `watch`, `us`, **`world_idx`**,
+`gold`, `news`, `world`, `_teshis`; hisse satırlarında **`hist`** (90 kapanış) ve
+**`ind`** (rsi/ma/volat/volRatio).
 
-| Alan | İçerik |
-|---|---|
-| `watch` | BIST satırları: `{code, price, chg, avg1w, avg1m}` |
-| `us` | ABD satırları, aynı biçim (`US_WATCH` panel_feed.py içinde) |
-| `gold` | `{price, chg}` — gram altın, `GC=F` × `USDTRY=X` |
-| `news` | hisse haberleri (süzgeçten geçmiş) |
-| `world` | dünya gündemi |
-| `_teshis` | feed sorun ayıklama alanı; panel okumuyor |
-
-`borsa.py` içinde hazır ama panele hiç taşınmamış olanlar: `rsi()`,
-`metrics()`, `condition_flags()`, `ma_label()`, `pick_dynamic_watchlist()`,
-`screen_tables()`. Gösterge hesabı zaten var; panel yalnızca fiyat ve yüzde
-okuyor.
-
-Evren `config.py`'de: `UNIVERSE` 36 hisse, `DYNAMIC_WATCHLIST=True` olduğu
-için izleme listesi her koşuda otomatik seçiliyor. `HOLDINGS` boş — portföy
-girilmemiş; girilirse portföy tablosu da üretilebilir.
-
-**Yapılacaklar (kullanıcının isteği).** Sparkline/mum grafiği, hisseye
-tıklayınca saatlik veri ya da TradingView bağlantısı, dünya piyasaları.
-Grafik `index.html` içinde elle çizilen SVG olmalı (CDN yok — 3. kural);
-Ağırlık Takibi için yazılan `sparkline()` örnek alınabilir. `borsa.py` fiyat
-serisini `borsa.json`'a yazmalı; şu an yalnızca özet yazıyor.
-
-**Karar bekleyen.** Kaç günlük seri (30/90/365)? Mum mu çizgi mi? Portföy
-girilecek mi, yoksa kart izleme listesi olarak mı kalacak?
+Açık uçlar:
+- `borsa.py`'de hâlâ panele taşınmamış olanlar: `condition_flags()`,
+  `screen_tables()`, `portfolio_table()` (portföy girilmediği için gereksiz).
+- Gram altının serisi yok (`fetch_gold` yalnızca özet döndürüyor); istenirse
+  `hist` oraya da eklenebilir.
+- Dünya piyasaları listesi elle yazıldı (`WORLD_IDX`); TradingView sembolleri
+  panelde `TVSYM` haritasında — yeni endeks eklenirse iki yere de yazılmalı,
+  yoksa bağlantı sessizce çıkmaz (kasıtlı: yanlış sayfa açmaktansa hiç açmamak).
 
 ### 4.2 Harcama / gelir kategorileri (ayrı oturumda yapılacak)
 
