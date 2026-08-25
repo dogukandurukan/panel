@@ -1,33 +1,47 @@
 {
-  "updated": "2026-08-25 09:39",
+  "updated": "2026-08-25 14:26",
   "watch": [
     {
-      "code": "GUBRF",
-      "price": "475.75",
-      "chg": "+2.81%",
-      "avg1w": "456.90",
-      "avg1m": "428.67"
+      "code": "SASA",
+      "price": "2.30",
+      "chg": "-0.86%",
+      "avg1w": "2.28",
+      "avg1m": "2.43"
     },
     {
       "code": "ALARK",
-      "price": "106.30",
-      "chg": "-1.30%",
-      "avg1w": "107.58",
-      "avg1m": "103.94"
+      "price": "104.40",
+      "chg": "-1.79%",
+      "avg1w": "107.70",
+      "avg1m": "103.88"
     },
     {
-      "code": "TOASO",
-      "price": "281.25",
-      "chg": "+3.78%",
-      "avg1w": "270.90",
-      "avg1m": "268.67"
+      "code": "TUPRS",
+      "price": "378.75",
+      "chg": "-6.88%",
+      "avg1w": "390.05",
+      "avg1m": "335.75"
+    },
+    {
+      "code": "YKBNK",
+      "price": "36.54",
+      "chg": "+4.10%",
+      "avg1w": "35.38",
+      "avg1m": "34.24"
+    },
+    {
+      "code": "GUBRF",
+      "price": "475.75",
+      "chg": "+0.00%",
+      "avg1w": "463.00",
+      "avg1m": "431.19"
     },
     {
       "code": "YEOTK",
-      "price": "34.84",
+      "price": "33.68",
       "chg": "-3.33%",
-      "avg1w": "37.08",
-      "avg1m": "39.35"
+      "avg1w": "35.56",
+      "avg1m": "38.96"
     }
   ],
   "us": [
@@ -68,35 +82,44 @@
     }
   ],
   "gold": {
-    "price": "7,276.10",
-    "chg": "+1.50%"
+    "price": "7,262.06",
+    "chg": "+1.30%"
   },
   "news": [
-    "🔴 VESTL borçlanma aracı ihraç belgesi SPK onayı  (Borsatek)"
+    "⚪ Günün öne çıkan gelişmeleri: CCOLA, BRSAN, AKBNK, SASA, VESTL  (getmidas.com)",
+    "⚪ Midas ile gün sonu: PDD, SASA, ROST, BRSAN, BJ, AKBNK  (getmidas.com)",
+    "⚪ SASA'dan SPK başvurusu  (hibya.com)",
+    "⚪ ANALİZ- Gündem Bülteni (TSKB) [FNC-NEWS]  (Uzmanpara)",
+    "⚪ 2026-08-24 — matriks:6693111:0  (TradingView)",
+    "⚪ ANALİZ- Haftalık Görünüm: Dünya ve Türkiye (TSKB) [FNC-NEWS]  (Uzmanpara)",
+    "⚪ Holdinglerde NAD iskontosu yüzde 48,4 seviyesinde  (hibya.com)"
   ],
   "world": [
-    "🌍 Iran says it is 'fully prepared' to counter widened US economic sanctions  (BBC World)",
+    "🌍 China warns it will safeguard its interests after US widens sanctions against Iran  (BBC World)",
     "🌍 Prince Harry quits board of wildlife charity after rangers’ human rights abuses  (Guardian World)",
-    "🌍 Angel Reese breaks WNBA record with 26 rebounds in Dream’s win over Sparks  (Al Jazeera)",
-    "🌍 Indonesians brave choking smoke to pray for rain as country battles wildfires  (NPR World)",
-    "🌍 Londra ve Paris’in simge yapıları Ukrayna'nın bağımsızlık günü için aydınlanıyor  (Euronews)",
-    "🌍 ABD İran'a yeni yaptırım açıkladı: Türkiye'ye etkisi ne?  (DW Türkçe)"
+    "🌍 Can Pakistan’s Asim Munir convince Iran military chiefs to return to talks?  (Al Jazeera)",
+    "🌍 Trump calls leaders to isolate Iran. And, SCOTUS backs Trump for now on mail-in voting  (NPR World)",
+    "🌍 Fransa'da köyün üzerinde oluşan hortum kamerada  (Euronews)",
+    "🌍 Merz: Almanya'yı hedef alanlara bedeli ödetilecek  (DW Türkçe)"
   ],
   "_teshis": {
     "dunya": [
-      "BBC World: 30 öğe / 2 alındı / 0 elendi | ilk: Iran says it is 'fully prepared' to counter widened US econo",
+      "BBC World: 27 öğe / 2 alındı / 0 elendi | ilk: China warns it will safeguard its interests after US widens ",
       "Guardian World: 45 öğe / 2 alındı / 0 elendi | ilk: Prince Harry quits board of wildlife charity after rangers’ ",
-      "Al Jazeera: 25 öğe / 2 alındı / 0 elendi | ilk: Angel Reese breaks WNBA record with 26 rebounds in Dream’s w",
-      "NPR World: 10 öğe / 2 alındı / 0 elendi | ilk: Indonesians brave choking smoke to pray for rain as country ",
-      "Euronews: 50 öğe / 2 alındı / 0 elendi | ilk: Londra ve Paris’in simge yapıları Ukrayna'nın bağımsızlık gü",
-      "DW Türkçe: 15 öğe / 2 alındı / 0 elendi | ilk: ABD İran'a yeni yaptırım açıkladı: Türkiye'ye etkisi ne?",
+      "Al Jazeera: 25 öğe / 2 alındı / 0 elendi | ilk: Can Pakistan’s Asim Munir convince Iran military chiefs to r",
+      "NPR World: 10 öğe / 2 alındı / 0 elendi | ilk: Trump calls leaders to isolate Iran. And, SCOTUS backs Trump",
+      "Euronews: 50 öğe / 2 alındı / 0 elendi | ilk: Fransa'da köyün üzerinde oluşan hortum kamerada",
+      "DW Türkçe: 15 öğe / 2 alındı / 0 elendi | ilk: Merz: Almanya'yı hedef alanlara bedeli ödetilecek",
       "SONUÇ: 6 haber · veren: Al Jazeera, BBC World, DW Türkçe, Euronews, Guardian World, NPR World"
     ],
-    "hisse": "3 başlık geldi, 2 elendi",
+    "hisse": "7 başlık geldi, 0 elendi",
     "hisse_ham": [
-      "KAP *** VESTEL ELEKTRONİK SANAYİ VE TİCARET A.Ş. *** VESTL *** İhraç B",
-      "KAP *** VESTEL ELEKTRONİK SANAYİ VE TİCARET A.Ş. *** VESTL *** İhraç T",
-      "VESTL borçlanma aracı ihraç belgesi SPK onayı"
+      "Günün öne çıkan gelişmeleri: CCOLA, BRSAN, AKBNK, SASA, VESTL",
+      "Midas ile gün sonu: PDD, SASA, ROST, BRSAN, BJ, AKBNK",
+      "SASA'dan SPK başvurusu",
+      "ANALİZ- Gündem Bülteni (TSKB) [FNC-NEWS]",
+      "2026-08-24 — matriks:6693111:0",
+      "ANALİZ- Haftalık Görünüm: Dünya ve Türkiye (TSKB) [FNC-NEWS]"
     ]
   }
 }
