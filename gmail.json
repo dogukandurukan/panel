@@ -1,31 +1,55 @@
 {
-  "updated": "2026-08-25 09:47",
+  "updated": "2026-08-25 14:16",
   "ok": true,
   "window_days": 7,
   "total_unread": 4,
   "counts": {
     "reply": 0,
     "job": 0,
-    "info": 0,
-    "bulk": 4
+    "info": 3,
+    "bulk": 0
   },
   "important_unread": 0,
   "drafts": 0,
   "model": "",
-  "items": [],
-  "bulk_top": [
-    [
-      "noreply12",
-      2
-    ],
-    [
-      "Elektronisches Postfach ",
-      1
-    ],
-    [
-      "DHL Paket",
-      1
-    ]
+  "items": [
+    {
+      "id": "1a038907ada2bd4e",
+      "thread_id": "1a038907ada2bd4e",
+      "from": "Pazar Yeri Entegrasyon",
+      "email": "mp.entegrasyon@email.trendyol.com",
+      "subject": "Hatırlatma: Trendyol Ürün Servisleri Limit Değişiklikleri Hakkında / Reminder: About Trendyol Product Services Rate Limit Changes",
+      "date": "Tue, 25 Aug 2026 04:56:06 -0600",
+      "bucket": "info",
+      "why": "",
+      "key": "s:mp.entegrasyon@email.trendyol.com|hatırlatma: trendyol ürün servisleri limit değişiklikleri hakkında / reminder: about trendyol product services rate limit changes",
+      "dupes": 1
+    },
+    {
+      "id": "1a038777c6b42386",
+      "thread_id": "1a0386cc62e4a9cb",
+      "from": "GitHub",
+      "email": "noreply@github.com",
+      "subject": "[GitHub] A fine-grained personal access token has been added to your account",
+      "date": "Tue, 25 Aug 2026 03:29:09 -0700",
+      "bucket": "info",
+      "why": "güvenlik",
+      "key": "s:noreply@github.com|[github] a fine-grained personal access token has been added to your account",
+      "dupes": 2
+    },
+    {
+      "id": "1a0386272d03b480",
+      "thread_id": "1a0386272d03b480",
+      "from": "Anthropic, PBC",
+      "email": "invoice+statements@mail.anthropic.com",
+      "subject": "Your receipt from Anthropic, PBC #2847-5947-5480",
+      "date": "Tue, 25 Aug 2026 10:06:10 +0000",
+      "bucket": "info",
+      "why": "",
+      "key": "s:invoice+statements@mail.anthropic.com|your receipt from anthropic, pbc ##-#-#",
+      "dupes": 1
+    }
   ],
+  "bulk_top": [],
   "draft_note": "ANTHROPIC_API_KEY yok - taslak uretilmedi"
 }
