@@ -1,102 +1,102 @@
 {
-  "updated": "2026-08-24 16:52",
+  "updated": "2026-08-25 09:39",
   "watch": [
     {
-      "code": "SASA",
-      "price": "2.36",
-      "chg": "+1.72%",
-      "avg1w": "2.29",
-      "avg1m": "2.43"
-    },
-    {
       "code": "GUBRF",
-      "price": "495.25",
-      "chg": "+4.10%",
-      "avg1w": "466.90",
-      "avg1m": "432.12"
+      "price": "475.75",
+      "chg": "+2.81%",
+      "avg1w": "456.90",
+      "avg1m": "428.67"
     },
     {
-      "code": "EKGYO",
-      "price": "20.68",
-      "chg": "+6.32%",
-      "avg1w": "19.51",
-      "avg1m": "18.52"
+      "code": "ALARK",
+      "price": "106.30",
+      "chg": "-1.30%",
+      "avg1w": "107.58",
+      "avg1m": "103.94"
     },
     {
-      "code": "ASTOR",
-      "price": "346.00",
-      "chg": "+3.05%",
-      "avg1w": "332.20",
-      "avg1m": "313.71"
+      "code": "TOASO",
+      "price": "281.25",
+      "chg": "+3.78%",
+      "avg1w": "270.90",
+      "avg1m": "268.67"
+    },
+    {
+      "code": "YEOTK",
+      "price": "34.84",
+      "chg": "-3.33%",
+      "avg1w": "37.08",
+      "avg1m": "39.35"
     }
   ],
   "us": [
     {
       "code": "AAPL",
-      "price": "311.33",
-      "chg": "+0.64%",
-      "avg1w": "311.77",
-      "avg1m": "314.20"
+      "price": "310.34",
+      "chg": "+0.32%",
+      "avg1w": "311.57",
+      "avg1m": "314.15"
     },
     {
       "code": "MSFT",
-      "price": "486.35",
-      "chg": "+0.64%",
-      "avg1w": "483.33",
-      "avg1m": "473.72"
+      "price": "487.31",
+      "chg": "+0.84%",
+      "avg1w": "483.53",
+      "avg1m": "473.77"
     },
     {
       "code": "NVDA",
-      "price": "209.11",
-      "chg": "-2.61%",
-      "avg1w": "215.60",
-      "avg1m": "212.98"
+      "price": "208.48",
+      "chg": "-2.91%",
+      "avg1w": "215.47",
+      "avg1m": "212.95"
     },
     {
       "code": "AMZN",
-      "price": "262.41",
-      "chg": "+1.46%",
-      "avg1w": "261.29",
-      "avg1m": "261.43"
+      "price": "262.07",
+      "chg": "+1.33%",
+      "avg1w": "261.22",
+      "avg1m": "261.41"
     },
     {
       "code": "TSLA",
-      "price": "353.43",
-      "chg": "-2.60%",
-      "avg1w": "349.88",
-      "avg1m": "329.35"
+      "price": "348.95",
+      "chg": "-3.83%",
+      "avg1w": "348.99",
+      "avg1m": "329.13"
     }
   ],
   "gold": {
-    "price": "7,311.89",
-    "chg": "+2.37%"
+    "price": "7,276.10",
+    "chg": "+1.50%"
   },
   "news": [
-    "⚪ SASA'dan SPK başvurusu  (hibya.com)"
+    "🔴 VESTL borçlanma aracı ihraç belgesi SPK onayı  (Borsatek)"
   ],
   "world": [
-    "🌍 Russia's second-biggest online retailer targeted in Ukrainian strikes  (BBC World)",
-    "🌍 Children make up half of mpox cases in Guinea-Bissau as epidemic spreads  (Guardian World)",
-    "🌍 Rain and flooding from Typhoon Narra hits China and Vietnam  (Al Jazeera)",
-    "🌍 Treasury Secretary Scott Bessent to unveil new economic sanctions on Iran  (NPR World)",
-    "🌍 Ukrayna, St Petersburg yakınında Ozon tesislerini vurdu  (Euronews)",
-    "🌍 ABD'nin gazetecilere vize sınırlamasına Almanya'dan tepki  (DW Türkçe)"
+    "🌍 Iran says it is 'fully prepared' to counter widened US economic sanctions  (BBC World)",
+    "🌍 Prince Harry quits board of wildlife charity after rangers’ human rights abuses  (Guardian World)",
+    "🌍 Angel Reese breaks WNBA record with 26 rebounds in Dream’s win over Sparks  (Al Jazeera)",
+    "🌍 Indonesians brave choking smoke to pray for rain as country battles wildfires  (NPR World)",
+    "🌍 Londra ve Paris’in simge yapıları Ukrayna'nın bağımsızlık günü için aydınlanıyor  (Euronews)",
+    "🌍 ABD İran'a yeni yaptırım açıkladı: Türkiye'ye etkisi ne?  (DW Türkçe)"
   ],
   "_teshis": {
     "dunya": [
-      "BBC World: 27 öğe / 2 alındı / 0 elendi | ilk: Russia's second-biggest online retailer targeted in Ukrainia",
-      "Guardian World: 45 öğe / 2 alındı / 0 elendi | ilk: Children make up half of mpox cases in Guinea-Bissau as epid",
-      "Al Jazeera: 25 öğe / 2 alındı / 0 elendi | ilk: Rain and flooding from Typhoon Narra hits China and Vietnam",
-      "NPR World: 10 öğe / 2 alındı / 0 elendi | ilk: Treasury Secretary Scott Bessent to unveil new economic sanc",
-      "Euronews: 50 öğe / 2 alındı / 0 elendi | ilk: Ukrayna, St Petersburg yakınında Ozon tesislerini vurdu",
-      "DW Türkçe: 15 öğe / 2 alındı / 0 elendi | ilk: ABD'nin gazetecilere vize sınırlamasına Almanya'dan tepki",
+      "BBC World: 30 öğe / 2 alındı / 0 elendi | ilk: Iran says it is 'fully prepared' to counter widened US econo",
+      "Guardian World: 45 öğe / 2 alındı / 0 elendi | ilk: Prince Harry quits board of wildlife charity after rangers’ ",
+      "Al Jazeera: 25 öğe / 2 alındı / 0 elendi | ilk: Angel Reese breaks WNBA record with 26 rebounds in Dream’s w",
+      "NPR World: 10 öğe / 2 alındı / 0 elendi | ilk: Indonesians brave choking smoke to pray for rain as country ",
+      "Euronews: 50 öğe / 2 alındı / 0 elendi | ilk: Londra ve Paris’in simge yapıları Ukrayna'nın bağımsızlık gü",
+      "DW Türkçe: 15 öğe / 2 alındı / 0 elendi | ilk: ABD İran'a yeni yaptırım açıkladı: Türkiye'ye etkisi ne?",
       "SONUÇ: 6 haber · veren: Al Jazeera, BBC World, DW Türkçe, Euronews, Guardian World, NPR World"
     ],
     "hisse": "3 başlık geldi, 2 elendi",
     "hisse_ham": [
-      "KAP *** SASA POLYESTER SANAYİ A.Ş. *** SASA *** Sermaye Artırımı - Aza",
-      "SASA'dan SPK başvurusu",
-      "KAP *** EMLAK KONUT GAYRİMENKUL YATIRIM ORTAKLIĞI A.Ş. *** EKGYO *** Ö"
+      "KAP *** VESTEL ELEKTRONİK SANAYİ VE TİCARET A.Ş. *** VESTL *** İhraç B",
+      "KAP *** VESTEL ELEKTRONİK SANAYİ VE TİCARET A.Ş. *** VESTL *** İhraç T",
+      "VESTL borçlanma aracı ihraç belgesi SPK onayı"
     ]
   }
 }
