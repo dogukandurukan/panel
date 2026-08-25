@@ -41,7 +41,11 @@ DATA_FILE = "panel-data.json"
 GERI_DK = 35
 ILERI_DK = 5
 
-VAPID_CLAIMS = {"sub": "mailto:panel@localhost"}
+# VAPID 'sub' iddiası: RFC 8292 mailto: ya da https: ister ve Apple bunu
+# gerçekten doğruluyor. 'mailto:panel@localhost' geçerli bir adres olmadığı
+# için 403 BadJwtToken dönüyordu. Panelin kendi genel adresi kullanılıyor —
+# depo herkese açık olduğu için buraya kişisel e-posta yazılmaz (1. kural).
+VAPID_CLAIMS = {"sub": "https://dogukandurukan.github.io/panel/"}
 
 
 def gh(yol, token):
@@ -125,6 +129,29 @@ def main():
     if not subs:
         print("kayıtlı cihaz yok.")
         return 0
+
+    # 403 BadJwtToken iki ayrı sebepten gelebiliyor: bozuk iddia ya da secret'taki
+    # gizli anahtarın aboneliğin açık anahtarıyla eşleşmemesi. Ayırt etmek için
+    # gizli anahtardan açık anahtarı türetip gist'tekiyle karşılaştır.
+    kayitli = push.get("vapidPublic") or ""
+    if kayitli:
+        try:
+            import base64
+            from py_vapid import Vapid02
+            from cryptography.hazmat.primitives import serialization
+            ham = Vapid02.from_string(private_key=gizli).public_key.public_bytes(
+                serialization.Encoding.X962,
+                serialization.PublicFormat.UncompressedPoint)
+            turetilen = base64.urlsafe_b64encode(ham).rstrip(b"=").decode()
+            if turetilen == kayitli:
+                print("anahtar kontrolü: secret abonelikle EŞLEŞİYOR.")
+            else:
+                print("anahtar kontrolü: EŞLEŞMİYOR — VAPID_PRIVATE secret'ı "
+                      "aboneliğin açık anahtarına ait değil. Panelde bildirimi "
+                      "kaldırıp yeniden kurmak ya da doğru gizli anahtarı "
+                      "yazmak gerekiyor.")
+        except Exception as e:
+            print(f"anahtar kontrolü yapılamadı: {type(e).__name__}: {e}")
 
     simdi = dt.datetime.now(IST)
     # JS getDay(): Pazar 0 ... Cumartesi 6
