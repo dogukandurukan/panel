@@ -111,6 +111,11 @@ okunur), GitHub Actions API (15 dk), Open-Meteo (30 dk).
 - **ElementTree'de `elem.find(a) or elem.find(b)` yazma.** Çocuğu olmayan
   Element falsy sayılır; `<title>` çocuksuzdur, `or` onu atlayıp `None`'a
   düşer ve bütün kaynaklar sessizce boş döner. Açıkça `is not None` kontrol et.
+- **GitHub Actions cron'u yarım saat gecikir.** İstisna değil, olağan. 18:30
+  cron'u 19:06'da çalıştı ve 35 dakikalık bildirim penceresi bir dakikayla
+  kaçtı. Pencere 120 dakika; ama bir sonraki dilim başlayınca kapanıyor, yoksa
+  geç bildirim sıradaki işin üstüne biner. Saate bağlı her iş bu gecikmeyi
+  hesaba katmalı.
 - **Feed hatalarında kaynak başına sayaç şart.** "Toplam 4 haber" satırı
   hangi kaynağın boş döndüğünü göstermiyordu; teşhis eklenene kadar üç tur
   tahmin yürütüldü.

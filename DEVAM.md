@@ -150,6 +150,11 @@ gönderildi`). Secret'lar ekli: `VAPID_PRIVATE`, `PANEL_GIST_TOKEN`.
 4. **`https://...` sub** → pywebpush reddetti; RFC izin verse de kütüphane
    ısrarla `mailto:` istiyor. Artık geçerli bir mailto var ve adres
    `VAPID_SUB` secret'ıyla değiştirilebiliyor.
+5. **Pencere dardı.** 18:30 cron'u 19:06'da çalıştı (GitHub 36 dk geciktirdi),
+   35 dakikalık pencere bir dakikayla kaçtı ve DJ bildirimi hiç gitmedi.
+   Pencere 120 dakika oldu, bir sonraki dilim başlayınca kapanıyor.
+   Zamanlanmış cron'la teslimat 25 Ağustos 21:51'de doğrulandı:
+   `Kişisel proje (21:30) — 1/1 cihaza gönderildi`.
 
 Göndericiye kalıcı iki teşhis eklendi: token kaç gist görüyor + gizli
 anahtarın aboneliğin açık anahtarıyla eşleşip eşleşmediği. İkincisi
@@ -163,8 +168,7 @@ bildirim gönderir. Zamanlanmış koşularda davranış değişmez.
 ## 3. Doğrulanamamış olan
 
 **Gerçek push teslimatı doğrulandı** (25 Ağustos): `1/1 cihaza gönderildi`.
-Kalan tek doğrulanmamış nokta, bildirimin zamanlanmış cron'la (elle değil)
-düşüp düşmediği — ilk gerçek yoklama saatinde görülecek.
+Pencere mantığı da gerçek gecikmeyle sınandı ve düzeltildi.
 
 **Canlı sayfa sandbox'tan doğrulanamıyor.** Ajan proxy'si `github.io`'ya CONNECT
 isteğini 403 ile reddediyor; dağıtımın başarısı yalnızca Actions kaydından
