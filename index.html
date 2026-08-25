@@ -4184,9 +4184,15 @@ function openSyncBox(){
 async function initSync(){
   syncCfg=await sGet(K.sync)||null;
   renderSyncState();
+  /* Yoklama kartı initSync'ten ÖNCE çiziliyor; o an syncCfg henüz null olduğu
+     için telefon bildirimi bölümü senkron kurulu olsa bile "önce senkronu kur"
+     diyordu ve kendini bir daha düzeltmiyordu. syncCfg okunur okunmaz yeniden
+     çiz — gist kimliği syncPull sonrası dolabildiği için orada bir kez daha. */
+  renderYok();
   document.getElementById('syncBtn').onclick=openSyncBox;
   if(!syncCfg||!syncCfg.token)return;
   await syncPull();
+  renderYok();
   await syncPush();                                    // bu cihazda biriken yenilikleri de gönder
   setInterval(()=>syncPull(),SYNC_POLL);
   document.addEventListener('visibilitychange',()=>{if(!document.hidden)syncPull();});
