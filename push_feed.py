@@ -54,8 +54,22 @@ def gh(yol, token):
 
 
 def gist_dosyalari(token):
-    """Panelin gist'ini bulur ve iki dosyanın içeriğini döndürür."""
-    for g in gh("/gists?per_page=100", token) or []:
+    """Panelin gist'ini bulur ve iki dosyanın içeriğini döndürür.
+
+    Teşhis: "panel-push.json bulunamadı" iki ayrı sebepten çıkabiliyor —
+    ya telefondaki kurulum gist'e yazmamış, ya da token gist'leri göremiyor.
+    Ayırmak için sayı basılıyor. DİKKAT: bu depo herkese açık, dolayısıyla
+    Actions log'u da açık. Gist ADLARI yazılmaz, yalnızca sayı ve iki bilinen
+    dosyanın varlığı yazılır.
+    """
+    liste = gh("/gists?per_page=100", token) or []
+    veri_var = any(DATA_FILE in ((g or {}).get("files") or {}) for g in liste)
+    push_var = any(PUSH_FILE in ((g or {}).get("files") or {}) for g in liste)
+    print(f"teşhis: token {len(liste)} gist görüyor · "
+          f"{DATA_FILE}: {'var' if veri_var else 'yok'} · "
+          f"{PUSH_FILE}: {'var' if push_var else 'yok'}")
+
+    for g in liste:
         files = (g or {}).get("files") or {}
         if PUSH_FILE not in files:
             continue
