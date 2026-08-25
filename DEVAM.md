@@ -130,21 +130,41 @@ bugünden itibaren sırası gelen kayıtlara yazıldı — dört kartta da kesin
 
 ## 2. Kullanıcıda bekleyen işler
 
+**Telefon bildirimi ÇALIŞIYOR** (25 Ağustos, `Antrenman (12:15) — 1/1 cihaza
+gönderildi`). Secret'lar ekli: `VAPID_PRIVATE`, `PANEL_GIST_TOKEN`.
+
 | # | İş | Nerede |
 |---|---|---|
 | 1 | `ANTHROPIC_API_KEY` secret'ı | Repo → Settings → Secrets → Actions. Mail cevap taslakları bu olmadan üretilmiyor; kod hazır. |
-| 2 | `PANEL_GIST_TOKEN` secret'ı | Gists **okuma** izinli fine-grained token. |
-| 3 | `VAPID_PRIVATE` secret'ı | Panelde "Telefon bildirimini kur" basınca bir kez gösterilecek. Önce ⇅ Senkron kurulu olmalı. |
-| 4 | Paneli telefonda Ana Ekrana ekle | iOS web push başka türlü çalışmıyor. |
-| 5 | `push-yoklama`'yı yoklama saatinde elle çalıştır | Log artık hangi aşamada takıldığını adıyla yazıyor. |
-| 6 | Garanti mobilde "harcama bildirimi e-posta" açık mı? | Harcama kartının seviyesini belirliyor. |
+| 2 | Garanti mobilde "harcama bildirimi e-posta" açık mı? | Harcama kartının seviyesini belirliyor. |
 
----
+### Push kurulumunda çıkan dört hata (hepsi log'dan bulundu)
+1. **Kart bayat kalıyordu.** Yoklama kartı `initSync`'ten önce çiziliyor, o an
+   `syncCfg` null; senkron kurulu olsa bile "önce senkronu kur" diyor ve
+   kendini düzeltmiyordu. Artık `syncCfg` okunur okunmaz yeniden çiziliyor.
+2. **Safari ile ana ekran uygulaması ayrı depolama kullanıyor.** İlk anahtar
+   Safari'de üretilmişti; PWA onu görmediği için yeni çift üretti ve secret'ın
+   güncellenmesi gerekti.
+3. **`mailto:panel@localhost`** → Apple 403 `BadJwtToken`. localhost geçerli
+   alan adı değil.
+4. **`https://...` sub** → pywebpush reddetti; RFC izin verse de kütüphane
+   ısrarla `mailto:` istiyor. Artık geçerli bir mailto var ve adres
+   `VAPID_SUB` secret'ıyla değiştirilebiliyor.
+
+Göndericiye kalıcı iki teşhis eklendi: token kaç gist görüyor + gizli
+anahtarın aboneliğin açık anahtarıyla eşleşip eşleşmediği. İkincisi
+`BadJwtToken`'ın anahtar hatası mı iddia hatası mı olduğunu tek satırda
+ayırıyor.
+
+**Elle test:** Actions → push-yoklama → Run workflow → **zorla** kutusu.
+Pencere ve "zaten işaretlenmiş" kontrolünü atlar, günün en yakın dilimi için
+bildirim gönderir. Zamanlanmış koşularda davranış değişmez.
 
 ## 3. Doğrulanamamış olan
 
-**Gerçek push teslimatı hâlâ test edilmedi** — sandbox'ta push servisine erişim
-yok, secret'lar da eksik. Zincirin son halkası ancak telefonda görülür.
+**Gerçek push teslimatı doğrulandı** (25 Ağustos): `1/1 cihaza gönderildi`.
+Kalan tek doğrulanmamış nokta, bildirimin zamanlanmış cron'la (elle değil)
+düşüp düşmediği — ilk gerçek yoklama saatinde görülecek.
 
 **Canlı sayfa sandbox'tan doğrulanamıyor.** Ajan proxy'si `github.io`'ya CONNECT
 isteğini 403 ile reddediyor; dağıtımın başarısı yalnızca Actions kaydından
