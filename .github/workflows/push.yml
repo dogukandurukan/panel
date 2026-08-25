@@ -14,6 +14,11 @@ on:
     - cron: '0 20 * * *'     # 23:00 TR — yatış
     - cron: '30 20 * * *'    # 23:30 TR — kitap
   workflow_dispatch:          # elle deneme
+    inputs:
+      zorla:
+        description: 'Pencere dışı olsa da en yakın dilim için bildirim gönder (test)'
+        type: boolean
+        default: false
 jobs:
   gonder:
     runs-on: ubuntu-latest
@@ -32,3 +37,5 @@ jobs:
           PANEL_GIST_TOKEN: ${{ secrets.PANEL_GIST_TOKEN }}
           # Panelin kurulum sırasında bir kez gösterdiği VAPID gizli anahtarı
           VAPID_PRIVATE: ${{ secrets.VAPID_PRIVATE }}
+          # Test için: pencere ve "zaten işaretlenmiş" kontrolünü atlar
+          ZORLA: ${{ inputs.zorla }}

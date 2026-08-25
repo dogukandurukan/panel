@@ -135,7 +135,12 @@ def main():
         return 0
 
     su_an = simdi.hour * 60 + simdi.minute
-    adaylar = [x for x in bugun if -ILERI_DK <= su_an - dakika(x[0]) <= GERI_DK]
+    # ZORLA: pencereyi ve "zaten işaretlenmiş" kontrolünü atlar. Zinciri
+    # gerçek bir yoklama saatini beklemeden denemek için; günün en yakın
+    # dilimini seçer.
+    zorla = os.environ.get("ZORLA", "").strip().lower() in ("1", "true", "yes")
+    adaylar = bugun if zorla else [
+        x for x in bugun if -ILERI_DK <= su_an - dakika(x[0]) <= GERI_DK]
     if not adaylar:
         print(f"{simdi:%H:%M} — penceredeki yoklama yok.")
         return 0
@@ -143,7 +148,9 @@ def main():
     saat, ad, dilim = min(adaylar, key=lambda x: abs(su_an - dakika(x[0])))
 
     gun_anahtari = simdi.strftime("%Y-%m-%d")
-    if cevaplanmis(veri, gun_anahtari, dilim):
+    if zorla:
+        print(f"ZORLA açık — pencere ve işaret kontrolü atlandı.")
+    elif cevaplanmis(veri, gun_anahtari, dilim):
         print(f"{ad} ({saat}) zaten işaretlenmiş — bildirim gönderilmedi.")
         return 0
 
