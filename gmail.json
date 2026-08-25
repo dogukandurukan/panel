@@ -1,18 +1,31 @@
 {
-  "updated": "2026-08-24 14:17",
+  "updated": "2026-08-25 09:47",
   "ok": true,
   "window_days": 7,
-  "total_unread": 0,
+  "total_unread": 4,
   "counts": {
     "reply": 0,
     "job": 0,
     "info": 0,
-    "bulk": 0
+    "bulk": 4
   },
   "important_unread": 0,
   "drafts": 0,
   "model": "",
   "items": [],
-  "bulk_top": [],
+  "bulk_top": [
+    [
+      "noreply12",
+      2
+    ],
+    [
+      "Elektronisches Postfach ",
+      1
+    ],
+    [
+      "DHL Paket",
+      1
+    ]
+  ],
   "draft_note": "ANTHROPIC_API_KEY yok - taslak uretilmedi"
 }
