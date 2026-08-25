@@ -1,95 +1,99 @@
 {
- "updated": "2026-08-24 08:36",
+ "updated": "2026-08-25 08:29",
  "ok": true,
  "count": 3,
- "pool": 19,
+ "pool": 13,
  "items": [
   {
-   "title": "Senior Data Engineer (m/f/d)",
-   "company": "DISH Digital Solutions GmbH",
-   "location": "Almanya",
-   "loc_raw": "Düsseldorf",
+   "title": "AI/ML Engineer (m/f/d) Autonomous Systems",
+   "company": "MOTOR Ai",
+   "location": "Berlin",
+   "loc_raw": "Berlin",
    "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/dishdigital/senior-data-engineer-dusseldorf-259265",
+   "url": "https://www.arbeitnow.com/jobs/companies/motor-ai/ai-ml-engineer-autonomous-systems-berlin-374054",
    "source": "Arbeitnow",
-   "posted": "2026-08-23",
+   "posted": "2026-08-24",
    "days": 1,
    "skills": [
     "python",
     "sql",
-    "airflow",
-    "dbt",
+    "azure",
+    "ci/cd",
     "git"
    ],
    "german": false,
-   "focus": "pipeline",
-   "summary": "Your Contribution Are you passionate about designing scalable data platforms and helping others grow along the way? As a Senior Data Engineer, you will shape the architecture and technical direction of our Google Cloud data platform while enabling a team of en",
+   "focus": "ml",
+   "summary": "We are MOTOR Ai . Our mission is to make Level 4 autonomous driving a reality in Germany and beyond. By combining state-of-the-art AI with the expertise of our multidisciplinary team, we are poised to introduce the first solution of its kind in Germany that is",
    "keywords": [
-    "scalab",
+    "experimentation",
+    "optimization",
+    "real-time",
     "pipeline",
+    "cost"
+   ],
+   "score": 94
+  },
+  {
+   "title": "Senior Analytics Engineer",
+   "company": "Perk",
+   "location": "UK",
+   "loc_raw": "London",
+   "remote": false,
+   "url": "https://www.arbeitnow.co.uk/jobs/companies/perk/senior-analytics-engineer-london-101557",
+   "source": "Arbeitnow",
+   "posted": "2026-08-24",
+   "days": 1,
+   "skills": [
+    "python",
+    "sql",
+    "looker",
+    "dbt",
+    "snowflake",
+    "etl"
+   ],
+   "german": false,
+   "focus": "pipeline",
+   "summary": "About Us Perk (formerly TravelPerk) is the intelligent platform for travel and spend management. Built to tackle the time-consuming, manual work that gets in the way of real work, our tools automate everything from travel bookings to expenses, invoice processi",
+   "keywords": [
+    "saas",
+    "pipeline",
+    "scalab",
     "data quality",
-    "governance",
+    "optimisation",
+    "automation"
+   ],
+   "score": 77
+  },
+  {
+   "title": "Geospatial Data Analyst (f/m/x) in the field of AI & Satellite Data",
+   "company": "LiveEO GmbH",
+   "location": "Berlin",
+   "loc_raw": "LiveEO GmbH Berlin Office (Hybrid)",
+   "remote": false,
+   "url": "https://www.arbeitnow.com/jobs/companies/liveeo-gmbh/geospatial-data-analyst-in-the-field-of-ai-satellite-data-liveeo-gmbh-berlin-office-hybrid-135984",
+   "source": "Arbeitnow",
+   "posted": "2026-08-24",
+   "days": 1,
+   "skills": [
+    "python",
+    "sql"
+   ],
+   "german": false,
+   "focus": "pipeline",
+   "summary": "Build the Market Leader in Satellite Analytics with us at LiveEO LiveEO uses satellite data and AI to monitor critical infrastructure at scale. As a Geospatial Data Analyst (f/m/x) , you’ll sit at the heart of our operations, working with geospatial and satell",
+   "keywords": [
+    "pipeline",
+    "energy",
+    "root cause",
     "stakeholder"
    ],
-   "score": 86
-  },
-  {
-   "title": "Data Platform Engineer Working Student (m/w/d)",
-   "company": "Trusteq Gmbh",
-   "location": "Almanya",
-   "loc_raw": "München",
-   "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/trusteq-gmbh/data-platform-engineer-working-student-munchen-230477",
-   "source": "Arbeitnow",
-   "posted": "2026-08-24",
-   "days": 0,
-   "skills": [
-    "python",
-    "sql",
-    "databricks",
-    "azure",
-    "etl",
-    "ci/cd"
-   ],
-   "german": false,
-   "focus": "pipeline",
-   "summary": "YOUR TASKS You support the design and development of Databricks-native data platforms and lakehouse architectures for internal projects and client engagements. You contribute to implementing medallion architectures (Bronze, Silver, and Gold), including Auto Lo",
-   "keywords": [
-    "governance",
-    "pipeline",
-    "data quality"
-   ],
-   "score": 80
-  },
-  {
-   "title": "Data Engineer Working Student (m/w/d)",
-   "company": "Trusteq Gmbh",
-   "location": "Almanya",
-   "loc_raw": "Köln",
-   "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/trusteq-gmbh/data-engineer-working-student-koln-358872",
-   "source": "Arbeitnow",
-   "posted": "2026-08-24",
-   "days": 0,
-   "skills": [
-    "python",
-    "sql",
-    "databricks",
-    "power bi",
-    "etl",
-    "data warehouse"
-   ],
-   "german": false,
-   "focus": "pipeline",
-   "summary": "YOUR TASKS You support the development of databases and data integration processes You contribute to the design and implementation of data models and data pipelines for modern data lakes, data warehouses, or lakehouses You assist in documenting and structuring",
-   "keywords": [
-    "pipeline",
-    "dashboard"
-   ],
-   "score": 80
+   "score": 76
   }
  ],
  "seen": [
+  "https://www.arbeitnow.com/jobs/companies/motor-ai/ai-ml-engineer-autonomous-systems-berlin-374054",
+  "https://www.arbeitnow.co.uk/jobs/companies/perk/senior-analytics-engineer-london-101557",
+  "https://www.arbeitnow.com/jobs/companies/liveeo-gmbh/geospatial-data-analyst-in-the-field-of-ai-satellite-data-liveeo-gmbh-berlin-office-hybrid-135984",
   "https://www.arbeitnow.com/jobs/companies/dishdigital/senior-data-engineer-dusseldorf-259265",
   "https://www.arbeitnow.com/jobs/companies/trusteq-gmbh/data-platform-engineer-working-student-munchen-230477",
   "https://www.arbeitnow.com/jobs/companies/trusteq-gmbh/data-engineer-working-student-koln-358872",
