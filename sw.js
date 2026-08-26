@@ -29,12 +29,19 @@ self.addEventListener('notificationclick', event => {
   event.notification.close();
   const hedef = (event.notification.data && event.notification.data.url) || './index.html';
   event.waitUntil((async () => {
-    const tam = new URL(hedef, self.registration.scope).href;
+    const tam = new URL(hedef, self.registration.scope);
+    /* Bildirim hangi karta gideceğini hash'te taşıyor (#antrenman / #rutin). */
+    const kart = tam.hash.slice(1);
     const acik = await self.clients.matchAll({ type: 'window', includeUncontrolled: true });
-    /* Panel zaten açıksa yeni sekme açma, olanı öne getir. */
+    /* Panel zaten açıksa yeni sekme açma, olanı öne getir. DİKKAT: aynı URL'e
+       gitmek hashchange tetiklemediği için hedefi mesajla söylüyoruz —
+       yalnızca focus etmek kullanıcıyı sayfanın başında bırakıyordu. */
     for (const c of acik) {
-      if (c.url.startsWith(self.registration.scope) && 'focus' in c) return c.focus();
+      if (!c.url.startsWith(self.registration.scope)) continue;
+      if ('focus' in c) await c.focus();
+      if (kart) c.postMessage({ tip: 'bildirim-hedef', hedef: kart });
+      return;
     }
-    if (self.clients.openWindow) return self.clients.openWindow(tam);
+    if (self.clients.openWindow) return self.clients.openWindow(tam.href);
   })());
 });

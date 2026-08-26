@@ -74,6 +74,13 @@ ILERI_DK = ONCE_DK + 5   # erken kalkan cron pencereye girsin (5 dk cron sapma p
 # gerekirse VAPID_SUB secret'ıyla değiştirilir.
 VAPID_SUB_VARSAYILAN = "mailto:panel@dogukandurukan.github.io"
 
+# Bildirime dokununca panelin NERESİNE düşsün — yoklama türüne göre.
+# "Antrenmana başladın mı?"ya dokunan kişi hangi hareketi kaç kg yapacağını
+# arıyor; paneli açıp sayfanın başında bırakmak işe yaramıyordu.
+# Yalnızca bu iki tür hedef taşıyor; kalanlar paneli olduğu gibi açıyor.
+# Karşılığı index.html'deki BILDIRIM_HEDEF haritasında.
+HEDEF_KART = {"spor": "#antrenman", "rutin": "#rutin"}
+
 
 def gh(yol, token):
     r = requests.get(GITHUB_API + yol, timeout=25, headers={
@@ -155,9 +162,9 @@ def cron_dilimi(bugun, plan):
     #            Bu sessiz kalırsa bildirim aylarca yanlış saatte gelir.
     if not any(dakika(x[0]) == hedef_dk for gun in plan.values() for x in (gun or [])):
         print(f"uyarı: '{ifade}' cron'u hiçbir gündeki dilime denk gelmiyor "
-              "(push.yml ile index.html'deki program ayrışmış) — "
-              "en yakın dilim tahminine düşülüyor.")
-    return None
+              "(push.yml ile index.html'deki program ayrışmış).")
+        return "ARIZA"
+    return "BUGUN_YOK"
 
 
 def cevaplanmis(veri, gun_anahtari, dilim):
@@ -241,6 +248,17 @@ def main():
         return bas - ILERI_DK <= su_an <= son
 
     hedef = None if zorla else cron_dilimi(bugun, plan)
+    if hedef == "BUGUN_YOK":
+        # Bu cron her gün kalkıyor ama hedeflediği dilim bugün yok (12:15
+        # antrenman cron'u Perşembe de kalkar, o gün antrenman yok).
+        # TAHMİNE DÜŞÜLMEZ: 25 Ağustos'ta tam bu yüzden çift bildirim gitti —
+        # 08:30 cron'u Çarşamba kalkıp "en yakın dilim" diye 08:00'i seçti ve
+        # 08:00 cron'unun gönderdiğini ikinci kez gönderdi (08:40 + 08:58).
+        print(f"{simdi:%H:%M} — bu cron'un dilimi bugün programda yok, "
+              "yapılacak bir şey yok.")
+        return 0
+    if hedef == "ARIZA":
+        hedef = None                      # program ayrışmış; tahmin son çare
     if hedef is not None:
         # Tetikleyen cron biliniyor: tahmin yok, dilim kesin.
         if not pencerede(hedef):
@@ -257,8 +275,13 @@ def main():
         print(f"{simdi:%H:%M} — penceredeki yoklama yok."
               + (f" Sıradaki dilim {sonraki[0]}." if sonraki else " Günün dilimleri bitti."))
         return 0
-    # Birden fazlaysa şu ana en yakını
-    saat, ad, dilim = min(adaylar, key=lambda x: abs(su_an - dakika(x[0])))
+    # Birden fazlaysa şu ana en yakını.
+    # Satır [saat, ad, dilim] ya da [saat, ad, dilim, tür]: tür panele sonradan
+    # eklendi ve gist'teki plan ancak kullanıcı paneli açınca tazeleniyor,
+    # o yüzden dördüncü alan OPSİYONEL okunuyor.
+    secilen = min(adaylar, key=lambda x: abs(su_an - dakika(x[0])))
+    saat, ad, dilim = secilen[0], secilen[1], secilen[2]
+    tur = secilen[3] if len(secilen) > 3 else ""
 
     gun_anahtari = simdi.strftime("%Y-%m-%d")
     if zorla:
@@ -300,7 +323,7 @@ def main():
         "title": ad,
         "body": f"{saat} · başladın mı?",
         "tag": f"yok-{gun_anahtari}-{dilim}",
-        "url": "./index.html",
+        "url": "./index.html" + HEDEF_KART.get(tur, ""),
         "icon": "icon-192.png",
     }, ensure_ascii=False)
 

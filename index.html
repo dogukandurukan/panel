@@ -35,6 +35,15 @@
   /* aynı sütunda dikey olarak istiflenen kartlar (ör. Bugün Yapılacaklar + altında Okunmamış Mailler) */
   .stack{display:flex;flex-direction:column;gap:20px;}
   .card{background:var(--card);border:1px solid var(--line);border-radius:5px;padding:16px 17px 17px;}
+  /* Bildirime dokunup gelince ilgili kart bir an vurgulanır: sayfa uzun,
+     nereye düştüğün belli olmalı. Renkler değişkenden — iki temada da çalışır. */
+  .card[id]{scroll-margin-top:14px;}
+  .card.vurgu{animation:kartVurgu 2.4s ease-out;}
+  @keyframes kartVurgu{
+    0%,55%{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 20%,transparent);}
+    100%{border-color:var(--line);box-shadow:none;}
+  }
+  @media(prefers-reduced-motion:reduce){.card.vurgu{animation:none;border-color:var(--accent);}}
   .card-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;border-bottom:1px solid var(--line2);padding-bottom:9px;margin-bottom:13px;}
   .kicker{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin:0 0 3px;}
   .card-title{font-family:var(--serif);font-weight:600;font-size:20px;margin:0;letter-spacing:-.01em;}
@@ -565,12 +574,12 @@
       <div class="wtitle" id="schedNow">—</div>
       <div id="schedList"></div></section>
 
-    <section class="card"><div class="card-head"><div><p class="kicker">Sabah · Her gün</p><h2 class="card-title">Sabah Rutini + Koşu</h2></div><div class="meta" id="morningCount">0/0</div></div>
+    <section class="card" id="kRutin"><div class="card-head"><div><p class="kicker">Sabah · Her gün</p><h2 class="card-title">Sabah Rutini + Koşu</h2></div><div class="meta" id="morningCount">0/0</div></div>
       <div class="wtitle" id="morningSub">—</div>
       <div id="morningList"></div>
       <div id="runArea"></div></section>
 
-    <section class="card"><div class="card-head"><div><p class="kicker">Antrenman · Bugün</p><h2 class="card-title" id="wkTitle">Bugünün Antrenmanı</h2></div><div class="meta" id="wkCount">0/0</div></div>
+    <section class="card" id="kAntrenman"><div class="card-head"><div><p class="kicker">Antrenman · Bugün</p><h2 class="card-title" id="wkTitle">Bugünün Antrenmanı</h2></div><div class="meta" id="wkCount">0/0</div></div>
       <div class="wtitle" id="wkSub">—</div>
       <div id="exList"></div></section>
 
@@ -1419,9 +1428,12 @@ function b64urlToBytes(s){
    gist'e yazıyor — tek kaynak index.html'de kalıyor. */
 function yokPlanUret(){
   const p={};
-  /* [saat, iş adı, dilim no] — dilim no şart: gönderici "bu zaten işaretlenmiş"
-     kontrolünü d:yok / d:sched kayıtlarında bu numarayla yapıyor. */
-  for(let d=0;d<7;d++)p[d]=(SCHED[d]||[]).map((is,i)=>YOK[is]?[SLOTS[i][0],is,i]:null).filter(Boolean);
+  /* [saat, iş adı, dilim no, tür] — dilim no şart: gönderici "bu zaten
+     işaretlenmiş" kontrolünü d:yok / d:sched kayıtlarında bu numarayla yapıyor.
+     Tür (spor/rutin/...) bildirimin hangi karta götüreceğini belirliyor;
+     gönderici YOK tablosunu tekrar yazmasın diye plana konuyor — program
+     tek kaynakta, index.html'de kalıyor. */
+  for(let d=0;d<7;d++)p[d]=(SCHED[d]||[]).map((is,i)=>YOK[is]?[SLOTS[i][0],is,i,YOK[is]]:null).filter(Boolean);
   return p;
 }
 
@@ -4367,6 +4379,65 @@ async function initSync(){
   await pushPlanTazele();
 }
 
+/* ===== BİLDİRİMDEN DERİN BAĞLANTI =====
+   "Antrenmana başladın mı?" bildirimine dokununca paneli açıp kullanıcıyı
+   sayfanın başında bırakmak yetmiyordu; aradığı şey (hangi hareket, kaç kg)
+   aşağıda. Bildirim artık hedefi taşıyor: gönderici yoklama TÜRÜNE göre
+   #antrenman / #rutin ekliyor, burada o karta kaydırılıp bir an vurgulanıyor.
+
+   İki yoldan gelebilir:
+     1. Panel kapalıyken  -> yeni pencere #antrenman ile açılır (hash).
+     2. Panel zaten açıkken -> service worker mesaj atar (aynı URL'e gidince
+        hashchange tetiklenmediği için hash'e güvenilemez).
+   Sadece 'spor' ve 'rutin' türleri hedef taşır; diğerleri paneli açar. */
+const BILDIRIM_HEDEF={antrenman:'kAntrenman',rutin:'kRutin'};
+function bildirimeGit(hedef){
+  const id=BILDIRIM_HEDEF[String(hedef||'').replace(/^#/,'')];
+  if(!id)return;
+  const el=document.getElementById(id);
+  if(!el)return;
+
+  el.classList.remove('vurgu');
+  void el.offsetWidth;                    // animasyonu yeniden tetiklemek için reflow
+  el.classList.add('vurgu');
+  setTimeout(()=>el.classList.remove('vurgu'),4200);
+
+  /* TEK KAYDIRMA YETMİYOR. Kartların ÜSTÜNDEKİ besleyiciler (haberler, borsa,
+     mailler) sonradan doluyor ve hedefi aşağı itiyor: ilk kaydırma sayfa
+     kısayken doğru yere gidiyor, içerik gelince kart ekrandan çıkıyordu.
+     Yerelde ölçüldü — kart 16 px'e kaydıktan sonra 1686 px'e itildi.
+     Bu yüzden içerik oturana kadar birkaç kez düzeltiliyor.
+     Kullanıcı bu arada kendi kaydırırsa düzeltme bırakılıyor; sayfayı
+     elinden almak kaydırmamaktan beter olur. */
+  let beklenen=-1,iptal=false;
+  const git=()=>{
+    if(iptal)return;
+    if(beklenen>=0&&Math.abs(window.scrollY-beklenen)>60){iptal=true;return;}
+    /* scrollIntoView yerine MUTLAK konum: aynı hedef için tekrar tekrar
+       çağrılacak (aşağıdaki düzeltmeler), o yüzden işlemin idempotent olması
+       gerekiyor — aynı sayı iki kez yazılınca sayfa kıpırdamamalı.
+       scrollIntoView bunu garanti etmiyor: ölçüm ortamında art arda
+       çağrıldığında birikmeli davranıp sayfayı en alta attı. */
+    const y=Math.max(0,Math.round(el.getBoundingClientRect().top+window.scrollY-14));
+    window.scrollTo(0,y);
+    beklenen=y;
+  };
+  git();
+  [350,900,1800,3000].forEach(ms=>setTimeout(git,ms));
+}
+function hashHedefiIsle(){
+  const h=location.hash.slice(1);
+  if(!BILDIRIM_HEDEF[h])return;
+  bildirimeGit(h);
+  /* Hash temizleniyor: kalırsa her yenilemede sayfa oraya zıplar. */
+  history.replaceState(null,'',location.pathname+location.search);
+}
+if(navigator.serviceWorker){
+  navigator.serviceWorker.addEventListener('message',e=>{
+    if(e.data&&e.data.tip==='bildirim-hedef')bildirimeGit(e.data.hedef);
+  });
+}
+
 /* init */
 (async function(){tick();setInterval(tick,1000);await initTheme();
   tasks=await sGet(K.tasks)||[];
@@ -4411,6 +4482,8 @@ async function initSync(){
   loadFX(false);loadBorsaJson();loadBasvuru();loadGmailJson();loadFactsJson();loadAgents(false);loadWx();loadJobsJson();
   setInterval(loadBorsaJson,15*60*1000);setInterval(loadBasvuru,15*60*1000);setInterval(loadGmailJson,15*60*1000);setInterval(()=>loadAgents(false),15*60*1000);setInterval(loadWx,30*60*1000);setInterval(loadJobsJson,60*60*1000);
   document.addEventListener('visibilitychange',()=>{if(!document.hidden){loadBorsaJson();loadFX(false);loadBasvuru();loadGmailJson();loadAgents(false);loadWx();loadJobsJson();}});
+  /* Kartlar çizildikten SONRA: hedef karta kaydır (bildirimden gelindiyse). */
+  hashHedefiIsle();
 })();
 </script>
 </body>
