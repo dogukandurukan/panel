@@ -22,6 +22,9 @@ ORTAM DEĞİŞKENLERİ (GitHub Actions secrets)
   VAPID_PRIVATE    : panelin kurulum sırasında bir kez gösterdiği gizli anahtar
   CRON             : tetikleyen cron ifadesi (github.event.schedule) — hangi
                      dilim için kurulduğunu kesinleştirir, boşsa tahmine düşer
+  TETIK            : github.event_name. 'repository_dispatch' ise dış
+                     zamanlayıcı tetiklemiştir: dakikası dakikasına gelir,
+                     tahmin ve uzun uyku devre dışı kalır.
 
 Çalıştırma: python push_feed.py
 """
@@ -60,6 +63,21 @@ DATA_FILE = "panel-data.json"
 #
 # Pencere ayrıca bir sonraki dilim başlayınca kapanıyor — geç kalan bildirim
 # asla sıradaki işin üstüne binmiyor.
+# DIŞ ZAMANLAYICI (repository_dispatch)
+# ------------------------------------
+# GitHub'ın `schedule` tetikleyicisi en iyi çaba: 26 Ağustos'ta 17:55'e kurulu
+# cron 19:06'da çalıştı — 71 dakika. 35 dakikalık erken pay bunu karşılamadı.
+# Olay tabanlı tetikleyiciler ise gecikmiyor (ölçüldü: elle tetiklenen koşular
+# oluşturuldukları saniyede başlıyor). Bu yüzden ZAMANI ÖNEMLİ olan dilimler
+# (spor + sabah rutini) dışarıdan repository_dispatch ile tetikleniyor;
+# gerisi (gitar/proje/yatış/kitap) cron'da kalıyor, orada 20-40 dk gecikme
+# kullanıcı için önemsiz.
+#
+# Dış tetikte tahmin de uyku da yok: "şu anda başlayan dilim" aranıyor.
+# Pencere dar tutuldu — dış servis zamanında geliyor, geniş pencereye gerek yok.
+DIS_ONCE_DK = 3      # tetik dilimden bu kadar önce gelebilir
+DIS_GERI_DK = 8      # kuyruk + kurulum payı
+
 ONCE_DK = 35        # cron'lar dilimden bu kadar önce kuruldu (push.yml ile AYNI olmalı)
 GERI_DK = 45
 ILERI_DK = ONCE_DK + 5   # erken kalkan cron pencereye girsin (5 dk cron sapma payı)
@@ -177,6 +195,47 @@ def cevaplanmis(veri, gun_anahtari, dilim):
     return bool(sched.get(str(dilim)) or sched.get(dilim))
 
 
+def gonder(saat, ad, dilim, tur, subs, gizli, gun_anahtari):
+    """Bildirimi gönderir. Hem cron hem dış tetik buraya düşüyor —
+    gövde, VAPID iddiası ve ölü abonelik işleme tek yerde kalsın."""
+    sub = os.environ.get("VAPID_SUB", "").strip() or VAPID_SUB_VARSAYILAN
+    if not sub.startswith("mailto:"):
+        sub = "mailto:" + sub
+    vapid_claims = {"sub": sub}
+
+    govde = json.dumps({
+        "title": ad,
+        "body": f"{saat} · başladın mı?",
+        "tag": f"yok-{gun_anahtari}-{dilim}",
+        "url": "./index.html" + HEDEF_KART.get(tur, ""),
+        "icon": "icon-192.png",
+    }, ensure_ascii=False)
+
+    basarili, olu = 0, []
+    for s in subs:
+        try:
+            webpush(
+                subscription_info={"endpoint": s["endpoint"], "keys": s["keys"]},
+                data=govde,
+                vapid_private_key=gizli,
+                vapid_claims=dict(vapid_claims),
+                ttl=1800,
+            )
+            basarili += 1
+        except WebPushException as e:
+            kod = getattr(e.response, "status_code", None)
+            # 404/410: abonelik ölmüş (uygulama silinmiş, izin kaldırılmış)
+            if kod in (404, 410):
+                olu.append(s.get("endpoint", "")[:40])
+            print(f"gönderilemedi ({kod}): {e}")
+        except Exception as e:
+            print(f"gönderilemedi: {e}")
+
+    print(f"{ad} ({saat}) — {basarili}/{len(subs)} cihaza gönderildi."
+          + (f" ölü abonelik: {len(olu)}" if olu else ""))
+    return 0
+
+
 def main():
     token = os.environ.get("PANEL_GIST_TOKEN", "").strip()
     gizli = os.environ.get("VAPID_PRIVATE", "").strip()
@@ -247,6 +306,26 @@ def main():
             son = min(son, dakika(bugun[i + 1][0]))
         return bas - ILERI_DK <= su_an <= son
 
+    tetik = os.environ.get("TETIK", "").strip()
+    if tetik == "repository_dispatch" and not zorla:
+        # Dış zamanlayıcı: dakikası dakikasına geldiği için "şu anda başlayan
+        # dilim" aranıyor. Dilimler birbirinden en az 30 dk uzak, bu dar
+        # pencereye iki dilim birden düşemez.
+        adaylar = [x for x in bugun
+                   if -DIS_ONCE_DK <= su_an - dakika(x[0]) <= DIS_GERI_DK]
+        if not adaylar:
+            print(f"{simdi:%H:%M} — dış tetik geldi ama şu an başlayan dilim yok "
+                  "(zamanlayıcı bu dakika için kurulu olmayabilir).")
+            return 0
+        secilen = min(adaylar, key=lambda x: abs(su_an - dakika(x[0])))
+        saat, ad, dilim = secilen[0], secilen[1], secilen[2]
+        tur = secilen[3] if len(secilen) > 3 else ""
+        gun_anahtari = simdi.strftime("%Y-%m-%d")
+        if cevaplanmis(veri, gun_anahtari, dilim):
+            print(f"{ad} ({saat}) zaten işaretlenmiş — bildirim gönderilmedi.")
+            return 0
+        return gonder(saat, ad, dilim, tur, subs, gizli, gun_anahtari)
+
     hedef = None if zorla else cron_dilimi(bugun, plan)
     if hedef == "BUGUN_YOK":
         # Bu cron her gün kalkıyor ama hedeflediği dilim bugün yok (12:15
@@ -314,42 +393,7 @@ def main():
         except Exception as e:
             print(f"uyku sonrası kontrol yapılamadı ({e}) — bildirim yine de gönderiliyor.")
 
-    sub = os.environ.get("VAPID_SUB", "").strip() or VAPID_SUB_VARSAYILAN
-    if not sub.startswith("mailto:"):
-        sub = "mailto:" + sub
-    vapid_claims = {"sub": sub}
-
-    govde = json.dumps({
-        "title": ad,
-        "body": f"{saat} · başladın mı?",
-        "tag": f"yok-{gun_anahtari}-{dilim}",
-        "url": "./index.html" + HEDEF_KART.get(tur, ""),
-        "icon": "icon-192.png",
-    }, ensure_ascii=False)
-
-    basarili, olu = 0, []
-    for s in subs:
-        try:
-            webpush(
-                subscription_info={"endpoint": s["endpoint"], "keys": s["keys"]},
-                data=govde,
-                vapid_private_key=gizli,
-                vapid_claims=dict(vapid_claims),
-                ttl=1800,
-            )
-            basarili += 1
-        except WebPushException as e:
-            kod = getattr(e.response, "status_code", None)
-            # 404/410: abonelik ölmüş (uygulama silinmiş, izin kaldırılmış)
-            if kod in (404, 410):
-                olu.append(s.get("endpoint", "")[:40])
-            print(f"gönderilemedi ({kod}): {e}")
-        except Exception as e:
-            print(f"gönderilemedi: {e}")
-
-    print(f"{ad} ({saat}) — {basarili}/{len(subs)} cihaza gönderildi."
-          + (f" ölü abonelik: {len(olu)}" if olu else ""))
-    return 0
+    return gonder(saat, ad, dilim, tur, subs, gizli, gun_anahtari)
 
 
 if __name__ == "__main__":

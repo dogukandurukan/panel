@@ -1,22 +1,19 @@
 name: push-yoklama
 on:
+  # ZAMANI ÖNEMLİ OLANLAR BURADA DEĞİL — dışarıdan tetikleniyor.
+  # GitHub'ın `schedule` tetikleyicisi en iyi çaba: 26 Ağustos'ta 17:55'e
+  # kurulu cron 19:06'da çalıştı (71 dk). Spor ve sabah rutini hatırlatmaları
+  # tam saatinde gelmek zorunda olduğu için onlar repository_dispatch ile
+  # dış zamanlayıcıdan geliyor (kurulumu DEVAM.md'de).
+  # Buradaki cron'lar yalnızca gecikmesi önemsiz olanlar için.
+  repository_dispatch:
+    types: [yoklama]
   # Saatler Türkiye'ye göre; cron UTC olduğu için 3 saat geri yazıldı.
-  #
-  # DİKKAT: cron'lar dilim saatinin 35 DAKİKA ÖNCESİNE kurulu (push_feed.py
-  # ONCE_DK). GitHub Actions cron'u rutin olarak 30-40 dk geciktiği için tam
-  # saate kurulan cron bildirimi yarım saat geç düşürüyordu. Erken kalkıyoruz;
-  # gecikme olmazsa push_feed.py dilim saatine kadar uyuyup TAM saatinde
-  # gönderiyor, gecikme olursa uyku atlanıyor ve hemen gidiyor.
-  # Bir dilimin saatini değiştirirken buradaki cron'u da 35 dk önden yaz,
-  # yoksa cron→dilim eşleşmesi kopar (betik log'a uyarı basar).
+  # Cron'lar dilim saatinin 35 dk ÖNCESİNE kurulu (push_feed.py ONCE_DK);
+  # gecikme olmazsa betik dilim saatine kadar uyuyup tam saatinde gönderiyor.
+  # Bir dilimin saati değişirse buradaki cron'u da 35 dk önden yeniden yaz.
   schedule:
-    - cron: '25 4 * * *'     # 08:00 TR — sabah rutini / kürek
-    - cron: '55 4 * * *'     # 08:30 TR — kürek (Perşembe)
-    - cron: '25 5 * * 0,6'   # 09:00 TR — koşu / bisiklet (hafta sonu)
-    - cron: '40 8 * * *'     # 12:15 TR — antrenman
-    - cron: '10 10 * * 6'    # 13:45 TR — antrenman + yemek (Cumartesi)
     - cron: '55 14 * * *'    # 18:30 TR — gitar / DJ
-    - cron: '25 16 * * 4'    # 20:00 TR — basket / tenis (Perşembe)
     - cron: '55 17 * * *'    # 21:30 TR — kişisel proje
     - cron: '25 19 * * *'    # 23:00 TR — yatış
     - cron: '55 19 * * *'    # 23:30 TR — kitap
@@ -55,5 +52,8 @@ jobs:
           # Tahmine gerek kalmıyor, birbirine yakın dilimlerde (23:00 / 23:30)
           # iki koşunun aynı bildirimi ikizlemesi imkânsız oluyor.
           CRON: ${{ github.event.schedule }}
+          # Dış tetikte (repository_dispatch) tahmin ve uzun uyku devre dışı:
+          # tetik zamanında geldiği için "şu an başlayan dilim" aranıyor.
+          TETIK: ${{ github.event_name }}
           # Test için: pencere ve "zaten işaretlenmiş" kontrolünü atlar
           ZORLA: ${{ inputs.zorla }}

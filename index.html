@@ -245,6 +245,7 @@
   .ss-set{font-family:var(--mono);font-size:11px;border:1px solid var(--line2);border-radius:4px;padding:4px 8px;color:var(--muted);}
   .ss-set b{color:var(--ink);font-weight:600;}
   .ss-set.bos{opacity:.45;border-style:dashed;}
+  .ex.sirada .ex-n{color:var(--accent);font-weight:600;}
   .ss-rest{margin-top:13px;border:1px solid var(--accent);border-radius:6px;padding:13px;text-align:center;}
   .ss-rest .rk{font-family:var(--mono);font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);}
   .ss-rest .rn{font-family:var(--mono);font-size:40px;line-height:1.05;color:var(--accent);margin:3px 0 8px;font-variant-numeric:tabular-nums;}
@@ -1337,7 +1338,7 @@ function tick(){const n=new Date();document.getElementById('clock').textContent=
   const h=n.getHours();document.getElementById('greeting').textContent=h<6?'İyi geceler':h<12?'Günaydın':h<18?'İyi günler':'İyi akşamlar';
   /* dilim değişince programı tazele — her saniye değil, yalnızca gerçekten değiştiğinde */
   if(activeSlot()!==schedShown&&document.getElementById('schedList')){renderSched();renderYok();}
-  restTick();}
+  restTick();mRestTick();}
 document.getElementById('weekno').textContent=weekKey();
 
 /* tasks */
@@ -1771,6 +1772,7 @@ function morningPlan(){
 }
 
 async function loadMorning(){
+  mRestSn=num(await sGet('d:rutinDin'))||45;
   const kayit=await sGet('d:morning:'+todayKey())||{};
   /* Sıra numaralı eski kayıtları ada çevir — tikler kaybolmasın. */
   if(Object.keys(kayit).some(k=>/^\d+$/.test(k))){
@@ -1787,13 +1789,82 @@ function renderMorning(){const el=document.getElementById('morningList');if(!el)
   const sub=document.getElementById('morningSub');if(sub){
     const focus={2:'PULL hazırlığı (~5-7 dk)',4:'Dinamik ısınma — aktivite günü',6:'Koşu ısınması (~5-7 dk)'};
     sub.textContent=(focus[dow]||'Uzun rutin: mobilite + core (~12-15 dk)')+(plan.not?' · '+plan.not:'');}
-  liste.forEach(m=>{const done=!!morningDone[m[0]];const d=document.createElement('div');d.className='ex'+(done?' done':'');
+  liste.forEach(m=>{const done=!!morningDone[m[0]];const d=document.createElement('div');d.className='ex'+(done?' done':'')+(mRestSira===m[0]?' sirada':'');
     d.innerHTML='<div class="check '+(done?'on':'')+'" data-m="'+encodeURIComponent(m[0])+'"></div><div class="ex-body"><span class="ex-n">'+esc(m[0])+'</span><span class="ex-s">'+esc(m[1])+'</span></div>';el.appendChild(d);});
+  const kutu=document.createElement('div');kutu.id='mRestBox';el.appendChild(kutu);
+  renderMRest(liste);
   /* Planlanan sayı kayda yazılır: seri hesabı o günün kendi listesine göre oranlansın. */
   if(num(morningDone.__n)!==liste.length){morningDone.__n=liste.length;sSet('d:morning:'+todayKey(),morningDone);}
   document.getElementById('morningCount').textContent=liste.filter(m=>morningDone[m[0]]).length+'/'+liste.length;
   el.querySelectorAll('[data-m]').forEach(c=>c.onclick=()=>{const ad=decodeURIComponent(c.dataset.m);
-    morningDone[ad]=!morningDone[ad];sSet('d:morning:'+todayKey(),morningDone);renderMorning();renderHabits();});}
+    morningDone[ad]=!morningDone[ad];sSet('d:morning:'+todayKey(),morningDone);
+    /* Hareketi BİTİRDİYSE aradaki dinlenme başlar; tiki geri alma sayacı başlatmaz. */
+    if(morningDone[ad])mRestBaslat(liste,ad); else mRestDurdur();
+    renderMorning();renderHabits();});}
+
+/* ===== SABAH RUTİNİ DİNLENME SAYACI =====
+   Rutin salondaki antrenman gibi: bir hareketi bitirince sonrakine hemen
+   geçilmiyor, arada nefes alınıyor. Sayaç o aralığı tutuyor ve süre bitince
+   sıradaki hareketi öne çıkarıyor, böylece telefona bakıp "sırada ne vardı"
+   diye düşünmek gerekmiyor.
+
+   Antrenman modundaki dinlenme sayacıyla AYNI desen: mutlak zaman damgası
+   tutuluyor (telefon arka plana atılınca da doğru kalsın diye), saniyede bir
+   yalnızca sayı güncelleniyor — kart yeniden çizilirse tikler titriyor.
+
+   BELLEKTE tutuluyor, kaydedilmiyor: sayfa yenilenirse sayaç düşer. Rutin
+   12-15 dakika ve telefon elde; kalıcılık için senkrona yazmak bu kadar
+   kısa ömürlü bir değer için gereksiz gürültü olurdu. */
+const MREST_SEC=[30,45,60,90];
+let mRest=null,mRestBip=false,mRestSn=45,mRestSira=null;
+const mRestKalan=()=>mRest?Math.max(0,Math.ceil((mRest-Date.now())/1000)):0;
+
+function mSiradaki(liste,ad){
+  /* Az önce bitirilenden SONRAKİ ilk yapılmamış hareket; liste sonundaysa
+     baştan bakılıyor (sırayı bozup atlayarak ilerleyenler için). */
+  const i=liste.findIndex(m=>m[0]===ad);
+  const sonra=liste.slice(i+1).find(m=>!morningDone[m[0]]);
+  return (sonra||liste.find(m=>!morningDone[m[0]])||{})[0]||null;
+}
+function mRestBaslat(liste,ad){
+  const sira=mSiradaki(liste,ad);
+  if(!sira){mRestDurdur();return;}          // rutin bitti, dinlenecek bir şey yok
+  mRestSira=sira;mRest=Date.now()+mRestSn*1000;mRestBip=false;
+}
+function mRestDurdur(){mRest=null;mRestBip=false;mRestSira=null;}
+function mRestAyar(sn){mRestSn=sn;sSet('d:rutinDin',sn);if(mRest)mRest=Date.now()+sn*1000;mRestBip=false;renderMorning();}
+
+function renderMRest(liste){
+  const el=document.getElementById('mRestBox');if(!el)return;
+  const kalan=liste.filter(m=>!morningDone[m[0]]).length;
+  if(mRest){
+    const k=mRestKalan();
+    el.innerHTML='<div class="ss-rest'+(k===0?' bitti':'')+'" id="mRest">'+
+      '<div class="rk">'+(k===0?'sırada':'dinlenme')+' · '+esc(mRestSira||'')+'</div>'+
+      '<div class="rn" id="mRestN">'+mmss(k)+'</div>'+
+      '<div class="ss-alt" style="justify-content:center;margin-top:0">'+
+      '<button class="ibtn" id="mRestArti">+30 sn</button>'+
+      '<button class="ibtn" id="mRestAtla">Bitir</button></div></div>';
+    document.getElementById('mRestArti').onclick=()=>{mRest+=30000;mRestBip=false;mRestTick();};
+    document.getElementById('mRestAtla').onclick=()=>{mRestDurdur();renderMorning();};
+  }else if(kalan){
+    /* Sayaç çalışmıyorken yalnızca süre seçimi duruyor — tik atınca kendi başlıyor. */
+    el.innerHTML='<div class="ss-alt" style="margin-top:9px">'+
+      MREST_SEC.map(sn=>'<button class="ibtn'+(sn===mRestSn?' ana':'')+'" data-mrest="'+sn+'">'+sn+' sn</button>').join('')+
+      '</div><div class="yok-bildir">tik attığında sıradaki hareket için sayaç başlar</div>';
+    el.querySelectorAll('[data-mrest]').forEach(b=>b.onclick=()=>mRestAyar(+b.dataset.mrest));
+  }else el.innerHTML='';
+}
+function mRestTick(){
+  const el=document.getElementById('mRestN');if(!el)return;
+  const k=mRestKalan();el.textContent=mmss(k);
+  const kut=document.getElementById('mRest');
+  if(k===0&&kut&&!kut.classList.contains('bitti')){
+    kut.classList.add('bitti');
+    kut.querySelector('.rk').textContent='sırada · '+(mRestSira||'');
+    if(!mRestBip){mRestBip=true;beep();}
+  }
+}
 async function renderRun(){const km=await sGet('d:runkm:'+todayKey())||'';runKmToday=km;const isRun=WK[dow].run;const el=document.getElementById('runArea');
   el.innerHTML='<div class="runbox"><label>Bugün koştuğun mesafe</label><input type="number" id="runIn" placeholder="0" value="'+esc(km)+'"><span class="mkt-sub">km</span></div>'+
     (isRun?'<div class="runnote">Bugün koşu günü — protokol: 2 dk yürü / 1-2 dk koş × 8 tur (5. haftadan sonra kesintisiz 20 dk).</div>':'');
@@ -4424,6 +4495,13 @@ function bildirimeGit(hedef){
   };
   git();
   [350,900,1800,3000].forEach(ms=>setTimeout(git,ms));
+
+  /* Spor bildirimine dokunan kişi salonda: aradığı şey set girme ekranı,
+     liste değil. Antrenman modu doğrudan açılıyor ki ikinci bir düğme
+     aranmasın — "Evet, başladım" cevabının yaptığının aynısı.
+     Yalnızca ağırlık günlerinde: kürek/koşu gününde kaydedilecek set yok.
+     DİKKAT: bu, antrenman başlangıç saatini o an kaydeder. */
+  if(id==='kAntrenman'&&!sess.on&&WK[dow]&&WK[dow].ex.some(e=>setHedef(e[1])))sessBaslat();
 }
 function hashHedefiIsle(){
   const h=location.hash.slice(1);

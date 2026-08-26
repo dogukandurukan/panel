@@ -1,4 +1,4 @@
-# Devam notu — 26 Ağustos 2026
+# Devam notu — 26 Ağustos 2026 (akşam)
 
 Bu dosya bir oturumdan diğerine devretmek için. Kalıcı proje kuralları
 `CLAUDE.md`'de; burası **nerede kalındığı** ve **sırada ne olduğu**.
@@ -204,6 +204,124 @@ arka arkaya getiriyordu. Temel/ileri ayrımı yapıldı, üç günün biri temel
 bugünden itibaren sırası gelen kayıtlara yazıldı — dört kartta da kesintisiz
 **21 gün**. Sonrası doldukça düğme kendiliğinden görünür.
 
+### 26 Ağustos akşam — bildirim zamanlaması yeniden kuruldu + derin bağlantı
+
+**Erken cron + uyku YETMEDİ, ölçümle görüldü.** O günün kayıtları:
+
+| Dilim | Bildirim düştü | Gecikme |
+|---|---|---|
+| 08:00 sabah rutini | 08:40 **ve 08:58** (çift) | 40 dk |
+| 12:15 antrenman | 12:56 | 41 dk |
+| 18:30 gitar | 19:06 | 36 dk |
+
+18:30'unki YENİ kodla çalıştı: cron 17:55'e kuruluydu, GitHub **71 dakika**
+geciktirip 16:06 UTC'de çalıştırdı. 35 dakikalık erken payın üstünde.
+`schedule` gecikmesinin tavanı yok; erken pay ne olursa olsun garanti vermiyor.
+
+**Çift bildirimin sebebi bulundu ve kapatıldı.** 08:30 cron'u her gün kalkıyor
+ama Çarşamba 08:30 dilimi yok; `cron_dilimi()` eşleşme bulamayınca "en yakın
+dilim" tahminine düşüyor ve 08:00 cron'unun gönderdiğini ikinci kez
+gönderiyordu. Artık cron biliniyorsa tahmine DÜŞMÜYOR: o dilim bugün yoksa
+sessizce çıkıyor.
+
+**Kullanıcının kararı: dış tetikleyici.** Gerekçe ölçüm — olay tabanlı
+tetikleyiciler gecikmiyor (elle tetiklenen koşular oluşturuldukları saniyede
+başlıyor), yalnızca `schedule` geciktiriliyor.
+
+Yeni bölüşüm:
+- **Zamanı önemli olanlar** (spor + sabah rutini: 08:00, 08:30, 09:00, 12:15,
+  13:45, 20:00) → `repository_dispatch` ile DIŞARIDAN tetikleniyor.
+  Bu saatlerin cron'ları push.yml'den KALDIRILDI.
+- **Gerisi** (18:30 gitar/DJ, 21:30 proje, 23:00 yatış, 23:30 kitap) → cron'da
+  kaldı, 35 dk erken pay + uyku düzeneğiyle. Kullanıcı "diğerleri gelmese de
+  olur" dedi, oradaki gecikme önemsiz.
+
+Dış tetikte tahmin de uyku da yok (`TETIK=repository_dispatch`): "şu anda
+başlayan dilim" aranıyor, pencere dar (`DIS_ONCE_DK=3`, `DIS_GERI_DK=8`).
+Gönderme bloğu `gonder()` fonksiyonuna çıkarıldı; cron ve dış tetik aynı yolu
+kullanıyor.
+
+> **AÇIK İŞ — kullanıcı yapacak.** Dış zamanlayıcı henüz KURULMADI. O kurulana
+> kadar spor ve sabah rutini bildirimi HİÇ GELMEZ (cron'ları kaldırıldı).
+> Kurulum aşağıda.
+
+#### Dış zamanlayıcı kurulumu (cron-job.org, ücretsiz)
+
+Tek bir iş yetiyor — dilim saatlerinin hepsi 15 dakikanın katı:
+
+- **URL:** `https://api.github.com/repos/dogukandurukan/panel/dispatches`
+- **Yöntem:** POST
+- **Başlıklar:**
+  `Accept: application/vnd.github+json` ·
+  `Authorization: Bearer <TOKEN>` ·
+  `Content-Type: application/json` ·
+  `X-GitHub-Api-Version: 2022-11-28`
+- **Gövde:** `{"event_type":"yoklama"}`
+- **Zamanlama:** dakika `0,15,30,45` · saat `8,9,12,13,20` · her gün ·
+  **saat dilimi Europe/Istanbul**. Günde 20 tetik; dilimi olmayan dakikalarda
+  betik hiçbir şey yapmadan çıkıyor ("şu an başlayan dilim yok").
+- **TOKEN:** fine-grained PAT, yalnızca `dogukandurukan/panel` deposu,
+  izin **Contents: Read and write** (repository_dispatch bunu istiyor).
+  DİKKAT: bu token depoya yazabilir ve dış bir serviste duracak. Tek depoya
+  kısıtlı tutmak şart; senkronun `PANEL_GIST_TOKEN`'ı ile AYNI token olmasın.
+
+Kurulunca sınama: cron-job.org'da "şimdi çalıştır" → Actions'ta `push-yoklama`
+koşusu saniyeler içinde başlamalı, log'da `dış tetik geldi ama şu an başlayan
+dilim yok` ya da gerçek bir gönderim satırı olmalı.
+
+### Bildirime dokununca ne oluyor (26 Ağustos)
+
+Kullanıcının isteği: bildirim seni sadece götürmesin, oraya varınca
+**kaydedebiliyor** ol.
+
+- `yokPlanUret()` plana yoklama TÜRÜNÜ de yazıyor: `[saat, ad, dilim, tür]`.
+  Gönderici `YOK` tablosunu tekrar yazmıyor, program tek kaynakta kalıyor.
+  Gist'teki plan panel açılınca `pushPlanTazele()` ile kendiliğinden tazeleniyor;
+  o ana kadar eski 3 alanlı satırlar hedefsiz çalışıyor (çökmüyor).
+- `push_feed.py` türe göre hedef ekliyor: **spor → `#antrenman`**,
+  **rutin → `#rutin`**. Diğer türler paneli olduğu gibi açıyor.
+- `sw.js` panel zaten açıkken yalnızca focus ediyordu; aynı URL'e gitmek
+  hashchange tetiklemediği için hedef artık **postMessage** ile söyleniyor.
+- **Spor bildirimi antrenman modunu DOĞRUDAN açıyor** (kullanıcının kararı):
+  set girme ekranı (kg / tekrar / SET ✓) hemen geliyor, ikinci düğme yok.
+  Yalnızca ağırlık günlerinde. Bedeli kabul edildi: antrenman başlangıç saati
+  o an kaydediliyor, gerçekten başlanmadıysa kayıt erken görünür.
+
+**Tuzak — tek kaydırma yetmiyor.** Kartların ÜSTÜNDEKİ besleyiciler (haber,
+borsa, mail) sonradan yüklenip hedefi aşağı itiyor: ilk kaydırma sayfa
+kısayken doğru yere gidiyor, içerik gelince kart ekrandan çıkıyor (ölçüldü:
+kart 16 px'e kaydıktan sonra 1686 px'e itildi). Bu yüzden 350/900/1800/3000 ms'de
+düzeltiliyor ve kullanıcı kendi kaydırırsa bırakılıyor. Ayrıca `scrollIntoView`
+yerine **mutlak konum** yazılıyor — düzeltmeler tekrar tekrar çalışacağı için
+işlemin idempotent olması gerekiyor.
+
+### Sabah rutini dinlenme sayacı (26 Ağustos)
+
+Kullanıcının kararı: **hareketler arası dinlenme**. Bir hareketi tikleyince
+sıradaki için geri sayım başlıyor, sıradaki hareket listede vurgulanıyor,
+süre bitince bip çalıp kutu "sırada · <hareket>" yazıyor.
+
+- Süre seçimi 30/45/60/90 sn, `d:rutinDin`'de saklanıyor (varsayılan 45).
+- Tiki GERİ ALMAK sayacı durduruyor; rutin bitince sayaç açılmıyor.
+- Antrenman modundaki dinlenme sayacıyla aynı desen: mutlak zaman damgası
+  (telefon arka plana atılınca doğru kalsın), saniyede bir yalnızca sayı
+  güncelleniyor — kart yeniden çizilirse tikler titriyor.
+- **BELLEKTE**, kaydedilmiyor: sayfa yenilenirse sayaç düşer. Rutin 12-15 dk
+  ve telefon elde; bu kadar kısa ömürlü bir değeri senkrona yazmak gürültü olur.
+
+**Doğrulama (gerçek tarayıcı, 375×812 mobil, iki tema):** #antrenman ve #rutin
+kartın tepesine oturuyor (kart üstten 13-14 px), konsol hatası yok; spor
+bağlantısı antrenman modunu açıp set girişini getiriyor; rutin sayacı geri
+sayıyor (0:30 → 0:28), 0'da "sırada" durumuna geçiyor, "Bitir" kapatıyor,
+tik geri alınınca durmuyor-başlamıyor. Test koşumu 17 senaryo, hepsi geçti.
+
+> **Not — ölçüm ortamı tuzağı.** Tarayıcı panelinin görünüm alanı bir ara
+> sıfır yükseklikte kaldı (`innerHeight: 0`); o hâldeyken `scrollIntoView`
+> birikmeli davrandı ve ekran görüntüsü boş çıktı. Gerçek bir viewport
+> ayarlamadan (resize_window) ölçüm alma.
+
+---
+
 ## 2. Kullanıcıda bekleyen işler
 
 **Telefon bildirimi ÇALIŞIYOR** (25 Ağustos, `Antrenman (12:15) — 1/1 cihaza
@@ -212,6 +330,7 @@ gönderildi`). Secret'lar ekli: `VAPID_PRIVATE`, `PANEL_GIST_TOKEN`.
 | # | İş | Nerede |
 |---|---|---|
 | 0 | **Ret takibi Sheet'e bağlı.** Enpal'dan gelen ret maili panele düşmedi çünkü Enpal Sheet'te kayıtlı değil; `check_rejections.py` YALNIZCA Sheet'teki şirket adlarını Gmail'de arıyor. Kullanıcı elle Sheet'e eklemek istemiyor → 4.6'daki tarama çözülecek. |
+| 0 | **Dış zamanlayıcıyı kur** (cron-job.org) — kurulana kadar spor ve sabah rutini bildirimi hiç gelmez | Yukarıdaki "Dış zamanlayıcı kurulumu" bölümü |
 | 1 | `ANTHROPIC_API_KEY` secret'ı | Repo → Settings → Secrets → Actions. Mail cevap taslakları bu olmadan üretilmiyor; kod hazır. |
 | 2 | Garanti mobilde "harcama bildirimi e-posta" açık mı? | Harcama kartının seviyesini belirliyor. |
 
