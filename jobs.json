@@ -1,96 +1,104 @@
 {
- "updated": "2026-08-25 08:29",
+ "updated": "2026-08-26 08:32",
  "ok": true,
  "count": 3,
- "pool": 13,
+ "pool": 25,
  "items": [
   {
-   "title": "AI/ML Engineer (m/f/d) Autonomous Systems",
-   "company": "MOTOR Ai",
+   "title": "Senior Machine Learning Engineer I",
+   "company": "sumup",
    "location": "Berlin",
    "loc_raw": "Berlin",
    "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/motor-ai/ai-ml-engineer-autonomous-systems-berlin-374054",
+   "url": "https://www.arbeitnow.com/jobs/companies/sumup/senior-machine-learning-engineer-i-berlin-296351",
    "source": "Arbeitnow",
-   "posted": "2026-08-24",
+   "posted": "2026-08-25",
    "days": 1,
    "skills": [
     "python",
-    "sql",
     "azure",
+    "airflow",
     "ci/cd",
-    "git"
+    "git",
+    "llm"
    ],
    "german": false,
    "focus": "ml",
-   "summary": "We are MOTOR Ai . Our mission is to make Level 4 autonomous driving a reality in Germany and beyond. By combining state-of-the-art AI with the expertise of our multidisciplinary team, we are poised to introduce the first solution of its kind in Germany that is",
+   "summary": "About the team: Within the Global Operations organisation, our mission is to build the best customer experience in the fintech industry by delivering an effortless customer experience to all our merchants. We are seeking a skilled and passionate Senior AI / Ma",
    "keywords": [
-    "experimentation",
-    "optimization",
-    "real-time",
+    "scalab",
+    "stakeholder",
     "pipeline",
-    "cost"
+    "optimisation"
    ],
-   "score": 94
+   "score": 112
   },
   {
-   "title": "Senior Analytics Engineer",
-   "company": "Perk",
-   "location": "UK",
-   "loc_raw": "London",
+   "title": "Senior Data Analyst (f/m/d)",
+   "company": "Zenjob",
+   "location": "Berlin",
+   "loc_raw": "Berlin",
    "remote": false,
-   "url": "https://www.arbeitnow.co.uk/jobs/companies/perk/senior-analytics-engineer-london-101557",
+   "url": "https://www.arbeitnow.com/jobs/companies/zenjob/senior-data-analyst-berlin-207954",
    "source": "Arbeitnow",
-   "posted": "2026-08-24",
+   "posted": "2026-08-25",
    "days": 1,
    "skills": [
     "python",
     "sql",
-    "looker",
+    "tableau",
     "dbt",
-    "snowflake",
-    "etl"
+    "a/b test"
    ],
    "german": false,
-   "focus": "pipeline",
-   "summary": "About Us Perk (formerly TravelPerk) is the intelligent platform for travel and spend management. Built to tackle the time-consuming, manual work that gets in the way of real work, our tools automate everything from travel bookings to expenses, invoice processi",
+   "focus": "business",
+   "summary": "About us Zenjob is an AI-powered flexible staffing platform that has efficiently connected companies and temporary workers since 2015. Companies use our platform to book ready-to-work staff in real time, while students use our app to find part-time jobs that c",
    "keywords": [
-    "saas",
-    "pipeline",
-    "scalab",
-    "data quality",
-    "optimisation",
-    "automation"
-   ],
-   "score": 77
-  },
-  {
-   "title": "Geospatial Data Analyst (f/m/x) in the field of AI & Satellite Data",
-   "company": "LiveEO GmbH",
-   "location": "Berlin",
-   "loc_raw": "LiveEO GmbH Berlin Office (Hybrid)",
-   "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/liveeo-gmbh/geospatial-data-analyst-in-the-field-of-ai-satellite-data-liveeo-gmbh-berlin-office-hybrid-135984",
-   "source": "Arbeitnow",
-   "posted": "2026-08-24",
-   "days": 1,
-   "skills": [
-    "python",
-    "sql"
-   ],
-   "german": false,
-   "focus": "pipeline",
-   "summary": "Build the Market Leader in Satellite Analytics with us at LiveEO LiveEO uses satellite data and AI to monitor critical infrastructure at scale. As a Geospatial Data Analyst (f/m/x) , you’ll sit at the heart of our operations, working with geospatial and satell",
-   "keywords": [
-    "pipeline",
-    "energy",
-    "root cause",
+    "real time",
+    "retail",
+    "experimentation",
+    "a/b",
+    "governance",
+    "dashboard",
+    "self-service",
     "stakeholder"
    ],
-   "score": 76
+   "score": 106
+  },
+  {
+   "title": "Senior BI Developer (m/f/d) - Microsoft Fabric & Power BI",
+   "company": "MultiBase GmbH",
+   "location": "Remote",
+   "loc_raw": "Gilching",
+   "remote": true,
+   "url": "https://www.arbeitnow.com/jobs/companies/multibase-gmbh/senior-bi-developer-microsoft-fabric-power-bi-gilching-69880",
+   "source": "Arbeitnow",
+   "posted": "2026-08-25",
+   "days": 1,
+   "skills": [
+    "sql",
+    "azure",
+    "power bi",
+    "data warehouse",
+    "dax",
+    "git"
+   ],
+   "german": false,
+   "focus": "business",
+   "summary": "Remote, CET/CEST or SAST-aligned time zones | Full-time | Start: as soon as possible Build business-critical data products that turn trusted data into better decisions and action. Using Microsoft Fabric, Power BI and Azure, you will create lakehouses, semantic",
+   "keywords": [
+    "automation",
+    "pipeline",
+    "stakeholder",
+    "dashboard"
+   ],
+   "score": 102
   }
  ],
  "seen": [
+  "https://www.arbeitnow.com/jobs/companies/sumup/senior-machine-learning-engineer-i-berlin-296351",
+  "https://www.arbeitnow.com/jobs/companies/zenjob/senior-data-analyst-berlin-207954",
+  "https://www.arbeitnow.com/jobs/companies/multibase-gmbh/senior-bi-developer-microsoft-fabric-power-bi-gilching-69880",
   "https://www.arbeitnow.com/jobs/companies/motor-ai/ai-ml-engineer-autonomous-systems-berlin-374054",
   "https://www.arbeitnow.co.uk/jobs/companies/perk/senior-analytics-engineer-london-101557",
   "https://www.arbeitnow.com/jobs/companies/liveeo-gmbh/geospatial-data-analyst-in-the-field-of-ai-satellite-data-liveeo-gmbh-berlin-office-hybrid-135984",
