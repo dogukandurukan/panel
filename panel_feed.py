@@ -40,13 +40,20 @@ def _fmt(v):
 
 
 def _hist(df):
-    """Sparkline serisi: son HIST_GUN kapanis. Veri yoksa alan hic yazilmaz —
-    panel `hist` gormezse grafik cizmiyor (uydurma seri yok)."""
+    """Sparkline serisi: son HIST_GUN kapanis + AYNI SIRADA tarihleri.
+    Tarih sart: grafikte imlecin altindaki noktanin gunu yazilabilsin diye.
+    Islem gunleri hafta sonu/tatil atladigi icin tarih dizisi hesaplanamiyor,
+    saklanmasi gerekiyor. Veri yoksa alan hic yazilmaz — panel `hist`
+    gormezse grafik cizmiyor (uydurma seri yok)."""
     if df is None or "Close" not in df:
-        return None
-    vals = [round(float(v), 2) for v in df["Close"].tail(HIST_GUN)
-            if v is not None and not pd.isna(v)]
-    return vals if len(vals) >= 5 else None
+        return None, None
+    close = df["Close"].dropna().tail(HIST_GUN)
+    if len(close) < 5:
+        return None, None
+    vals = [round(float(v), 2) for v in close]
+    # "AA-GG": yil 90 gunluk pencerede gosterilmiyor, 7 bayt/nokta yeter.
+    gunler = [d.strftime("%m-%d") for d in close.index]
+    return vals, gunler
 
 
 def _ind(m):
@@ -73,9 +80,10 @@ def _row(code, m, df=None, ad=None):
     }
     if ad:
         r["name"] = ad
-    h = _hist(df)
+    h, hd = _hist(df)
     if h:
         r["hist"] = h
+        r["histD"] = hd
     r["ind"] = _ind(m)
     return r
 
@@ -330,9 +338,11 @@ def build():
 if __name__ == "__main__":
     d = build()
     metin = json.dumps(d, ensure_ascii=False, indent=2)
-    # indent=2 her `hist` sayisini ayri satira aliyor: dosya 7 katina cikiyor.
-    # Yalnizca sayi iceren diziler tek satira toplaniyor (okunurluk kaybi yok).
-    metin = re.sub(r"\[\s+((?:-?\d+(?:\.\d+)?,\s+)+-?\d+(?:\.\d+)?)\s+\]",
+    # indent=2 `hist`/`histD` icindeki her ogeyi ayri satira aliyor: dosya
+    # 7 katina cikiyor. Sayi ve KISA metin (tarih) dizileri tek satira
+    # toplaniyor; haber basliklari 12 karakter sinirinin disinda kaliyor.
+    oge = r'(?:-?\d+(?:\.\d+)?|"[^"\\]{0,12}")'
+    metin = re.sub(r"\[\s+((?:" + oge + r",\s+)+" + oge + r")\s+\]",
                    lambda m: "[" + re.sub(r"\s+", " ", m.group(1)) + "]", metin)
     with open("borsa.json", "w", encoding="utf-8") as f:
         f.write(metin + "\n")

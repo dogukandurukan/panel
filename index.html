@@ -151,6 +151,13 @@
   .tvl{display:inline-block;margin-top:7px;font-family:var(--mono);font-size:10.5px;
        letter-spacing:.08em;text-transform:uppercase;color:var(--accent);text-decoration:none;}
   .tvl:hover{text-decoration:underline;}
+  /* grafikte imlec: dokunmatikte dikey kaydirma bozulmasin diye pan-y */
+  .stk-chart{touch-action:pan-y;}
+  .pspark .hv line{stroke:var(--muted);stroke-width:.8;stroke-dasharray:2.5 2.5;}
+  .pspark .hv circle{fill:var(--ink);}
+  .stk-hv{display:flex;justify-content:space-between;gap:8px;font-family:var(--mono);
+          font-size:10px;color:var(--muted);margin-top:1px;}
+  .stk-hv b{font-weight:500;color:var(--accent);}
   .news-item{padding:8px 0;border-bottom:1px dotted var(--line2);display:flex;gap:11px;align-items:flex-start;} .news-item:last-child{border-bottom:none;}
   .news-n{font-family:var(--mono);font-size:12px;color:var(--accent);font-weight:500;min-width:16px;margin-top:2px;}
   .news-t{font-size:14px;line-height:1.4;flex:1;}
@@ -577,14 +584,16 @@
     <section class="card"><div class="card-head"><div><p class="kicker">Al&#305;&#351;kanl&#305;k &middot; Seriler</p><h2 class="card-title">Al&#305;&#351;kanl&#305;k Serileri</h2></div><div class="meta" id="habMeta">son 14 g&uuml;n</div></div>
       <div id="habBox"></div></section>
 
-    <section class="card"><div class="card-head"><div><p class="kicker">Piyasa</p><h2 class="card-title">Borsa Durumu</h2></div><div class="meta"><span id="fxTime">—</span><br><button class="ibtn" id="fxRefresh">Yenile</button></div></div>
+    <section class="card"><div class="card-head"><div><p class="kicker">Piyasa · Canlı</p><h2 class="card-title">Döviz &amp; Piyasalar</h2></div><div class="meta"><span id="fxTime">—</span><br><button class="ibtn" id="fxRefresh">Yenile</button></div></div>
       <div id="marketList"><div class="loading">Kur çekiliyor…</div></div>
       <div id="goldRow"></div>
+      <div id="idxList"></div>
+      <div id="finNote"></div></section>
+
+    <section class="card"><div class="card-head"><div><p class="kicker">Piyasa · Hisse</p><h2 class="card-title">İzleme Listesi</h2></div><div class="meta" id="borsaTime">—</div></div>
       <div id="watchList"></div>
       <div id="usList"></div>
-      <div id="idxList"></div>
-      <div id="mktSummary"></div>
-      <div id="finNote"></div></section>
+      <div id="mktSummary"></div></section>
 
     <section class="card"><div class="card-head"><div><p class="kicker">Gündem</p><h2 class="card-title">Dünya Gündemi</h2></div><div class="meta" id="newsTime">—</div></div>
       <div id="worldList"></div>
@@ -3137,13 +3146,14 @@ function renderGold(){const el=document.getElementById('goldRow');if(!el)return;
   el.innerHTML='<div class="mkt"><div><div class="mkt-label">Gram Altın</div><div class="mkt-sub">TL · günlük</div></div><div><div class="mkt-val">'+esc(gold.price||'—')+'</div>'+(gold.chg?'<div class="mkt-chg '+cls+'">'+ar+' '+esc(gold.chg.replace(/^[+-]/,''))+'</div>':'')+'</div></div>';}
 /* Fiyat serisi cizgisi. sparkline() Agirlik kartina ozel (var(--accent) sabit);
    bu surum yon rengi alabiliyor ve genis surumu CSS ile esniyor. */
-function priceSpark(vals,w,h,cls){
+function priceSpark(vals,w,h,cls,imlec){
   if(!vals||vals.length<2)return '';
   const mn=Math.min.apply(null,vals),mx=Math.max.apply(null,vals),r=(mx-mn)||1;
   const p=vals.map((v,i)=>[(i/(vals.length-1))*(w-3)+1.5,h-1.5-((v-mn)/r)*(h-3)]);
+  const hv=imlec?'<g class="hv" style="display:none"><line y1="0" y2="'+h+'"/><circle r="2.6"/></g>':'';
   return '<svg class="pspark'+(cls?' '+cls:'')+'" viewBox="0 0 '+w+' '+h+'" width="'+w+'" height="'+h+'" aria-hidden="true">'+
     '<polyline points="'+p.map(q=>q[0].toFixed(1)+','+q[1].toFixed(1)).join(' ')+'"/>'+
-    '<circle cx="'+p[p.length-1][0].toFixed(1)+'" cy="'+p[p.length-1][1].toFixed(1)+'" r="1.9"/></svg>';
+    '<circle cx="'+p[p.length-1][0].toFixed(1)+'" cy="'+p[p.length-1][1].toFixed(1)+'" r="1.9"/>'+hv+'</svg>';
 }
 
 /* TradingView sembolu. Emin olamadigimiz kodda bag verilmiyor (yanlis sayfa acmaktansa
@@ -3160,14 +3170,25 @@ function pctCls(x){return x>0?'up':x<0?'down':'flat';}
 
 /* Tiklayinca acilan detay: 90 gunluk cizgi + borsa.py'nin zaten hesapladigi
    gostergeler. Veri yoksa o satir hic yazilmiyor. */
-function stkDetay(s,piyasa){
-  const h=s.hist||[],ind=s.ind||{};let g='',x='';
+const AYK=['Oca','Şub','Mar','Nis','May','Haz','Tem','Ağu','Eyl','Eki','Kas','Ara'];
+/* Feed "AA-GG" yaziyor (yil 90 gunluk pencerede gereksiz). */
+function gunAd(md){const p=String(md||'').split('-');
+  if(p.length!==2)return md||'';return (+p[1])+' '+(AYK[(+p[0])-1]||'');}
+
+function stkDetay(s,piyasa,sira){
+  const h=s.hist||[],hd=s.histD||[],ind=s.ind||{};let g='',x='';
   if(h.length>1){
     const ilk=h[0],son=h[h.length-1],d=ilk?(son-ilk)/ilk*100:0;
     const mn=Math.min.apply(null,h),mx=Math.max.apply(null,h);
-    g=priceSpark(h,300,88,pctCls(d));
-    x='<div class="stk-x"><span>'+h.length+' gün</span><span>en düşük '+fmtN(mn)+' · en yüksek '+fmtN(mx)+'</span></div>';
-    x+='<div class="sum"><span class="sl">'+h.length+' günlük değişim</span><span class="'+pctCls(d)+'">'+pctTxt(d)+'</span></div>';
+    const alt=h.length+' gün',sag='en düşük '+fmtN(mn)+' · en yüksek '+fmtN(mx);
+    /* Seri data-attribute'a yazilmiyor; hover aninda watch/us/worldIdx
+       dizisinden sira numarasiyla okunuyor (90 sayi x 16 satir = sisen DOM). */
+    g='<div class="stk-chart" data-p="'+piyasa+'" data-i="'+sira+'">'+
+      priceSpark(h,300,88,pctCls(d),true)+
+      (hd.length===h.length?'<div class="stk-x"><span>'+esc(gunAd(hd[0]))+'</span><span>'+esc(gunAd(hd[hd.length-1]))+'</span></div>':'')+
+      '<div class="stk-hv" data-d1="'+esc(alt)+'" data-d2="'+esc(sag)+'"><span>'+esc(alt)+'</span><span>'+esc(sag)+'</span></div>'+
+      '</div>';
+    x='<div class="sum"><span class="sl">'+h.length+' günlük değişim</span><span class="'+pctCls(d)+'">'+pctTxt(d)+'</span></div>';
   }
   const sat=(l,v)=>v?'<div class="sum"><span class="sl">'+l+'</span><span>'+esc(v)+'</span></div>':'';
   x+=sat('RSI ('+(ind.rsiTxt||'—')+')',ind.rsi!=null?String(ind.rsi):'');
@@ -3183,9 +3204,9 @@ function stkDetay(s,piyasa){
 }
 function fmtN(v){return v.toLocaleString('tr-TR',{minimumFractionDigits:2,maximumFractionDigits:2});}
 
-function stockRow(s,piyasa){const neg=/^-/.test(s.chg);const cls=neg?'down':(/^\+/.test(s.chg)?'up':'flat');const ar=neg?'▼':(cls==='up'?'▲':'–');
+function stockRow(s,piyasa,sira){const neg=/^-/.test(s.chg);const cls=neg?'down':(/^\+/.test(s.chg)?'up':'flat');const ar=neg?'▼':(cls==='up'?'▲':'–');
   const avg=(s.avg1w||s.avg1m)?'<div class="mkt-sub" style="margin-top:2px">H.ort '+esc(s.avg1w||'—')+' · A.ort '+esc(s.avg1m||'—')+'</div>':'';
-  const det=stkDetay(s,piyasa),spark=(s.hist&&s.hist.length>1)?priceSpark(s.hist,66,20):'';
+  const det=stkDetay(s,piyasa,sira),spark=(s.hist&&s.hist.length>1)?priceSpark(s.hist,66,20):'';
   const ad=esc(s.name||s.code);
   return '<div class="mkt'+(det?' stk':'')+'"'+(det?' role="button" tabindex="0" aria-expanded="false"':'')+'>'+
     '<div><div class="mkt-label">'+ad+'</div>'+avg+'</div>'+
@@ -3194,8 +3215,52 @@ function stockRow(s,piyasa){const neg=/^-/.test(s.chg);const cls=neg?'down':(/^\
 /* Satir <-> detay eslesmesi DOM sirasindan geliyor; kod adi id olarak kullanilamaz
    (^GSPC, BZ=F gibi kodlar var). Dinleyici kapsayiciya bir kez baglaniyor,
    render innerHTML'i degistirse de kaliyor. */
+/* ---- grafikte imlec: en yakin noktanin gunu + fiyati ----
+   Seri DOM'a yazilmiyor; hover aninda ilgili diziden okunuyor. */
+let hvKutu=null;
+function hvSeri(c){
+  const p=c.dataset.p,i=+c.dataset.i;
+  const arr=p==='bist'?watch:(p==='us'?us:(p==='idx'?worldIdx:null));
+  const s=arr&&arr[i];
+  return (s&&s.hist&&s.hist.length>1)?s:null;
+}
+function hvKapat(){
+  if(!hvKutu)return;
+  const g=hvKutu.querySelector('.hv');if(g)g.setAttribute('style','display:none');
+  const r=hvKutu.querySelector('.stk-hv');
+  if(r)r.innerHTML='<span>'+esc(r.dataset.d1||'')+'</span><span>'+esc(r.dataset.d2||'')+'</span>';
+  hvKutu=null;
+}
+function hvGoster(c,clientX){
+  const s=hvSeri(c);if(!s)return;
+  const sv=c.querySelector('svg'),rc=sv.getBoundingClientRect();if(!rc.width)return;
+  const h=s.hist,n=h.length;
+  let f=(clientX-rc.left)/rc.width;f=f<0?0:(f>1?1:f);
+  const i=Math.round(f*(n-1)),W=300,H=88;
+  const mn=Math.min.apply(null,h),mx=Math.max.apply(null,h),r=(mx-mn)||1;
+  const px=(i/(n-1))*(W-3)+1.5,py=H-1.5-((h[i]-mn)/r)*(H-3);
+  const g=c.querySelector('.hv');
+  if(g){g.removeAttribute('style');
+    const ln=g.querySelector('line'),ci=g.querySelector('circle');
+    ln.setAttribute('x1',px.toFixed(1));ln.setAttribute('x2',px.toFixed(1));
+    ci.setAttribute('cx',px.toFixed(1));ci.setAttribute('cy',py.toFixed(1));}
+  const kutu=c.querySelector('.stk-hv');
+  if(kutu)kutu.innerHTML='<b>'+esc(s.histD&&s.histD[i]?gunAd(s.histD[i]):(i+1)+'. gün')+'</b><b>'+fmtN(h[i])+'</b>';
+  if(hvKutu&&hvKutu!==c)hvKapat();
+  hvKutu=c;
+}
+
 function stkTiklaBagla(id){const el=document.getElementById(id);if(!el||el.dataset.bagli)return;
   el.dataset.bagli='1';
+  /* pointerdown da dinleniyor: telefonda tek dokunus da deger gostersin
+     (yalniz pointermove ile parmagi surukletmek gerekiyordu). */
+  const hvOlay=e=>{const c=e.target.closest('.stk-chart');
+    if(c)hvGoster(c,e.clientX);else hvKapat();};
+  el.addEventListener('pointermove',hvOlay);
+  el.addEventListener('pointerdown',hvOlay);
+  /* Dokunmatikte parmak kalkinca pointerleave de atiyor; okuma hemen
+     silinmesin diye yalniz fare icin kapatiliyor. */
+  el.addEventListener('pointerleave',e=>{if(e.pointerType==='mouse')hvKapat();});
   const ac=r=>{const d=r.nextElementSibling;if(!d||!d.classList.contains('stk-det'))return;
     const kapali=d.hasAttribute('hidden');
     if(kapali)d.removeAttribute('hidden');else d.setAttribute('hidden','');
@@ -3205,21 +3270,21 @@ function stkTiklaBagla(id){const el=document.getElementById(id);if(!el||el.datas
     const r=e.target.closest('.mkt.stk');if(r&&el.contains(r)){e.preventDefault();ac(r);}});}
 let watch=[];
 function renderWatch(){const el=document.getElementById('watchList');if(!el)return;
-  const head='<div class="wtitle" style="margin-top:12px;border-top:1px solid var(--line2);padding-top:11px">İzleme Listesi · BIST</div>';
+  const head='<div class="wtitle">BIST</div>';
   if(!watch.length){el.innerHTML=head+'<div class="empty">Feed çalışınca (09:00/14:00) otomatik dolar.</div>';return;}
-  el.innerHTML=head+watch.map(s=>stockRow(s,'bist')).join('');}
+  el.innerHTML=head+watch.map((s,i)=>stockRow(s,'bist',i)).join('');}
 let us=[];
 function renderUS(){const el=document.getElementById('usList');if(!el)return;
   if(!us.length){el.innerHTML='';return;}
   const head='<div class="wtitle" style="margin-top:12px;border-top:1px solid var(--line2);padding-top:11px">ABD Hisseleri</div>';
-  el.innerHTML=head+us.map(s=>stockRow(s,'us')).join('');}
+  el.innerHTML=head+us.map((s,i)=>stockRow(s,'us',i)).join('');}
 let worldIdx=[];
 /* Dunya piyasalari: endeks + emtia. borsa.json'daki `world` alani DUNYA HABERI,
    bu ondan ayri bir alan (`world_idx`). */
 function renderWorldIdx(){const el=document.getElementById('idxList');if(!el)return;
   if(!worldIdx.length){el.innerHTML='';return;}
   const head='<div class="wtitle" style="margin-top:12px;border-top:1px solid var(--line2);padding-top:11px">Dünya Piyasaları</div>';
-  el.innerHTML=head+worldIdx.map(s=>stockRow(s,'idx')).join('');}
+  el.innerHTML=head+worldIdx.map((s,i)=>stockRow(s,'idx',i)).join('');}
 
 /* borsa.json otomatik okuma (bot üretiyorsa, elle yapıştırmaya gerek kalmaz) */
 let world=[];
@@ -3235,6 +3300,8 @@ async function loadBorsaJson(){try{const r=await fetch('borsa.json?_='+Date.now(
     renderMktSummary();
     const nt=document.getElementById('newsTime'),ag=feedAge(d.updated);
     if(nt)nt.textContent=ag?ag.txt:'—';
+    const bt=document.getElementById('borsaTime');
+    if(bt)bt.textContent=ag?ag.txt:'—';
   }catch(e){/* borsa.json yok — kayıtlı veri / elle yapıştırma kullanılır */}}
 
 /* iş başvuruları: Google Sheets (bağlantıya sahip olan görüntüleyebilir), salt okunur.
