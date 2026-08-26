@@ -147,6 +147,9 @@
   .macros input{width:46px;background:#fff;border:1px solid var(--line);border-radius:3px;padding:2px 4px;font-family:var(--mono);font-size:11px;color:var(--ink);}
   .macros input:focus{outline:none;border-color:var(--accent);}
   .rtoggle{background:none;border:none;color:var(--accent);font-family:var(--mono);font-size:10px;letter-spacing:.05em;cursor:pointer;padding:2px 0;white-space:nowrap;}
+  .meal-not{font-family:var(--mono);font-size:9px;letter-spacing:.06em;color:var(--muted);margin-top:2px;}
+  .meal-not b{color:var(--accent);font-weight:500;}
+  .meal-not button{background:none;border:none;padding:0;font:inherit;color:var(--accent);cursor:pointer;text-decoration:underline;}
   .recipe{margin-top:7px;background:#fff;border:1px solid var(--line2);border-radius:5px;padding:9px 11px;}
   .rline{display:flex;gap:7px;padding:3px 0;font-size:12.5px;line-height:1.45;} .rline .rb{color:var(--accent);}
   .mkt{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px dotted var(--line2);}
@@ -2485,6 +2488,138 @@ function hedefNot(g){
 function renderBars(){const c=consumed(),g=gunlukHedef();
   document.getElementById('bars').innerHTML=bar('Kalori',c.kcal,g.kcal,'')+bar('Protein',c.p,g.p,'g')+bar('Karbonhidrat',c.c,g.c,'g')+
     (g.neden?'<div class="tgt-neden">'+esc(hedefNot(g))+'</div>':'');}
+
+/* ===== YEMEK METNİNDEN KALORİ =====
+   Kullanıcı listedekinden farklı bir şey yediğinde öğün metnini değiştiriyor;
+   makro kutuları elle güncellemek gerekiyordu. Artık metin yazılınca
+   otomatik hesaplanıyor.
+
+   Neden gömülü tablo: dış besin API'si anahtar ister, repo herkese açık ve
+   panelin tamamı statik (3. kural). Değerler 100 g / 100 ml başına REFERANS
+   değerlerdir — marka ve pişirme farkı elbette var, kutular her zaman elle
+   düzeltilebilir.
+
+   [kcal, protein g, karbonhidrat g, {birim ağırlıkları g}]
+   Tanınmayan parça için SAYI UYDURULMAZ (2. kural): o öğün otomatik
+   hesaplanmaz, kutular olduğu gibi kalır ve altta ne tanınmadığı yazılır. */
+const BESIN={
+ /* yumurta & süt */
+ 'yumurta':[143,12.6,0.7,{adet:50}],'yumurta akı':[52,10.9,0.7,{adet:33}],
+ 'beyaz peynir':[264,17,1.5],'kaşar':[375,25,2,{dilim:20}],'kaşar peyniri':[375,25,2,{dilim:20}],
+ 'rende peynir':[375,25,2],'lor':[98,11,3],'çökelek':[145,17,3],'labne':[280,6,4,{kasik:15}],
+ 'peynir':[264,17,1.5],'süzme yoğurt':[96,9.9,3.9],'yoğurt':[61,3.5,4.7],'kefir':[55,3.3,4.5],
+ 'süt':[61,3.2,4.8,{bardak:200}],'ayran':[37,1.7,2.6,{bardak:200}],
+ /* tahıl & ekmek */
+ 'yulaf':[389,16.9,66,{kase:80,kasik:10}],'granola':[471,10,64],'müsli':[375,10,66],
+ 'tam buğday ekmek':[247,13,41,{dilim:30}],'tost ekmeği':[270,9,49,{dilim:25}],
+ 'ekmek':[265,9,49,{dilim:30}],'simit':[320,9,60,{adet:100}],'poğaça':[350,8,40,{adet:80}],
+ 'börek':[300,8,30,{dilim:120}],'tam buğday makarna':[348,14,71],'makarna':[371,13,75],
+ 'pirinç pilavı':[150,3,33,{kase:180}],'bulgur pilavı':[130,4,26,{kase:180}],
+ 'pilav':[150,3,33,{kase:180}],'bulgur':[342,12,76],'pirinç':[360,7,79],
+ 'kuskus':[112,3.8,23],'kinoa':[120,4.4,21],
+ /* patates */
+ 'patates salatası':[145,2.5,17],'patates kızartması':[312,3.4,41],'fırın patates':[93,2.5,21],
+ 'haşlanmış patates':[87,2,20],'tatlı patates':[86,1.6,20],'patates':[77,2,17,{adet:150}],
+ /* et & balık */
+ 'tavuk göğsü':[165,31,0],'tavuk but':[209,26,0],'tavuk':[190,29,0],'hindi':[135,29,0],
+ 'dana bonfile':[158,27,0],'dana':[250,26,0],'kıyma':[250,26,0],'köfte':[240,18,8,{adet:30}],
+ 'somon':[208,20,0],'ton':[116,26,0,{kutu:80}],'hamsi':[131,20,0],'levrek':[97,18,0],
+ 'çipura':[115,20,0],'karides':[99,24,0],'balık':[120,21,0],
+ 'sucuk':[400,20,2,{dilim:10}],'salam':[310,13,3,{dilim:15}],'sosis':[300,12,3,{adet:50}],
+ 'pastırma':[240,35,1],
+ /* baklagil & sebze */
+ 'mercimek çorbası':[60,3,9,{kase:250}],'mercimek':[116,9,20],'nohut':[164,8.9,27],
+ 'humus':[166,8,14,{kasik:25}],'kuru fasulye':[127,9,23],'bezelye':[81,5,14],
+ 'brokoli':[34,2.8,7],'ıspanak':[23,2.9,3.6],'havuç':[41,0.9,10],'domates':[18,0.9,3.9,{adet:120}],
+ 'salatalık':[15,0.7,3.6,{adet:150}],'biber':[26,1,6],'soğan':[40,1.1,9],'mısır':[96,3.4,21],
+ 'zeytin':[145,1,6,{adet:4}],'avokado':[160,2,9,{adet:200}],
+ 'çoban salata':[45,1.2,5,{porsiyon:200}],'yeşil salata':[20,1.5,3.5,{porsiyon:150}],
+ 'salata':[20,1.5,3.5,{porsiyon:150}],'yeşillik':[20,1.5,3,{porsiyon:100}],
+ 'zeytinyağlı sebze':[90,2,10],'fırın sebze':[80,2,12],'sebze':[40,2,8],
+ 'menemen':[120,7,5,{porsiyon:250}],'domates sos':[35,1.5,6],'çorba':[60,3,8,{kase:250}],
+ /* meyve */
+ 'muz':[89,1.1,23,{adet:120}],'elma':[52,0.3,14,{adet:180}],'armut':[57,0.4,15,{adet:180}],
+ 'portakal':[47,0.9,12,{adet:180}],'mandalina':[53,0.8,13,{adet:90}],'kivi':[61,1.1,15,{adet:75}],
+ 'çilek':[32,0.7,8],'üzüm':[69,0.7,18],'karpuz':[30,0.6,8],'kavun':[34,0.8,8],
+ 'şeftali':[39,0.9,10,{adet:150}],'kayısı':[48,1.4,11,{adet:35}],'incir':[74,0.8,19,{adet:50}],
+ 'kuru incir':[249,3.3,64],'hurma':[282,2.5,75,{adet:8}],'kuru üzüm':[299,3,79],
+ 'mevsim meyvesi':[55,0.8,14,{porsiyon:150}],'meyve':[55,0.8,14,{porsiyon:150}],
+ /* kuruyemiş & yağ */
+ 'ceviz':[654,15,14,{avuc:25,adet:5}],'badem':[579,21,22,{avuc:25,adet:1.2}],
+ 'fındık':[628,15,17,{avuc:25,adet:1.4}],'antep fıstığı':[560,20,28,{avuc:25}],
+ 'kaju':[553,18,30,{avuc:25}],'fıstık ezmesi':[588,25,20,{kasik:16}],'fıstık':[567,26,16,{avuc:25}],
+ 'kuruyemiş':[600,18,20,{avuc:25}],'tahin':[595,17,21,{kasik:15}],
+ 'zeytinyağı':[884,0,0,{kasik:14}],'tereyağı':[717,0.9,0.1,{kasik:14}],'bal':[304,0.3,82,{kasik:21}],
+ 'reçel':[278,0.4,69,{kasik:20}],'protein tozu':[375,75,8,{olcek:30,kasik:30}],
+ /* dışarıda & atıştırma */
+ 'pizza':[266,11,33,{dilim:100}],'lahmacun':[240,11,32,{adet:130}],'tavuk döner':[190,20,10,{porsiyon:200}],
+ 'döner':[215,17,12,{porsiyon:200}],'hamburger':[250,13,26,{adet:200}],'pide':[275,12,40,{porsiyon:250}],
+ 'tost':[280,13,30,{adet:150}],'kumpir':[180,4,30,{adet:350}],'mantı':[160,7,24,{porsiyon:250}],
+ 'çiğ köfte':[180,5,35,{porsiyon:150}],'baklava':[430,6,55,{dilim:60,adet:60}],
+ 'sütlaç':[130,3,22,{kase:150}],'dondurma':[207,3.5,24,{kase:100,top:50}],
+ 'çikolata':[546,5,61,{adet:30,paket:30}],'bisküvi':[480,7,65,{paket:30}],'cips':[536,6,53,{paket:35}],
+ 'kola':[42,0,10.6,{bardak:200}],'portakal suyu':[45,0.7,10,{bardak:200}],'meyve suyu':[45,0.5,11,{bardak:200}],
+ 'latte':[55,3,5,{bardak:250}],'kahve':[2,0.1,0,{bardak:200}],'çay':[1,0,0,{bardak:200}]
+};
+/* Besine özel ağırlık yoksa kullanılan varsayılanlar (g). "adet" burada YOK:
+   adet ağırlığı bilinmeyen besinde tahmin yürütülmüyor. */
+const BIRIM_G={kasik:15,avuc:25,bardak:200,porsiyon:150,kase:200,dilim:30,paket:35,olcek:30,kutu:100,top:50};
+/* Birim tespiti KÖK ile: "kaşığı", "bardağı", "ölçek" gibi çekimli yazımlar
+   birebir eşleşmiyordu. \b ile sözcük başına bakılıyor. */
+const BIRIM_KOK=[['kasi','kasik'],['kase','kase'],['avu','avuc'],['barda','bardak'],
+  ['porsiyon','porsiyon'],['dilim','dilim'],['paket','paket'],['olce','olcek'],
+  ['kutu','kutu'],['top','top'],['adet','adet']];
+function deTR(x){return (x||'').toLocaleLowerCase('tr').replace(/[ışğüöçâ]/g,c=>({'ı':'i','ş':'s','ğ':'g','ü':'u','ö':'o','ç':'c','â':'a'}[c]));}
+const BESIN_ANH=Object.keys(BESIN).map(k=>[deTR(k),k]).sort((a,b)=>b[0].length-a[0].length);
+function besinBul(ad){const a=deTR(ad);for(const [n,k] of BESIN_ANH)if(a.indexOf(n)>-1)return BESIN[k];return null;}
+
+/* Bir öğün metnini çözer. {kcal,p,c,bilinmeyen:[],miktarsiz:[]} veya null.
+   İki ayrı kova: besin tabloda yoksa "bilinmeyen", besin belli ama miktar
+   çıkarılamıyorsa "miktarsiz" (ör. sadece "yulaf" yazılmışsa). İkisi de
+   tahmine kapalı — sayı uydurmuyoruz. */
+function besinCoz(metin){
+  if(!metin||!metin.trim())return null;
+  const parcalar=metin.split(/\s*\+\s*|,\s*|\s+ve\s+/i).map(x=>x.trim()).filter(Boolean);
+  if(!parcalar.length)return null;
+  const top={kcal:0,p:0,c:0,bilinmeyen:[],miktarsiz:[]};
+  parcalar.forEach(ham=>{
+    const p=ham.toLocaleLowerCase('tr');
+    /* gram/ml yazılmışsa (parantez içi "(~200g)" dahil) o parçanın TAMAMI odur */
+    const mg=p.match(/(\d+(?:[.,]\d+)?)\s*(g|gr|gram|ml)\b/);
+    let gram=mg?parseFloat(mg[1].replace(',','.')):null;
+    const ad=p.replace(/\([^)]*\)/g,' ').replace(/\d+(?:[.,]\d+)?/g,' ')
+      .replace(/\b(g|gr|gram|ml|adet|dilim|kase|kaşı[kğ]\w*|avu[çc]\w*|kutu|barda[kğ]\w*|porsiyon|paket|öl[çc]ek|top|yemek|tatlı|çay|su|büyük|küçük|orta)\b/g,' ')
+      .replace(/[-–—]/g,' ').replace(/\s+/g,' ').trim();
+    const b=besinBul(ad);
+    if(!b){top.bilinmeyen.push(ham);return;}
+    if(gram==null){
+      const ms=p.match(/(\d+(?:[.,]\d+)?)/);
+      const sayi=ms?parseFloat(ms[1].replace(',','.')):1;
+      const dp=deTR(p);
+      let birim=null;
+      for(const [kok,ad2] of BIRIM_KOK)if(new RegExp('\\b'+kok).test(dp)){birim=ad2;break;}
+      /* Birim yazılmamışsa: sayı varsa adet, hiç sayı yoksa bir porsiyon. */
+      if(!birim)birim=ms?'adet':'porsiyon';
+      const ozel=b[3]||{};
+      let bg=ozel[birim];
+      /* "1 ayran" / "1 kola": adet ağırlığı olmayan içecekte kendi bardağı. */
+      if(bg==null&&birim==='adet')bg=ozel.bardak!=null?ozel.bardak:ozel.porsiyon;
+      /* Miktar HİÇ yazılmamışsa besinin KENDİ servis birimi kullanılıyor
+         (kumpir->adet, çorba->kase, salata->porsiyon). Kendi birimi yoksa
+         genel varsayılana kaçılmıyor: miktar belirsiz sayılıyor. */
+      if(bg==null&&!ms&&birim==='porsiyon')
+        for(const u of ['porsiyon','adet','kase','bardak','dilim'])
+          if(ozel[u]!=null){bg=ozel[u];break;}
+      if(bg==null&&(ms||birim!=='porsiyon')&&birim!=='adet')bg=BIRIM_G[birim];
+      if(bg==null){top.miktarsiz.push(ham);return;}
+      gram=sayi*bg;
+    }
+    const f=gram/100;
+    top.kcal+=b[0]*f;top.p+=b[1]*f;top.c+=b[2]*f;
+  });
+  return top;
+}
+
 function renderMeals(){const el=document.getElementById('mealList');el.innerHTML='';
   meals.forEach((m,i)=>{const rc=recipeFor(m.text);const open=!!openRec[i];const d=document.createElement('div');d.className='meal';
     d.innerHTML='<div class="meal-top"><span class="meal-slot">'+esc(m.slot)+'</span>'+
@@ -2498,15 +2633,52 @@ function renderMeals(){const el=document.getElementById('mealList');el.innerHTML
       '<div class="macros"><div class="mi"><span>kcal</span><input type="number" data-mk="'+i+'" value="'+num(m.kcal)+'"></div>'+
       '<div class="mi"><span>P</span><input type="number" data-mp="'+i+'" value="'+num(m.p)+'"></div>'+
       '<div class="mi"><span>K</span><input type="number" data-mc="'+i+'" value="'+num(m.c)+'"></div></div>'+
+      '<div class="meal-not" data-not="'+i+'"></div>'+
       (open&&rc.length?'<div class="recipe">'+rc.map(t=>'<div class="rline"><span class="rb">•</span><span>'+esc(t)+'</span></div>').join('')+'</div>':'');
     el.appendChild(d);});
   el.querySelectorAll('[data-p]').forEach(b=>b.onclick=()=>{meals[+b.dataset.i].portion=+b.dataset.p;saveMeals();renderMeals();renderBars();});
   el.querySelectorAll('[data-pi]').forEach(inp=>inp.oninput=()=>{meals[+inp.dataset.pi].portion=Math.max(0,Math.min(100,num(inp.value)));saveMeals();renderBars();});
   el.querySelectorAll('[data-rt]').forEach(b=>b.onclick=()=>{const i=+b.dataset.rt;openRec[i]=!openRec[i];renderMeals();});
-  el.querySelectorAll('[data-mt]').forEach(inp=>inp.oninput=()=>{meals[+inp.dataset.mt].text=inp.value;saveMeals();});
-  el.querySelectorAll('[data-mk]').forEach(inp=>inp.oninput=()=>{meals[+inp.dataset.mk].kcal=inp.value;saveMeals();renderBars();});
-  el.querySelectorAll('[data-mp]').forEach(inp=>inp.oninput=()=>{meals[+inp.dataset.mp].p=inp.value;saveMeals();renderBars();});
-  el.querySelectorAll('[data-mc]').forEach(inp=>inp.oninput=()=>{meals[+inp.dataset.mc].c=inp.value;saveMeals();renderBars();});}
+  /* Metin degisince otomatik hesap; makro kutusuna dokunulunca o ogun "elle"ye
+     gecer ve otomatik onu bir daha ezmez. Yeniden cizmiyoruz — odak kaybolur. */
+  el.querySelectorAll('[data-mt]').forEach(inp=>inp.oninput=()=>{
+    const i=+inp.dataset.mt;meals[i].text=inp.value;meals[i].elle=false;meals[i].oto=false;
+    mealHesapla(i);saveMeals();renderBars();});
+  const elleYap=(i)=>{meals[i].elle=true;mealNot(i);};
+  el.querySelectorAll('[data-mk]').forEach(inp=>inp.oninput=()=>{const i=+inp.dataset.mk;meals[i].kcal=inp.value;elleYap(i);saveMeals();renderBars();});
+  el.querySelectorAll('[data-mp]').forEach(inp=>inp.oninput=()=>{const i=+inp.dataset.mp;meals[i].p=inp.value;elleYap(i);saveMeals();renderBars();});
+  el.querySelectorAll('[data-mc]').forEach(inp=>inp.oninput=()=>{const i=+inp.dataset.mc;meals[i].c=inp.value;elleYap(i);saveMeals();renderBars();});
+  meals.forEach((m,i)=>mealNot(i));}
+
+/* Ogunun alt satiri: otomatik mi, elle mi, ne taninmadi. */
+function mealNot(i){
+  const kut=document.querySelector('.meal-not[data-not="'+i+'"]');if(!kut)return;
+  const m=meals[i],r=besinCoz(m.text);
+  if(m.elle){
+    kut.innerHTML='elle girildi · <button data-oto="'+i+'">otomatiğe dön</button>';
+    kut.querySelector('[data-oto]').onclick=()=>{meals[i].elle=false;mealHesapla(i);saveMeals();renderBars();};
+    return;
+  }
+  if(!r){kut.innerHTML='';return;}
+  /* Uydurma yok: eksik parca varsa kutulara dokunulmuyor. */
+  const uyari=[];
+  if(r.bilinmeyen.length)uyari.push('tanınmadı: <b>'+esc(r.bilinmeyen.join(', '))+'</b>');
+  if(r.miktarsiz.length)uyari.push('miktar yazılmamış: <b>'+esc(r.miktarsiz.join(', '))+'</b> (ör. 70g)');
+  /* "otomatik hesaplandı" YALNIZCA kutulara gerçekten yazdıysak: plandan gelen
+     kürasyonlu değerler duruyorken bunu yazmak yalan olurdu. */
+  kut.innerHTML=uyari.length?uyari.join(' · ')+' · makroları elle gir':(m.oto?'otomatik hesaplandı':'');
+}
+
+/* Metinden makrolari hesaplayip kutulara yazar (yerinde, yeniden cizmeden). */
+function mealHesapla(i){
+  const m=meals[i],r=besinCoz(m.text);
+  if(!m.elle&&r&&!r.bilinmeyen.length&&!r.miktarsiz.length){
+    m.kcal=Math.round(r.kcal);m.p=Math.round(r.p);m.c=Math.round(r.c);m.oto=true;
+    const yaz=(sec,v)=>{const e=document.querySelector(sec+'="'+i+'"]');if(e&&e.value!=String(v))e.value=v;};
+    yaz('input[data-mk',m.kcal);yaz('input[data-mp',m.p);yaz('input[data-mc',m.c);
+  }
+  mealNot(i);
+}
 
 /* facts + film */
 /* İlginç bilgiler: facts_feed.py'nin GitHub Actions'ta Türkçe Vikipedi'den ürettiği

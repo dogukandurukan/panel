@@ -7,6 +7,41 @@ Bu dosya bir oturumdan diğerine devretmek için. Kalıcı proje kuralları
 
 ## 1. Bu oturumda ne yapıldı
 
+### 26 Ağustos (3) — Yemek metninden kalori hesabı (4.9 uygulandı)
+Kullanıcı: "listedekine uymadığım gün 'kahvaltıda şunu yedim' diye girsem ve
+ona göre kalori hesaplasa mümkün mü?"
+
+**Gömülü besin tablosu** (`BESIN`, ~115 kayıt): 100 g / 100 ml başına
+[kcal, protein, karbonhidrat] + besine özel birim ağırlıkları
+(`{adet:120}`, `{dilim:30}`, `{kase:250}`, `{kutu:80}`…). Dış API yok:
+anahtar ister, repo herkese açık, panel statik (3. kural).
+
+**`besinCoz(metin)`** öğün metnini "+", virgül ve " ve " ile parçalıyor:
+- `70g yulaf`, `250ml süt` → doğrudan gram/ml.
+- `2 kutu ton (~160g)` → **parantezdeki gram parçanın TAMAMI** sayılıyor,
+  sayıyla tekrar çarpılmıyor.
+- `3 yumurta` → sayı + birim yok → adet ağırlığı.
+- `1 yemek kaşığı zeytinyağı` → birim tespiti KÖK ile (`kaşığı`, `bardağı`
+  çekimli yazımlar birebir eşleşmiyordu).
+- `salata` (miktarsız) → besinin KENDİ servis birimi (porsiyon/adet/kase).
+  Kendi birimi yoksa genel varsayılana kaçılmıyor.
+
+**İki ayrı kova, ikisi de tahmine kapalı (2. kural):** `bilinmeyen`
+(besin tabloda yok) ve `miktarsiz` (besin belli, miktar çıkarılamıyor).
+Biri doluysa **makro kutularına dokunulmuyor**, altta ne eksik yazıyor.
+
+**Bayraklar:** `oto` (kutulara gerçekten yazıldı) ve `elle` (kullanıcı makro
+kutusuna dokundu → otomatik bir daha ezmiyor, "otomatiğe dön" düğmesi var).
+Metin değişince ikisi de sıfırlanıp yeniden hesaplanıyor.
+- Açılışta hesaplama YAPILMIYOR: plandaki (MP) kürasyonlu değerler kalıyor,
+  yalnız metin düzenlenince devreye giriyor. Not satırı da bu yüzden
+  dokunulmamış öğünde boş — "otomatik hesaplandı" yazmak yalan olurdu.
+- Kutular yerinde güncelleniyor, liste yeniden çizilmiyor (odak kaybolurdu).
+
+**Doğrulama:** 15 örnek metin (pizza, döner+ayran, kumpir ve mercimek
+çorbası, 2 top dondurma, tanınmayan "annemin karnıyarığı"), UI akışı
+(otomatik → elle → otomatiğe dön), odak korunuyor, konsol hatası yok.
+
 ### 26 Ağustos (2) — Sayfa düzeni: sütun yerleştirme
 Kullanıcı: "bazıları çok büyük bazıları çok kısa, kartların uzunlukları aynı
 olsun, laptopta da düzgün gözüksün."
@@ -605,21 +640,17 @@ ayrı bir liste olarak göstermek. **Dikkat:** bu veri kişisel; public repoya
 JSON olarak yazılamaz (1. kural), gizli gist'e ya da doğrudan mail okumaya
 gitmeli — 4.2'deki harcama kararının aynısı.
 
-### 4.9 Yemek girişi → kalori hesabı (kullanıcı sordu, KARAR BEKLİYOR)
+### 4.9 Yemek girişi → kalori hesabı — BİTTİ (26 Ağustos, yukarı bak)
 
-Kullanıcı: "listedekine uymadığım gün 'kahvaltıda şunu yedim' diye girsem ve
-ona göre kalori hesaplasa mümkün mü?"
-
-Mümkün — ama dış API yok (anahtar + çevrimdışı sorunu, 3. kural). Tasarım:
-`index.html` içine **gömülü besin tablosu** (100 g / 100 ml başına kcal, P, K)
-+ metin ayrıştırıcı. Öğün metni zaten "70g yulaf + 250ml süt + 1 muz" biçiminde,
-yani ayrıştırıcının okuması gereken dil bu.
-- "70g yulaf" → tablodan yulaf × 0.7 · "1 muz" → adet ağırlığı tablodan.
-- Tanınmayan öğe için sayı UYDURULMAZ: o parça "?" olarak işaretlenir ve
-  makro kutusu elle kalır (2. kural).
-- Elle yazılan makro değeri, otomatik hesabı ezer (`elle` bayrağı) — yoksa
-  kullanıcının düzeltmesi bir sonraki yazımda silinir.
-- Tablo ~120 besinle başlar; kullanıcının yediklerinden büyütülür.
+Açık uçlar:
+- Tablo ~115 besin; kullanıcı tanınmayan bir şey yazdıkça büyütülmeli
+  (not satırı zaten neyin tanınmadığını yazıyor).
+- Yağ (Y) hesaplanmıyor: öğün kutularında yağ alanı yok, tabloda da tutulmadı.
+  İstenirse dördüncü makro eklenebilir.
+- Pişirme yağı sayılmıyor ("omlet" = yumurta ağırlığı). Kullanıcı yağı ayrı
+  yazarsa (`+ 1 kaşık zeytinyağı`) hesaba giriyor.
+- Porsiyon çipleri (— / ½ / ✓) hesabın ÜSTÜNE çarpılıyor; otomatik hesap
+  tam porsiyon içindir.
 
 ## 5. Çalışma alışkanlıkları (bu projede işe yarayan)
 
