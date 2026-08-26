@@ -52,11 +52,29 @@ UA = "panel-facts/1.0 (https://github.com/dogukandurukan/panel)"
 HISTORY_DAYS = 10        # haftalık çalışıyor; bir hafta atlansa da açık kalmasın
 HISTORY_PER_DAY = 3      # "Başka" düğmesinin gezinebilmesi için gün başına birkaç olay
 MIN_EXTRACT = 80         # bu uzunlukta özeti olan sayfa "olayı gerçekten anlatıyor" sayılır
+DETAY_MAX = 520          # "devamı" paragrafı; cümle sonunda kesilir
 REQUEST_PAUSE = 0.15     # Vikipedi'ye kibar davran
 
 
 def temizle(metin):
     return re.sub(r"\s+", " ", (metin or "").strip())
+
+
+def _adi_gecen(sayfa, metin):
+    """Sayfa adının ilk sözcüğü olay metninde geçiyor mu?"""
+    ad = (sayfa.get("title") or "").replace("_", " ").strip()
+    if not ad:
+        return False
+    return ad.lower() in metin.lower()
+
+
+def _kisalt(metin, n):
+    """Cümle ortasında kesme; n'den kısa son cümle sınırına kadar al."""
+    if len(metin) <= n:
+        return metin
+    kes = metin[:n]
+    nokta = max(kes.rfind(". "), kes.rfind("! "), kes.rfind("? "))
+    return (kes[:nokta + 1] if nokta > n // 3 else kes.rstrip() + "…").strip()
 
 
 def fetch_onthisday(session, ay, gun):
@@ -69,20 +87,29 @@ def fetch_onthisday(session, ay, gun):
         yil, metin = ev.get("year"), temizle(ev.get("text"))
         if not yil or not metin:
             continue
-        # Olaya bağlı sayfalardan özeti olan ilkini seç. Panel bu sayfayı BAŞLIK
-        # olarak kullanmıyor — Vikipedi olayı sık sık yanlış özneye bağlıyor
-        # (Chandrayaan-3 inişine "Hindistan") — yalnızca bağlantı olarak veriyor.
-        sayfa = next(
-            (p for p in (ev.get("pages") or [])
-             if len(temizle(p.get("extract"))) >= MIN_EXTRACT),
-            None,
-        ) or {}
-        olaylar.append({
+        # Olaya bağlı sayfalardan özeti olan biri seçilir. Panel bu sayfayı
+        # BAŞLIK olarak kullanmıyor — Vikipedi olayı sık sık yanlış özneye
+        # bağlıyor (Chandrayaan-3 inişine "Hindistan") — yalnızca bağlantı ve
+        # "devamı" paragrafı olarak veriyor. Bu yüzden ADI OLAY METNİNDE GEÇEN
+        # sayfa tercih ediliyor: "Hindistan" genel ülke maddesi yerine olayın
+        # gerçek öznesine denk gelme ihtimali yükseliyor.
+        adaylar = [p for p in (ev.get("pages") or [])
+                   if len(temizle(p.get("extract"))) >= MIN_EXTRACT]
+        sayfa = next((p for p in adaylar if _adi_gecen(p, metin)), None) \
+            or (adaylar[0] if adaylar else {})
+        kayit = {
             "year": yil,
             "text": metin,
             "title": sayfa.get("title", ""),
             "url": ((sayfa.get("content_urls") or {}).get("desktop") or {}).get("page", ""),
-        })
+        }
+        # "devamı" paragrafı: özet ZATEN bu yanıtın içinde geliyordu ve
+        # atılıyordu; ek istek yok. Kartın ön yüzünde değil, düğme arkasında —
+        # bir tanım olması burada sorun değil, olayın öznesini açıklıyor.
+        detay = _kisalt(temizle(sayfa.get("extract")), DETAY_MAX)
+        if detay:
+            kayit["detay"] = detay
+        olaylar.append(kayit)
 
     # Bağlantısı olanlar önce; sonra listeye eşit aralıkla yayılarak seç ki
     # gün başına düşen üç olay da aynı dönemden çıkmasın.

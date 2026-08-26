@@ -2442,11 +2442,11 @@ function derinDugme(anahtar){
   return '<button class="d-ac" data-derin="'+anahtar+'">'+
     (derinAcik[anahtar]?'gizle ▴':'devamı ▾')+'</button>';
 }
-function derinKutu(d,anahtar){
+function derinKutu(d,anahtar,etiket){
   if(!d||!derinAcik[anahtar])return '';
   const oneri=(d[1]||[]);
   return '<div class="d-derin"><p>'+esc(d[0])+'</p>'+
-    (oneri.length?'<div class="d-oner"><span class="d-oner-b">bunu sevdiysen</span><ul>'+
+    (oneri.length?'<div class="d-oner"><span class="d-oner-b">'+esc(etiket||'bunu sevdiysen')+'</span><ul>'+
       oneri.map(o=>'<li>'+esc(o)+'</li>').join('')+'</ul></div>':'')+'</div>';
 }
 /* Düğmeler her çizimde yeniden bağlanır. */
@@ -2477,11 +2477,20 @@ function renderHistory(){
        özneye bağlıyor (Chandrayaan-3 inişine "Hindistan", demiryoluna "Amasya").
        Yıl başlık, olayın kendisi metin. Bağlantı da gideceği sayfanın gerçek
        adıyla etiketleniyor ki tıklayan ne bulacağını bilsin. */
+    /* "devamı": facts.json'daki `detay`, olayın bağlandığı Vikipedi sayfasının
+       özeti. Öneri yerine AYNI GÜNÜN diğer olayları listeleniyor — panelde
+       zaten var, ek veri istemiyor. Detay yoksa düğme de çıkmıyor. */
+    const digerleri=gunun.filter((_,j)=>j!==(histOff%gunun.length))
+      .slice(0,2).map(o=>o.year+' — '+(o.text||''));
+    const d=h.detay?[h.detay,digerleri]:null;
     el.innerHTML='<div class="day1">'+
       '<div class="d-yil">bugün</div>'+
       '<div class="d-bas">'+esc(h.year)+'</div>'+
       '<div class="d-metin">'+esc(h.text||'')+'</div>'+
-      (h.url&&h.title?kaynakLink(h.url,h.title.replace(/_/g,' ')):'')+'</div>';
+      (d?derinDugme('hist'):'')+
+      (h.url&&h.title?kaynakLink(h.url,h.title.replace(/_/g,' ')):'')+
+      derinKutu(d,'hist','aynı günden')+'</div>';
+    derinBagla('histBox',renderHistory);
     return;
   }
   /* facts.json yoksa ya da o güne kayıt düşmediyse gömülü listeye düş.

@@ -7,6 +7,43 @@ Bu dosya bir oturumdan diğerine devretmek için. Kalıcı proje kuralları
 
 ## 1. Bu oturumda ne yapıldı
 
+### 26 Ağustos — Borsa kartı ikiye bölündü, grafiğe imleç, Tarihten "devamı"
+Kullanıcının geri bildirimi: borsa kartı çok uzun ve şekilsiz; grafikte hangi
+gün hangi fiyat olduğu görünmüyor; Tarihten kartında "devamı" yok.
+
+**Borsa tek karttan iki karta.** `Döviz & Piyasalar` (kur + gram altın + dünya
+endeksleri + finans notu) ve `İzleme Listesi` (BIST + ABD + günün hareketi).
+Grid `auto-fit` olduğu için ikisi ayrı sütuna düşüyor, tek kartın ekranı
+doldurması bitti. İkinci kartın meta'sı `#borsaTime` (feed yaşı).
+
+**Grafikte imleç.** `borsa.json` satırlarına `histD` eklendi (AA-GG). Tarih
+saklanmak zorunda: işlem günleri hafta sonu/tatil atladığı için indeksten
+hesaplanamıyor. Detay grafiğinde kesikli dikey çizgi + nokta, altında
+"12 Ağu | 2,45"; grafiğin hemen altında x ekseni olarak ilk/son gün.
+- Seri DOM'a yazılmıyor (90 sayı × 16 satır şişirir); hover anında
+  `watch/us/worldIdx` dizisinden `data-i` sıra numarasıyla okunuyor.
+- Dokunmatik: tek dokunuş da okuma yapıyor (`pointerdown` de dinleniyor) ve
+  parmak kalkınca silinmiyor — `pointerleave` yalnız `pointerType==='mouse'`
+  için kapatıyor. `touch-action:pan-y` ile sayfa kaydırma bozulmuyor.
+- `histD` indent ile dosyayı 47 KB'a çıkardı; JSON sıkıştırma regex'i artık
+  kısa METİN dizilerini de tek satıra topluyor (27 KB). Haber başlıkları
+  12 karakter sınırının dışında kaldığı için okunur kalıyor.
+
+**Tarihten "devamı".** `facts_feed.py` Vikipedi yanıtındaki `extract`'i zaten
+alıp ATIYORDU — ek istek olmadan `detay` alanı eklendi (cümle sonunda kesilir,
+≤520 karakter). Öneri satırları AYNI GÜNÜN diğer olayları ("aynı günden"
+etiketi); panelde zaten var, feed'e maliyeti yok. `derinKutu()` artık öneri
+başlığını parametre alıyor (film/kitap/sanatçıda "bunu sevdiysen" aynen).
+Sayfa seçimi de iyileşti: adı olay metninde geçen sayfa tercih ediliyor.
+**Bilinen sınır:** olay bir ülkeye bağlıysa (ör. "Birleşik Krallık, Mısır'a
+bağımsızlığını verdi") detay o ülkenin genel maddesi oluyor. Gerçek veri,
+ama derinliği zayıf.
+
+**Doğrulama:** Chrome'da gerçek veriyle, iki temada. İmleç %2/25/50/75/99'da
+doğru gün+fiyat veriyor, ayrılınca varsayılana dönüyor; 390 px'te taşma yok,
+dokunmayla okuma çalışıyor; Tarihten kartında devamı açılıyor, "Başka" ile
+olay değişince detay ve öneriler de değişiyor; film kartının önerisi bozulmadı.
+
 ### 25 Ağustos — Borsa kartı (yol haritası 4.1) bitti
 Kullanıcının kararları: **90 günlük seri · çizgi (sparkline) · portföy YOK,
 izleme listesi kalıyor** (`HOLDINGS` boş bırakıldı, kişisel veri public repoya
@@ -174,6 +211,7 @@ gönderildi`). Secret'lar ekli: `VAPID_PRIVATE`, `PANEL_GIST_TOKEN`.
 
 | # | İş | Nerede |
 |---|---|---|
+| 0 | **Ret takibi Sheet'e bağlı.** Enpal'dan gelen ret maili panele düşmedi çünkü Enpal Sheet'te kayıtlı değil; `check_rejections.py` YALNIZCA Sheet'teki şirket adlarını Gmail'de arıyor. Kullanıcı elle Sheet'e eklemek istemiyor → 4.6'daki tarama çözülecek. |
 | 1 | `ANTHROPIC_API_KEY` secret'ı | Repo → Settings → Secrets → Actions. Mail cevap taslakları bu olmadan üretilmiyor; kod hazır. |
 | 2 | Garanti mobilde "harcama bildirimi e-posta" açık mı? | Harcama kartının seviyesini belirliyor. |
 
@@ -352,6 +390,37 @@ mı? Kartın hangi seviyede çalışabileceğini bu belirliyor.
   taşımak gerekebilir (index.html şu an ~230 KB).
 
 ---
+
+### 4.6 Gündem şeridi — KARARLAR ALINDI, yapılacak
+
+Kullanıcı onayladı: **tam genişlikte, eşit üç sütun** — `Dünya Gündemi`
+(İngilizce, mevcut altı kaynak) | `Türkiye Gündemi` (**yeni**: NTV, Habertürk
+gibi RSS'ler) | `Piyasa & Şirket` (bugünkü hisse haberleri).
+Ayrıca **Alışkanlık Serileri kartı yukarı** alınacak: Sabah Rutini /
+"Çarşamba rutini" bölgesinin altındaki boşluğa. Grid `align-items:start`
+olduğu için uzun kartlar aynı satırda boşluk bırakıyor; asıl şekilsizlik bu.
+
+Notlar: `panel_feed.py`'de `_rss_basliklar()` hazır, Türkiye kaynakları oraya
+eklenebilir (`tr` alanı). Ama borsa-feed **hafta içi 09:00/14:00** koşuyor;
+Türkiye gündemi hafta sonu bayatlar — ya `world` gibi kabul edilir ya da
+gmail-feed'in (her gün) içine alınır. Bu, işe başlarken verilecek karar.
+
+### 4.7 Almanca kartı — kullanıcı istedi, yapılmadı
+
+Kart çok uzun. İstenen: kartta **yalnızca 5 kelime** kalsın; quiz ve gramer
+altta tam genişlikte yatay bir şeride taşınsın. Quiz "ne demek" yerine
+**cümlede boşluk doldurma** olsun — kelime havuzunda örnek cümle zaten var
+(`["traurig","üzgün","Warum bist du traurig?","A2"]`), hedef kelime cümleden
+silinerek üretilebilir.
+
+### 4.8 Ret takibi: şirket listesi olmadan tarama (Enpal)
+
+Kullanıcı Sheet'e elle satır eklemek istemiyor. Yapılacak: `check_rejections.py`
+ikinci geçiş — gelen kutusunda ret kalıbı olan mailleri şirket adı olmadan
+bulup gönderen alan adından şirketi çıkarmak, Sheet'te olmayanları panelde
+ayrı bir liste olarak göstermek. **Dikkat:** bu veri kişisel; public repoya
+JSON olarak yazılamaz (1. kural), gizli gist'e ya da doğrudan mail okumaya
+gitmeli — 4.2'deki harcama kararının aynısı.
 
 ## 5. Çalışma alışkanlıkları (bu projede işe yarayan)
 
