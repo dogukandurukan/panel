@@ -1,55 +1,68 @@
 {
-  "updated": "2026-08-25 14:16",
+  "updated": "2026-08-26 09:50",
   "ok": true,
   "window_days": 7,
-  "total_unread": 4,
+  "total_unread": 6,
   "counts": {
     "reply": 0,
-    "job": 0,
-    "info": 3,
-    "bulk": 0
+    "job": 2,
+    "info": 1,
+    "bulk": 3
   },
   "important_unread": 0,
   "drafts": 0,
   "model": "",
   "items": [
     {
-      "id": "1a038907ada2bd4e",
-      "thread_id": "1a038907ada2bd4e",
-      "from": "Pazar Yeri Entegrasyon",
-      "email": "mp.entegrasyon@email.trendyol.com",
-      "subject": "Hatırlatma: Trendyol Ürün Servisleri Limit Değişiklikleri Hakkında / Reminder: About Trendyol Product Services Rate Limit Changes",
-      "date": "Tue, 25 Aug 2026 04:56:06 -0600",
+      "id": "1a03bb930962d15f",
+      "thread_id": "1a03bb930962d15f",
+      "from": "Bilgilendirme",
+      "email": "bilgilendirme@ebelgemail.com",
+      "subject": "ELOGO Bilgilendirme",
+      "date": "Wed, 26 Aug 2026 04:39:44 +0300",
       "bucket": "info",
-      "why": "",
-      "key": "s:mp.entegrasyon@email.trendyol.com|hatırlatma: trendyol ürün servisleri limit değişiklikleri hakkında / reminder: about trendyol product services rate limit changes",
+      "why": "belge",
+      "key": "s:bilgilendirme@ebelgemail.com|elogo bilgilendirme",
       "dupes": 1
     },
     {
-      "id": "1a038777c6b42386",
-      "thread_id": "1a0386cc62e4a9cb",
-      "from": "GitHub",
-      "email": "noreply@github.com",
-      "subject": "[GitHub] A fine-grained personal access token has been added to your account",
-      "date": "Tue, 25 Aug 2026 03:29:09 -0700",
-      "bucket": "info",
-      "why": "güvenlik",
-      "key": "s:noreply@github.com|[github] a fine-grained personal access token has been added to your account",
-      "dupes": 2
+      "id": "1a03aa89cb72d8d3",
+      "thread_id": "1a03aa89cb72d8d3",
+      "from": "LinkedIn",
+      "email": "jobs-noreply@linkedin.com",
+      "subject": "Your application to BUSINESS DATA SCIENTIST at Turkcell",
+      "date": "Tue, 25 Aug 2026 20:42:03 +0000 (UTC)",
+      "bucket": "job",
+      "why": "",
+      "key": "s:jobs-noreply@linkedin.com|your application to business data scientist at turkcell",
+      "dupes": 1
     },
     {
-      "id": "1a0386272d03b480",
-      "thread_id": "1a0386272d03b480",
-      "from": "Anthropic, PBC",
-      "email": "invoice+statements@mail.anthropic.com",
-      "subject": "Your receipt from Anthropic, PBC #2847-5947-5480",
-      "date": "Tue, 25 Aug 2026 10:06:10 +0000",
-      "bucket": "info",
+      "id": "1a03a4e88ddb3b8b",
+      "thread_id": "1a03a4e88ddb3b8b",
+      "from": "LinkedIn",
+      "email": "jobs-noreply@linkedin.com",
+      "subject": "Dogukan, your application was sent to Misli",
+      "date": "Tue, 25 Aug 2026 19:03:40 +0000 (UTC)",
+      "bucket": "job",
       "why": "",
-      "key": "s:invoice+statements@mail.anthropic.com|your receipt from anthropic, pbc ##-#-#",
+      "key": "s:jobs-noreply@linkedin.com|dogukan, your application was sent to misli",
       "dupes": 1
     }
   ],
-  "bulk_top": [],
+  "bulk_top": [
+    [
+      "TikTok",
+      1
+    ],
+    [
+      "Berliner Sparkasse",
+      1
+    ],
+    [
+      "Tolga Zorbaz via LinkedI",
+      1
+    ]
+  ],
   "draft_note": "ANTHROPIC_API_KEY yok - taslak uretilmedi"
 }
