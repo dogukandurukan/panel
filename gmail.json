@@ -1,68 +1,18 @@
 {
-  "updated": "2026-08-26 09:50",
+  "updated": "2026-08-26 14:19",
   "ok": true,
   "window_days": 7,
-  "total_unread": 6,
+  "total_unread": 0,
   "counts": {
     "reply": 0,
-    "job": 2,
-    "info": 1,
-    "bulk": 3
+    "job": 0,
+    "info": 0,
+    "bulk": 0
   },
   "important_unread": 0,
   "drafts": 0,
   "model": "",
-  "items": [
-    {
-      "id": "1a03bb930962d15f",
-      "thread_id": "1a03bb930962d15f",
-      "from": "Bilgilendirme",
-      "email": "bilgilendirme@ebelgemail.com",
-      "subject": "ELOGO Bilgilendirme",
-      "date": "Wed, 26 Aug 2026 04:39:44 +0300",
-      "bucket": "info",
-      "why": "belge",
-      "key": "s:bilgilendirme@ebelgemail.com|elogo bilgilendirme",
-      "dupes": 1
-    },
-    {
-      "id": "1a03aa89cb72d8d3",
-      "thread_id": "1a03aa89cb72d8d3",
-      "from": "LinkedIn",
-      "email": "jobs-noreply@linkedin.com",
-      "subject": "Your application to BUSINESS DATA SCIENTIST at Turkcell",
-      "date": "Tue, 25 Aug 2026 20:42:03 +0000 (UTC)",
-      "bucket": "job",
-      "why": "",
-      "key": "s:jobs-noreply@linkedin.com|your application to business data scientist at turkcell",
-      "dupes": 1
-    },
-    {
-      "id": "1a03a4e88ddb3b8b",
-      "thread_id": "1a03a4e88ddb3b8b",
-      "from": "LinkedIn",
-      "email": "jobs-noreply@linkedin.com",
-      "subject": "Dogukan, your application was sent to Misli",
-      "date": "Tue, 25 Aug 2026 19:03:40 +0000 (UTC)",
-      "bucket": "job",
-      "why": "",
-      "key": "s:jobs-noreply@linkedin.com|dogukan, your application was sent to misli",
-      "dupes": 1
-    }
-  ],
-  "bulk_top": [
-    [
-      "TikTok",
-      1
-    ],
-    [
-      "Berliner Sparkasse",
-      1
-    ],
-    [
-      "Tolga Zorbaz via LinkedI",
-      1
-    ]
-  ],
+  "items": [],
+  "bulk_top": [],
   "draft_note": "ANTHROPIC_API_KEY yok - taslak uretilmedi"
 }
