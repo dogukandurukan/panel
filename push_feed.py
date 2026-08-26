@@ -20,6 +20,8 @@ Program burada KOPYALANMAZ; tek kaynak index.html'de kalır.
 ORTAM DEĞİŞKENLERİ (GitHub Actions secrets)
   PANEL_GIST_TOKEN : gist okuma izni olan token
   VAPID_PRIVATE    : panelin kurulum sırasında bir kez gösterdiği gizli anahtar
+  CRON             : tetikleyen cron ifadesi (github.event.schedule) — hangi
+                     dilim için kurulduğunu kesinleştirir, boşsa tahmine düşer
 
 Çalıştırma: python push_feed.py
 """
@@ -27,6 +29,7 @@ import datetime as dt
 import json
 import os
 import sys
+import time
 
 import requests
 from pywebpush import webpush, WebPushException
@@ -36,18 +39,30 @@ GITHUB_API = "https://api.github.com"
 PUSH_FILE = "panel-push.json"
 DATA_FILE = "panel-data.json"
 
-# Zamanlanmış iş akışları gecikebiliyor; dilimin başlangıcına bu kadar yakınsa
-# bildirim gönderilir. Geriye doğru geniş, ileriye dar: erken uyandırma yok.
+# ZAMANLAMA — cron erken kalkar, betik dilim saatine kadar bekler
+# ---------------------------------------------------------------
+# GitHub Actions cron'u rutin olarak 30-40 dk gecikiyor (25 Ağustos: 18:30
+# cron'u 19:06'da çalıştı). Pencereyi 120 dk'ya açmak bildirimin GELMESİNİ
+# sağladı ama ZAMANINDA gelmesini sağlamadı: 12:15 antrenman hatırlatması
+# 13:40'ta düşüyordu, ki o saatte hatırlatmanın anlamı kalmıyor.
 #
-# 35 dakikaydı ve YETMEDİ: 25 Ağustos'ta 18:30 cron'u 19:06'da çalıştı
-# (GitHub 36 dk geciktirdi) ve DJ bildirimi bir dakikayla kaçtı. GitHub
-# Actions'ta yarım saatlik gecikme istisna değil, olağan.
+# Çözüm iki parçalı:
+#   1. Cron'lar dilimden ONCE_DK kadar ÖNCE kuruldu (push.yml).
+#   2. Betik erken uyandıysa dilim saatine kadar UYUR, sonra gönderir.
+# Böylece gecikmeyen bir koşuda bildirim erken değil TAM SAATİNDE düşer;
+# gecikmiş bir koşuda ise uyku atlanır, bildirim hemen gider.
+# Bedeli boşta bekleyen runner dakikası — depo public, Actions ücretsiz.
 #
-# Pencereyi açtım ama sınırsız değil: bir sonraki dilim başladığında kapanıyor.
-# Böylece geç gelen bildirim asla sıradaki işin üstüne binmiyor — 21:30
-# "kişisel proje" hatırlatması 23:00'te düşmez.
-GERI_DK = 120
-ILERI_DK = 5
+# GERI_DK 120'den 45'e İNDİ. 120 "her hâlükârda gelsin" içindi; artık cron
+# 35 dk önden kalktığı için 45 dk'lık pay 80 dk'lık gerçek gecikmeyi karşılıyor.
+# Daha fazla gecikmişse bildirim GÖNDERİLMİYOR: 1.5 saat geç gelen "başladın
+# mı?" hatırlatma değil, gürültü.
+#
+# Pencere ayrıca bir sonraki dilim başlayınca kapanıyor — geç kalan bildirim
+# asla sıradaki işin üstüne binmiyor.
+ONCE_DK = 35        # cron'lar dilimden bu kadar önce kuruldu (push.yml ile AYNI olmalı)
+GERI_DK = 45
+ILERI_DK = ONCE_DK + 5   # erken kalkan cron pencereye girsin (5 dk cron sapma payı)
 
 # VAPID 'sub' iddiası — iki kere tökezledi, ikisi de log'dan çıktı:
 #   1. 'mailto:panel@localhost' → Apple 403 BadJwtToken. localhost geçerli bir
@@ -103,6 +118,46 @@ def gist_dosyalari(token):
 def dakika(hhmm):
     s, d = hhmm.split(":")
     return int(s) * 60 + int(d)
+
+
+def cron_dilimi(bugun, plan):
+    """Bu koşuyu tetikleyen cron hangi dilim için kurulmuştu? (indeks ya da None)
+
+    NEDEN: cron'lar ONCE_DK kadar önden kalkıyor, yani iki dilim birbirine
+    ONCE_DK'dan yakınsa (23:00 ve 23:30 gibi) "şu ana en yakın dilim" tahmini
+    iki koşuyu da aynı dilime yönlendirip bildirimi ikizleyebiliyor. GitHub
+    `github.event.schedule` ile tetikleyen cron ifadesini veriyor; tahmin
+    yerine onu kullanınca eşleşme kesin oluyor ve ikiz bildirim imkânsız.
+
+    Elle çalıştırmada (workflow_dispatch) bu değişken boş; o zaman None döner
+    ve eski "pencereye düşen en yakın dilim" mantığı devreye girer.
+    """
+    ifade = os.environ.get("CRON", "").strip()
+    if not ifade:
+        return None
+    parca = ifade.split()
+    if len(parca) < 2:
+        return None
+    try:
+        dk_utc, sa_utc = int(parca[0]), int(parca[1])
+    except ValueError:
+        return None
+    # cron UTC → TR (+3sa) → hedeflenen dilim (+ONCE_DK)
+    hedef_dk = (sa_utc * 60 + dk_utc + 180 + ONCE_DK) % 1440
+    for i, x in enumerate(bugun):
+        if dakika(x[0]) == hedef_dk:
+            return i
+    # Bulunamadı. İki ayrı sebep var, karıştırılmasın:
+    #   NORMAL — cron her gün kalkıyor ama o dilim bugün yok (12:15 antrenman
+    #            cron'u Perşembe kalkar, Perşembe "Dinlenme + uyku" ve yoklama
+    #            sorulmaz). Sessiz geçilir.
+    #   ARIZA  — dilim hiçbir günde yok, yani push.yml programdan ayrışmış.
+    #            Bu sessiz kalırsa bildirim aylarca yanlış saatte gelir.
+    if not any(dakika(x[0]) == hedef_dk for gun in plan.values() for x in (gun or [])):
+        print(f"uyarı: '{ifade}' cron'u hiçbir gündeki dilime denk gelmiyor "
+              "(push.yml ile index.html'deki program ayrışmış) — "
+              "en yakın dilim tahminine düşülüyor.")
+    return None
 
 
 def cevaplanmis(veri, gun_anahtari, dilim):
@@ -185,7 +240,18 @@ def main():
             son = min(son, dakika(bugun[i + 1][0]))
         return bas - ILERI_DK <= su_an <= son
 
-    adaylar = bugun if zorla else [x for i, x in enumerate(bugun) if pencerede(i)]
+    hedef = None if zorla else cron_dilimi(bugun, plan)
+    if hedef is not None:
+        # Tetikleyen cron biliniyor: tahmin yok, dilim kesin.
+        if not pencerede(hedef):
+            gec = su_an - dakika(bugun[hedef][0])
+            print(f"{simdi:%H:%M} — {bugun[hedef][0]} dilimi için kurulan cron "
+                  f"{gec} dk gecikmeyle çalıştı; pencere ({GERI_DK} dk) kapanmış, "
+                  "bildirim gönderilmedi. Bu saatte hatırlatmanın faydası yok.")
+            return 0
+        adaylar = [bugun[hedef]]
+    else:
+        adaylar = bugun if zorla else [x for i, x in enumerate(bugun) if pencerede(i)]
     if not adaylar:
         sonraki = [x[0] for x in bugun if dakika(x[0]) > su_an]
         print(f"{simdi:%H:%M} — penceredeki yoklama yok."
@@ -200,6 +266,30 @@ def main():
     elif cevaplanmis(veri, gun_anahtari, dilim):
         print(f"{ad} ({saat}) zaten işaretlenmiş — bildirim gönderilmedi.")
         return 0
+
+    # --- dilim saatine kadar bekle -------------------------------------
+    # Cron ONCE_DK önden kalkıyor. Gecikmediyse burada erkeniz; bildirimi
+    # şimdi atmak "30 dk erken" demek olurdu, o yüzden dilim saatini bekliyoruz.
+    # Gecikmişse bekle 0/negatif çıkar ve uyku hiç çalışmaz.
+    bekle = dakika(saat) - su_an
+    if zorla:
+        bekle = 0
+    if bekle > 0:
+        # Emniyet kemeri: sapmış bir cron yüzünden saatlerce runner tutmayalım.
+        bekle = min(bekle, ILERI_DK)
+        print(f"{simdi:%H:%M} — {saat} dilimi için erken uyandık, "
+              f"{bekle} dk beklenip tam saatinde gönderilecek.")
+        time.sleep(bekle * 60)
+        # Uyurken kullanıcı paneli açıp işi işaretlemiş olabilir: gist'i
+        # yeniden okuyup son bir kez bak. Okunamazsa bildirimi yutma, gönder.
+        try:
+            _, veri_ham2 = gist_dosyalari(token)
+            veri2 = json.loads(veri_ham2) if veri_ham2 else {}
+            if cevaplanmis(veri2, gun_anahtari, dilim):
+                print(f"{ad} ({saat}) beklerken işaretlendi — bildirim gönderilmedi.")
+                return 0
+        except Exception as e:
+            print(f"uyku sonrası kontrol yapılamadı ({e}) — bildirim yine de gönderiliyor.")
 
     sub = os.environ.get("VAPID_SUB", "").strip() or VAPID_SUB_VARSAYILAN
     if not sub.startswith("mailto:"):

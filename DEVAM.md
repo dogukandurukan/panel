@@ -1,4 +1,4 @@
-# Devam notu — 25 Ağustos 2026
+# Devam notu — 26 Ağustos 2026
 
 Bu dosya bir oturumdan diğerine devretmek için. Kalıcı proje kuralları
 `CLAUDE.md`'de; burası **nerede kalındığı** ve **sırada ne olduğu**.
@@ -200,27 +200,60 @@ anahtarın aboneliğin açık anahtarıyla eşleşip eşleşmediği. İkincisi
 `BadJwtToken`'ın anahtar hatası mı iddia hatası mı olduğunu tek satırda
 ayırıyor.
 
-### AÇIK SORUN: bildirimler geç geliyor
-Pencere düzeltmesi bildirimin **gelmesini** sağladı ama **zamanında** gelmesini
-sağlamadı. GitHub Actions cron'u rutin olarak 30-40 dakika gecikiyor; 21:30
-dilimi için bildirim 22:00'den sonra düşebiliyor. Kullanıcı bunu "çok geç"
-buluyor ve haklı — hatırlatmanın işi başlarken gelmesi gerekiyor.
+### ÇÖZÜLDÜ: bildirimler geç geliyordu (26 Ağustos)
+Kullanıcının şikâyeti: 12:15 antrenman hatırlatması 13:40'ta düşüyordu —
+"o saatte saçma". Sebep GitHub Actions cron'unun rutin 30-40 dk gecikmesiydi;
+pencereyi 120 dk'ya açmak bildirimin GELMESİNİ sağlamış ama ZAMANINDA
+gelmesini sağlamamıştı.
 
-Denenebilecekler ve tuzakları:
+Kullanıcının kararı: **erken cron + runner'da bekleme** (dört seçenek sunuldu).
 
-1. **Cron'u dilimden 30 dk ÖNCE kur.** Tipik gecikme onu dilim başına
-   yaklaştırır. Ama `ILERI_DK` şu an 5 dakika, yani zamanında çalışan bir
-   cron "pencerede yoklama yok" der. İleri payı da açılmalı — o zaman da
-   gecikmeyen bir koşuda bildirim 30 dk erken düşer.
-2. **Dilim başına iki cron** (−30 ve tam saat): hangisi denk gelirse o gönderir.
-   **Tuzak:** ikisi de pencereye düşerse bildirim iki kez gider. Şu an yalnızca
-   "kullanıcı cevapladı" kontrolü var, "zaten gönderildi" kaydı yok. Bu kayıt
-   bir yere yazılmalı — gist'e yazmak için `PANEL_GIST_TOKEN`'ın **yazma**
-   iznine yükseltilmesi gerekir (şu an salt okunur, bilerek).
-3. **Dış zamanlayıcı** (cron-job.org gibi) `repository_dispatch` ile tetikler.
-   Dakikası dakikasına çalışır ama panelin dışına bir bağımlılık ekler.
+**1. Cron'lar 35 dk önden kuruldu** (`push.yml`, `ONCE_DK`). Onunla eşleşen
+`ILERI_DK = ONCE_DK + 5`.
 
-Karar kullanıcının: erken bildirim mi, geç bildirim mi, yoksa dış servis mi.
+**2. Betik erken uyandıysa dilim saatine kadar UYUYOR** (`time.sleep`), sonra
+gönderiyor. Gecikmeyen koşuda bildirim erken değil TAM saatinde düşüyor;
+gecikmiş koşuda uyku atlanıyor, hemen gidiyor. Bedeli boşta bekleyen runner
+dakikası — depo public, Actions ücretsiz. Uyku `ILERI_DK` ile sınırlı ve
+`timeout-minutes: 75` var; sapmış bir cron runner'ı saatlerce tutmuyor.
+
+**3. GERI_DK 120 → 45.** 120 "her hâlükârda gelsin" içindi. Cron 35 dk önden
+kalktığı için 45 dk'lık pay 80 dk'lık gerçek gecikmeyi karşılıyor; daha
+fazla gecikmişse bildirim GÖNDERİLMİYOR. Kullanıcının açık tercihi: 1.5 saat
+geç gelen "başladın mı?" hatırlatma değil, gürültü. Log sebebi yazıyor.
+
+**4. Uyku sonrası ikinci kontrol.** Beklerken kullanıcı paneli açıp işi
+işaretlemiş olabilir; gist yeniden okunup `cevaplanmis` tekrar bakılıyor.
+Okunamazsa bildirim yutulmuyor, gönderiliyor.
+
+**Çıkan tuzak — ikiz bildirim.** Cron'lar 35 dk önden kalkınca birbirine
+35 dk'dan yakın iki dilim (23:00 ve 23:30) sorun oluyor: "şu ana en yakın
+dilim" tahmini 22:25 ve 22:55 koşularının İKİSİNİ de 23:00'e yönlendiriyordu.
+Çözüm tahmini kaldırmak: `github.event.schedule` tetikleyen cron ifadesini
+veriyor, `CRON` env'i olarak geçiriliyor ve `cron_dilimi()` bunu doğrudan
+dilime çeviriyor (cron UTC + 3sa + ONCE_DK). Eşleşme kesin, ikiz imkânsız.
+Elle çalıştırmada (`workflow_dispatch`) `CRON` boş → eski tahmin mantığı.
+
+`cron_dilimi()` eşleşme bulamazsa iki durumu ayırıyor: dilim BUGÜN yok
+(normal — 12:15 cron'u Perşembe de kalkıyor, o gün antrenman yok) sessiz
+geçiliyor; dilim HİÇBİR günde yoksa `push.yml` programdan ayrışmış demektir,
+log'a uyarı basılıyor.
+
+**DİKKAT:** `SCHED`/`YOK` içinde bir dilimin saati değişirse `push.yml`'deki
+cron da 35 dk önden yeniden yazılmalı.
+
+**Doğrulama.** İki ayrı testle, ikisi de scratchpad'de (repoya girmedi):
+- 12 senaryoluk koşum testi (gist/webpush/saat mock'lu): zamanında cron
+  35 dk uyuyup 12:15'te gönderiyor · 36 dk gecikme uykusuz hemen gönderiyor ·
+  85 dk gecikme GÖNDERMİYOR · 23:00 ve 23:30 cron'ları ayrı dilimlere gidiyor
+  (ikiz yok) · uyurken işaretlenince gönderilmiyor · ZORLA uyumuyor ·
+  CRON boşken tahmine düşüyor. Hepsi geçti.
+- `index.html`'deki SLOTS+SCHED+YOK'tan gerçek plan çıkarılıp push.yml'deki
+  10 cron'a karşı denetlendi: 10/10 doğru dilime denk geliyor ve plandaki
+  hiçbir dilim cron'suz kalmıyor.
+
+Gerçek teslimat bir sonraki zamanlanmış koşuda görülecek — Actions log'unda
+"erken uyandık, N dk beklenip tam saatinde gönderilecek" satırı aranmalı.
 
 **Elle test:** Actions → push-yoklama → Run workflow → **zorla** kutusu.
 Pencere ve "zaten işaretlenmiş" kontrolünü atlar, günün en yakın dilimi için

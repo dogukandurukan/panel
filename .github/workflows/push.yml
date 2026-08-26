@@ -1,18 +1,25 @@
 name: push-yoklama
 on:
   # Saatler Türkiye'ye göre; cron UTC olduğu için 3 saat geri yazıldı.
-  # Yoklama dilimlerinin başlangıç saatleri (index.html SLOTS + YOK tablosu):
+  #
+  # DİKKAT: cron'lar dilim saatinin 35 DAKİKA ÖNCESİNE kurulu (push_feed.py
+  # ONCE_DK). GitHub Actions cron'u rutin olarak 30-40 dk geciktiği için tam
+  # saate kurulan cron bildirimi yarım saat geç düşürüyordu. Erken kalkıyoruz;
+  # gecikme olmazsa push_feed.py dilim saatine kadar uyuyup TAM saatinde
+  # gönderiyor, gecikme olursa uyku atlanıyor ve hemen gidiyor.
+  # Bir dilimin saatini değiştirirken buradaki cron'u da 35 dk önden yaz,
+  # yoksa cron→dilim eşleşmesi kopar (betik log'a uyarı basar).
   schedule:
-    - cron: '0 5 * * *'      # 08:00 TR — sabah rutini / kürek
-    - cron: '30 5 * * *'     # 08:30 TR — kürek (Perşembe)
-    - cron: '0 6 * * 0,6'    # 09:00 TR — koşu / bisiklet (hafta sonu)
-    - cron: '15 9 * * *'     # 12:15 TR — antrenman
-    - cron: '45 10 * * 6'    # 13:45 TR — antrenman + yemek (Cumartesi)
-    - cron: '30 15 * * *'    # 18:30 TR — gitar / DJ
-    - cron: '0 17 * * 4'     # 20:00 TR — basket / tenis (Perşembe)
-    - cron: '30 18 * * *'    # 21:30 TR — kişisel proje
-    - cron: '0 20 * * *'     # 23:00 TR — yatış
-    - cron: '30 20 * * *'    # 23:30 TR — kitap
+    - cron: '25 4 * * *'     # 08:00 TR — sabah rutini / kürek
+    - cron: '55 4 * * *'     # 08:30 TR — kürek (Perşembe)
+    - cron: '25 5 * * 0,6'   # 09:00 TR — koşu / bisiklet (hafta sonu)
+    - cron: '40 8 * * *'     # 12:15 TR — antrenman
+    - cron: '10 10 * * 6'    # 13:45 TR — antrenman + yemek (Cumartesi)
+    - cron: '55 14 * * *'    # 18:30 TR — gitar / DJ
+    - cron: '25 16 * * 4'    # 20:00 TR — basket / tenis (Perşembe)
+    - cron: '55 17 * * *'    # 21:30 TR — kişisel proje
+    - cron: '25 19 * * *'    # 23:00 TR — yatış
+    - cron: '55 19 * * *'    # 23:30 TR — kitap
   workflow_dispatch:          # elle deneme
     inputs:
       zorla:
@@ -22,6 +29,9 @@ on:
 jobs:
   gonder:
     runs-on: ubuntu-latest
+    # Betik dilim saatine kadar uyuyabiliyor (en fazla ~40 dk); sapmış bir
+    # koşu runner'ı saatlerce tutmasın.
+    timeout-minutes: 75
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -41,5 +51,9 @@ jobs:
           # varsayılan kullanılır; push servisi reddederse buraya gerçek
           # e-posta secret olarak konulur (repoya yazılmaz).
           VAPID_SUB: ${{ secrets.VAPID_SUB }}
+          # Tetikleyen cron ifadesi: hangi dilim için kurulduğunu kesinleştirir.
+          # Tahmine gerek kalmıyor, birbirine yakın dilimlerde (23:00 / 23:30)
+          # iki koşunun aynı bildirimi ikizlemesi imkânsız oluyor.
+          CRON: ${{ github.event.schedule }}
           # Test için: pencere ve "zaten işaretlenmiş" kontrolünü atlar
           ZORLA: ${{ inputs.zorla }}
