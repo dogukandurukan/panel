@@ -263,9 +263,22 @@ dilim" tahminine düşüyor ve 08:00 cron'unun gönderdiğini ikinci kez
 gönderiyordu. Artık cron biliniyorsa tahmine DÜŞMÜYOR: o dilim bugün yoksa
 sessizce çıkıyor.
 
-**Kullanıcının kararı: dış tetikleyici.** Gerekçe ölçüm — olay tabanlı
-tetikleyiciler gecikmiyor (elle tetiklenen koşular oluşturuldukları saniyede
-başlıyor), yalnızca `schedule` geciktiriliyor.
+**Kullanıcının kararı: dış tetikleyici.**
+
+**ÖNEMLİ — hangi uç nokta? Üçü de ölçüldü, aralarında dağlar kadar fark var:**
+
+| Tetik | API çağrısından koşu oluşana kadar |
+|---|---|
+| `schedule` (cron) | 20-71 dakika |
+| `repository_dispatch` | 98 sn · 124 sn · birkaç dakika — ve dört tetiğin bir kısmı **hiç koşu üretmedi** (API 204 döndü, iş akışı başlamadı) |
+| `workflow_dispatch` uç noktası | **2 saniye** |
+
+İlk tahminim `repository_dispatch`'ti ve YANLIŞTI: "olay tabanlı tetik
+gecikmez" çıkarımını elle tetiklenen bir koşunun `created_at == started_at`
+olmasına bakarak yapmıştım, ama o ölçüm koşu OLUŞTUKTAN sonraki kuyruğu
+ölçüyor — asıl gecikme API çağrısı ile koşunun oluşması arasında.
+Ölçünce `repository_dispatch` elendi. Dış zamanlayıcı **workflow_dispatch**
+uç noktasını çağırıyor; `repository_dispatch` yedek olarak açık ama güvenilmez.
 
 Yeni bölüşüm:
 - **Zamanı önemli olanlar** (spor + sabah rutini: 08:00, 08:30, 09:00, 12:15,
@@ -288,25 +301,31 @@ kullanıyor.
 
 Tek bir iş yetiyor — dilim saatlerinin hepsi 15 dakikanın katı:
 
-- **URL:** `https://api.github.com/repos/dogukandurukan/panel/dispatches`
+- **URL:** `https://api.github.com/repos/dogukandurukan/panel/actions/workflows/push.yml/dispatches`
 - **Yöntem:** POST
 - **Başlıklar:**
   `Accept: application/vnd.github+json` ·
   `Authorization: Bearer <TOKEN>` ·
   `Content-Type: application/json` ·
   `X-GitHub-Api-Version: 2022-11-28`
-- **Gövde:** `{"event_type":"yoklama"}`
+- **Gövde:** `{"ref":"main"}`
 - **Zamanlama:** dakika `0,15,30,45` · saat `8,9,12,13,20` · her gün ·
   **saat dilimi Europe/Istanbul**. Günde 20 tetik; dilimi olmayan dakikalarda
   betik hiçbir şey yapmadan çıkıyor ("şu an başlayan dilim yok").
 - **TOKEN:** fine-grained PAT, yalnızca `dogukandurukan/panel` deposu,
-  izin **Contents: Read and write** (repository_dispatch bunu istiyor).
+  izin **Actions: Read and write** (workflow_dispatch bunu istiyor).
   DİKKAT: bu token depoya yazabilir ve dış bir serviste duracak. Tek depoya
   kısıtlı tutmak şart; senkronun `PANEL_GIST_TOKEN`'ı ile AYNI token olmasın.
 
 Kurulunca sınama: cron-job.org'da "şimdi çalıştır" → Actions'ta `push-yoklama`
-koşusu saniyeler içinde başlamalı, log'da `dış tetik geldi ama şu an başlayan
-dilim yok` ya da gerçek bir gönderim satırı olmalı.
+koşusu **birkaç saniye içinde** görünmeli, log'da `dış tetik geldi ama şu an
+başlayan dilim yok` ya da gerçek bir gönderim satırı olmalı. Koşu 1-2 dakika
+gecikiyorsa yanlış uç noktayı çağırıyorsundur (repository_dispatch).
+
+Dış tetik yolunda tahmin ve uzun uyku yok; tetik dilimden birkaç dakika önce
+gelirse dilim saatine kadar bekliyor (erken bildirim de işe yaramaz).
+`workflow_dispatch` elle denemede de aynı yolu kullanıyor — `zorla` kutusu
+işaretlenirse pencere atlanıyor.
 
 ### Bildirime dokununca ne oluyor (26 Ağustos)
 

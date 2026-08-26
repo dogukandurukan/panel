@@ -22,9 +22,10 @@ ORTAM DEĞİŞKENLERİ (GitHub Actions secrets)
   VAPID_PRIVATE    : panelin kurulum sırasında bir kez gösterdiği gizli anahtar
   CRON             : tetikleyen cron ifadesi (github.event.schedule) — hangi
                      dilim için kurulduğunu kesinleştirir, boşsa tahmine düşer
-  TETIK            : github.event_name. 'repository_dispatch' ise dış
-                     zamanlayıcı tetiklemiştir: dakikası dakikasına gelir,
-                     tahmin ve uzun uyku devre dışı kalır.
+  TETIK            : github.event_name. 'workflow_dispatch' ya da
+                     'repository_dispatch' ise dış zamanlayıcı (ya da elle
+                     deneme) tetiklemiştir: saniyeler içinde gelir, tahmin ve
+                     uzun uyku devre dışı kalır. ZORLA bunu da atlar.
 
 Çalıştırma: python push_feed.py
 """
@@ -67,9 +68,15 @@ DATA_FILE = "panel-data.json"
 # ------------------------------------
 # GitHub'ın `schedule` tetikleyicisi en iyi çaba: 26 Ağustos'ta 17:55'e kurulu
 # cron 19:06'da çalıştı — 71 dakika. 35 dakikalık erken pay bunu karşılamadı.
-# Olay tabanlı tetikleyiciler ise gecikmiyor (ölçüldü: elle tetiklenen koşular
-# oluşturuldukları saniyede başlıyor). Bu yüzden ZAMANI ÖNEMLİ olan dilimler
-# (spor + sabah rutini) dışarıdan repository_dispatch ile tetikleniyor;
+# Olay tabanlı tetikleyiciler çok daha hızlı, ama HEPSİ AYNI DEĞİL — ölçüldü:
+#   workflow_dispatch  (actions/workflows/push.yml/dispatches) -> 2 saniye
+#   repository_dispatch (repos/.../dispatches)                 -> 98 sn, 124 sn,
+#       birkaç dakika; gönderilen dört tetiğin bir kısmı HİÇ koşu üretmedi
+#       (API 204 dönüyor ama iş akışı başlamıyor).
+# Bu yüzden dış zamanlayıcı workflow_dispatch uç noktasını çağırıyor.
+# repository_dispatch de kabul ediliyor ama güvenilmez, yedek sayılmalı.
+#
+# ZAMANI ÖNEMLİ olan dilimler (spor + sabah rutini) dışarıdan tetikleniyor;
 # gerisi (gitar/proje/yatış/kitap) cron'da kalıyor, orada 20-40 dk gecikme
 # kullanıcı için önemsiz.
 #
@@ -307,7 +314,7 @@ def main():
         return bas - ILERI_DK <= su_an <= son
 
     tetik = os.environ.get("TETIK", "").strip()
-    if tetik == "repository_dispatch" and not zorla:
+    if tetik in ("workflow_dispatch", "repository_dispatch") and not zorla:
         # Dış zamanlayıcı: dakikası dakikasına geldiği için "şu anda başlayan
         # dilim" aranıyor. Dilimler birbirinden en az 30 dk uzak, bu dar
         # pencereye iki dilim birden düşemez.
@@ -324,6 +331,13 @@ def main():
         if cevaplanmis(veri, gun_anahtari, dilim):
             print(f"{ad} ({saat}) zaten işaretlenmiş — bildirim gönderilmedi.")
             return 0
+        # Tetik dilimden birkaç dakika önce gelmişse dilim saatini bekle:
+        # erken bildirim de geç bildirim kadar işe yaramaz.
+        erken = dakika(saat) - su_an
+        if erken > 0:
+            print(f"{simdi:%H:%M} — dış tetik {erken} dk erken geldi, "
+                  f"{saat}'e kadar bekleniyor.")
+            time.sleep(min(erken, DIS_ONCE_DK) * 60)
         return gonder(saat, ad, dilim, tur, subs, gizli, gun_anahtari)
 
     hedef = None if zorla else cron_dilimi(bugun, plan)

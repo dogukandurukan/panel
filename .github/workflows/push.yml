@@ -3,9 +3,15 @@ on:
   # ZAMANI ÖNEMLİ OLANLAR BURADA DEĞİL — dışarıdan tetikleniyor.
   # GitHub'ın `schedule` tetikleyicisi en iyi çaba: 26 Ağustos'ta 17:55'e
   # kurulu cron 19:06'da çalıştı (71 dk). Spor ve sabah rutini hatırlatmaları
-  # tam saatinde gelmek zorunda olduğu için onlar repository_dispatch ile
-  # dış zamanlayıcıdan geliyor (kurulumu DEVAM.md'de).
-  # Buradaki cron'lar yalnızca gecikmesi önemsiz olanlar için.
+  # tam saatinde gelmek zorunda olduğu için onlar dış zamanlayıcıdan geliyor
+  # (kurulumu DEVAM.md'de). Buradaki cron'lar gecikmesi önemsiz olanlar için.
+  #
+  # DIŞ TETİK = workflow_dispatch uç noktası. ÖLÇÜLDÜ:
+  #   workflow_dispatch  -> koşu 2 saniyede oluştu
+  #   repository_dispatch -> 98 sn / 124 sn / birkaç dakika, üstelik dört
+  #                          tetiğin bir kısmı hiç koşu üretmedi (API 204
+  #                          dönüyor ama iş akışı başlamıyor).
+  # repository_dispatch yedek olarak açık bırakıldı ama güvenilmez.
   repository_dispatch:
     types: [yoklama]
   # Saatler Türkiye'ye göre; cron UTC olduğu için 3 saat geri yazıldı.
