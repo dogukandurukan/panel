@@ -200,6 +200,28 @@ anahtarın aboneliğin açık anahtarıyla eşleşip eşleşmediği. İkincisi
 `BadJwtToken`'ın anahtar hatası mı iddia hatası mı olduğunu tek satırda
 ayırıyor.
 
+### AÇIK SORUN: bildirimler geç geliyor
+Pencere düzeltmesi bildirimin **gelmesini** sağladı ama **zamanında** gelmesini
+sağlamadı. GitHub Actions cron'u rutin olarak 30-40 dakika gecikiyor; 21:30
+dilimi için bildirim 22:00'den sonra düşebiliyor. Kullanıcı bunu "çok geç"
+buluyor ve haklı — hatırlatmanın işi başlarken gelmesi gerekiyor.
+
+Denenebilecekler ve tuzakları:
+
+1. **Cron'u dilimden 30 dk ÖNCE kur.** Tipik gecikme onu dilim başına
+   yaklaştırır. Ama `ILERI_DK` şu an 5 dakika, yani zamanında çalışan bir
+   cron "pencerede yoklama yok" der. İleri payı da açılmalı — o zaman da
+   gecikmeyen bir koşuda bildirim 30 dk erken düşer.
+2. **Dilim başına iki cron** (−30 ve tam saat): hangisi denk gelirse o gönderir.
+   **Tuzak:** ikisi de pencereye düşerse bildirim iki kez gider. Şu an yalnızca
+   "kullanıcı cevapladı" kontrolü var, "zaten gönderildi" kaydı yok. Bu kayıt
+   bir yere yazılmalı — gist'e yazmak için `PANEL_GIST_TOKEN`'ın **yazma**
+   iznine yükseltilmesi gerekir (şu an salt okunur, bilerek).
+3. **Dış zamanlayıcı** (cron-job.org gibi) `repository_dispatch` ile tetikler.
+   Dakikası dakikasına çalışır ama panelin dışına bir bağımlılık ekler.
+
+Karar kullanıcının: erken bildirim mi, geç bildirim mi, yoksa dış servis mi.
+
 **Elle test:** Actions → push-yoklama → Run workflow → **zorla** kutusu.
 Pencere ve "zaten işaretlenmiş" kontrolünü atlar, günün en yakın dilimi için
 bildirim gönderir. Zamanlanmış koşularda davranış değişmez.
