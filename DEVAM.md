@@ -7,6 +7,45 @@ Bu dosya bir oturumdan diğerine devretmek için. Kalıcı proje kuralları
 
 ## 1. Bu oturumda ne yapıldı
 
+### 26 Ağustos (2) — Sayfa düzeni: sütun yerleştirme
+Kullanıcı: "bazıları çok büyük bazıları çok kısa, kartların uzunlukları aynı
+olsun, laptopta da düzgün gözüksün."
+
+**Ölçüm önce yapıldı.** 1440 px'te grid 3 sütun, her satır en uzun karta
+hizalanıyordu: **2724 px boşluk**, sayfa 7110 px. En kötüsü
+`Antrenman 409 | Yemekler 921 | Uyku 392` satırı (1041 px boşluk).
+
+**`gridDiz()` — elle yazılmış sütun yerleştirme.** Kartlar DOM sırasıyla o an
+en kısa sütuna konuyor. Yeniden dizme yalnız üç durumda: açılış, feed'ler
+indikten ~2.6 sn sonra, ve sütun sayısı değişince (1100/720 px eşikleri).
+Kart açıp kapayınca DİZİLMİYOR — sayfa zıplamasın diye. JS çalışmazsa kartlar
+gridin doğrudan çocuğu kalıyor, eski davranış aynen sürüyor.
+- Kartlar taşınıyor (kopyalanmıyor): girdiler, dinleyiciler, açık detaylar korunuyor.
+- Antrenman + Alışkanlık Serileri `.stack` içinde: kullanıcı serilerin
+  antrenmanın altında durmasını istedi, birlikte taşınıyorlar.
+- Sıra değişti: Alışkanlık yukarı, Dünya Gündemi onun eski yerine.
+
+**Üç uzun kart kısaldı:**
+- **Almanca 983 → 463** (4.7 uygulandı): kartta yalnız 5 kelime. Quiz + gramer
+  alta tam genişlik şeride (`.dz`, yan yana). Quiz artık **cloze**: örnek
+  cümlede hedef kelime boşluğa çevriliyor, şıklar Almanca. Kelime cümlede
+  birebir geçmiyorsa (çekimli fiil, "davon ausgehen, dass") eski "ne demek"
+  biçimine düşüyor — 5 kelimenin 3'ünde cloze çıkıyor.
+- **Yemekler 921 → 759**: öğün satırı 97 → 78 px. Slot + porsiyon üstte,
+  yemek adı TAM GENİŞLİKTE (kırpılmasın diye — ilk denemede 197 px'e düşüp
+  okunmaz olmuştu), makrolar altta. Hedef kutusu (4 giriş, 60 px) meta'daki
+  "hedefi düzenle" düğmesine alındı.
+- Borsa zaten bir önceki turda ikiye bölünmüştü.
+
+**Sonuç:** sayfa 7110 → **5968 px**, sütunlar arası fark 441 → 402 px,
+yatay taşma yok. 390 / 900 / 1280 / 1440'ta doğrulandı; porsiyon, makro,
+hedef, borsa detayı, quiz, su ve yeniden boyutlandırma sütunlara taşındıktan
+sonra da çalışıyor.
+
+**Çakışma notu:** bu iş sırasında bildirim tarafında `id="kAntrenman"` eklenmişti
+(bildirime dokununca karta git). Rebase çakışması ikisi birlikte tutularak
+çözüldü — `.stack` sarmalayıcı + id.
+
 ### 26 Ağustos — Borsa kartı ikiye bölündü, grafiğe imleç, Tarihten "devamı"
 Kullanıcının geri bildirimi: borsa kartı çok uzun ve şekilsiz; grafikte hangi
 gün hangi fiyat olduğu görünmüyor; Tarihten kartında "devamı" yok.
@@ -524,7 +563,13 @@ eklenebilir (`tr` alanı). Ama borsa-feed **hafta içi 09:00/14:00** koşuyor;
 Türkiye gündemi hafta sonu bayatlar — ya `world` gibi kabul edilir ya da
 gmail-feed'in (her gün) içine alınır. Bu, işe başlarken verilecek karar.
 
-### 4.7 Almanca kartı — kullanıcı istedi, yapılmadı
+### 4.7 Almanca kartı — BİTTİ (26 Ağustos, yukarı bak)
+
+Kalan: cloze 5 kelimenin ~3'ünde çıkıyor. Çekimli fiil / çok sözcüklü kalıp
+girişlerinde (`davon ausgehen, dass`) örnek cümlede kelime birebir geçmediği
+için eski biçime düşüyor. İstenirse kök eşleştirme yazılabilir.
+
+### 4.7b (eski metin) Almanca kartı — kullanıcı istedi, yapılmadı
 
 Kart çok uzun. İstenen: kartta **yalnızca 5 kelime** kalsın; quiz ve gramer
 altta tam genişlikte yatay bir şeride taşınsın. Quiz "ne demek" yerine
@@ -540,6 +585,22 @@ bulup gönderen alan adından şirketi çıkarmak, Sheet'te olmayanları panelde
 ayrı bir liste olarak göstermek. **Dikkat:** bu veri kişisel; public repoya
 JSON olarak yazılamaz (1. kural), gizli gist'e ya da doğrudan mail okumaya
 gitmeli — 4.2'deki harcama kararının aynısı.
+
+### 4.9 Yemek girişi → kalori hesabı (kullanıcı sordu, KARAR BEKLİYOR)
+
+Kullanıcı: "listedekine uymadığım gün 'kahvaltıda şunu yedim' diye girsem ve
+ona göre kalori hesaplasa mümkün mü?"
+
+Mümkün — ama dış API yok (anahtar + çevrimdışı sorunu, 3. kural). Tasarım:
+`index.html` içine **gömülü besin tablosu** (100 g / 100 ml başına kcal, P, K)
++ metin ayrıştırıcı. Öğün metni zaten "70g yulaf + 250ml süt + 1 muz" biçiminde,
+yani ayrıştırıcının okuması gereken dil bu.
+- "70g yulaf" → tablodan yulaf × 0.7 · "1 muz" → adet ağırlığı tablodan.
+- Tanınmayan öğe için sayı UYDURULMAZ: o parça "?" olarak işaretlenir ve
+  makro kutusu elle kalır (2. kural).
+- Elle yazılan makro değeri, otomatik hesabı ezer (`elle` bayrağı) — yoksa
+  kullanıcının düzeltmesi bir sonraki yazımda silinir.
+- Tablo ~120 besinle başlar; kullanıcının yediklerinden büyütülür.
 
 ## 5. Çalışma alışkanlıkları (bu projede işe yarayan)
 
