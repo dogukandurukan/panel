@@ -7,6 +7,59 @@ Bu dosya bir oturumdan diğerine devretmek için. Kalıcı proje kuralları
 
 ## 1. Bu oturumda ne yapıldı
 
+### 27 Ağustos (4) — Program v2 (bulk): antrenman + yemek yenilendi
+Kullanıcı `panel-program-ozet` v2 dokümanını verdi (Eylül 2026 – Ocak 2027
+bulk fazı). Bölüm 9'da 13 maddelik handoff listesi var; **bu oturumda
+çekirdek uygulandı: 1-5, 10, 11, 12 + 13'ün "yalnız öneri" kısmı.**
+
+**Split (WK) tamamen değişti:** Pzt UPPER · Sal LOWER · Çar aktivite ·
+Per PULL · Cum PUSH · Cmt LEGS · Paz off. Her kas net 2×/hafta.
+
+**Hedefler:** 2650/165/320 → **2950/185/360**, `TARGETS_VERSION`
+`2026-09-ul-ppl`. Günlük kcal artık karbla birlikte kayıyor:
+`kcal = taban + 4 × (günün karbı − CARB_BAZ)`.
+**Yeni `CARB_BAZ=360` sabiti gerekti** — `targets.c` taban olarak
+kullanılamıyor, sürüm göçünde O GÜNÜN karbıyla tohumlanıyor (`targets={...
+DEFAULT_TARGETS, c:CARB_BY_DAY[bugün]}`). Sonuç dokümanın Bölüm 2 tablosuyla
+birebir: 2990 / 3030 / 2850 / 2990 / 2970 / 3030 / 2790.
+
+**Yemek planı** 7 gün yenilendi; **PW Shake** plana ÖĞÜN olarak eklendi
+(Pzt/Sal/Per/Cum/Cmt). Çar ve Paz'da gece öğünü var, shake yok.
+
+**"Atladım" cezası** bulk için −40 g/−250 kcal yerine **−15 g/−100 kcal**.
+
+**Dokümanın "bug riski" maddesi zaten kapalıymış:** `gunlukHedef()` günün
+hareketlerinde tekrar aralığı yoksa "ağırlık antrenmanı olmayan gün" deyip
+erken dönüyor. Çar (45-75 dk) ve Paz (—) böyle; 7 günün hepsi tarayıcıda
+`context.clock` ile gezilerek doğrulandı.
+
+**Koşu** Cumartesi'den Çarşamba'ya taşındı (`WK[3].run`), koşu notu aktivite
+gününe göre yeniden yazıldı. **Sabah rutini 4 varyant**: kısa üst
+(Pzt/Per/Cum), kısa alt (Sal/Cmt), dinamik ısınma (Çar), uzun (Paz).
+
+**Tıkanma önerisi** (`tikanmaNot`) — yalnızca öneri, otomatik uygulama yok
+(kullanıcı tercihi): aynı kiloda 3 seans → %10 geri çekilme önerisi;
+üst gövdede 2 seans → +1,25 kg mikroyükleme önerisi. Sayım `d:wtlog`'dan
+türüyor, yeni veri istemiyor.
+
+**Yemek ayrıştırıcısında yeni plan metinlerinin açtığı üç açık kapandı:**
+1. Parantez içinde bölme: "Menemen (3 yumurta, 1 yk zeytinyağı)" virgülden
+   kırılıp "1 yk zeytinyağı)" diye bozuk parça üretiyordu.
+2. Miktar/birim artık **parantez dışından** okunuyor — içerideki "3" ve "yk"
+   yemeğin kendi ölçüsü sanılıp menemen 45 g'a düşüyordu (54 kcal!).
+   Gram ipucu hâlâ parantezi okuyor: "2 kutu ton (~160g)".
+3. "yk / tk / çk" kısaltmaları ve "whey" tabloya eklendi.
+Ayrıca **dokunulmamış plan öğününde uyarı çıkmıyor** (`d:meals` içine `duz`
+bayrağı): kürasyonlu makrolar dururken "tanınmadı" yazmak gürültüydü.
+
+**Çapraz doğrulama:** ayrıştırıcı, planın kendi öğün kalorilerini %1-6
+farkla yeniden üretiyor (845→830, 625→634, 460→453) — hem tablo hem plan
+tutarlı demek.
+
+**Not:** dokümanın gün başlıkları kendi öğün satırlarıyla ±45 kcal
+tutmuyor (ör. Salı başlık 3055, satır toplamı 3010). Panel öğün satırlarını
+topluyor; kartta görünen sayı satırların toplamıdır.
+
 ### 27 Ağustos (3) — gmail.json public repodan kaldırıldı (4.10 çözüldü)
 Ret taraması sırasında görüldü: `gmail.json` okunmamış maillerin **gönderen
 adını, e-posta adresini ve konu başlığını** herkese açık depoya yazıyordu.
@@ -767,6 +820,24 @@ Bu 1. kuralla çelişiyor. Seçenekler:
 3. Depoyu private yapmak — Pages ücretsiz planda private repodan yayın
    yapmıyor, panel yayından kalkar.
 Geçmişteki veri için ayrıca `git filter-repo` gerekir (force-push).
+
+### 4.11 Program v2'den KALAN maddeler (6, 7, 8, 9 ve 13'ün otomatik kısmı)
+
+Kullanıcı bu oturumda "çekirdek: antrenman + yemek" dedi. Sırada bekleyenler:
+- **6 · Vücut ağırlığı takibi (`d:bw`)** — doküman "panelin bulk için en büyük
+  eksiği, öncelikli iş" diyor. `{ 'YYYY-MM-DD': number }`, 7 günlük hareketli
+  ortalama, haftalık trend oku, ±150 kcal ayar önerisi (2 hafta sabit → +150;
+  2 hafta %0,75'ten hızlı → −150). **Repoda hiçbir kilo değeri bulunmayacak** —
+  localStorage + gizli gist. `d:wtlog` KALDIRILAN kiloyu tutuyor, karışmasın
+  diye UI etiketi "Kaldırılan Ağırlık Takibi" olmalı.
+- **7 · Faz anahtarı (`d:phase`)** — bulk/cut. Cut seçilince Bölüm 10 tablosu
+  devreye girer (protein 210-220, "Atladım" cezası −250'ye döner, shake suyla).
+- **8 · Takviye checklist (`d:supp:TARİH`)** — kreatin (her gün, seri
+  göstergesi), D3, omega-3, magnezyum, whey.
+- **9 · Yürüyüş takibi (`d:walk:TARİH`)** — sabah/akşam köpek + gym gidiş-dönüş.
+  Kalori hedefine ETKİ ETMEZ (yük zaten 2950 tabanına dahil), yalnız tutarlılık.
+- **13 · Otomatik geri çekilme** — kullanıcı "sadece öneri" dedi; otomatik
+  uygulama bilerek yapılmadı.
 
 ## 5. Çalışma alışkanlıkları (bu projede işe yarayan)
 
