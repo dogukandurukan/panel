@@ -11,8 +11,6 @@ on:
 jobs:
   feed:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -26,13 +24,8 @@ jobs:
           GMAIL_REFRESH_TOKEN: ${{ secrets.GMAIL_REFRESH_TOKEN }}
           # Opsiyonel: yoksa taslak üretilmez, mail listesi normal çalışır.
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-      - name: gmail.json'u commit et
-        run: |
-          git config user.name "gmail-feed"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add gmail.json
-          git diff --staged --quiet || git commit -m "gmail.json otomatik güncelleme"
-          git push
+          # Gelen kutusu verisi repoya değil gizli gist'e yazılıyor.
+          PANEL_GIST_TOKEN: ${{ secrets.PANEL_GIST_TOKEN }}
       - run: python check_rejections.py
         env:
           GMAIL_CLIENT_ID: ${{ secrets.GMAIL_CLIENT_ID }}

@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-gmail_feed.py — Gmail'deki okunmamış maillerden gmail.json üretir.
+gmail_feed.py — Gmail'deki okunmamış maillerin özetini üretir ve panelin
+GİZLİ gist'ine yazar (d:gmail). Repoya YAZMAZ: gönderen adı/adresi ve konu
+başlığı kişiseldir, bu depo herkese açık (CLAUDE.md 1. kural).
 MAIL GÖNDERMEZ, hiçbir maili değiştirmez/okundu işaretlemez (salt-okunur scope).
 
 AKSİYONUN TANIMI
@@ -38,6 +40,8 @@ import datetime as dt
 from collections import Counter
 
 import requests
+
+import gist_io
 
 IST = dt.timezone(dt.timedelta(hours=3))
 WINDOW_DAYS = 7       # aksiyon gerektiren mail 3 günde kaybolmasın diye 7
@@ -557,12 +561,14 @@ def build():
 
 if __name__ == "__main__":
     d = build()
-    with open("gmail.json", "w", encoding="utf-8") as f:
-        json.dump(d, f, ensure_ascii=False, indent=2)
+    # ÖNCEDEN gmail.json olarak BU DEPOYA yazılıyordu: gönderen adı, e-posta
+    # adresi ve konu başlığı herkese açık bir repoda duruyordu (1. kurala
+    # aykırı). Artık senkronun gizli gist'ine yazılıyor, panel oradan okuyor.
+    print(gist_io.yaz("d:gmail", json.dumps(d, ensure_ascii=False)))
     if d.get("ok"):
         c = d["counts"]
-        print(f"gmail.json: {d['total_unread']} okunmamış (son {d['window_days']} gün) — "
+        print(f"gmail: {d['total_unread']} okunmamış (son {d['window_days']} gün) — "
               f"cevap bekleyen {c['reply']}, iş {c['job']}, "
               f"bilgi {c['info']}, bülten {c['bulk']}")
     else:
-        print(f"gmail.json: HATA - {d.get('error')}")
+        print(f"gmail: HATA - {d.get('error')}")

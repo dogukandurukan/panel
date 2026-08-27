@@ -39,6 +39,8 @@ import time
 
 import requests
 
+import gist_io
+
 SHEET_ID = "1Vw4pZMhnZqDWDQ8UqLvdX_3QadJ1aSZPna4aV2oNqkk"
 SHEET_NAME = "Untitled"
 DATA_RANGE = f"{SHEET_NAME}!A2:G1000"
@@ -296,7 +298,6 @@ def mark_as_ret(headers, row_number):
 # kişiseldir. Sonuç repoya değil, senkronun kullandığı GİZLİ gist'e
 # (panel-data.json / d:retler) yazılıyor; panel zaten oradan okuyor.
 # ---------------------------------------------------------------------------
-GIST_DATA = "panel-data.json"
 RET_ANAHTAR = "d:retler"
 SERBEST_GUN = 60
 SERBEST_MAX = 25
@@ -413,48 +414,6 @@ def serbest_tarama(headers, sheet_sirketleri):
     return bulunan
 
 
-def gist_yaz(retler):
-    """Gizli gist'teki panel-data.json'a d:retler anahtarını koyar.
-    Panelin senkronuyla aynı biçim: {"v": <string>, "t": <ms>}."""
-    token = os.environ.get("PANEL_GIST_TOKEN", "").strip()
-    if not token:
-        print("gist: PANEL_GIST_TOKEN yok — retler panele yazılamadı "
-              f"({len(retler)} kayıt yalnızca bu logda)")
-        return
-    gh = {"Authorization": "Bearer " + token,
-          "Accept": "application/vnd.github+json"}
-    try:
-        liste = requests.get("https://api.github.com/gists?per_page=100",
-                             headers=gh, timeout=25).json()
-        hedef = next((g for g in liste
-                      if GIST_DATA in ((g or {}).get("files") or {})), None)
-        if not hedef:
-            print(f"gist: {GIST_DATA} bulunamadı (token {len(liste)} gist görüyor)")
-            return
-        tam = requests.get("https://api.github.com/gists/" + hedef["id"],
-                           headers=gh, timeout=25).json()
-        f = (tam.get("files") or {}).get(GIST_DATA) or {}
-        ham = (requests.get(f["raw_url"], timeout=25).text
-               if f.get("truncated") and f.get("raw_url") else f.get("content") or "{}")
-        paket = json.loads(ham or "{}")
-        paket.setdefault("v", 1)
-        data = paket.setdefault("data", {})
-        yeni = json.dumps(retler, ensure_ascii=False)
-        eski = (data.get(RET_ANAHTAR) or {}).get("v")
-        if eski == yeni:
-            print(f"gist: {len(retler)} ret zaten yazılı, değişiklik yok")
-            return
-        data[RET_ANAHTAR] = {"v": yeni, "t": int(time.time() * 1000)}
-        paket["updated"] = int(time.time() * 1000)
-        r = requests.patch("https://api.github.com/gists/" + hedef["id"],
-                           headers=gh, timeout=25,
-                           json={"files": {GIST_DATA: {"content": json.dumps(paket, ensure_ascii=False)}}})
-        r.raise_for_status()
-        print(f"gist: {len(retler)} ret yazıldı ({RET_ANAHTAR})")
-    except Exception as e:
-        print(f"gist: yazılamadı: {type(e).__name__}: {str(e)[:90]}")
-
-
 def main():
     try:
         token = get_access_token()
@@ -521,7 +480,8 @@ def main():
 
     # 2. geçiş: Sheet'te HİÇ olmayan başvuruların retleri
     sheet_sirketleri = [(row[0] if row else "").strip() for row in rows]
-    gist_yaz(serbest_tarama(headers, sheet_sirketleri))
+    retler = serbest_tarama(headers, sheet_sirketleri)
+    print(gist_io.yaz(RET_ANAHTAR, json.dumps(retler, ensure_ascii=False)))
 
 
 if __name__ == "__main__":

@@ -606,7 +606,7 @@
       <div class="add-row"><input id="taskInput" placeholder="Yeni iş ekle…" maxlength="120"><button id="taskAdd">Ekle</button></div></section>
 
     <section class="card"><div class="card-head"><div><p class="kicker">Gmail</p><h2 class="card-title">Gelen Kutusu</h2></div><div class="meta"><span id="gmailTime">—</span><br><button class="ibtn" id="gmailRefresh">Yenile</button></div></div>
-      <div id="gmailStats" class="statrow"><div class="loading">gmail.json çekiliyor…</div></div>
+      <div id="gmailStats" class="statrow"><div class="loading">Gelen kutusu okunuyor…</div></div>
       <div id="gmailList"></div></section>
   </div>
 
@@ -3772,24 +3772,25 @@ function renderRetler(){
     retGizli.push(retAnahtar(r));await sSet('d:retGizli',retGizli);renderRetler();});
 }
 
-/* gmail okunmamışlar: gmail_feed.py'nin GitHub Actions'ta ürettiği gmail.json,
-   borsa.json ile aynı statik-dosya deseni. Gmail kimlik bilgisi hiçbir zaman
-   tarayıcıya inmez — sadece Actions üzerinde çalışır. */
+/* gmail okunmamışlar: gmail_feed.py Actions'ta çalışıp sonucu senkronun GİZLİ
+   gist'ine yazıyor (`d:gmail`). Gmail kimlik bilgisi hiçbir zaman tarayıcıya
+   inmez. Eskiden repodaki gmail.json okunuyordu; o dosya gönderen adı, adres
+   ve konu taşıdığı için herkese açık depodan kaldırıldı. */
 async function loadGmailJson(){
   const statsEl=document.getElementById('gmailStats');
   const listEl=document.getElementById('gmailList');
-  try{
-    const r=await fetch('gmail.json?_='+Date.now());
-    if(!r.ok)throw 0;
-    const d=await r.json();
-    renderGmail(d);
-    /* dar sütunda başlığı bölmesin diye kısa biçim: "son 14:31" */
-    /* Yaşı renderGmail yazıyor — panel canlı değil, günde 2 kez üretilen anlık
-       görüntüyü okuyor; kaç saatlik veri olduğu görünmezse güncel sanılıyor. */
-  }catch(e){
-    statsEl.innerHTML='<div class="empty">gmail.json henüz yok — workflow ilk kez çalışınca burada görünecek.</div>';
-    listEl.innerHTML='';
-  }
+  /* Veri ARTIK REPODA DEĞİL. gmail.json gönderen adını, e-posta adresini ve
+     konu başlığını taşıyordu; bu depo herkese açık (1. kural). gmail_feed.py
+     senkronun gizli gist'ine `d:gmail` yazıyor, panel oradan okuyor.
+     Yaşı renderGmail yazıyor — panel canlı değil, günde 5 kez üretilen anlık
+     görüntüyü okuyor; kaç saatlik veri olduğu görünmezse güncel sanılıyor. */
+  const d=await sGet('d:gmail');
+  if(d&&typeof d==='object'){renderGmail(d);return;}
+  const kurulu=syncCfg&&syncCfg.token;
+  statsEl.innerHTML='<div class="empty">'+(kurulu
+    ? 'Gelen kutusu verisi henüz senkronla gelmedi — besleyici 08/11/14/17/20\'de çalışıyor.'
+    : '⇅ Senkron kurulu değil. Gelen kutusu verisi kişisel olduğu için repoya değil gizli gist\'e yazılıyor; kart ancak senkron kurulunca dolar.')+'</div>';
+  listEl.innerHTML='';
 }
 /* "2026-08-20 09:45" -> {txt:'3 sa önce', dk:185}. Damga İstanbul saatiyle
    üretiliyor, tarayıcı da aynı saat diliminde olduğu için yerel kabul ediliyor. */
@@ -4136,8 +4137,11 @@ async function initTheme(){
    60 istek/saat/IP; x-ratelimit-remaining<10 olunca yenilemeyi atlar, sessizce son
    iyi veriyi gösterir (hata basmaz). Her gösterge gerçek run verisine bağlıdır. */
 const AGENTS=[
-  {name:'borsa-feed', desc:'BIST / döviz verisi', art:'borsa.json', times:[9,14], days:[1,2,3,4,5]},
-  {name:'gmail-feed', desc:'Gmail okunmamış + ret tarama', art:'gmail.json', times:[9,14], days:[0,1,2,3,4,5,6]},
+  /* borsa-feed hafta içiydi; gündem şeridi eklenince her güne çıktı.
+     gmail-feed günde 2 -> 5 (retler geç görünüyordu) ve artık repoya değil
+     gizli gist'e yazıyor — `art` yalnızca etiket, dosya çekilmiyor. */
+  {name:'borsa-feed', desc:'Borsa + gündem verisi', art:'borsa.json', times:[9,14], days:[0,1,2,3,4,5,6]},
+  {name:'gmail-feed', desc:'Gmail okunmamış + ret tarama', art:'gizli gist', times:[8,11,14,17,20], days:[0,1,2,3,4,5,6]},
   {name:'facts-feed', desc:'Vikipedi bilgi havuzu', art:'facts.json', times:[9], days:[1]},
   {name:'pages build and deployment', label:'pages-deploy', desc:'Siteyi yayınlar', art:'panel', times:null, days:null}
 ];
@@ -4871,7 +4875,10 @@ if(navigator.serviceWorker){
   document.getElementById('wtBugun').onclick=()=>{wtMod='bugun';renderWtLog();};
   document.getElementById('wtIlerleme').onclick=()=>{wtMod='ilerleme';renderWtLog();};
   document.getElementById('basvuruRefresh').onclick=loadBasvuru;
-  document.getElementById('gmailRefresh').onclick=loadGmailJson;
+  /* Yenile artık dosya çekmiyor: gist'ten senkron çekip yeniden çiziyor. */
+  document.getElementById('gmailRefresh').onclick=async()=>{
+    try{await syncPull(true);}catch(e){}
+    await loadGmailJson();};
   document.getElementById('agentRefresh').onclick=()=>loadAgents(true);
   document.getElementById('jobsCfg').onclick=openJobsCfg;
   jobProfile=await sGet(K.jobProfile)||null;jobsApplied=await sGet(K.jobsApplied)||[];myApps=await sGet(K.myApps)||[];retler=await sGet('d:retler')||[];retGizli=await sGet('d:retGizli')||[];
