@@ -251,6 +251,8 @@
   .ss-recete{font-size:12px;color:var(--ink);margin-top:5px;padding:6px 8px;border-left:2px solid var(--accent);
     background:color-mix(in srgb,var(--accent) 7%,transparent);border-radius:0 4px 4px 0;}
   .ss-recete b{font-family:var(--mono);}
+  .ss-oner{font-size:11.5px;color:var(--muted);margin-top:5px;padding:5px 8px;
+           border-left:2px dashed var(--line);line-height:1.45;}
   .ss-artis{font-size:12px;color:var(--up);margin-top:5px;font-family:var(--mono);}
   .tgt-neden{font-size:11.5px;color:var(--muted);margin-top:8px;line-height:1.45;}
   .tgt-oto{font-family:var(--mono);font-size:8.5px;letter-spacing:.08em;color:var(--accent);text-transform:none;}
@@ -732,41 +734,62 @@ const DAYNAMES=['Pazar','Pazartesi','Salı','Çarşamba','Perşembe','Cuma','Cum
 
 /* ===== ANTRENMAN (gün gün, programdan) ===== */
 const WK={
- 1:{title:'PUSH — Ağır Bileşik',run:false,ex:[['Bench press','4 × 5-8'],['Overhead press (BB/DB)','3 × 6-10'],['Incline DB press','3 × 8-12'],['Lateral raise','3 × 12-15'],['Dips (ağırlıklı)','3 × 8-12'],['Overhead triceps extension','3 × 10-12']]},
- 2:{title:'PULL — Ağır Bileşik',run:false,ex:[['Barfiks veya lat pulldown','4 × 6-10'],['Barbell row','4 × 6-10'],['Seated cable row','3 × 10-12'],['Face pull','3 × 15-20'],['Barbell curl','3 × 8-12'],['Hammer curl','3 × 10-12']]},
- 3:{title:'LEGS — Ağır Bileşik',run:false,ex:[['Back squat veya front squat','4 × 5-8'],['Romanian deadlift (RDL)','4 × 6-10'],['Leg press','3 × 10-12'],['Leg curl','3 × 10-12'],['Standing calf raise','4 × 10-15'],['Plank + dead bug (core)','3 set']]},
- 4:{title:'AKTİVİTE (Off) — Toparlanma',run:false,ex:[['Basket / tenis / kürek','seçime bağlı'],['Ağırlık antrenmanı yok','aktif toparlanma'],['Sabah kısa dinamik ısınma','yeterli']]},
- 5:{title:'UPPER — Hacim / Zayıf Halka',run:false,ex:[['Incline DB press','4 × 8-12'],['Chest-supported row','4 × 10-12'],['Lateral raise (son set dropset)','4 × 12-15'],['Rear delt fly','3 × 15-20'],['Incline DB curl','3 × 10-12'],['Cable triceps pushdown','3 × 12-15'],['Face pull','3 × 15-20']]},
- 6:{title:'Sabah Koşu + Öğlen LOWER',run:true,ex:[['Sabah: koşu (kolay-orta tempo)','20-30 dk'],['Bulgar split squat (eksantrik)','4 × 8-10'],['Hip thrust','4 × 8-12'],['Step-up','3 × 10-12'],['Leg extension','3 × 12-15'],['Seated calf raise','4 × 12-15']]},
- 0:{title:'FULL OFF — Tam Dinlenme',run:false,ex:[['Antrenman yok','—'],['İsteğe bağlı hafif yürüyüş / esneme','serbest'],['Uzun sabah rutini (mobilite + core)','opsiyonel']]}
+ /* v2 (Eylül 2026 bulk): Pzt/Sal Upper-Lower -> Çar aktivite -> Per/Cum/Cmt
+    Pull-Push-Legs. Her kas haftada net 2 kez; ağır bacak haftanın 2. gününde,
+    hacim bacak 6. gününde. Eskiden Pzt-Sal-Çar üst üste üç ağır bileşik gündü.
+    DİKKAT: Çar ve Paz'da tekrar aralığı OLMAYAN satırlar var — gunlukHedef()
+    "ağırlık antrenmanı olmayan gün" muafiyetini buradan anlıyor. */
+ 1:{title:'UPPER — Ağır Bileşik',run:false,ex:[['Bench press','4 × 5-8'],['Barbell row veya chest-supported row','4 × 6-10'],['Overhead press (BB/DB)','3 × 6-10'],['Lat pulldown veya barfiks','3 × 8-12'],['Lateral raise','3 × 12-15'],['Barbell curl','3 × 8-12'],['Overhead triceps extension','3 × 10-12']]},
+ 2:{title:'LOWER — Ağır Bileşik',run:false,ex:[['Back squat veya front squat','4 × 5-8'],['Romanian deadlift (RDL)','4 × 6-10'],['Leg press','3 × 10-12'],['Leg curl (yatarak)','3 × 10-12'],['Standing calf raise','4 × 10-15'],['Plank + dead bug (core)','3 set']]},
+ 3:{title:'AKTİVİTE (Off) — Toparlanma',run:true,ex:[['Basket / tenis / kürek (keyifli-orta tempo)','45-75 dk'],['Ağırlık antrenmanı yok','—'],['Sabah dinamik ısınma','5-7 dk']]},
+ 4:{title:'PULL',run:false,ex:[['Barfiks veya lat pulldown','4 × 6-10'],['Barbell row','4 × 6-10'],['Seated cable row','3 × 10-12'],['Face pull','3 × 15-20'],['Barbell curl','3 × 8-12'],['Hammer curl','3 × 10-12']]},
+ 5:{title:'PUSH',run:false,ex:[['Incline DB press','4 × 8-12'],['Overhead press (BB/DB)','3 × 6-10'],['Flat bench veya machine chest press','3 × 8-12'],['Dips (ağırlıklı)','3 × 8-12'],['Lateral raise (son set dropset)','4 × 12-15'],['Rear delt fly','3 × 15-20'],['Cable triceps pushdown','3 × 12-15']]},
+ 6:{title:'LEGS — Hacim / Tek Taraflı',run:false,ex:[['Bulgar split squat (eksantrik vurgulu)','4 × 8-10'],['Hip thrust','4 × 8-12'],['Leg extension','3 × 12-15'],['Leg curl (oturarak)','3 × 12-15'],['Step-up','3 × 10-12'],['Seated calf raise','4 × 12-15']]},
+ 0:{title:'FULL OFF — Tam Dinlenme',run:false,ex:[['Antrenman yok','—'],['Köpek yürüyüşleri (2 × 20 dk)','zaten var'],['Uzun sabah rutini (mobilite + core)','~12-15 dk']]}
 };
+
 const MORNING_LONG=[['Kedi-inek','10 tekrar'],['Kalça fleksör esnetme (diz üstü lunge)','2 × 30 sn / bacak'],['Güneş selamı','3-4 tur'],['Plank','3 × 45 sn'],['Dead bug','3 × 10 / taraf'],['Side plank','2 × 30 sn / taraf'],['Ayak bileği çemberi + tek ayak denge','3 dk']];
 /* Yeni programa göre: Pzt/Çarş/Cuma/Paz uzun (~12-15 dk), Sal/Cmt kısa hedefli
    (~5-7 dk), Perş dinamik ısınma (aktivite günü). Burada olmayan günler MORNING_LONG. */
+/* v2 gün eşlemesi: Pzt/Per/Cum kısa ÜST hazırlık, Sal/Cmt kısa ALT hazırlık,
+   Çar dinamik ısınma (spor öncesi), Paz uzun rutin (MORNING_LONG). */
+const MORNING_UST=[['Thoracic rotation (kedi-inek + thread the needle)','2 tur'],['Band pull-apart','2 × 15'],['Wall slide','2 × 10'],['Omuz çemberi','1 dk']];
+const MORNING_ALT=[['Kalça fleksör esnetme (diz üstü lunge)','2 × 30 sn / bacak'],['90/90 kalça rotasyonu','8 / taraf'],['Glute bridge','2 × 15'],['Ayak bileği çemberi + duvara diz itme','2 dk']];
+const MORNING_ISIN=[['Yerinde koşu / ip atlama','2-3 dk'],['Kol çemberi (ön-arka)','1 dk'],['Yürüyerek dinamik lunge','10 tekrar'],['Yan adım + kalça açma','1 dk']];
 const MORNING_SHORT={
- 2:[['Thoracic rotation (kedi-inek + thread the needle)','2 tur'],['Band pull-apart','2 × 15'],['Omuz çemberi','1 dk'],['Wall slide','2 × 10']],
- 4:[['Yerinde koşu / ip atlama','2-3 dk'],['Kol çemberi (ön-arka)','1 dk'],['Yürüyerek dinamik lunge','10 tekrar'],['Yan adım + kalça açma','1 dk']],
- 6:[['Ayak bileği çemberi','1 dk'],['Kalça fleksör esnetme','2 × 30 sn / bacak'],['Yürüyerek dinamik lunge','10 tekrar'],['Tek ayak denge','30 sn / ayak']]
+ 1:MORNING_UST, 4:MORNING_UST, 5:MORNING_UST,
+ 2:MORNING_ALT, 6:MORNING_ALT,
+ 3:MORNING_ISIN
 };
 
+
 /* ===== YEMEK (gün gün, 7 günlük plandan) ===== */
+/* v2 bulk (2950 kcal taban). PW Shake plana ÖĞÜN olarak dahildir, ekstra
+   değil — üstüne eklenirse haftalık ortalama ~2700 kcal şişer. Çar ve Paz'da
+   shake yok (Çar'da whey kahvaltıya karışıyor). */
 const MP={
- 1:[['Kahvaltı ~09:30','3 yumurta omlet + 40g beyaz peynir + 60g yulaf (250ml sütle) + 1 muz',620,40,72],['Öğle ~13:00 / PW','200g ızgara tavuk + 1.5 kase bulgur pilavı (~200g) + çoban salata (1 yemek kaşığı zeytinyağı)',820,55,105],['Ara öğün ~17:00','250g süzme yoğurt + 25g ceviz (~1 avuç) + 1 elma',385,21,34],['Akşam ~20:00','160g fırın somon + 300g fırın patates + yeşil salata',660,38,82],['Gece (ops.)','250ml kefir + 1 muz',220,11,40]],
- 2:[['Kahvaltı ~09:30','Menemen (3 yumurta) + 3 dilim tam buğday ekmek + 30g beyaz peynir',620,36,72],['Öğle ~13:00 / PW','200g ızgara hindi + 1.5 kase pirinç pilavı (~200g) + ~150g zeytinyağlı sebze',800,52,108],['Ara öğün ~17:00','250g yoğurt + 20g badem (~15 adet) + 1 armut',400,20,38],['Akşam ~20:00','180g yağsız dana köfte + 1.5 kase bulgur (~200g) + salata',710,48,84],['Gece (ops.)','250ml süt + 1 elma',200,9,32]],
- 3:[['Kahvaltı ~09:30','70g yulaf + 250ml süt + 1 muz + 15g fıstık ezmesi',640,40,82],['Öğle ~13:00 / PW','200g tavuk + 100g (kuru) tam buğday makarna + domates sos + 20g rende peynir',800,53,106],['Ara öğün ~17:00','250g yoğurt + 1 porsiyon mevsim meyvesi',400,18,45],['Akşam ~20:00','2 kutu ton (~160g) + 300g patates salatası + yeşillik',660,42,70],['Gece (ops.)','250ml kefir + 1 elma',200,10,32]],
- 4:[['Kahvaltı ~09:30','3 yumurta + 30g peynir + 5-6 zeytin + domates-salatalık + 3 dilim ekmek',620,34,70],['Öğle ~13:00','200g dana bonfile + 1 kase pirinç (~180g) + ~200g fırın sebze',780,51,93],['Ara öğün ~17:00','250g yoğurt + 20g ceviz + 1 elma',360,20,34],['Akşam ~20:00','170g tavuk sote + 1 kase bulgur (~180g) + salata',720,47,88],['Gece (ops.)','250ml kefir + 1 muz',220,11,40]],
- 5:[['Kahvaltı ~09:30','3 yumurta + 60g yulaf (250ml sütle) + 1 muz + 15g badem',650,40,72],['Öğle ~13:00 / PW','200g somon + 250g haşlanmış patates + yeşil salata',740,44,78],['Ara öğün ~17:00','250g süzme yoğurt + 1 porsiyon mevsim meyvesi',420,22,42],['Akşam ~20:00','190g hindi + 1.5 kase bulgur (~200g) + zeytinyağlı sebze',760,52,88],['Gece (ops.)','200ml süt + 1 meyve',180,8,30]],
- 6:[['Kahvaltı ~09:30','Ölçülü serpme: 3 yumurta, 40g peynir, zeytin, 3 dilim ekmek, domates',620,33,68],['Öğle ~13:00 / Lower sonrası','200g ızgara tavuk/köfte + 1.5 kase pilav (~200g) + salata',820,52,105],['Ara öğün ~17:00','1 meyve + 250g süzme yoğurt + 20g kuruyemiş',430,28,42],['Akşam ~20:00','Dışarıda esnek: ~200g ızgara balık/et + salata + orta karbonhidrat',660,45,58],['Gece (ops.)','250ml kefir + 1 muz',220,11,40]],
- 0:[['Kahvaltı ~09:30','3 yumurta + 50g yulaf + 1 meyve',560,34,60],['Öğle ~13:00','200g tavuk/et + 1 kase pirinç veya bulgur (~180g) + sebze',780,50,90],['Ara öğün ~17:00','250g süzme yoğurt + 20g ceviz (~1 avuç)',400,28,34],['Akşam ~20:00','Hafif: 1 kase mercimek çorbası + 170g tavuk/balık + salata',620,42,60],['Gece (ops.)','250ml kefir',150,9,15]]
+ 1:[['Kahvaltı ~09:00','3 yumurta omlet + 30g beyaz peynir + 60g yulaf (250ml sütle) + 1 muz',740,40,80],['PW Shake ~13:15','1 ölçek whey + 1 büyük muz + 300ml süt',390,36,48],['Öğle ~14:15','150g ızgara tavuk + 350g bulgur pilavı + çoban salata (1 yk zeytinyağı)',845,62,96],['Ara ~17:30','200g süzme yoğurt + 1 muz + 20g bal',355,19,52],['Akşam ~20:00','150g fırın somon + 350g haşlanmış patates + yeşil salata',670,42,76]],
+ 2:[['Kahvaltı ~09:00','Menemen (3 yumurta, 1 yk zeytinyağı) + 3 dilim tam buğday ekmek + 30g beyaz peynir',645,37,57],['PW Shake ~13:15','1 ölçek whey + 1 büyük muz + 300ml süt',390,36,48],['Öğle ~14:15','150g ızgara hindi + 350g pirinç pilavı + 150g zeytinyağlı sebze',910,59,110],['Ara ~17:30','250g yoğurt + 1 armut + 30g kuru üzüm',340,11,61],['Akşam ~20:00','150g yağsız dana köfte + 300g bulgur pilavı + salata',725,47,89]],
+ 3:[['Kahvaltı ~09:30','70g yulaf + 250ml süt + 1 muz + 15g fıstık ezmesi + 1 ölçek whey',705,45,90],['Öğle ~13:00','130g tavuk + 90g (kuru) tam buğday makarna + domates sos + 20g rende peynir + 2 dilim ekmek',850,67,106],['Ara ~18:00','250g süzme yoğurt + 1 porsiyon mevsim meyvesi + 20g ceviz',460,26,34],['Akşam ~20:30','2 kutu ton (~160g) + 350g haşlanmış patates + yeşillik + 1 yk zeytinyağı',625,49,76],['Gece ~22:00','250ml kefir + 1 elma',220,8,37]],
+ 4:[['Kahvaltı ~09:00','3 yumurta + 30g peynir + 5-6 zeytin + domates-salatalık + 3 dilim ekmek + 1 muz',730,37,82],['PW Shake ~13:15','1 ölçek whey + 1 büyük muz + 300ml süt',390,36,48],['Öğle ~14:15','150g dana bonfile + 300g pirinç pilavı + 200g fırın sebze',935,58,108],['Ara ~17:30','250g yoğurt + 1 elma + 30g kuru üzüm',335,10,59],['Akşam ~20:00','130g tavuk sote + 250g bulgur pilavı + salata',590,52,73]],
+ 5:[['Kahvaltı ~09:00','3 yumurta + 60g yulaf (250ml sütle) + 1 muz',665,35,79],['PW Shake ~13:15','1 ölçek whey + 1 büyük muz + 300ml süt',390,36,48],['Öğle ~14:15','150g somon + 350g haşlanmış patates + yeşil salata',670,42,76],['Ara ~17:30','250g süzme yoğurt + 1 porsiyon meyve + 20g bal',390,23,49],['Akşam ~20:00','120g hindi + 300g bulgur pilavı + 150g zeytinyağlı sebze + 1 dilim ekmek',840,55,103]],
+ 6:[['Kahvaltı ~09:00','Ölçülü serpme: 3 yumurta, 40g peynir, zeytin, 3 dilim ekmek, domates + 1 muz',755,39,82],['PW Shake ~13:15','1 ölçek whey + 1 büyük muz + 300ml süt',390,36,48],['Öğle ~14:15','120g ızgara tavuk/köfte + 350g pirinç pilavı + salata',755,49,106],['Ara ~17:30','1 meyve + 250g süzme yoğurt + 20g kuruyemiş',460,27,36],['Akşam ~20:00','Dışarıda esnek: ~140g ızgara balık/et + salata + 2 dilim ekmek + 150g pilav',725,47,82]],
+ 0:[['Kahvaltı ~09:30','3 yumurta + 50g yulaf (250ml sütle) + 1 meyve + 1 muz',720,35,94],['Öğle ~13:00','150g tavuk/et + 300g pirinç veya bulgur pilavı + sebze + 2 dilim ekmek',965,66,130],['Ara ~17:00','250g süzme yoğurt + 25g ceviz + 1 elma',500,26,38],['Akşam ~20:00','1 kase mercimek çorbası + 150g tavuk/balık + salata + 1 dilim ekmek',570,53,50],['Gece ~22:00','250ml kefir',125,8,12]]
 };
-/* Yeni program hedefleri (haftalık ortalama). Karb güne göre ayarlanıyor:
-   ağır bileşik günleri (Pzt/Sal/Çarş) ~340, hacim/aktivite ~320, off günü ~280. */
-const DEFAULT_TARGETS={kcal:2650,p:165,c:320,y:75};
-const CARB_BY_DAY={1:340,2:340,3:340,4:320,5:320,6:320,0:280};
+
+/* v2 BULK hedefleri (haftalık ortalama). 2650 büyümek için düşüktü ve günde
+   40-70 dk yürüyüş (gym gidiş-dönüş + köpek) hiç hesaba katılmamıştı; o yük
+   bu tabana DAHİLDİR, ayrıca telafi gerekmez. Karb güne göre kayıyor:
+   kcal = 2950 + 4 × (günün karbı − 360). */
+const DEFAULT_TARGETS={kcal:2950,p:185,c:360,y:85};
+const CARB_BY_DAY={1:370,2:380,3:335,4:370,5:365,6:380,0:320};
+/* Haftalık karb tabanı. Günlük kcal buradan türüyor; `targets.c` taban olarak
+   kullanılamaz çünkü sürüm göçünde O GÜNÜN karbıyla tohumlanıyor. */
+const CARB_BAZ=360;
 /* Hedefler localStorage'da saklandığı için DEFAULT_TARGETS'ı değiştirmek tek başına
    yetmez — eski kayıt yenisinin üzerine biner. Sürüm etiketi değişince bir kez
    yeni varsayılanlara geçilir (kullanıcı sonradan elle değiştirirse o korunur). */
-const TARGETS_VERSION='2026-08-ppl';
+const TARGETS_VERSION='2026-09-ul-ppl';
 
 const RECIPES=[[/tavuk|hindi/i,'Tavuğu tuz, karabiber, kekikle 10 dk marine et; tavada orta-yüksek ateşte her yüzünü 6-7 dk kızart.'],
  [/bulgur/i,'Soğanı zeytinyağında kavur, salçayı ekle; 1 ölçü bulgura 2 ölçü sıcak su, kısık ateşte demlendir.'],
@@ -1927,7 +1950,7 @@ function mRestTick(){
 }
 async function renderRun(){const km=await sGet('d:runkm:'+todayKey())||'';runKmToday=km;const isRun=WK[dow].run;const el=document.getElementById('runArea');
   el.innerHTML='<div class="runbox"><label>Bugün koştuğun mesafe</label><input type="number" id="runIn" placeholder="0" value="'+esc(km)+'"><span class="mkt-sub">km</span></div>'+
-    (isRun?'<div class="runnote">Bugün koşu günü — protokol: 2 dk yürü / 1-2 dk koş × 8 tur (5. haftadan sonra kesintisiz 20 dk).</div>':'');
+    (isRun?'<div class="runnote">Bugün aktivite günü — basket / tenis / kürek, keyifli-orta tempo. Kürek seçersen 20-30 dk yeterli. Yarın çekiş günü: maç modunda oynama.</div>':'');
   document.getElementById('runIn').oninput=e=>{runKmToday=e.target.value;sSet('d:runkm:'+todayKey(),e.target.value);renderHabits();};}
 
 /* workout (today) */
@@ -1989,6 +2012,31 @@ function progKg(ad){
 }
 /* Bugün artmış mı? (kartta '↑ 40 → 42.5' satırı için) */
 const progBugun=ad=>(prog[ad]&&prog[ad].tarih===todayKey()&&prog[ad].eski!=null)?prog[ad]:null;
+
+/* ===== TIKANMA ÖNERİSİ (yalnızca öneri) =====
+   Aynı kiloda üst üste kaç seans kalındığını d:wtlog'dan sayar — yeni veri
+   istemez. Panel kiloyu KENDİLİĞİNDEN DÜŞÜRMEZ: kullanıcı otomatik geri
+   çekilmeyi istemedi (bir hafta hasta olunca da tetiklenirdi). */
+function takiliSeans(ad){
+  const g=hareketGecmisi()[ad]||[];
+  if(g.length<2)return 0;
+  const son=num(g[g.length-1][1]);let n=0;
+  for(let i=g.length-1;i>=0;i--){if(num(g[i][1])===son)n++;else break;}
+  return n;
+}
+function tikanmaNot(ad){
+  const n=takiliSeans(ad),kg=progKg(ad);
+  if(n<2||!kg)return '';
+  if(n>=3){
+    const geri=Math.round(kg*0.9*2)/2;
+    return '<div class="ss-oner">'+n+' seans üst üste aynı kiloda. Tıkandıysan '+geri+
+      ' kg\'a (−%10) inip tekrar tırmanmak bir seçenek — panel kendiliğinden düşürmez.</div>';
+  }
+  /* Mikroyükleme yalnızca üst gövdede anlamlı: altta 5 kg adım zaten kabul edilebilir. */
+  return ALT_GOVDE.test(ad)?'':
+    '<div class="ss-oner">2 seans üst üste aynı kiloda. Üst gövdede 2,5 kg büyük gelebilir; '+
+    'küçük plakayla +1,25 kg denenebilir.</div>';
+}
 
 function progHesap(ad,spec,setler){
   const r=repAralik(spec);if(!r)return null;
@@ -2134,6 +2182,7 @@ function renderSess(el,ex){
   if(ar&&rec&&!artis)html+='<div class="ss-recete">bugün <b>'+rec+' kg</b> · '+ar.set+' seti de '+
     ar.hi+' tekrar tamamlarsan '+(rec+kgAdim(ad))+' kg\'a çıkar</div>';
   if(artis)html+='<div class="ss-artis">↑ '+artis.eski+' → <b>'+artis.kg+' kg</b> · üst ucu tutturdun, sonraki seans bu kilodan</div>';
+  if(ar&&!artis)html+=tikanmaNot(ad);
 
   if(h){
     html+='<div class="ss-giris">'+
@@ -2498,11 +2547,18 @@ function sporBitti(){
 }
 
 function gunlukHedef(){
-  const bazKcal=num(targets.kcal),bazC=targets.cAuto===false?num(targets.c):(CARB_BY_DAY[dow]??num(targets.c));
+  const oto=targets.cAuto!==false;
+  const bazC=oto?(CARB_BY_DAY[dow]??num(targets.c)):num(targets.c);
+  /* Protein ve yağ sabit, kalori farkı tamamen karbdan:
+     kcal = taban + 4 × (günün karbı − haftalık karb tabanı). Karb kutusuna elle
+     yazılırsa (cAuto=false) kaydırma yapılmaz, kullanıcının sayısı geçerlidir. */
+  const bazKcal=num(targets.kcal)+(oto?4*(bazC-CARB_BAZ):0);
   const o={kcal:bazKcal,p:num(targets.p),c:bazC,y:num(targets.y),bazKcal:bazKcal,bazC:bazC,neden:''};
   if(!WK[dow].ex.some(e=>setHedef(e[1]))){o.neden=dow===0?'tam dinlenme günü':'ağırlık antrenmanı olmayan gün';return o;}
   const t=gunTonaj(),taban=gunHacimTaban();
-  if(yokSporAtlandi()&&!t){o.c=bazC-40;o.kcal=bazKcal-250;o.neden='antrenman atlandı';return o;}
+  /* Bulk'ta seans atlamak günlük enerji ihtiyacını 250 kcal düşürmez; sert
+     kesmek kazancı yavaşlatıyor. v1: −40 g / −250 kcal. Cut fazında geri gelir. */
+  if(yokSporAtlandi()&&!t){o.c=bazC-15;o.kcal=bazKcal-100;o.neden='antrenman atlandı';return o;}
   if(!t){o.neden='antrenman bekleniyor';return o;}
   if(!taban){o.neden='bugün '+t.toLocaleString('tr-TR')+' kg·tekrar — karşılaştırma için en az 2 '+DAYNAMES[dow]+' kaydı gerekiyor';return o;}
   const yuzde=Math.round(t/taban*100),bitti=sporBitti();
@@ -2582,7 +2638,7 @@ const BESIN={
  'kaju':[553,18,30,{avuc:25}],'fıstık ezmesi':[588,25,20,{kasik:16}],'fıstık':[567,26,16,{avuc:25}],
  'kuruyemiş':[600,18,20,{avuc:25}],'tahin':[595,17,21,{kasik:15}],
  'zeytinyağı':[884,0,0,{kasik:14}],'tereyağı':[717,0.9,0.1,{kasik:14}],'bal':[304,0.3,82,{kasik:21}],
- 'reçel':[278,0.4,69,{kasik:20}],'protein tozu':[375,75,8,{olcek:30,kasik:30}],
+ 'reçel':[278,0.4,69,{kasik:20}],'protein tozu':[375,75,8,{olcek:30,kasik:30}],'whey':[375,75,8,{olcek:30,kasik:30}],
  /* dışarıda & atıştırma */
  'pizza':[266,11,33,{dilim:100}],'lahmacun':[240,11,32,{adet:130}],'tavuk döner':[190,20,10,{porsiyon:200}],
  'döner':[215,17,12,{porsiyon:200}],'hamburger':[250,13,26,{adet:200}],'pide':[275,12,40,{porsiyon:250}],
@@ -2598,7 +2654,8 @@ const BESIN={
 const BIRIM_G={kasik:15,avuc:25,bardak:200,porsiyon:150,kase:200,dilim:30,paket:35,olcek:30,kutu:100,top:50};
 /* Birim tespiti KÖK ile: "kaşığı", "bardağı", "ölçek" gibi çekimli yazımlar
    birebir eşleşmiyordu. \b ile sözcük başına bakılıyor. */
-const BIRIM_KOK=[['kasi','kasik'],['kase','kase'],['avu','avuc'],['barda','bardak'],
+const BIRIM_KOK=[['kasi','kasik'],['yk','kasik'],['tk','kasik'],['ck','kasik'],
+  ['kase','kase'],['avu','avuc'],['barda','bardak'],
   ['porsiyon','porsiyon'],['dilim','dilim'],['paket','paket'],['olce','olcek'],
   ['kutu','kutu'],['top','top'],['adet','adet']];
 function deTR(x){return (x||'').toLocaleLowerCase('tr').replace(/[ışğüöçâ]/g,c=>({'ı':'i','ş':'s','ğ':'g','ü':'u','ö':'o','ç':'c','â':'a'}[c]));}
@@ -2611,23 +2668,46 @@ function besinBul(ad){const a=deTR(ad);for(const [n,k] of BESIN_ANH)if(a.indexOf
    tahmine kapalı — sayı uydurmuyoruz. */
 function besinCoz(metin){
   if(!metin||!metin.trim())return null;
-  const parcalar=metin.split(/\s*\+\s*|,\s*|\s+ve\s+/i).map(x=>x.trim()).filter(Boolean);
-  if(!parcalar.length)return null;
+  /* Ayırıcılar yalnız PARANTEZ DIŞINDA geçerli: "Menemen (3 yumurta, 1 yk
+     zeytinyağı)" virgülden bölününce "1 yk zeytinyağı)" diye kırık bir parça
+     çıkıyordu. " ve " ileriye bakarak yakalanıyor. */
+  const parcalar=[];{
+    let d=0,cur='',i=0;
+    while(i<metin.length){
+      const ch=metin[i];
+      if(ch==='('){d++;cur+=ch;i++;continue;}
+      if(ch===')'){d=Math.max(0,d-1);cur+=ch;i++;continue;}
+      if(d===0&&(ch==='+'||ch===',')){parcalar.push(cur);cur='';i++;continue;}
+      if(d===0){
+        const m=/^\s+ve\s+/i.exec(metin.slice(i));
+        if(m){parcalar.push(cur);cur='';i+=m[0].length;continue;}
+      }
+      cur+=ch;i++;
+    }
+    parcalar.push(cur);
+  }
+  const temizP=parcalar.map(x=>x.trim()).filter(Boolean);
+  if(!temizP.length)return null;
   const top={kcal:0,p:0,c:0,bilinmeyen:[],miktarsiz:[]};
-  parcalar.forEach(ham=>{
+  temizP.forEach(ham=>{
     const p=ham.toLocaleLowerCase('tr');
     /* gram/ml yazılmışsa (parantez içi "(~200g)" dahil) o parçanın TAMAMI odur */
     const mg=p.match(/(\d+(?:[.,]\d+)?)\s*(g|gr|gram|ml)\b/);
     let gram=mg?parseFloat(mg[1].replace(',','.')):null;
     const ad=p.replace(/\([^)]*\)/g,' ').replace(/\d+(?:[.,]\d+)?/g,' ')
-      .replace(/\b(g|gr|gram|ml|adet|dilim|kase|kaşı[kğ]\w*|avu[çc]\w*|kutu|barda[kğ]\w*|porsiyon|paket|öl[çc]ek|top|yemek|tatlı|çay|su|büyük|küçük|orta)\b/g,' ')
+      .replace(/\b(g|gr|gram|ml|adet|dilim|kase|kaşı[kğ]\w*|avu[çc]\w*|kutu|barda[kğ]\w*|porsiyon|paket|öl[çc]ek|top|yk|tk|çk|yemek|tatlı|çay|su|büyük|küçük|orta)\b/g,' ')
       .replace(/[-–—]/g,' ').replace(/\s+/g,' ').trim();
     const b=besinBul(ad);
     if(!b){top.bilinmeyen.push(ham);return;}
     if(gram==null){
-      const ms=p.match(/(\d+(?:[.,]\d+)?)/);
+      /* Miktar ve birim PARANTEZ DIŞINDAN okunur. "Menemen (3 yumurta, 1 yk
+         zeytinyağı)" içindeki "3" ve "yk" yemeğin kendi ölçüsü sanılıyor,
+         menemen 45 g'a düşüyordu. Gram ipucu (yukarıda) parantez içini
+         bilerek okur: "2 kutu ton (~160g)". */
+      const pd=p.replace(/\([^)]*\)/g,' ');
+      const ms=pd.match(/(\d+(?:[.,]\d+)?)/);
       const sayi=ms?parseFloat(ms[1].replace(',','.')):1;
-      const dp=deTR(p);
+      const dp=deTR(pd);
       let birim=null;
       for(const [kok,ad2] of BIRIM_KOK)if(new RegExp('\\b'+kok).test(dp)){birim=ad2;break;}
       /* Birim yazılmamışsa: sayı varsa adet, hiç sayı yoksa bir porsiyon. */
@@ -2674,7 +2754,7 @@ function renderMeals(){const el=document.getElementById('mealList');el.innerHTML
   /* Metin degisince otomatik hesap; makro kutusuna dokunulunca o ogun "elle"ye
      gecer ve otomatik onu bir daha ezmez. Yeniden cizmiyoruz — odak kaybolur. */
   el.querySelectorAll('[data-mt]').forEach(inp=>inp.oninput=()=>{
-    const i=+inp.dataset.mt;meals[i].text=inp.value;meals[i].elle=false;meals[i].oto=false;
+    const i=+inp.dataset.mt;meals[i].text=inp.value;meals[i].elle=false;meals[i].oto=false;meals[i].duz=true;
     mealHesapla(i);saveMeals();renderBars();});
   const elleYap=(i)=>{meals[i].elle=true;mealNot(i);};
   el.querySelectorAll('[data-mk]').forEach(inp=>inp.oninput=()=>{const i=+inp.dataset.mk;meals[i].kcal=inp.value;elleYap(i);saveMeals();renderBars();});
@@ -2692,6 +2772,9 @@ function mealNot(i){
     return;
   }
   if(!r){kut.innerHTML='';return;}
+  /* Uyarı yalnızca KULLANICI metni düzenlediyse. Plandan gelen öğünde
+     kürasyonlu makrolar duruyor; "tanınmadı" yazmak gereksiz gürültü. */
+  if(!m.duz){kut.innerHTML=m.oto?'otomatik hesaplandı':'';return;}
   /* Uydurma yok: eksik parca varsa kutulara dokunulmuyor. */
   const uyari=[];
   if(r.bilinmeyen.length)uyari.push('tanınmadı: <b>'+esc(r.bilinmeyen.join(', '))+'</b>');
