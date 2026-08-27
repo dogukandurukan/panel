@@ -1,16 +1,16 @@
 {
- "updated": "2026-08-27 16:03",
+ "updated": "2026-08-27 19:05",
  "ok": true,
  "count": 3,
- "pool": 23,
+ "pool": 22,
  "items": [
   {
-   "title": "Senior Agentic AI Engineer",
-   "company": "Cube",
+   "title": "FinOps Data Analyst & Consultant (m/w/d)",
+   "company": "Cortex Reply",
    "location": "Berlin",
-   "loc_raw": "Berlin",
+   "loc_raw": "Munich, Berlin, Germany",
    "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/cube/senior-agentic-ai-engineer-berlin-203894",
+   "url": "https://www.arbeitnow.com/jobs/companies/cortex-reply/finops-data-analyst-consultant-munich-40383",
    "source": "Arbeitnow",
    "posted": "2026-08-27",
    "days": 0,
@@ -18,29 +18,60 @@
     "python",
     "sql",
     "azure",
+    "power bi",
+    "tableau"
+   ],
+   "german": false,
+   "focus": "ml",
+   "summary": "Behind every optimisation decision is data. As a FinOps Data Analyst & Consultant at Cortex Reply, you'll transform millions of billing line items into forecasts, dashboards, and insights that executives can act on - across cloud, AI, SaaS, and on-prem environ",
+   "keywords": [
+    "optimisation",
+    "forecast",
+    "dashboard",
+    "saas",
+    "cost",
+    "automation",
+    "pipeline",
+    "stakeholder",
+    "finance"
+   ],
+   "score": 94
+  },
+  {
+   "title": "Senior Data Scientist (m/f/x)",
+   "company": "Makersite GmbH",
+   "location": "Remote",
+   "loc_raw": "Remote job",
+   "remote": true,
+   "url": "https://www.arbeitnow.com/jobs/companies/makersite-gmbh/remote-senior-data-scientist-berlin-194751",
+   "source": "Arbeitnow",
+   "posted": "2026-08-27",
+   "days": 0,
+   "skills": [
+    "python",
+    "ci/cd",
     "git",
     "llm"
    ],
    "german": false,
    "focus": "ml",
-   "summary": "CUBE are a global RegTech business defining and implementing the gold standard of regulatory intelligence for the financial services industry. We deliver our services through intuitive SaaS solutions, powered by AI, to simplify the complex and everchanging wor",
+   "summary": "Data Scientist (m/f/x) Location: EU (Remote) Who You’ll Work For : At Makersite, we're pioneering the future of sustainable product development and digital collaboration. As a leading platform for product lifecycle management (PLM), we empower companies to mak",
    "keywords": [
-    "saas",
+    "supply chain",
     "scalab",
-    "experimentation",
-    "enterprise",
-    "startup",
-    "finance"
+    "cost",
+    "pipeline",
+    "experimentation"
    ],
-   "score": 106
+   "score": 90
   },
   {
-   "title": "Data Engineer - Data Platform & Ontology (m/f/d)",
-   "company": "Statista",
-   "location": "Berlin",
-   "loc_raw": "Hamburg or Berlin",
+   "title": "Senior Data Engineer (m/f/d)",
+   "company": "Dishdigital",
+   "location": "Almanya",
+   "loc_raw": "Düsseldorf",
    "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/statista/data-engineer-data-platform-ontology-hamburg-or-berlin-418502",
+   "url": "https://www.arbeitnow.com/jobs/companies/dishdigital/senior-data-engineer-dusseldorf-138329",
    "source": "Arbeitnow",
    "posted": "2026-08-27",
    "days": 0,
@@ -49,52 +80,25 @@
     "sql",
     "airflow",
     "dbt",
-    "snowflake",
-    "data warehouse"
+    "git"
    ],
    "german": false,
    "focus": "pipeline",
-   "summary": "At Statista , we’re all about facts and data, for we are the world's leading business data platform. By providing reliable and easy-to-use data as well as various data analytics products and services, we empower people worldwide to make fact-based decisions. F",
+   "summary": "Your Contribution Are you passionate about designing scalable data platforms and helping others grow along the way? As a Senior Data Engineer, you will shape the architecture and technical direction of our Google Cloud data platform while enabling a team of en",
    "keywords": [
     "scalab",
     "pipeline",
-    "cost",
+    "data quality",
     "governance",
-    "automation"
+    "stakeholder"
    ],
-   "score": 100
-  },
-  {
-   "title": "Data Engineer",
-   "company": "Platoapp",
-   "location": "Berlin",
-   "loc_raw": "Berlin",
-   "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/platoapp/data-engineer-berlin-6005",
-   "source": "Arbeitnow",
-   "posted": "2026-08-26",
-   "days": 1,
-   "skills": [
-    "python",
-    "sql",
-    "pyspark",
-    "spark",
-    "databricks",
-    "dbt"
-   ],
-   "german": false,
-   "focus": "pipeline",
-   "summary": "Your responsibilities Joining our data team, you'll lead the build of Plato's real-time data platform, data warehouse, and the infrastructure behind our suite of data products. You'll work closely with data science, product, design, and engineering to build th",
-   "keywords": [
-    "real-time",
-    "stakeholder",
-    "startup",
-    "forecast"
-   ],
-   "score": 100
+   "score": 86
   }
  ],
  "seen": [
+  "https://www.arbeitnow.com/jobs/companies/cortex-reply/finops-data-analyst-consultant-munich-40383",
+  "https://www.arbeitnow.com/jobs/companies/makersite-gmbh/remote-senior-data-scientist-berlin-194751",
+  "https://www.arbeitnow.com/jobs/companies/dishdigital/senior-data-engineer-dusseldorf-138329",
   "https://www.arbeitnow.com/jobs/companies/cube/senior-agentic-ai-engineer-berlin-203894",
   "https://www.arbeitnow.com/jobs/companies/statista/data-engineer-data-platform-ontology-hamburg-or-berlin-418502",
   "https://www.arbeitnow.com/jobs/companies/platoapp/data-engineer-berlin-6005",
