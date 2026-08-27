@@ -568,6 +568,20 @@ tik geri alınınca durmuyor-başlamıyor. Test koşumu 17 senaryo, hepsi geçti
 
 ---
 
+## 1b. AÇIK OPERASYONEL SORUN — zamanlanmış işler durdu (27 Ağustos)
+
+**Son zamanlanmış koşu: 26.08 22:31 UTC. 27.08 13:05'te hâlâ hiçbiri dönmedi**
+(~14 saat). Etkilenen: jobs-feed 05:00, borsa-feed 06:00 + 11:00, gmail-feed
+05/08/11:00 ve **push-yoklama** — yani o gün antrenman/rutin bildirimleri de
+düşmedi. Altı iş akışı da `active`, **elle tetikleme sorunsuz çalışıyor**
+(o gün 4 kez elle çalıştırıldı, hepsi başarılı). Yani kod tarafı sağlam;
+GitHub'ın zamanlanmış iş kuyruğu tarafında bir aksama.
+
+Kaçan feed'ler elle tetiklenip panel tazelendi. **Kontrol yolu:** panelin
+Ajan Telemetrisi kartı ya da `gh run list --event schedule --limit 5`.
+Sürerse `push-yoklama` için dış tetikleyici (cron-job.org gibi) konuşulacak —
+bildirimler buna bağlı.
+
 ## 2. Kullanıcıda bekleyen işler
 
 **Telefon bildirimi ÇALIŞIYOR** (25 Ağustos, `Antrenman (12:15) — 1/1 cihaza
@@ -820,6 +834,17 @@ Bu 1. kuralla çelişiyor. Seçenekler:
 3. Depoyu private yapmak — Pages ücretsiz planda private repodan yayın
    yapmıyor, panel yayından kalkar.
 Geçmişteki veri için ayrıca `git filter-repo` gerekir (force-push).
+
+### 4.12 "Bugünün 3 İşi" — başvurunca yenisi gelmiyor (kullanıcı fark etti, KARAR BEKLİYOR)
+
+Kart günde bir kez (08:00) yenileniyor; başvurulan ilan "✓ başvuruldu" olarak
+kalıyor ve yerine yenisi GELMİYOR. Sebep: `jobs_feed.py` havuzdan (23-25 ilan)
+yalnızca `PICK = 3` tanesini `jobs.json`'a yazıyor — panelde yedek ilan yok.
+
+İki seçenek sunuldu, kullanıcı "şimdilik dokunmayalım" dedi:
+1. **(önerilen)** `PICK = 8`, panel başvurulmamış ilk 3'ü göstersin —
+   başvurunca sıradaki devreye girer. Feed'e ek istek maliyeti yok.
+2. Feed günde 2 kez koşsun (08:00 + 17:00) — başvurunca yine anında gelmez.
 
 ### 4.11 Program v2'den KALAN maddeler (6, 7, 8, 9 ve 13'ün otomatik kısmı)
 
