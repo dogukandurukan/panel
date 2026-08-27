@@ -1,8 +1,10 @@
 name: borsa-feed
 on:
   schedule:
-    - cron: '0 6 * * 1-5'    # 09:00 Türkiye (hafta içi)
-    - cron: '0 11 * * 1-5'   # 14:00 Türkiye (hafta içi)
+    # Her gün: borsa hafta sonu kapalı ama aynı feed Türkiye/dünya gündemini
+    # de üretiyor, o hafta sonu bayatlamasın.
+    - cron: '0 6 * * *'    # 09:00 Türkiye
+    - cron: '0 11 * * *'   # 14:00 Türkiye
   workflow_dispatch:          # "Run workflow" ile elle de tetiklenir
 jobs:
   feed:

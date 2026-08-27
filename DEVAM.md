@@ -7,6 +7,38 @@ Bu dosya bir oturumdan diğerine devretmek için. Kalıcı proje kuralları
 
 ## 1. Bu oturumda ne yapıldı
 
+### 27 Ağustos — Gündem şeridi (4.6 uygulandı)
+Tam genişlikte, eşit üç sütun: **Dünya | Türkiye | Piyasa & Şirket**.
+Kart olarak gridde tek sütuna sıkışıyordu (663 px) ve dünya+piyasa haberleri
+alt alta biniyordu. Şerit grid'in hemen altında, Quiz & Gramer'in üstünde.
+
+- `.trio`: gap yerine `padding + border-left` — ayraç sütunlar arasında tam
+  ortada duruyor (gazete sütunu hissi). 980 px'te 2 sütun (Piyasa alta tam
+  genişlik), 700 px'te tek sütun, ayraçlar üst çizgiye dönüyor.
+- Her sütun 6 haber; numaralandırma sütun başına yeniden başlıyor.
+
+**Türkiye gündemi yeni** (`borsa.json` → `tr`): AA, TRT Haber, BBC Türkçe,
+Habertürk, NTV. Kaynak başına en fazla 2, `_benzer` ile tekrar eleniyor.
+NTV/Habertürk akışları SEO gürültüsüyle dolu ("Şans Topu Sonuçları Sorgulama
+Ekranı", "Son dakika deprem mi oldu?"); `COP_KALIP`'a Türkiye'ye özgü
+kalıplar eklendi (loto, sorgulama, deprem mi oldu, saat kaçta, canlı izle…).
+
+**Dünya sütunu tamamen İngilizceye çekildi** (Euronews TR + DW Türkçe yerine
+İngilizce sürümleri). Yan fayda: 4.4'teki "aynı olay iki dilde iki kez
+listeye giriyor" açığı kapandı — kelime örtüşmesi diller arası çalışmıyordu.
+Ayrıca Euronews'in günde birkaç kez attığı "Latest news bulletin | … Midday"
+başlığı da elendi (haber değil, bültenin kendisi).
+
+**`fetch_world` ve `fetch_tr` tek gövdeye indi** (`_harmanla`): kaynak başına
+sınır, dönüşümlü harmanlama ve teşhis satırı ikisinde de aynı.
+
+**feed.yml artık her gün koşuyor** (eskiden hafta içi). Borsa hafta sonu
+kapalı ama aynı feed gündemi de üretiyor; Türkiye/dünya haberleri hafta sonu
+bayatlamasın diye. Borsa satırları hafta sonu son kapanışı gösterir.
+
+**Doğrulama:** 1440 / 980 / 700 / 390 px'te taşma yok, sütunlar eşit;
+iki temada da render edildi; gerçek veriyle 6+6+6 haber; sayfa 5884 px.
+
 ### 26 Ağustos (3) — Yemek metninden kalori hesabı (4.9 uygulandı)
 Kullanıcı: "listedekine uymadığım gün 'kahvaltıda şunu yedim' diye girsem ve
 ona göre kalori hesaplasa mümkün mü?"
@@ -603,7 +635,7 @@ mı? Kartın hangi seviyede çalışabileceğini bu belirliyor.
 
 ---
 
-### 4.6 Gündem şeridi — KARARLAR ALINDI, yapılacak
+### 4.6 Gündem şeridi — BİTTİ (27 Ağustos, yukarı bak)
 
 Kullanıcı onayladı: **tam genişlikte, eşit üç sütun** — `Dünya Gündemi`
 (İngilizce, mevcut altı kaynak) | `Türkiye Gündemi` (**yeni**: NTV, Habertürk

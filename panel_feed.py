@@ -135,10 +135,23 @@ WORLD_FEEDS = [
     ("Guardian World", "https://www.theguardian.com/world/rss"),
     ("Al Jazeera", "https://www.aljazeera.com/xml/rss/all.xml"),
     ("NPR World", "https://feeds.npr.org/1004/rss.xml"),
-    # Türkçe kaynaklarda genel akış yurt içi manşetle doluyor; bu ikisi
-    # dünya/Avrupa ağırlıklı. BBC Türkçe genel akışı bu yüzden çıkarıldı.
-    ("Euronews", "https://tr.euronews.com/rss?level=theme&name=news"),
-    ("DW Türkçe", "https://rss.dw.com/rdf/rss-tur-all"),
+    # Türkiye gündemi artık kendi sütununda; dünya sütunu tamamen İngilizce
+    # kaynaklara çekildi. Yan fayda: aynı olayın iki dilde iki kez listeye
+    # girmesi (BBC "Ukrainian strikes" + Euronews TR "Ukrayna ... vurdu")
+    # sorunu kendiliğinden kapandı — kelime örtüşmesi diller arası çalışmıyordu.
+    ("Euronews", "https://www.euronews.com/rss?level=theme&name=news"),
+    ("DW", "https://rss.dw.com/rdf/rss-en-world"),
+]
+
+# Türkiye gündemi. Ajans + kurumsal kaynaklar önde; magazin/SEO akışları
+# _cop_mu süzgecine takılıyor (NTV "Şans Topu Sonuçları Sorgulama Ekranı"
+# gibi başlıklar bu yüzden elenmek zorunda).
+TR_FEEDS = [
+    ("AA", "https://www.aa.com.tr/tr/rss/default?cat=guncel"),
+    ("TRT Haber", "https://www.trthaber.com/sondakika.rss"),
+    ("BBC Türkçe", "https://feeds.bbci.co.uk/turkce/rss.xml"),
+    ("Habertürk", "https://www.haberturk.com/rss/gundem.xml"),
+    ("NTV", "https://www.ntv.com.tr/gundem.rss"),
 ]
 # Tek kaynak listeyi doldurmasın
 KAYNAK_BASI_MAX = 2
@@ -156,6 +169,14 @@ COP_KALIP = (
     "işte o anlar", "sosyal medya yıkıldı", "olay yarattı", "şoke etti",
     "bomba iddia", "son dakika haberi:", "tıkla öğren", "işte detaylar",
     "kaçıncı bölüm", "fragman", "çekiliş", "zam geldi mi",
+    # Türkiye akışlarındaki SEO/loto gürültüsü
+    "şans topu", "sayısal loto", "süper loto", "on numara", "sorgulama",
+    "deprem mi oldu", "az önce deprem", "hangi kanalda", "canlı izle",
+    "saat kaçta", "ne kadar oldu", "kaç para", "bilet fiyatları",
+    "sonuçları açıklandı mı", "ne zaman?", "kim kazandı",
+    # Euronews günde birkaç kez "Latest news bulletin | ... – Midday" başlığı
+    # atıyor: haber değil, bültenin kendisi.
+    "news bulletin", "haber bülteni",
 )
 # Hisse haberlerine özgü gürültü
 COP_HISSE = ("hisse #", "#hisse", "game informer")
@@ -246,14 +267,15 @@ def _benzer(a, b):
 
 
 def fetch_world(n=6):
-    """Her kaynaktan en fazla KAYNAK_BASI_MAX haber; dönüşümlü harmanlanır."""
-    kaynak = {}
-    for ad, url in WORLD_FEEDS:
-        kaynak[ad] = _rss_basliklar(url, KAYNAK_BASI_MAX, ad)
+    return _harmanla(WORLD_FEEDS, n, "🌍")
 
+
+def _harmanla(feeds, n, emoji):
+    """Kaynak başına en fazla KAYNAK_BASI_MAX; dönüşümlü sırayla harmanlar."""
+    kaynak = {ad: _rss_basliklar(url, KAYNAK_BASI_MAX, ad) for ad, url in feeds}
     out = []
-    for tur in range(KAYNAK_BASI_MAX):          # önce herkesin 1., sonra 2.'si
-        for ad, _ in WORLD_FEEDS:
+    for tur in range(KAYNAK_BASI_MAX):
+        for ad, _ in feeds:
             if tur >= len(kaynak.get(ad, [])):
                 continue
             baslik = kaynak[ad][tur]
@@ -264,14 +286,18 @@ def fetch_world(n=6):
                 break
         if len(out) >= n:
             break
-
     calisan = sorted({a for a, _ in out})
-    olu = [ad for ad, _ in WORLD_FEEDS if not kaynak.get(ad)]
+    olu = [ad for ad, _ in feeds if not kaynak.get(ad)]
     ozet = (f"SONUÇ: {len(out)} haber · veren: {', '.join(calisan) or 'yok'}"
             + (f" · boş dönen: {', '.join(olu)}" if olu else ""))
     TESHIS.append(ozet)
     print("  " + ozet)
-    return [f"🌍 {b}  ({a})" for a, b in out]
+    return [f"{emoji} {b}  ({a})" for a, b in out]
+
+
+def fetch_tr(n=6):
+    return _harmanla(TR_FEEDS, n, "🇹🇷")
+
 
 def build():
     codes = list(dict.fromkeys(
@@ -318,6 +344,7 @@ def build():
             break
 
     dunya = fetch_world(6)
+    turkiye = fetch_tr(6)
 
     return {
         "updated": dt.datetime.now(IST).strftime("%Y-%m-%d %H:%M"),
@@ -327,6 +354,7 @@ def build():
         "gold": fetch_gold(),
         "news": news_items[:8],
         "world": dunya,
+        "tr": turkiye,
         "_teshis": {
             "dunya": TESHIS,
             "hisse": f"{len(hisse_ham)} başlık geldi, {hisse_elenen} elendi",
@@ -349,4 +377,5 @@ if __name__ == "__main__":
     seri = sum(1 for r in d["watch"] + d["us"] + d["world_idx"] if r.get("hist"))
     print(f"borsa.json: {len(d['watch'])} BIST, {len(d['us'])} ABD, "
           f"{len(d['world_idx'])} endeks, {seri} seri, "
-          f"altın={'var' if d['gold'] else 'yok'}, {len(d['news'])} haber, {len(d['world'])} dünya")
+          f"altın={'var' if d['gold'] else 'yok'}, {len(d['news'])} haber, "
+          f"{len(d['world'])} dünya, {len(d['tr'])} Türkiye")
