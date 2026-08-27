@@ -7,6 +7,48 @@ Bu dosya bir oturumdan diğerine devretmek için. Kalıcı proje kuralları
 
 ## 1. Bu oturumda ne yapıldı
 
+### 27 Ağustos (2) — Ret takibi: şirket listesi olmadan tarama (4.8)
+Kullanıcı: "ret mailleri çok geç geliyor ve insandan geldiyse görmüyor gibi."
+Enpal örneği verildi.
+
+**Kök sebep (bir önceki oturumda bulunmuştu):** eski akış YALNIZCA Sheet'teki
+şirket adlarını Gmail'de arıyor. Enpal tabloda olmadığı için hiç aranmıyordu.
+
+**2. geçiş eklendi** (`serbest_tarama`): gelen kutusu şirket adı olmadan,
+yalnızca `GUCLU_TERIMLER` ile taranıyor. "unfortunately"/"maalesef" gibi tek
+başına her yerde geçen sözcükler bu listede YOK — şirket çapası olmadan
+yanlış pozitif üretirlerdi. Ayrıca gövdede iş bağlamı aranıyor
+(`IS_BAGLAMI`): bir kargo maili de "regret to inform" yazabiliyor.
+
+**Gönderen → şirket:** görünen ad; ad bir KİŞİ adıysa (iki kelime, şirket eki
+yok) alan adı tercih ediliyor — "Julia Braun <julia@flixtech.com>" kartta
+"Julia Braun" değil **Flixtech** görünsün diye. ATS alanları
+(greenhouse/lever/workday/personio…) şirket sayılmıyor; o durumda görünen ada
+düşülüyor ("Enpal Recruiting <no-reply@greenhouse.io>" → Enpal).
+
+**Kısaltma açma:** `we won't be taking your application further` kalıp
+listesindeki `not be taking...` ile eşleşmiyordu. `_ac()` 17 kısaltmayı
+açıyor. Kullanıcının "insandan geldiyse görmüyor" sezgisi buydu. Ayrıca
+20'ye yakın insan yazımı ret kalıbı listeye eklendi.
+
+**Nereye yazılıyor:** repoya DEĞİL. Depo herkese açık (1. kural), başvuru
+verisi kişisel. Sonuç senkronun gizli gist'indeki `panel-data.json` içinde
+`d:retler` anahtarına yazılıyor (panelin senkron biçimi: `{"v":…,"t":ms}`).
+`PANEL_GIST_TOKEN` yoksa betik çökmüyor, log'a yazıyor.
+**Actions log'una şirket ADI basılmıyor** — log da herkese açık; yalnızca
+sayılar yazılıyor.
+
+**Panelde** İş Başvuruları kartında "Gmail'de görülen retler" bölümü. Tek tek
+gizlenebiliyor (`d:retGizli`). Veri yoksa bölüm hiç çıkmıyor.
+
+**gmail-feed günde 2 → 5 kez** koşuyor (08/11/14/17/20 TR): retler geç
+görünüyordu.
+
+**Canlı doğrulama** (27.08 11:29 koşusu): `serbest tarama: 11 aday · 2 yeni
+ret · 2 Sheet'te var · 7 koşullu/ret değil` ve `gist: 2 ret yazıldı`.
+Birim testler: Enpal maili, kısaltmalı insan reti, koşullu cümle (elenmeli),
+kargo maili (iş bağlamı yok, elenmeli), 8 farklı gönderen biçimi.
+
 ### 27 Ağustos — Gündem şeridi (4.6 uygulandı)
 Tam genişlikte, eşit üç sütun: **Dünya | Türkiye | Piyasa & Şirket**.
 Kart olarak gridde tek sütuna sıkışıyordu (663 px) ve dünya+piyasa haberleri
@@ -663,7 +705,7 @@ altta tam genişlikte yatay bir şeride taşınsın. Quiz "ne demek" yerine
 (`["traurig","üzgün","Warum bist du traurig?","A2"]`), hedef kelime cümleden
 silinerek üretilebilir.
 
-### 4.8 Ret takibi: şirket listesi olmadan tarama (Enpal)
+### 4.8 Ret takibi — BİTTİ (27 Ağustos, yukarı bak)
 
 Kullanıcı Sheet'e elle satır eklemek istemiyor. Yapılacak: `check_rejections.py`
 ikinci geçiş — gelen kutusunda ret kalıbı olan mailleri şirket adı olmadan
@@ -683,6 +725,22 @@ Açık uçlar:
   yazarsa (`+ 1 kaşık zeytinyağı`) hesaba giriyor.
 - Porsiyon çipleri (— / ½ / ✓) hesabın ÜSTÜNE çarpılıyor; otomatik hesap
   tam porsiyon içindir.
+
+### 4.10 gmail.json public repoda kişisel veri taşıyor (AÇIK, kullanıcıya soruldu)
+
+Ret taraması sırasında görüldü: `gmail_feed.py` okunmamış maillerin
+**gönderen adını, e-posta adresini ve konu başlığını** `gmail.json`'a yazıyor
+ve bu dosya bu depoda — yani herkese açık, üstelik git geçmişinde de duruyor
+(bugün boş çünkü gelen kutusu boş; dolu olduğu koşularda dolu).
+
+Bu 1. kuralla çelişiyor. Seçenekler:
+1. `d:retler` gibi gizli gist'e yazmak (panel zaten senkronla okuyor) —
+   tutarlı çözüm, Gmail kartı aynen çalışır.
+2. Yalnızca sayıları repoya yazmak (kaç okunmamış, kaç iş maili), başlıkları
+   hiç yazmamak — kart sığlaşır.
+3. Depoyu private yapmak — Pages ücretsiz planda private repodan yayın
+   yapmıyor, panel yayından kalkar.
+Geçmişteki veri için ayrıca `git filter-repo` gerekir (force-push).
 
 ## 5. Çalışma alışkanlıkları (bu projede işe yarayan)
 
