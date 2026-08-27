@@ -7,6 +7,32 @@ Bu dosya bir oturumdan diğerine devretmek için. Kalıcı proje kuralları
 
 ## 1. Bu oturumda ne yapıldı
 
+### 27 Ağustos (3) — gmail.json public repodan kaldırıldı (4.10 çözüldü)
+Ret taraması sırasında görüldü: `gmail.json` okunmamış maillerin **gönderen
+adını, e-posta adresini ve konu başlığını** herkese açık depoya yazıyordu.
+Kullanıcı "gizli gist'e taşı" dedi; git geçmişine dokunulmadı (force-push
+gerektiriyor, repoya push eden başka oturumlar var).
+
+- **Yeni `gist_io.py`**: panelin senkron gist'ine anahtar yazan ortak yardımcı.
+  Biçim panelin `mergeRemote`'uyla aynı: `data["d:anahtar"]={"v":…,"t":ms}`.
+  Değer değişmediyse PATCH atmıyor. Döndürdüğü metin şirket/konu İÇERMEZ —
+  Actions log'u da herkese açık.
+- `gmail_feed.py` dosya yazmıyor, `d:gmail` anahtarını gist'e yazıyor.
+  `check_rejections.py` kendi yazıcısını bırakıp aynı modülü kullanıyor.
+- `gmail-feed.yml`: gmail.json commit adımı ve `contents: write` izni kalktı.
+- Panel `gmail.json` çekmiyor; `d:gmail`i senkrondan okuyor. Senkron kurulu
+  değilse kart bunu açıkça yazıyor. "Yenile" düğmesi artık senkron çekiyor.
+- Ajan telemetrisi güncellendi: gmail-feed `gizli gist` · 8/11/14/17/20,
+  borsa-feed her gün.
+
+**Canlı doğrulama** (27.08 12:26): `gist: d:gmail yazıldı (1420 bayt)` ·
+`gmail: 5 okunmamış` · `gist: d:retler zaten güncel, yazılmadı` (aynı veriye
+ikinci kez yazmıyor). `https://dogukandurukan.github.io/panel/gmail.json`
+artık **404**.
+
+**Kalan iz:** git geçmişinde eski gmail.json sürümleri duruyor. Temizlemek
+istenirse `git filter-repo` + force-push gerekir.
+
 ### 27 Ağustos (2) — Ret takibi: şirket listesi olmadan tarama (4.8)
 Kullanıcı: "ret mailleri çok geç geliyor ve insandan geldiyse görmüyor gibi."
 Enpal örneği verildi.
@@ -726,7 +752,7 @@ Açık uçlar:
 - Porsiyon çipleri (— / ½ / ✓) hesabın ÜSTÜNE çarpılıyor; otomatik hesap
   tam porsiyon içindir.
 
-### 4.10 gmail.json public repoda kişisel veri taşıyor (AÇIK, kullanıcıya soruldu)
+### 4.10 gmail.json — ÇÖZÜLDÜ (27 Ağustos, yukarı bak). Kalan: git geçmişi
 
 Ret taraması sırasında görüldü: `gmail_feed.py` okunmamış maillerin
 **gönderen adını, e-posta adresini ve konu başlığını** `gmail.json`'a yazıyor
