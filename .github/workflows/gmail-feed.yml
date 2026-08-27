@@ -1,8 +1,12 @@
 name: gmail-feed
 on:
   schedule:
-    - cron: '0 6 * * *'      # 09:00 Türkiye (her gün, hafta sonu dahil)
-    - cron: '0 11 * * *'     # 14:00 Türkiye (her gün, hafta sonu dahil)
+    # Ret mailleri "çok geç geliyor" diye günde 2'den 5'e çıkarıldı.
+    - cron: '0 5 * * *'      # 08:00 Türkiye
+    - cron: '0 8 * * *'      # 11:00 Türkiye
+    - cron: '0 11 * * *'     # 14:00 Türkiye
+    - cron: '0 14 * * *'     # 17:00 Türkiye
+    - cron: '0 17 * * *'     # 20:00 Türkiye
   workflow_dispatch:          # "Run workflow" ile elle de tetiklenir
 jobs:
   feed:
@@ -34,3 +38,5 @@ jobs:
           GMAIL_CLIENT_ID: ${{ secrets.GMAIL_CLIENT_ID }}
           GMAIL_CLIENT_SECRET: ${{ secrets.GMAIL_CLIENT_SECRET }}
           GMAIL_REFRESH_TOKEN: ${{ secrets.GMAIL_REFRESH_TOKEN }}
+          # Sheet'te olmayan retler gizli gist'e yazılıyor (repo herkese açık).
+          PANEL_GIST_TOKEN: ${{ secrets.PANEL_GIST_TOKEN }}

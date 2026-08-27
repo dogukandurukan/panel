@@ -16,17 +16,26 @@ Hiçbir mail göndermez / silmez / okundu işaretlemez. Sadece:
      ELENIR — yanlış pozitifi önlemek için (2. katman doğrulama)
   4) Gerçek bir ret ifadesi bulunursa ilgili satırın Durum hücresini "Ret"
      yazar (Sheets API, write)
+  5) İKİNCİ GEÇİŞ: Sheet'te hiç olmayan başvuruların reddi de görünsün diye
+     gelen kutusunu şirket adı olmadan, yalnızca GÜÇLÜ ret kalıplarıyla
+     tarar; göndereni şirkete çevirir. Sonuç repoya YAZILMAZ (depo herkese
+     açık) — senkronun gizli gist'indeki panel-data.json / d:retler
+     anahtarına yazılır, panel oradan okur.
 
 Kimlik bilgileri ortam değişkenlerinden okunur (GitHub Actions secrets):
   GMAIL_CLIENT_ID, GMAIL_CLIENT_SECRET, GMAIL_REFRESH_TOKEN
+  PANEL_GIST_TOKEN (2. geçişin sonucunu gist'e yazmak için; yoksa yalnızca
+  log'a basılır, betik çökmez)
 (refresh token hem gmail.readonly hem spreadsheets scope'una sahip olmalı)
 
 Çalıştırma: python check_rejections.py
 """
 import base64
 import datetime as dt
+import json
 import os
 import re
+import time
 
 import requests
 
@@ -69,7 +78,80 @@ REJECTION_TERMS = [
     "position has been filled",
     "decided not to proceed with your application",
     "decided not to move forward",
+    # Elle yazılmış retlerde çıkan, listede olmayan kalıplar
+    "not be taking your application further",
+    "not be proceeding with your application",
+    "will not be proceeding",
+    "not be progressing your application",
+    "decided to proceed with other candidates",
+    "proceed with other applicants",
+    "move forward with other applicants",
+    "not selected to move forward",
+    "not be moving ahead",
+    "decided to move ahead with other",
+    "we have chosen another candidate",
+    "gone with another candidate",
+    "no longer under consideration",
+    "your application was unsuccessful",
+    "were not successful on this occasion",
+    "başvurunuz olumsuz",
+    "başvurunuz maalesef",
+    "sürecinize devam etmeme kararı",
+    "devam etmeme kararı aldık",
+    "başka bir aday ile",
 ]
+
+# ŞİRKET LİSTESİ OLMADAN tarama için: yalnızca rette geçen, güçlü kalıplar.
+# "unfortunately"/"maalesef" gibi tek başına her yerde geçen sözcükler burada
+# YOK — şirket adı çapası olmadan yanlış pozitif üretirlerdi.
+GUCLU_TERIMLER = [
+    "regret to inform",
+    "not moving forward with your application",
+    "will not be moving forward",
+    "decided not to proceed with your application",
+    "decided not to move forward",
+    "move forward with other candidates",
+    "moving forward with other candidates",
+    "proceed with other applicants",
+    "move forward with other applicants",
+    "not be taking your application further",
+    "not be proceeding with your application",
+    "not selected to move forward",
+    "your application was unsuccessful",
+    "were not successful on this occasion",
+    "no longer under consideration",
+    "unable to offer you",
+    "position has been filled",
+    "olumsuz sonuçlanmıştır",
+    "olumlu sonuçlanmamıştır",
+    "başvurunuz olumsuz",
+    "başka adaylarla",
+    "başka bir adayla",
+    "üzülerek bildiririz",
+    "devam etmeme kararı",
+]
+
+# Ret olduğu kadar İŞ BAŞVURUSU olduğu da doğrulanmalı: bir mağaza da
+# "we regret to inform" yazabiliyor.
+IS_BAGLAMI = ("application", "position", "role", "candidate", "interview",
+              "recruit", "hiring", "vacancy", "cv", "resume",
+              "başvuru", "pozisyon", "aday", "mülakat", "işe alım", "özgeçmiş")
+
+# Şirket adı bu alan adlarından çıkarılamaz — hepsi işe alım yazılımı.
+ATS_ALANLARI = {
+    "greenhouse.io", "us.greenhouse.io", "eu.greenhouse.io", "lever.co",
+    "hire.lever.co", "myworkday.com", "workday.com", "workdaysuite.com",
+    "smartrecruiters.com", "personio.de", "personio.com", "successfactors.com",
+    "icims.com", "ashbyhq.com", "recruitee.com", "teamtailor.com", "jobvite.com",
+    "bamboohr.com", "join.com", "softgarden.io", "workable.com", "breezy.hr",
+    "hibob.com", "pinpointhq.com", "gmail.com", "googlemail.com", "outlook.com",
+    "hotmail.com", "linkedin.com", "indeed.com", "email.indeed.com",
+}
+# Gönderen adı bunlardan ibaretse şirket adı sayılmaz
+JENERIK_AD = ("no-reply", "noreply", "no reply", "recruiting", "recruitment",
+              "talent", "talent acquisition", "hr", "human resources", "careers",
+              "career", "jobs", "hiring", "people team", "notification",
+              "team", "info", "kariyer", "ik", "insan kaynakları")
 
 # Eşleşen ifade bu kalıplardan biriyle AYNI CÜMLEDE geçiyorsa muhtemelen
 # koşullu/varsayımsal bir cümledir (ör. "if you are not selected...") ve
@@ -161,9 +243,28 @@ def fetch_message(headers, msg_id):
     return subject, sender, text
 
 
+# "won't be taking your application further" kalıp listesindeki
+# "not be taking..." ile eşleşmiyordu: elle yazılmış retler kısaltma kullanıyor.
+KISALTMA = [
+    ("won't", "will not"), ("wouldn't", "would not"), ("can't", "can not"),
+    ("cannot", "can not"), ("don't", "do not"), ("doesn't", "does not"),
+    ("didn't", "did not"), ("haven't", "have not"), ("hasn't", "has not"),
+    ("isn't", "is not"), ("aren't", "are not"), ("weren't", "were not"),
+    ("we're", "we are"), ("we've", "we have"), ("we'll", "we will"),
+    ("you're", "you are"), ("it's", "it is"),
+]
+
+
+def _ac(metin):
+    d = (metin or "").lower().replace("\u2019", "'")
+    for k, v in KISALTMA:
+        d = d.replace(k, v)
+    return d
+
+
 def is_genuine_rejection(body_text):
     """Ret ifadesi geçen cümleyi bulur; koşullu/varsayımsal cümleleri eler."""
-    sentences = SENTENCE_SPLIT_RE.split(body_text.lower())
+    sentences = SENTENCE_SPLIT_RE.split(_ac(body_text))
     for sentence in sentences:
         for term in REJECTION_TERMS:
             if term.lower() in sentence:
@@ -183,6 +284,175 @@ def mark_as_ret(headers, row_number):
         timeout=20,
     )
     r.raise_for_status()
+
+
+# ---------------------------------------------------------------------------
+# ŞİRKET LİSTESİ OLMADAN TARAMA
+# Sheet'e girilmemiş başvurunun reddi hiç görülmüyordu (Enpal böyle kaçtı):
+# eski akış YALNIZCA Sheet'teki şirket adlarını Gmail'de arıyor. Bu geçiş
+# gelen kutusunu ret kalıbıyla tarayıp göndereni şirkete çeviriyor.
+#
+# NEREYE YAZILIYOR: bu depo herkese açık (CLAUDE.md 1. kural), başvuru verisi
+# kişiseldir. Sonuç repoya değil, senkronun kullandığı GİZLİ gist'e
+# (panel-data.json / d:retler) yazılıyor; panel zaten oradan okuyor.
+# ---------------------------------------------------------------------------
+GIST_DATA = "panel-data.json"
+RET_ANAHTAR = "d:retler"
+SERBEST_GUN = 60
+SERBEST_MAX = 25
+
+
+def _ad_temizle(ham):
+    """From başlığındaki görünen ad -> şirket adı. Çıkarılamazsa None."""
+    ad = re.sub(r"<[^>]*>", "", ham or "").strip().strip('"').strip()
+    ad = re.sub(r"\s+", " ", ad)
+    if not ad or "@" in ad:
+        return None
+    # "Enpal Recruiting Team" -> "Enpal"
+    for jen in ("recruiting team", "recruitment team", "talent acquisition",
+                "talent team", "hiring team", "people team", "careers",
+                "recruiting", "recruitment", "talent", "hiring", "hr", "jobs",
+                "kariyer", "insan kaynakları", "ik ekibi"):
+        ad = re.sub(r"(?i)\b" + re.escape(jen) + r"\b", " ", ad)
+    ad = re.sub(r"(?i)\b(team|ekibi|ekip|no[- ]?reply|via .*)$", " ", ad)
+    ad = re.sub(r"[|·•]+", " ", ad)
+    ad = re.sub(r"\s+", " ", ad).strip(" -–—,.")
+    if len(ad) < 2 or ad.lower() in JENERIK_AD:
+        return None
+    return ad
+
+
+SIRKET_EKI = ("gmbh", "inc", "inc.", "ltd", "ltd.", "ag", "b.v.", "bv", "se",
+              "a.ş.", "as", "llc", "co", "corp", "group", "labs", "tech")
+
+
+def _kisi_adi_mi(ad):
+    """İki kelimelik, şirket eki olmayan Büyük Harfli ad -> muhtemelen insan.
+    Retler çoğu zaman bir insandan geliyor; kartta "Julia Braun" değil şirket
+    adı görünmeli."""
+    p = ad.split()
+    if len(p) != 2 or len(ad) > 30:
+        return False
+    if any(x.lower().strip(".,") in SIRKET_EKI for x in p):
+        return False
+    return all(x[:1].isupper() and x[1:].islower() for x in p)
+
+
+def sirket_cikar(from_header):
+    """Görünen ad; kişi adıysa ya da yoksa alan adı. ATS alanları sayılmaz."""
+    ad = _ad_temizle(from_header)
+    m = re.search(r"@([A-Za-z0-9.\-]+)", from_header or "")
+    if ad and not (_kisi_adi_mi(ad) and m):
+        return ad
+    if not m:
+        return ad
+    alan = m.group(1).lower().strip(".")
+    if alan in ATS_ALANLARI:
+        return ad          # ATS'ten geliyorsa elde kalan tek şey görünen ad
+    kok = alan.split(".")
+    # careers.enpal.de -> enpal ; mail.hellofresh.com -> hellofresh
+    parca = [p for p in kok if p not in
+             ("mail", "email", "e", "careers", "career", "jobs", "recruiting",
+              "notifications", "no-reply", "reply", "smtp", "mailer", "www")]
+    if len(parca) >= 2:
+        return parca[-2].capitalize()
+    return (parca[0] if parca else kok[0]).capitalize()
+
+
+def is_basvurusu_mu(body_text):
+    d = body_text.lower()
+    return any(k in d for k in IS_BAGLAMI)
+
+
+def serbest_tarama(headers, sheet_sirketleri):
+    """Gelen kutusunda güçlü ret kalıbı arar; Sheet'te olmayanları döndürür."""
+    grup = " OR ".join(f'"{t}"' for t in GUCLU_TERIMLER)
+    q = f'({grup}) in:inbox -in:chats newer_than:{SERBEST_GUN}d'
+    try:
+        r = requests.get(f"{GMAIL_API}/messages", headers=headers,
+                         params={"q": q, "maxResults": SERBEST_MAX}, timeout=25)
+        r.raise_for_status()
+        ids = [m["id"] for m in r.json().get("messages", [])]
+    except Exception as e:
+        print(f"serbest tarama: arama hatası: {e}")
+        return []
+
+    bilinen = [s.lower() for s in sheet_sirketleri if s]
+    bulunan, atlanan_sheet, atlanan_kosullu, atlanan_isdisi = [], 0, 0, 0
+    for mid in ids:
+        try:
+            subject, sender, body = fetch_message(headers, mid)
+        except Exception:
+            continue
+        gercek, terim = is_genuine_rejection(body)
+        if gercek and not any(t in _ac(body) for t in GUCLU_TERIMLER):
+            # 1. geçişin zayıf kalıpları (yalnız "unfortunately" gibi) şirket
+            # çapası olmadan yeterli değil.
+            gercek = False
+        if not gercek:
+            atlanan_kosullu += 1
+            continue
+        if not is_basvurusu_mu(body + " " + subject):
+            atlanan_isdisi += 1
+            continue
+        sirket = sirket_cikar(sender)
+        # Sheet'te varsa 1. geçiş zaten ilgileniyor
+        ad_k = (sirket or "").lower()
+        if ad_k and any(ad_k in b or b in ad_k for b in bilinen):
+            atlanan_sheet += 1
+            continue
+        bulunan.append({
+            "sirket": sirket or "(gönderen çözülemedi)",
+            "konu": subject[:120],
+            "kimden": re.sub(r"\s+", " ", sender)[:90],
+            "terim": terim,
+        })
+    print(f"serbest tarama: {len(ids)} aday · {len(bulunan)} yeni ret · "
+          f"{atlanan_sheet} Sheet'te var · {atlanan_kosullu} koşullu/ret değil · "
+          f"{atlanan_isdisi} iş başvurusu değil")
+    return bulunan
+
+
+def gist_yaz(retler):
+    """Gizli gist'teki panel-data.json'a d:retler anahtarını koyar.
+    Panelin senkronuyla aynı biçim: {"v": <string>, "t": <ms>}."""
+    token = os.environ.get("PANEL_GIST_TOKEN", "").strip()
+    if not token:
+        print("gist: PANEL_GIST_TOKEN yok — retler panele yazılamadı "
+              f"({len(retler)} kayıt yalnızca bu logda)")
+        return
+    gh = {"Authorization": "Bearer " + token,
+          "Accept": "application/vnd.github+json"}
+    try:
+        liste = requests.get("https://api.github.com/gists?per_page=100",
+                             headers=gh, timeout=25).json()
+        hedef = next((g for g in liste
+                      if GIST_DATA in ((g or {}).get("files") or {})), None)
+        if not hedef:
+            print(f"gist: {GIST_DATA} bulunamadı (token {len(liste)} gist görüyor)")
+            return
+        tam = requests.get("https://api.github.com/gists/" + hedef["id"],
+                           headers=gh, timeout=25).json()
+        f = (tam.get("files") or {}).get(GIST_DATA) or {}
+        ham = (requests.get(f["raw_url"], timeout=25).text
+               if f.get("truncated") and f.get("raw_url") else f.get("content") or "{}")
+        paket = json.loads(ham or "{}")
+        paket.setdefault("v", 1)
+        data = paket.setdefault("data", {})
+        yeni = json.dumps(retler, ensure_ascii=False)
+        eski = (data.get(RET_ANAHTAR) or {}).get("v")
+        if eski == yeni:
+            print(f"gist: {len(retler)} ret zaten yazılı, değişiklik yok")
+            return
+        data[RET_ANAHTAR] = {"v": yeni, "t": int(time.time() * 1000)}
+        paket["updated"] = int(time.time() * 1000)
+        r = requests.patch("https://api.github.com/gists/" + hedef["id"],
+                           headers=gh, timeout=25,
+                           json={"files": {GIST_DATA: {"content": json.dumps(paket, ensure_ascii=False)}}})
+        r.raise_for_status()
+        print(f"gist: {len(retler)} ret yazıldı ({RET_ANAHTAR})")
+    except Exception as e:
+        print(f"gist: yazılamadı: {type(e).__name__}: {str(e)[:90]}")
 
 
 def main():
@@ -248,6 +518,10 @@ def main():
             print(f"  [{company}] ret maili bulunamadı (son {days} gün)")
 
     print(f"check_rejections.py: {checked} şirket kontrol edildi, {updated} tanesi Ret olarak işaretlendi")
+
+    # 2. geçiş: Sheet'te HİÇ olmayan başvuruların retleri
+    sheet_sirketleri = [(row[0] if row else "").strip() for row in rows]
+    gist_yaz(serbest_tarama(headers, sheet_sirketleri))
 
 
 if __name__ == "__main__":
