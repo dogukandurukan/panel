@@ -1,101 +1,103 @@
 {
- "updated": "2026-08-26 08:32",
+ "updated": "2026-08-27 16:03",
  "ok": true,
  "count": 3,
- "pool": 25,
+ "pool": 23,
  "items": [
   {
-   "title": "Senior Machine Learning Engineer I",
-   "company": "sumup",
+   "title": "Senior Agentic AI Engineer",
+   "company": "Cube",
    "location": "Berlin",
    "loc_raw": "Berlin",
    "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/sumup/senior-machine-learning-engineer-i-berlin-296351",
+   "url": "https://www.arbeitnow.com/jobs/companies/cube/senior-agentic-ai-engineer-berlin-203894",
    "source": "Arbeitnow",
-   "posted": "2026-08-25",
-   "days": 1,
+   "posted": "2026-08-27",
+   "days": 0,
    "skills": [
     "python",
+    "sql",
     "azure",
-    "airflow",
-    "ci/cd",
     "git",
     "llm"
    ],
    "german": false,
    "focus": "ml",
-   "summary": "About the team: Within the Global Operations organisation, our mission is to build the best customer experience in the fintech industry by delivering an effortless customer experience to all our merchants. We are seeking a skilled and passionate Senior AI / Ma",
+   "summary": "CUBE are a global RegTech business defining and implementing the gold standard of regulatory intelligence for the financial services industry. We deliver our services through intuitive SaaS solutions, powered by AI, to simplify the complex and everchanging wor",
    "keywords": [
+    "saas",
     "scalab",
-    "stakeholder",
-    "pipeline",
-    "optimisation"
-   ],
-   "score": 112
-  },
-  {
-   "title": "Senior Data Analyst (f/m/d)",
-   "company": "Zenjob",
-   "location": "Berlin",
-   "loc_raw": "Berlin",
-   "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/zenjob/senior-data-analyst-berlin-207954",
-   "source": "Arbeitnow",
-   "posted": "2026-08-25",
-   "days": 1,
-   "skills": [
-    "python",
-    "sql",
-    "tableau",
-    "dbt",
-    "a/b test"
-   ],
-   "german": false,
-   "focus": "business",
-   "summary": "About us Zenjob is an AI-powered flexible staffing platform that has efficiently connected companies and temporary workers since 2015. Companies use our platform to book ready-to-work staff in real time, while students use our app to find part-time jobs that c",
-   "keywords": [
-    "real time",
-    "retail",
     "experimentation",
-    "a/b",
-    "governance",
-    "dashboard",
-    "self-service",
-    "stakeholder"
+    "enterprise",
+    "startup",
+    "finance"
    ],
    "score": 106
   },
   {
-   "title": "Senior BI Developer (m/f/d) - Microsoft Fabric & Power BI",
-   "company": "MultiBase GmbH",
-   "location": "Remote",
-   "loc_raw": "Gilching",
-   "remote": true,
-   "url": "https://www.arbeitnow.com/jobs/companies/multibase-gmbh/senior-bi-developer-microsoft-fabric-power-bi-gilching-69880",
+   "title": "Data Engineer - Data Platform & Ontology (m/f/d)",
+   "company": "Statista",
+   "location": "Berlin",
+   "loc_raw": "Hamburg or Berlin",
+   "remote": false,
+   "url": "https://www.arbeitnow.com/jobs/companies/statista/data-engineer-data-platform-ontology-hamburg-or-berlin-418502",
    "source": "Arbeitnow",
-   "posted": "2026-08-25",
-   "days": 1,
+   "posted": "2026-08-27",
+   "days": 0,
    "skills": [
+    "python",
     "sql",
-    "azure",
-    "power bi",
-    "data warehouse",
-    "dax",
-    "git"
+    "airflow",
+    "dbt",
+    "snowflake",
+    "data warehouse"
    ],
    "german": false,
-   "focus": "business",
-   "summary": "Remote, CET/CEST or SAST-aligned time zones | Full-time | Start: as soon as possible Build business-critical data products that turn trusted data into better decisions and action. Using Microsoft Fabric, Power BI and Azure, you will create lakehouses, semantic",
+   "focus": "pipeline",
+   "summary": "At Statista , we’re all about facts and data, for we are the world's leading business data platform. By providing reliable and easy-to-use data as well as various data analytics products and services, we empower people worldwide to make fact-based decisions. F",
    "keywords": [
-    "automation",
+    "scalab",
     "pipeline",
-    "stakeholder",
-    "dashboard"
+    "cost",
+    "governance",
+    "automation"
    ],
-   "score": 102
+   "score": 100
+  },
+  {
+   "title": "Data Engineer",
+   "company": "Platoapp",
+   "location": "Berlin",
+   "loc_raw": "Berlin",
+   "remote": false,
+   "url": "https://www.arbeitnow.com/jobs/companies/platoapp/data-engineer-berlin-6005",
+   "source": "Arbeitnow",
+   "posted": "2026-08-26",
+   "days": 1,
+   "skills": [
+    "python",
+    "sql",
+    "pyspark",
+    "spark",
+    "databricks",
+    "dbt"
+   ],
+   "german": false,
+   "focus": "pipeline",
+   "summary": "Your responsibilities Joining our data team, you'll lead the build of Plato's real-time data platform, data warehouse, and the infrastructure behind our suite of data products. You'll work closely with data science, product, design, and engineering to build th",
+   "keywords": [
+    "real-time",
+    "stakeholder",
+    "startup",
+    "forecast"
+   ],
+   "score": 100
   }
  ],
  "seen": [
+  "https://www.arbeitnow.com/jobs/companies/cube/senior-agentic-ai-engineer-berlin-203894",
+  "https://www.arbeitnow.com/jobs/companies/statista/data-engineer-data-platform-ontology-hamburg-or-berlin-418502",
+  "https://www.arbeitnow.com/jobs/companies/platoapp/data-engineer-berlin-6005",
   "https://www.arbeitnow.com/jobs/companies/sumup/senior-machine-learning-engineer-i-berlin-296351",
   "https://www.arbeitnow.com/jobs/companies/zenjob/senior-data-analyst-berlin-207954",
   "https://www.arbeitnow.com/jobs/companies/multibase-gmbh/senior-bi-developer-microsoft-fabric-power-bi-gilching-69880",
