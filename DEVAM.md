@@ -8,30 +8,46 @@ ne var.** Oturum oturum anlatı git geçmişinde — commit mesajları ayrıntı
 
 ## 1. Panel bugün ne durumda
 
-`index.html` ~391 KB, tek dosya, bağımlılık yok. Kart sırası (telefonda ve
-webde AYNI; webde 1. sütun yukarıdan aşağı okunur, sonra 2., sonra 3.):
+`index.html` ~395 KB, tek dosya, bağımlılık yok. **29 Ağustos'ta İKİ SEKMEYE
+bölündü** (tek sayfa çok uzamıştı). Kartların kendisi sekmenin içinde duruyor —
+içindekiler listesi değil. Sekme seçimi `d:tab`, tema gibi CİHAZA özel
+(`SYNC_SKIP`'te), telefondaki seçim Mac'i oynatmıyor.
 
-| # | Kart | Veri |
-|---|---|---|
-| 1 | Bugün Yapılacaklar | `d:tasks` |
-| 2 | Gelen Kutusu | **gizli gist** `d:gmail` |
-| 3 | Günün Programı | `SCHED` + `d:sched:TARİH` |
-| 4 | Sabah Rutini + Koşu | `MORNING_*` + `d:morning:TARİH`, `d:runkm:TARİH` |
-| 5 | Şu An Ne Yapıyorsun? (yoklama) | `YOK` + `d:yok:TARİH` |
-| 6 | Bugünün Antrenmanı | `WK` + `d:ex`, `d:sess`, `d:prog`, `d:vol` |
-| 7 | Kaldırılan Ağırlık (set kayıtları) | `d:wtlog` |
-| 8 | Alışkanlık Serileri | mevcut tiklerden türetilir |
-| 9 | Uyku Takibi | `d:sleepLog` |
-| 10 | Kilo Takibi (vücut ağırlığı) | `d:bw` |
-| 11 | Bugünün Yemekleri | `MP` + `d:meals:TARİH`, hedef `d:targets` |
-| 12-16 | Günün Bilgisi · Tarihten · Film · Sanatçı · Kitap | gömülü listeler + `facts.json` |
-| 17-18 | Döviz & Piyasalar · İzleme Listesi | `borsa.json` |
-| 19 | Bugün Ne Oluyor (Dünya \| Türkiye \| Piyasa) | `borsa.json` `world`/`tr`/`news` |
-| 20 | Almanca (kelime \| quiz \| gramer) | gömülü havuz + `d:dequiz`, `d:deWrong` |
-| 21 | Bugünün 3 İşi | `jobs.json` |
-| 22 | İş Başvuruları | Google Sheet (gviz/JSONP) + `d:myApps` + `d:retler` |
-| 23 | Harcama & Kazanç | `d:money:YYYY-AA` (tamamen elle) |
-| 24 | Ajan Telemetrisi | api.github.com, anahtarsız |
+**SABİT ŞERİT** (`.pinned` — sekmeden bağımsız, her zaman görünür; günü bunlar
+yönlendiriyor, bir sekmeye gömülselerdi gün boyu sekme değiştirmek gerekirdi):
+
+| Kart | Veri |
+|---|---|
+| Bugün Yapılacaklar | `d:tasks` |
+| Günün Programı | `SCHED` + `d:sched:TARİH`, görünüm ezmesi `d:schedOvr:TARİH` |
+| Şu An Ne Yapıyorsun? (yoklama) | `YOK` + `d:yok:TARİH` |
+
+**Sekme 1 — Spor & Sağlık** (`#tabSpor` / `#gridSpor`):
+
+| Kart | Veri |
+|---|---|
+| Sabah Rutini + Koşu | `MORNING_*` + `d:morning:TARİH`, `d:runkm:TARİH` |
+| Bugünün Antrenmanı | `WK` + `d:ex`, `d:sess`, `d:prog`, `d:vol` |
+| Kaldırılan Ağırlık (set kayıtları) | `d:wtlog` |
+| Alışkanlık Serileri | mevcut tiklerden türetilir |
+| Uyku Takibi | `d:sleepLog` |
+| Kilo Takibi (vücut ağırlığı) | `d:bw` |
+| Bugünün Yemekleri | `MP` + `d:meals:TARİH`, hedef `d:targets` |
+
+**Sekme 2 — Gündem, Kültür & İş** (`#tabDunya` / `#gridDunya` + altında tam
+genişlik şeritler):
+
+| Kart | Veri |
+|---|---|
+| Gelen Kutusu | **gizli gist** `d:gmail` |
+| Günün Bilgisi · Tarihten · Film · Sanatçı · Kitap | gömülü listeler + `facts.json` |
+| Döviz & Piyasalar · İzleme Listesi | `borsa.json` |
+| Bugün Ne Oluyor (Dünya \| Türkiye \| Piyasa) — **şerit** | `borsa.json` `world`/`tr`/`news` |
+| Almanca (kelime \| quiz \| gramer) — **şerit** | gömülü havuz + `d:dequiz`, `d:deWrong` |
+| Bugünün 3 İşi — **şerit** | `jobs.json` |
+| İş Başvuruları — **şerit** | Google Sheet (gviz/JSONP) + `d:myApps` + `d:retler` |
+| Harcama & Kazanç — **şerit** | `d:money:YYYY-AA` (tamamen elle) |
+| Ajan Telemetrisi — **şerit, en altta** | api.github.com, anahtarsız |
 
 ### Veri nereden geliyor
 
@@ -72,19 +88,8 @@ log herkese açık.
 
 ### C. Kodlanacaklar (öncelik sırasıyla)
 
-0. **UI: tek sayfa 2 sekmeye bölünsün — tasarım onaylandı, kodlanmadı.**
-   Kullanıcı "scroll çok uzun" dedi, 3'e değil 2'ye bölmeye karar verdik:
-   - Üstte SABİT şerit (her sekmede görünür): Bugün Yapılacaklar, Günün
-     Programı, Yoklama. Ajan Telemetrisi şeritte DEĞİL, olduğu yerde (en
-     altta) kalıyor — kullanıcı için pek bir şey ifade etmiyor.
-   - **Spor & Sağlık:** Sabah Rutini+Koşu, Antrenman, Kaldırılan Ağırlık,
-     Alışkanlık Serileri, Uyku Takibi, Kilo Takibi, Bugünün Yemekleri.
-   - **Gündem, Kültür & İş:** Gündem (bölünmeden, tek kart — kullanıcı
-     özellikle istedi), Günün Bilgisi, Tarihten, Film, Sanatçı, Kitap,
-     Almanca, Gelen Kutusu, Döviz&Piyasalar, İzleme Listesi, Bugünün 3 İşi,
-     İş Başvuruları, Harcama&Kazanç.
-   Mockup `mcp__visualize` ile gösterildi (3 sekmeli hâli), grup isimleri
-   sohbette onaylandı; henüz index.html'e işlenmedi.
+0. ~~UI: tek sayfa 2 sekmeye bölünsün~~ — **yapıldı (29 Ağu, canlıda).**
+   Kartların KENDİSİ sekmenin içinde; içindekiler/link listesi DEĞİL.
 1. ~~Vücut ağırlığı takibi (`d:bw`)~~ — **yapıldı (29 Ağu, canlıda).** Kilo
    Takibi kartı (Uyku Takibi'nden sonra, Yemekler'den önce), 7g hareketli
    ortalama + haftalık trend, ±150 kcal öneri metni (bulk mantığı: 2 hafta
@@ -185,6 +190,15 @@ O durumda dağıtım yalnızca Actions kaydından okunur. iOS ana ekran kısayol
     hepsi 1. sütuna konur (boy sütun genişliğine bağlı).
 11. **Dokunmatikte `pointerleave` parmak kalkınca da atıyor** — grafik imleci
     yalnız `pointerType==='mouse'` iken kapatılıyor.
+12. **GİZLİ SEKMENİN GRIDİ ÖLÇÜLEMEZ.** `display:none` altındaki kartın
+    `offsetHeight`'ı 0; `gridDizBir()` gizli gridde dizmeyi ATLIYOR, sekme
+    açılınca (`tabGec`) yapıyor. Yeni bir kart/sekme eklerken bunu koru,
+    yoksa kartlar tek sütuna yığılır. Pencere boyutu gizli sekmedeyken
+    değişirse o grid bayat kalır — açılışta düzeliyor, bu kasıtlı.
+13. **Bir karta kaydıran her yol önce sekmesini açmalı** (`tabAc(el)`).
+    Bildirim derin bağlantısı (`bildirimeGit`) ve yoklama→antrenman geçişi
+    bunu yapıyor; yeni bir "şu karta git" akışı eklersen aynısını yap,
+    yoksa gizli sekmedeki karta kaydırıp sayfayı boşuna oynatırsın.
 
 ---
 
