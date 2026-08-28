@@ -72,6 +72,19 @@ log herkese açık.
 
 ### C. Kodlanacaklar (öncelik sırasıyla)
 
+0. **UI: tek sayfa 2 sekmeye bölünsün — tasarım onaylandı, kodlanmadı.**
+   Kullanıcı "scroll çok uzun" dedi, 3'e değil 2'ye bölmeye karar verdik:
+   - Üstte SABİT şerit (her sekmede görünür): Bugün Yapılacaklar, Günün
+     Programı, Yoklama. Ajan Telemetrisi şeritte DEĞİL, olduğu yerde (en
+     altta) kalıyor — kullanıcı için pek bir şey ifade etmiyor.
+   - **Spor & Sağlık:** Sabah Rutini+Koşu, Antrenman, Kaldırılan Ağırlık,
+     Alışkanlık Serileri, Uyku Takibi, Kilo Takibi, Bugünün Yemekleri.
+   - **Gündem, Kültür & İş:** Gündem (bölünmeden, tek kart — kullanıcı
+     özellikle istedi), Günün Bilgisi, Tarihten, Film, Sanatçı, Kitap,
+     Almanca, Gelen Kutusu, Döviz&Piyasalar, İzleme Listesi, Bugünün 3 İşi,
+     İş Başvuruları, Harcama&Kazanç.
+   Mockup `mcp__visualize` ile gösterildi (3 sekmeli hâli), grup isimleri
+   sohbette onaylandı; henüz index.html'e işlenmedi.
 1. ~~Vücut ağırlığı takibi (`d:bw`)~~ — **yapıldı (29 Ağu, canlıda).** Kilo
    Takibi kartı (Uyku Takibi'nden sonra, Yemekler'den önce), 7g hareketli
    ortalama + haftalık trend, ±150 kcal öneri metni (bulk mantığı: 2 hafta
@@ -92,6 +105,21 @@ log herkese açık.
    D3, omega-3, magnezyum, whey.
 5. **Yürüyüş takibi (`d:walk:TARİH`)** — sabah/akşam köpek + gym gidiş-dönüş.
    Kalori hedefine ETKİ ETMEZ (yük zaten 2950 tabanına dahil).
+6. ~~Günün Programı düzenleme~~ — **yapıldı (29 Ağu, canlıda).** Saat ve iş
+   metni tıklanınca inline input, `d:schedOvr:TARİH`'e kaydediyor. Kasıtlı
+   olarak SADECE görünüm: "şu an" vurgusu, Yoklama ve bildirim planı hâlâ
+   orijinal `SLOTS`/`SCHED`'e göre çalışıyor — ekranda yazan ile bildirimde
+   sorulan iş farklı olabilir, kullanıcı bunu bilerek bu şekilde istedi
+   (tam entegre versiyon SCHED'in veri modelini + `yokPlanUret`'i + push
+   senkronunu değiştirmeyi gerektirirdi, çok daha büyük iş).
+7. **Gündem kartına haber linki** — kullanıcı istedi, "çok eforlu değilse"
+   dedi ama kuyruğa aldı. Piyasa&Şirket haberinde link zaten `borsa.py`
+   `fetch_news()`'te çekiliyor, `panel_feed.py build()`'de atılıyor (kolay:
+   `news_items`i string yerine {t,src,link} yap). Dünya/Türkiye şeritleri
+   (`_rss_basliklar()`) link HİÇ çekmiyor — RSS `<link>` metin, Atom
+   `<link href=...>` öznitelik, ikisi de karşılanmalı (orta efor). JS
+   tarafında `newsRows()`'u link varsa `<a href>` saracak şekilde değiştir.
+   Doğrulamak için borsa-feed workflow'unu bir kez çalıştırmak gerekiyor.
 
 ### D. Küçük açık uçlar
 
