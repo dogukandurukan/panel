@@ -19,18 +19,19 @@ webde AYNI; webde 1. sütun yukarıdan aşağı okunur, sonra 2., sonra 3.):
 | 4 | Sabah Rutini + Koşu | `MORNING_*` + `d:morning:TARİH`, `d:runkm:TARİH` |
 | 5 | Şu An Ne Yapıyorsun? (yoklama) | `YOK` + `d:yok:TARİH` |
 | 6 | Bugünün Antrenmanı | `WK` + `d:ex`, `d:sess`, `d:prog`, `d:vol` |
-| 7 | Ağırlık Takibi (KALDIRILAN kilo) | `d:wtlog` |
+| 7 | Kaldırılan Ağırlık (set kayıtları) | `d:wtlog` |
 | 8 | Alışkanlık Serileri | mevcut tiklerden türetilir |
 | 9 | Uyku Takibi | `d:sleepLog` |
-| 10 | Bugünün Yemekleri | `MP` + `d:meals:TARİH`, hedef `d:targets` |
-| 11-15 | Günün Bilgisi · Tarihten · Film · Sanatçı · Kitap | gömülü listeler + `facts.json` |
-| 16-17 | Döviz & Piyasalar · İzleme Listesi | `borsa.json` |
-| 18 | Bugün Ne Oluyor (Dünya \| Türkiye \| Piyasa) | `borsa.json` `world`/`tr`/`news` |
-| 19 | Almanca (kelime \| quiz \| gramer) | gömülü havuz + `d:dequiz`, `d:deWrong` |
-| 20 | Bugünün 3 İşi | `jobs.json` |
-| 21 | İş Başvuruları | Google Sheet (gviz/JSONP) + `d:myApps` + `d:retler` |
-| 22 | Harcama & Kazanç | `d:money:YYYY-AA` (tamamen elle) |
-| 23 | Ajan Telemetrisi | api.github.com, anahtarsız |
+| 10 | Kilo Takibi (vücut ağırlığı) | `d:bw` |
+| 11 | Bugünün Yemekleri | `MP` + `d:meals:TARİH`, hedef `d:targets` |
+| 12-16 | Günün Bilgisi · Tarihten · Film · Sanatçı · Kitap | gömülü listeler + `facts.json` |
+| 17-18 | Döviz & Piyasalar · İzleme Listesi | `borsa.json` |
+| 19 | Bugün Ne Oluyor (Dünya \| Türkiye \| Piyasa) | `borsa.json` `world`/`tr`/`news` |
+| 20 | Almanca (kelime \| quiz \| gramer) | gömülü havuz + `d:dequiz`, `d:deWrong` |
+| 21 | Bugünün 3 İşi | `jobs.json` |
+| 22 | İş Başvuruları | Google Sheet (gviz/JSONP) + `d:myApps` + `d:retler` |
+| 23 | Harcama & Kazanç | `d:money:YYYY-AA` (tamamen elle) |
+| 24 | Ajan Telemetrisi | api.github.com, anahtarsız |
 
 ### Veri nereden geliyor
 
@@ -71,15 +72,19 @@ log herkese açık.
 
 ### C. Kodlanacaklar (öncelik sırasıyla)
 
-1. **Vücut ağırlığı takibi (`d:bw`)** — program v2 dokümanı "panelin bulk için
-   en büyük eksiği" diyor. `{'YYYY-MM-DD': kg}`, 7 günlük hareketli ortalama,
-   haftalık trend, ±150 kcal ayar önerisi (2 hafta sabit → +150; 2 hafta
-   %0,75'ten hızlı → −150). **Repoda hiçbir kilo değeri bulunmayacak.**
-   `d:wtlog` KALDIRILAN kiloyu tutuyor — karışmasın diye kart etiketi
-   "Ağırlık Takibi" değil "Kaldırılan Ağırlık" olmalı.
+1. ~~Vücut ağırlığı takibi (`d:bw`)~~ — **yapıldı (29 Ağu, canlıda).** Kilo
+   Takibi kartı (Uyku Takibi'nden sonra, Yemekler'den önce), 7g hareketli
+   ortalama + haftalık trend, ±150 kcal öneri metni (bulk mantığı: 2 hafta
+   sabit → +150, %0,75/hafta'dan hızlı artış → −150). Sadece metin, targets'a
+   dokunmuyor — istenirse elle "hedefi düzenle"den girilir. `d:wtlog` KALDIRILAN
+   kiloyu tuttuğu için o kart "Kaldırılan Ağırlık" oldu. Repoya kilo yazılmıyor,
+   `d:wtlog`/`d:sleepLog` gibi localStorage + gist senkronu.
 2. **Faz anahtarı (`d:phase`)** — bulk/cut. Cut'ta: protein 210-220,
    "Atladım" cezası −250 kcal'a döner, shake suyla (250 kcal), kalori
-   bakım −400/500.
+   bakım −400/500. Not: yeni Kilo Takibi'nin trend kuralı şu an yalnızca
+   bulk'a göre yazılı (yukarı trend hızlıysa −150); faz anahtarı gelince
+   cut'ta muhtemelen tersine (yavaş kilo kaybı → −150 yerine farklı eşik)
+   çevrilmesi gerekecek — bwSuggestion()'a bak.
 3. **Harcama/gelir kategorileri (4.2)** — `harcama_feed.py`, Garanti bildirim
    maillerini ayrıştırır. `gmail_feed.py`'deki `classify()`/`notify_tag()`
    deseni örnek; "Otomatik bildirim" kovası bu mailleri zaten yakalıyor.
