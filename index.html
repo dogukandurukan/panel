@@ -620,13 +620,15 @@
         <section class="card" id="kAntrenman"><div class="card-head"><div><p class="kicker">Antrenman · Bugün</p><h2 class="card-title" id="wkTitle">Bugünün Antrenmanı</h2></div><div class="meta" id="wkCount">0/0</div></div>
       <div class="wtitle" id="wkSub">—</div>
       <div id="exList"></div></section>
-      <section class="card" style="margin-top:20px"><div class="card-head"><div><p class="kicker">Antrenman · Kayıt</p><h2 class="card-title">Ağırlık Takibi</h2></div><div class="meta"><button class="ibtn" id="wtBugun" style="padding:6px 10px">Bugün</button><button class="ibtn" id="wtIlerleme" style="padding:6px 10px">İlerleme</button><button class="ibtn" id="wtExport" style="padding:6px 10px">Excel'e aktar</button></div></div>
+      <section class="card" style="margin-top:20px"><div class="card-head"><div><p class="kicker">Antrenman · Kayıt</p><h2 class="card-title">Kaldırılan Ağırlık</h2></div><div class="meta"><button class="ibtn" id="wtBugun" style="padding:6px 10px">Bugün</button><button class="ibtn" id="wtIlerleme" style="padding:6px 10px">İlerleme</button><button class="ibtn" id="wtExport" style="padding:6px 10px">Excel'e aktar</button></div></div>
     <div class="wtitle" id="wtSub">—</div>
     <div id="wtList"></div></section>
         <section class="card"><div class="card-head"><div><p class="kicker">Al&#305;&#351;kanl&#305;k &middot; Seriler</p><h2 class="card-title">Al&#305;&#351;kanl&#305;k Serileri</h2></div><div class="meta" id="habMeta">son 14 g&uuml;n</div></div>
       <div id="habBox"></div></section>
         <section class="card"><div class="card-head"><div><p class="kicker">Uyku &middot; D&uuml;n gece</p><h2 class="card-title">Uyku Takibi</h2></div><div class="meta" id="slpMeta">&mdash;</div></div>
       <div id="sleepBox"></div></section>
+        <section class="card"><div class="card-head"><div><p class="kicker">Vücut Ağırlığı · Bugün</p><h2 class="card-title">Kilo Takibi</h2></div><div class="meta" id="bwMeta">&mdash;</div></div>
+      <div id="bwBox"></div></section>
         <section class="card"><div class="card-head"><div><p class="kicker">Beslenme · Bugün</p><h2 class="card-title">Bugünün Yemekleri</h2></div><div class="meta"><button class="ibtn" id="tgtAc">hedefi düzenle ↓</button></div></div>
       <div class="tgt" id="tgt" hidden></div><div id="bars"></div><div style="height:6px"></div><div id="mealList"></div>
       <div id="waterBox"></div></section>
@@ -698,7 +700,7 @@
   <footer><span>Antrenman &amp; yemek programından · gün gün otomatik</span><span id="syncFoot">senkron kapalı</span><span>Döviz canlı · yatırım tavsiyesi değildir</span></footer>
 </div>
 <script>
-const K={tasks:'d:tasks',targets:'d:targets',bist:'d:bist',altin:'d:altin',news:'d:news',fx:'d:fx',de:'d:de',gmailDone:'d:gmailDone',targetsVer:'d:targetsVer',water:'d:water',sleep:'d:sleepLog',sync:'d:sync',theme:'d:theme',agents:'d:agents',wx:'d:wx',deWrong:'d:deWrong',jobProfile:'d:jobProfile',jobsApplied:'d:jobsApplied',myApps:'d:myApps'};
+const K={tasks:'d:tasks',targets:'d:targets',bist:'d:bist',altin:'d:altin',news:'d:news',fx:'d:fx',de:'d:de',gmailDone:'d:gmailDone',targetsVer:'d:targetsVer',water:'d:water',sleep:'d:sleepLog',sync:'d:sync',theme:'d:theme',agents:'d:agents',wx:'d:wx',deWrong:'d:deWrong',jobProfile:'d:jobProfile',jobsApplied:'d:jobsApplied',myApps:'d:myApps',bw:'d:bw'};
 /* Konum tek yerde — taşınırsan sadece burayı değiştir (dateline + hava durumu birlikte gelir). */
 const PLACE={name:'İstanbul, Kadıköy',lat:40.9833,lon:29.0333};
 const mem={};
@@ -2502,6 +2504,65 @@ function renderSleep(){
   el.querySelector('#slpWake').onchange=ev=>save('wake',ev.target.value);
   el.querySelectorAll('[data-sb]').forEach(b=>b.onclick=()=>save('bed',e.bed===b.dataset.sb?'':b.dataset.sb));
   el.querySelectorAll('[data-sw]').forEach(b=>b.onclick=()=>save('wake',e.wake===b.dataset.sw?'':b.dataset.sw));
+}
+/* ===== KİLO TAKİBİ =====
+   d:bw['2026-08-20']=82.4 — sadece vücut ağırlığı (kg), d:wtlog'daki
+   KALDIRILAN kilo ile karışmasın diye o kart "Kaldırılan Ağırlık" oldu.
+   Repoya hiç yazılmaz; d:wtlog/d:sleepLog gibi localStorage'da durur,
+   gist senkronu genel d: taramasıyla otomatik taşır.
+   Trend, program v2'nin bulk mantığına göre: 2 hafta sabit -> +150 kcal
+   öner, haftalık %0.75'ten hızlı artış -> -150 kcal öner. Sadece metin;
+   d:targets'a dokunmaz (kullanıcı isterse elle "hedefi düzenle"den girer).
+   Her iki haftalık pencerede de en az 2 kayıt yoksa öneri gösterilmez
+   (d:vol'daki "en az 2 aynı-haftagünü" eşiğiyle aynı fikir). */
+const BW_FLAT_PCT=0.2;   // % - bunun altı "sabit" sayılır
+const BW_FAST_PCT=0.75;  // % - bunun üstü "hızlı artış" sayılır
+let bwLog={};
+function bwKeysInWindow(startBack,endBack){ // startBack..endBack gün önce (dahil), örn 0..6 = bu hafta
+  const out=[];for(let i=startBack;i<=endBack;i++){const k=dayBack(i);if(bwLog[k]!=null&&bwLog[k]!=='')out.push(bwLog[k]);}return out;}
+function bwAvgWindow(startBack,endBack){const vals=bwKeysInWindow(startBack,endBack);
+  if(!vals.length)return null;return vals.reduce((a,b)=>a+Number(b),0)/vals.length;}
+function bwTrend(){
+  const thisW=bwKeysInWindow(0,6),lastW=bwKeysInWindow(7,13);
+  if(thisW.length<2||lastW.length<2)return null;
+  const thisAvg=bwAvgWindow(0,6),lastAvg=bwAvgWindow(7,13);
+  const pct=(thisAvg-lastAvg)/lastAvg*100;
+  return {thisAvg,lastAvg,pct,n:thisW.length+lastW.length};}
+function bwSuggestion(t){
+  if(!t)return null;
+  if(Math.abs(t.pct)<BW_FLAT_PCT)return {dir:'+150',txt:'2 haftadır kilon sabit görünüyor — hedefi +150 kcal artırmayı düşün.'};
+  if(t.pct>BW_FAST_PCT)return {dir:'-150',txt:'haftalık %'+t.pct.toFixed(2)+' ile hızlı artıyorsun (yağlanma riski) — hedefi -150 kcal azaltmayı düşün.'};
+  return null;}
+async function loadBW(){bwLog=await sGet(K.bw)||{};renderBW();}
+function renderBW(){
+  const el=document.getElementById('bwBox');if(!el)return;
+  const tk=todayKey(),cur=bwLog[tk]!=null?bwLog[tk]:'';
+  const w7=bwAvgWindow(0,6);
+  let html='<div class="slp-ask"><div class="slp-fld"><label>Bugün kaç kg?</label>'+
+    '<input class="slp-in" type="number" step="0.1" min="0" id="bwIn" style="width:76px" value="'+esc(String(cur))+'"></div></div>';
+  const t=bwTrend(),sugg=bwSuggestion(t);
+  let sag=t?((t.pct>=0?'+':'')+t.pct.toFixed(2)+'% / hafta'):((2-bwKeysInWindow(0,6).length>0?bwKeysInWindow(0,6).length:0)+' kayıt, trend için daha fazla gerekiyor');
+  html+='<div class="slp-sum"><div><div class="slp-dur">'+(w7===null?'—':w7.toFixed(1)+' kg')+'</div>'+
+    '<div class="slp-note">7g ortalama'+(w7===null?' · kayıt bekliyor':'')+'</div></div>'+
+    '<div class="slp-streak">'+esc(sag)+'</div></div>';
+  if(sugg)html+='<div class="slp-habit">'+esc(sugg.txt)+'</div>';
+  let bars='<div class="slp-bars">';
+  for(let i=6;i>=0;i--){
+    const k=dayBack(i),v=bwLog[k];
+    const has=v!=null&&v!=='';
+    let vals=[];for(let j=0;j<7;j++){const kk=dayBack(j);if(bwLog[kk]!=null&&bwLog[kk]!=='')vals.push(Number(bwLog[kk]));}
+    const lo=vals.length?Math.min(...vals):0,hi=vals.length?Math.max(...vals):1;
+    const span=Math.max(hi-lo,0.5);
+    const pct=!has?0:Math.max(8,Math.min((Number(v)-lo)/span*100,100));
+    const lbl=SLP_DAYS[new Date(k+'T12:00:00').getDay()];
+    bars+='<div class="slp-bar'+(has?' ok':'')+'" title="'+k+(has?' · '+v+' kg':' · kayıt yok')+'">'+
+      '<i style="height:'+pct+'%"></i><span>'+lbl+'</span></div>';}
+  html+=bars+'</div>';
+  el.innerHTML=html;
+  const meta=document.getElementById('bwMeta');if(meta)meta.textContent=(cur===''?'kayıt bekliyor':cur+' kg');
+  el.querySelector('#bwIn').onchange=async ev=>{
+    const v=ev.target.value;if(v===''){delete bwLog[tk];}else{bwLog[tk]=Number(v);}
+    await sSet(K.bw,bwLog);renderBW();};
 }
 /* ===== GÜNLÜK HEDEF (antrenman yoğunluğuna göre) =====
    Karbonhidrat tabanı gün tipinden gelir (CARB_BY_DAY), üstüne o günün GERÇEK
@@ -4960,7 +5021,7 @@ if(navigator.serviceWorker){
   document.getElementById('jobsCfg').onclick=openJobsCfg;
   jobProfile=await sGet(K.jobProfile)||null;jobsApplied=await sGet(K.jobsApplied)||[];myApps=await sGet(K.myApps)||[];retler=await sGet('d:retler')||[];retGizli=await sGet('d:retGizli')||[];
   document.getElementById('placeName').textContent=PLACE.name;
-  renderTasks();await loadSched();await loadYok();await loadMorning();await renderRun();await loadWorkout();renderWtLog();await loadMeals();await loadWater();await loadSleep();await loadMoney();loadHabits();await initSync();
+  renderTasks();await loadSched();await loadYok();await loadMorning();await renderRun();await loadWorkout();renderWtLog();await loadMeals();await loadWater();await loadSleep();await loadBW();await loadMoney();loadHabits();await initSync();
   renderFacts();renderFilm();renderArtist();renderBook();renderHistory();renderGerman();renderNews();renderTR();renderRetler();renderWatch();renderUS();renderWorldIdx();renderGold();renderWorld();renderMktSummary();renderFinNote();
   ['watchList','usList','idxList'].forEach(stkTiklaBagla);
   loadFX(false);loadBorsaJson();loadBasvuru();loadGmailJson();loadFactsJson();loadAgents(false);loadWx();loadJobsJson();
