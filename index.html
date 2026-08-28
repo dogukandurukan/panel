@@ -452,8 +452,12 @@
   /* günün programı (saat saat) */
   .sl{display:flex;align-items:flex-start;gap:10px;padding:7px 0;border-bottom:1px dotted var(--line2);}
   .sl:last-child{border-bottom:none;}
-  .sl-t{font-family:var(--mono);font-size:10.5px;color:var(--muted);white-space:nowrap;min-width:78px;margin-top:3px;}
-  .sl-n{flex:1;font-size:14px;}
+  .sl-t{font-family:var(--mono);font-size:10.5px;color:var(--muted);white-space:nowrap;min-width:78px;margin-top:3px;cursor:pointer;}
+  .sl-t:hover{text-decoration:underline dotted;}
+  .sl-n{flex:1;font-size:14px;cursor:pointer;}
+  .sl-n:hover{text-decoration:underline dotted;}
+  .sl-reset{font-family:var(--mono);font-size:11px;color:var(--muted);cursor:pointer;margin-left:6px;text-decoration:none;}
+  .sl-reset:hover{color:var(--accent);}
   .sl.done .sl-n{text-decoration:line-through;color:var(--muted);}
   .sl.past{opacity:.45;}
   .sl.free .sl-n{color:var(--muted);font-style:italic;}
@@ -1437,7 +1441,7 @@ const nowMin=()=>{const d=new Date();return d.getHours()*60+d.getMinutes();};
 function activeSlot(){const d=new Date(),n=d.getHours()*60+d.getMinutes();
   for(let i=0;i<SLOTS.length;i++){if(n>=hhmm(SLOTS[i][0])&&n<hhmm(SLOTS[i][1]))return i;}
   return -1;}   // 00:00-08:00 arası: aktif dilim yok
-let schedDone={},schedShown=-2;
+let schedDone={},schedShown=-2,schedOvr={};
 
 /* ===== YOKLAMA =====
    Günün Programı'ndaki tik "yaptım mı" sorusunu cevaplıyor ama "yapmadım"ı
@@ -1747,7 +1751,12 @@ function renderYok(){
   b('pwKopya',()=>{const k=document.getElementById('pwKey');if(!k)return;
     navigator.clipboard.writeText(k.textContent).then(()=>{pushDurum='Kopyalandı.';renderYok();}).catch(()=>{});});
 }
-async function loadSched(){schedDone=await sGet('d:sched:'+todayKey())||{};renderSched();}
+async function loadSched(){schedDone=await sGet('d:sched:'+todayKey())||{};schedOvr=await sGet('d:schedOvr:'+todayKey())||{};renderSched();}
+/* Sadece o günün GÖRÜNÜMÜ değişiyor: saat/iş metni tıklanınca düzenlenebilir,
+   d:schedOvr:TARİH'e yazılır. "Şu an" vurgusu ve Yoklama hâlâ orijinal
+   SLOTS/SCHED'e göre çalışır — bu katman yalnız kişisel bir not, bildirim
+   sistemine dokunmuyor. */
+let schedEdit=null; // {i,alan:'t'|'d'} — açık olan düzenleme kutusu
 function renderSched(){
   const el=document.getElementById('schedList');if(!el)return;
   const plan=SCHED[dow],act=activeSlot();schedShown=act;
@@ -1756,17 +1765,41 @@ function renderSched(){
   if(nowEl)nowEl.textContent=act>-1?(plan[act]?('Şu an: '+plan[act]):'Şu an: serbest')
     :(new Date().getHours()<8?'Program 08:00’de başlıyor':'Program bitti');
   el.innerHTML=plan.map((iş,i)=>{
-    const bos=!iş,done=!!schedDone[i],gecmis=act>-1&&i<act;
+    const ov=schedOvr[i]||{},isim=ov.d!=null?ov.d:iş,t0=ov.t0||SLOTS[i][0],t1=ov.t1||SLOTS[i][1];
+    const bos=!isim,done=!!schedDone[i],gecmis=act>-1&&i<act,ovMu=!!schedOvr[i];
+    let tHtml,nHtml;
+    if(schedEdit&&schedEdit.i===i&&schedEdit.alan==='t')
+      tHtml='<input class="slp-in sched-t0" type="time" value="'+esc(t0)+'" style="width:64px">–<input class="slp-in sched-t1" type="time" value="'+esc(t1)+'" style="width:64px">';
+    else tHtml='<span class="sl-t" data-edit-t="'+i+'">'+t0+'–'+t1+'</span>';
+    if(schedEdit&&schedEdit.i===i&&schedEdit.alan==='d')
+      nHtml='<input class="slp-in sched-d" type="text" value="'+esc(isim)+'" style="width:100%">';
+    else nHtml='<span class="sl-n" data-edit-d="'+i+'">'+(bos?'serbest':esc(isim))+(i===act?'<span class="sl-tag">şu an</span>':'')+'</span>'+
+      (ovMu?'<span class="sl-reset" data-reset="'+i+'" title="varsayılana dön">↺</span>':'');
     return '<div class="sl'+(i===act?' now':'')+(gecmis?' past':'')+(done?' done':'')+(bos?' free':'')+'">'+
-      '<span class="sl-t">'+SLOTS[i][0]+'–'+SLOTS[i][1]+'</span>'+
+      tHtml+
       (bos?'':'<div class="check '+(done?'on':'')+'" data-s="'+i+'"></div>')+
-      '<span class="sl-n">'+(bos?'serbest':esc(iş))+(i===act?'<span class="sl-tag">şu an</span>':'')+'</span></div>';
+      nHtml+'</div>';
   }).join('');
   const toplam=plan.filter(Boolean).length;
   document.getElementById('schedCount').textContent=
     plan.filter((iş,i)=>iş&&schedDone[i]).length+'/'+toplam;
   el.querySelectorAll('[data-s]').forEach(c=>c.onclick=()=>{
     const i=+c.dataset.s;schedDone[i]=!schedDone[i];sSet('d:sched:'+todayKey(),schedDone);renderSched();});
+  el.querySelectorAll('[data-edit-t]').forEach(s=>s.onclick=()=>{schedEdit={i:+s.dataset.editT,alan:'t'};renderSched();
+    const t0=el.querySelector('.sched-t0');if(t0)t0.focus();});
+  el.querySelectorAll('[data-edit-d]').forEach(s=>s.onclick=()=>{schedEdit={i:+s.dataset.editD,alan:'d'};renderSched();
+    const d=el.querySelector('.sched-d');if(d){d.focus();d.select();}});
+  el.querySelectorAll('[data-reset]').forEach(b=>b.onclick=async ev=>{ev.stopPropagation();
+    const i=+b.dataset.reset;delete schedOvr[i];await sSet('d:schedOvr:'+todayKey(),schedOvr);renderSched();});
+  const kaydetT=async()=>{const t0=el.querySelector('.sched-t0'),t1=el.querySelector('.sched-t1');if(!t0||!schedEdit)return;
+    const i=schedEdit.i;schedOvr[i]=Object.assign({},schedOvr[i],{t0:t0.value||SLOTS[i][0],t1:t1.value||SLOTS[i][1]});
+    schedEdit=null;await sSet('d:schedOvr:'+todayKey(),schedOvr);renderSched();};
+  const kaydetD=async()=>{const d=el.querySelector('.sched-d');if(!d||!schedEdit)return;
+    const i=schedEdit.i;schedOvr[i]=Object.assign({},schedOvr[i],{d:d.value});
+    schedEdit=null;await sSet('d:schedOvr:'+todayKey(),schedOvr);renderSched();};
+  const t1=el.querySelector('.sched-t1');if(t1){t1.onblur=kaydetT;t1.onkeydown=ev=>{if(ev.key==='Enter')t1.blur();};}
+  const t0i=el.querySelector('.sched-t0');if(t0i)t0i.onkeydown=ev=>{if(ev.key==='Enter')t1.blur();};
+  const di=el.querySelector('.sched-d');if(di){di.onblur=kaydetD;di.onkeydown=ev=>{if(ev.key==='Enter')di.blur();};}
 }
 
 /* morning + run */
