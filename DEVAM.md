@@ -90,6 +90,16 @@ log herkese açık.
 
 0. ~~UI: tek sayfa 2 sekmeye bölünsün~~ — **yapıldı (29 Ağu, canlıda).**
    Kartların KENDİSİ sekmenin içinde; içindekiler/link listesi DEĞİL.
+
+   **DENEME SÜRECİNDE — kullanıcı tek ekrana dönebilir.** Kullanıcı 29 Ağu'da
+   "biraz deneyeceğim, belki yine tek ekrana geçerim" dedi. Dönmek istersen
+   TARTIŞMA AÇMA, sadece geri al:
+   ```
+   git revert ec11cd6      # sekme bölünmesi (index.html)
+   ```
+   Tek commit, temiz geri alınır. `ec11cd6` öncesi hâl = tek sayfa, tek
+   `#grid`, `.duo` şeridi (Yapılacaklar + Gelen Kutusu). Sonraki commit'ler
+   sekmeye dokunmadıysa çakışma çıkmaz. `d:tab` anahtarı artakalır, zararsız.
 1. ~~Vücut ağırlığı takibi (`d:bw`)~~ — **yapıldı (29 Ağu, canlıda).** Kilo
    Takibi kartı (Uyku Takibi'nden sonra, Yemekler'den önce), 7g hareketli
    ortalama + haftalık trend, ±150 kcal öneri metni (bulk mantığı: 2 hafta
