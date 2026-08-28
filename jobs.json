@@ -1,101 +1,101 @@
 {
- "updated": "2026-08-27 19:05",
+ "updated": "2026-08-28 20:08",
  "ok": true,
  "count": 3,
- "pool": 22,
+ "pool": 12,
  "items": [
   {
-   "title": "FinOps Data Analyst & Consultant (m/w/d)",
-   "company": "Cortex Reply",
+   "title": "Data Engineer - Tracking Infrastructure (m/f/d)",
+   "company": "Statista",
    "location": "Berlin",
-   "loc_raw": "Munich, Berlin, Germany",
+   "loc_raw": "Hamburg or Berlin",
    "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/cortex-reply/finops-data-analyst-consultant-munich-40383",
+   "url": "https://www.arbeitnow.com/jobs/companies/statista/data-engineer-tracking-infrastructure-hamburg-or-berlin-476148",
    "source": "Arbeitnow",
-   "posted": "2026-08-27",
-   "days": 0,
-   "skills": [
-    "python",
-    "sql",
-    "azure",
-    "power bi",
-    "tableau"
-   ],
-   "german": false,
-   "focus": "ml",
-   "summary": "Behind every optimisation decision is data. As a FinOps Data Analyst & Consultant at Cortex Reply, you'll transform millions of billing line items into forecasts, dashboards, and insights that executives can act on - across cloud, AI, SaaS, and on-prem environ",
-   "keywords": [
-    "optimisation",
-    "forecast",
-    "dashboard",
-    "saas",
-    "cost",
-    "automation",
-    "pipeline",
-    "stakeholder",
-    "finance"
-   ],
-   "score": 94
-  },
-  {
-   "title": "Senior Data Scientist (m/f/x)",
-   "company": "Makersite GmbH",
-   "location": "Remote",
-   "loc_raw": "Remote job",
-   "remote": true,
-   "url": "https://www.arbeitnow.com/jobs/companies/makersite-gmbh/remote-senior-data-scientist-berlin-194751",
-   "source": "Arbeitnow",
-   "posted": "2026-08-27",
-   "days": 0,
-   "skills": [
-    "python",
-    "ci/cd",
-    "git",
-    "llm"
-   ],
-   "german": false,
-   "focus": "ml",
-   "summary": "Data Scientist (m/f/x) Location: EU (Remote) Who You’ll Work For : At Makersite, we're pioneering the future of sustainable product development and digital collaboration. As a leading platform for product lifecycle management (PLM), we empower companies to mak",
-   "keywords": [
-    "supply chain",
-    "scalab",
-    "cost",
-    "pipeline",
-    "experimentation"
-   ],
-   "score": 90
-  },
-  {
-   "title": "Senior Data Engineer (m/f/d)",
-   "company": "Dishdigital",
-   "location": "Almanya",
-   "loc_raw": "Düsseldorf",
-   "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/dishdigital/senior-data-engineer-dusseldorf-138329",
-   "source": "Arbeitnow",
-   "posted": "2026-08-27",
+   "posted": "2026-08-28",
    "days": 0,
    "skills": [
     "python",
     "sql",
     "airflow",
     "dbt",
-    "git"
+    "snowflake",
+    "ci/cd"
    ],
    "german": false,
    "focus": "pipeline",
-   "summary": "Your Contribution Are you passionate about designing scalable data platforms and helping others grow along the way? As a Senior Data Engineer, you will shape the architecture and technical direction of our Google Cloud data platform while enabling a team of en",
+   "summary": "At Statista , we’re all about facts and data, for we are the world's leading business data platform. By providing reliable and easy-to-use data as well as various data analytics products and services, we empower people worldwide to make fact-based decisions. F",
    "keywords": [
-    "scalab",
+    "cost",
     "pipeline",
     "data quality",
     "governance",
+    "optimization",
+    "scalab",
     "stakeholder"
    ],
-   "score": 86
+   "score": 100
+  },
+  {
+   "title": "Working Student Data Analyst (d/f/m)",
+   "company": "Bettermile",
+   "location": "Berlin",
+   "loc_raw": "Better Place, Oranienstraße 183, Berlin",
+   "remote": false,
+   "url": "https://www.arbeitnow.com/jobs/companies/bettermile/working-student-data-analyst-berlin-170440",
+   "source": "Arbeitnow",
+   "posted": "2026-08-27",
+   "days": 1,
+   "skills": [
+    "python",
+    "sql",
+    "dbt",
+    "snowflake",
+    "llm"
+   ],
+   "german": false,
+   "focus": "business",
+   "summary": "What is working at Bettermile like? 🌟 We have a very supportive and appreciative working environment with a lot of autonomy, a flat hierarchy, and professional growth possibilities 🌍 We mean diversity and we put it in numbers: 40 languages, 40 nationalities, 4",
+   "keywords": [
+    "dashboard",
+    "data quality",
+    "pipeline",
+    "optimization",
+    "saas"
+   ],
+   "score": 94
+  },
+  {
+   "title": "Data Engineer (m/f/d)",
+   "company": "MOTOR Ai",
+   "location": "Berlin",
+   "loc_raw": "Berlin",
+   "remote": false,
+   "url": "https://www.arbeitnow.com/jobs/companies/motor-ai/data-engineer-berlin-366460",
+   "source": "Arbeitnow",
+   "posted": "2026-08-28",
+   "days": 0,
+   "skills": [
+    "python",
+    "sql",
+    "data warehouse"
+   ],
+   "german": false,
+   "focus": "ml",
+   "summary": "Driving the transition to autonomous mobility: Our mission is to spearhead the deployment of Level 4 autonomous systems in Germany and beyond. By combining cutting-edge AI with the expertise of our multidisciplinary team, we are set to introduce the first cert",
+   "keywords": [
+    "pipeline",
+    "data quality",
+    "automation",
+    "cost"
+   ],
+   "score": 82
   }
  ],
  "seen": [
+  "https://www.arbeitnow.com/jobs/companies/statista/data-engineer-tracking-infrastructure-hamburg-or-berlin-476148",
+  "https://www.arbeitnow.com/jobs/companies/bettermile/working-student-data-analyst-berlin-170440",
+  "https://www.arbeitnow.com/jobs/companies/motor-ai/data-engineer-berlin-366460",
   "https://www.arbeitnow.com/jobs/companies/cortex-reply/finops-data-analyst-consultant-munich-40383",
   "https://www.arbeitnow.com/jobs/companies/makersite-gmbh/remote-senior-data-scientist-berlin-194751",
   "https://www.arbeitnow.com/jobs/companies/dishdigital/senior-data-engineer-dusseldorf-138329",
