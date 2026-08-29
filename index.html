@@ -139,7 +139,10 @@
   .pchip.on{background:var(--accent);color:var(--card);border-color:var(--accent);}
   .pin{width:44px;background:#fff;border:1px solid var(--line);border-radius:4px;padding:2px 5px;font-family:var(--mono);font-size:11px;color:var(--ink);text-align:right;}
   .pin:focus{outline:none;border-color:var(--accent);}
-  .meal-text{width:100%;background:transparent;border:none;border-bottom:1px solid transparent;font-family:var(--sans);font-size:14px;color:var(--ink);padding:2px 0 2px;margin-top:4px;}
+  /* textarea (input degil): uzun ogun metni satir kaydirsin, sonu gorunmeden
+     saga kaymasin. Boyu icerige gore JS buyutuyor (mealBoy). */
+  .meal-text{width:100%;background:transparent;border:none;border-bottom:1px solid transparent;font-family:var(--sans);font-size:14px;color:var(--ink);padding:2px 0 2px;margin-top:4px;
+    display:block;resize:none;overflow:hidden;line-height:1.45;}
   .meal-text:focus{outline:none;border-bottom:1px solid var(--accent);}
   .macros{display:flex;gap:7px;margin-top:0;align-items:center;}
   .macros .mi{display:flex;align-items:center;gap:3px;}
@@ -612,12 +615,12 @@
        yönlendiren üç kart; bunlar bir sekmeye gömülürse gün boyu
        sekme değiştirmek gerekirdi. -->
   <div class="pinned">
-        <section class="card"><div class="card-head"><div><p class="kicker">Ajanda</p><h2 class="card-title">Bugün Yapılacaklar</h2></div><div class="meta" id="taskCount">0/0</div></div>
-      <div id="taskList"></div>
-      <div class="add-row"><input id="taskInput" placeholder="Yeni iş ekle…" maxlength="120"><button id="taskAdd">Ekle</button></div></section>
         <section class="card"><div class="card-head"><div><p class="kicker">Plan · <span id="schedDay">—</span></p><h2 class="card-title">Günün Programı</h2></div><div class="meta" id="schedCount">0/0</div></div>
       <div class="wtitle" id="schedNow">—</div>
       <div id="schedList"></div></section>
+        <section class="card"><div class="card-head"><div><p class="kicker">Ajanda</p><h2 class="card-title">Bugün Yapılacaklar</h2></div><div class="meta" id="taskCount">0/0</div></div>
+      <div id="taskList"></div>
+      <div class="add-row"><input id="taskInput" placeholder="Yeni iş ekle…" maxlength="120"><button id="taskAdd">Ekle</button></div></section>
         <section class="card"><div class="card-head"><div><p class="kicker">Yoklama</p><h2 class="card-title">Şu An Ne Yapıyorsun?</h2></div><div class="meta" id="yokMeta">0/0</div></div>
       <div id="yokBody"></div></section>
   </div>
@@ -2836,6 +2839,17 @@ function besinCoz(metin){
   return top;
 }
 
+/* Ogun metni textarea: boyu icerige gore ayarlanir (1 satir, uzunsa 2-3).
+   GIZLI SEKMEDE OLCULEMEZ (scrollHeight 0) — o durumda dokunulmuyor,
+   tabGec sekme acilinca mealBoyHepsi ile duzeltiyor. Bkz. tuzak 12. */
+function mealBoy(t){
+  if(!t||!t.isConnected)return;
+  t.style.height='auto';
+  const h=t.scrollHeight;
+  if(h>0)t.style.height=h+'px';
+}
+function mealBoyHepsi(){document.querySelectorAll('.meal-text').forEach(mealBoy);}
+
 function renderMeals(){const el=document.getElementById('mealList');el.innerHTML='';
   meals.forEach((m,i)=>{const rc=recipeFor(m.text);const open=!!openRec[i];const d=document.createElement('div');d.className='meal';
     d.innerHTML='<div class="meal-top"><span class="meal-slot">'+esc(m.slot)+'</span>'+
@@ -2844,7 +2858,7 @@ function renderMeals(){const el=document.getElementById('mealList');el.innerHTML
       '<button class="pchip '+(num(m.portion)===50?'on':'')+'" data-p="50" data-i="'+i+'">½</button>'+
       '<button class="pchip '+(num(m.portion)===100?'on':'')+'" data-p="100" data-i="'+i+'">✓</button>'+
       '<input class="pin" type="number" min="0" max="100" data-pi="'+i+'" value="'+num(m.portion)+'" title="yediğim %"></div></div>'+
-      '<div class="meal-alt"><input class="meal-text" data-mt="'+i+'" value="'+esc(m.text)+'">'+
+      '<div class="meal-alt"><textarea class="meal-text" rows="1" data-mt="'+i+'">'+esc(m.text)+'</textarea>'+
       (rc.length?'<button class="rtoggle" data-rt="'+i+'">'+(open?'gizle ▾':'tarif ▸')+'</button>':'')+'</div>'+
       '<div class="macros"><div class="mi"><span>kcal</span><input type="number" data-mk="'+i+'" value="'+num(m.kcal)+'"></div>'+
       '<div class="mi"><span>P</span><input type="number" data-mp="'+i+'" value="'+num(m.p)+'"></div>'+
@@ -2857,9 +2871,13 @@ function renderMeals(){const el=document.getElementById('mealList');el.innerHTML
   el.querySelectorAll('[data-rt]').forEach(b=>b.onclick=()=>{const i=+b.dataset.rt;openRec[i]=!openRec[i];renderMeals();});
   /* Metin degisince otomatik hesap; makro kutusuna dokunulunca o ogun "elle"ye
      gecer ve otomatik onu bir daha ezmez. Yeniden cizmiyoruz — odak kaybolur. */
-  el.querySelectorAll('[data-mt]').forEach(inp=>inp.oninput=()=>{
-    const i=+inp.dataset.mt;meals[i].text=inp.value;meals[i].elle=false;meals[i].oto=false;meals[i].duz=true;
-    mealHesapla(i);saveMeals();renderBars();});
+  el.querySelectorAll('[data-mt]').forEach(inp=>{
+    mealBoy(inp);
+    inp.oninput=()=>{
+      const i=+inp.dataset.mt;meals[i].text=inp.value;meals[i].elle=false;meals[i].oto=false;meals[i].duz=true;
+      mealBoy(inp);mealHesapla(i);saveMeals();renderBars();};
+    /* textarea'da Enter yeni satir acardi; ogun metni tek parca, alani kapat. */
+    inp.onkeydown=ev=>{if(ev.key==='Enter'){ev.preventDefault();inp.blur();}};});
   const elleYap=(i)=>{meals[i].elle=true;mealNot(i);};
   el.querySelectorAll('[data-mk]').forEach(inp=>inp.oninput=()=>{const i=+inp.dataset.mk;meals[i].kcal=inp.value;elleYap(i);saveMeals();renderBars();});
   el.querySelectorAll('[data-mp]').forEach(inp=>inp.oninput=()=>{const i=+inp.dataset.mp;meals[i].p=inp.value;elleYap(i);saveMeals();renderBars();});
@@ -3811,6 +3829,7 @@ function tabGec(ad,kaydet){
     if(b){b.classList.toggle('on',k===ad);b.setAttribute('aria-selected',k===ad?'true':'false');}
   }
   gridDizBir(esle[ad][2]);
+  mealBoyHepsi();          // gizliyken olculemeyen ogun kutulari simdi boylanir
   if(kaydet)sSet('d:tab',ad);
 }
 /* Bildirim/yoklama bir karta götürüyorsa önce o kartın sekmesi açılmalı;
