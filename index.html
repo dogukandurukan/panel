@@ -230,6 +230,19 @@
   .yok-not{width:100%;margin-top:5px;background:var(--paper);border:1px solid var(--line);border-radius:4px;
     color:var(--ink);font-family:var(--sans);font-size:13px;padding:7px 9px;line-height:1.5;resize:vertical;min-height:52px;}
   .yok-not:focus{outline:none;border-color:var(--accent);}
+  /* Geciken dilimler: "su an" sorusu degil, gun sonu dokumu. Hepsi bir arada,
+     satir basina ✓/✗ — tek tek sorulunca 14 saat onceki isi "su an" diye
+     sormus oluyorduk. */
+  .yok-bek{display:flex;flex-direction:column;gap:2px;}
+  .yok-bek-b{font-size:12.5px;color:var(--muted);margin-bottom:6px;}
+  .yok-w{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px dotted var(--line2);}
+  .yok-w:last-child{border-bottom:none;}
+  .yok-w .wt{font-family:var(--mono);font-size:10px;color:var(--muted);min-width:38px;}
+  .yok-w .wn{flex:1;font-size:13.5px;min-width:0;}
+  .yok-w button{background:none;border:1px solid var(--line);border-radius:4px;color:var(--muted);
+    font-size:12px;line-height:1;padding:3px 8px;cursor:pointer;}
+  .yok-w button.e:hover{border-color:var(--up);color:var(--up);}
+  .yok-w button.h:hover{border-color:var(--down);color:var(--down);}
   .yok-bos{padding:4px 0 2px;}
   .yok-bos b{display:block;font-family:var(--serif);font-size:17px;font-weight:600;margin-bottom:3px;}
   .yok-bos span{font-size:13px;color:var(--muted);}
@@ -621,7 +634,7 @@
         <section class="card"><div class="card-head"><div><p class="kicker">Ajanda</p><h2 class="card-title">Bugün Yapılacaklar</h2></div><div class="meta" id="taskCount">0/0</div></div>
       <div id="taskList"></div>
       <div class="add-row"><input id="taskInput" placeholder="Yeni iş ekle…" maxlength="120"><button id="taskAdd">Ekle</button></div></section>
-        <section class="card"><div class="card-head"><div><p class="kicker">Yoklama</p><h2 class="card-title">Şu An Ne Yapıyorsun?</h2></div><div class="meta" id="yokMeta">0/0</div></div>
+        <section class="card"><div class="card-head"><div><p class="kicker">Yoklama</p><h2 class="card-title" id="yokTitle">Şu An Ne Yapıyorsun?</h2></div><div class="meta" id="yokMeta">0/0</div></div>
       <div id="yokBody"></div></section>
   </div>
 
@@ -1726,25 +1739,50 @@ function renderYok(){
   const cevapli=slotlar.filter(i=>yokCevap(i)).length;
   document.getElementById('yokMeta').textContent=cevapli+'/'+slotlar.length;
 
+  /* Kart iki ayri isi yapiyor, ikisi ayri gosterilir:
+       AKTIF  — dilim su an devam ediyor  -> canli soru, "Su An Ne Yapiyorsun?"
+       GECIKEN— dilim bitti, cevaplanmadi -> gun sonu dokumu, "Bugunu Kapat"
+     Eskiden ikisi de ayni kalipla ciktigi icin gece 23:47'de sabahki kosuyu
+     "su an" basligiyla soruyordu. Otomatik "atladi" YAZILMIYOR: uydurma veri
+     seri hesabini bozar, atlamak acikca isaretlenmeli. */
+  const bitti=i=>simdi>=hhmm(SLOTS[i][1]);
+  const aktif=slotlar.find(i=>basladi(i)&&!bitti(i)&&!yokCevap(i));
+  const geciken=slotlar.filter(i=>bitti(i)&&!yokCevap(i));
+  const baslik=document.getElementById('yokTitle');
+  if(baslik)baslik.textContent=(aktif!==undefined)?'Şu An Ne Yapıyorsun?':(geciken.length?'Bugünü Kapat':'Şu An Ne Yapıyorsun?');
+
   let html='';
-  if(bekleyen.length){
-    const i=bekleyen[0],ad=plan[i],tur=YOK[ad];
+  if(aktif!==undefined){
+    const i=aktif,ad=plan[i],tur=YOK[ad];
     html+='<div class="yok-q">'+
-      '<div class="yok-when">'+SLOTS[i][0]+'–'+SLOTS[i][1]+(basladi(i)&&simdi>=hhmm(SLOTS[i][1])?' · geçti':' · şu an')+'</div>'+
+      '<div class="yok-when">'+SLOTS[i][0]+'–'+SLOTS[i][1]+' · şu an</div>'+
       '<div class="yok-ne">'+esc(ad)+'</div>'+
       '<div class="yok-soru">'+(YOK_SORU[tur]||'Yaptın mı?')+'</div>'+
       '<div class="yok-btns"><button class="ibtn ana" data-yok="ok" data-i="'+i+'">Evet ✓</button>'+
       '<button class="ibtn" data-yok="skip" data-i="'+i+'">Atladım</button></div></div>';
-  }else{
+  }
+  if(geciken.length){
+    html+='<div class="yok-bek"'+(aktif!==undefined?' style="margin-top:14px;padding-top:11px;border-top:1px dotted var(--line2)"':'')+'>'+
+      '<div class="yok-bek-b">'+geciken.length+' iş cevap bekliyor</div>'+
+      geciken.map(i=>'<div class="yok-w"><span class="wt">'+SLOTS[i][0]+'</span>'+
+        '<span class="wn">'+esc(plan[i])+'</span>'+
+        '<button class="e" data-yok="ok" data-i="'+i+'" title="yaptım">✓</button>'+
+        '<button class="h" data-yok="skip" data-i="'+i+'" title="atladım">✗</button></div>').join('')+
+      '</div>';
+  }
+  if(aktif===undefined&&!geciken.length){
     const sirada=slotlar.find(i=>!basladi(i));
     html+='<div class="yok-bos"><b>Şu an yoklama yok.</b><span>'+
       (sirada?'Sıradaki: '+SLOTS[sirada][0]+' · '+esc(plan[sirada]):
        slotlar.length?'Bugünün tamamı cevaplandı.':'Bugün için takip edilen iş yok.')+'</span></div>';
   }
 
-  /* Günlük döküm: cevaplananlar notuyla, sırası gelmeyenler soluk. */
-  if(slotlar.length){
-    html+='<div class="yok-log">'+slotlar.map(i=>{
+  /* Günlük döküm: cevaplananlar notuyla, sırası gelmeyenler soluk.
+     Cevap bekleyenler YUKARIDA kendi bloğunda duruyor — burada tekrar
+     "?" ile listelenmeleri gereksiz gürültüydü, çıkarıldı. */
+  const dokum=slotlar.filter(i=>i!==aktif&&geciken.indexOf(i)<0);
+  if(dokum.length){
+    html+='<div class="yok-log">'+dokum.map(i=>{
       const c=yokCevap(i),bekliyor=!c&&basladi(i);
       const sinif=c?(c.a==='ok'?'ok':'skip'):(bekliyor?'bekle':'');
       const im=c?(c.a==='ok'?'✓':'✗'):(bekliyor?'?':'·');
