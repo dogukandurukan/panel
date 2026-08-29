@@ -132,24 +132,22 @@ log herkese açık.
    sorulan iş farklı olabilir, kullanıcı bunu bilerek bu şekilde istedi
    (tam entegre versiyon SCHED'in veri modelini + `yokPlanUret`'i + push
    senkronunu değiştirmeyi gerektirirdi, çok daha büyük iş).
-7. **Gündem kartına haber linki — SIRADAKİ İŞ, kullanıcı onayladı.**
-   Haber başlığına tıklayınca haberin kaynağına gidilsin. Yapılacaklar:
-   - `borsa.py` `fetch_news()` linki ZATEN döndürüyor `(title, src, rel, link)`.
-   - `panel_feed.py` `build()` içinde link atılıyor: `news_items.append(f"{emoji} {title}...")`
-     düz string. `{"t":..., "src":..., "link":...}` sözlüğüne çevir.
-   - Dünya/Türkiye şeritleri `_rss_basliklar()`'tan geliyor, link HİÇ
-     çekilmiyor. Eklerken: RSS'te `<link>` METİN, Atom'da `<link href="...">`
-     ÖZNİTELİK — ikisi de karşılanmalı. `_harmanla()` da `(ad, baslik)`
-     yerine linki taşımalı.
-   - `index.html` `newsRows()` şu an düz metin basıyor; link varsa `<a href>`
-     sar, `target="_blank" rel="noopener"` ver. Link yoksa eski görünüm
-     (feed eski `borsa.json`'ı döndürebilir — GERİYE UYUMLU olsun, string
-     ve sözlük ikisini de kaldırsın).
-   - **Doğrulama:** `borsa.json`'ı feed üretiyor; değişiklikten sonra
-     borsa-feed workflow'unu bir kez elle çalıştır (`gh workflow run feed.yml`),
-     yeni JSON'da link alanını gör, sonra panelde tıklayarak dene.
-   - Google News RSS linkleri yönlendirme (news.google.com/rss/articles/...);
-     kaynağa değil Google'a gider — kabul edilebilir mi diye kullanıcıya sor.
+7. ~~Gündem kartına haber linki~~ — **yapıldı (30 Ağu).** Başlığa tıklayınca
+   haberin kaynağına gidiyor (`target="_blank" rel="noopener"`).
+   - `panel_feed.py`: `_link_bul()` eklendi — RSS/RDF `<link>` METİN, Atom
+     `<link href>` ÖZNİTELİK (rel="self" beslemedir, `alternate` alınır),
+     son çare `<guid>`. `_rss_basliklar()` artık `(başlık, link)` çifti,
+     `_harmanla()` linki taşıyor. Üç şerit de `{"t","link"}` sözlüğü döndürüyor.
+     11 kaynağın 11'i link veriyor (elle koşturularak doğrulandı).
+   - `index.html` `newsRows()`: link http(s) ise `<a>` sarar, değilse/yoksa
+     eski düz metin. **GERİYE UYUMLU** — eski `borsa.json` ve önbellekteki
+     (`d:world`/`d:tr`/`d:news`) düz string'ler de basılıyor, yalnız linksiz.
+   - CSS: `.news-t a` rengi metinden miras, alt çizgi düz `--line`
+     (ayırıcılar noktalı `--line2`, karışmasın). İki temada da kontrol edildi.
+   - **Karar:** Piyasa şeridi Google News RSS'ten geliyor, linkleri
+     `news.google.com/rss/articles/...` yönlendirmesi. Kullanıcı 30 Ağu'da
+     "yönlendirme kabul" dedi — linki çözmeye çalışma, kırılgan. Dünya/Türkiye
+     zaten doğrudan kaynağa gidiyor.
 
 ### D. Küçük açık uçlar
 

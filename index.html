@@ -195,6 +195,9 @@
   .news-item{padding:8px 0;border-bottom:1px dotted var(--line2);display:flex;gap:11px;align-items:flex-start;} .news-item:last-child{border-bottom:none;}
   .news-n{font-family:var(--mono);font-size:12px;color:var(--accent);font-weight:500;min-width:16px;margin-top:2px;}
   .news-t{font-size:14px;line-height:1.4;flex:1;}
+  /* ayirici cizgiler zaten noktali --line2; link altcizgisi ondan ayrilsin diye duz --line */
+  .news-t a{color:inherit;text-decoration:none;border-bottom:1px solid var(--line);}
+  .news-t a:hover{color:var(--accent);border-bottom-color:var(--accent);}
   .paste{width:100%;background:#fff;border:1px solid var(--line);border-radius:4px;padding:8px 10px;font-family:var(--sans);font-size:13px;color:var(--ink);resize:vertical;min-height:48px;margin-top:9px;} .paste:focus{outline:none;border-color:var(--accent);}
   .film-title{font-family:var(--serif);font-weight:600;font-size:19px;} .film-year{color:var(--muted);font-size:13px;font-family:var(--mono);}
   .film-row{font-size:13px;margin-top:5px;line-height:1.5;} .film-row b{color:var(--accent);font-weight:600;font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;margin-right:6px;}
@@ -4245,8 +4248,15 @@ function renderGmail(d){
 let news=[];
 function newsRows(arr,el,bos){
   if(!arr.length){el.innerHTML='<div class="empty">'+bos+'</div>';return;}
-  el.innerHTML=arr.map((n,i)=>'<div class="news-item"><div class="news-n">'+String(i+1).padStart(2,'0')+
-    '</div><div class="news-t">'+esc(n)+'</div></div>').join('');
+  /* Feed basligi artik {t,link} sozlugu olarak veriyor. GERIYE UYUMLU: onbellekte
+     (d:world/d:tr/d:news) ya da eski borsa.json'da duz string varsa o da basilir,
+     yalnizca linksiz gorunur. Link http(s) degilse hic sarilmaz. */
+  el.innerHTML=arr.map((n,i)=>{
+    const t=typeof n==='string'?n:((n&&n.t)||''),u=(n&&typeof n==='object'&&n.link)||'';
+    const govde=/^https?:\/\//i.test(u)
+      ?'<a href="'+esc(u)+'" target="_blank" rel="noopener">'+esc(t)+'</a>':esc(t);
+    return '<div class="news-item"><div class="news-n">'+String(i+1).padStart(2,'0')+
+      '</div><div class="news-t">'+govde+'</div></div>';}).join('');
 }
 function renderNews(){const el=document.getElementById('newsList');if(!el)return;
   newsRows(news.slice(0,6),el,'Feed çalışınca (09:00/14:00) buraya düşer.');}

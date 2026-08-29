@@ -215,6 +215,24 @@ def _kap_bildirimi(baslik):
         or "ilişkin bildirim" in d or "özel durum açıklaması" in d
 
 
+def _link_bul(it):
+    """Haberin kendi adresi. RSS/RDF'te <link> METİN, Atom'da <link href="...">
+    ÖZNİTELİK — ikisi de karşılanmalı. Atom'da birden çok <link> olur:
+    rel="self" beslemenin kendisidir, haber rel="alternate" (ya da rel'siz)
+    olandır. Bulunamazsa boş döner; panel o başlığı linksiz basar."""
+    for etiket in ("link", "{http://purl.org/rss/1.0/}link"):
+        e = it.find(etiket)
+        if e is not None and e.text and e.text.strip():
+            return e.text.strip()
+    for e in it.findall("{http://www.w3.org/2005/Atom}link"):
+        if e.get("rel", "alternate") == "alternate" and e.get("href"):
+            return e.get("href").strip()
+    g = it.find("guid")
+    if g is not None and g.text and g.text.strip().startswith("http"):
+        return g.text.strip()
+    return ""
+
+
 def _rss_basliklar(url, n, ad=""):
     try:
         req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
@@ -249,7 +267,7 @@ def _rss_basliklar(url, n, ad=""):
         if _cop_mu(baslik):
             elendi += 1
             continue
-        out.append(baslik)
+        out.append((baslik, _link_bul(it)))
         if len(out) >= n:
             break
     TESHIS.append(f"{ad or url}: {len(ogeler)} öğe / {len(out)} alındı / "
@@ -278,21 +296,22 @@ def _harmanla(feeds, n, emoji):
         for ad, _ in feeds:
             if tur >= len(kaynak.get(ad, [])):
                 continue
-            baslik = kaynak[ad][tur]
-            if any(_benzer(baslik, b) for _, b in out):
+            baslik, link = kaynak[ad][tur]
+            if any(_benzer(baslik, b) for _, b, _l in out):
                 continue
-            out.append((ad, baslik))
+            out.append((ad, baslik, link))
             if len(out) >= n:
                 break
         if len(out) >= n:
             break
-    calisan = sorted({a for a, _ in out})
+    calisan = sorted({a for a, _b, _l in out})
     olu = [ad for ad, _ in feeds if not kaynak.get(ad)]
     ozet = (f"SONUÇ: {len(out)} haber · veren: {', '.join(calisan) or 'yok'}"
             + (f" · boş dönen: {', '.join(olu)}" if olu else ""))
     TESHIS.append(ozet)
     print("  " + ozet)
-    return [f"{emoji} {b}  ({a})" for a, b in out]
+    # Panel geriye uyumlu: düz string de basar, {"t","link"} de.
+    return [{"t": f"{emoji} {b}  ({a})", "link": l} for a, b, l in out]
 
 
 def fetch_tr(n=6):
@@ -339,7 +358,10 @@ def build():
                 hisse_elenen += 1
                 continue
             emoji, _ = B.news_tone(title)
-            news_items.append(f"{emoji} {title}" + (f"  ({src})" if src else ""))
+            news_items.append({
+                "t": f"{emoji} {title}" + (f"  ({src})" if src else ""),
+                "link": link or "",
+            })
         if len(news_items) >= 8:
             break
 
