@@ -170,6 +170,32 @@ log herkese açık.
 
 ---
 
+### E. 31 Ağustos 2026 — panel ciddi kullanıma geçti
+
+Kullanıcı 30 Ağu (Pazar) "artık geliştirme değil, 31 Ağustos'tan itibaren
+gerçekten kullanacağım" dedi. Geliştirme sırasında biriken deneme kayıtları
+**bir kerelik sıfırlama** ile silindi (`RESET_VERSION='2026-08-31-temiz'`,
+`sifirla()` — TARGETS_VERSION deseninin aynısı, damgayı taşımayan cihaz kendi
+açılışında bir kez temizliyor).
+
+- **Silinen:** `d:morning: d:runkm: d:ex: d:sess: d:meals: d:water: d:dequiz:
+  d:yok: d:sched: d:schedOvr:` önekleri + `d:prog d:vol d:volFill d:deWrong
+  d:tasks d:water d:sleepLog d:wtlog d:bw`. Alışkanlık serileri bu tiklerden
+  hesaplandığı için onlar da sıfırdan başlıyor.
+- **Korunan (kullanıcı öyle istedi):** `d:sync` (token!), `d:targets` +
+  `d:targetsVer`, `d:money:*`, `d:myApps`, `d:jobsApplied`, `d:jobProfile`,
+  `d:theme`, `d:tab`, besleme önbellekleri.
+- **İki tuzak, ikisi de çözüldü:** (1) silinen anahtarın `d:mtime` damgası
+  BUGÜNE çekiliyor — yoksa yedekteki eski değer `mergeRemote`'un "uzak daha
+  yeni mi" testini geçip geri geliyordu. (2) `d:resetVer` **`SYNC_SKIP`'te**:
+  senkronla yayılsaydı ikinci cihaz "zaten sıfırlandı" sanıp kendi eski
+  verisini silmez, sonra yedeğe geri basardı.
+- `d:volFill` sıfırlama sonrası kendini yeniden yazıyor (geri doldurma bayrağı,
+  `d:vol` boş kaldığı için zararsız) — beklenen davranış.
+- Yeni bir sıfırlama gerekirse: `RESET_VERSION`'ı değiştir, yeter.
+
+---
+
 ## 3. Bilinen sorunlar / doğrulanmamış olanlar
 
 **Zamanlanmış işler düzensiz.** 27 Ağustos'ta 14 saat hiç dönmedi; 28'inde

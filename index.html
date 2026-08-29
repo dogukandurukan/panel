@@ -4875,7 +4875,7 @@ function openJobsCfg(){
    - Feed onbellekleri (borsa/haber/hava/ajan) senkrona girmez; her cihaz onlari
      kendi ceker, bosuna trafik olmasin. */
 const SYNC_FILE='panel-data.json';
-const SYNC_SKIP=['d:sync','d:mtime','d:theme','d:tab','d:news','d:fx','d:agents','d:wx','d:bist','d:altin','d:watch','d:world','d:tr','d:us','d:worldIdx','d:gold','d:facts'];
+const SYNC_SKIP=['d:sync','d:mtime','d:resetVer','d:theme','d:tab','d:news','d:fx','d:agents','d:wx','d:bist','d:altin','d:watch','d:world','d:tr','d:us','d:worldIdx','d:gold','d:facts'];
 const SYNC_POLL=5*60*1000;
 let syncCfg=null,syncTimer=null,syncBusy=false,syncMsg='';
 const syncable=k=>k&&k.indexOf('d:')===0&&SYNC_SKIP.indexOf(k)<0;
@@ -4893,6 +4893,35 @@ function localSnapshot(){
     out[k]={v:localStorage.getItem(k),t:m[k]||1};
   }
   return out;
+}
+/* ===== BIR KERELIK SIFIRLAMA =====
+   Kullanici paneli 31 Agustos 2026'da gercekten kullanmaya basliyor; gelistirme
+   sirasinda birikmis deneme tikleri seri/ortalama hesaplarini kirletiyordu.
+   Desen TARGETS_VERSION ile ayni: damgayi tasimayan cihaz bir kez temizler,
+   yani Mac ve telefon kendi acilisinda ayri ayri siliniyor.
+   KAPSAM DISI (kasitli): d:sync (token!), d:targets/d:targetsVer (program
+   ayari, veri degil), d:money:* (harcama), d:myApps + d:jobsApplied +
+   d:jobProfile (is basvurulari ve CV profili), d:theme, d:tab, besleme
+   onbellekleri (borsa/haber/hava — zaten kendini tazeliyor). */
+const RESET_VERSION='2026-08-31-temiz';
+const RESET_ONEK=['d:morning:','d:runkm:','d:ex:','d:sess:','d:meals:','d:water:',
+                  'd:dequiz:','d:yok:','d:sched:','d:schedOvr:'];
+const RESET_TEK=['d:prog','d:vol','d:volFill','d:deWrong','d:tasks','d:water',
+                 'd:sleepLog','d:wtlog','d:bw'];
+function sifirla(){
+  const sil=[];
+  for(let i=0;i<localStorage.length;i++){
+    const k=localStorage.key(i);if(!k)continue;
+    if(RESET_TEK.indexOf(k)>=0||RESET_ONEK.some(on=>k.indexOf(on)===0))sil.push(k);
+  }
+  /* Silinen anahtarin mtime'i BUGUNE cekiliyor. Yoksa yedekteki eski deger
+     mergeRemote'un "uzak daha yeni mi" testini gecip geri geliyor: silme
+     mtime'a dokunmadigi icin damga eski kaliyordu. */
+  const m=mtimes(),t=Date.now();
+  sil.forEach(k=>{try{localStorage.removeItem(k);}catch(e){}delete mem[k];if(syncable(k))m[k]=t;});
+  saveMtimes(m);
+  try{localStorage.setItem('d:resetVer',JSON.stringify(RESET_VERSION));}catch(e){}
+  return sil.length;
 }
 function mergeRemote(data){
   const m=mtimes();let degisen=0;
@@ -5130,6 +5159,12 @@ if(navigator.serviceWorker){
 
 /* init */
 (async function(){tick();setInterval(tick,1000);await initTheme();
+  /* Sifirlama HER SEYDEN once: kartlar veriyi bir kez okuyor, sonra silmek
+     ekranda eski degerlerin kalmasina yol aciyor. */
+  if((await sGet('d:resetVer'))!==RESET_VERSION){
+    const n=sifirla();
+    if(n)console.log('Panel sifirlandi: '+n+' kayit silindi ('+RESET_VERSION+')');
+  }
   tasks=await sGet(K.tasks)||[];
   targets=await sGet(K.targets)||{...DEFAULT_TARGETS};
   if((await sGet(K.targetsVer))!==TARGETS_VERSION){    // program değişti -> hedefleri tazele
