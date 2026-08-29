@@ -1,98 +1,87 @@
 {
- "updated": "2026-08-28 20:08",
+ "updated": "2026-08-29 14:28",
  "ok": true,
  "count": 3,
- "pool": 12,
+ "pool": 5,
  "items": [
   {
-   "title": "Data Engineer - Tracking Infrastructure (m/f/d)",
-   "company": "Statista",
+   "title": "Staff/Senior AI Engineer, AI for Code",
+   "company": "jetbrains",
    "location": "Berlin",
-   "loc_raw": "Hamburg or Berlin",
+   "loc_raw": "Berlin; Munich",
    "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/statista/data-engineer-tracking-infrastructure-hamburg-or-berlin-476148",
+   "url": "https://www.arbeitnow.com/jobs/companies/jetbrains/staff-senior-ai-engineer-ai-for-code-berlin-munich-277450",
    "source": "Arbeitnow",
    "posted": "2026-08-28",
-   "days": 0,
-   "skills": [
-    "python",
-    "sql",
-    "airflow",
-    "dbt",
-    "snowflake",
-    "ci/cd"
-   ],
-   "german": false,
-   "focus": "pipeline",
-   "summary": "At Statista , we’re all about facts and data, for we are the world's leading business data platform. By providing reliable and easy-to-use data as well as various data analytics products and services, we empower people worldwide to make fact-based decisions. F",
-   "keywords": [
-    "cost",
-    "pipeline",
-    "data quality",
-    "governance",
-    "optimization",
-    "scalab",
-    "stakeholder"
-   ],
-   "score": 100
-  },
-  {
-   "title": "Working Student Data Analyst (d/f/m)",
-   "company": "Bettermile",
-   "location": "Berlin",
-   "loc_raw": "Better Place, Oranienstraße 183, Berlin",
-   "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/bettermile/working-student-data-analyst-berlin-170440",
-   "source": "Arbeitnow",
-   "posted": "2026-08-27",
    "days": 1,
    "skills": [
-    "python",
+    "llm"
+   ],
+   "german": false,
+   "focus": "ml",
+   "summary": "At JetBrains, we build developer tools used by millions of engineers. The AI for Code team works on the next generation of coding agents and agentic workflows: systems that can understand codebases, plan and execute multi-step tasks, collaborate with developer",
+   "keywords": [
+    "cost",
+    "optimization"
+   ],
+   "score": 82
+  },
+  {
+   "title": "Senior Product Data Analyst - Consumer Growth",
+   "company": "SumUp",
+   "location": "UK",
+   "loc_raw": "London, England, United Kingdom",
+   "remote": false,
+   "url": "https://www.arbeitnow.co.uk/jobs/companies/sumup/senior-product-data-analyst-consumer-growth-london-167800",
+   "source": "Arbeitnow",
+   "posted": "2026-08-28",
+   "days": 1,
+   "skills": [
     "sql",
-    "dbt",
     "snowflake",
+    "data warehouse",
+    "git",
+    "a/b test",
     "llm"
    ],
    "german": false,
    "focus": "business",
-   "summary": "What is working at Bettermile like? 🌟 We have a very supportive and appreciative working environment with a lot of autonomy, a flat hierarchy, and professional growth possibilities 🌍 We mean diversity and we put it in numbers: 40 languages, 40 nationalities, 4",
+   "summary": "About the team SumUp is best known for helping small businesses get paid — our Consumer tribe builds the other half of that story. We make SumUp Consumer, the wallet app that lets everyday consumers pay SumUp merchants with a tap, send money to friends, track ",
    "keywords": [
+    "a/b",
     "dashboard",
-    "data quality",
-    "pipeline",
-    "optimization",
-    "saas"
+    "stakeholder",
+    "scalab"
    ],
-   "score": 94
+   "score": 77
   },
   {
-   "title": "Data Engineer (m/f/d)",
-   "company": "MOTOR Ai",
-   "location": "Berlin",
-   "loc_raw": "Berlin",
-   "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/motor-ai/data-engineer-berlin-366460",
-   "source": "Arbeitnow",
-   "posted": "2026-08-28",
-   "days": 0,
+   "title": "Senior Independent AI Engineer / Architect",
+   "company": "A.Team",
+   "location": "Remote",
+   "loc_raw": "Americas, Europe, Israel",
+   "remote": true,
+   "url": "https://remotive.com/remote-jobs/software-development/senior-independent-ai-engineer-architect-1919266",
+   "source": "Remotive",
+   "posted": "2026-08-16T10:09:41",
+   "days": 13,
    "skills": [
-    "python",
-    "sql",
-    "data warehouse"
+    "llm"
    ],
    "german": false,
    "focus": "ml",
-   "summary": "Driving the transition to autonomous mobility: Our mission is to spearhead the deployment of Level 4 autonomous systems in Germany and beyond. By combining cutting-edge AI with the expertise of our multidisciplinary team, we are set to introduce the first cert",
+   "summary": "Senior Independent AI Engineer / Architect Remote | Americas, Europe, or Israel Most AI engineers can find work. Finding work worth doing is harder. A.Team is an invite-only network of senior AI engineers, ML engineers, and AI architects building production AI",
    "keywords": [
-    "pipeline",
-    "data quality",
-    "automation",
-    "cost"
+    "startup",
+    "enterprise"
    ],
-   "score": 82
+   "score": 58
   }
  ],
  "seen": [
+  "https://www.arbeitnow.com/jobs/companies/jetbrains/staff-senior-ai-engineer-ai-for-code-berlin-munich-277450",
+  "https://www.arbeitnow.co.uk/jobs/companies/sumup/senior-product-data-analyst-consumer-growth-london-167800",
+  "https://remotive.com/remote-jobs/software-development/senior-independent-ai-engineer-architect-1919266",
   "https://www.arbeitnow.com/jobs/companies/statista/data-engineer-tracking-infrastructure-hamburg-or-berlin-476148",
   "https://www.arbeitnow.com/jobs/companies/bettermile/working-student-data-analyst-berlin-170440",
   "https://www.arbeitnow.com/jobs/companies/motor-ai/data-engineer-berlin-366460",
