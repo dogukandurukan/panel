@@ -18,9 +18,14 @@ yönlendiriyor, bir sekmeye gömülselerdi gün boyu sekme değiştirmek gerekir
 
 | Kart | Veri |
 |---|---|
-| Bugün Yapılacaklar | `d:tasks` |
 | Günün Programı | `SCHED` + `d:sched:TARİH`, görünüm ezmesi `d:schedOvr:TARİH` |
-| Şu An Ne Yapıyorsun? (yoklama) | `YOK` + `d:yok:TARİH` |
+| Bugün Yapılacaklar | `d:tasks` |
+| Yoklama — başlık duruma göre değişir | `YOK` + `d:yok:TARİH` |
+
+Yoklama kartı **iki durumlu**: dilim devam ediyorsa "Şu An Ne Yapıyorsun?"
+(canlı soru), dilim bittiyse "Bugünü Kapat" (bekleyenler tek listede, satır
+başına ✓/✗). Cevap bekleyenler günlük dökümde tekrar listelenmez. Otomatik
+"atladı" işaretlemesi YOK — uydurma veri seri hesabını bozar.
 
 **Sekme 1 — Spor & Sağlık** (`#tabSpor` / `#gridSpor`):
 
@@ -127,14 +132,24 @@ log herkese açık.
    sorulan iş farklı olabilir, kullanıcı bunu bilerek bu şekilde istedi
    (tam entegre versiyon SCHED'in veri modelini + `yokPlanUret`'i + push
    senkronunu değiştirmeyi gerektirirdi, çok daha büyük iş).
-7. **Gündem kartına haber linki** — kullanıcı istedi, "çok eforlu değilse"
-   dedi ama kuyruğa aldı. Piyasa&Şirket haberinde link zaten `borsa.py`
-   `fetch_news()`'te çekiliyor, `panel_feed.py build()`'de atılıyor (kolay:
-   `news_items`i string yerine {t,src,link} yap). Dünya/Türkiye şeritleri
-   (`_rss_basliklar()`) link HİÇ çekmiyor — RSS `<link>` metin, Atom
-   `<link href=...>` öznitelik, ikisi de karşılanmalı (orta efor). JS
-   tarafında `newsRows()`'u link varsa `<a href>` saracak şekilde değiştir.
-   Doğrulamak için borsa-feed workflow'unu bir kez çalıştırmak gerekiyor.
+7. **Gündem kartına haber linki — SIRADAKİ İŞ, kullanıcı onayladı.**
+   Haber başlığına tıklayınca haberin kaynağına gidilsin. Yapılacaklar:
+   - `borsa.py` `fetch_news()` linki ZATEN döndürüyor `(title, src, rel, link)`.
+   - `panel_feed.py` `build()` içinde link atılıyor: `news_items.append(f"{emoji} {title}...")`
+     düz string. `{"t":..., "src":..., "link":...}` sözlüğüne çevir.
+   - Dünya/Türkiye şeritleri `_rss_basliklar()`'tan geliyor, link HİÇ
+     çekilmiyor. Eklerken: RSS'te `<link>` METİN, Atom'da `<link href="...">`
+     ÖZNİTELİK — ikisi de karşılanmalı. `_harmanla()` da `(ad, baslik)`
+     yerine linki taşımalı.
+   - `index.html` `newsRows()` şu an düz metin basıyor; link varsa `<a href>`
+     sar, `target="_blank" rel="noopener"` ver. Link yoksa eski görünüm
+     (feed eski `borsa.json`'ı döndürebilir — GERİYE UYUMLU olsun, string
+     ve sözlük ikisini de kaldırsın).
+   - **Doğrulama:** `borsa.json`'ı feed üretiyor; değişiklikten sonra
+     borsa-feed workflow'unu bir kez elle çalıştır (`gh workflow run feed.yml`),
+     yeni JSON'da link alanını gör, sonra panelde tıklayarak dene.
+   - Google News RSS linkleri yönlendirme (news.google.com/rss/articles/...);
+     kaynağa değil Google'a gider — kabul edilebilir mi diye kullanıcıya sor.
 
 ### D. Küçük açık uçlar
 
@@ -209,6 +224,11 @@ O durumda dağıtım yalnızca Actions kaydından okunur. iOS ana ekran kısayol
     Bildirim derin bağlantısı (`bildirimeGit`) ve yoklama→antrenman geçişi
     bunu yapıyor; yeni bir "şu karta git" akışı eklersen aynısını yap,
     yoksa gizli sekmedeki karta kaydırıp sayfayı boşuna oynatırsın.
+14. **Gizli sekmede `scrollHeight` de 0.** Öğün metni textarea'sının boyu
+    içeriğe göre ayarlanıyor (`mealBoy`); gizliyken ölçülemediği için
+    atlanıyor, `tabGec` açılışta `mealBoyHepsi()` ile düzeltiyor. İçeriğe
+    göre boyutlanan YENİ bir alan eklersen aynı deseni kur (12. maddenin
+    kardeşi — ölçüme dayanan her şey bu tuzağa düşer).
 
 ---
 
