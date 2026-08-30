@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-30 14:46",
+  "updated": "2026-08-30 18:07",
   "watch": [
     {
       "code": "TCELL",
@@ -253,7 +253,7 @@
   ],
   "gold": {
     "price": "7,024.20",
-    "chg": "-1.53%"
+    "chg": "-1.25%"
   },
   "news": [
     {
@@ -273,91 +273,91 @@
       "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQQ2c1anlzUW1lVmt6VzFZNHg3UWZFSUc3WEwyYVk1N3Y3WUc1VTQwQWJsSGFEdmY5eXhHOGQ4VjZ6Q0lfTG5EZ3NyZ2FRalBnMGpQQkdkNXBHMDItZ3lSU055OWxkSlBoR0F6ODhuVTE1RUk3d0RwS01PUFVobTRwM2lIbl9McUVtcExGbnd2anp1YXRVdDR5RERGNENMemhBek5hVW9VNFU?oc=5"
     },
     {
-      "t": "🔴 Rekabet Kurulu'ndan HEKTS ve GUBRF Şirketlerine Soruşturma!  (Para Ajansı)",
-      "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOUU5DMHJBVS12OGpBbjRmQ2JFZUtDZE9qVV8xcXRQQkZoMzZvR2FMQmpXcjZ6R2Mxb0VqbmYxaTJMSnljclhFV29sLS1BWXFJU24xdWNYSUZEazl5VVJxODFpWGtValJZbDYyTmhWeWVqRFJKOVlQdmtfM21aMFVjdDMtS1p1T3plTXYxYWxBWkl4Q0F1X1pIXzNuY3VOMllyY1FSbHUzMW45MkJhUzhN?oc=5"
-    },
-    {
       "t": "⚪ Borsada 10 hisse için hedef fiyat: HALKB ve ISCTR listede  (Paratic Haber)",
       "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQa0lLYmpVY1dmd2FuOU04MlRhQ0RlTEdhZHlTTUJFWUE4cFZZTE00eEp4QkREb2pjUWI5cjlCbTJOLXNfY3o3RFFmdklvaDZLVTVUMlJ2Z253OFZCSmxXZlVZOWNFVlFxMkVPX3pOSk1VZFNmSGZ1REFmZkVkM1EyUW10VQ?oc=5"
     },
     {
-      "t": "⚪ Türkiye İş Bankası (ISCTR) hisseleri için yeni hedef fiyat açıklandı  (Rota Borsa)",
-      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOOUVLV2RKZVRpRWJQZkMxUjB2eV9Tc2lYRnJlS1dQd1J2MmwyS0lRMU9nckVlZlg3bzd4Y2RGZ1dzMzh0b2NOZzNpMUdFVXlyTWxNWjRSWTZQMTlPZVF0S1hMQ2VGc3BiWWFBdFhtR1V0dFdiaU5lUEhnQnNrSl9zMW11OF9RcE5sUHRyMTREZWJwTVBpVHFn?oc=5"
+      "t": "⚪ ASTOR, KCHOL, ALARK ve ISCTR dahil 17 hisse için hedef fiyat açıklandı  (Rota Borsa)",
+      "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxPTmZPcG12a014LVZuSFozLVpBTkhIWGVwZHUyZWgwLURyMWN4TkplNkp0dnBFNkJfUmtsYjFNemRzN01UemRkRHRVWC1zUXFZRVYtTThMUm9YT1JIWW16T2Jmd0YwT1NkcVBNMmh3bzlLa0toVjZZN0dQN2JweWJfU3hySndoNmZjMG1tMVJjbnI5d3BXc3c?oc=5"
     },
     {
-      "t": "⚪ Ünlü & Co hedefini düşürdü: ISCTR 12,79 TL'den 18,30 TL'ye çıkacak mı?  (YatırımX)",
-      "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOaEFfcktNYUl2X2hHZml5NUVoNm1VZXJVQjU5Yk96Y2JQUnBacVYybnVPdU9zdmhrSWp1dF8taks1dUItenYyWjNEZ3dnMTF1QTBpSDZXZU9SM3Q1cTEzenlZZXBPSkt4NFpLVXgxbVFQd0dRcFpCRGdkc1l3SkR2Uk1TcHlfSDZDYjc2NEhxUVE5b2s2OWN4YnJfR0hIV0xoaDlsYlF4QQ?oc=5"
+      "t": "⚪ SASA hisselerinde kritik başvuru süreci: Son tarih açıklandı  (CNBC-e)",
+      "link": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxPdWU5dlBkcEdIM20ycDFnNFIzQjlHcU8yRGR1czJDa0pySHBpb3NzalFWRFR5d3JkOGJYalF6X1RZb3JNbXVaNUZzOF9oemNxTnhKVWNMMmhvV2NwbW5YTk5LZm5tOXE1am82RHJuRVdRc0s5YlBpVi1kb2FMVFhjMU9Fcl9TcENOZktwUDljM2t2SlVqOGZQQmViNGtoTkxmT2ppa3FkZGRGQ2tLTjVBTllnV2ljSjJHc2VPLXBlMjJyMnhVeDhDQWhGYUdaTDFNaDJvdmFCM0VOSmgzU1Q1VUd1QVlXU3JhZHhQZw?oc=5"
+    },
+    {
+      "t": "⚪ SASA - KAP Haberleri - 2026-08-27 tarihli  (Bloomberght)",
+      "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE9ESjROZ05hZlZqOHZCMW5JSzR5Zkt0OHdxQmtsck9mQ0dEZFN3cHFLLTZteFJ3X2h5dEJGOFN4YkFxcmdrM3E3NmVMcGRJYldzOWtsVTJSbWc5aDBsVXpRTmlPRGFMa2RwMXZacEVsaw?oc=5"
     }
   ],
   "world": [
     {
-      "t": "🌍 Iceland votes against restarting talks on joining EU  (BBC World)",
+      "t": "🌍 Iceland votes against restarting EU membership talks  (BBC World)",
       "link": "https://www.bbc.co.uk/news/articles/c70le8ed1plo?at_medium=RSS&at_campaign=rss"
     },
     {
-      "t": "🌍 Humanitarian crisis worsening in refuge for civilians fleeing Sudan’s civil war  (Guardian World)",
+      "t": "🌍 People fleeing Sudan civil war face ‘dire and deteriorating’ conditions in refuge city  (Guardian World)",
       "link": "https://www.theguardian.com/world/2026/aug/30/humanitarian-crisis-worsening-refuge-civilians-sudan-el-obeid"
     },
     {
-      "t": "🌍 Iran’s Khamenei calls for Gulf unity as Hormuz tensions persist  (Al Jazeera)",
-      "link": "https://www.aljazeera.com/news/2026/8/30/irans-khamenei-calls-for-gulf-unity-as-hormuz-tensions-persist?traffic_source=rss"
+      "t": "🌍 Why did Australia give visas to Israeli soldiers but not Bassem Youssef?  (Al Jazeera)",
+      "link": "https://www.aljazeera.com/video/newsfeed/2026/8/30/30-08-sydney-marathon-israeli-soldiers-idf-fm?traffic_source=rss"
     },
     {
-      "t": "🌍 From Appalachia to Africa: Why Dolly Parton was beloved across the continent  (NPR World)",
-      "link": "https://www.npr.org/2026/08/30/nx-s1-5946399/africa-dolly-parton-fans"
+      "t": "🌍 Canada claps back at Trump's efforts to rename Lake Ontario as 'Lake America'  (NPR World)",
+      "link": "https://www.npr.org/2026/08/30/nx-s1-5949254/lake-ontario-america-doug-ford-trump-sign-google"
     },
     {
-      "t": "🌍 Icelanders react as the EU referendum results come in  (Euronews)",
-      "link": "http://www.euronews.com/video/2026/08/30/icelanders-react-as-the-eu-referendum-results-come-in"
+      "t": "🌍 Guinea-Bissau votes in referendum to rewrite constitution and boost presidential powers  (Euronews)",
+      "link": "http://www.euronews.com/2026/08/30/guinea-bissau-votes-in-referendum-to-rewrite-constitution-and-boost-presidential-powers"
     },
     {
-      "t": "🌍 Greece, Turkey clash over protected Aegean marine areas  (DW)",
-      "link": "https://www.dw.com/en/greece-turkey-clash-over-protected-aegean-marine-areas/a-78550021?maca=en-rss-en-world-4025-rdf"
+      "t": "🌍 Guinea-Bissau votes to reshape presidency  (DW)",
+      "link": "https://www.dw.com/en/guinea-bissau-votes-to-reshape-presidency/a-78562523?maca=en-rss-en-world-4025-rdf"
     }
   ],
   "tr": [
     {
-      "t": "🇹🇷 Erzurum ve Ardahan için kuvvetli yağış uyarısı  (AA)",
-      "link": "https://www.aa.com.tr/tr/gundem/erzurum-ve-ardahan-icin-kuvvetli-yagis-uyarisi/4041543"
+      "t": "🇹🇷 Trump, Venezuela petrolüyle ABD'nin stratejik rezervlerini dolduracağını belirtti  (AA)",
+      "link": "https://www.aa.com.tr/tr/dunya/trump-venezuela-petroluyle-abdnin-stratejik-rezervlerini-dolduracagini-belirtti/4041723"
     },
     {
-      "t": "🇹🇷 Girne açıklarında yaklaşık 260 yolcusu bulunan feribot battı  (TRT Haber)",
-      "link": "https://www.trthaber.com/haber/gundem/girne-aciklarinda-yaklasik-260-yolcusu-bulunan-feribot-batti-955367.html"
+      "t": "🇹🇷 Trabzon'da denize girmek yarın yasak  (TRT Haber)",
+      "link": "https://www.trthaber.com/haber/turkiye/trabzonda-denize-girmek-yarin-yasak-955382.html"
     },
     {
-      "t": "🇹🇷 Türkiye'de 1840'ta yaşanan buzul çökmesine bağlı sel tekrarlanabilir mi?  (BBC Türkçe)",
-      "link": "https://www.bbc.com/turkce/articles/cx2zypd2vkzo?at_medium=RSS&at_campaign=rss"
+      "t": "🇹🇷 Girne açıklarında yolcu gemisi alabora oldu: '7 kişi hayatını kaybetti, 23 kişi aranıyor'  (BBC Türkçe)",
+      "link": "https://www.bbc.com/turkce/articles/c4gvzyyq2jwo?at_medium=RSS&at_campaign=rss"
     },
     {
-      "t": "🇹🇷 Yılmaz'dan KKTC'de alabora olan gemi ile ilgili açıklama  (Habertürk)",
-      "link": "https://www.haberturk.com/son-dakika-yilmaz-dan-kktc-de-alabora-olan-gemi-ile-ilgili-aciklama-3909078"
+      "t": "🇹🇷 Cumhurbaşkanı Erdoğan'dan açıklamalar  (Habertürk)",
+      "link": "https://www.haberturk.com/son-dakika-cumhurbaskani-erdogan-dan-aciklamalar-3909091"
     },
     {
-      "t": "🇹🇷 Girne açıklarında yolcu gemisi alabora oldu  (NTV)",
-      "link": "https://www.ntv.com.tr/turkiye/video-girne-aciklarinda-yolcu-gemisi-alabora-oldu-1739597"
+      "t": "🇹🇷 Cumhurbaşkanı Erdoğan: KKTC ile işbirliği içindeyiz  (NTV)",
+      "link": "https://www.ntv.com.tr/turkiye/cumhurbaskani-erdogan-kktc-ile-isbirligi-icindeyiz-1739616"
     },
     {
-      "t": "🇹🇷 İsrail ordusu, ateşkese rağmen Lübnan'ın güneyinde bazı bölgeleri hedef aldı  (AA)",
-      "link": "https://www.aa.com.tr/tr/dunya/israil-ordusu-ateskese-ragmen-lubnanin-guneyinde-bazi-bolgeleri-hedef-aldi/4041541"
+      "t": "🇹🇷 Google Haritalar, ABD'deki uygulamasında Ontario Gölü'nün adını \"Amerika Gölü\" olarak değiştirdi  (AA)",
+      "link": "https://www.aa.com.tr/tr/dunya/google-haritalar-abddeki-uygulamasinda-ontario-golunun-adini-amerika-golu-olarak-degistirdi/4041703"
     }
   ],
   "_teshis": {
     "dunya": [
-      "BBC World: 36 öğe / 2 alındı / 0 elendi | ilk: Iceland votes against restarting talks on joining EU",
-      "Guardian World: 45 öğe / 2 alındı / 0 elendi | ilk: Humanitarian crisis worsening in refuge for civilians fleein",
-      "Al Jazeera: 25 öğe / 2 alındı / 0 elendi | ilk: Iran’s Khamenei calls for Gulf unity as Hormuz tensions pers",
-      "NPR World: 10 öğe / 2 alındı / 0 elendi | ilk: From Appalachia to Africa: Why Dolly Parton was beloved acro",
-      "Euronews: 50 öğe / 2 alındı / 1 elendi | ilk: Icelanders react as the EU referendum results come in",
-      "DW: 13 öğe / 2 alındı / 0 elendi | ilk: Greece, Turkey clash over protected Aegean marine areas",
+      "BBC World: 36 öğe / 2 alındı / 0 elendi | ilk: Iceland votes against restarting EU membership talks",
+      "Guardian World: 45 öğe / 2 alındı / 0 elendi | ilk: People fleeing Sudan civil war face ‘dire and deteriorating’",
+      "Al Jazeera: 25 öğe / 2 alındı / 0 elendi | ilk: Why did Australia give visas to Israeli soldiers but not Bas",
+      "NPR World: 10 öğe / 2 alındı / 0 elendi | ilk: Canada claps back at Trump's efforts to rename Lake Ontario ",
+      "Euronews: 50 öğe / 2 alındı / 0 elendi | ilk: Guinea-Bissau votes in referendum to rewrite constitution an",
+      "DW: 13 öğe / 2 alındı / 0 elendi | ilk: Guinea-Bissau votes to reshape presidency",
       "SONUÇ: 6 haber · veren: Al Jazeera, BBC World, DW, Euronews, Guardian World, NPR World",
-      "AA: 30 öğe / 2 alındı / 0 elendi | ilk: Erzurum ve Ardahan için kuvvetli yağış uyarısı",
-      "TRT Haber: 50 öğe / 2 alındı / 0 elendi | ilk: Girne açıklarında yaklaşık 260 yolcusu bulunan feribot battı",
-      "BBC Türkçe: 20 öğe / 2 alındı / 0 elendi | ilk: Türkiye'de 1840'ta yaşanan buzul çökmesine bağlı sel tekrarl",
-      "Habertürk: 30 öğe / 2 alındı / 0 elendi | ilk: Yılmaz'dan KKTC'de alabora olan gemi ile ilgili açıklama",
-      "NTV: 20 öğe / 2 alındı / 0 elendi | ilk: Girne açıklarında yolcu gemisi alabora oldu",
+      "AA: 30 öğe / 2 alındı / 0 elendi | ilk: Trump, Venezuela petrolüyle ABD'nin stratejik rezervlerini d",
+      "TRT Haber: 50 öğe / 2 alındı / 0 elendi | ilk: Trabzon'da denize girmek yarın yasak",
+      "BBC Türkçe: 20 öğe / 2 alındı / 0 elendi | ilk: Girne açıklarında yolcu gemisi alabora oldu: '7 kişi hayatın",
+      "Habertürk: 30 öğe / 2 alındı / 0 elendi | ilk: Cumhurbaşkanı Erdoğan'dan açıklamalar",
+      "NTV: 20 öğe / 2 alındı / 0 elendi | ilk: Cumhurbaşkanı Erdoğan: KKTC ile işbirliği içindeyiz",
       "SONUÇ: 6 haber · veren: AA, BBC Türkçe, Habertürk, NTV, TRT Haber"
     ],
-    "hisse": "10 başlık geldi, 2 elendi",
+    "hisse": "11 başlık geldi, 2 elendi",
     "hisse_ham": [
       "ASTOR’da hedef fiyat yukarı çekildi: 458 TL",
       "Astor Enerji’nin yatırım rotasında İspanya ve ABD var",
