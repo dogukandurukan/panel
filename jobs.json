@@ -1,84 +1,98 @@
 {
- "updated": "2026-08-29 14:28",
+ "updated": "2026-08-30 13:15",
  "ok": true,
  "count": 3,
- "pool": 5,
+ "pool": 8,
  "items": [
   {
-   "title": "Staff/Senior AI Engineer, AI for Code",
-   "company": "jetbrains",
+   "title": "Senior Data Engineer, Constellation Services",
+   "company": "planetlabs",
    "location": "Berlin",
-   "loc_raw": "Berlin; Munich",
+   "loc_raw": "Berlin",
    "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/jetbrains/staff-senior-ai-engineer-ai-for-code-berlin-munich-277450",
+   "url": "https://www.arbeitnow.com/jobs/companies/planetlabs/senior-data-engineer-constellation-services-berlin-107524",
    "source": "Arbeitnow",
-   "posted": "2026-08-28",
+   "posted": "2026-08-29",
    "days": 1,
    "skills": [
-    "llm"
-   ],
-   "german": false,
-   "focus": "ml",
-   "summary": "At JetBrains, we build developer tools used by millions of engineers. The AI for Code team works on the next generation of coding agents and agentic workflows: systems that can understand codebases, plan and execute multi-step tasks, collaborate with developer",
-   "keywords": [
-    "cost",
-    "optimization"
-   ],
-   "score": 82
-  },
-  {
-   "title": "Senior Product Data Analyst - Consumer Growth",
-   "company": "SumUp",
-   "location": "UK",
-   "loc_raw": "London, England, United Kingdom",
-   "remote": false,
-   "url": "https://www.arbeitnow.co.uk/jobs/companies/sumup/senior-product-data-analyst-consumer-growth-london-167800",
-   "source": "Arbeitnow",
-   "posted": "2026-08-28",
-   "days": 1,
-   "skills": [
+    "python",
     "sql",
-    "snowflake",
-    "data warehouse",
-    "git",
-    "a/b test",
-    "llm"
+    "looker",
+    "dbt",
+    "etl",
+    "ci/cd"
    ],
    "german": false,
    "focus": "business",
-   "summary": "About the team SumUp is best known for helping small businesses get paid — our Consumer tribe builds the other half of that story. We make SumUp Consumer, the wallet app that lets everyday consumers pay SumUp merchants with a tap, send money to friends, track ",
+   "summary": "Welcome to Planet. We believe in using space to help life on Earth. Planet designs, builds, and operates the largest constellation of imaging satellites in history. This constellation delivers an unprecedented dataset of empirical information via a revolutiona",
    "keywords": [
-    "a/b",
-    "dashboard",
-    "stakeholder",
-    "scalab"
+    "enterprise",
+    "pipeline",
+    "self-service",
+    "stakeholder"
    ],
-   "score": 77
+   "score": 112
   },
   {
-   "title": "Senior Independent AI Engineer / Architect",
-   "company": "A.Team",
-   "location": "Remote",
-   "loc_raw": "Americas, Europe, Israel",
-   "remote": true,
-   "url": "https://remotive.com/remote-jobs/software-development/senior-independent-ai-engineer-architect-1919266",
-   "source": "Remotive",
-   "posted": "2026-08-16T10:09:41",
-   "days": 13,
+   "title": "Data Platform Engineer Working Student (m/w/d)",
+   "company": "Trusteq Gmbh",
+   "location": "Almanya",
+   "loc_raw": "München",
+   "remote": false,
+   "url": "https://www.arbeitnow.com/jobs/companies/trusteq-gmbh/data-platform-engineer-working-student-munchen-442846",
+   "source": "Arbeitnow",
+   "posted": "2026-08-29",
+   "days": 1,
    "skills": [
-    "llm"
+    "python",
+    "sql",
+    "databricks",
+    "azure",
+    "etl",
+    "ci/cd"
    ],
    "german": false,
-   "focus": "ml",
-   "summary": "Senior Independent AI Engineer / Architect Remote | Americas, Europe, or Israel Most AI engineers can find work. Finding work worth doing is harder. A.Team is an invite-only network of senior AI engineers, ML engineers, and AI architects building production AI",
+   "focus": "pipeline",
+   "summary": "YOUR TASKS You support the design and development of Databricks-native data platforms and lakehouse architectures for internal projects and client engagements. You contribute to implementing medallion architectures (Bronze, Silver, and Gold), including Auto Lo",
    "keywords": [
-    "startup",
-    "enterprise"
+    "governance",
+    "pipeline",
+    "data quality"
    ],
-   "score": 58
+   "score": 80
+  },
+  {
+   "title": "Data Engineer Working Student (m/w/d)",
+   "company": "Trusteq Gmbh",
+   "location": "Almanya",
+   "loc_raw": "Köln",
+   "remote": false,
+   "url": "https://www.arbeitnow.com/jobs/companies/trusteq-gmbh/data-engineer-working-student-koln-276326",
+   "source": "Arbeitnow",
+   "posted": "2026-08-29",
+   "days": 1,
+   "skills": [
+    "python",
+    "sql",
+    "databricks",
+    "power bi",
+    "etl",
+    "data warehouse"
+   ],
+   "german": false,
+   "focus": "pipeline",
+   "summary": "YOUR TASKS You support the development of databases and data integration processes You contribute to the design and implementation of data models and data pipelines for modern data lakes, data warehouses, or lakehouses You assist in documenting and structuring",
+   "keywords": [
+    "pipeline",
+    "dashboard"
+   ],
+   "score": 80
   }
  ],
  "seen": [
+  "https://www.arbeitnow.com/jobs/companies/planetlabs/senior-data-engineer-constellation-services-berlin-107524",
+  "https://www.arbeitnow.com/jobs/companies/trusteq-gmbh/data-platform-engineer-working-student-munchen-442846",
+  "https://www.arbeitnow.com/jobs/companies/trusteq-gmbh/data-engineer-working-student-koln-276326",
   "https://www.arbeitnow.com/jobs/companies/jetbrains/staff-senior-ai-engineer-ai-for-code-berlin-munich-277450",
   "https://www.arbeitnow.co.uk/jobs/companies/sumup/senior-product-data-analyst-consumer-growth-london-167800",
   "https://remotive.com/remote-jobs/software-development/senior-independent-ai-engineer-architect-1919266",
