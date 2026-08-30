@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-30 00:04",
+  "updated": "2026-08-30 14:46",
   "watch": [
     {
       "code": "TCELL",
@@ -235,25 +235,25 @@
     },
     {
       "code": "BZ=F",
-      "price": "89.31",
-      "chg": "-0.43%",
-      "avg1w": "89.52",
-      "avg1m": "88.06",
+      "price": "88.10",
+      "chg": "-1.78%",
+      "avg1w": "89.28",
+      "avg1m": "88.00",
       "name": "Brent",
-      "hist": [101.91, 105.07, 105.33, 108.23, 111.26, 118.03, 114.01, 108.17, 114.44, 109.87, 101.27, 100.06, 101.29, 104.21, 107.77, 105.63, 105.72, 109.26, 112.1, 111.28, 105.02, 102.58, 103.54, 99.58, 94.29, 93.71, 92.05, 94.98, 96.0, 97.81, 95.03, 93.09, 94.25, 91.45, 93.1, 90.38, 87.33, 83.17, 78.96, 79.55, 79.85, 77.9, 77.08, 73.74, 75.26, 71.99, 73.15, 72.92, 71.57, 71.8, 71.99, 74.16, 78.02, 76.3, 76.01, 83.3, 84.73, 84.95, 84.23, 88.1, 89.22, 91.01, 94.07, 100.69, 96.78, 88.36, 84.09, 90.74, 89.03, 90.12, 83.77, 79.36, 79.45, 82.49, 83.55, 87.72, 88.91, 88.98, 87.07, 88.52, 90.87, 91.02, 91.62, 93.78, 94.39, 92.17, 88.58, 87.84, 89.7, 89.31],
+      "hist": [101.91, 105.07, 105.33, 108.23, 111.26, 118.03, 114.01, 108.17, 114.44, 109.87, 101.27, 100.06, 101.29, 104.21, 107.77, 105.63, 105.72, 109.26, 112.1, 111.28, 105.02, 102.58, 103.54, 99.58, 94.29, 93.71, 92.05, 94.98, 96.0, 97.81, 95.03, 93.09, 94.25, 91.45, 93.1, 90.38, 87.33, 83.17, 78.96, 79.55, 79.85, 77.9, 77.08, 73.74, 75.26, 71.99, 73.15, 72.92, 71.57, 71.8, 71.99, 74.16, 78.02, 76.3, 76.01, 83.3, 84.73, 84.95, 84.23, 88.1, 89.22, 91.01, 94.07, 100.69, 96.78, 88.36, 84.09, 90.74, 89.03, 90.12, 83.77, 79.36, 79.45, 82.49, 83.55, 87.72, 88.91, 88.98, 87.07, 88.52, 90.87, 91.02, 91.62, 93.78, 94.39, 92.17, 88.58, 87.84, 89.7, 88.1],
       "histD": ["04-22", "04-23", "04-24", "04-27", "04-28", "04-29", "04-30", "05-01", "05-04", "05-05", "05-06", "05-07", "05-08", "05-11", "05-12", "05-13", "05-14", "05-15", "05-18", "05-19", "05-20", "05-21", "05-22", "05-26", "05-27", "05-28", "05-29", "06-01", "06-02", "06-03", "06-04", "06-05", "06-08", "06-09", "06-10", "06-11", "06-12", "06-15", "06-16", "06-17", "06-18", "06-22", "06-23", "06-24", "06-25", "06-26", "06-29", "06-30", "07-01", "07-02", "07-06", "07-07", "07-08", "07-09", "07-10", "07-13", "07-14", "07-15", "07-16", "07-17", "07-20", "07-21", "07-22", "07-23", "07-24", "07-27", "07-28", "07-29", "07-30", "07-31", "08-03", "08-04", "08-05", "08-06", "08-07", "08-10", "08-11", "08-12", "08-13", "08-14", "08-17", "08-18", "08-19", "08-20", "08-21", "08-24", "08-25", "08-26", "08-27", "08-28"],
       "ind": {
         "ma": "MA20 & MA50 üstünde (yukarı eğilim)",
         "rsiTxt": "nötr",
-        "rsi": 51.4,
-        "volat": 1.9,
-        "volRatio": 0.34
+        "rsi": 49.3,
+        "volat": 2.0,
+        "volRatio": 0.86
       }
     }
   ],
   "gold": {
-    "price": "6,943.87",
-    "chg": "-2.66%"
+    "price": "7,024.20",
+    "chg": "-1.53%"
   },
   "news": [
     {
@@ -267,10 +267,6 @@
     {
       "t": "🟢 Astor Enerji'nin yatırım rotasında İspanya ve ABD var  (Ekonomim)",
       "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxPSkd5cVVuSS1FNzRJN1dRWm9ySkp2cEZvRElST1dRR1FlR1RnbXNIaTh4US1RZktYUU42WExFTDRoZlZLOHBMX2JvbmNwU1F0a0VNYnM4UG1id045UjNnT1hTMzJDUXhydmYyYi1IRFRxZmNUVzFNdWhyYmlQVnpDeW5fMER1ZHBvMmtEUGdNN2pONnBTbzl6UEkwZHR4QmgwcVNYdUc0NjFLa0I0RUZGS3I5ZERIQ3Fhd1N0RU5GSGxIZnhRNGEtdUdUZ0hPbm5VS29weGkxONIB3AFBVV95cUxQVmYyR3VvV0dGMkt4X1ZRdWk3MVBITUpqc3J6VW5vaG9CUEZ2OENOVkpvZENzbk1JMVZjN3JyWmJXTXQxUnNLRzVzUHdrbEZwWVBGeVJDbE5PblI3czV4a0RrUm4xV2dfY0Y5TUY5alJxYnk0em9mWm5KVV85cUJaSm9jelNEOEluSHk5SGxmVDJBby1mRG9BWkJXZ1N2XzNyODhQWmZ1QTJ6V181emVaYTc1dENtVWw4RTc0NENLYS0wak8wZ3Y2My01VHVhdk9LR2d0S1I3clNNQUhX?oc=5"
-    },
-    {
-      "t": "⚪ YEO TEKNOLOJI EN - KAP Haberleri - 2026-08-26 tarihli  (Bloomberght)",
-      "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5wNDRrRnp2Z05sVjFnVFI0ZTk5R0lKRllFdTBLY2tyRFozUVdCblh4clNCeDE3bXlobTBjc0FzV1FITkIzd2txdHd1WV9Genh6cjJ6OWxzVW5NUU5QX2M1WnpaOEE3aDYwMEQ1OVhoN0xYQklkMFdiRVFhWHgyY0k?oc=5"
     },
     {
       "t": "🟢 YEO Teknoloji’den Azerbaycan’da 9,5 milyon dolarlık enerji depolama anlaşması  (borsagundem.com.tr)",
@@ -287,84 +283,88 @@
     {
       "t": "⚪ Türkiye İş Bankası (ISCTR) hisseleri için yeni hedef fiyat açıklandı  (Rota Borsa)",
       "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOOUVLV2RKZVRpRWJQZkMxUjB2eV9Tc2lYRnJlS1dQd1J2MmwyS0lRMU9nckVlZlg3bzd4Y2RGZ1dzMzh0b2NOZzNpMUdFVXlyTWxNWjRSWTZQMTlPZVF0S1hMQ2VGc3BiWWFBdFhtR1V0dFdiaU5lUEhnQnNrSl9zMW11OF9RcE5sUHRyMTREZWJwTVBpVHFn?oc=5"
+    },
+    {
+      "t": "⚪ Ünlü & Co hedefini düşürdü: ISCTR 12,79 TL'den 18,30 TL'ye çıkacak mı?  (YatırımX)",
+      "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOaEFfcktNYUl2X2hHZml5NUVoNm1VZXJVQjU5Yk96Y2JQUnBacVYybnVPdU9zdmhrSWp1dF8taks1dUItenYyWjNEZ3dnMTF1QTBpSDZXZU9SM3Q1cTEzenlZZXBPSkt4NFpLVXgxbVFQd0dRcFpCRGdkc1l3SkR2Uk1TcHlfSDZDYjc2NEhxUVE5b2s2OWN4YnJfR0hIV0xoaDlsYlF4QQ?oc=5"
     }
   ],
   "world": [
     {
-      "t": "🌍 Footage of Tibet floods isn't being shown in China - and we know little about victims there  (BBC World)",
-      "link": "https://www.bbc.co.uk/news/articles/cx2z415w2gpo?at_medium=RSS&at_campaign=rss"
+      "t": "🌍 Iceland votes against restarting talks on joining EU  (BBC World)",
+      "link": "https://www.bbc.co.uk/news/articles/c70le8ed1plo?at_medium=RSS&at_campaign=rss"
     },
     {
-      "t": "🌍 Egyptian queen’s 673-diamond necklace stolen in Vienna smash-and-grab raid  (Guardian World)",
-      "link": "https://www.theguardian.com/artanddesign/2026/aug/28/egyptian-queen-diamond-necklace-stolen-vienna-raid"
+      "t": "🌍 Humanitarian crisis worsening in refuge for civilians fleeing Sudan’s civil war  (Guardian World)",
+      "link": "https://www.theguardian.com/world/2026/aug/30/humanitarian-crisis-worsening-refuge-civilians-sudan-el-obeid"
     },
     {
-      "t": "🌍 Iceland votes in a tight race on whether to resume talks to join the EU  (Al Jazeera)",
-      "link": "https://www.aljazeera.com/video/newsfeed/2026/8/29/iceland-votes-in-a-tight-race-on-whether-to-resume-talks-to-join-the-eu?traffic_source=rss"
+      "t": "🌍 Iran’s Khamenei calls for Gulf unity as Hormuz tensions persist  (Al Jazeera)",
+      "link": "https://www.aljazeera.com/news/2026/8/30/irans-khamenei-calls-for-gulf-unity-as-hormuz-tensions-persist?traffic_source=rss"
     },
     {
-      "t": "🌍 Russian strike near Kyiv kills 37, in one of the year's deadliest attacks  (NPR World)",
-      "link": "https://www.npr.org/2026/08/29/nx-s1-5948714/russian-strike-kyiv"
+      "t": "🌍 From Appalachia to Africa: Why Dolly Parton was beloved across the continent  (NPR World)",
+      "link": "https://www.npr.org/2026/08/30/nx-s1-5946399/africa-dolly-parton-fans"
     },
     {
-      "t": "🌍 Music, lights and drones: Uzbekistan celebrates 35 years of independence  (Euronews)",
-      "link": "http://www.euronews.com/video/2026/08/29/music-lights-and-drones-uzbekistan-celebrates-35-years-of-independence"
+      "t": "🌍 Icelanders react as the EU referendum results come in  (Euronews)",
+      "link": "http://www.euronews.com/video/2026/08/30/icelanders-react-as-the-eu-referendum-results-come-in"
     },
     {
-      "t": "🌍 Russian-American heads Trump's planned Caucasus trade route  (DW)",
-      "link": "https://www.dw.com/en/russian-american-heads-trump-s-planned-caucasus-trade-route/a-78547064?maca=en-rss-en-world-4025-rdf"
+      "t": "🌍 Greece, Turkey clash over protected Aegean marine areas  (DW)",
+      "link": "https://www.dw.com/en/greece-turkey-clash-over-protected-aegean-marine-areas/a-78550021?maca=en-rss-en-world-4025-rdf"
     }
   ],
   "tr": [
     {
-      "t": "🇹🇷 Rizespor, deplasmanda Gaziantep FK'yı 2-1 yendi  (AA)",
-      "link": "https://www.aa.com.tr/tr/spor/rizespor-deplasmanda-gaziantep-fkyi-2-1-yendi/4041195"
+      "t": "🇹🇷 Erzurum ve Ardahan için kuvvetli yağış uyarısı  (AA)",
+      "link": "https://www.aa.com.tr/tr/gundem/erzurum-ve-ardahan-icin-kuvvetli-yagis-uyarisi/4041543"
     },
     {
-      "t": "🇹🇷 Türkiye'den Nijer'deki şiddet olaylarına ilişkin 'itidal' çağrısı  (TRT Haber)",
-      "link": "https://www.trthaber.com/haber/gundem/turkiyeden-nijerdeki-siddet-olaylarina-iliskin-itidal-cagrisi-955332.html"
+      "t": "🇹🇷 Girne açıklarında yaklaşık 260 yolcusu bulunan feribot battı  (TRT Haber)",
+      "link": "https://www.trthaber.com/haber/gundem/girne-aciklarinda-yaklasik-260-yolcusu-bulunan-feribot-batti-955367.html"
     },
     {
-      "t": "🇹🇷 ABD'nin Venezuela ile vardığı 65 milyar varillik petrol anlaşması hakkında neler biliniyor?  (BBC Türkçe)",
-      "link": "https://www.bbc.com/turkce/articles/cwyzdgek2g8o?at_medium=RSS&at_campaign=rss"
+      "t": "🇹🇷 Türkiye'de 1840'ta yaşanan buzul çökmesine bağlı sel tekrarlanabilir mi?  (BBC Türkçe)",
+      "link": "https://www.bbc.com/turkce/articles/cx2zypd2vkzo?at_medium=RSS&at_campaign=rss"
     },
     {
-      "t": "🇹🇷 Parayla tahliye talebine tutuklama  (Habertürk)",
-      "link": "https://www.haberturk.com/mehmet-akif-ersoydan-para-isteyen-4-supheli-tutuklandi-3908962"
+      "t": "🇹🇷 Yılmaz'dan KKTC'de alabora olan gemi ile ilgili açıklama  (Habertürk)",
+      "link": "https://www.haberturk.com/son-dakika-yilmaz-dan-kktc-de-alabora-olan-gemi-ile-ilgili-aciklama-3909078"
     },
     {
-      "t": "🇹🇷 Dışişleri’nden İsrail’e sert tepki: ''Çürümüş zihniyeti yansıtıyor''  (NTV)",
-      "link": "https://www.ntv.com.tr/turkiye/disislerinden-israile-sert-tepki-curumus-zihniyeti-yansitiyor-1739495"
+      "t": "🇹🇷 Girne açıklarında yolcu gemisi alabora oldu  (NTV)",
+      "link": "https://www.ntv.com.tr/turkiye/video-girne-aciklarinda-yolcu-gemisi-alabora-oldu-1739597"
     },
     {
-      "t": "🇹🇷 ABD'deki üniversite öğrencilerinin yüzde 74'ü İsrail'in Filistin halkına karşı soykırım yaptığı görüşünde  (AA)",
-      "link": "https://www.aa.com.tr/tr/dunya/abddeki-universite-ogrencilerinin-yuzde-74u-israilin-filistin-halkina-karsi-soykirim-yaptigi-gorusunde/4041210"
+      "t": "🇹🇷 İsrail ordusu, ateşkese rağmen Lübnan'ın güneyinde bazı bölgeleri hedef aldı  (AA)",
+      "link": "https://www.aa.com.tr/tr/dunya/israil-ordusu-ateskese-ragmen-lubnanin-guneyinde-bazi-bolgeleri-hedef-aldi/4041541"
     }
   ],
   "_teshis": {
     "dunya": [
-      "BBC World: 33 öğe / 2 alındı / 0 elendi | ilk: Footage of Tibet floods isn't being shown in China - and we ",
-      "Guardian World: 45 öğe / 2 alındı / 0 elendi | ilk: Egyptian queen’s 673-diamond necklace stolen in Vienna smash",
-      "Al Jazeera: 25 öğe / 2 alındı / 0 elendi | ilk: Iceland votes in a tight race on whether to resume talks to ",
-      "NPR World: 10 öğe / 2 alındı / 0 elendi | ilk: Russian strike near Kyiv kills 37, in one of the year's dead",
-      "Euronews: 50 öğe / 2 alındı / 1 elendi | ilk: Latest news bulletin | August 29th, 2026 – Evening",
-      "DW: 13 öğe / 2 alındı / 0 elendi | ilk: Russian-American heads Trump's planned Caucasus trade route",
+      "BBC World: 36 öğe / 2 alındı / 0 elendi | ilk: Iceland votes against restarting talks on joining EU",
+      "Guardian World: 45 öğe / 2 alındı / 0 elendi | ilk: Humanitarian crisis worsening in refuge for civilians fleein",
+      "Al Jazeera: 25 öğe / 2 alındı / 0 elendi | ilk: Iran’s Khamenei calls for Gulf unity as Hormuz tensions pers",
+      "NPR World: 10 öğe / 2 alındı / 0 elendi | ilk: From Appalachia to Africa: Why Dolly Parton was beloved acro",
+      "Euronews: 50 öğe / 2 alındı / 1 elendi | ilk: Icelanders react as the EU referendum results come in",
+      "DW: 13 öğe / 2 alındı / 0 elendi | ilk: Greece, Turkey clash over protected Aegean marine areas",
       "SONUÇ: 6 haber · veren: Al Jazeera, BBC World, DW, Euronews, Guardian World, NPR World",
-      "AA: 30 öğe / 2 alındı / 0 elendi | ilk: Rizespor, deplasmanda Gaziantep FK'yı 2-1 yendi",
-      "TRT Haber: 50 öğe / 2 alındı / 0 elendi | ilk: Türkiye'den Nijer'deki şiddet olaylarına ilişkin 'itidal' ça",
-      "BBC Türkçe: 20 öğe / 2 alındı / 0 elendi | ilk: ABD'nin Venezuela ile vardığı 65 milyar varillik petrol anla",
-      "Habertürk: 30 öğe / 2 alındı / 0 elendi | ilk: Parayla tahliye talebine tutuklama",
-      "NTV: 20 öğe / 2 alındı / 1 elendi | ilk: Son dakika deprem mi oldu? Az önce deprem nerede oldu? İstan",
+      "AA: 30 öğe / 2 alındı / 0 elendi | ilk: Erzurum ve Ardahan için kuvvetli yağış uyarısı",
+      "TRT Haber: 50 öğe / 2 alındı / 0 elendi | ilk: Girne açıklarında yaklaşık 260 yolcusu bulunan feribot battı",
+      "BBC Türkçe: 20 öğe / 2 alındı / 0 elendi | ilk: Türkiye'de 1840'ta yaşanan buzul çökmesine bağlı sel tekrarl",
+      "Habertürk: 30 öğe / 2 alındı / 0 elendi | ilk: Yılmaz'dan KKTC'de alabora olan gemi ile ilgili açıklama",
+      "NTV: 20 öğe / 2 alındı / 0 elendi | ilk: Girne açıklarında yolcu gemisi alabora oldu",
       "SONUÇ: 6 haber · veren: AA, BBC Türkçe, Habertürk, NTV, TRT Haber"
     ],
-    "hisse": "11 başlık geldi, 2 elendi",
+    "hisse": "10 başlık geldi, 2 elendi",
     "hisse_ham": [
       "ASTOR’da hedef fiyat yukarı çekildi: 458 TL",
       "Astor Enerji’nin yatırım rotasında İspanya ve ABD var",
       "Astor Enerji'nin yatırım rotasında İspanya ve ABD var",
       "KAP *** SMART GÜNEŞ ENERJİSİ TEKNOLOJİLERİ ARAŞTIRMA GELİŞTİRME ÜRETİM",
       "KAP *** YEO TEKNOLOJİ ENERJİ VE ENDÜSTRİ A.Ş. *** YEOTK *** Yeni İş İl",
-      "YEO TEKNOLOJI EN - KAP Haberleri - 2026-08-26 tarihli"
+      "YEO Teknoloji’den Azerbaycan’da 9,5 milyon dolarlık enerji depolama an"
     ]
   }
 }
