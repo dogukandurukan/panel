@@ -1,95 +1,104 @@
 {
- "updated": "2026-08-30 13:15",
+ "updated": "2026-08-31 14:21",
  "ok": true,
  "count": 3,
- "pool": 8,
+ "pool": 15,
  "items": [
   {
-   "title": "Senior Data Engineer, Constellation Services",
-   "company": "planetlabs",
+   "title": "Data Engineer",
+   "company": "1Global",
    "location": "Berlin",
-   "loc_raw": "Berlin",
+   "loc_raw": "Berlin, Germany",
    "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/planetlabs/senior-data-engineer-constellation-services-berlin-107524",
+   "url": "https://www.arbeitnow.com/jobs/companies/1global/data-engineer-berlin-412094",
    "source": "Arbeitnow",
-   "posted": "2026-08-29",
+   "posted": "2026-08-30",
+   "days": 1,
+   "skills": [
+    "sql",
+    "airflow",
+    "dbt",
+    "etl",
+    "git"
+   ],
+   "german": false,
+   "focus": "pipeline",
+   "summary": "About Us 1GLOBAL is a technology-driven global mobile communications provider, delivering global connectivity solutions to enterprises and consumers. Powered by a best-in-class telecom platform with its own owned and operated global mobile core network in 15 c",
+   "keywords": [
+    "enterprise",
+    "retail",
+    "data quality",
+    "self-service",
+    "pipeline"
+   ],
+   "score": 94
+  },
+  {
+   "title": "Data Engineer (f/m/d)",
+   "company": "Climate",
+   "location": "Berlin",
+   "loc_raw": "Berlin HQ",
+   "remote": false,
+   "url": "https://www.arbeitnow.com/jobs/companies/climate/data-engineer-berlin-hq-160932",
+   "source": "Arbeitnow",
+   "posted": "2026-08-30",
    "days": 1,
    "skills": [
     "python",
     "sql",
-    "looker",
-    "dbt",
-    "etl",
-    "ci/cd"
+    "ci/cd",
+    "git",
+    "llm"
+   ],
+   "german": false,
+   "focus": "ml",
+   "summary": "Job description We are currently seeking a Data Engineer for our international and diverse Climate Policy Team (CPT). The team is engaged in various projects on climate change mitigation, in particular on energy system transformation, the 1.5°C global warming ",
+   "keywords": [
+    "energy",
+    "pipeline",
+    "automation",
+    "data quality",
+    "optimization"
+   ],
+   "score": 94
+  },
+  {
+   "title": "Senior Data Analyst (f/m/x)",
+   "company": "exmox",
+   "location": "Almanya",
+   "loc_raw": "Hamburg",
+   "remote": false,
+   "url": "https://www.arbeitnow.com/jobs/companies/exmox/senior-data-analyst-hamburg-248551",
+   "source": "Arbeitnow",
+   "posted": "2026-08-31",
+   "days": 0,
+   "skills": [
+    "python",
+    "sql",
+    "spark",
+    "databricks",
+    "tableau",
+    "looker"
    ],
    "german": false,
    "focus": "business",
-   "summary": "Welcome to Planet. We believe in using space to help life on Earth. Planet designs, builds, and operates the largest constellation of imaging satellites in history. This constellation delivers an unprecedented dataset of empirical information via a revolutiona",
+   "summary": "Your Mission This is a company built for growth, not comfort. When you join exmox, you're stepping onto a global, highly competitive playing field, solving real problems in environments that push you beyond your comfort zone. We build high-performing consumer ",
    "keywords": [
-    "enterprise",
-    "pipeline",
+    "finance",
+    "automation",
+    "dashboard",
     "self-service",
-    "stakeholder"
+    "data quality",
+    "stakeholder",
+    "a/b"
    ],
-   "score": 112
-  },
-  {
-   "title": "Data Platform Engineer Working Student (m/w/d)",
-   "company": "Trusteq Gmbh",
-   "location": "Almanya",
-   "loc_raw": "München",
-   "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/trusteq-gmbh/data-platform-engineer-working-student-munchen-442846",
-   "source": "Arbeitnow",
-   "posted": "2026-08-29",
-   "days": 1,
-   "skills": [
-    "python",
-    "sql",
-    "databricks",
-    "azure",
-    "etl",
-    "ci/cd"
-   ],
-   "german": false,
-   "focus": "pipeline",
-   "summary": "YOUR TASKS You support the design and development of Databricks-native data platforms and lakehouse architectures for internal projects and client engagements. You contribute to implementing medallion architectures (Bronze, Silver, and Gold), including Auto Lo",
-   "keywords": [
-    "governance",
-    "pipeline",
-    "data quality"
-   ],
-   "score": 80
-  },
-  {
-   "title": "Data Engineer Working Student (m/w/d)",
-   "company": "Trusteq Gmbh",
-   "location": "Almanya",
-   "loc_raw": "Köln",
-   "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/trusteq-gmbh/data-engineer-working-student-koln-276326",
-   "source": "Arbeitnow",
-   "posted": "2026-08-29",
-   "days": 1,
-   "skills": [
-    "python",
-    "sql",
-    "databricks",
-    "power bi",
-    "etl",
-    "data warehouse"
-   ],
-   "german": false,
-   "focus": "pipeline",
-   "summary": "YOUR TASKS You support the development of databases and data integration processes You contribute to the design and implementation of data models and data pipelines for modern data lakes, data warehouses, or lakehouses You assist in documenting and structuring",
-   "keywords": [
-    "pipeline",
-    "dashboard"
-   ],
-   "score": 80
+   "score": 92
   }
  ],
  "seen": [
+  "https://www.arbeitnow.com/jobs/companies/1global/data-engineer-berlin-412094",
+  "https://www.arbeitnow.com/jobs/companies/climate/data-engineer-berlin-hq-160932",
+  "https://www.arbeitnow.com/jobs/companies/exmox/senior-data-analyst-hamburg-248551",
   "https://www.arbeitnow.com/jobs/companies/planetlabs/senior-data-engineer-constellation-services-berlin-107524",
   "https://www.arbeitnow.com/jobs/companies/trusteq-gmbh/data-platform-engineer-working-student-munchen-442846",
   "https://www.arbeitnow.com/jobs/companies/trusteq-gmbh/data-engineer-working-student-koln-276326",
