@@ -1,123 +1,8 @@
 {
- "updated": "2026-08-26 14:04",
+ "updated": "2026-08-31 15:31",
  "ok": true,
  "history_days": 10,
  "history": {
-  "08-26": [
-   {
-    "year": 2021,
-    "text": "Zafer Partisi, Ümit Özdağ tarafından kuruldu.",
-    "title": "Zafer_Partisi",
-    "url": "https://tr.wikipedia.org/wiki/Zafer_Partisi",
-    "detay": "Zafer Partisi, Türkiye'de faaliyet gösteren milliyetçi bir siyasi partidir. 26 Ağustos 2021'de Ümit Özdağ tarafından kurulan parti, Ayyıldız Hareketi'nin devamı niteliğindedir ve ambleminde ay yıldız şeklinde tasarlanan bir meşale bulunmaktadır. Partinin Türkiye Büyük Millet Meclisi'nde herhangi bir temsilcisi bulunmamaktadır. Partinin genel başkanı Ümit Özdağ, Partinin sözcüsü Azmi Karamahmutoğlu, genel sekreteri Cezmi Polat'tır."
-   },
-   {
-    "year": 1936,
-    "text": "Birleşik Krallık, -Süveyş Kanalı dışında- Mısır'a bağımsızlığını verdi.",
-    "title": "Birleşik_Krallık",
-    "url": "https://tr.wikipedia.org/wiki/Birle%C5%9Fik_Krall%C4%B1k",
-    "detay": "Birleşik Krallık, resmî adıyla Büyük Britanya ve Kuzey İrlanda Birleşik Krallığı, Avrupa anakarasının kuzeybatı kıyılarında, Kuzeybatı Avrupa'da egemen bir ülkedir. Birleşik Krallık; İngiltere, İskoçya, Galler ve diğer ülkelerden İrlanda Denizi ile ayrılan Kuzey İrlanda olmak üzere dört kurucu ülkeden oluşur. Birleşik Krallık, tek kara sınırını Kuzey İrlanda'da İrlanda ile paylaşır."
-   },
-   {
-    "year": 1896,
-    "text": "Ermeni Devrimci Federasyonu (Taşnak Partisi) üyesi 28 kişi, İstanbul'da Galata semtindeki Osmanlı Bankası'nı bastı. 14 saatlik çatışma ve pazarlıklardan sonra, sağ kalan militanlar banka müdürünün yatıyla İstanbul'dan kaçtı.",
-    "title": "Ermeni_Devrimci_Federasyonu",
-    "url": "https://tr.wikipedia.org/wiki/Ermeni_Devrimci_Federasyonu",
-    "detay": "Ermeni Devrimci Federasyonu, Ermeni siyasi partisi. Ermenistan'ın bağımsızlığını sağlamak amacıyla 1890'da kuruldu. Hâlen gerek Ermenistan Cumhuriyeti'nde gerek diasporadaki Ermeniler arasında aktif bir siyasi partidir. Doğu Ermenice adıyla Daşnaktsutyun olan örgütün adı Türkçeye Batı Ermenice'den bir takım ses değişikliklerinden sonra Taşnaksutyun olarak geçmiştir ve kısaca Taşnak adıyla da bilinir. Ermenicede Federasyon anlamına gelir."
-   }
-  ],
-  "08-27": [
-   {
-    "year": 2007,
-    "text": "Yunanistan'daki orman yangınları ülkenin 3'te birinin bulunduğu Mora Yarımadası'nın 3'te 2'sini vurdu. 62 kişinin hayatını kaybetmesi ve yangının kontrol altına alınamamasıyla olağanüstü hâl ilan edildi.",
-    "title": "Yunanistan",
-    "url": "https://tr.wikipedia.org/wiki/Yunanistan",
-    "detay": "Yunanistan, resmî adıyla Helen Cumhuriyeti, Güneydoğu Avrupa'da yer alan bir ülkedir. Balkan Yarımadası'nın güney ucunda bulunan ülke, kuzeybatıda Arnavutluk, kuzeyde Kuzey Makedonya ve Bulgaristan, doğuda ise Türkiye ile kara sınırlarını paylaşmaktadır. Anakaranın doğusunda Ege Denizi, batısında İyon Denizi, güneyinde ise Girit Denizi ve Akdeniz yer almaktadır. Yunanistan, binlerce ada ve dokuz geleneksel coğrafi bölgeyi kapsayan Akdeniz havzasının en uzun kıyı şeridine sahiptir."
-   },
-   {
-    "year": 1964,
-    "text": "Türkiye'deki ilk ABD aleyhtarı gösteri, ABD'nin Kıbrıs konusundaki tutumu nedeniyle Ankara'da yapıldı.",
-    "title": "Kıbrıs",
-    "url": "https://tr.wikipedia.org/wiki/K%C4%B1br%C4%B1s",
-    "detay": "Kıbrıs, Güneybatı Asya'da bulunan ve Akdeniz'deki Sicilya ve Sardinya'dan sonra gelen üçüncü büyük adadır. Kıbrıs Cumhuriyeti, Birleşik Krallık'a bağlı üs bölgeleri dışında de jure olarak adanın tamamını, fiilî olarak adanın %59'luk güney kesmini yönetir. 1974'ten beri de facto olarak ikiye bölünmüş olan adanın kuzeyinde yer alan %36'lık bölgesinde günümüzde yalnızca Türkiye tarafından tanınan Kuzey Kıbrıs Türk Cumhuriyeti bulunur."
-   },
-   {
-    "year": 1922,
-    "text": "Türk Kurtuluş Savaşı: Türk Ordusu, Yunan işgali altında bulunan Afyon'u geri aldı.",
-    "title": "Türk_Kurtuluş_Savaşı",
-    "url": "https://tr.wikipedia.org/wiki/T%C3%BCrk_Kurtulu%C5%9F_Sava%C5%9F%C4%B1",
-    "detay": "Türk Kurtuluş Savaşı, I. Dünya Savaşı'ndan yenik çıkan Osmanlı İmparatorluğu'nun İtilaf Devletleri'nce işgali sonucunda Mîsâk-ı Millî sınırları içinde ülke bütünlüğünü korumak için 1919-1922 yılları arasında gerçekleştirilen çok cepheli siyasi ve askeri mücadeledir. Batı Anadolu'da İtilaf Devletleri'nin harekete geçirdikleri Yunan ordusuna; güneyde Fransız ordusuna; doğuda Ermenistan'ın kuvvetlerine; İstanbul rejimine sadık milislere, feodal güçlere ve ayrılıkçılara karşı savaşılmıştır."
-   }
-  ],
-  "08-28": [
-   {
-    "year": 2007,
-    "text": "Abdullah Gül, 339 oyla TBMM tarafından 11. Cumhurbaşkanı seçildi.",
-    "title": "Abdullah_Gül",
-    "url": "https://tr.wikipedia.org/wiki/Abdullah_G%C3%BCl",
-    "detay": "Abdullah Gül, 2007'den 2014'e kadar 11. Türkiye cumhurbaşkanı olarak görev yapan Türk ekonomist, akademisyen ve siyasetçidir. Adalet ve Kalkınma Partisinin (AKP) kurucularından olan Gül, daha önce 2002-2003 yıllarında başbakanlık ve 2003-2007 yıllarında dışişleri bakanlığı da yaptı."
-   },
-   {
-    "year": 1990,
-    "text": "Illinois'te kasırga: 28 kişi öldü.",
-    "title": "Illinois",
-    "url": "https://tr.wikipedia.org/wiki/Illinois",
-    "detay": "Illinois, Amerika Birleşik Devletleri'nin Orta Batı bölgesinde yer alan bir eyalettir. Kuzeydoğusunda Michigan Gölü, batısında Mississippi Nehri ve güneyinde Wabash ve Ohio nehirleri ile sınırlıdır. ABD'nin elli eyaleti arasında Illinois, beşinci en büyük gayri safi yurtiçi hasılaya (GSYİH), altıncı en büyük nüfusa ve 25. en büyük yüzölçümüne sahiptir. Başkenti eyaletin merkezindeki Springfield, eyaletin en büyük şehri ise kuzeydoğusundaki Chicago'dur."
-   },
-   {
-    "year": 1934,
-    "text": "Üsküdar-Kadıköy tramvay hattının ilk denemesi yapıldı.",
-    "title": "Üsküdar",
-    "url": "https://tr.wikipedia.org/wiki/%C3%9Csk%C3%BCdar",
-    "detay": "Üsküdar, İstanbul'un Anadolu Yakası'nda yer alan ilçedir. Kocaeli Yarımadası'nın batı kesiminde yer alan Üsküdar, kuzeyden Beykoz, kuzeydoğudan Ümraniye, doğudan Ataşehir, güneyden Kadıköy ilçeleri ve batıdan İstanbul Boğazıyla çevrilidir. İlçe 33 tane mahalleden oluşmaktadır. 2015 yılında gerçekleştirilen İstanbul'da Yaşam Kalitesi Araştırması'nda tüm ilçeler arasında 7. sırada, 2020'de ise 4. sırada yer almıştır."
-   }
-  ],
-  "08-29": [
-   {
-    "year": 2014,
-    "text": "Ensaru'l İslam, Adlı Birlik Feshedildi",
-    "title": "Ensaru'l_İslam",
-    "url": "https://tr.wikipedia.org/wiki/Ensaru'l_%C4%B0slam",
-    "detay": "Kürdistan'da Ensaru'l İslam, veya Ensaru'l İslam veya Kürt Talibanı Irak merkezli, Suriye ve Irak'ta faaliyet gösteren Kürt cihatçı Selefi ve silahlı bir örgüttür. Şeriat kanunlarına göre bir İslam devleti kurmak, Kürtleri korumak ve haklarını elde etmek ve korumak için kuruldular."
-   },
-   {
-    "year": 1955,
-    "text": "Kıbrıs Konferansı Londra'da toplandı.",
-    "title": "Kıbrıs",
-    "url": "https://tr.wikipedia.org/wiki/K%C4%B1br%C4%B1s",
-    "detay": "Kıbrıs, Güneybatı Asya'da bulunan ve Akdeniz'deki Sicilya ve Sardinya'dan sonra gelen üçüncü büyük adadır. Kıbrıs Cumhuriyeti, Birleşik Krallık'a bağlı üs bölgeleri dışında de jure olarak adanın tamamını, fiilî olarak adanın %59'luk güney kesmini yönetir. 1974'ten beri de facto olarak ikiye bölünmüş olan adanın kuzeyinde yer alan %36'lık bölgesinde günümüzde yalnızca Türkiye tarafından tanınan Kuzey Kıbrıs Türk Cumhuriyeti bulunur."
-   },
-   {
-    "year": 1898,
-    "text": "Goodyear şirketinin kuruluşu.",
-    "title": "Goodyear_(şirket)",
-    "url": "https://tr.wikipedia.org/wiki/Goodyear_(%C5%9Firket)",
-    "detay": "The Goodyear Tire & Rubber Company, merkezi Akron, Ohio'da bulunan çok uluslu bir Amerikan lastik üreticisidir. Goodyear binek araçlar, havacılık, ticari kamyonlar, askeri ve polis araçları, motosikletler, RV'ler, yarış arabaları ve ağır arazi makineleri için lastik üretmektedir. Ayrıca Goodyear markasını bisiklet lastiği üreticilerine lisanslayarak 1976 ve 2015 yılları arasında üretime ara vermiştir."
-   }
-  ],
-  "08-30": [
-   {
-    "year": 2021,
-    "text": "ABD başkanı Joe Biden'nın orduyu Afganistan'dan çekmesi üzerine, 20 yıl sürmüş olan Afganistan Savaşı sona erdi.",
-    "title": "Joe_Biden",
-    "url": "https://tr.wikipedia.org/wiki/Joe_Biden",
-    "detay": "Joseph Robinette Biden, Jr., Amerika Birleşik Devletleri'nin 46. başkanı olarak görev yapmış Amerikalı siyasetçi ve eski avukattır. Demokrat Partinin üyesi olan Biden, 2009-2017 yılları arası ABD'nin 47. başkan yardımcılığı, 1973-2009 yılları arasında ise Delaware Senatörlüğü görevlerini üstlenmiştir."
-   },
-   {
-    "year": 1974,
-    "text": "BM Güvenlik Konseyi, Kıbrıs'taki çarpışmalar yüzünden evlerini terk edenlerin güven içinde geri dönmelerine izin verilmesini öngören Fransa, İngiltere, Avusturya ortak karar tasarısını oy birliğiyle kabul etti.",
-    "title": "Fransa",
-    "url": "https://tr.wikipedia.org/wiki/Fransa",
-    "detay": "Fransa, resmî adıyla Fransız Cumhuriyeti, Batı Avrupa'da yer alan bir ülkedir. Denizaşırı bölgeleri ve toprakları arasında Güney Amerika'daki Fransız Guyanası, Kuzey Atlantik'teki Saint Pierre ve Miquelon, Fransız Batı Hint Adaları ve Okyanusya ile Hint Okyanusu'ndaki birçok ada bulunmaktadır. Anakara Fransa, kuzeyde Belçika ve Lüksemburg; kuzeydoğuda Almanya; doğuda İsviçre; güneydoğuda İtalya ve Monako; güneyde Andorra ve İspanya; ve kuzeybatıda Birleşik Krallık ile deniz sınırı paylaşmaktadır."
-   },
-   {
-    "year": 1930,
-    "text": "Ankara-Sivas demiryolu hattı ve Sivas İstasyonu, Başbakan İsmet Paşa'nın konuşmasıyla hizmete açıldı.",
-    "title": "Ankara",
-    "url": "https://tr.wikipedia.org/wiki/Ankara",
-    "detay": "Ankara, Türkiye'nin başkenti ve Ankara ilinin merkezi olan şehirdir. Coğrafi olarak Türkiye'nin merkezine yakın bir konumda bulunur ve İç Anadolu Bölgesi'nde yer alır. Türkiye İstatistik Kurumu'nun 2025 sonuçlarına göre 5.910.320 nüfusuyla ülkenin İstanbul'dan sonra nüfus bakımından ikinci büyük şehridir."
-   }
-  ],
   "08-31": [
    {
     "year": 2010,
@@ -231,6 +116,121 @@
     "title": "İhracat",
     "url": "https://tr.wikipedia.org/wiki/%C4%B0hracat",
     "detay": "İhracat ya da dışsatım, bir malın veya hizmetin yurt dışındaki alıcılara satılmasıdır. Devletler, tüzel kişilikler ve gerçek kişilikler tarafından gerçekleştirilir. İthalatın karşıtıdır ve dış ticaret dengesini oluşturan etkenlerden biridir."
+   }
+  ],
+  "09-05": [
+   {
+    "year": 2022,
+    "text": "Çin'de Luding depremi gerçekleşti.",
+    "title": "Çin",
+    "url": "https://tr.wikipedia.org/wiki/%C3%87in",
+    "detay": "Çin, resmî adıyla Çin Halk Cumhuriyeti, Doğu Asya'da Çin Komünist Partisi tarafından tek parti rejimiyle yönetilen üniter egemen devlet. 1,4 milyarı aşkın nüfusuyla Hindistan'dan sonra dünyanın en kalabalık ikinci ülkesidir ve dünya nüfusunun %17'sini temsil etmektedir. Çin, 9,6 milyon kilometrekarelik bir alanda on dört ülkeyle kara sınırına sahiptir ve bu da onu yüzölçümü bakımından üçüncü büyük ülke yapmaktadır."
+   },
+   {
+    "year": 1963,
+    "text": "20-21 Mayıs'ta askeri darbe girişiminde bulunan Albay Talat Aydemir, Ankara 1 Numaralı Sıkıyönetim Mahkemesi'nce idama mahkûm edildi.",
+    "title": "Talat_Aydemir",
+    "url": "https://tr.wikipedia.org/wiki/Talat_Aydemir",
+    "detay": "Ahmet Talât Aydemir, Türk asker. 22 Şubat 1962 ve 20 Mayıs 1963'te iki başarısız askerî darbe girişimine önderlik etmiştir."
+   },
+   {
+    "year": 1922,
+    "text": "Türk Kurtuluş Savaşı: Türk Ordusu, Yunan İşgali altındaki Nazilli, Alaşehir ve Susurluk'a girdi.",
+    "title": "Türk_Kurtuluş_Savaşı",
+    "url": "https://tr.wikipedia.org/wiki/T%C3%BCrk_Kurtulu%C5%9F_Sava%C5%9F%C4%B1",
+    "detay": "Türk Kurtuluş Savaşı, I. Dünya Savaşı'ndan yenik çıkan Osmanlı İmparatorluğu'nun İtilaf Devletleri'nce işgali sonucunda Mîsâk-ı Millî sınırları içinde ülke bütünlüğünü korumak için 1919-1922 yılları arasında gerçekleştirilen çok cepheli siyasi ve askeri mücadeledir. Batı Anadolu'da İtilaf Devletleri'nin harekete geçirdikleri Yunan ordusuna; güneyde Fransız ordusuna; doğuda Ermenistan'ın kuvvetlerine; İstanbul rejimine sadık milislere, feodal güçlere ve ayrılıkçılara karşı savaşılmıştır."
+   }
+  ],
+  "09-06": [
+   {
+    "year": 2022,
+    "text": "Rus-Ukrayna Savaşı Ukrayna, Kharkiv karşı saldırısına başladı, Rus kuvvetlerini şaşırttı ve önümüzdeki hafta içinde Oskil Nehri'nin batısındaki Kharkiv Oblastı'nın tamamını yeniden ele geçirerek 3.000 kilometrekarelik araziyi geri aldı.",
+    "title": "Rusya-Ukrayna_Savaşı",
+    "url": "https://tr.wikipedia.org/wiki/Rusya-Ukrayna_Sava%C5%9F%C4%B1",
+    "detay": "Rusya-Ukrayna Savaşı, bir yanda Rusya, Beyaz Rusya ve Rus yanlısı güçlerin, diğer yanda Ukrayna'nın dahil olduğu, sürmekte olan bir savaştır. Yevromaydan'ın ardından görevden alınan Ukrayna Devlet Başkanı Viktor Yanukoviç'in Kırım'daki gerginlik nedeniyle Rusya'dan bölgeye asker göndermesini istemesinin ardından 2014 yılında başlayan ve Şubat 2022'de büyüyen askerî hareketliliktir. Bu savaşa Rusya'nın Kırım'ı ilhakı (2014), Donbass Savaşı (2014-günümüz), siber savaş ve siyasi gerilimler de dahildir."
+   },
+   {
+    "year": 1977,
+    "text": "Yumurtalık'tan dış ülkelere ilk petrol sevkiyatı başladı.",
+    "title": "Petrol",
+    "url": "https://tr.wikipedia.org/wiki/Petrol",
+    "detay": "Petrol, neft ya da yer yağı, hidrokarbonlardan oluşmuş, sudan yoğun kıvamda, koyu renkli, arıtılmamış, kendisine özgü kokusu olan, yer altından çıkarılmış doğal yanıcı mineral yağı. Latincede taş anlamına gelen \"petra\" ile yağ anlamına gelen \"oleum\" sözcüklerinden oluşmuştur."
+   },
+   {
+    "year": 1939,
+    "text": "Nazi Almanyası tüm Yahudi vatandaşların, \"Sarı Yahudi Yıldızı\" taşımasını zorunlu kıldı.",
+    "title": "Nazi_Almanyası",
+    "url": "https://tr.wikipedia.org/wiki/Nazi_Almanyas%C4%B1",
+    "detay": "Nazi Almanyası, 1933 ile 1945 yılları arasında Adolf Hitler ve Nasyonal Sosyalist Alman İşçi Partisi'nin iktidarı altında totaliter bir diktatörlüğe dönüşen Alman devletiydi. Üçüncü Reich adı, Nazi ideolojisinde Almanya'nın Kutsal Roma İmparatorluğu (800-1806) ile Alman İmparatorluğu'nun (1871-1918) halefi olduğu iddiasını yansıtmaktaydı."
+   }
+  ],
+  "09-07": [
+   {
+    "year": 2017,
+    "text": "Meksika'nın Chiapas eyaletinde 8,1 Mw şiddetinde deprem meydana geldi. 97 kişi öldü.",
+    "title": "Meksika",
+    "url": "https://tr.wikipedia.org/wiki/Meksika",
+    "detay": "Meksika, resmî adıyla Birleşik Meksika Devletleri, Kuzey Amerika'da bir ülkedir. Kuzeyde Amerika Birleşik Devletleri; güney ve batıda Büyük Okyanus; güneydoğuda Guatemala, Belize ve Karayip Denizi; doğuda ise Meksika Körfezi ile komşudur. 1.972.550 km² yüzölçümü ile Amerika kıtasındaki altıncı, dünyada ise 13. en büyük bağımsız ülke konumundadır. Worldometer en son Birleşmiş Milletler verilerinin detaylandırılmasına göre Haziran 2026'da 132,997,658 kişilik nüfusa sahip olan Meksika, nüfus bakımından dünyanın 11."
+   },
+   {
+    "year": 1979,
+    "text": "İstanbul Sıkıyönetim Komutanlığı, Dostlar Tiyatrosu'nun “Brecht Kabare” oyununu yasaklandı.",
+    "title": "İstanbul",
+    "url": "https://tr.wikipedia.org/wiki/%C4%B0stanbul",
+    "detay": "İstanbul, Türkiye'nin ekonomik, kültürel ve tarihî merkezini oluşturan en kalabalık şehridir. 15,7 milyonu aşan nüfusuyla Türkiye nüfusunun yaklaşık %18,3'ine ev sahipliği yapmaktadır. İstanbul, Avrupa'daki en kalabalık şehirlerden biri olmasının yanı sıra, dünya genelinde de nüfus bakımından en kalabalık şehirler arasında yer alır. İstanbul, iki kıtada yer alan bir şehir olup, nüfusunun yaklaşık üçte ikisi Avrupa yakasında, geri kalanı ise Asya yakasında yaşamaktadır."
+   },
+   {
+    "year": 1927,
+    "text": "Amerikalı mucit Philo Taylor Farnsworth, tamamen elektronik sistemle çalışan ilk televizyonu geliştirdi.",
+    "title": "Televizyon",
+    "url": "https://tr.wikipedia.org/wiki/Televizyon",
+    "detay": "Televizyon veya kısaca TV, bir vericiden elektromanyetik dalga hâlinde yayımlanan görüntü ve seslerin, ekranlı ve hoparlörlü elektronik alıcılar sayesinde yeniden görüntü ve sese çevrilmesini sağlayan haberleşme sistemidir. Aynı zamanda kitle iletişim aracı da olan televizyon, yayımlanan görüntü ve sesleri alıcıya ulaştıran elektronik bir cihazdır."
+   }
+  ],
+  "09-08": [
+   {
+    "year": 2025,
+    "text": "İzmir'de Balçova Polis Merkezi saldırısı gerçekleşti.",
+    "title": "İzmir",
+    "url": "https://tr.wikipedia.org/wiki/%C4%B0zmir",
+    "detay": "İzmir, Türkiye'de Ege Bölgesi'nde yer alan İzmir ilinin merkezi olan şehirdir. 3,5 milyona yakın merkez nüfusuyla ülkenin nüfus bakımından en kalabalık üçüncü şehridir."
+   },
+   {
+    "year": 1968,
+    "text": "Atina'da yapılan Balkan Atletizm Yarışmaları'nda maraton dalında; İsmail Akçay birinci, Hüseyin Aktaş ikinci oldu.",
+    "title": "Atina",
+    "url": "https://tr.wikipedia.org/wiki/Atina",
+    "detay": "Atina, Yunanistan'ın başkenti ve yaklaşık 4 milyon kişilik nüfusuyla en büyük, Avrupa Birliği'nin yedinci büyük şehri. Attika'ya hakim bir konumda olan Atina, aynı zamanda bu idari birimin yönetim merkezidir. 3.400 yıllık yazılı tarihi ve MÖ 7. ile 11. arasındaki binyıllara uzanan insan varlığıyla dünyanın en eski şehirlerinden biridir. Şehir adını Antik Yunan bilgelik tanrıçasından almıştır."
+   },
+   {
+    "year": 1886,
+    "text": "Johannesburg'un temeli atıldı.",
+    "title": "Johannesburg",
+    "url": "https://tr.wikipedia.org/wiki/Johannesburg",
+    "detay": "Johannesburg, Güney Afrika'nın en kalabalık şehridir. Johannesburg şehrinin nüfusu 5.538.596 iken, Johannesburg Büyükşehir Belediyesi'nin nüfusu 6.599.190'dır ve bu da onu dünyanın en büyük 100 kentsel alanından biri yapmaktadır. Johannesburg, Güney Afrika'nın en zengin eyaleti olan Gauteng'in eyalet başkenti ve ülkenin en yüksek mahkemesi olan Anayasa Mahkemesi'nin merkezidir."
+   }
+  ],
+  "09-09": [
+   {
+    "year": 2011,
+    "text": "Dünya'nın en büyük mozaik müzesi olan Gaziantep'teki Zeugma Mozaik Müzesi ziyarete açıldı.",
+    "title": "Mozaik",
+    "url": "https://tr.wikipedia.org/wiki/Mozaik",
+    "detay": "Sanatta mozaik; bir yüzeyin, farklı renklerdeki küçük parçacıkların yan yana getirilmesi yöntemiyle süslenmesi ve bu şekilde üretilmiş eserdir. Taş, cam, tuğla, metal veya deniz kabuğu gibi çok çeşitli malzemelerden mozaik yapılabilir. Kakmacılıktan farklı olarak, mozaik sanatında parçacıklar yüzeydeki çukurcuklara yerleştirilmez, yüzeye yapıştırıcı ile tutturulur."
+   },
+   {
+    "year": 1971,
+    "text": "Boğaziçi Üniversitesi'nin kurulmasına ilişkin kanun kabul edildi.",
+    "title": "Boğaziçi_Üniversitesi",
+    "url": "https://tr.wikipedia.org/wiki/Bo%C4%9Fazi%C3%A7i_%C3%9Cniversitesi",
+    "detay": "Boğaziçi Üniversitesi, İstanbul'da yer alan bir devlet araştırma üniversitesidir. 16 Eylül 1863 tarihinde Cyrus Hamlin ve Christopher Robert tarafından öncülü Robert Koleji kuruldu. Güney Kampüs, yüz yılı aşkın bir süre koleje bağlı olarak kullanıldıktan sonra üzerinde bağımsız bir üniversite kurulması için 10 Eylül 1971 tarihinde Türkiye Cumhuriyeti'ne devredilerek Boğaziçi Üniversitesi kuruldu."
+   },
+   {
+    "year": 1914,
+    "text": "İttihat ve Terakki Cemiyeti, Osmanlı Hükûmeti'nin kabul ettiği tüm kapitülasyonları reddetti.",
+    "title": "İttihat_ve_Terakki",
+    "url": "https://tr.wikipedia.org/wiki/%C4%B0ttihat_ve_Terakki",
+    "detay": "İttihat ve Terakki Cemiyeti, sonraları İttihat ve Terakki Fırkası, Osmanlı İmparatorluğu'nda İkinci Meşrutiyet'in ilanına önayak olup 1908-1918 yılları arasında faaliyet gösteren, 21 Mayıs 1889 tarihinde kurulmuş bir siyasal hareket ve siyasi partidir. Triumvira sistemi ile yönetilen bir meclis yapısında egemenlik sürmüştür."
    }
   ]
  }
