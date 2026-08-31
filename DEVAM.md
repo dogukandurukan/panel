@@ -149,6 +149,32 @@ log herkese açık.
      "yönlendirme kabul" dedi — linki çözmeye çalışma, kırılgan. Dünya/Türkiye
      zaten doğrudan kaynağa gidiyor.
 
+8. ~~Antrenman kartı: dinlenme 45 sn · kas grubu sıralaması · efor düğmesi~~
+   — **yapıldı (30 Ağu).**
+   - Dinlenme varsayılanı 60 → **45 sn** (`sess.restSn||45`). 90/120/180
+     düğmeleri duruyor: 45 sn ağır bileşikte (4 × 5-8 bench/squat) kısa kalır.
+   - **`WK` sıralama kuralı: aynı kas grubu arka arkaya.** Eski dizilim
+     itiş/çekiş dönüşümlüydü (bench → row → OHP → pulldown), kullanıcı
+     "alakasız" buldu. Değişen günler: 1 (UPPER), 2 (LOWER), 5 (PUSH),
+     6 (LEGS). Gün 4 (PULL) zaten blok blokmuş, dokunulmadı.
+     **Yeni hareket eklerken bu kuralı bozma** — `WK` üstündeki nota yazıldı.
+   - Gün 1'e **Incline DB press 3 × 8-12** eklendi. Haftalık göğüs 14 → 17 set;
+     o güne kadar sırt 7 sete karşı göğüs 4 setti. Gün 1 artık 8 hareket.
+   - **Efor etiketi:** set kaydına `z` alanı (`'k'` kolay / `'z'` zor / boş).
+     Son kaydedilen sete "kolay geldi / zordu" düğmeleriyle yazılıyor, aynı
+     düğmeye basınca siliniyor, cipte görünüyor. **Çift ilerleme kuralına
+     KARIŞMIYOR** — kilo hâlâ yalnızca "hedef set × üst uç tekrar" ile artıyor;
+     efor sadece not düşürüyor (`eforNot()`): artış oldu + zor geldiyse "aynı
+     kiloda kalmak da seçenek", artış yok + kolay geldiyse "tekrarı üst uca
+     taşı". Panelin kuralı: kiloyu kullanıcı adına kendiliğinden oynatma.
+   - `.ana` sınıfı yalnızca `.yok-btns` içinde boyanıyormuş; seçili efor
+     görünsün diye `.ss-efor .ibtn.ana` eklendi. **Aynı eksik `ssBitir`,
+     `ssSonraki` ve sabah rutini `mrest` düğmelerinde de var** — onlar hâlâ
+     `ibtn ana` yazıp düz görünüyor, istenirse genel kural yazılabilir.
+   - `d:ex:TARİH` ve `d:sess` INDEKSE bağlı: sıra değişince eski kayıtların
+     anlamı kayar. 30 Ağu'da sorun olmadı (veri sıfırlanmıştı, Pazar tam
+     dinlenme). Sırayı bir daha değiştirirsen bunu hesaba kat.
+
 ### D. Küçük açık uçlar
 
 - **Kültür derinliği 21 gün doldu sayılır:** FILMS 21/133, ARTISTS 21/92,

@@ -288,6 +288,13 @@
   .ss-set{font-family:var(--mono);font-size:11px;border:1px solid var(--line2);border-radius:4px;padding:4px 8px;color:var(--muted);}
   .ss-set b{color:var(--ink);font-weight:600;}
   .ss-set.bos{opacity:.45;border-style:dashed;}
+  .ss-set i{font-style:normal;font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;
+    text-transform:uppercase;margin-left:5px;opacity:.75;}
+  .ss-efor{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:9px;}
+  .ss-efor span{font-family:var(--mono);font-size:10px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--muted);}
+  /* .ana yalnızca .yok-btns içinde boyanıyordu; seçili efor görünmeliydi. */
+  .ss-efor .ibtn.ana{border-color:var(--accent);color:var(--accent);}
   .ex.sirada .ex-n{color:var(--accent);font-weight:600;}
   .ss-rest{margin-top:13px;border:1px solid var(--accent);border-radius:6px;padding:13px;text-align:center;}
   .ss-rest .rk{font-family:var(--mono);font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);}
@@ -771,13 +778,21 @@ const WK={
     Pull-Push-Legs. Her kas haftada net 2 kez; ağır bacak haftanın 2. gününde,
     hacim bacak 6. gününde. Eskiden Pzt-Sal-Çar üst üste üç ağır bileşik gündü.
     DİKKAT: Çar ve Paz'da tekrar aralığı OLMAYAN satırlar var — gunlukHedef()
-    "ağırlık antrenmanı olmayan gün" muafiyetini buradan anlıyor. */
- 1:{title:'UPPER — Ağır Bileşik',run:false,ex:[['Bench press','4 × 5-8'],['Barbell row veya chest-supported row','4 × 6-10'],['Overhead press (BB/DB)','3 × 6-10'],['Lat pulldown veya barfiks','3 × 8-12'],['Lateral raise','3 × 12-15'],['Barbell curl','3 × 8-12'],['Overhead triceps extension','3 × 10-12']]},
- 2:{title:'LOWER — Ağır Bileşik',run:false,ex:[['Back squat veya front squat','4 × 5-8'],['Romanian deadlift (RDL)','4 × 6-10'],['Leg press','3 × 10-12'],['Leg curl (yatarak)','3 × 10-12'],['Standing calf raise','4 × 10-15'],['Plank + dead bug (core)','3 set']]},
+    "ağırlık antrenmanı olmayan gün" muafiyetini buradan anlıyor.
+
+    SIRALAMA KURALI (30 Ağu): aynı kas grubu ARKA ARKAYA. Önceki dizilim
+    itiş/çekiş dönüşümlüydü (bench -> row -> OHP -> pulldown); kullanıcı
+    "alakasız" buldu, blok blok istedi. Her gün: ağır bileşik önce, sonra o
+    kasın yardımcıları, en sonda kollar/core. Yeni hareket eklerken ya da
+    sıralamayı değiştirirken bu kuralı bozma.
+    Gün 1'e Incline DB press eklendi: haftalık göğüs 14 -> 17 sete çıktı,
+    o güne kadar sırt 7 sete karşı göğüs 4 setti. */
+ 1:{title:'UPPER — Ağır Bileşik',run:false,ex:[['Bench press','4 × 5-8'],['Incline DB press','3 × 8-12'],['Barbell row veya chest-supported row','4 × 6-10'],['Lat pulldown veya barfiks','3 × 8-12'],['Overhead press (BB/DB)','3 × 6-10'],['Lateral raise','3 × 12-15'],['Barbell curl','3 × 8-12'],['Overhead triceps extension','3 × 10-12']]},
+ 2:{title:'LOWER — Ağır Bileşik',run:false,ex:[['Back squat veya front squat','4 × 5-8'],['Leg press','3 × 10-12'],['Romanian deadlift (RDL)','4 × 6-10'],['Leg curl (yatarak)','3 × 10-12'],['Standing calf raise','4 × 10-15'],['Plank + dead bug (core)','3 set']]},
  3:{title:'AKTİVİTE (Off) — Toparlanma',run:true,ex:[['Basket / tenis / kürek (keyifli-orta tempo)','45-75 dk'],['Ağırlık antrenmanı yok','—'],['Sabah dinamik ısınma','5-7 dk']]},
  4:{title:'PULL',run:false,ex:[['Barfiks veya lat pulldown','4 × 6-10'],['Barbell row','4 × 6-10'],['Seated cable row','3 × 10-12'],['Face pull','3 × 15-20'],['Barbell curl','3 × 8-12'],['Hammer curl','3 × 10-12']]},
- 5:{title:'PUSH',run:false,ex:[['Incline DB press','4 × 8-12'],['Overhead press (BB/DB)','3 × 6-10'],['Flat bench veya machine chest press','3 × 8-12'],['Dips (ağırlıklı)','3 × 8-12'],['Lateral raise (son set dropset)','4 × 12-15'],['Rear delt fly','3 × 15-20'],['Cable triceps pushdown','3 × 12-15']]},
- 6:{title:'LEGS — Hacim / Tek Taraflı',run:false,ex:[['Bulgar split squat (eksantrik vurgulu)','4 × 8-10'],['Hip thrust','4 × 8-12'],['Leg extension','3 × 12-15'],['Leg curl (oturarak)','3 × 12-15'],['Step-up','3 × 10-12'],['Seated calf raise','4 × 12-15']]},
+ 5:{title:'PUSH',run:false,ex:[['Incline DB press','4 × 8-12'],['Flat bench veya machine chest press','3 × 8-12'],['Dips (ağırlıklı)','3 × 8-12'],['Overhead press (BB/DB)','3 × 6-10'],['Lateral raise (son set dropset)','4 × 12-15'],['Rear delt fly','3 × 15-20'],['Cable triceps pushdown','3 × 12-15']]},
+ 6:{title:'LEGS — Hacim / Tek Taraflı',run:false,ex:[['Bulgar split squat (eksantrik vurgulu)','4 × 8-10'],['Step-up','3 × 10-12'],['Leg extension','3 × 12-15'],['Hip thrust','4 × 8-12'],['Leg curl (oturarak)','3 × 12-15'],['Seated calf raise','4 × 12-15']]},
  0:{title:'FULL OFF — Tam Dinlenme',run:false,ex:[['Antrenman yok','—'],['Köpek yürüyüşleri (2 × 20 dk)','zaten var'],['Uzun sabah rutini (mobilite + core)','~12-15 dk']]}
 };
 
@@ -2062,8 +2077,9 @@ function prevWeight(name){let best=null;const tk=todayKey();for(const dk in wtlo
 
    Dinlenme sayacı BİTİŞ DAMGASI tutar, geri sayan sayaç değil: tarayıcı arka
    planda zamanlayıcıyı kıstığında bile geri dönünce doğru süreyi gösterir. */
-/* 90 sn varsayılan uzun geliyordu; 60'a indi, 45 seçenek olarak eklendi.
-   180 duruyor: program ağır bileşiklerde onu istiyor. */
+/* Varsayılan 90 -> 60 -> 45 (30 Ağu, kullanıcı isteği). 45 sn yardımcı
+   hareketler için yeterli; ağır bileşikte (4 × 5-8 bench/squat) kısa kalır,
+   o yüzden 90/120/180 düğmeleri duruyor. */
 const REST_SEC=[45,60,90,120,180];
 let sess={},restBip=false;
 
@@ -2209,8 +2225,34 @@ async function sessSetKaydet(kg,tekrar){
   /* Hedef setler dolduysa çift ilerleme kuralını uygula; tonaj yemek hedefini besliyor. */
   await progIsle(ad,ex[i][1],sess.s[i]);
   await volKaydet();
-  sess.rest=Date.now()+(sess.restSn||60)*1000;restBip=false;
+  sess.rest=Date.now()+(sess.restSn||45)*1000;restBip=false;
   await saveSess();renderEx();renderWtLog();renderBars();
+}
+
+/* ===== EFOR ETİKETİ (kolay / zordu) =====
+   Set kaydına 'z' alanı olarak yazılır ('k' ya da 'z'; aynı düğmeye tekrar
+   basılırsa silinir). Çift ilerleme kuralına KARIŞMAZ — kilo hâlâ yalnızca
+   "hedef set sayısı × üst uç tekrar" ile artıyor. Efor sadece not düşürür:
+   panelin kuralı, kiloyu kullanıcı adına kendiliğinden oynatmamak. */
+async function sessEfor(z){
+  const i=sess.i||0,liste=(sess.s&&sess.s[i])||[];
+  if(!liste.length)return;
+  const son=liste[liste.length-1];
+  son.z=(son.z===z)?'':z;
+  await saveSess();renderEx();
+}
+const EFOR_AD={k:'kolay',z:'zor'};
+function eforNot(setler,ar,artis){
+  const etiketli=(setler||[]).filter(x=>x.z);
+  if(!etiketli.length)return '';
+  const son=etiketli[etiketli.length-1].z;
+  if(artis&&son==='z')
+    return '<div class="ss-oner">Üst ucu tutturdun ama zor geldi. Reçete yükseldi; '+
+      'sonraki seans zorlanırsan aynı kiloda bir hafta daha kalmak da seçenek.</div>';
+  if(!artis&&son==='k'&&ar)
+    return '<div class="ss-oner">Kolay geldiyse sıradaki sette tekrarı üst uca ('+ar.hi+
+      ') taşı; '+ar.set+' setin hepsinde tutarsa kilo kendiliğinden artar.</div>';
+  return '';
 }
 
 async function sessGit(yon){
@@ -2272,6 +2314,7 @@ function renderSess(el,ex){
     ar.hi+' tekrar tamamlarsan '+(rec+kgAdim(ad))+' kg\'a çıkar</div>';
   if(artis)html+='<div class="ss-artis">↑ '+artis.eski+' → <b>'+artis.kg+' kg</b> · üst ucu tutturdun, sonraki seans bu kilodan</div>';
   if(ar&&!artis)html+=tikanmaNot(ad);
+  html+=eforNot(setler,ar,artis);
 
   if(h){
     html+='<div class="ss-giris">'+
@@ -2281,9 +2324,17 @@ function renderSess(el,ex){
     /* Hedef set sayısı kadar kutu: kaç set kaldığı sayılmadan görünsün. */
     html+='<div class="ss-setler">'+Array.from({length:Math.max(h.set,setler.length)},(_,k)=>{
       const st=setler[k];
-      return st?'<span class="ss-set"><b>'+esc(st.kg)+'</b> kg × <b>'+esc(st.rep)+'</b></span>'
+      return st?'<span class="ss-set"><b>'+esc(st.kg)+'</b> kg × <b>'+esc(st.rep)+'</b>'+
+                 (st.z?'<i>· '+EFOR_AD[st.z]+'</i>':'')+'</span>'
                :'<span class="ss-set bos">'+(k+1)+'. set</span>';
     }).join('')+'</div>';
+    /* Etiket SON kaydedilen sete yazılır: set biter bitmez tek dokunuş. */
+    if(setler.length){
+      const sz=setler[setler.length-1].z||'';
+      html+='<div class="ss-efor"><span>son set</span>'+
+        '<button class="ibtn'+(sz==='k'?' ana':'')+'" data-efor="k">kolay geldi</button>'+
+        '<button class="ibtn'+(sz==='z'?' ana':'')+'" data-efor="z">zordu</button></div>';
+    }
   }else{
     html+='<div class="ss-gecmis" style="margin-top:10px">Bu hareket set/kg ile kaydedilmiyor.</div>';
   }
@@ -2315,6 +2366,7 @@ function renderSess(el,ex){
   const kb=document.getElementById('ssKaydet');if(kb)kb.onclick=kaydet;
   [kg,rep].forEach(inp=>{if(inp)inp.onkeydown=ev=>{if(ev.key==='Enter'){ev.preventDefault();kaydet();}};});
   el.querySelectorAll('[data-rest]').forEach(b=>b.onclick=()=>sessRestAyar(+b.dataset.rest));
+  el.querySelectorAll('[data-efor]').forEach(b=>b.onclick=()=>sessEfor(b.dataset.efor));
   const g=(id,fn)=>{const x=document.getElementById(id);if(x)x.onclick=fn;};
   g('ssArti',()=>sessRestUzat(30)); g('ssAtla',sessRestAtla);
   g('ssOnceki',()=>sessGit(-1)); g('ssSonraki',()=>sessGit(1));
