@@ -175,6 +175,21 @@ log herkese açık.
      anlamı kayar. 30 Ağu'da sorun olmadı (veri sıfırlanmıştı, Pazar tam
      dinlenme). Sırayı bir daha değiştirirsen bunu hesaba kat.
 
+9. ~~İş Başvuruları: elle ret~~ — **yapıldı (30 Ağu).** Gmail taraması yalnızca
+   ret MAİLİ geleni yakalıyordu; telefonda söylenen ya da hiç dönülmeyen
+   başvuru "Bekliyor" kalıyordu. Artık her satırda **`ret ✗`** düğmesi var,
+   basınca satır otomatik retle **aynı** görünüyor (kırmızı rozet, Ret
+   sayacına giriyor) ve `ret · geri al`'a dönüyor.
+   - Anahtar: `d:retElle` = `["şirket|pozisyon", …]`, `appAnahtar()` ile
+     normalize. Senkronda (SYNC_SKIP'te değil), cihazlar arası geçiyor.
+   - **Durum ÜZERİNE BİNİYOR, Sheet değişmiyor** — panel Sheet'e yazamıyor
+     (public site, yazma yetkisi gömülemez). `renderBasvuru` satırı KOPYALAYIP
+     `r[4]='Ret'` yapıyor; kaynak dizi bozulursa geri alma çalışmıyordu.
+   - Sheet/Gmail zaten "Ret" diyorsa düğme çıkmıyor (yapacak bir şey yok).
+   - "Bugünün 3 İşi" kartında o ilan `✓ başvuruldu` yerine **`✗ ret`** rozeti
+     alıyor (`.job-done.ret`, `--down`). Başvuru geri alınırsa elle ret işareti
+     de siliniyor.
+
 ### D. Küçük açık uçlar
 
 - **Kültür derinliği 21 gün doldu sayılır:** FILMS 21/133, ARTISTS 21/92,

@@ -336,6 +336,11 @@
   .app-status.bekliyor{background:rgba(28,78,72,.1);color:var(--accent);}
   .app-sub{font-family:var(--mono);font-size:10.5px;color:var(--muted);display:flex;justify-content:space-between;gap:8px;margin-top:3px;}
   .app-sub>span:last-child{white-space:nowrap;}
+  .app-ret{background:none;border:1px solid var(--line);color:var(--muted);font-family:var(--mono);
+    font-size:9px;letter-spacing:.08em;text-transform:uppercase;padding:1px 6px;border-radius:3px;
+    cursor:pointer;margin-left:6px;}
+  .app-ret:hover{border-color:var(--down);color:var(--down);}
+  .app-ret.geri{border-color:var(--down);color:var(--down);}
   /* Gmail cevap taslağı */
   .dr-box{margin-top:8px;border-left:2px solid var(--accent);background:var(--paper);border-radius:0 4px 4px 0;padding:8px 10px;}
   .dr-sum{font-size:12.5px;line-height:1.45;margin-bottom:7px;}
@@ -427,6 +432,7 @@
   .job-act{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;align-items:center;}
   .job-act .ibtn{padding:5px 10px;text-decoration:none;}
   .job-done{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--up);}
+  .job-done.ret{color:var(--down);}
   .cfgbox{border:1px solid var(--line2);border-radius:5px;padding:12px 13px;margin-bottom:13px;background:var(--paper);}
   html[data-theme="hud"] .cfgbox{background:#0A111C;}
   .cfgbox label{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;
@@ -4056,8 +4062,18 @@ let sheetRows=[],myApps=[];
    BİRLEŞTİRİLİR. Sheet'e yazmak için kimlik bilgisi gerekiyor ve panel public
    bir sitede -> yazma yetkisi gömülemez. Bu yüzden panel kendi kaydını tutuyor;
    Sheet'i istediğinde elle güncellersin, çift kayıt olursa aşağıda ayıklanıyor. */
+/* Satır anahtarı: şirket|pozisyon. Hem Sheet satırı hem panel kaydı hem de
+   elle ret listesi bununla eşleşiyor. */
+const appAnahtar=r=>((r[0]||'')+'|'+(r[1]||'')).toLowerCase().replace(/\s+/g,' ').trim();
+/* ===== ELLE RET =====
+   Gmail taraması yalnızca ret MAİLİ gelmiş başvuruları yakalıyor; telefonda
+   söylenen ya da hiç dönülmeyen başvurular tabloda "Bekliyor" kalıyordu.
+   Panel Sheet'e yazamadığı için (public site, yazma yetkisi gömülemez) durum
+   burada ÜZERİNE BİNİYOR: anahtar bu listedeyse satır 'Ret' görünür ve Ret
+   sayacına girer. Sheet'teki asıl satır değişmez. */
+let retElle=[];
 function appRows(){
-  const anahtar=r=>((r[0]||'')+'|'+(r[1]||'')).toLowerCase().replace(/\s+/g,' ').trim();
+  const anahtar=appAnahtar;
   const varOlan=new Set(sheetRows.map(anahtar));
   const yerel=myApps
     .map(a=>[a.company,a.position,a.location,a.date,a.status||'Bekliyor'])
@@ -4067,6 +4083,9 @@ function appRows(){
 function renderBasvuru(data){
   sheetRows=data;
   data=appRows();
+  /* Satır KOPYALANIYOR: kaynak diziyi (sheetRows/myApps) bozmadan durumu
+     değiştirmek gerekiyor, yoksa elle ret geri alınamaz hâle geliyor. */
+  data=data.map(r=>retElle.indexOf(appAnahtar(r))>-1?[r[0],r[1],r[2],r[3],'Ret']:r);
   const toplam=data.length;
   /* "Ret" dışında "Reddedildi"/"Olumsuz" gibi elle yazılmış varyantları da say —
      "Reddedildi" kelimesi "ret" harf dizisini İÇERMEZ, bu yüzden ayrı kalıp gerekli. */
@@ -4079,18 +4098,30 @@ function renderBasvuru(data){
   const last5=data.slice(-5).reverse();
   const listEl=document.getElementById('basvuruList');
   if(!last5.length){listEl.innerHTML='<div class="empty">Henüz başvuru yok.</div>';return;}
-  listEl.innerHTML=last5.map(r=>{
+  listEl.innerHTML=last5.map((r,li)=>{
     const durum=(r[4]||'').trim();
     const cls=RET_RE.test(durum)?'ret':'bekliyor';
+    const elle=retElle.indexOf(appAnahtar(r))>-1;
+    /* Düğme yalnızca elle işaretlenmişte (geri al) ya da henüz ret olmayanda
+       görünür — Sheet/Gmail zaten ret demişse yapacak bir şey yok. */
+    const retBtn=elle?'<button class="app-ret geri" data-eret="'+li+'">ret · geri al</button>'
+                 :(RET_RE.test(durum)?'':'<button class="app-ret" data-eret="'+li+'">ret ✗</button>');
     const yi=myApps.findIndex(a=>a.company===r[0]&&a.position===r[1]);
     return '<div class="app-item"><div class="app-top"><span class="app-co">'+esc(r[0]||'—')+
       (yi>-1?' <span class="jb" style="margin-left:5px">panelden</span>':'')+'</span>'+
       '<span class="app-status '+cls+'">'+esc(durum||'—')+'</span></div>'+
       '<div class="app-sub"><span>'+esc(r[1]||'')+(r[2]?' · '+esc(r[2]):'')+'</span>'+
-      '<span>'+esc(r[3]||'')+(yi>-1?' <button class="del" data-dapp="'+yi+'">×</button>':'')+'</span></div></div>';
+      '<span>'+esc(r[3]||'')+retBtn+(yi>-1?' <button class="del" data-dapp="'+yi+'">×</button>':'')+'</span></div></div>';
   }).join('');
   listEl.querySelectorAll('[data-dapp]').forEach(b=>b.onclick=async()=>{
     myApps.splice(+b.dataset.dapp,1);await sSet(K.myApps,myApps);renderBasvuru(sheetRows);renderJobs();});
+  listEl.querySelectorAll('[data-eret]').forEach(b=>b.onclick=async()=>{
+    const r=last5[+b.dataset.eret];if(!r)return;
+    const k=appAnahtar(r),i=retElle.indexOf(k);
+    if(i>-1)retElle.splice(i,1);else retElle.push(k);
+    await sSet('d:retElle',retElle);
+    renderBasvuru(sheetRows);renderJobs();   // ilan kartındaki rozet de dönsün
+  });
 }
 
 /* ===== GMAIL'DE GÖRÜLEN RETLER =====
@@ -4612,12 +4643,14 @@ function renderJobs(){
   if(!jobs.length){el.innerHTML='<div class="empty">Bugün kriterlere uyan ilan bulunamadı.</div>';return;}
   el.innerHTML=jobs.map((j,i)=>{
     const done=jobsApplied.indexOf(jobKey(j))>-1;
+    const retli=done&&retElle.indexOf(appAnahtar([j.company,j.title]))>-1;
     const yas=j.days==null?'':(j.days===0?'bugün':j.days+' gün önce');
     return '<div class="job'+(done?' applied':'')+'">'+
       '<div class="job-top"><div style="flex:1;min-width:180px">'+
         '<div class="job-t">'+esc(j.title)+'</div>'+
         '<div class="job-co">'+esc(j.company)+'</div></div>'+
-        (done?'<span class="job-done">✓ başvuruldu</span>':'')+'</div>'+
+        (retli?'<span class="job-done ret">✗ ret</span>'
+              :(done?'<span class="job-done">✓ başvuruldu</span>':''))+'</div>'+
       '<div class="job-badges">'+
         '<span class="jb loc">'+esc(j.location)+'</span>'+
         (j.remote?'<span class="jb">remote</span>':'')+
@@ -4824,6 +4857,9 @@ async function toggleApplied(j){
   if(i>-1){
     jobsApplied.splice(i,1);
     myApps=myApps.filter(a=>a.key!==k);
+    /* Başvuru geri alınıyorsa elle ret işareti de anlamsız kalır. */
+    const ri=retElle.indexOf(appAnahtar([j.company,j.title]));
+    if(ri>-1){retElle.splice(ri,1);await sSet('d:retElle',retElle);}
   }else{
     jobsApplied.push(k);jobsApplied=jobsApplied.slice(-200);
     myApps.push({key:k,company:j.company,position:j.title,
@@ -5269,7 +5305,7 @@ if(navigator.serviceWorker){
     await loadGmailJson();};
   document.getElementById('agentRefresh').onclick=()=>loadAgents(true);
   document.getElementById('jobsCfg').onclick=openJobsCfg;
-  jobProfile=await sGet(K.jobProfile)||null;jobsApplied=await sGet(K.jobsApplied)||[];myApps=await sGet(K.myApps)||[];retler=await sGet('d:retler')||[];retGizli=await sGet('d:retGizli')||[];
+  jobProfile=await sGet(K.jobProfile)||null;jobsApplied=await sGet(K.jobsApplied)||[];myApps=await sGet(K.myApps)||[];retler=await sGet('d:retler')||[];retGizli=await sGet('d:retGizli')||[];retElle=await sGet('d:retElle')||[];
   document.getElementById('placeName').textContent=PLACE.name;
   renderTasks();await loadSched();await loadYok();await loadMorning();await renderRun();await loadWorkout();renderWtLog();await loadMeals();await loadWater();await loadSleep();await loadBW();await loadMoney();loadHabits();await initSync();
   renderFacts();renderFilm();renderArtist();renderBook();renderHistory();renderGerman();renderNews();renderTR();renderRetler();renderWatch();renderUS();renderWorldIdx();renderGold();renderWorld();renderMktSummary();renderFinNote();
