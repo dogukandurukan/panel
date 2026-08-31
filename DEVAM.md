@@ -190,6 +190,25 @@ log herkese açık.
      alıyor (`.job-done.ret`, `--down`). Başvuru geri alınırsa elle ret işareti
      de siliniyor.
 
+10. ~~Bugün Harcadıkların kartı~~ — **yapıldı (30 Ağu).** Sabit şeritte
+   **Bugün Yapılacaklar'ın ALTINDA** (ikisi `.stack` içinde, aynı sütun).
+   Kategori seçimi + tutar + not, başlıkta günün toplamı.
+   - **AYRI ANAHTAR YOK:** aynı `d:money:YYYY-AA` dizisine yazıyor, yalnızca
+     bugünün `k:'out'` kayıtlarını süzüyor. Ayrı anahtar olsaydı aylık toplam,
+     kategori dağılımı ve Excel çıktısı bu kayıtları görmezdi.
+   - Aylık kart geçmiş aya kaydırılmış olabilir (`mCur`); bu kart **her zaman**
+     `thisMonth()` anahtarıyla çalışıyor (`ayKayitlari()`/`ayKaydet()`), aynı ay
+     ise `mData` üzerinden. Geçen aya kaydırılmışken eklenen kayıt doğru aya
+     gitti — denendi.
+   - Silme aylık dizideki GERÇEK indeksi kullanıyor (süzerken indeks taşınıyor).
+   - İki kart da birbirini tazeliyor: aylık karttan ekle/sil → üst kart döner,
+     tersi de.
+11. ~~İş Başvuruları: yalnızca 5 satır görünüyordu~~ — **yapıldı (30 Ağu).**
+   Varsayılan hâlâ 5; altında **"↓ tümünü göster (N)"** düğmesi tamamını açıyor,
+   "↑ ilk 5'i göster" daraltıyor. Seçim `basvuruHepsi` değişkeninde, yalnızca o
+   oturumda (kayıt tutmaya değmez). Elle ret düğmesi açık listede de doğru
+   satırı işaretliyor — indeks `goster` dizisine göre.
+
 ### D. Küçük açık uçlar
 
 - **Kültür derinliği 21 gün doldu sayılır:** FILMS 21/133, ARTISTS 21/92,

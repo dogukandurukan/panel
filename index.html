@@ -550,6 +550,8 @@
   .mrow .mn{flex:1;font-size:13.5px;}
   .mrow .mv{font-family:var(--mono);font-size:13.5px;white-space:nowrap;}
   .mrow .md{font-family:var(--mono);font-size:10px;color:var(--muted);white-space:nowrap;}
+  /* Sabit şeritteki sütun dar (min 300px); kategori+tutar+not+düğme sarmalı. */
+  #tdAdd{flex-wrap:wrap;} #tdAdd input{min-width:88px;}
   .catrow{display:flex;align-items:center;gap:9px;padding:5px 0;}
   .catrow .cl{font-size:12.5px;min-width:82px;color:var(--muted);}
   .catrow .cb{flex:1;height:6px;background:var(--line2);border-radius:4px;overflow:hidden;}
@@ -647,9 +649,19 @@
         <section class="card"><div class="card-head"><div><p class="kicker">Plan · <span id="schedDay">—</span></p><h2 class="card-title">Günün Programı</h2></div><div class="meta" id="schedCount">0/0</div></div>
       <div class="wtitle" id="schedNow">—</div>
       <div id="schedList"></div></section>
+        <div class="stack">
         <section class="card"><div class="card-head"><div><p class="kicker">Ajanda</p><h2 class="card-title">Bugün Yapılacaklar</h2></div><div class="meta" id="taskCount">0/0</div></div>
       <div id="taskList"></div>
       <div class="add-row"><input id="taskInput" placeholder="Yeni iş ekle…" maxlength="120"><button id="taskAdd">Ekle</button></div></section>
+        <section class="card"><div class="card-head"><div><p class="kicker">Bütçe · Bugün</p><h2 class="card-title">Bugün Harcadıkların</h2></div><div class="meta" id="tdTotal">₺0</div></div>
+      <div id="tdList"></div>
+      <div class="add-row" id="tdAdd">
+        <select id="tdCat" class="msel"></select>
+        <input id="tdAmt" type="number" inputmode="decimal" placeholder="Tutar ₺" style="max-width:104px">
+        <input id="tdNote" placeholder="Not (ops.)" maxlength="60">
+        <button id="tdSave">Ekle</button>
+      </div></section>
+        </div>
         <section class="card"><div class="card-head"><div><p class="kicker">Yoklama</p><h2 class="card-title" id="yokTitle">Şu An Ne Yapıyorsun?</h2></div><div class="meta" id="yokMeta">0/0</div></div>
       <div id="yokBody"></div></section>
   </div>
@@ -4057,7 +4069,7 @@ function loadBasvuru(){
   s.onerror=function(){statsEl.innerHTML='<div class="empty">Sheet çekilemedi — bağlantı paylaşımını (bağlantıya sahip olan görüntüleyebilir) kontrol et.</div>';};
   document.body.appendChild(s);
 }
-let sheetRows=[],myApps=[];
+let sheetRows=[],myApps=[],basvuruHepsi=false;
 /* Panelden "Başvurdum" denen ilanlar burada tutulur ve Sheet satırlarıyla
    BİRLEŞTİRİLİR. Sheet'e yazmak için kimlik bilgisi gerekiyor ve panel public
    bir sitede -> yazma yetkisi gömülemez. Bu yüzden panel kendi kaydını tutuyor;
@@ -4095,10 +4107,12 @@ function renderBasvuru(data){
     '<div class="stat"><div class="stat-n">'+toplam+'</div><div class="stat-l">Toplam</div></div>'+
     '<div class="stat"><div class="stat-n">'+bekliyor+'</div><div class="stat-l">Bekliyor</div></div>'+
     '<div class="stat"><div class="stat-n">'+ret+'</div><div class="stat-l">Ret</div></div>';
-  const last5=data.slice(-5).reverse();
+  /* Varsayılan 5 satır: kart günlük bakışta kısa kalsın. Tamamı düğmeyle
+     açılıyor; seçim yalnızca bu oturumda (kayıt tutmaya değmez). */
+  const goster=(basvuruHepsi?data.slice():data.slice(-5)).reverse();
   const listEl=document.getElementById('basvuruList');
-  if(!last5.length){listEl.innerHTML='<div class="empty">Henüz başvuru yok.</div>';return;}
-  listEl.innerHTML=last5.map((r,li)=>{
+  if(!goster.length){listEl.innerHTML='<div class="empty">Henüz başvuru yok.</div>';return;}
+  listEl.innerHTML=goster.map((r,li)=>{
     const durum=(r[4]||'').trim();
     const cls=RET_RE.test(durum)?'ret':'bekliyor';
     const elle=retElle.indexOf(appAnahtar(r))>-1;
@@ -4112,11 +4126,15 @@ function renderBasvuru(data){
       '<span class="app-status '+cls+'">'+esc(durum||'—')+'</span></div>'+
       '<div class="app-sub"><span>'+esc(r[1]||'')+(r[2]?' · '+esc(r[2]):'')+'</span>'+
       '<span>'+esc(r[3]||'')+retBtn+(yi>-1?' <button class="del" data-dapp="'+yi+'">×</button>':'')+'</span></div></div>';
-  }).join('');
+  }).join('')
+  +(toplam>5?'<button class="ibtn" id="basvuruDaha" style="margin-top:11px">'+
+     (basvuruHepsi?'↑ ilk 5\'i göster':'↓ tümünü göster ('+toplam+')')+'</button>':'');
+  const daha=document.getElementById('basvuruDaha');
+  if(daha)daha.onclick=()=>{basvuruHepsi=!basvuruHepsi;renderBasvuru(sheetRows);};
   listEl.querySelectorAll('[data-dapp]').forEach(b=>b.onclick=async()=>{
     myApps.splice(+b.dataset.dapp,1);await sSet(K.myApps,myApps);renderBasvuru(sheetRows);renderJobs();});
   listEl.querySelectorAll('[data-eret]').forEach(b=>b.onclick=async()=>{
-    const r=last5[+b.dataset.eret];if(!r)return;
+    const r=goster[+b.dataset.eret];if(!r)return;
     const k=appAnahtar(r),i=retElle.indexOf(k);
     if(i>-1)retElle.splice(i,1);else retElle.push(k);
     await sSet('d:retElle',retElle);
@@ -4474,7 +4492,7 @@ function renderMoney(){
       '<span class="mv '+(r.k==='in'?'up':'down')+'">'+(r.k==='in'?'+':'−')+tl(num(r.a))+'</span>'+
       '<button class="del" data-md="'+i+'">×</button></div>').slice().reverse().join('');
   el.querySelectorAll('[data-md]').forEach(b=>b.onclick=async()=>{
-    mData.splice(+b.dataset.md,1);await saveMoney();renderMoney();});
+    mData.splice(+b.dataset.md,1);await saveMoney();renderMoney();renderBugunHarcama();});
 }
 async function addMoney(){
   const amt=num(document.getElementById('mAmt').value);
@@ -4482,8 +4500,54 @@ async function addMoney(){
   mData.push({k:document.getElementById('mKind').value,c:document.getElementById('mCat').value,
     a:amt,n:document.getElementById('mNote').value.trim(),d:todayKey()});
   document.getElementById('mAmt').value='';document.getElementById('mNote').value='';
-  await saveMoney();renderMoney();
+  await saveMoney();renderMoney();renderBugunHarcama();
 }
+/* ===== BUGÜN HARCADIKLARIN =====
+   AYRI ANAHTAR YOK: aynı d:money:YYYY-AA dizisine yazıyor, yalnızca bugünün
+   'out' kayıtlarını gösteriyor. Ayrı anahtar olsaydı aylık toplam, kategori
+   dağılımı ve Excel çıktısı bu kayıtları görmezdi.
+   Aylık kart başka aya kaydırılmış olabilir (mCur); bu kart HER ZAMAN
+   thisMonth() anahtarıyla çalışıyor — aynı ay ise mData üzerinden. */
+async function ayKayitlari(){
+  const ay=thisMonth();
+  return (ay===mCur)?mData:(await sGet('d:money:'+ay)||[]);
+}
+async function ayKaydet(arr){
+  const ay=thisMonth();
+  await sSet('d:money:'+ay,arr);
+  if(ay===mCur){mData=arr;renderMoney();}   // aylık kart da hemen tazelensin
+}
+function tdFillCats(){
+  const sel=document.getElementById('tdCat');if(!sel)return;
+  sel.innerHTML=MCATS.out.map(c=>'<option value="'+c+'">'+c+'</option>').join('');
+}
+async function renderBugunHarcama(){
+  const el=document.getElementById('tdList');if(!el)return;
+  const arr=await ayKayitlari(),tk=todayKey();
+  /* Silme aylık dizideki GERÇEK indeksi istiyor; süzerken indeks kaybolmasın. */
+  const bugun=arr.map((r,i)=>({r:r,i:i})).filter(x=>x.r.d===tk&&x.r.k==='out');
+  const top=bugun.reduce((a,x)=>a+num(x.r.a),0);
+  const tt=document.getElementById('tdTotal');if(tt)tt.textContent=tl(top);
+  el.innerHTML=bugun.length
+    ? bugun.map(x=>'<div class="mrow"><span class="mc">'+esc(x.r.c)+'</span>'+
+        '<span class="mn">'+esc(x.r.n||'—')+'</span>'+
+        '<span class="mv down">−'+tl(num(x.r.a))+'</span>'+
+        '<button class="del" data-tdd="'+x.i+'">×</button></div>').reverse().join('')
+    : '<div class="empty">Bugün harcama yok. Aşağıdan ekle.</div>';
+  el.querySelectorAll('[data-tdd]').forEach(b=>b.onclick=async()=>{
+    const a2=await ayKayitlari();a2.splice(+b.dataset.tdd,1);
+    await ayKaydet(a2);renderBugunHarcama();});
+}
+async function addBugunHarcama(){
+  const amt=num(document.getElementById('tdAmt').value);
+  if(!amt||amt<=0)return;
+  const arr=await ayKayitlari();
+  arr.push({k:'out',c:document.getElementById('tdCat').value,a:amt,
+    n:document.getElementById('tdNote').value.trim(),d:todayKey()});
+  document.getElementById('tdAmt').value='';document.getElementById('tdNote').value='';
+  await ayKaydet(arr);renderBugunHarcama();
+}
+
 function moneyExport(){
   const rows=[['Ay','Tarih','Tür','Kategori','Tutar','Not']],keys=[];
   try{for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k&&k.indexOf('d:money:')===0)keys.push(k);}}catch(e){}
@@ -5287,7 +5351,10 @@ if(navigator.serviceWorker){
   document.getElementById('mExport').onclick=moneyExport;
   document.getElementById('mPrev').onclick=async()=>{mCur=shiftMonth(mCur,-1);await loadMoney();};
   document.getElementById('mNext').onclick=async()=>{mCur=shiftMonth(mCur,1);await loadMoney();};
-  fillCats();
+  fillCats();tdFillCats();
+  document.getElementById('tdSave').onclick=addBugunHarcama;
+  ['tdAmt','tdNote'].forEach(id=>{const e=document.getElementById(id);
+    if(e)e.onkeydown=ev=>{if(ev.key==='Enter'){ev.preventDefault();addBugunHarcama();}};});
   document.getElementById('factNext').onclick=()=>{factOff+=4;renderFacts();};
   document.getElementById('filmNext').onclick=()=>{filmOff+=2;renderFilm();};
   document.getElementById('artNext').onclick=()=>{artOff+=2;renderArtist();};
@@ -5307,7 +5374,7 @@ if(navigator.serviceWorker){
   document.getElementById('jobsCfg').onclick=openJobsCfg;
   jobProfile=await sGet(K.jobProfile)||null;jobsApplied=await sGet(K.jobsApplied)||[];myApps=await sGet(K.myApps)||[];retler=await sGet('d:retler')||[];retGizli=await sGet('d:retGizli')||[];retElle=await sGet('d:retElle')||[];
   document.getElementById('placeName').textContent=PLACE.name;
-  renderTasks();await loadSched();await loadYok();await loadMorning();await renderRun();await loadWorkout();renderWtLog();await loadMeals();await loadWater();await loadSleep();await loadBW();await loadMoney();loadHabits();await initSync();
+  renderTasks();await loadSched();await loadYok();await loadMorning();await renderRun();await loadWorkout();renderWtLog();await loadMeals();await loadWater();await loadSleep();await loadBW();await loadMoney();await renderBugunHarcama();loadHabits();await initSync();
   renderFacts();renderFilm();renderArtist();renderBook();renderHistory();renderGerman();renderNews();renderTR();renderRetler();renderWatch();renderUS();renderWorldIdx();renderGold();renderWorld();renderMktSummary();renderFinNote();
   ['watchList','usList','idxList'].forEach(stkTiklaBagla);
   loadFX(false);loadBorsaJson();loadBasvuru();loadGmailJson();loadFactsJson();loadAgents(false);loadWx();loadJobsJson();
