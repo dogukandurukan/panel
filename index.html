@@ -552,6 +552,20 @@
   .mrow .md{font-family:var(--mono);font-size:10px;color:var(--muted);white-space:nowrap;}
   /* Sabit şeritteki sütun dar (min 300px); kategori+tutar+not+düğme sarmalı. */
   #tdAdd{flex-wrap:wrap;} #tdAdd input{min-width:88px;}
+  /* Gün gün sütunlar: sabit giderler (kira/fatura) soluk, değişken harcama dolu.
+     Tek ayın günleri esnek paylaşıyor — 28 ile 31 gün arası genişlik farkı sorun değil. */
+  .gbars{display:flex;align-items:flex-end;gap:2px;height:64px;margin-top:10px;}
+  .gb{flex:1;min-width:0;height:100%;display:flex;flex-direction:column;justify-content:flex-end;}
+  .gb i{display:block;width:100%;background:var(--accent);border-radius:0;}
+  .gb i.sabit{opacity:.3;}
+  .gb i:first-child{border-radius:2px 2px 0 0;}
+  .gaxis{display:flex;justify-content:space-between;font-family:var(--mono);font-size:9px;
+    letter-spacing:.06em;color:var(--muted);margin-top:5px;}
+  .glegend{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:9px;
+    font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);}
+  .glegend b{display:inline-block;width:9px;height:9px;border-radius:2px;background:var(--accent);
+    margin-right:5px;vertical-align:-1px;}
+  .glegend b.sabit{opacity:.3;}
   .catrow{display:flex;align-items:center;gap:9px;padding:5px 0;}
   .catrow .cl{font-size:12.5px;min-width:82px;color:var(--muted);}
   .catrow .cb{flex:1;height:6px;background:var(--line2);border-radius:4px;overflow:hidden;}
@@ -761,9 +775,11 @@
       <select id="mKind" class="msel"><option value="out">Gider</option><option value="in">Gelir</option></select>
       <select id="mCat" class="msel"></select>
       <input id="mAmt" type="number" inputmode="decimal" placeholder="Tutar ₺" style="max-width:110px">
+      <input id="mDate" type="date" style="max-width:150px" title="Kayıt tarihi">
       <input id="mNote" placeholder="Not (ops.)" maxlength="60">
       <button id="mSave">Ekle</button>
     </div>
+    <div id="mGun"></div>
     <div id="mCats"></div>
     <div id="mList"></div></section>
 
@@ -4452,6 +4468,11 @@ function renderFinNote(){
    şey gitmez. Kayıt: {k:'in'|'out', c:kategori, a:tutar, n:not, d:tarih} */
 const MCATS={out:['Kira','Market','Ulaşım','Yeme-içme','Fatura','Sağlık','Eğlence','Diğer'],
              in:['Maaş','Ek gelir','Satış','Diğer']};
+/* Sabit giderler: gün gün grafikte soluk çiziliyor ve "hariç" düğmesiyle
+   gizlenebiliyor. 5.000 ₺'lik kira sütunu 200-300 ₺'lik günleri düz çizgiye
+   çeviriyordu; toplamlar doğru ama günlük gidişat okunmuyordu. */
+const SABIT_KAT=['Kira','Fatura'];
+let mSabitHaric=false;
 const AYLAR=['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'];
 let mCur='',mData=[];
 function thisMonth(){const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0');}
@@ -4464,6 +4485,77 @@ async function saveMoney(){await sSet('d:money:'+mCur,mData);}
 function fillCats(){
   const kind=document.getElementById('mKind').value,sel=document.getElementById('mCat');
   sel.innerHTML=MCATS[kind].map(c=>'<option value="'+c+'">'+c+'</option>').join('');
+}
+/* Ayın gününe göre {değişken, sabit} toplamı. Kayıtların tarihi d alanında. */
+function gunlukToplamlar(){
+  const y=+mCur.slice(0,4),ay=+mCur.slice(5,7),gunSayisi=new Date(y,ay,0).getDate();
+  const dz=[];for(let i=0;i<gunSayisi;i++)dz.push({deg:0,sab:0});
+  mData.filter(r=>r.k==='out').forEach(r=>{
+    const g=+String(r.d||'').slice(8,10);
+    if(!g||g>gunSayisi)return;
+    dz[g-1][SABIT_KAT.indexOf(r.c)>-1?'sab':'deg']+=num(r.a);
+  });
+  return dz;
+}
+function renderGunluk(){
+  const el=document.getElementById('mGun');if(!el)return;
+  const dz=gunlukToplamlar(),gunSayisi=dz.length;
+  const gorunen=dz.map(g=>mSabitHaric?g.deg:g.deg+g.sab);
+  const sabitVar=dz.some(g=>g.sab>0);
+  if(!gorunen.some(v=>v>0)&&!sabitVar){el.innerHTML='';return;}   // veri yoksa başlık da yok
+  const enb=Math.max.apply(null,gorunen.concat([0]))||1;
+  /* Ortalama BUGÜNE KADARKİ günlere bölünüyor: içinde bulunulan ayda 30'a
+     bölmek ayın ortasında ortalamayı yapay olarak yarıya düşürüyordu. */
+  const buAy=(mCur===thisMonth());
+  /* Pencere bugüne kadar; ama ileri tarihli kayıt girilmişse (ör. kira ayın
+     5'ine yazıldı) onu da kapsasın — yoksa toplam pencerenin dışında kalıp
+     ortalamayı uçuruyordu. */
+  let sonGun=0;gorunen.forEach((v,i)=>{if(v>0)sonGun=i+1;});
+  const gecen=buAy?Math.min(Math.max(new Date().getDate(),sonGun),gunSayisi):gunSayisi;
+  const toplam=gorunen.reduce((a,v)=>a+v,0);
+  const ort=gecen?toplam/gecen:0;
+  let enYuksek=0,enYuksekGun=0;
+  gorunen.forEach((v,i)=>{if(v>enYuksek){enYuksek=v;enYuksekGun=i+1;}});
+  const bosGun=gorunen.slice(0,gecen).filter(v=>v===0).length;
+  const ayAdi=AYLAR[+mCur.slice(5,7)-1];
+  let stat='<div class="stat"><div class="stat-n">'+tl(ort)+'</div><div class="stat-l">Günlük ort.</div></div>'+
+    '<div class="stat"><div class="stat-n">'+(enYuksek?tl(enYuksek):'—')+'</div><div class="stat-l">'+
+      (enYuksek?'En yüksek · '+enYuksekGun+' '+ayAdi:'En yüksek')+'</div></div>'+
+    '<div class="stat"><div class="stat-n">'+bosGun+'</div><div class="stat-l">Harcamasız gün</div></div>';
+  /* Tahmin = şimdiye kadarki toplam + DEĞİŞKEN günlük ortalama × kalan gün.
+     Sabit gideri de günlükle çarpmak kirayı 30 kez saydırıyordu. Ayın ilk
+     iki gününde örneklem yok sayılır, gösterilmiyor. */
+  if(buAy&&gecen>=3){
+    const degOrt=dz.slice(0,gecen).reduce((a,g)=>a+g.deg,0)/gecen;
+    stat+='<div class="stat"><div class="stat-n">'+tl(toplam+degOrt*(gunSayisi-gecen))+
+      '</div><div class="stat-l">Ay sonu tahmini</div></div>';
+  }
+  el.innerHTML='<div class="wtitle" style="margin-top:13px;border-top:1px solid var(--line2);padding-top:11px">Gün Gün</div>'+
+    '<div class="statrow">'+stat+'</div>'+
+    '<div class="gbars">'+dz.map((g,i)=>{
+      const p=[];
+      if(!mSabitHaric&&g.sab>0)p.push('<i class="sabit" style="height:'+(g.sab/enb*100)+'%"></i>');
+      if(g.deg>0)p.push('<i style="height:'+(g.deg/enb*100)+'%"></i>');
+      const t=mSabitHaric?g.deg:g.deg+g.sab;
+      return '<span class="gb" title="'+(i+1)+' '+ayAdi+' · '+tl(t)+
+        (g.sab>0&&!mSabitHaric?' (sabit '+tl(g.sab)+')':'')+'">'+p.join('')+'</span>';
+    }).join('')+'</div>'+
+    '<div class="gaxis"><span>1</span><span>'+Math.round(gunSayisi/2)+'</span><span>'+gunSayisi+'</span></div>'+
+    (sabitVar?'<div class="glegend"><span><b></b>günlük harcama</span>'+
+      (mSabitHaric?'':'<span><b class="sabit"></b>sabit gider</span>')+
+      '<button class="ibtn" id="mSabitBtn">'+(mSabitHaric?'sabit giderleri göster':'sabit giderler hariç')+'</button></div>':'');
+  const sb=document.getElementById('mSabitBtn');
+  if(sb)sb.onclick=()=>{mSabitHaric=!mSabitHaric;renderGunluk();};
+}
+
+/* Tarih kutusu görüntülenen AYA kilitleniyor: başka ayın tarihi seçilseydi
+   kayıt bu ayın dizisine yazılıp o ayda görünmezdi. */
+function mDateAyarla(){
+  const el=document.getElementById('mDate');if(!el)return;
+  const gunSayisi=new Date(+mCur.slice(0,4),+mCur.slice(5,7),0).getDate();
+  el.min=mCur+'-01';el.max=mCur+'-'+String(gunSayisi).padStart(2,'0');
+  const bugun=todayKey();
+  el.value=(bugun>=el.min&&bugun<=el.max)?bugun:el.min;
 }
 function renderMoney(){
   document.getElementById('mLabel').textContent=monthLabel(mCur);
@@ -4484,6 +4576,7 @@ function renderMoney(){
     cats.map(c=>'<div class="catrow"><span class="cl">'+esc(c)+'</span><span class="cb"><i style="width:'+
       (enb?Math.round(byCat[c]/enb*100):0)+'%"></i></span><span class="cv">'+tl(byCat[c])+
       (gider?' · %'+Math.round(byCat[c]/gider*100):'')+'</span></div>').join(''):'';
+  renderGunluk();
   const el=document.getElementById('mList');
   if(!mData.length){el.innerHTML='<div class="empty">Bu ay için kayıt yok. Yukarıdan ekle.</div>';return;}
   el.innerHTML='<div class="wtitle" style="margin-top:13px;border-top:1px solid var(--line2);padding-top:11px">Kayıtlar</div>'+
@@ -4497,8 +4590,9 @@ function renderMoney(){
 async function addMoney(){
   const amt=num(document.getElementById('mAmt').value);
   if(!amt||amt<=0)return;
+  const dEl=document.getElementById('mDate'),tar=(dEl&&dEl.value)||todayKey();
   mData.push({k:document.getElementById('mKind').value,c:document.getElementById('mCat').value,
-    a:amt,n:document.getElementById('mNote').value.trim(),d:todayKey()});
+    a:amt,n:document.getElementById('mNote').value.trim(),d:tar});
   document.getElementById('mAmt').value='';document.getElementById('mNote').value='';
   await saveMoney();renderMoney();renderBugunHarcama();
 }
@@ -5349,9 +5443,9 @@ if(navigator.serviceWorker){
   document.getElementById('mAmt').onkeydown=e=>{if(e.key==='Enter')addMoney();};
   document.getElementById('mNote').onkeydown=e=>{if(e.key==='Enter')addMoney();};
   document.getElementById('mExport').onclick=moneyExport;
-  document.getElementById('mPrev').onclick=async()=>{mCur=shiftMonth(mCur,-1);await loadMoney();};
-  document.getElementById('mNext').onclick=async()=>{mCur=shiftMonth(mCur,1);await loadMoney();};
-  fillCats();tdFillCats();
+  document.getElementById('mPrev').onclick=async()=>{mCur=shiftMonth(mCur,-1);await loadMoney();mDateAyarla();};
+  document.getElementById('mNext').onclick=async()=>{mCur=shiftMonth(mCur,1);await loadMoney();mDateAyarla();};
+  fillCats();tdFillCats();mDateAyarla();
   document.getElementById('tdSave').onclick=addBugunHarcama;
   ['tdAmt','tdNote'].forEach(id=>{const e=document.getElementById(id);
     if(e)e.onkeydown=ev=>{if(ev.key==='Enter'){ev.preventDefault();addBugunHarcama();}};});

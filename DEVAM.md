@@ -209,6 +209,29 @@ log herkese açık.
    oturumda (kayıt tutmaya değmez). Elle ret düğmesi açık listede de doğru
    satırı işaretliyor — indeks `goster` dizisine göre.
 
+12. ~~Harcama: gün gün döküm + sabit gider ayrımı + tarih alanı~~
+   — **yapıldı (1 Eyl).** Harcama & Kazanç kartında, Kategori Dağılımı'nın
+   ÜSTÜNDE yeni "Gün Gün" bölümü. Yeni veri istemiyor, mevcut kayıtlardan
+   hesaplanıyor; üstteki "Bugün Harcadıkların" kartı kısa kalsın diye oraya
+   konmadı (o günlük, bu aylık).
+   - Ayın her günü için bir sütun, `{deg, sab}` yığılmış. `SABIT_KAT`
+     (`['Kira','Fatura']`) soluk (%30 opaklık) çiziliyor; **"sabit giderler
+     hariç"** düğmesi onları gizleyip ölçeği yeniden hesaplıyor. Gerekçe:
+     5.000 ₺ kira sütunu 200-300 ₺'lik günleri düz çizgiye çeviriyordu.
+   - Sayaçlar: günlük ortalama, en yüksek gün, harcamasız gün, ay sonu tahmini.
+   - **İki hesap tuzağı, ikisi de çözüldü:** (1) ortalama penceresi bugüne
+     kadar AMA ileri tarihli kayıt varsa onu da kapsıyor (`sonGun`), yoksa
+     toplam pencerenin dışında kalıp ortalamayı uçuruyordu. (2) tahmin
+     = şimdiye kadarki toplam + **değişken** günlük ortalama × kalan gün;
+     sabit gideri günlükle çarpmak kirayı 30 kez saydırıyordu. Ayın ilk iki
+     gününde tahmin gösterilmiyor (örneklem yok).
+   - Aylık kartın ekleme satırına **tarih alanı** (`#mDate`) eklendi; kira
+     ayın 1'inde ödenip 5'inde girilebilsin diye. Kutu görüntülenen AYA
+     kilitli (`mDateAyarla()`, min/max) — başka ayın tarihi seçilseydi kayıt
+     bu ayın dizisine yazılıp o ayda görünmezdi. Üstteki günlük kartta tarih
+     alanı YOK, o kasıtlı olarak yalnız bugün.
+   - Kayıt yoksa bölüm hiç çizilmiyor (arkasında veri olmayan başlık koymuyoruz).
+
 ### D. Küçük açık uçlar
 
 - **Kültür derinliği 21 gün doldu sayılır:** FILMS 21/133, ARTISTS 21/92,
