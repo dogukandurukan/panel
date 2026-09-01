@@ -566,6 +566,19 @@
   .glegend b{display:inline-block;width:9px;height:9px;border-radius:2px;background:var(--accent);
     margin-right:5px;vertical-align:-1px;}
   .glegend b.sabit{opacity:.3;}
+  .hd-bas{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--muted);margin:15px 0 3px;}
+  .hd-bas:first-child{margin-top:4px;}
+  .hd-row{display:flex;align-items:baseline;gap:10px;padding:6px 0;border-bottom:1px dotted var(--line2);font-size:14px;}
+  .hd-row:last-child{border-bottom:none;}
+  .hd-ad{min-width:118px;color:var(--muted);font-size:13px;}
+  .hd-v{font-weight:600;font-variant-numeric:tabular-nums;}
+  .hd-alt{flex:1;font-size:12.5px;color:var(--muted);}
+  .hd-sag{font-family:var(--mono);font-size:12px;white-space:nowrap;}
+  .hd-sag.iyi{color:var(--up);} .hd-sag.kotu{color:var(--down);}
+  .hd-hukum{margin-top:15px;border:1px solid var(--accent);border-radius:5px;padding:12px 13px;}
+  .hd-hukum p{margin:0 0 10px;font-size:14px;line-height:1.55;}
+  .hd-not{font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:11px;letter-spacing:.04em;}
   .catrow{display:flex;align-items:center;gap:9px;padding:5px 0;}
   .catrow .cl{font-size:12.5px;min-width:82px;color:var(--muted);}
   .catrow .cb{flex:1;height:6px;background:var(--line2);border-radius:4px;overflow:hidden;}
@@ -713,6 +726,8 @@
       <div class="tgt" id="tgt" hidden></div><div id="bars"></div><div style="height:6px"></div><div id="mealList"></div>
       <div id="waterBox"></div></section>
   </div>
+    <section class="card" style="margin-top:20px" id="kHaftalik"><div class="card-head"><div><p class="kicker">Değerlendirme · Son 7 gün</p><h2 class="card-title">Haftalık Değerlendirme</h2></div><div class="meta" id="hdMeta">—</div></div>
+    <div id="hdBox"></div></section>
   </section>
 
   <section class="tabpanel" id="tabDunya" role="tabpanel" aria-labelledby="tabBtnDunya" hidden>
@@ -2541,7 +2556,10 @@ function renderTargets(){const el=document.getElementById('tgt');el.innerHTML=''
     f.innerHTML='<label>'+l+(k==='c'&&targets.cAuto!==false?' <span class="tgt-oto">gün tipine göre</span>':'')+
       '</label><input type="number" data-t="'+k+'" value="'+v+'">';el.appendChild(f);});
   el.querySelectorAll('[data-t]').forEach(inp=>inp.oninput=()=>{targets[inp.dataset.t]=inp.value;
-    if(inp.dataset.t==='c')targets.cAuto=false;sSet(K.targets,targets);renderBars();});}
+    if(inp.dataset.t==='c')targets.cAuto=false;
+    /* Elle girilen kalori de sürüm göçünde korunsun. */
+    if(inp.dataset.t==='kcal')targets.kcalOfs=num(inp.value)-num(DEFAULT_TARGETS.kcal);
+    sSet(K.targets,targets);renderBars();});}
 function consumed(){return meals.reduce((a,m)=>{const f=num(m.portion)/100;return{kcal:a.kcal+f*num(m.kcal),p:a.p+f*num(m.p),c:a.c+f*num(m.c)};},{kcal:0,p:0,c:0});}
 function bar(l,cn,tg,u){const pct=tg>0?Math.min(cn/tg*100,100):0;const ov=tg>0&&cn>tg;const rem=Math.max(tg-cn,0);
   return '<div class="bar-wrap"><div class="bar-top"><span>'+l+'</span><span class="num">'+Math.round(cn)+' / '+tg+u+'</span></div><div class="bar"><i class="'+(ov?'over':'')+'" style="width:'+(ov?100:pct)+'%"></i></div><div class="rem">'+(ov?'hedef aşıldı +'+Math.round(cn-tg)+u:'kalan '+Math.round(rem)+u)+'</div></div>';}
@@ -4463,6 +4481,128 @@ function renderFinNote(){
     '<div class="fin-h">'+esc(f[0])+'</div><div class="fin-b">'+esc(f[1])+'</div></div>';
 }
 
+/* ===== HAFTALIK DEĞERLENDİRME =====
+   Yeni veri istemez: d:meals, d:ex, d:vol, d:prog ve d:bw'den son 7 günü
+   ÖNCEKİ 7 güne göre okur. Üç sinyali (yemek, antrenman, kilo) yan yana
+   koyup tek cümlelik hüküm veriyor — panelde bunlar üç ayrı karttaydı ve
+   birleştirmeyi kullanıcı yapıyordu.
+   Hedefi KENDİLİĞİNDEN değiştirmez; "uygula" düğmesi kullanıcıda. */
+const HD_PENCERE=7;
+/* O günün TABAN hedefi. gunlukHedef()'in tonaj düzeltmesi burada yok:
+   geçmiş günün tonaj karşılaştırmasını yeniden kurmak gerekirdi ve haftalık
+   bakışta taban zaten doğru referans. */
+function hdGunHedefi(d){
+  const oto=targets.cAuto!==false;
+  const c=oto?(CARB_BY_DAY[d]??num(targets.c)):num(targets.c);
+  return {kcal:num(targets.kcal)+(oto?4*(c-CARB_BAZ):0),p:num(targets.p),c:c};
+}
+async function hdTopla(bas,son){
+  const o={gun:0,kcal:0,p:0,c:0,hKcal:0,hP:0,hC:0,sporGun:0,sporTam:0,tonaj:0};
+  for(let i=bas;i<=son;i++){
+    const k=dayBack(i),d=new Date(k+'T12:00:00').getDay();
+    const m=await sGet('d:meals:'+k);
+    if(m&&m.length){
+      const t=m.reduce((a,x)=>{const f=num(x.portion)/100;
+        return{kcal:a.kcal+f*num(x.kcal),p:a.p+f*num(x.p),c:a.c+f*num(x.c)};},{kcal:0,p:0,c:0});
+      /* Kaydı olan ama hiç porsiyon işaretlenmemiş gün "0 kcal yedim" değil,
+         "girilmemiş" demek — ortalamayı aşağı çekmesin. */
+      if(t.kcal>0){const h=hdGunHedefi(d);o.gun++;
+        o.kcal+=t.kcal;o.p+=t.p;o.c+=t.c;o.hKcal+=h.kcal;o.hP+=h.p;o.hC+=h.c;}
+    }
+    if(WK[d].ex.some(e=>setHedef(e[1]))){
+      o.sporGun++;
+      if(tickRatio(await sGet('d:ex:'+k),WK[d].ex.length)>=HAB_MIN)o.sporTam++;
+    }
+    o.tonaj+=num(vol[k]);
+  }
+  return o;
+}
+function hdSatir(ad,deger,alt,sag,sinif){
+  return '<div class="hd-row"><span class="hd-ad">'+esc(ad)+'</span><span class="hd-v">'+esc(deger)+
+    '</span><span class="hd-alt">'+esc(alt||'')+'</span><span class="hd-sag'+(sinif?' '+sinif:'')+'">'+esc(sag||'')+'</span></div>';
+}
+async function renderHaftalik(){
+  const el=document.getElementById('hdBox');if(!el)return;
+  const bu=await hdTopla(0,HD_PENCERE-1),onceki=await hdTopla(HD_PENCERE,HD_PENCERE*2-1);
+  document.getElementById('hdMeta').textContent=dayBack(HD_PENCERE-1).slice(8,10)+'.'+dayBack(HD_PENCERE-1).slice(5,7)+
+    ' – '+todayKey().slice(8,10)+'.'+todayKey().slice(5,7);
+  let html='';
+
+  html+='<div class="hd-bas">Beslenme</div>';
+  if(!bu.gun){
+    html+='<div class="empty">Bu hafta yemek kaydı yok. Yemekler kartında porsiyon işaretledikçe dolar.</div>';
+  }else{
+    const ort=bu.kcal/bu.gun,hed=bu.hKcal/bu.gun,fark=ort-hed;
+    const pOrt=bu.p/bu.gun,pHed=bu.hP/bu.gun,cOrt=bu.c/bu.gun,cHed=bu.hC/bu.gun;
+    const im=v=>(v>=0?'+':'−')+Math.abs(Math.round(v));
+    html+=hdSatir('Kalori',Math.round(ort),'hedef '+Math.round(hed),im(fark)+' / gün',Math.abs(fark)<100?'iyi':'kotu')
+        + hdSatir('Protein',Math.round(pOrt)+' g','hedef '+Math.round(pHed)+' g',im(pOrt-pHed)+' g',pOrt>=pHed-10?'iyi':'kotu')
+        + hdSatir('Karbonhidrat',Math.round(cOrt)+' g','hedef '+Math.round(cHed)+' g',im(cOrt-cHed)+' g','');
+  }
+
+  html+='<div class="hd-bas">Antrenman</div>';
+  html+=hdSatir('Tamamlanan',bu.sporTam+' / '+bu.sporGun,'ağırlık günü',
+    bu.sporGun?'%'+Math.round(bu.sporTam/bu.sporGun*100):'—',
+    bu.sporGun&&bu.sporTam===bu.sporGun?'iyi':(bu.sporGun?'kotu':''));
+  if(bu.tonaj&&onceki.tonaj){
+    const d=(bu.tonaj-onceki.tonaj)/onceki.tonaj*100;
+    html+=hdSatir('Tonaj',Math.round(bu.tonaj).toLocaleString('tr-TR'),'önceki hafta '+Math.round(onceki.tonaj).toLocaleString('tr-TR'),
+      (d>=0?'+':'−')+'%'+Math.abs(d).toFixed(0),d>=0?'iyi':'kotu');
+  }else{
+    html+=hdSatir('Tonaj',bu.tonaj?Math.round(bu.tonaj).toLocaleString('tr-TR'):'—',
+      'karşılaştırma için iki hafta kayıt gerekiyor','');
+  }
+  const artan=Object.keys(prog||{}).filter(a=>{
+    const t=prog[a]&&prog[a].tarih;return t&&t>=dayBack(HD_PENCERE-1);});
+  if(artan.length)html+=hdSatir('Kilosu artan',artan.length+' hareket',artan.slice(0,3).join(', '),'','iyi');
+
+  html+='<div class="hd-bas">Kilo</div>';
+  const t=bwTrend();
+  if(t){
+    html+=hdSatir('7 gün ortalaması',t.thisAvg.toFixed(1)+' kg','önceki hafta '+t.lastAvg.toFixed(1)+' kg',
+      (t.pct>=0?'+':'−')+'%'+Math.abs(t.pct).toFixed(2)+' / hafta','');
+    html+=hdSatir('Bulk aralığı','%'+BW_FLAT_PCT+'–'+BW_FAST_PCT,'haftalık artış',
+      Math.abs(t.pct)<BW_FLAT_PCT?'yavaş':(t.pct>BW_FAST_PCT?'hızlı':'aralıkta'),
+      Math.abs(t.pct)<BW_FLAT_PCT||t.pct>BW_FAST_PCT?'kotu':'iyi');
+  }else{
+    html+=hdSatir('7 gün ortalaması','—','iki haftada da en az 2 tartı kaydı gerekiyor','');
+  }
+
+  /* Hüküm: hedefi tutturamadıysan çözüm hedefi YÜKSELTMEK değil, önce
+     mevcut hedefi tutturmak. Kilo verisi yoksa hüküm de yok. */
+  const ortK=bu.gun?bu.kcal/bu.gun:0,hedK=bu.gun?bu.hKcal/bu.gun:0;
+  let hukum='',dugme=0;
+  if(!bu.gun||!t){
+    hukum='Hüküm için hem yemek kaydı hem de iki haftalık tartı gerekiyor. '+
+      (bu.gun?'':'Yemek kaydı eksik. ')+(t?'':'Tartı kaydı eksik.');
+  }else if(t.pct>BW_FAST_PCT){
+    hukum='Haftalık %'+t.pct.toFixed(2)+' ile hızlı artıyorsun (yağlanma riski). Hedefi 150 kcal azaltmayı düşün.';dugme=-150;
+  }else if(Math.abs(t.pct)<BW_FLAT_PCT&&ortK<hedK-100){
+    hukum='Kilon sabit ama hedefinin günde '+Math.round(hedK-ortK)+' kcal altında kaldın. '+
+      'Hedefi yükseltmek açığı büyütür — önce mevcut '+Math.round(hedK)+' kcal\'i tutturmayı dene.';
+  }else if(Math.abs(t.pct)<BW_FLAT_PCT){
+    hukum='Hedefini tutturdun ama kilon 2 haftadır sabit. Hedefi 150 kcal artırmayı düşün.';dugme=150;
+  }else{
+    hukum='Haftalık %'+t.pct.toFixed(2)+' ile bulk aralığındasın. Hedefe dokunma, böyle devam.';
+  }
+  html+='<div class="hd-hukum"><p>'+esc(hukum)+'</p>'+
+    (dugme?'<button class="ibtn" id="hdUygula">Hedefi '+Math.round(num(targets.kcal))+' → '+
+      Math.round(num(targets.kcal)+dugme)+' kcal yap</button>':'')+'</div>';
+  html+='<div class="hd-not">Ortalama '+bu.gun+' günlük yemek kaydına göre'+
+    (t?' · tartı '+t.n+' kayıt':'')+'</div>';
+  el.innerHTML=html;
+  const ub=document.getElementById('hdUygula');
+  if(ub)ub.onclick=()=>hdUygula(dugme);
+}
+/* Hedefi elle değiştirmekle aynı şey; sürüm göçü ezmesin diye kcalOfs damgası
+   da yazılıyor (bkz. TARGETS_VERSION geçişi). */
+async function hdUygula(delta){
+  const yeni=Math.round(num(targets.kcal)+delta);
+  targets.kcal=yeni;targets.kcalOfs=yeni-num(DEFAULT_TARGETS.kcal);
+  await sSet(K.targets,targets);
+  renderTargets();renderBars();renderHaftalik();
+}
+
 /* ===== HARCAMA & KAZANÇ =====
    Tamamen yerel: d:money:YYYY-MM anahtarında aylık kayıt dizisi. Sunucuya hiçbir
    şey gitmez. Kayıt: {k:'in'|'out', c:kategori, a:tutar, n:not, d:tarih} */
@@ -5414,7 +5554,11 @@ if(navigator.serviceWorker){
   tasks=await sGet(K.tasks)||[];
   targets=await sGet(K.targets)||{...DEFAULT_TARGETS};
   if((await sGet(K.targetsVer))!==TARGETS_VERSION){    // program değişti -> hedefleri tazele
-    targets={...DEFAULT_TARGETS,c:CARB_BY_DAY[new Date().getDay()]??DEFAULT_TARGETS.c};
+    /* Kullanıcının ±150'lik kalori ayarı sürüm göçünde kaybolmasın: yeni
+       tabanın üzerine aynı fark tekrar bindiriliyor. */
+    const ofs=num(targets.kcalOfs);
+    targets={...DEFAULT_TARGETS,kcal:num(DEFAULT_TARGETS.kcal)+ofs,kcalOfs:ofs,
+      c:CARB_BY_DAY[new Date().getDay()]??DEFAULT_TARGETS.c};
     await sSet(K.targets,targets);await sSet(K.targetsVer,TARGETS_VERSION);
   }news=await sGet(K.news)||[];watch=await sGet('d:watch')||[];world=await sGet('d:world')||[];trNews=await sGet('d:tr')||[];us=await sGet('d:us')||[];worldIdx=await sGet('d:worldIdx')||[];gold=await sGet('d:gold')||null;gmailDone=await sGet(K.gmailDone)||[];
   const de=await sGet(K.de);deExtra=(de&&de.date===todayKey())?de.extra:0;
@@ -5468,7 +5612,7 @@ if(navigator.serviceWorker){
   document.getElementById('jobsCfg').onclick=openJobsCfg;
   jobProfile=await sGet(K.jobProfile)||null;jobsApplied=await sGet(K.jobsApplied)||[];myApps=await sGet(K.myApps)||[];retler=await sGet('d:retler')||[];retGizli=await sGet('d:retGizli')||[];retElle=await sGet('d:retElle')||[];
   document.getElementById('placeName').textContent=PLACE.name;
-  renderTasks();await loadSched();await loadYok();await loadMorning();await renderRun();await loadWorkout();renderWtLog();await loadMeals();await loadWater();await loadSleep();await loadBW();await loadMoney();await renderBugunHarcama();loadHabits();await initSync();
+  renderTasks();await loadSched();await loadYok();await loadMorning();await renderRun();await loadWorkout();renderWtLog();await loadMeals();await loadWater();await loadSleep();await loadBW();await loadMoney();await renderBugunHarcama();await renderHaftalik();loadHabits();await initSync();
   renderFacts();renderFilm();renderArtist();renderBook();renderHistory();renderGerman();renderNews();renderTR();renderRetler();renderWatch();renderUS();renderWorldIdx();renderGold();renderWorld();renderMktSummary();renderFinNote();
   ['watchList','usList','idxList'].forEach(stkTiklaBagla);
   loadFX(false);loadBorsaJson();loadBasvuru();loadGmailJson();loadFactsJson();loadAgents(false);loadWx();loadJobsJson();

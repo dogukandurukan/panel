@@ -232,6 +232,34 @@ log herkese açık.
      alanı YOK, o kasıtlı olarak yalnız bugün.
    - Kayıt yoksa bölüm hiç çizilmiyor (arkasında veri olmayan başlık koymuyoruz).
 
+13. ~~Haftalık Değerlendirme kartı~~ — **yapıldı (1 Eyl).** Spor & Sağlık
+   sekmesinin sonunda tam genişlik şerit. Yeni veri istemiyor: `d:meals`,
+   `d:ex`, `d:vol`, `d:prog`, `d:bw`'den **son 7 günü önceki 7 güne** göre
+   okuyor. Panelde bu üç sinyal üç ayrı karttaydı, birleştirmeyi kullanıcı
+   yapıyordu.
+   - Beslenme (kalori/protein/karb ortalaması vs o günlerin TABAN hedefi),
+     Antrenman (tamamlanan ağırlık günü, tonaj, kilosu artan hareket), Kilo
+     (7g ortalama, haftalık %, bulk aralığı).
+   - `hdGunHedefi()` tonaj düzeltmesini UYGULAMIYOR — geçmiş günün tonaj
+     karşılaştırmasını yeniden kurmak gerekirdi, haftalık bakışta taban
+     doğru referans.
+   - **Kaydı olan ama porsiyon işaretlenmemiş gün "0 kcal" sayılmıyor**,
+     "girilmemiş" sayılıyor; yoksa ortalama sahte biçimde düşüyordu. Kaç güne
+     bölündüğü kartın altında yazıyor.
+   - **Hüküm mantığı** (bulk): hızlı artış → −150; kilo sabit AMA hedefin
+     100+ altındaysan → "hedefi yükseltmek açığı büyütür, önce mevcut hedefi
+     tuttur" (**düğme YOK**, kasıtlı); kilo sabit ve hedef tutmuşsa → +150
+     düğmesi; aralıktaysa → dokunma. Veri yoksa hüküm yok, uydurma yok.
+   - **"Uygula" düğmesi** `d:targets.kcal`'i değiştiriyor ve `kcalOfs`
+     damgası yazıyor. TARGETS_VERSION göçü artık bu farkı yeni tabanın
+     üzerine tekrar bindiriyor (tuzak #1'in tam da bu hâli: eskiden sürüm
+     bump'ı kullanıcının ayarını siliyordu). Elle "hedefi düzenle"den girilen
+     kalori de aynı damgayı yazıyor.
+   - Doğrulandı: dört hükümün üçü (açık kaldın / +150 / −150) tetiklendi,
+     uygula sonrası Yemekler kartının barı 3.180'e döndü, sürüm bozulup
+     yeniden yüklenince kcal 3100 + ofs 150 korundu, sıfır durumunda hiçbir
+     sayı uydurulmadı.
+
 ### D. Küçük açık uçlar
 
 - **Kültür derinliği 21 gün doldu sayılır:** FILMS 21/133, ARTISTS 21/92,
