@@ -1,101 +1,93 @@
 {
- "updated": "2026-08-31 14:21",
+ "updated": "2026-09-01 12:44",
  "ok": true,
  "count": 3,
- "pool": 15,
+ "pool": 12,
  "items": [
   {
-   "title": "Data Engineer",
-   "company": "1Global",
-   "location": "Berlin",
-   "loc_raw": "Berlin, Germany",
-   "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/1global/data-engineer-berlin-412094",
+   "title": "Senior Data Scientist (m/f/x)",
+   "company": "Makersite GmbH",
+   "location": "Remote",
+   "loc_raw": "Remote job",
+   "remote": true,
+   "url": "https://www.arbeitnow.com/jobs/companies/makersite-gmbh/remote-senior-data-scientist-berlin-106805",
    "source": "Arbeitnow",
-   "posted": "2026-08-30",
-   "days": 1,
-   "skills": [
-    "sql",
-    "airflow",
-    "dbt",
-    "etl",
-    "git"
-   ],
-   "german": false,
-   "focus": "pipeline",
-   "summary": "About Us 1GLOBAL is a technology-driven global mobile communications provider, delivering global connectivity solutions to enterprises and consumers. Powered by a best-in-class telecom platform with its own owned and operated global mobile core network in 15 c",
-   "keywords": [
-    "enterprise",
-    "retail",
-    "data quality",
-    "self-service",
-    "pipeline"
-   ],
-   "score": 94
-  },
-  {
-   "title": "Data Engineer (f/m/d)",
-   "company": "Climate",
-   "location": "Berlin",
-   "loc_raw": "Berlin HQ",
-   "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/climate/data-engineer-berlin-hq-160932",
-   "source": "Arbeitnow",
-   "posted": "2026-08-30",
+   "posted": "2026-08-31",
    "days": 1,
    "skills": [
     "python",
-    "sql",
     "ci/cd",
     "git",
     "llm"
    ],
    "german": false,
    "focus": "ml",
-   "summary": "Job description We are currently seeking a Data Engineer for our international and diverse Climate Policy Team (CPT). The team is engaged in various projects on climate change mitigation, in particular on energy system transformation, the 1.5°C global warming ",
+   "summary": "Data Scientist (m/f/x) Location: EU (Remote) Who You’ll Work For : At Makersite, we're pioneering the future of sustainable product development and digital collaboration. As a leading platform for product lifecycle management (PLM), we empower companies to mak",
    "keywords": [
-    "energy",
+    "supply chain",
+    "scalab",
+    "cost",
     "pipeline",
-    "automation",
-    "data quality",
-    "optimization"
+    "experimentation"
    ],
-   "score": 94
+   "score": 90
   },
   {
-   "title": "Senior Data Analyst (f/m/x)",
-   "company": "exmox",
+   "title": "Analytics Engineer, Data Platform",
+   "company": "Emma – The Sleep Company",
    "location": "Almanya",
-   "loc_raw": "Hamburg",
+   "loc_raw": "Frankfurt",
    "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/exmox/senior-data-analyst-hamburg-248551",
+   "url": "https://www.arbeitnow.com/jobs/companies/emma-the-sleep-company/analytics-engineer-data-platform-frankfurt-156939",
    "source": "Arbeitnow",
    "posted": "2026-08-31",
-   "days": 0,
+   "days": 1,
+   "skills": [
+    "python",
+    "sql",
+    "airflow",
+    "dbt",
+    "data warehouse"
+   ],
+   "german": false,
+   "focus": "pipeline",
+   "summary": "Ready to lead, disrupt and reinvent the sleep industry? We are Emma – The Sleep Company . Founded in 2015, we have grown into the world’s largest direct-to-consumer (D2C) sleep brand, with a presence in over 20 markets and more than 35 Emma stores across Europ",
+   "keywords": [
+    "pipeline",
+    "governance"
+   ],
+   "score": 74
+  },
+  {
+   "title": "Data Engineer",
+   "company": "Aevi",
+   "location": "Almanya",
+   "loc_raw": "Germany",
+   "remote": false,
+   "url": "https://www.arbeitnow.com/jobs/companies/aevi/data-engineer-germany-230003",
+   "source": "Arbeitnow",
+   "posted": "2026-08-31",
+   "days": 1,
    "skills": [
     "python",
     "sql",
     "spark",
-    "databricks",
-    "tableau",
-    "looker"
+    "data warehouse",
+    "git"
    ],
    "german": false,
-   "focus": "business",
-   "summary": "Your Mission This is a company built for growth, not comfort. When you join exmox, you're stepping onto a global, highly competitive playing field, solving real problems in environments that push you beyond your comfort zone. We build high-performing consumer ",
+   "focus": "pipeline",
+   "summary": "At Aevi, we're not just a team; we're a vibrant, global business, committed to shaking up the payments industry. Our culture is all about innovation, creativity, and a passion for pushing boundaries. We’re thrilled to welcome new Aevi’ators who vibe with our v",
    "keywords": [
-    "finance",
-    "automation",
-    "dashboard",
-    "self-service",
-    "data quality",
-    "stakeholder",
-    "a/b"
+    "real-time"
    ],
-   "score": 92
+   "score": 74
   }
  ],
  "seen": [
+  "https://www.arbeitnow.com/jobs/companies/makersite-gmbh/remote-senior-data-scientist-berlin-106805",
+  "https://www.arbeitnow.com/jobs/companies/emma-the-sleep-company/analytics-engineer-data-platform-frankfurt-156939",
+  "https://www.arbeitnow.com/jobs/companies/aevi/data-engineer-germany-230003",
   "https://www.arbeitnow.com/jobs/companies/1global/data-engineer-berlin-412094",
   "https://www.arbeitnow.com/jobs/companies/climate/data-engineer-berlin-hq-160932",
   "https://www.arbeitnow.com/jobs/companies/exmox/senior-data-analyst-hamburg-248551",
