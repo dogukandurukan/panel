@@ -1,90 +1,97 @@
 {
- "updated": "2026-09-01 12:44",
+ "updated": "2026-09-02 12:17",
  "ok": true,
  "count": 3,
- "pool": 12,
+ "pool": 9,
  "items": [
   {
-   "title": "Senior Data Scientist (m/f/x)",
-   "company": "Makersite GmbH",
-   "location": "Remote",
-   "loc_raw": "Remote job",
-   "remote": true,
-   "url": "https://www.arbeitnow.com/jobs/companies/makersite-gmbh/remote-senior-data-scientist-berlin-106805",
+   "title": "Senior DevOps Engineer (all genders) | Data Platform",
+   "company": "Real Digital",
+   "location": "Berlin",
+   "loc_raw": "Remote oder Köln / Darmstadt / Düsseldorf / Berlin",
+   "remote": false,
+   "url": "https://www.arbeitnow.com/jobs/companies/real-digital/remote-senior-devops-engineer-all-genders-data-platform-263620",
    "source": "Arbeitnow",
-   "posted": "2026-08-31",
+   "posted": "2026-09-01",
    "days": 1,
    "skills": [
     "python",
-    "ci/cd",
+    "sql",
+    "azure",
+    "airflow",
+    "dbt",
+    "ci/cd"
+   ],
+   "german": false,
+   "focus": "pipeline",
+   "summary": "Anstellungsdetails Permanent Contract, Full- or Part-Time, Remote or Cologne / Düsseldorf / Darmstadt / Berlin Info Who we areWe are the tech powerhouse behind Kaufland’s international online marketplaces and a company within the Schwarz Group. Driven by a sta",
+   "keywords": [
+    "pipeline",
+    "cost"
+   ],
+   "score": 112
+  },
+  {
+   "title": "AI Engineer",
+   "company": "GlassFlow",
+   "location": "Berlin",
+   "loc_raw": "Berlin",
+   "remote": false,
+   "url": "https://www.arbeitnow.com/jobs/companies/glassflow/ai-engineer-berlin-157513",
+   "source": "Arbeitnow",
+   "posted": "2026-09-01",
+   "days": 1,
+   "skills": [
+    "python",
     "git",
     "llm"
    ],
    "german": false,
-   "focus": "ml",
-   "summary": "Data Scientist (m/f/x) Location: EU (Remote) Who You’ll Work For : At Makersite, we're pioneering the future of sustainable product development and digital collaboration. As a leading platform for product lifecycle management (PLM), we empower companies to mak",
+   "focus": "business",
+   "summary": "About GlassFlow: GlassFlow is the data infrastructure for AI agents in production. It has two products: GlassFlow Tares, which feeds agents correlated data from every system they touch, and GlassFlow Rius, which traces and debugs what agents do once they're ru",
    "keywords": [
-    "supply chain",
-    "scalab",
-    "cost",
-    "pipeline",
-    "experimentation"
+    "startup",
+    "cost"
    ],
-   "score": 90
+   "score": 82
   },
   {
-   "title": "Analytics Engineer, Data Platform",
-   "company": "Emma – The Sleep Company",
-   "location": "Almanya",
-   "loc_raw": "Frankfurt",
+   "title": "Senior Data Engineer",
+   "company": "Quantum",
+   "location": "UK",
+   "loc_raw": "London (hybrid)",
    "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/emma-the-sleep-company/analytics-engineer-data-platform-frankfurt-156939",
+   "url": "https://www.arbeitnow.co.uk/jobs/companies/quantum/senior-data-engineer-london-122244",
    "source": "Arbeitnow",
-   "posted": "2026-08-31",
+   "posted": "2026-09-01",
    "days": 1,
    "skills": [
     "python",
     "sql",
+    "azure",
     "airflow",
     "dbt",
-    "data warehouse"
-   ],
-   "german": false,
-   "focus": "pipeline",
-   "summary": "Ready to lead, disrupt and reinvent the sleep industry? We are Emma – The Sleep Company . Founded in 2015, we have grown into the world’s largest direct-to-consumer (D2C) sleep brand, with a presence in over 20 markets and more than 35 Emma stores across Europ",
-   "keywords": [
-    "pipeline",
-    "governance"
-   ],
-   "score": 74
-  },
-  {
-   "title": "Data Engineer",
-   "company": "Aevi",
-   "location": "Almanya",
-   "loc_raw": "Germany",
-   "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/aevi/data-engineer-germany-230003",
-   "source": "Arbeitnow",
-   "posted": "2026-08-31",
-   "days": 1,
-   "skills": [
-    "python",
-    "sql",
-    "spark",
-    "data warehouse",
     "git"
    ],
    "german": false,
    "focus": "pipeline",
-   "summary": "At Aevi, we're not just a team; we're a vibrant, global business, committed to shaking up the payments industry. Our culture is all about innovation, creativity, and a passion for pushing boundaries. We’re thrilled to welcome new Aevi’ators who vibe with our v",
+   "summary": "Our Company At Quantum, we connect global brands with high-intent consumers. We turn intent into action and complexity into clarity. Our Mission is clear, to help smarter, faster buying decisions. Our vision, to be the world’s most used digital comparison serv",
    "keywords": [
-    "real-time"
+    "real time",
+    "scalab",
+    "real-time",
+    "pipeline",
+    "data quality",
+    "stakeholder",
+    "automation"
    ],
-   "score": 74
+   "score": 77
   }
  ],
  "seen": [
+  "https://www.arbeitnow.com/jobs/companies/real-digital/remote-senior-devops-engineer-all-genders-data-platform-263620",
+  "https://www.arbeitnow.com/jobs/companies/glassflow/ai-engineer-berlin-157513",
+  "https://www.arbeitnow.co.uk/jobs/companies/quantum/senior-data-engineer-london-122244",
   "https://www.arbeitnow.com/jobs/companies/makersite-gmbh/remote-senior-data-scientist-berlin-106805",
   "https://www.arbeitnow.com/jobs/companies/emma-the-sleep-company/analytics-engineer-data-platform-frankfurt-156939",
   "https://www.arbeitnow.com/jobs/companies/aevi/data-engineer-germany-230003",
