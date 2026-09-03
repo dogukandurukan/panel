@@ -305,6 +305,24 @@ açılışında bir kez temizliyor).
   `d:vol` boş kaldığı için zararsız) — beklenen davranış.
 - Yeni bir sıfırlama gerekirse: `RESET_VERSION`'ı değiştir, yeter.
 
+### F. 3 Eylül — SCHED, program v2 ile ayrışmıştı
+
+**Bulan: kullanıcı.** Perşembe öğlen (12:15–13:45) "Dinlenme + uyku" yazıyordu
+ama o gün PULL var. Sebep: 27 Ağustos'taki program v2 geçişinde aktivite günü
+Perşembe'den **Çarşamba'ya** taşındı; `WK`, `MORNING_SHORT` ve `MP` o gün
+güncellendi ama **`SCHED` atlandı** — 3 ve 4 hâlâ eski yerindeydi.
+
+Etkisi yalnız görüntü değildi: yoklama dilimleri `SCHED[dow]`'dan türüyor,
+bildirim planı da yoklamadan. Yani Perşembeleri "Antrenmana başladın mı?"
+sorusu hiç sorulmuyordu, Çarşambaları boşuna soruluyordu.
+
+Düzeltildi (Gitar/DJ dönüşümü antrenmanla ilgisiz, yerinde bırakıldı).
+`push_feed.py`'deki "Perşembe Dinlenme + uyku" örneği de Çarşamba yapıldı.
+
+**Ders:** program günleri değişince dört tablo birlikte güncellenmeli —
+`WK`, `SCHED`, `MORNING_SHORT`, `MP`. Kontrol: her ağırlık gününde 12:15
+dilimi "Antrenman" olmalı, yalnız ağırlık olmayan günde olmamalı.
+
 ---
 
 ## 3. Bilinen sorunlar / doğrulanmamış olanlar

@@ -1540,8 +1540,13 @@ const SLOTS=[['08:00','08:30'],['08:30','09:00'],['09:00','12:15'],['12:15','13:
 const SCHED={
  1:['Sabah rutini','bobo','İş','Antrenman','İş','bobo','Gitar','Yemek','TV','Kişisel proje','Yatış','Kitap'],
  2:['Sabah rutini','bobo','İş','Antrenman','İş','bobo','DJ','Yemek','TV','Kişisel proje','Yatış','Kitap'],
- 3:['Sabah rutini','bobo','İş','Antrenman','İş','bobo','Gitar','Yemek','TV','Kişisel proje','Yatış','Kitap'],
- 4:['Kürek','Kürek','İş','Dinlenme + uyku','İş','bobo','DJ','Yemek','Basket / tenis','Kişisel proje','Yatış','Kitap'],
+ /* 3 ve 4 program v2'de (27 Ağu) yer değiştirmişti: aktivite günü Perşembe'den
+    ÇARŞAMBA'ya taşındı, Perşembe PULL oldu. WK, MORNING_SHORT ve MP o gün
+    güncellendi ama SCHED atlanmış — Perşembe öğlen "Dinlenme + uyku" yazıp
+    yoklama/bildirim de sormuyordu. 3 Eylül'de düzeltildi. Gitar/DJ dönüşümü
+    antrenmanla ilgisiz, yerinde bırakıldı. */
+ 3:['Kürek','Kürek','İş','Dinlenme + uyku','İş','bobo','Gitar','Yemek','Basket / tenis','Kişisel proje','Yatış','Kitap'],
+ 4:['Sabah rutini','bobo','İş','Antrenman','İş','bobo','DJ','Yemek','TV','Kişisel proje','Yatış','Kitap'],
  5:['Sabah rutini','bobo','İş','Antrenman','İş','bobo','Dışarı','Dışarı','Dışarı','Dışarı','Dışarı','Dışarı'],
  6:['','','Koşu + kahve + kahvaltı','Dinlenme','Antrenman + yemek','Dışarı','Dışarı','Dışarı','Dışarı','Dışarı','Dışarı','Dışarı'],
  0:['','','Bisiklet + bobo + kahve','Kahvaltı','Dinlenme','Dinlenme','Dinlenme','Dinlenme','Dinlenme','Dinlenme','Dinlenme','Dinlenme']

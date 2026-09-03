@@ -181,8 +181,8 @@ def cron_dilimi(bugun, plan):
             return i
     # Bulunamadı. İki ayrı sebep var, karıştırılmasın:
     #   NORMAL — cron her gün kalkıyor ama o dilim bugün yok (12:15 antrenman
-    #            cron'u Perşembe kalkar, Perşembe "Dinlenme + uyku" ve yoklama
-    #            sorulmaz). Sessiz geçilir.
+    #            cron'u Çarşamba da kalkar, Çarşamba "Dinlenme + uyku" ve
+    #            yoklama sorulmaz). Sessiz geçilir.
     #   ARIZA  — dilim hiçbir günde yok, yani push.yml programdan ayrışmış.
     #            Bu sessiz kalırsa bildirim aylarca yanlış saatte gelir.
     if not any(dakika(x[0]) == hedef_dk for gun in plan.values() for x in (gun or [])):
