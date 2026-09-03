@@ -2588,10 +2588,15 @@ function mornRatio(o,d){if(!o)return 0;
   return n?t/n:0;}
 const waterGoalFor=d=>Math.ceil((d===6?3.5:3)*1000/WATER_GLASS_ML);
 const tickRatio=(o,n)=>n?Object.values(o||{}).filter(Boolean).length/n:0;
+/* '—' hedefli satırlar bilgi notu, yapılacak iş değil. */
+const exSayilir=d=>WK[d].ex.filter(e=>String(e[1]).trim()!=='—').length||WK[d].ex.length;
 const HABITS=[
  {ad:'Sabah rutini',birim:'gün',st:v=>mornRatio(v.m,v.d)>=HAB_MIN?'ok':'miss'},
  {ad:'Koşu',birim:'hafta',st:v=>WK[v.d].run?(num(v.r)>0?'ok':'miss'):'skip'},
- {ad:'Antrenman',birim:'gün',st:v=>v.d===0?'skip':(tickRatio(v.x,WK[v.d].ex.length)>=HAB_MIN?'ok':'miss')},
+ /* Payda TİKLENEBİLİR satır sayısı: aktivite gününde '—' tekrarlı
+    "Ağırlık antrenmanı yok" satırı da sayılıyordu, o yüzden basketi ve
+    ısınmayı yapsan bile 2/3 = %67 ile eşiğin altında kalıp 'miss' oluyordu. */
+ {ad:'Antrenman',birim:'gün',st:v=>v.d===0?'skip':(tickRatio(v.x,exSayilir(v.d))>=HAB_MIN?'ok':'miss')},
  {ad:'Su hedefi',birim:'gün',st:v=>num(v.w)>=waterGoalFor(v.d)?'ok':'miss'},
  {ad:'Almanca quiz',birim:'gün',st:v=>(v.q&&(num(v.q.right)+num(v.q.wrong))>=5)?'ok':'miss'},
  {ad:'Uyku alışkanlığı',birim:'gece',st:v=>{const h=slpHabit();if(!h)return 'skip';return slpFits(sleepLog[v.k],h)?'ok':'miss';}}

@@ -319,6 +319,19 @@ sorusu hiç sorulmuyordu, Çarşambaları boşuna soruluyordu.
 Düzeltildi (Gitar/DJ dönüşümü antrenmanla ilgisiz, yerinde bırakıldı).
 `push_feed.py`'deki "Perşembe Dinlenme + uyku" örneği de Çarşamba yapıldı.
 
+**Kalan günler tarandı (3 Eyl), başka ayrışma yok.** İki not:
+
+- **Çarşamba/Pazar antrenman halkası düzeltildi.** Payda o günün BÜTÜN
+  satırlarıydı; Çarşamba listesindeki `['Ağırlık antrenmanı yok','—']` bilgi
+  satırı da sayılıyordu, dolayısıyla basket + ısınma yapılsa bile 2/3 = %67
+  ile eşiğin (%80) altında kalıp 'miss' oluyordu. `exSayilir()` artık `'—'`
+  hedefli satırları paydadan çıkarıyor (Çar 2/3, Paz 2/3 → 2).
+- **Cumartesi koşusu bilerek öyle.** SCHED'de "Koşu + kahve + kahvaltı" var
+  ama `WK[6].run=false`; kullanıcı 3 Eylül'de "bazen koşuyorum, zorunlu değil"
+  dedi. Km girilebiliyor ve kaydediliyor, seriyi ne kırıyor ne uzatıyor.
+  **Bunu "hata" diye tekrar düzeltme.** Pazar'daki "Bisiklet" de aynı sebeple
+  koşu sayılmıyor — bisiklet koşu değil.
+
 **Ders:** program günleri değişince dört tablo birlikte güncellenmeli —
 `WK`, `SCHED`, `MORNING_SHORT`, `MP`. Kontrol: her ağırlık gününde 12:15
 dilimi "Antrenman" olmalı, yalnız ağırlık olmayan günde olmamalı.
