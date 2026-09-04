@@ -1,101 +1,104 @@
 {
- "updated": "2026-09-03 12:27",
+ "updated": "2026-09-04 12:19",
  "ok": true,
  "count": 3,
- "pool": 16,
+ "pool": 22,
  "items": [
   {
-   "title": "Data Scientist / Data Engineer",
-   "company": "80 Beats Medical GmbH",
+   "title": "Senior Data Analyst - CRM (m/f/d)",
+   "company": "Flix",
    "location": "Berlin",
-   "loc_raw": "Berlin",
+   "loc_raw": "Berlin, Berlin, Germany",
    "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/80-beats-medical-gmbh/data-scientist-data-engineer-berlin-75231",
+   "url": "https://www.arbeitnow.com/jobs/companies/flix/senior-data-analyst-crm-berlin-209278",
    "source": "Arbeitnow",
-   "posted": "2026-09-02",
+   "posted": "2026-09-03",
+   "days": 1,
+   "skills": [
+    "sql",
+    "spark",
+    "power bi",
+    "snowflake",
+    "data warehouse",
+    "dax"
+   ],
+   "german": false,
+   "focus": "bi",
+   "summary": "At Flix, we offer a dynamic work environment with competitive pay, strong growth opportunities, and a tech-driven approach to making travel more accessible, sustainable, and affordable. As a Senior Data Analyst (m/f/d), you will join our global CRM team. This ",
+   "keywords": [
+    "scalab",
+    "dashboard",
+    "real-time",
+    "experimentation",
+    "a/b",
+    "stakeholder",
+    "e-commerce",
+    "automation"
+   ],
+   "score": 112
+  },
+  {
+   "title": "Game Data Analyst (f/m/d)",
+   "company": "Kolibrigames",
+   "location": "Berlin",
+   "loc_raw": "Berlin, Germany",
+   "remote": false,
+   "url": "https://www.arbeitnow.com/jobs/companies/kolibrigames/game-data-analyst-berlin-germany-197952",
+   "source": "Arbeitnow",
+   "posted": "2026-09-03",
    "days": 1,
    "skills": [
     "python",
-    "spark",
-    "azure",
+    "sql",
     "airflow",
-    "tableau",
-    "looker"
+    "looker",
+    "dbt",
+    "a/b test"
    ],
    "german": false,
-   "focus": "ml",
-   "summary": "80 Beats Medical is a Berlin-based medical technology company developing innovative solutions for cardiovascular and vascular diagnostics. Our VICORDER® platform enables non-invasive assessment of vascular health Building on this established technology, we are",
+   "focus": "business",
+   "summary": "We are Kolibri Games - a mobile games developer from Berlin. We believe that with the best people, we can make games that players will enjoy for years to come. Our games have defined the idle genre, and bring enjoyment to hundreds of millions of players all ar",
    "keywords": [
     "scalab",
-    "pipeline",
-    "governance",
-    "anomaly",
-    "automation"
+    "a/b",
+    "data quality"
    ],
    "score": 100
   },
   {
-   "title": "Senior Business Intelligence Lead (all genders)",
-   "company": "Reev",
-   "location": "Almanya",
-   "loc_raw": "München",
+   "title": "Data Engineer (f/m/d)",
+   "company": "Climate",
+   "location": "Berlin",
+   "loc_raw": "Berlin HQ",
    "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/reev/senior-business-intelligence-lead-all-genders-munchen-21515",
+   "url": "https://www.arbeitnow.com/jobs/companies/climate/data-engineer-berlin-hq-259699",
    "source": "Arbeitnow",
-   "posted": "2026-09-02",
-   "days": 1,
-   "skills": [
-    "sql",
-    "spark",
-    "dbt",
-    "etl",
-    "data warehouse"
-   ],
-   "german": false,
-   "focus": "ml",
-   "summary": "Your Mission EV charging is evolving from a niche technology into everyday infrastructure. As reev grows, teams increasingly need reliable, consistently defined metrics. Today, different dashboards, reporting dates, filters, and assumptions can produce differe",
-   "keywords": [
-    "dashboard",
-    "finance",
-    "pipeline",
-    "stakeholder",
-    "automation",
-    "data quality",
-    "governance",
-    "saas",
-    "energy"
-   ],
-   "score": 86
-  },
-  {
-   "title": "Senior Data Analyst (m/f/d)",
-   "company": "Westwing Group SE",
-   "location": "Almanya",
-   "loc_raw": "Munich Office",
-   "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/westwing-group-se/senior-data-analyst-munich-office-56362",
-   "source": "Arbeitnow",
-   "posted": "2026-09-02",
+   "posted": "2026-09-03",
    "days": 1,
    "skills": [
     "python",
     "sql",
-    "spark",
-    "snowflake",
+    "ci/cd",
+    "git",
     "llm"
    ],
    "german": false,
-   "focus": "business",
-   "summary": "JOIN OUR TEAM As a Senior Data Analyst within the Marketing Analytics team, you will play a pivotal role in helping the marketing leadership team and marketing departments make better data-driven decisions. You will own several important data products (dashboa",
+   "focus": "ml",
+   "summary": "Job description We are currently seeking a Data Engineer for our international and diverse Climate Policy Team (CPT). The team is engaged in various projects on climate change mitigation, in particular on energy system transformation, the 1.5°C global warming ",
    "keywords": [
-    "dashboard",
-    "stakeholder",
-    "optimisation"
+    "energy",
+    "pipeline",
+    "automation",
+    "data quality",
+    "optimization"
    ],
-   "score": 86
+   "score": 94
   }
  ],
  "seen": [
+  "https://www.arbeitnow.com/jobs/companies/flix/senior-data-analyst-crm-berlin-209278",
+  "https://www.arbeitnow.com/jobs/companies/kolibrigames/game-data-analyst-berlin-germany-197952",
+  "https://www.arbeitnow.com/jobs/companies/climate/data-engineer-berlin-hq-259699",
   "https://www.arbeitnow.com/jobs/companies/80-beats-medical-gmbh/data-scientist-data-engineer-berlin-75231",
   "https://www.arbeitnow.com/jobs/companies/reev/senior-business-intelligence-lead-all-genders-munchen-21515",
   "https://www.arbeitnow.com/jobs/companies/westwing-group-se/senior-data-analyst-munich-office-56362",
