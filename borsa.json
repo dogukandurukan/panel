@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-05 13:26",
+  "updated": "2026-09-05 16:36",
   "watch": [
     {
       "code": "SASA",
@@ -269,24 +269,12 @@
       "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxPanB5VDRwQW1qYkNmTExQN0d5Ymt5UVRoX3ExM2ZlWGU5VXQ2bzBtQkNOQzkwYTR4RjVyanZObU1JaXJhenllTWozRDJSM09OMGRDelpDYUpMNWU0MGNFZ19yODYtX1k2Z2l2VHpTMVFoNkdRUGR3cnlGRkxCTXBUTXQ5empOczAwSDE0NU9NT0NYRl9TaEJaWWdQQVNodjlVVFlGMGRaQzZVb2NFWjhhTmcxNmlyU25jYWRyNEg0ZDlickkyb1pWcFpUSzlEaE5Q0gHQAUFVX3lxTE9qcHlUNHBBbWpiQ2ZMTFA3R3lia3lRVGhfcTEzZmVYZTlVdDZvMG1CQ05DOTBhNHhGNXJqdk5tTUlpcmF6eWVNajNEMlIzT04wZEN6WkNhSkw1ZTQwY0VnX3I4Ni1fWTZnaXZUelMxUWg2R1FQZHdyeUZGTEJNcFRNdDl6ak5zMDBIMTQ1T01PQ1hGX1NoQlpZZ1BBU2h2OVVUWUYwZFpDNlVvY0VaOGFOZzE2aXJTbmNhZHI0SDRkOWJySTJvWlZwWlRLOURoTlA?oc=5"
     },
     {
-      "t": "⚪ TSKB’de Yeni Atama  (Fortune Turkey)",
-      "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5xQUVjcExyenJsaE1lNzRTeG81bjdDV2t2cFJxZ0dHcXlMUnRmOENUN1l3Z2JXOGxkRGZ6SDlPODlxR2tXdGR4VlJ1bkl3dnRKNFh4YXgxN3NJdURtbVE?oc=5"
-    },
-    {
       "t": "⚪ Bu haftanın en fazla kazandıran hisseleri belli oldu! Vestel başta  (YatırımX)",
       "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNenIzSGRMZ2VyWTcxMTZyRmxKaHpQZnBmSmdQVDRvTTJjSV83NmdMbVZWU2FLUEF6X1pmdWpZQ0FLZXk2UGNrdWJoU1hvbGdMSjBMckNkUmZDV3hFV2NFLVl3TzRCUXVMV1hMSHBwRTc1Wmdzc0J4N0dTbkp3REdNenNzc3FJWURVX0hqQVhKLXNQZmdqTG9OdTRoWlF5eU1UZHU4N2lramJEMG1YcHJzVzA0OWlWLTA?oc=5"
     },
     {
-      "t": "🟢 Gübretaş (GUBRF) bağlı ortaklığından temettü dağıtma kararı  (rotaborsa.com)",
-      "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxPLTNXVnRiRVgwSTRSZVphTGE2RURGTkl0THI0M1FieDZncFVsUG5sZWdndFJEUGRBdEZYOHVYdFN4bTVWLUhES3VXZXNURGRLclFTaHViZHZxa2tmN2NxU1VwbENWQkN6dWZpcVczZUR6cV9UZEQ3SFdxbHlYZ1ZIWXV3cE14b3JZN3c?oc=5"
-    },
-    {
-      "t": "🟢 Gübretaş (GUBRF) temettü kararını açıkladı  (rotaborsa.com)",
+      "t": "🟢 Gübretaş (GUBRF) temettü kararını açıkladı  (Rota Borsa)",
       "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE1WY3RBWWl6NE8yb0I3RjBBLThmbEVudFpNU3FKclJQbDhEWVN4ZDF1Z1hBZlZOczRNOS1JVWdER3BoYl9CSVNrcmxqalZ3ZWNaaDVPdkNPVXNuUnVGTnNZaGJPZHNfMzAwNDVqcGV2ak5USVE?oc=5"
-    },
-    {
-      "t": "⚪ Gübre Fabrikaları (GUBRF) bağlı ortaklığı Gübretaş Maden'den 1,5 milyar TL  (Borsatek)",
-      "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBPWHB6Njd0QmpuMEFVYkxRa1BxbnI2TmUwNEFYY3hBd1lMSG41MWNkQkR6VEhpWTdncjlrcVJZbDd3UWczckNuWTRRODNWNXZGOFYtOHJ2X2ctSzlISzN3Q2hRbVlKVjBiS1U4?oc=5"
     }
   ],
   "world": [
@@ -299,16 +287,16 @@
       "link": "https://www.theguardian.com/world/2026/sep/04/un-vote-world-map-mercator-equal-earth-africa"
     },
     {
-      "t": "🌍 Why is Trump threatening to strike Iran’s Pickaxe Mountain again, now?  (Al Jazeera)",
-      "link": "https://www.aljazeera.com/news/2026/9/5/why-is-trump-threatening-to-strike-irans-pickaxe-mountain-again-now?traffic_source=rss"
+      "t": "🌍 ‘Stop the boats’ masked protesters block England’s Port of Dover  (Al Jazeera)",
+      "link": "https://www.aljazeera.com/video/newsfeed/2026/9/5/stop-the-boats-masked-protesters-block-englands-port-of-dover?traffic_source=rss"
     },
     {
-      "t": "🌍 Philippines Vice President Sara Duterte posts bail after arrest  (NPR World)",
-      "link": "https://www.npr.org/2026/09/05/g-s1-142148/philippines-vice-president-posts-bail"
+      "t": "🌍 How the U.S. focus on Iran is fueling a more aggressive Putin  (NPR World)",
+      "link": "https://www.npr.org/2026/09/05/nx-s1-5955705/how-the-u-s-focus-on-iran-is-fueling-a-more-aggressive-putin"
     },
     {
-      "t": "🌍 Iranian media report US strike on Iranian oil tanker near Kharg Island  (Euronews)",
-      "link": "http://www.euronews.com/2026/09/05/iranian-media-report-us-strike-on-iranian-oil-tanker-near-kharg-island"
+      "t": "🌍 Two people pulled alive by Nepal's search and rescue team 10 days after devastating flash floods  (Euronews)",
+      "link": "http://www.euronews.com/2026/09/05/two-people-pulled-alive-by-nepals-search-and-rescue-team-10-days-after-devastating-flash-f"
     },
     {
       "t": "🌍 Why many Syrians feel Assad's death sentence isn't enough  (DW)",
@@ -317,54 +305,54 @@
   ],
   "tr": [
     {
-      "t": "🇹🇷 Akçal Kulesi'nden 3 ilin ormanlarına 7/24 gözetim  (TRT Haber)",
-      "link": "https://www.trthaber.com/haber/turkiye/akcal-kulesinden-3-ilin-ormanlarina-724-gozetim-955981.html"
+      "t": "🇹🇷 Sağlık Okuryazarlığı Ulusal Eylem Planıyla 12 milyondan fazla kişiye ulaşıldı  (TRT Haber)",
+      "link": "https://www.trthaber.com/haber/saglik/saglik-okuryazarligi-ulusal-eylem-planiyla-12-milyondan-fazla-kisiye-ulasildi-955991.html"
     },
     {
       "t": "🇹🇷 Üsküdar Belediyesi başkan vekili seçimi 8 Eylül'e ertelendi  (BBC Türkçe)",
       "link": "https://www.bbc.com/turkce/articles/ce8eg27y74po?at_medium=RSS&at_campaign=rss"
     },
     {
-      "t": "🇹🇷 \"Odun kesme\" kavgasında oğlunu öldürüp gelinini yaraladı!  (Habertürk)",
-      "link": "https://www.haberturk.com/gundem/son-dakika-haberler-odun-kesme-kavgasinda-oglunu-oldurup-gelinini-yaraladi-3910403"
+      "t": "🇹🇷 5 milyonluk takılarla kaybolmuştu! Kaçak gelin gözaltında  (Habertürk)",
+      "link": "https://www.haberturk.com/gundem/son-dakika-milyonluk-takilarla-kayboldugu-iddia-edilen-gelin-gozaltina-alindi-3910490"
     },
     {
-      "t": "🇹🇷 Önce geminin ismini gördüler, sonra Tuğberk İmamoğlu'nun enkazına ulaştılar  (NTV)",
-      "link": "https://www.ntv.com.tr/turkiye/galeri-tugberk-imamoglu-gemisinin-enkazina-ulasildi-1740492"
+      "t": "🇹🇷 Üsküdar Belediyesi'ne operasyonda yeni gelişme  (NTV)",
+      "link": "https://www.ntv.com.tr/turkiye/uskudar-belediyesine-operasyonda-yeni-gelisme-1740529"
     },
     {
-      "t": "🇹🇷 Katil İsrail'in 2023'te Gazze'ye düzenlediği saldırıda enkaz altında kalan 55 kişinin naaşı çıkarıldı  (TRT Haber)",
-      "link": "https://www.trthaber.com/haber/dunya/katil-israilin-2023te-gazzeye-duzenledigi-saldirida-enkaz-altinda-kalan-55-kisinin-naasi-cikarildi-955980.html"
+      "t": "🇹🇷 Putin, Rus ordusuna gece yarısından itibaren 3 gün boyunca Kieve saldırmama talimatı verdi  (TRT Haber)",
+      "link": "https://www.trthaber.com/haber/dunya/putin-rus-ordusuna-gece-yarisindan-itibaren-3-gun-boyunca-kieve-saldirmama-talimati-verdi-955990.html"
     },
     {
-      "t": "🇹🇷 Ukraynalı kadınları yem olarak kullanan Rus propaganda ağının iç yüzü  (BBC Türkçe)",
-      "link": "https://www.bbc.com/turkce/articles/c36lwk0585ro?at_medium=RSS&at_campaign=rss"
+      "t": "🇹🇷 ABD'nin yaptırım uyguladığı Türk bankası hakkında neler biliniyor?  (BBC Türkçe)",
+      "link": "https://www.bbc.com/turkce/articles/cje87v4l444o?at_medium=RSS&at_campaign=rss"
     }
   ],
   "_teshis": {
     "dunya": [
-      "BBC World: 29 öğe / 2 alındı / 0 elendi | ilk: Mistrial declared in Lindsay Clancy murder case, after jury ",
+      "BBC World: 30 öğe / 2 alındı / 0 elendi | ilk: Mistrial declared in Lindsay Clancy murder case, after jury ",
       "Guardian World: 45 öğe / 2 alındı / 0 elendi | ilk: UN votes to adopt new world map that shows Africa’s true sca",
-      "Al Jazeera: 25 öğe / 2 alındı / 0 elendi | ilk: Why is Trump threatening to strike Iran’s Pickaxe Mountain a",
-      "NPR World: 10 öğe / 2 alındı / 0 elendi | ilk: Philippines Vice President Sara Duterte posts bail after arr",
-      "Euronews: 50 öğe / 2 alındı / 0 elendi | ilk: Iranian media report US strike on Iranian oil tanker near Kh",
-      "DW: 12 öğe / 2 alındı / 0 elendi | ilk: Why many Syrians feel Assad's death sentence isn't enough",
+      "Al Jazeera: 25 öğe / 2 alındı / 0 elendi | ilk: ‘Stop the boats’ masked protesters block England’s Port of D",
+      "NPR World: 10 öğe / 2 alındı / 0 elendi | ilk: How the U.S. focus on Iran is fueling a more aggressive Puti",
+      "Euronews: 50 öğe / 2 alındı / 0 elendi | ilk: Two people pulled alive by Nepal's search and rescue team 10",
+      "DW: 11 öğe / 2 alındı / 0 elendi | ilk: Why many Syrians feel Assad's death sentence isn't enough",
       "SONUÇ: 6 haber · veren: Al Jazeera, BBC World, DW, Euronews, Guardian World, NPR World",
       "AA: OKUNAMADI RemoteDisconnected: Remote end closed connection without response",
-      "TRT Haber: 50 öğe / 2 alındı / 0 elendi | ilk: Akçal Kulesi'nden 3 ilin ormanlarına 7/24 gözetim",
+      "TRT Haber: 50 öğe / 2 alındı / 0 elendi | ilk: Sağlık Okuryazarlığı Ulusal Eylem Planıyla 12 milyondan fazl",
       "BBC Türkçe: 21 öğe / 2 alındı / 0 elendi | ilk: Üsküdar Belediyesi başkan vekili seçimi 8 Eylül'e ertelendi",
-      "Habertürk: 30 öğe / 2 alındı / 0 elendi | ilk: \"Odun kesme\" kavgasında oğlunu öldürüp gelinini yaraladı!",
-      "NTV: 20 öğe / 2 alındı / 0 elendi | ilk: Önce geminin ismini gördüler, sonra Tuğberk İmamoğlu'nun enk",
+      "Habertürk: 30 öğe / 2 alındı / 0 elendi | ilk: 5 milyonluk takılarla kaybolmuştu! Kaçak gelin gözaltında",
+      "NTV: 20 öğe / 2 alındı / 0 elendi | ilk: Üsküdar Belediyesi'ne operasyonda yeni gelişme",
       "SONUÇ: 6 haber · veren: BBC Türkçe, Habertürk, NTV, TRT Haber · boş dönen: AA"
     ],
-    "hisse": "9 başlık geldi, 1 elendi",
+    "hisse": "6 başlık geldi, 1 elendi",
     "hisse_ham": [
       "Günün öne çıkan gelişmeleri: KCHOL, SASA, EKGYO, BSOKE, EGEGY",
       "Midas ile gün sonu: AVGO, KCHOL, CIEN, SASA, CPB, GUBRF",
       "TSKB’nin ana yatırımcı olduğu Türkiye Yeşil Fonu’ndan Disera’ya 10 mil",
-      "TSKB’de Yeni Atama",
       "KAP *** MAXİS GİRİŞİM SERMAYESİ PORTFÖY YÖNETİMİ A.Ş. TSKB GİRİŞİM SER",
-      "Bu haftanın en fazla kazandıran hisseleri belli oldu! Vestel başta"
+      "Bu haftanın en fazla kazandıran hisseleri belli oldu! Vestel başta",
+      "Gübretaş (GUBRF) temettü kararını açıkladı"
     ]
   }
 }
