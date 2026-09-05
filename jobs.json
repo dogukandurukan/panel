@@ -1,101 +1,103 @@
 {
- "updated": "2026-09-04 12:19",
+ "updated": "2026-09-05 11:48",
  "ok": true,
  "count": 3,
- "pool": 22,
+ "pool": 20,
  "items": [
   {
-   "title": "Senior Data Analyst - CRM (m/f/d)",
-   "company": "Flix",
+   "title": "Senior Data Engineer",
+   "company": "Liqid Lig",
    "location": "Berlin",
-   "loc_raw": "Berlin, Berlin, Germany",
+   "loc_raw": "Berlin",
    "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/flix/senior-data-analyst-crm-berlin-209278",
+   "url": "https://www.arbeitnow.com/jobs/companies/liqid-lig/senior-data-engineer-berlin-462279",
    "source": "Arbeitnow",
-   "posted": "2026-09-03",
-   "days": 1,
-   "skills": [
-    "sql",
-    "spark",
-    "power bi",
-    "snowflake",
-    "data warehouse",
-    "dax"
-   ],
-   "german": false,
-   "focus": "bi",
-   "summary": "At Flix, we offer a dynamic work environment with competitive pay, strong growth opportunities, and a tech-driven approach to making travel more accessible, sustainable, and affordable. As a Senior Data Analyst (m/f/d), you will join our global CRM team. This ",
-   "keywords": [
-    "scalab",
-    "dashboard",
-    "real-time",
-    "experimentation",
-    "a/b",
-    "stakeholder",
-    "e-commerce",
-    "automation"
-   ],
-   "score": 112
-  },
-  {
-   "title": "Game Data Analyst (f/m/d)",
-   "company": "Kolibrigames",
-   "location": "Berlin",
-   "loc_raw": "Berlin, Germany",
-   "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/kolibrigames/game-data-analyst-berlin-germany-197952",
-   "source": "Arbeitnow",
-   "posted": "2026-09-03",
-   "days": 1,
+   "posted": "2026-09-05",
+   "days": 0,
    "skills": [
     "python",
     "sql",
     "airflow",
-    "looker",
     "dbt",
-    "a/b test"
+    "snowflake",
+    "etl"
    ],
    "german": false,
-   "focus": "business",
-   "summary": "We are Kolibri Games - a mobile games developer from Berlin. We believe that with the best people, we can make games that players will enjoy for years to come. Our games have defined the idle genre, and bring enjoyment to hundreds of millions of players all ar",
+   "focus": "pipeline",
+   "summary": "Your Role We are looking for a Senior Data Engineer (f/m/d) at LIQID, who will play a pivotal role in building and scaling data infrastructure that powers decision-making. You will design scalable, high-performance data pipelines, ensure data integrity, and dr",
    "keywords": [
     "scalab",
-    "a/b",
-    "data quality"
+    "pipeline",
+    "data quality",
+    "governance",
+    "real-time"
+   ],
+   "score": 112
+  },
+  {
+   "title": "Machine Learning Engineer (m/f/x)",
+   "company": "caronsale",
+   "location": "Berlin",
+   "loc_raw": "Berlin",
+   "remote": false,
+   "url": "https://www.arbeitnow.com/jobs/companies/caronsale/machine-learning-engineer-berlin-36406",
+   "source": "Arbeitnow",
+   "posted": "2026-09-04",
+   "days": 1,
+   "skills": [
+    "python",
+    "databricks",
+    "azure",
+    "dbt",
+    "snowflake",
+    "data warehouse"
+   ],
+   "german": false,
+   "focus": "ml",
+   "summary": "Senior Machine Learning Engineer (m/w/d) Four models in production today. Fifteen to twenty by mid-2027. The shared pipeline that gets them there has to hold — and you own everything after handoff: packaging, deployment, drift detection, and the call on whethe",
+   "keywords": [
+    "pipeline",
+    "cost"
    ],
    "score": 100
   },
   {
-   "title": "Data Engineer (f/m/d)",
-   "company": "Climate",
-   "location": "Berlin",
-   "loc_raw": "Berlin HQ",
+   "title": "Senior Data Analyst (f/m/x)",
+   "company": "exmox",
+   "location": "Almanya",
+   "loc_raw": "Hamburg",
    "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/climate/data-engineer-berlin-hq-259699",
+   "url": "https://www.arbeitnow.com/jobs/companies/exmox/senior-data-analyst-hamburg-472812",
    "source": "Arbeitnow",
-   "posted": "2026-09-03",
+   "posted": "2026-09-04",
    "days": 1,
    "skills": [
     "python",
     "sql",
-    "ci/cd",
-    "git",
-    "llm"
+    "spark",
+    "databricks",
+    "tableau",
+    "looker"
    ],
    "german": false,
-   "focus": "ml",
-   "summary": "Job description We are currently seeking a Data Engineer for our international and diverse Climate Policy Team (CPT). The team is engaged in various projects on climate change mitigation, in particular on energy system transformation, the 1.5°C global warming ",
+   "focus": "business",
+   "summary": "Your Mission This is a company built for growth, not comfort. When you join exmox, you're stepping onto a global, highly competitive playing field, solving real problems in environments that push you beyond your comfort zone. We build high-performing consumer ",
    "keywords": [
-    "energy",
-    "pipeline",
+    "finance",
     "automation",
+    "dashboard",
+    "self-service",
     "data quality",
-    "optimization"
+    "stakeholder",
+    "a/b"
    ],
-   "score": 94
+   "score": 92
   }
  ],
  "seen": [
+  "https://www.arbeitnow.com/jobs/companies/liqid-lig/senior-data-engineer-berlin-462279",
+  "https://www.arbeitnow.com/jobs/companies/caronsale/machine-learning-engineer-berlin-36406",
+  "https://www.arbeitnow.com/jobs/companies/exmox/senior-data-analyst-hamburg-472812",
   "https://www.arbeitnow.com/jobs/companies/flix/senior-data-analyst-crm-berlin-209278",
   "https://www.arbeitnow.com/jobs/companies/kolibrigames/game-data-analyst-berlin-germany-197952",
   "https://www.arbeitnow.com/jobs/companies/climate/data-engineer-berlin-hq-259699",
