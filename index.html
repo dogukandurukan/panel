@@ -4531,6 +4531,25 @@ function hdSatir(ad,deger,alt,sag,sinif){
   return '<div class="hd-row"><span class="hd-ad">'+esc(ad)+'</span><span class="hd-v">'+esc(deger)+
     '</span><span class="hd-alt">'+esc(alt||'')+'</span><span class="hd-sag'+(sinif?' '+sinif:'')+'">'+esc(sag||'')+'</span></div>';
 }
+/* Hüküm mantığı ayrı: hem Haftalık Değerlendirme hem öneri bandı çağırıyor.
+   Faz anahtarı (d:phase) geldiğinde cut için tersine çevrilecek TEK yer burası.
+   Hedefi tutturamadıysan çözüm hedefi YÜKSELTMEK değil, önce mevcut hedefi
+   tutturmak — dalların sırası bunu koruyor. */
+function hdHukum(bu,t){
+  const ortK=bu.gun?bu.kcal/bu.gun:0,hedK=bu.gun?bu.hKcal/bu.gun:0;
+  if(!bu.gun||!t)return {eksik:true,delta:0,
+    metin:'Hüküm için hem yemek kaydı hem de iki haftalık tartı gerekiyor. '+
+      (bu.gun?'':'Yemek kaydı eksik. ')+(t?'':'Tartı kaydı eksik.')};
+  if(t.pct>BW_FAST_PCT)return {delta:-150,
+    metin:'Haftalık %'+t.pct.toFixed(2)+' ile hızlı artıyorsun (yağlanma riski). Hedefi 150 kcal azaltmayı düşün.'};
+  if(Math.abs(t.pct)<BW_FLAT_PCT&&ortK<hedK-100)return {delta:0,
+    metin:'Kilon sabit ama hedefinin günde '+Math.round(hedK-ortK)+' kcal altında kaldın. '+
+      'Hedefi yükseltmek açığı büyütür — önce mevcut '+Math.round(hedK)+' kcal\'i tutturmayı dene.'};
+  if(Math.abs(t.pct)<BW_FLAT_PCT)return {delta:150,
+    metin:'Hedefini tutturdun ama kilon 2 haftadır sabit. Hedefi 150 kcal artırmayı düşün.'};
+  return {delta:0,
+    metin:'Haftalık %'+t.pct.toFixed(2)+' ile bulk aralığındasın. Hedefe dokunma, böyle devam.'};
+}
 async function renderHaftalik(){
   const el=document.getElementById('hdBox');if(!el)return;
   const bu=await hdTopla(0,HD_PENCERE-1),onceki=await hdTopla(HD_PENCERE,HD_PENCERE*2-1);
@@ -4578,31 +4597,15 @@ async function renderHaftalik(){
     html+=hdSatir('7 gün ortalaması','—','iki haftada da en az 2 tartı kaydı gerekiyor','');
   }
 
-  /* Hüküm: hedefi tutturamadıysan çözüm hedefi YÜKSELTMEK değil, önce
-     mevcut hedefi tutturmak. Kilo verisi yoksa hüküm de yok. */
-  const ortK=bu.gun?bu.kcal/bu.gun:0,hedK=bu.gun?bu.hKcal/bu.gun:0;
-  let hukum='',dugme=0;
-  if(!bu.gun||!t){
-    hukum='Hüküm için hem yemek kaydı hem de iki haftalık tartı gerekiyor. '+
-      (bu.gun?'':'Yemek kaydı eksik. ')+(t?'':'Tartı kaydı eksik.');
-  }else if(t.pct>BW_FAST_PCT){
-    hukum='Haftalık %'+t.pct.toFixed(2)+' ile hızlı artıyorsun (yağlanma riski). Hedefi 150 kcal azaltmayı düşün.';dugme=-150;
-  }else if(Math.abs(t.pct)<BW_FLAT_PCT&&ortK<hedK-100){
-    hukum='Kilon sabit ama hedefinin günde '+Math.round(hedK-ortK)+' kcal altında kaldın. '+
-      'Hedefi yükseltmek açığı büyütür — önce mevcut '+Math.round(hedK)+' kcal\'i tutturmayı dene.';
-  }else if(Math.abs(t.pct)<BW_FLAT_PCT){
-    hukum='Hedefini tutturdun ama kilon 2 haftadır sabit. Hedefi 150 kcal artırmayı düşün.';dugme=150;
-  }else{
-    hukum='Haftalık %'+t.pct.toFixed(2)+' ile bulk aralığındasın. Hedefe dokunma, böyle devam.';
-  }
-  html+='<div class="hd-hukum"><p>'+esc(hukum)+'</p>'+
-    (dugme?'<button class="ibtn" id="hdUygula">Hedefi '+Math.round(num(targets.kcal))+' → '+
-      Math.round(num(targets.kcal)+dugme)+' kcal yap</button>':'')+'</div>';
+  const h=hdHukum(bu,t);
+  html+='<div class="hd-hukum"><p>'+esc(h.metin)+'</p>'+
+    (h.delta?'<button class="ibtn" id="hdUygula">Hedefi '+Math.round(num(targets.kcal))+' → '+
+      Math.round(num(targets.kcal)+h.delta)+' kcal yap</button>':'')+'</div>';
   html+='<div class="hd-not">Ortalama '+bu.gun+' günlük yemek kaydına göre'+
     (t?' · tartı '+t.n+' kayıt':'')+'</div>';
   el.innerHTML=html;
   const ub=document.getElementById('hdUygula');
-  if(ub)ub.onclick=()=>hdUygula(dugme);
+  if(ub)ub.onclick=()=>hdUygula(h.delta);
 }
 /* Hedefi elle değiştirmekle aynı şey; sürüm göçü ezmesin diye kcalOfs damgası
    da yazılıyor (bkz. TARGETS_VERSION geçişi). */
