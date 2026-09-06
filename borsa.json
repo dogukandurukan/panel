@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-05 16:36",
+  "updated": "2026-09-06 13:45",
   "watch": [
     {
       "code": "SASA",
@@ -247,112 +247,111 @@
         "rsiTxt": "nötr",
         "rsi": 62.4,
         "volat": 2.0,
-        "volRatio": 1.68
+        "volRatio": 1.23
       }
     }
   ],
   "gold": {
-    "price": "6,896.72",
-    "chg": "-1.39%"
+    "price": "6,968.07",
+    "chg": "-0.37%"
   },
   "news": [
     {
-      "t": "⚪ Günün öne çıkan gelişmeleri: KCHOL, SASA, EKGYO, BSOKE, EGEGY  (getmidas.com)",
-      "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxOQ3pQZHl3Rzlrd0k2c2pwRU10Q2Y1emRYNGttWWp4VHpsN2hQMmNzMmw4c1FUQlZxMGsxTzhuRHJzY0NkYzM4OWpzbGUxcVZxbjhYZy1nUlZTOUxsbWlUOVZWc21SX2k4SWZrbDJrTXFIUHVoTjktQXZMemRtT1F3ZER5MWJFMnIxTmJtNVRYOGRLQ2IyQU5pd2twRTBnZlBzbDZEMWcxMHlFNnhP?oc=5"
+      "t": "⚪ TSKB, yenilenebilir enerji için 200 milyon euro sağladı  (Paratic Haber)",
+      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxOUTRNaThMMmU1MU9YQ2hSWVNDTHJHZmJmbTlIb3paX3N3cW5QYjFJVUF0TmdwNFhHMjFCT1NoZ0Jqb2s0UDJfMWVwZHpNUGFZSnJWLXZEbm1Xd2ZWWjM3ZlRCdUZ2TnpvTEwwXzQ5aTEtMDY4bFlzczFpQ0dfNDlTTQ?oc=5"
     },
     {
-      "t": "⚪ Midas ile gün sonu: AVGO, KCHOL, CIEN, SASA, CPB, GUBRF  (getmidas.com)",
-      "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOXzhYY2RROVdxRUlGWWdvWXcyTmp5TnNvX0d1ZDN0NXFhb1dpT3p4VTNNMzJxNlJnU0Joai1rTUVhTlozMnM4QXF5THF6djlnVHE1Sl9GRkdzS21aUmh2VUZ6RTVVdmNhMDR1ZksxQU13VGZPNTBOeWlvQmphWkc5aXNEd0ViYjZKR3h0TnBjQlcySXlILUIzV29SRm5MZWJ1NHBJ?oc=5"
+      "t": "🟢 TSKB, Dünya Bankası ile 200 milyon euro tutarında kredi anlaşmasına imza attı  (paraanaliz.com)",
+      "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOS3E2cUpPRHVQVFE0blVlVHo5NGpIX2lxSG0yQ0pVNWZ4YlItcndMVU0zd3M0aXRnUk5HNFVXR3ItQ0VmTVVpaDJaX29xLUVJSWZfcHFZdy1LX3N5R2ExaFowa09iSUl3dVVyWUlFOFpuQ1pJMGJ0MmtxYThzakU3RWd4UFJpeHR6b2oyWHRid2J5STFYVHV2cWp4OE92YVVqaENJN3p0WDdFd2dIci11UXNB?oc=5"
     },
     {
       "t": "🟢 TSKB’nin ana yatırımcı olduğu Türkiye Yeşil Fonu’ndan Disera’ya 10 milyon dolar yatırım  (Para Dergi)",
       "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxPanB5VDRwQW1qYkNmTExQN0d5Ymt5UVRoX3ExM2ZlWGU5VXQ2bzBtQkNOQzkwYTR4RjVyanZObU1JaXJhenllTWozRDJSM09OMGRDelpDYUpMNWU0MGNFZ19yODYtX1k2Z2l2VHpTMVFoNkdRUGR3cnlGRkxCTXBUTXQ5empOczAwSDE0NU9NT0NYRl9TaEJaWWdQQVNodjlVVFlGMGRaQzZVb2NFWjhhTmcxNmlyU25jYWRyNEg0ZDlickkyb1pWcFpUSzlEaE5Q0gHQAUFVX3lxTE9qcHlUNHBBbWpiQ2ZMTFA3R3lia3lRVGhfcTEzZmVYZTlVdDZvMG1CQ05DOTBhNHhGNXJqdk5tTUlpcmF6eWVNajNEMlIzT04wZEN6WkNhSkw1ZTQwY0VnX3I4Ni1fWTZnaXZUelMxUWg2R1FQZHdyeUZGTEJNcFRNdDl6ak5zMDBIMTQ1T01PQ1hGX1NoQlpZZ1BBU2h2OVVUWUYwZFpDNlVvY0VaOGFOZzE2aXJTbmNhZHI0SDRkOWJySTJvWlZwWlRLOURoTlA?oc=5"
     },
     {
-      "t": "⚪ Bu haftanın en fazla kazandıran hisseleri belli oldu! Vestel başta  (YatırımX)",
-      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNenIzSGRMZ2VyWTcxMTZyRmxKaHpQZnBmSmdQVDRvTTJjSV83NmdMbVZWU2FLUEF6X1pmdWpZQ0FLZXk2UGNrdWJoU1hvbGdMSjBMckNkUmZDV3hFV2NFLVl3TzRCUXVMV1hMSHBwRTc1Wmdzc0J4N0dTbkp3REdNenNzc3FJWURVX0hqQVhKLXNQZmdqTG9OdTRoWlF5eU1UZHU4N2lramJEMG1YcHJzVzA0OWlWLTA?oc=5"
+      "t": "⚪ Vestel bu sefer kazandırdı!  (Manisa Kulis Haber)",
+      "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE0xcFlJU2tUVjNpcnFrLXlxYlJtUndPR0lhYThHdVZ2aXJJRFBqM1lWcEFOcXVNRFZacjRVMkptTVRjWUFESmZPZ0lMQ0JQREdoWEh1WU4ycmNXT2xYdEhuZkdKR0NtTUpGTEFz?oc=5"
     },
     {
-      "t": "🟢 Gübretaş (GUBRF) temettü kararını açıkladı  (Rota Borsa)",
-      "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE1WY3RBWWl6NE8yb0I3RjBBLThmbEVudFpNU3FKclJQbDhEWVN4ZDF1Z1hBZlZOczRNOS1JVWdER3BoYl9CSVNrcmxqalZ3ZWNaaDVPdkNPVXNuUnVGTnNZaGJPZHNfMzAwNDVqcGV2ak5USVE?oc=5"
+      "t": "⚪ Bu haftanın en fazla kazandıran hisseleri belli oldu! Vestel başta  (YatırımX)",
+      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNenIzSGRMZ2VyWTcxMTZyRmxKaHpQZnBmSmdQVDRvTTJjSV83NmdMbVZWU2FLUEF6X1pmdWpZQ0FLZXk2UGNrdWJoU1hvbGdMSjBMckNkUmZDV3hFV2NFLVl3TzRCUXVMV1hMSHBwRTc1Wmdzc0J4N0dTbkp3REdNenNzc3FJWURVX0hqQVhKLXNQZmdqTG9OdTRoWlF5eU1UZHU4N2lramJEMG1YcHJzVzA0OWlWLTA?oc=5"
     }
   ],
   "world": [
     {
-      "t": "🌍 Mistrial declared in Lindsay Clancy murder case, after jury deadlocks  (BBC World)",
-      "link": "https://www.bbc.co.uk/news/articles/cpwlrj2je1po?at_medium=RSS&at_campaign=rss"
+      "t": "🌍 US envoys arrive in Ukraine for talks after meeting Putin in Russia  (BBC World)",
+      "link": "https://www.bbc.co.uk/news/articles/c6248nvqy8po?at_medium=RSS&at_campaign=rss"
     },
     {
-      "t": "🌍 UN votes to adopt new world map that shows Africa’s true scale  (Guardian World)",
-      "link": "https://www.theguardian.com/world/2026/sep/04/un-vote-world-map-mercator-equal-earth-africa"
+      "t": "🌍 Egyptian TV presenter among 12 sentenced to death for drug crime  (Guardian World)",
+      "link": "https://www.theguardian.com/world/2026/sep/05/egyptian-tv-presenter-among-12-sentenced-to-death-for-drug"
     },
     {
-      "t": "🌍 ‘Stop the boats’ masked protesters block England’s Port of Dover  (Al Jazeera)",
-      "link": "https://www.aljazeera.com/video/newsfeed/2026/9/5/stop-the-boats-masked-protesters-block-englands-port-of-dover?traffic_source=rss"
+      "t": "🌍 LIVE: Everton vs Manchester United – Premier League  (Al Jazeera)",
+      "link": "https://www.aljazeera.com/sports/liveblog/2026/9/6/live-everton-vs-manchester-united-premier-league-fernandes-rashford-live-coverage-stream?traffic_source=rss"
     },
     {
-      "t": "🌍 How the U.S. focus on Iran is fueling a more aggressive Putin  (NPR World)",
-      "link": "https://www.npr.org/2026/09/05/nx-s1-5955705/how-the-u-s-focus-on-iran-is-fueling-a-more-aggressive-putin"
+      "t": "🌍 Iranian forces target US naval drone attempting to enter Strait of Hormuz  (Euronews)",
+      "link": "http://www.euronews.com/2026/09/06/iranian-forces-target-us-naval-drone-attempting-to-enter-strait-of-hormuz"
     },
     {
-      "t": "🌍 Two people pulled alive by Nepal's search and rescue team 10 days after devastating flash floods  (Euronews)",
-      "link": "http://www.euronews.com/2026/09/05/two-people-pulled-alive-by-nepals-search-and-rescue-team-10-days-after-devastating-flash-f"
+      "t": "🌍 How climate change and food insecurity could fuel future conflicts  (DW)",
+      "link": "https://www.dw.com/en/how-climate-change-and-food-insecurity-could-fuel-future-conflicts/a-78871431?maca=en-rss-en-world-4025-rdf"
     },
     {
-      "t": "🌍 Why many Syrians feel Assad's death sentence isn't enough  (DW)",
-      "link": "https://www.dw.com/en/why-many-syrians-feel-assad-s-death-sentence-isn-t-enough/a-78985915?maca=en-rss-en-world-4025-rdf"
+      "t": "🌍 US and Iran trade retaliatory attacks on ships as conflict flares  (BBC World)",
+      "link": "https://www.bbc.co.uk/news/articles/cj64rrne643o?at_medium=RSS&at_campaign=rss"
     }
   ],
   "tr": [
     {
-      "t": "🇹🇷 Sağlık Okuryazarlığı Ulusal Eylem Planıyla 12 milyondan fazla kişiye ulaşıldı  (TRT Haber)",
-      "link": "https://www.trthaber.com/haber/saglik/saglik-okuryazarligi-ulusal-eylem-planiyla-12-milyondan-fazla-kisiye-ulasildi-955991.html"
+      "t": "🇹🇷 Türkiye ve 7 ülkeden işgalci İsrail'e tepki  (TRT Haber)",
+      "link": "https://www.trthaber.com/haber/gundem/turkiye-ve-7-ulkeden-isgalci-israile-tepki-956043.html"
     },
     {
-      "t": "🇹🇷 Üsküdar Belediyesi başkan vekili seçimi 8 Eylül'e ertelendi  (BBC Türkçe)",
-      "link": "https://www.bbc.com/turkce/articles/ce8eg27y74po?at_medium=RSS&at_campaign=rss"
+      "t": "🇹🇷 Trump'ın temsilcileri Putin ile görüştü, sıra Ukrayna'daki temaslarda  (BBC Türkçe)",
+      "link": "https://www.bbc.com/turkce/articles/c14dkek2l51o?at_medium=RSS&at_campaign=rss"
     },
     {
-      "t": "🇹🇷 5 milyonluk takılarla kaybolmuştu! Kaçak gelin gözaltında  (Habertürk)",
-      "link": "https://www.haberturk.com/gundem/son-dakika-milyonluk-takilarla-kayboldugu-iddia-edilen-gelin-gozaltina-alindi-3910490"
+      "t": "🇹🇷 İBB soruşturması: 12 şüpheli adliyede  (Habertürk)",
+      "link": "https://www.haberturk.com/gundem/son-dakika-ibbye-yonelik-yolsuzluk-sorusturmasi-12-supheli-adliyeye-sevk-edildi-3910628"
     },
     {
-      "t": "🇹🇷 Üsküdar Belediyesi'ne operasyonda yeni gelişme  (NTV)",
-      "link": "https://www.ntv.com.tr/turkiye/uskudar-belediyesine-operasyonda-yeni-gelisme-1740529"
+      "t": "🇹🇷 Ağrı Belediyesi Eş Başkanı Memet Akkuş yaşamını yitirdi  (NTV)",
+      "link": "https://www.ntv.com.tr/turkiye/agri-belediyesi-es-baskani-memet-akkus-yasamini-yitirdi-1740625"
     },
     {
-      "t": "🇹🇷 Putin, Rus ordusuna gece yarısından itibaren 3 gün boyunca Kieve saldırmama talimatı verdi  (TRT Haber)",
-      "link": "https://www.trthaber.com/haber/dunya/putin-rus-ordusuna-gece-yarisindan-itibaren-3-gun-boyunca-kieve-saldirmama-talimati-verdi-955990.html"
+      "t": "🇹🇷 İran Devrim Muhafızları: ABD'ye ait bir uçak gemisi ile bir muhrip gemiyi hedef aldık  (TRT Haber)",
+      "link": "https://www.trthaber.com/haber/dunya/iran-devrim-muhafizlari-abdye-ait-bir-ucak-gemisi-ile-bir-muhrip-gemiyi-hedef-aldik-956042.html"
     },
     {
-      "t": "🇹🇷 ABD'nin yaptırım uyguladığı Türk bankası hakkında neler biliniyor?  (BBC Türkçe)",
-      "link": "https://www.bbc.com/turkce/articles/cje87v4l444o?at_medium=RSS&at_campaign=rss"
+      "t": "🇹🇷 Saksonya-Anhalt seçimleri: Almanya için dönüm noktası, Merz için kader anı  (BBC Türkçe)",
+      "link": "https://www.bbc.com/turkce/articles/c804k5e3yylo?at_medium=RSS&at_campaign=rss"
     }
   ],
   "_teshis": {
     "dunya": [
-      "BBC World: 30 öğe / 2 alındı / 0 elendi | ilk: Mistrial declared in Lindsay Clancy murder case, after jury ",
-      "Guardian World: 45 öğe / 2 alındı / 0 elendi | ilk: UN votes to adopt new world map that shows Africa’s true sca",
-      "Al Jazeera: 25 öğe / 2 alındı / 0 elendi | ilk: ‘Stop the boats’ masked protesters block England’s Port of D",
-      "NPR World: 10 öğe / 2 alındı / 0 elendi | ilk: How the U.S. focus on Iran is fueling a more aggressive Puti",
-      "Euronews: 50 öğe / 2 alındı / 0 elendi | ilk: Two people pulled alive by Nepal's search and rescue team 10",
-      "DW: 11 öğe / 2 alındı / 0 elendi | ilk: Why many Syrians feel Assad's death sentence isn't enough",
-      "SONUÇ: 6 haber · veren: Al Jazeera, BBC World, DW, Euronews, Guardian World, NPR World",
+      "BBC World: 29 öğe / 2 alındı / 0 elendi | ilk: US envoys arrive in Ukraine for talks after meeting Putin in",
+      "Guardian World: 45 öğe / 2 alındı / 0 elendi | ilk: Egyptian TV presenter among 12 sentenced to death for drug c",
+      "Al Jazeera: 25 öğe / 2 alındı / 0 elendi | ilk: LIVE: Everton vs Manchester United – Premier League",
+      "NPR World: 10 öğe / 2 alındı / 0 elendi | ilk: U.S. envoys Witkoff and Kushner set for talks in Kyiv after ",
+      "Euronews: 50 öğe / 2 alındı / 0 elendi | ilk: Iranian forces target US naval drone attempting to enter Str",
+      "DW: 11 öğe / 2 alındı / 0 elendi | ilk: How climate change and food insecurity could fuel future con",
+      "SONUÇ: 6 haber · veren: Al Jazeera, BBC World, DW, Euronews, Guardian World",
       "AA: OKUNAMADI RemoteDisconnected: Remote end closed connection without response",
-      "TRT Haber: 50 öğe / 2 alındı / 0 elendi | ilk: Sağlık Okuryazarlığı Ulusal Eylem Planıyla 12 milyondan fazl",
-      "BBC Türkçe: 21 öğe / 2 alındı / 0 elendi | ilk: Üsküdar Belediyesi başkan vekili seçimi 8 Eylül'e ertelendi",
-      "Habertürk: 30 öğe / 2 alındı / 0 elendi | ilk: 5 milyonluk takılarla kaybolmuştu! Kaçak gelin gözaltında",
-      "NTV: 20 öğe / 2 alındı / 0 elendi | ilk: Üsküdar Belediyesi'ne operasyonda yeni gelişme",
+      "TRT Haber: 50 öğe / 2 alındı / 0 elendi | ilk: Türkiye ve 7 ülkeden işgalci İsrail'e tepki",
+      "BBC Türkçe: 16 öğe / 2 alındı / 0 elendi | ilk: Trump'ın temsilcileri Putin ile görüştü, sıra Ukrayna'daki t",
+      "Habertürk: 30 öğe / 2 alındı / 0 elendi | ilk: İBB soruşturması: 12 şüpheli adliyede",
+      "NTV: 20 öğe / 2 alındı / 0 elendi | ilk: Ağrı Belediyesi Eş Başkanı Memet Akkuş yaşamını yitirdi",
       "SONUÇ: 6 haber · veren: BBC Türkçe, Habertürk, NTV, TRT Haber · boş dönen: AA"
     ],
-    "hisse": "6 başlık geldi, 1 elendi",
+    "hisse": "5 başlık geldi, 0 elendi",
     "hisse_ham": [
-      "Günün öne çıkan gelişmeleri: KCHOL, SASA, EKGYO, BSOKE, EGEGY",
-      "Midas ile gün sonu: AVGO, KCHOL, CIEN, SASA, CPB, GUBRF",
+      "TSKB, yenilenebilir enerji için 200 milyon euro sağladı",
+      "TSKB, Dünya Bankası ile 200 milyon euro tutarında kredi anlaşmasına im",
       "TSKB’nin ana yatırımcı olduğu Türkiye Yeşil Fonu’ndan Disera’ya 10 mil",
-      "KAP *** MAXİS GİRİŞİM SERMAYESİ PORTFÖY YÖNETİMİ A.Ş. TSKB GİRİŞİM SER",
-      "Bu haftanın en fazla kazandıran hisseleri belli oldu! Vestel başta",
-      "Gübretaş (GUBRF) temettü kararını açıkladı"
+      "Vestel bu sefer kazandırdı!",
+      "Bu haftanın en fazla kazandıran hisseleri belli oldu! Vestel başta"
     ]
   }
 }
