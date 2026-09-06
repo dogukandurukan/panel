@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-06 13:45",
+  "updated": "2026-09-06 16:51",
   "watch": [
     {
       "code": "SASA",
@@ -257,11 +257,15 @@
   },
   "news": [
     {
+      "t": "⚪ Midas ile gün sonu: AVGO, KCHOL, CIEN, SASA, CPB, GUBRF  (getmidas.com)",
+      "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOXzhYY2RROVdxRUlGWWdvWXcyTmp5TnNvX0d1ZDN0NXFhb1dpT3p4VTNNMzJxNlJnU0Joai1rTUVhTlozMnM4QXF5THF6djlnVHE1Sl9GRkdzS21aUmh2VUZ6RTVVdmNhMDR1ZksxQU13VGZPNTBOeWlvQmphWkc5aXNEd0ViYjZKR3h0TnBjQlcySXlILUIzV29SRm5MZWJ1NHBJ?oc=5"
+    },
+    {
       "t": "⚪ TSKB, yenilenebilir enerji için 200 milyon euro sağladı  (Paratic Haber)",
       "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxOUTRNaThMMmU1MU9YQ2hSWVNDTHJHZmJmbTlIb3paX3N3cW5QYjFJVUF0TmdwNFhHMjFCT1NoZ0Jqb2s0UDJfMWVwZHpNUGFZSnJWLXZEbm1Xd2ZWWjM3ZlRCdUZ2TnpvTEwwXzQ5aTEtMDY4bFlzczFpQ0dfNDlTTQ?oc=5"
     },
     {
-      "t": "🟢 TSKB, Dünya Bankası ile 200 milyon euro tutarında kredi anlaşmasına imza attı  (paraanaliz.com)",
+      "t": "🟢 TSKB, Dünya Bankası ile 200 milyon euro tutarında kredi anlaşmasına imza attı  (Para Analiz)",
       "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOS3E2cUpPRHVQVFE0blVlVHo5NGpIX2lxSG0yQ0pVNWZ4YlItcndMVU0zd3M0aXRnUk5HNFVXR3ItQ0VmTVVpaDJaX29xLUVJSWZfcHFZdy1LX3N5R2ExaFowa09iSUl3dVVyWUlFOFpuQ1pJMGJ0MmtxYThzakU3RWd4UFJpeHR6b2oyWHRid2J5STFYVHV2cWp4OE92YVVqaENJN3p0WDdFd2dIci11UXNB?oc=5"
     },
     {
@@ -279,7 +283,7 @@
   ],
   "world": [
     {
-      "t": "🌍 US envoys arrive in Ukraine for talks after meeting Putin in Russia  (BBC World)",
+      "t": "🌍 US envoys meet Zelensky in Ukraine after talks with Putin in Russia  (BBC World)",
       "link": "https://www.bbc.co.uk/news/articles/c6248nvqy8po?at_medium=RSS&at_campaign=rss"
     },
     {
@@ -287,16 +291,16 @@
       "link": "https://www.theguardian.com/world/2026/sep/05/egyptian-tv-presenter-among-12-sentenced-to-death-for-drug"
     },
     {
-      "t": "🌍 LIVE: Everton vs Manchester United – Premier League  (Al Jazeera)",
-      "link": "https://www.aljazeera.com/sports/liveblog/2026/9/6/live-everton-vs-manchester-united-premier-league-fernandes-rashford-live-coverage-stream?traffic_source=rss"
+      "t": "🌍 Seven mouths, one meal: Feeding a family through Gaza’s food crisis  (Al Jazeera)",
+      "link": "https://www.aljazeera.com/features/2026/9/6/seven-mouths-one-meal-feeding-a-family-through-gazas-food-crisis?traffic_source=rss"
     },
     {
-      "t": "🌍 Iranian forces target US naval drone attempting to enter Strait of Hormuz  (Euronews)",
-      "link": "http://www.euronews.com/2026/09/06/iranian-forces-target-us-naval-drone-attempting-to-enter-strait-of-hormuz"
+      "t": "🌍 U.S. envoys Witkoff and Kushner land for talks in Kyiv after meeting Putin in Moscow  (NPR World)",
+      "link": "https://www.npr.org/2026/09/06/nx-s1-5959657/us-envoys-witkoff-kushner-talks-in-kyiv-putin-moscow"
     },
     {
-      "t": "🌍 How climate change and food insecurity could fuel future conflicts  (DW)",
-      "link": "https://www.dw.com/en/how-climate-change-and-food-insecurity-could-fuel-future-conflicts/a-78871431?maca=en-rss-en-world-4025-rdf"
+      "t": "🌍 AfD’s Ulrich Siegmund casts vote in key German state election  (Euronews)",
+      "link": "http://www.euronews.com/video/2026/09/06/afds-ulrich-siegmund-casts-vote-in-key-german-state-election"
     },
     {
       "t": "🌍 US and Iran trade retaliatory attacks on ships as conflict flares  (BBC World)",
@@ -305,24 +309,24 @@
   ],
   "tr": [
     {
-      "t": "🇹🇷 Türkiye ve 7 ülkeden işgalci İsrail'e tepki  (TRT Haber)",
-      "link": "https://www.trthaber.com/haber/gundem/turkiye-ve-7-ulkeden-isgalci-israile-tepki-956043.html"
+      "t": "🇹🇷 Antalya'da orman yangını: Havadan ve karadan müdahale ediliyor  (TRT Haber)",
+      "link": "https://www.trthaber.com/haber/turkiye/antalyada-orman-yangini-havadan-ve-karadan-mudahale-ediliyor-956057.html"
     },
     {
-      "t": "🇹🇷 Trump'ın temsilcileri Putin ile görüştü, sıra Ukrayna'daki temaslarda  (BBC Türkçe)",
+      "t": "🇹🇷 Trump'ın temsilcileri Putin ile görüştü, Kiev'de Zelenskiy ile bir aradalar  (BBC Türkçe)",
       "link": "https://www.bbc.com/turkce/articles/c14dkek2l51o?at_medium=RSS&at_campaign=rss"
     },
     {
-      "t": "🇹🇷 İBB soruşturması: 12 şüpheli adliyede  (Habertürk)",
-      "link": "https://www.haberturk.com/gundem/son-dakika-ibbye-yonelik-yolsuzluk-sorusturmasi-12-supheli-adliyeye-sevk-edildi-3910628"
+      "t": "🇹🇷 Hatimoğulları ve Bakırhan yeniden seçildi  (Habertürk)",
+      "link": "https://www.haberturk.com/gundem/son-dakika-dem-parti-nin-5-inci-olagan-buyuk-kongresi-basladi-3910611"
     },
     {
-      "t": "🇹🇷 Ağrı Belediyesi Eş Başkanı Memet Akkuş yaşamını yitirdi  (NTV)",
-      "link": "https://www.ntv.com.tr/turkiye/agri-belediyesi-es-baskani-memet-akkus-yasamini-yitirdi-1740625"
+      "t": "🇹🇷 Bakan Memişoğlu OVP hedeflerini açıkladı. \"Koruyucu sağlık hizmetleri güçlendirilecek\"  (NTV)",
+      "link": "https://www.ntv.com.tr/turkiye/bakan-memisoglu-ovp-hedeflerini-acikladi-koruyucu-saglik-hizmetleri-guclendirilecek-1740670"
     },
     {
-      "t": "🇹🇷 İran Devrim Muhafızları: ABD'ye ait bir uçak gemisi ile bir muhrip gemiyi hedef aldık  (TRT Haber)",
-      "link": "https://www.trthaber.com/haber/dunya/iran-devrim-muhafizlari-abdye-ait-bir-ucak-gemisi-ile-bir-muhrip-gemiyi-hedef-aldik-956042.html"
+      "t": "🇹🇷 Trabzon'da denize girişler yasaklandı  (TRT Haber)",
+      "link": "https://www.trthaber.com/haber/turkiye/trabzonda-denize-girisler-yasaklandi-956056.html"
     },
     {
       "t": "🇹🇷 Saksonya-Anhalt seçimleri: Almanya için dönüm noktası, Merz için kader anı  (BBC Türkçe)",
@@ -331,22 +335,23 @@
   ],
   "_teshis": {
     "dunya": [
-      "BBC World: 29 öğe / 2 alındı / 0 elendi | ilk: US envoys arrive in Ukraine for talks after meeting Putin in",
+      "BBC World: 29 öğe / 2 alındı / 0 elendi | ilk: US envoys meet Zelensky in Ukraine after talks with Putin in",
       "Guardian World: 45 öğe / 2 alındı / 0 elendi | ilk: Egyptian TV presenter among 12 sentenced to death for drug c",
-      "Al Jazeera: 25 öğe / 2 alındı / 0 elendi | ilk: LIVE: Everton vs Manchester United – Premier League",
-      "NPR World: 10 öğe / 2 alındı / 0 elendi | ilk: U.S. envoys Witkoff and Kushner set for talks in Kyiv after ",
-      "Euronews: 50 öğe / 2 alındı / 0 elendi | ilk: Iranian forces target US naval drone attempting to enter Str",
-      "DW: 11 öğe / 2 alındı / 0 elendi | ilk: How climate change and food insecurity could fuel future con",
-      "SONUÇ: 6 haber · veren: Al Jazeera, BBC World, DW, Euronews, Guardian World",
-      "AA: OKUNAMADI RemoteDisconnected: Remote end closed connection without response",
-      "TRT Haber: 50 öğe / 2 alındı / 0 elendi | ilk: Türkiye ve 7 ülkeden işgalci İsrail'e tepki",
-      "BBC Türkçe: 16 öğe / 2 alındı / 0 elendi | ilk: Trump'ın temsilcileri Putin ile görüştü, sıra Ukrayna'daki t",
-      "Habertürk: 30 öğe / 2 alındı / 0 elendi | ilk: İBB soruşturması: 12 şüpheli adliyede",
-      "NTV: 20 öğe / 2 alındı / 0 elendi | ilk: Ağrı Belediyesi Eş Başkanı Memet Akkuş yaşamını yitirdi",
+      "Al Jazeera: 25 öğe / 2 alındı / 0 elendi | ilk: Seven mouths, one meal: Feeding a family through Gaza’s food",
+      "NPR World: 10 öğe / 2 alındı / 0 elendi | ilk: U.S. envoys Witkoff and Kushner land for talks in Kyiv after",
+      "Euronews: 50 öğe / 2 alındı / 0 elendi | ilk: AfD’s Ulrich Siegmund casts vote in key German state electio",
+      "DW: 12 öğe / 2 alındı / 0 elendi | ilk: US envoys Witkoff, Kushner arrive in Kiyv after Putin talks",
+      "SONUÇ: 6 haber · veren: Al Jazeera, BBC World, Euronews, Guardian World, NPR World",
+      "AA: OKUNAMADI TimeoutError: The read operation timed out",
+      "TRT Haber: 50 öğe / 2 alındı / 0 elendi | ilk: Antalya'da orman yangını: Havadan ve karadan müdahale ediliy",
+      "BBC Türkçe: 16 öğe / 2 alındı / 0 elendi | ilk: Trump'ın temsilcileri Putin ile görüştü, Kiev'de Zelenskiy i",
+      "Habertürk: 30 öğe / 2 alındı / 0 elendi | ilk: Hatimoğulları ve Bakırhan yeniden seçildi",
+      "NTV: 20 öğe / 2 alındı / 0 elendi | ilk: Bakan Memişoğlu OVP hedeflerini açıkladı. \"Koruyucu sağlık h",
       "SONUÇ: 6 haber · veren: BBC Türkçe, Habertürk, NTV, TRT Haber · boş dönen: AA"
     ],
-    "hisse": "5 başlık geldi, 0 elendi",
+    "hisse": "6 başlık geldi, 0 elendi",
     "hisse_ham": [
+      "Midas ile gün sonu: AVGO, KCHOL, CIEN, SASA, CPB, GUBRF",
       "TSKB, yenilenebilir enerji için 200 milyon euro sağladı",
       "TSKB, Dünya Bankası ile 200 milyon euro tutarında kredi anlaşmasına im",
       "TSKB’nin ana yatırımcı olduğu Türkiye Yeşil Fonu’ndan Disera’ya 10 mil",
