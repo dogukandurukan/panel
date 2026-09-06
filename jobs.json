@@ -1,100 +1,92 @@
 {
- "updated": "2026-09-05 11:48",
+ "updated": "2026-09-06 12:08",
  "ok": true,
  "count": 3,
- "pool": 20,
+ "pool": 27,
  "items": [
   {
-   "title": "Senior Data Engineer",
-   "company": "Liqid Lig",
+   "title": "Senior DevOps Engineer (all genders) | Data Platform",
+   "company": "Real Digital",
    "location": "Berlin",
-   "loc_raw": "Berlin",
+   "loc_raw": "Remote oder Köln / Darmstadt / Düsseldorf / Berlin",
    "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/liqid-lig/senior-data-engineer-berlin-462279",
+   "url": "https://www.arbeitnow.com/jobs/companies/real-digital/remote-senior-devops-engineer-all-genders-data-platform-426742",
    "source": "Arbeitnow",
-   "posted": "2026-09-05",
+   "posted": "2026-09-06",
    "days": 0,
    "skills": [
     "python",
     "sql",
+    "azure",
     "airflow",
     "dbt",
-    "snowflake",
-    "etl"
+    "ci/cd"
    ],
    "german": false,
    "focus": "pipeline",
-   "summary": "Your Role We are looking for a Senior Data Engineer (f/m/d) at LIQID, who will play a pivotal role in building and scaling data infrastructure that powers decision-making. You will design scalable, high-performance data pipelines, ensure data integrity, and dr",
-   "keywords": [
-    "scalab",
-    "pipeline",
-    "data quality",
-    "governance",
-    "real-time"
-   ],
-   "score": 112
-  },
-  {
-   "title": "Machine Learning Engineer (m/f/x)",
-   "company": "caronsale",
-   "location": "Berlin",
-   "loc_raw": "Berlin",
-   "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/caronsale/machine-learning-engineer-berlin-36406",
-   "source": "Arbeitnow",
-   "posted": "2026-09-04",
-   "days": 1,
-   "skills": [
-    "python",
-    "databricks",
-    "azure",
-    "dbt",
-    "snowflake",
-    "data warehouse"
-   ],
-   "german": false,
-   "focus": "ml",
-   "summary": "Senior Machine Learning Engineer (m/w/d) Four models in production today. Fifteen to twenty by mid-2027. The shared pipeline that gets them there has to hold — and you own everything after handoff: packaging, deployment, drift detection, and the call on whethe",
+   "summary": "Anstellungsdetails Permanent Contract, Full- or Part-Time, Remote or Cologne / Düsseldorf / Darmstadt / Berlin Info Who we areWe are the tech powerhouse behind Kaufland’s international online marketplaces and a company within the Schwarz Group. Driven by a sta",
    "keywords": [
     "pipeline",
     "cost"
    ],
-   "score": 100
+   "score": 112
   },
   {
-   "title": "Senior Data Analyst (f/m/x)",
-   "company": "exmox",
-   "location": "Almanya",
-   "loc_raw": "Hamburg",
-   "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/exmox/senior-data-analyst-hamburg-472812",
+   "title": "Senior Data Scientist (m/f/x)",
+   "company": "Makersite GmbH",
+   "location": "Remote",
+   "loc_raw": "Remote job",
+   "remote": true,
+   "url": "https://www.arbeitnow.com/jobs/companies/makersite-gmbh/remote-senior-data-scientist-berlin-143991",
    "source": "Arbeitnow",
-   "posted": "2026-09-04",
+   "posted": "2026-09-05",
    "days": 1,
    "skills": [
     "python",
-    "sql",
-    "spark",
-    "databricks",
-    "tableau",
-    "looker"
+    "ci/cd",
+    "git",
+    "llm"
    ],
    "german": false,
-   "focus": "business",
-   "summary": "Your Mission This is a company built for growth, not comfort. When you join exmox, you're stepping onto a global, highly competitive playing field, solving real problems in environments that push you beyond your comfort zone. We build high-performing consumer ",
+   "focus": "ml",
+   "summary": "Data Scientist (m/f/x) Location: EU (Remote) Who You’ll Work For : At Makersite, we're pioneering the future of sustainable product development and digital collaboration. As a leading platform for product lifecycle management (PLM), we empower companies to mak",
    "keywords": [
-    "finance",
-    "automation",
-    "dashboard",
-    "self-service",
-    "data quality",
-    "stakeholder",
-    "a/b"
+    "supply chain",
+    "scalab",
+    "cost",
+    "pipeline",
+    "experimentation"
    ],
-   "score": 92
+   "score": 90
+  },
+  {
+   "title": "Senior Machine Learning Engineer – Video AI",
+   "company": "Snke",
+   "location": "Almanya",
+   "loc_raw": "München",
+   "remote": false,
+   "url": "https://www.arbeitnow.com/jobs/companies/snke/senior-machine-learning-engineer-video-ai-munchen-98891",
+   "source": "Arbeitnow",
+   "posted": "2026-09-06",
+   "days": 0,
+   "skills": [
+    "python"
+   ],
+   "german": false,
+   "focus": "ml",
+   "summary": "What you'll do As (Senior) Machine Learning – Video AI at Snke you will develop and deploy machine learning applications that analyze video and sensor data from the operating room to improve surgical workflows. You will work closely with software developers an",
+   "keywords": [
+    "automation",
+    "experimentation",
+    "pipeline"
+   ],
+   "score": 62
   }
  ],
  "seen": [
+  "https://www.arbeitnow.com/jobs/companies/real-digital/remote-senior-devops-engineer-all-genders-data-platform-426742",
+  "https://www.arbeitnow.com/jobs/companies/makersite-gmbh/remote-senior-data-scientist-berlin-143991",
+  "https://www.arbeitnow.com/jobs/companies/snke/senior-machine-learning-engineer-video-ai-munchen-98891",
   "https://www.arbeitnow.com/jobs/companies/liqid-lig/senior-data-engineer-berlin-462279",
   "https://www.arbeitnow.com/jobs/companies/caronsale/machine-learning-engineer-berlin-36406",
   "https://www.arbeitnow.com/jobs/companies/exmox/senior-data-analyst-hamburg-472812",
