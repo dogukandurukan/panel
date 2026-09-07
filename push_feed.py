@@ -219,11 +219,17 @@ def oneri_satiri(veri):
         damga = o.get("t") or 0
         if not liste or not damga:
             return ""
+        # Bozuk payload'da liste dict ya da diğer türde olabilir; önce tipini doğrula
+        if not isinstance(liste, list) or len(liste) == 0:
+            return ""
+        ilk = liste[0]
+        if not isinstance(ilk, dict):
+            return ""
         yas_saat = (time.time() * 1000 - float(damga)) / 3600000
         if yas_saat > ONERI_TAZE_SAAT:
             return ""
-        return str((liste[0] or {}).get("bas") or "").strip()
-    except (AttributeError, TypeError, ValueError):
+        return str(ilk.get("bas") or "").strip()
+    except (AttributeError, TypeError, ValueError, KeyError, IndexError):
         return ""
 
 
