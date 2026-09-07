@@ -805,6 +805,14 @@
     <section class="card" style="margin-top:20px" ><div class="card-head"><div><p class="kicker">Kariyer</p><h2 class="card-title">İş Başvuruları</h2></div><div class="meta"><span id="basvuruTime">—</span><br><button class="ibtn" id="basvuruRefresh">Yenile</button></div></div>
     <div id="basvuruStats" class="statrow"><div class="loading">Başvurular çekiliyor…</div></div>
     <div id="basvuruList"></div>
+    <!-- Panel dışından (LinkedIn, şirket sitesi) yapılan başvurular hiçbir
+         yere düşmüyordu; öneri kuralları da yalnızca d:myApps'e baktığı için
+         hep sessiz kalıyordu. Tek satırlık elle giriş o boşluğu kapatıyor. -->
+    <div class="add-row" id="elBasvuru">
+      <input id="ebSirket" placeholder="Şirket" maxlength="60">
+      <input id="ebPoz" placeholder="Pozisyon" maxlength="80">
+      <button id="ebEkle">Başvurdum</button>
+    </div>
     <div id="retBox"></div></section>
 
     <section class="card" style="margin-top:20px" ><div class="card-head"><div><p class="kicker">Bütçe</p><h2 class="card-title">Harcama &amp; Kazanç</h2></div>
@@ -2236,6 +2244,7 @@ function progHesap(ad,spec,setler){
 }
 
 async function progIsle(ad,spec,setler){
+  if(sonSeansZor)return;                                   // fren: bkz. sonZorYukle()
   if(progBugun(ad))return;                                 // gün içinde bir kez
   const a=progHesap(ad,spec,setler);if(!a)return;
   prog[ad]={kg:a.yeni,tarih:todayKey(),eski:a.eski};
@@ -2254,7 +2263,37 @@ async function volKaydet(){
   vol[todayKey()]=t;await sSet(VOL_KEY,vol);
 }
 
-async function loadSess(){sess=await sGet('d:sess:'+todayKey())||{};}
+async function loadSess(){sess=await sGet('d:sess:'+todayKey())||{};await sonZorYukle();}
+
+/* ===== ARTIŞ FRENİ =====
+   Kullanıcı kararı (7 Eyl): önceki seansta "çok zor" dediysen çift ilerleme
+   o seans kiloyu ARTIRMIYOR. Kilo düşmüyor, sabit kalıyor — panelin kiloyu
+   kendiliğinden geri çekmemesi kuralı duruyor, yalnızca kendi artışını
+   frenliyor.
+
+   Neden BUGÜNÜN değil ÖNCEKİ seansın etiketi: "çok zor" seans kapanışında,
+   yani setler girildikten SONRA işaretleniyor; bugünkü cevabı beklemek freni
+   hep bir seans geç çalıştırırdı.
+
+   Neden bölgeye göre değil seans geneline göre: hareket adını bölgeye
+   eşlemek gerekirdi ("Bench press" -> omuz?) ve DEVAM.md §5'teki tuzak tam
+   bu — elle yazılan ad kalıpları hareket adı değişince sessizce kayboluyor.
+   Bölge işareti bandın 'zorlanma' kuralını besliyor, freni değil.
+
+   Pencere 7 GÜN: kapanışı boş bırakmak "sorun yok" demek olmadığı için
+   döngü geriye doğru cevaplı ilk seansı arıyor, ve sınır olmazsa bir kere
+   "çok zor" deyip bir daha hiç cevaplamayan biri freni kalıcı açık
+   bırakırdı. Bir hafta sonra fren kendiliğinden kalkıyor. */
+const FREN_GUN=7;
+let sonSeansZor=false;
+async function sonZorYukle(){
+  sonSeansZor=false;
+  for(let i=1;i<=FREN_GUN;i++){                            // bugün hariç, en yakın cevaplı seans
+    const se=await sGet('d:sess:'+dayBack(i));
+    const h=se&&se.his;
+    if(h&&h.n){sonSeansZor=(h.n==='cokzor');return;}       // ilk cevap belirleyici
+  }
+}
 async function saveSess(){await sSet('d:sess:'+todayKey(),sess);}
 
 function beep(){
@@ -2435,6 +2474,11 @@ function renderSess(el,ex){
     ar.hi+' tekrar tamamlarsan '+(rec+kgAdim(ad))+' kg\'a çıkar</div>';
   if(artis)html+='<div class="ss-artis">↑ '+artis.eski+' → <b>'+artis.kg+' kg</b> · üst ucu tutturdun, sonraki seans bu kilodan</div>';
   if(ar&&!artis)html+=tikanmaNot(ad);
+  /* Fren sessiz çalışmasın: üst ucu tutturup kilo artmayınca kullanıcı
+     bunu hata sanmamalı. */
+  if(ar&&sonSeansZor)html+='<div class="ss-oner">Önceki seansta "çok zor" dedin — '+
+    'bu seans reçete kendiliğinden artmayacak, kilo aynı kalıyor. '+
+    'Antrenmanı bitirince "nasıl geçti"yi cevaplarsan fren ona göre kalkar.</div>';
   html+=eforNot(setler,ar,artis);
 
   if(h){
@@ -4203,6 +4247,32 @@ function appRows(){
     .filter(r=>!varOlan.has(anahtar(r)));   // Sheet'e de eklediysen iki kez sayma
   return sheetRows.concat(yerel);
 }
+/* Elle başvuru girişi. appRows() zaten myApps'i Sheet satırlarıyla
+   birleştirip tekrarı ayıklıyor, yani buraya yazan satır hem listede
+   görünüyor hem de 'basvuru-tempo'/'donus-yok' kurallarına sayılıyor.
+   Anahtar 'el:' önekli: jobs.json'dan gelen ilanların anahtarıyla
+   çakışmasın, ikisi aynı ilan olsa bile sayı şişmesin diye şirket+pozisyon
+   üzerinden türetiliyor. */
+async function elleBasvuruEkle(){
+  const s=document.getElementById('ebSirket'),p=document.getElementById('ebPoz');
+  const sade=t=>(t||'').replace(/\s+/g,' ').trim();         // araya kaçan çift boşluk listede görünüyordu
+  const sirket=sade(s.value),poz=sade(p.value);
+  if(!sirket||!poz)return;                                  // ikisi de gerekli, boş kayıt yaratma
+  /* toLowerCase() 'İ'yi i+U+0307'ye çeviriyor (DEVAM.md §5.10'un JS karşılığı);
+     locale'li hâli aynı girdiyi hep aynı anahtara indiriyor. */
+  const kucult=t=>t.toLocaleLowerCase('tr').replace(/\s+/g,' ').trim();
+  const k='el:'+kucult(sirket)+'|'+kucult(poz);
+  if(!myApps.some(a=>a.key===k)){
+    myApps.push({key:k,company:sirket,position:poz,location:'',
+                 date:todayKey(),status:'Bekliyor',url:''});
+    myApps=myApps.slice(-200);
+    await sSet(K.myApps,myApps);
+  }
+  s.value='';p.value='';
+  renderBasvuru(sheetRows);
+  renderOneri();                                            // tempo kuralı hemen tazelensin
+}
+
 function renderBasvuru(data){
   sheetRows=data;
   data=appRows();
@@ -5983,6 +6053,9 @@ if(navigator.serviceWorker){
   document.getElementById('wtBugun').onclick=()=>{wtMod='bugun';renderWtLog();};
   document.getElementById('wtIlerleme').onclick=()=>{wtMod='ilerleme';renderWtLog();};
   document.getElementById('basvuruRefresh').onclick=loadBasvuru;
+  document.getElementById('ebEkle').onclick=elleBasvuruEkle;
+  ['ebSirket','ebPoz'].forEach(id=>{document.getElementById(id).onkeydown=ev=>{
+    if(ev.key==='Enter'){ev.preventDefault();elleBasvuruEkle();}};});
   /* Yenile artık dosya çekmiyor: gist'ten senkron çekip yeniden çiziyor. */
   document.getElementById('gmailRefresh').onclick=async()=>{
     try{await syncPull(true);}catch(e){}

@@ -17,7 +17,7 @@ uzamıştı). Kartların kendisi sekmenin içinde. Sekme seçimi `d:tab`, tema g
 CİHAZA özel (`SYNC_SKIP`'te).
 
 **ÖNERİ BANDI** (`#oneriBox` — sabit şeridin de sekmelerin de üstünde):
-Sekiz kurallık deterministik motor (`ONERI` tablosu). Kurallar aşağıdaki
+Dokuz kurallık deterministik motor (`ONERI` tablosu). Kurallar aşağıdaki
 kartların verisinden türüyor, yeni anahtar istemiyor; `d:oneriKapali` her
 öneriyi `[×]` ile 7 gün susturuyor. **Hiçbir kural tetiklenmezse bant
 `hidden`** — boşluk bile bırakmıyor. Sonuç `d:oneri`'ye yazılıyor, senkron
@@ -167,7 +167,8 @@ Actions log'una da şirket adı/konu basılmaz — log herkese açık.
 | **Bant sadece tetiklenince görünür** | 7 Eyl | Her gün "iyi gidiyorsun" diyen kart üç gün sonra okunmaz. Söyleyecek şey yoksa `hidden`, boşluk da bırakmıyor. En fazla `ONERI_MAX`=3 öneri, gerisi "+N öneri daha". |
 | **`donus-yok` ret varken SUSAR** | 7 Eyl | "Hiç dönüş yok" ancak gerçekten hiç dönüş yokken söylenebilir — ret de bir dönüştür. Ret sayısı `d:myApps[].status`'tan gelmiyor (orası hep 'Bekliyor'), İş Başvuruları kartının kullandığı `retElle`/`retler` eşleştirmesinden geliyor. Kural neden söylemiyor, yalnızca sayıyor: panelin "CV'n kötü" diyecek verisi yok. |
 | **`SABIT_KAT` kullanıcının GERÇEK sabit giderlerini kapsamalı** | 7 Eyl | Liste `['Kira','Fatura']`di; araba ödemesi kategori olarak yoktu, "Ulaşım/Diğer" giriliyordu ve ay sonu tahmini onu değişken sanıp 30 ile çarpıyordu. §5.19'un tuzağı kategori listesi eksik olduğu için arka kapıdan geri gelmişti. `Araba` ve `Kredi/Taksit` eklendi. **Düzenli ayda bir ödenen yeni bir kalem çıkarsa listeye eklenmeli.** |
-| **Seans kapanışı kiloyu OYNATMIYOR** | 7 Eyl | "Nasıl geçti / neresi zorladı" verisi (`d:sess:*.his`) `zorlanma` kuralını besliyor, ama çift ilerlemeye karışmıyor. Panelin yerleşik kuralı: kiloyu kullanıcı adına kendiliğinden oynatma. Otomatik artışa fren koymak ayrı bir karar — sorulmadan yapılmadı. |
+| **Artış freni: önceki seans "çok zor" ise reçete artmaz** | 7 Eyl | Kullanıcı onayladı. Kilo DÜŞMÜYOR, sabit kalıyor — "paneli kiloyu kendiliğinden geri çekmesin" kuralı duruyor, yalnızca panelin kendi artışı frenleniyor. Fren SEANS geneline bakıyor, bölgeye değil: hareket adını bölgeye eşlemek §5'teki elle-kalıp tuzağı olurdu. Pencere 7 gün, yoksa bir kez "çok zor" deyip bir daha cevaplamayan biri freni kalıcı açık bırakırdı. Seans ekranında yazıyor — sessiz çalışmıyor. |
+| **Elle başvuru girişi** | 7 Eyl | Kullanıcı ağırlıklı LinkedIn'den başvuruyor, o başvurular hiçbir yere düşmüyordu; `basvuru-tempo` ve `donus-yok` yalnızca `d:myApps`'e baktığı için hep sessiz kalıyordu. İş Başvuruları kartına şirket+pozisyon satırı eklendi, anahtar `el:` önekli. `appRows()` zaten Sheet ile birleştirip tekrarı ayıklıyor. |
 | **LLM / Jarvis bağlanmadı** | 3 Eyl | Konuşuldu, kullanıcı "çok gerek görmedim" dedi. Günlük brifing reddedildi (veri zaten ekranda). Doğal dille giriş istenirse önce **yerel ayrıştırıcı** yazılacak (anahtarsız, çevrimdışı, gizlilik sorunsuz); model ancak o yetmezse yedek olarak. Kendiliğinden yeniden önerme. |
 | **`PICK = 3`'e dokunulmadı** | — | B bölümüne bak. |
 
