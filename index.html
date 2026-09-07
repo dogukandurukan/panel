@@ -4637,7 +4637,7 @@ async function hdUygula(delta){
   const yeni=Math.round(num(targets.kcal)+delta);
   targets.kcal=yeni;targets.kcalOfs=yeni-num(DEFAULT_TARGETS.kcal);
   await sSet(K.targets,targets);
-  renderTargets();renderBars();renderHaftalik();
+  renderTargets();renderBars();renderHaftalik();renderOneri();
 }
 
 /* ===== ÖNERİ MOTORU =====
@@ -4689,7 +4689,18 @@ async function oneriCtx(){
 
 /* Sıra = öncelik. Bildirime giden list[0]. id'ler KARARLI: susturma kaydı
    bunlara bağlı, değişirse kullanıcının [×]'i sessizce kaybolur. */
-const ONERI=[];
+const ONERI=[
+  /* 1 — Haftalık Değerlendirme'nin hükmü. Tekrar değil, YUKARI TAŞIMA:
+     o kart sekme 1'in en altında, günlük akışta görünmüyor. Mantık
+     hdHukum()'da, iki yerde durmuyor. */
+  {id:'kcal-hukum',alan:'spor',kos(ctx){
+    const h=hdHukum(ctx.bu,ctx.trend);
+    if(h.eksik)return null;                       // veri yoksa sus, sayı uydurma
+    if(!h.delta&&/böyle devam/.test(h.metin))return null;  // her şey yolundaysa susar
+    return {bas:h.delta>0?'Kilon 2 haftadır sabit':(h.delta<0?'Hızlı kilo alıyorsun':'Hedefinin altında kaldın'),
+      metin:h.metin,delta:h.delta};
+  }},
+];
 
 async function renderOneri(){
   const el=document.getElementById('oneriBox');if(!el)return;
