@@ -138,6 +138,14 @@ Actions log'una da şirket adı/konu basılmaz — log herkese açık.
 ### D. Küçük açık uçlar
 
 - Günün Bilgisi derinliğinde **öneri yok**, yalnızca paragraf var.
+- **Öneri motorundan ertelenenler** (7 Eyl incelemelerinde bulundu, düzeltilmedi):
+  `tonaj-dusus` guard'ı "üç tam hafta" değil "üç pencere boş değil" kontrol
+  ediyor; dar bir aralıkta en eski hafta kısmi olabilir — yalnızca yanlış
+  SESSİZLİĞE yol açar, uydurma düşüşe değil. `ay-sonu-acik`'ta ileri tarihli
+  bir GELİR kaydı uyarıyı bastırabilir. `retler`/`retElle` tarih taşımadığı
+  için eski bir Gmail retti aynı şirkete yapılan YENİ başvurunun penceresini
+  de susturabilir (veri modelinin önceden var olan boşluğu). Tonaj pencere
+  sabitleri (0-6/7-13/14-20) adlandırılmış sabit değil.
 - Tarihten "devamı": olay bir ÜLKEYE bağlıysa detay o ülkenin genel maddesi
   oluyor (gerçek veri ama sığ).
 - Cloze quiz 5 kelimenin ~3'ünde çıkıyor; çekimli fiil/çok sözcüklü kalıpta
