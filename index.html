@@ -4803,6 +4803,36 @@ const ONERI=[
       metin:'Değişken gider günde ort. '+tl(deg/g)+'; ay sonu tahmini '+tl(tahmin)+
         ', bu ayki gelir '+tl(gelir)+'.'};
   }},
+
+  /* 7 — Başvuru temposu. d:myApps YALNIZCA panelden "Başvurdum" denenleri
+     tutuyor; Sheet'e elle girilenler burada yok. Metin bu yüzden
+     "panelden kaydedilen" diyor, "hiç başvurmuyorsun" demiyor. */
+  {id:'basvuru-tempo',alan:'is',kos(ctx){
+    const apps=ctx.apps||[];
+    const son7=apps.filter(a=>a.date>=dayBack(6)).length;
+    const onceki7=apps.filter(a=>a.date>=dayBack(13)&&a.date<dayBack(6)).length;
+    if(onceki7<3)return null;                 // kıyas tabanı yoksa hüküm yok
+    if(son7>=onceki7/2)return null;
+    return {bas:'Başvuru temposu düştü',
+      metin:'Son 7 günde '+son7+', önceki 7 günde '+onceki7+
+        ' başvuru (panelden kaydedilenler).'};
+  }},
+
+  /* 8 — Dönüş yokluğu. Panelde "görüşme" diye bir alan yok; durum
+     Bekliyor/Ret ikilisinden ibaret (check_rejections.py Ret yazıyor).
+     Kural dolaylı bakıyor: hiçbiri bu ikilinin dışına çıkmamışsa tetiklenir.
+     Sheet'te bir satır elle "Görüşme" yapıldıysa susar.
+     Çıktı GÖZLEM olarak yazılıyor — panelin "CV'n kötü" diyecek verisi yok. */
+  {id:'donus-yok',alan:'is',kos(ctx){
+    const liste=(ctx.apps||[]).filter(a=>a.date>=dayBack(20));
+    if(liste.length<10)return null;
+    const disari=liste.filter(a=>['Bekliyor','Ret'].indexOf(String(a.status||'Bekliyor'))<0);
+    if(disari.length)return null;
+    const ret=liste.filter(a=>a.status==='Ret').length;
+    return {bas:'21 günde '+liste.length+' başvuru, hiç dönüş yok',
+      metin:ret+' ret, '+(liste.length-ret)+' cevapsız. Mektup odağını ya da '+
+        'ilan seçimini gözden geçirmek isteyebilirsin.'};
+  }},
 ];
 
 async function renderOneri(){
