@@ -202,7 +202,32 @@ def cevaplanmis(veri, gun_anahtari, dilim):
     return bool(sched.get(str(dilim)) or sched.get(dilim))
 
 
-def gonder(saat, ad, dilim, tur, subs, gizli, gun_anahtari):
+ONERI_TAZE_SAAT = 24
+
+
+def oneri_satiri(veri):
+    """Panelin yazdığı en öncelikli öneriyi döndürür; bayatsa boş string.
+
+    Kurallar tarayıcıda çalışıyor (bkz. tasarım notu): panel açılmadan
+    d:oneri güncellenmiyor. İki günlük bir öneriyi taze gibi göstermek
+    "her gösterge gerçek veriye bağlı" kuralını çiğner, o yüzden 24 saatten
+    eskisi bildirime hiç girmiyor.
+    """
+    try:
+        o = ((veri or {}).get("data") or {}).get("d:oneri") or {}
+        liste = o.get("list") or []
+        damga = o.get("t") or 0
+        if not liste or not damga:
+            return ""
+        yas_saat = (time.time() * 1000 - float(damga)) / 3600000
+        if yas_saat > ONERI_TAZE_SAAT:
+            return ""
+        return str((liste[0] or {}).get("bas") or "").strip()
+    except (AttributeError, TypeError, ValueError):
+        return ""
+
+
+def gonder(saat, ad, dilim, tur, subs, gizli, gun_anahtari, oneri=""):
     """Bildirimi gönderir. Hem cron hem dış tetik buraya düşüyor —
     gövde, VAPID iddiası ve ölü abonelik işleme tek yerde kalsın."""
     sub = os.environ.get("VAPID_SUB", "").strip() or VAPID_SUB_VARSAYILAN
@@ -212,7 +237,7 @@ def gonder(saat, ad, dilim, tur, subs, gizli, gun_anahtari):
 
     govde = json.dumps({
         "title": ad,
-        "body": f"{saat} · başladın mı?",
+        "body": f"{saat} · başladın mı?" + (f" · {oneri}" if oneri else ""),
         "tag": f"yok-{gun_anahtari}-{dilim}",
         "url": "./index.html" + HEDEF_KART.get(tur, ""),
         "icon": "icon-192.png",
@@ -239,7 +264,8 @@ def gonder(saat, ad, dilim, tur, subs, gizli, gun_anahtari):
             print(f"gönderilemedi: {e}")
 
     print(f"{ad} ({saat}) — {basarili}/{len(subs)} cihaza gönderildi."
-          + (f" ölü abonelik: {len(olu)}" if olu else ""))
+          + (f" ölü abonelik: {len(olu)}" if olu else "")
+          + (" · öneri eklendi" if oneri else ""))
     return 0
 
 
@@ -264,6 +290,7 @@ def main():
 
     push = json.loads(push_ham)
     veri = json.loads(veri_ham) if veri_ham else {}
+    oneri = oneri_satiri(veri)
     subs = push.get("subs") or []
     plan = push.get("plan") or {}
     if not subs:
@@ -338,7 +365,7 @@ def main():
             print(f"{simdi:%H:%M} — dış tetik {erken} dk erken geldi, "
                   f"{saat}'e kadar bekleniyor.")
             time.sleep(min(erken, DIS_ONCE_DK) * 60)
-        return gonder(saat, ad, dilim, tur, subs, gizli, gun_anahtari)
+        return gonder(saat, ad, dilim, tur, subs, gizli, gun_anahtari, oneri)
 
     hedef = None if zorla else cron_dilimi(bugun, plan)
     if hedef == "BUGUN_YOK":
@@ -407,7 +434,7 @@ def main():
         except Exception as e:
             print(f"uyku sonrası kontrol yapılamadı ({e}) — bildirim yine de gönderiliyor.")
 
-    return gonder(saat, ad, dilim, tur, subs, gizli, gun_anahtari)
+    return gonder(saat, ad, dilim, tur, subs, gizli, gun_anahtari, oneri)
 
 
 if __name__ == "__main__":
