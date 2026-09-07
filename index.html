@@ -20,6 +20,24 @@
   :root{--paper:#E9E4D8;--card:#F4F0E7;--ink:#211F1A;--muted:#6E675A;--line:#D3CCBD;--line2:#E1DACC;
     --accent:#1C4E48;--up:#2F7D57;--down:#B4462F;
     --serif:'Fraunces',Georgia,serif;--sans:'Inter',system-ui,sans-serif;--mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;}
+  .oneri{margin:0 0 18px;display:flex;flex-direction:column;gap:8px}
+  /* [hidden] UA kuralı ile aynı özgüllükte olduğundan .oneri{display:flex} onu ezerdi
+     (yazar stylesheet UA stylesheet'i kazanır); boşken 18px alt boşluk sızıp gerçek
+     görsel değişikliğe yol açıyordu — ölçerek yakaladım. Bu kural onu geri kapatıyor. */
+  .oneri[hidden]{display:none}
+  .oneri-r{display:flex;align-items:flex-start;gap:10px;background:var(--card);
+    border:1px solid var(--line);border-left:3px solid var(--accent);
+    border-radius:8px;padding:10px 12px}
+  .oneri-ic{flex:1;min-width:0}
+  .oneri-bas{font-weight:600;color:var(--ink);font-size:14px}
+  .oneri-mt{color:var(--muted);font-size:13px;margin-top:2px;line-height:1.45}
+  .oneri-et{flex:none;font-size:11px;letter-spacing:.04em;text-transform:uppercase;
+    color:var(--muted);border:1px solid var(--line2);border-radius:4px;padding:2px 6px;margin-top:2px}
+  .oneri-kap{flex:none;background:none;border:0;color:var(--muted);cursor:pointer;
+    font-size:16px;line-height:1;padding:2px 4px}
+  .oneri-kap:hover{color:var(--down)}
+  .oneri-daha{color:var(--muted);font-size:12px;padding-left:2px}
+  @media(max-width:640px){.oneri-et{display:none}}
   *{box-sizing:border-box;} html,body{margin:0;padding:0;}
   body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.5;padding:22px 20px 40px;-webkit-font-smoothing:antialiased;}
   .wrap{max-width:1200px;margin:0 auto;}
@@ -669,6 +687,10 @@
     <div class="dateline"><span id="greeting">Günaydın</span><span class="dot"></span><span id="placeName">İstanbul, Kadıköy</span><span class="dot"></span><span id="weekno">—</span></div>
   </header>
   <div id="syncBox" style="display:none"></div>
+  <!-- ÖNERİ BANDI: sekmelerin de sabit şeridin de üstünde. Kapsam iki sekmeye
+       yayıldığı için (spor sekme 1, para+iş sekme 2) hiçbir sekmenin içine
+       giremez. Kural tetiklenmezse hidden — söyleyecek şey yokken yer kaplamaz. -->
+  <div id="oneriBox" class="oneri" hidden></div>
   <!-- SABİT ŞERİT: sekmeden bağımsız, her zaman görünür. Günü
        yönlendiren üç kart; bunlar bir sekmeye gömülürse gün boyu
        sekme değiştirmek gerekirdi. -->
@@ -2176,8 +2198,10 @@ const progBugun=ad=>(prog[ad]&&prog[ad].tarih===todayKey()&&prog[ad].eski!=null)
    Aynı kiloda üst üste kaç seans kalındığını d:wtlog'dan sayar — yeni veri
    istemez. Panel kiloyu KENDİLİĞİNDEN DÜŞÜRMEZ: kullanıcı otomatik geri
    çekilmeyi istemedi (bir hafta hasta olunca da tetiklenirdi). */
-function takiliSeans(ad){
-  const g=hareketGecmisi()[ad]||[];
+/* gecmis verilmezse kendi kurar (mevcut çağrılar bu yolu kullanıyor);
+   öneri motoru ctx'deki hazır geçmişi geçiriyor — hem hızlı hem test edilebilir. */
+function takiliSeans(ad,gecmis){
+  const g=(gecmis||hareketGecmisi())[ad]||[];
   if(g.length<2)return 0;
   const son=num(g[g.length-1][1]);let n=0;
   for(let i=g.length-1;i>=0;i--){if(num(g[i][1])===son)n++;else break;}
@@ -4616,6 +4640,98 @@ async function hdUygula(delta){
   renderTargets();renderBars();renderHaftalik();
 }
 
+/* ===== ÖNERİ MOTORU =====
+/* Panel bir gösterge tablosuydu: veriyi gösteriyor, yorumu kullanıcı yapıyordu.
+   Bu katman veriden çıkarım yapıp yön gösteriyor.
+
+   Model YOK — kurallar burada, deterministik. Bedeli: kurallar tarayıcıda
+   çalışır, panel açılmadan öneri güncellenmez. Kuralları push_feed.py'ye
+   kopyalamak iki kaynak demek olurdu, kopyalanmadı.
+
+   Kural saf fonksiyon: ctx alır, null ya da {bas,metin,delta?} döner.
+   ctx BİR KEZ toplanıyor — hdTopla() 7 günlük döngü yapıyor, sekiz kural
+   sekiz kez dönmemeli. */
+const ONERI_MAX=3;      // banda basılan en fazla öneri
+const ONERI_SUSMA=7;    // [×] sonrası kaç gün susar
+let oneriKapali={},oneriSon='';
+
+const gunFark=(a,b)=>Math.round((new Date(b+'T12:00:00')-new Date(a+'T12:00:00'))/86400000);
+
+/* Programdaki ağırlık hareketleri (tekrar aralığı olanlar). Aktivite/dinlenme
+   günlerindeki '45-75 dk' gibi satırlar setHedef()'ten geçmiyor. */
+function programHareketleri(){
+  const s={};
+  for(let d=0;d<7;d++)(WK[d].ex||[]).forEach(e=>{if(setHedef(e[1]))s[e[0]]=1;});
+  return Object.keys(s);
+}
+
+/* Ayın 1..sonGun günlerine düşen kayıtlar. Kıyas pencereleri EŞİT olmalı
+   (DEVAM.md §5.19): ayın 6'sındaki harcama geçen ayın ilk 6 gününe bakar. */
+function ayPenceresi(kayitlar,sonGun){
+  return (kayitlar||[]).filter(r=>{const g=+String(r.d||'').slice(8,10);
+    return g>=1&&g<=sonGun;});
+}
+
+async function oneriCtx(){
+  const ay=thisMonth();
+  return {
+    bu:await hdTopla(0,HD_PENCERE-1),
+    onceki:await hdTopla(HD_PENCERE,HD_PENCERE*2-1),
+    trend:bwTrend(),
+    gecmis:hareketGecmisi(),
+    vol:vol||{},
+    money:{ay,buAy:await sGet('d:money:'+ay)||[],
+           gecenAy:await sGet('d:money:'+shiftMonth(ay,-1))||[]},
+    apps:myApps||[],retler:retler||[],retElle:retElle||[],
+    bugunGun:new Date().getDate()
+  };
+}
+
+/* Sıra = öncelik. Bildirime giden list[0]. id'ler KARARLI: susturma kaydı
+   bunlara bağlı, değişirse kullanıcının [×]'i sessizce kaybolur. */
+const ONERI=[];
+
+async function renderOneri(){
+  const el=document.getElementById('oneriBox');if(!el)return;
+  const ctx=await oneriCtx(),bugun=todayKey(),liste=[];
+  for(const k of ONERI){
+    const kapali=oneriKapali[k.id];
+    if(kapali&&gunFark(kapali,bugun)<ONERI_SUSMA)continue;
+    let r=null;
+    /* Bir kuralın hatası bandın tamamını boşaltmasın. */
+    try{r=await k.kos(ctx);}catch(e){console.warn('öneri kuralı hata:',k.id,e);}
+    if(r&&r.bas)liste.push({id:k.id,alan:k.alan,bas:r.bas,metin:r.metin||'',delta:r.delta||0});
+  }
+  if(!liste.length){el.hidden=true;el.innerHTML='';await oneriYaz([]);return;}
+  const goster=liste.slice(0,ONERI_MAX),kalan=liste.length-goster.length;
+  const ETIKET={spor:'Spor',para:'Para',is:'İş'};
+  el.innerHTML=goster.map(o=>
+    '<div class="oneri-r"><span class="oneri-et">'+esc(ETIKET[o.alan]||'')+'</span>'+
+    '<div class="oneri-ic"><div class="oneri-bas">'+esc(o.bas)+'</div>'+
+    (o.metin?'<div class="oneri-mt">'+esc(o.metin)+'</div>':'')+
+    (o.delta?'<button class="ibtn" data-oneri-uygula="'+esc(String(o.delta))+'" style="margin-top:8px">'+
+      'Hedefi '+Math.round(num(targets.kcal))+' → '+Math.round(num(targets.kcal)+o.delta)+' kcal yap</button>':'')+
+    '</div><button class="oneri-kap" data-oneri-kapat="'+esc(o.id)+'" title="7 gün sustur">×</button></div>'
+  ).join('')+(kalan?'<div class="oneri-daha">+'+kalan+' öneri daha (bantta ilk '+ONERI_MAX+' gösteriliyor)</div>':'');
+  el.hidden=false;
+  el.querySelectorAll('[data-oneri-kapat]').forEach(b=>b.onclick=async()=>{
+    oneriKapali[b.dataset.oneriKapat]=todayKey();
+    await sSet('d:oneriKapali',oneriKapali);renderOneri();});
+  el.querySelectorAll('[data-oneri-uygula]').forEach(b=>b.onclick=()=>hdUygula(num(b.dataset.oneriUygula)));
+  await oneriYaz(goster);
+}
+
+/* Bildirim için gist'e taşınan özet. Aynı içerik tekrar yazılmıyor:
+   sSet her yazmada senkron push'u tetikliyor (4 sn gecikmeli). */
+async function oneriYaz(liste){
+  const sade=liste.map(o=>({alan:o.alan,bas:o.bas,metin:o.metin}));
+  const imza=JSON.stringify(sade);
+  if(imza===oneriSon)return;
+  oneriSon=imza;
+  await sSet('d:oneri',{t:Date.now(),list:sade});
+}
+/* ===== ÖNERİ MOTORU SONU ===== */
+
 /* ===== HARCAMA & KAZANÇ =====
    Tamamen yerel: d:money:YYYY-MM anahtarında aylık kayıt dizisi. Sunucuya hiçbir
    şey gitmez. Kayıt: {k:'in'|'out', c:kategori, a:tutar, n:not, d:tarih} */
@@ -5623,9 +5739,9 @@ if(navigator.serviceWorker){
     await loadGmailJson();};
   document.getElementById('agentRefresh').onclick=()=>loadAgents(true);
   document.getElementById('jobsCfg').onclick=openJobsCfg;
-  jobProfile=await sGet(K.jobProfile)||null;jobsApplied=await sGet(K.jobsApplied)||[];myApps=await sGet(K.myApps)||[];retler=await sGet('d:retler')||[];retGizli=await sGet('d:retGizli')||[];retElle=await sGet('d:retElle')||[];
+  jobProfile=await sGet(K.jobProfile)||null;jobsApplied=await sGet(K.jobsApplied)||[];myApps=await sGet(K.myApps)||[];retler=await sGet('d:retler')||[];retGizli=await sGet('d:retGizli')||[];retElle=await sGet('d:retElle')||[];oneriKapali=await sGet('d:oneriKapali')||{};
   document.getElementById('placeName').textContent=PLACE.name;
-  renderTasks();await loadSched();await loadYok();await loadMorning();await renderRun();await loadWorkout();renderWtLog();await loadMeals();await loadWater();await loadSleep();await loadBW();await loadMoney();await renderBugunHarcama();await renderHaftalik();loadHabits();await initSync();
+  renderTasks();await loadSched();await loadYok();await loadMorning();await renderRun();await loadWorkout();renderWtLog();await loadMeals();await loadWater();await loadSleep();await loadBW();await loadMoney();await renderBugunHarcama();await renderHaftalik();await renderOneri();loadHabits();await initSync();
   renderFacts();renderFilm();renderArtist();renderBook();renderHistory();renderGerman();renderNews();renderTR();renderRetler();renderWatch();renderUS();renderWorldIdx();renderGold();renderWorld();renderMktSummary();renderFinNote();
   ['watchList','usList','idxList'].forEach(stkTiklaBagla);
   loadFX(false);loadBorsaJson();loadBasvuru();loadGmailJson();loadFactsJson();loadAgents(false);loadWx();loadJobsJson();
