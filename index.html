@@ -4571,7 +4571,10 @@ function hdHukum(bu,t){
       'Hedefi yükseltmek açığı büyütür — önce mevcut '+Math.round(hedK)+' kcal\'i tutturmayı dene.'};
   if(Math.abs(t.pct)<BW_FLAT_PCT)return {delta:150,
     metin:'Hedefini tutturdun ama kilon 2 haftadır sabit. Hedefi 150 kcal artırmayı düşün.'};
-  return {delta:0,
+  return {delta:0,iyi:true,  // her şey yolunda: aksiyon gerekmiyor. Bandın susma kararı
+                             // bu bayrağa baksın, cümle metnine değil — faz anahtarı
+                             // (cut/bulk) bu cümleleri yeniden yazınca metin eşleşmesi
+                             // sessizce kırılır, bayrak kırılmaz.
     metin:'Haftalık %'+t.pct.toFixed(2)+' ile bulk aralığındasın. Hedefe dokunma, böyle devam.'};
 }
 async function renderHaftalik(){
@@ -4695,8 +4698,8 @@ const ONERI=[
      hdHukum()'da, iki yerde durmuyor. */
   {id:'kcal-hukum',alan:'spor',kos(ctx){
     const h=hdHukum(ctx.bu,ctx.trend);
-    if(h.eksik)return null;                       // veri yoksa sus, sayı uydurma
-    if(!h.delta&&/böyle devam/.test(h.metin))return null;  // her şey yolundaysa susar
+    if(h.eksik)return null;   // veri yoksa sus, sayı uydurma
+    if(h.iyi)return null;     // her şey yolundaysa susar (metne değil bayrağa bakar)
     return {bas:h.delta>0?'Kilon 2 haftadır sabit':(h.delta<0?'Hızlı kilo alıyorsun':'Hedefinin altında kaldın'),
       metin:h.metin,delta:h.delta};
   }},
