@@ -4703,6 +4703,42 @@ const ONERI=[
     return {bas:h.delta>0?'Kilon 2 haftadır sabit':(h.delta<0?'Hızlı kilo alıyorsun':'Hedefinin altında kaldın'),
       metin:h.metin,delta:h.delta};
   }},
+
+  /* 2 — Protein açığı. En az 4 günlük kayıt istiyor: iki günün ortalaması
+     hüküm vermeye yetmez. Kaydı olan ama porsiyon işaretlenmemiş gün
+     hdTopla()'da zaten sayılmıyor (DEVAM.md §5.20). */
+  {id:'protein-dusuk',alan:'spor',kos(ctx){
+    if(!ctx.bu||ctx.bu.gun<4)return null;
+    const pOrt=ctx.bu.p/ctx.bu.gun,pHed=ctx.bu.hP/ctx.bu.gun,acik=pHed-pOrt;
+    if(acik<15)return null;
+    return {bas:'Protein günde ort. '+Math.round(acik)+' g eksik',
+      metin:'Son 7 günde ortalama '+Math.round(pOrt)+' g, hedef '+Math.round(pHed)+' g. '+
+        'Akşam shake\'ini suyla değil sütle yaparsan ~12 g gelir.'};
+  }},
+
+  /* 3 — Tıkanan hareket. Eşik (3 seans) ve sayım takiliSeans()'ta zaten var;
+     tikanmaNot() bunu gösteriyor ama YALNIZCA o hareketin seansı açılınca.
+     Bant bütün program için özetliyor, eşik kopyalanmıyor. */
+  {id:'hareket-tikandi',alan:'spor',kos(ctx){
+    const tikanan=programHareketleri().filter(ad=>takiliSeans(ad,ctx.gecmis)>=3);
+    if(!tikanan.length)return null;
+    return {bas:tikanan.length+' hareket 3+ seanstır aynı kiloda',
+      metin:tikanan.slice(0,4).join(', ')+
+        (tikanan.length>4?' ve '+(tikanan.length-4)+' tane daha':'')+
+        '. Antrenman kartında her biri için not var.'};
+  }},
+
+  /* 4 — Tonaj düşüşü. Üç haftalık pencere gerekiyor; d:vol dolmadan
+     (DEVAM.md §4) bu kural sessiz kalır, sayı uydurmaz. */
+  {id:'tonaj-dusus',alan:'spor',kos(ctx){
+    const t=(a,b)=>{let s=0;for(let i=a;i<=b;i++)s+=num((ctx.vol||{})[dayBack(i)]);return s;};
+    const h0=t(0,6),h1=t(7,13),h2=t(14,20);
+    if(!h0||!h1||!h2)return null;
+    if(!(h0<h1&&h1<h2))return null;
+    const bin=n=>Math.round(n).toLocaleString('tr-TR');
+    return {bas:'Tonaj 2 haftadır düşüyor',
+      metin:bin(h2)+' → '+bin(h1)+' → '+bin(h0)+' kg. Deload ya da uyku tarafına bakmak isteyebilirsin.'};
+  }},
 ];
 
 async function renderOneri(){
