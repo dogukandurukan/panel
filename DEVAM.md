@@ -30,6 +30,7 @@ tek satır ekliyor.
 | `protein-dusuk` | spor | 7 günlük protein açığı (en az 4 gün kaydı) |
 | `hareket-tikandi` | spor | `takiliSeans()` ≥ 3 olan program hareketleri |
 | `tonaj-dusus` | spor | `d:vol` 2 hafta üst üste düşüyor |
+| `zorlanma` | spor | Seans kapanışı (`d:sess:*.his`): aynı bölge 2+ kez ya da 2+ "çok zor" |
 | `kategori-sicrama` | para | Kategori, geçen ayın **aynı gün penceresine** göre %60+ ve ≥₺500 |
 | `ay-sonu-acik` | para | Değişken gider tempo + kalan sabit gider > gelir |
 | `basvuru-tempo` | is | Son 7 gün, önceki 7 günün yarısından az |
@@ -165,6 +166,8 @@ Actions log'una da şirket adı/konu basılmaz — log herkese açık.
 | **Öneri motoru MODELSİZ.** Kurallar `index.html`'de, deterministik | 7 Eyl | Kullanıcı kanal olarak "panelde kart + telefona bildirim" seçti, kapsam olarak spor/para/iş (rutin-uyku dışarıda, Alışkanlık Serileri zaten gösteriyor). LLM kararıyla tutarlı: anahtarsız, çevrimdışı, gizlilik sorunsuz. **Bedeli bilerek kabul edildi:** kurallar tarayıcıda çalışıyor, panel açılmadan `d:oneri` güncellenmiyor, 24 saatten eskisi bildirime girmiyor. **Kuralları `push_feed.py`'ye kopyalamayı ÖNERME** — iki kaynak, kaçınılmaz sapma. |
 | **Bant sadece tetiklenince görünür** | 7 Eyl | Her gün "iyi gidiyorsun" diyen kart üç gün sonra okunmaz. Söyleyecek şey yoksa `hidden`, boşluk da bırakmıyor. En fazla `ONERI_MAX`=3 öneri, gerisi "+N öneri daha". |
 | **`donus-yok` ret varken SUSAR** | 7 Eyl | "Hiç dönüş yok" ancak gerçekten hiç dönüş yokken söylenebilir — ret de bir dönüştür. Ret sayısı `d:myApps[].status`'tan gelmiyor (orası hep 'Bekliyor'), İş Başvuruları kartının kullandığı `retElle`/`retler` eşleştirmesinden geliyor. Kural neden söylemiyor, yalnızca sayıyor: panelin "CV'n kötü" diyecek verisi yok. |
+| **`SABIT_KAT` kullanıcının GERÇEK sabit giderlerini kapsamalı** | 7 Eyl | Liste `['Kira','Fatura']`di; araba ödemesi kategori olarak yoktu, "Ulaşım/Diğer" giriliyordu ve ay sonu tahmini onu değişken sanıp 30 ile çarpıyordu. §5.19'un tuzağı kategori listesi eksik olduğu için arka kapıdan geri gelmişti. `Araba` ve `Kredi/Taksit` eklendi. **Düzenli ayda bir ödenen yeni bir kalem çıkarsa listeye eklenmeli.** |
+| **Seans kapanışı kiloyu OYNATMIYOR** | 7 Eyl | "Nasıl geçti / neresi zorladı" verisi (`d:sess:*.his`) `zorlanma` kuralını besliyor, ama çift ilerlemeye karışmıyor. Panelin yerleşik kuralı: kiloyu kullanıcı adına kendiliğinden oynatma. Otomatik artışa fren koymak ayrı bir karar — sorulmadan yapılmadı. |
 | **LLM / Jarvis bağlanmadı** | 3 Eyl | Konuşuldu, kullanıcı "çok gerek görmedim" dedi. Günlük brifing reddedildi (veri zaten ekranda). Doğal dille giriş istenirse önce **yerel ayrıştırıcı** yazılacak (anahtarsız, çevrimdışı, gizlilik sorunsuz); model ancak o yetmezse yedek olarak. Kendiliğinden yeniden önerme. |
 | **`PICK = 3`'e dokunulmadı** | — | B bölümüne bak. |
 

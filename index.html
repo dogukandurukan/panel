@@ -313,6 +313,9 @@
     text-transform:uppercase;color:var(--muted);}
   /* .ana yalnızca .yok-btns içinde boyanıyordu; seçili efor görünmeliydi. */
   .ss-efor .ibtn.ana{border-color:var(--accent);color:var(--accent);}
+  .ss-kapanis{margin-top:14px;border-top:1px solid var(--line2);padding-top:12px;}
+  .ss-kapanis-b{font-weight:600;color:var(--ink);font-size:13px;margin-bottom:2px;}
+  .ss-kapanis-not{color:var(--muted);font-size:11px;margin-top:8px;line-height:1.4;}
   .ex.sirada .ex-n{color:var(--accent);font-weight:600;}
   .ss-rest{margin-top:13px;border:1px solid var(--accent);border-radius:6px;padding:13px;text-align:center;}
   .ss-rest .rk{font-family:var(--mono);font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);}
@@ -2333,6 +2336,41 @@ function eforNot(setler,ar,artis){
   return '';
 }
 
+/* ===== SEANS KAPANIŞI (nasıl geçti / neresi zorladı) =====
+   Efor etiketi SET bazında ("son set kolay/zor"); bu ise SEANSIN geneli ve
+   asıl eksik olan bilgi: hangi bölgenin zorlandığı hiçbir yerde tutulmuyordu.
+
+   Yeni anahtar açmıyor — d:sess:TARİH içine 'his' alanı olarak yazılıyor;
+   o anahtar zaten senkronda ve RESET_ONEK'te.
+
+   Bölge listesi kapalı uçlu: serbest metin hem eşleşmeyi bozar hem de public
+   repoya sızması istenmeyen ayrıntıyı davet eder. */
+const HIS_AD={kolay:'kolay',normal:'normal',zor:'zor',cokzor:'çok zor'};
+const HIS_BOLGE=['omuz','dirsek','bilek','bel','diz','kalça'];
+async function sessHis(n){
+  sess.his=sess.his||{};
+  sess.his.n=(sess.his.n===n)?'':n;                        // aynısına basınca siler
+  await saveSess();renderEx();
+}
+async function sessBolge(b){
+  sess.his=sess.his||{};
+  const l=(sess.his.b||[]).slice(),i=l.indexOf(b);
+  if(i>-1)l.splice(i,1);else l.push(b);
+  sess.his.b=l;
+  await saveSess();renderEx();
+}
+/* Yalnızca antrenman bittikten sonra görünür: seans sürerken sormak akışı böler. */
+function seansKapanisHTML(){
+  if(!sess.bitti)return '';
+  const h=sess.his||{},n=h.n||'',bl=h.b||[];
+  return '<div class="ss-kapanis"><div class="ss-kapanis-b">Seans nasıl geçti?</div>'+
+    '<div class="ss-efor">'+Object.keys(HIS_AD).map(k=>
+      '<button class="ibtn'+(n===k?' ana':'')+'" data-his="'+k+'">'+esc(HIS_AD[k])+'</button>').join('')+'</div>'+
+    '<div class="ss-efor"><span>zorlayan yer</span>'+HIS_BOLGE.map(b=>
+      '<button class="ibtn'+(bl.indexOf(b)>-1?' ana':'')+'" data-bolge="'+b+'">'+esc(b)+'</button>').join('')+'</div>'+
+    '<div class="ss-kapanis-not">Boş bırakabilirsin; işaretlenmemiş bölge "sorun yok" değil "girilmedi" sayılıyor.</div></div>';
+}
+
 async function sessGit(yon){
   const n=WK[dow].ex.length;
   sess.i=Math.min(n-1,Math.max(0,(sess.i||0)+yon));
@@ -2362,8 +2400,13 @@ function renderEx(){
   /* Ağırlıklı gün değilse (kürek/koşu/dinlenme) mod açılmaz: kaydedilecek set yok. */
   if(ex.some(e=>setHedef(e[1]))){
     el.innerHTML+='<button class="ss-bas" id="ssBas">'+(sess.bas?'Antrenmana devam et':'Antrenmana başla')+'</button>';
-    document.getElementById('ssBas').onclick=sessBaslat;
   }
+  /* DİKKAT: innerHTML += bütün alt ağacı yeniden kuruyor, yani daha önce
+     bağlanmış onclick'leri siliyor. Bütün HTML yazıldıktan SONRA bağla. */
+  el.innerHTML+=seansKapanisHTML();
+  const bas=document.getElementById('ssBas');if(bas)bas.onclick=sessBaslat;
+  el.querySelectorAll('[data-his]').forEach(b=>b.onclick=()=>sessHis(b.dataset.his));
+  el.querySelectorAll('[data-bolge]').forEach(b=>b.onclick=()=>sessBolge(b.dataset.bolge));
   el.querySelectorAll('[data-x]').forEach(c=>c.onclick=()=>{const i=+c.dataset.x;exDone[i]=!exDone[i];sSet('d:ex:'+todayKey(),exDone);renderEx();renderHabits();});
 }
 
@@ -4675,9 +4718,22 @@ function ayPenceresi(kayitlar,sonGun){
     return g>=1&&g<=sonGun;});
 }
 
+/* Son N günün seans hissi (d:sess:TARİH içindeki 'his'). Yalnızca CEVAPLANMIŞ
+   seanslar dönüyor: boş bırakılmış gün "sorun yok" değil "girilmedi". */
+async function seansHisleri(gun){
+  const out=[];
+  for(let i=0;i<gun;i++){
+    const k=dayBack(i),se=await sGet('d:sess:'+k);
+    const h=se&&se.his;
+    if(h&&(h.n||(h.b&&h.b.length)))out.push({tarih:k,n:h.n||'',b:h.b||[]});
+  }
+  return out;                                              // yeniden -> eskiye
+}
+
 async function oneriCtx(){
   const ay=thisMonth();
   return {
+    hisler:await seansHisleri(14),
     bu:await hdTopla(0,HD_PENCERE-1),
     onceki:await hdTopla(HD_PENCERE,HD_PENCERE*2-1),
     trend:bwTrend(),
@@ -4738,6 +4794,38 @@ const ONERI=[
     const bin=n=>Math.round(n).toLocaleString('tr-TR');
     return {bas:'Tonaj 2 haftadır düşüyor',
       metin:bin(h2)+' → '+bin(h1)+' → '+bin(h0)+' kg. Deload ya da uyku tarafına bakmak isteyebilirsin.'};
+  }},
+
+  /* 4b — Tekrarlayan zorlanma. Seans kapanışındaki 'his' verisinden; cevap
+     verilmemiş seans hesaba girmiyor, yani kural veri yokken susuyor.
+
+     İki ayrı sinyal, ikisi de SENİN işaretlediğin şey: son üç cevaplı seansın
+     en az ikisinde "çok zor", ya da aynı bölge en az iki kez. Bölge sinyali
+     önce geliyor — "omuz iki seanstır zorluyor" genel yorgunluktan daha
+     eyleme dönük bir bilgi.
+
+     Kural TEŞHİS KOYMAZ ve kilo oynatmaz: ne olduğunu söyler, kararı kullanıcı
+     verir (panelin kiloyu kendiliğinden geri çekmemesi yerleşik karar). */
+  {id:'zorlanma',alan:'spor',kos(ctx){
+    const son=(ctx.hisler||[]).slice(0,3);
+    if(son.length<2)return null;                           // iki cevaptan azı hüküm değil
+    /* slice(0,3) yüzünden sayı yalnızca 2 ya da 3 olabiliyor; Türkçe ekleri
+       tek tek yazmak genel bir ek motoru yazmaktan dürüst. */
+    const EK_SI={2:"2'si",3:"3'ü"},EK_SINDE={2:"2'sinde",3:"3'ünde"};
+    const say={};
+    son.forEach(h=>(h.b||[]).forEach(b=>{say[b]=(say[b]||0)+1;}));
+    const tekrar=Object.keys(say).filter(b=>say[b]>=2);
+    if(tekrar.length){
+      const b=tekrar.sort((x,y)=>say[y]-say[x])[0];
+      return {bas:b.charAt(0).toUpperCase()+b.slice(1)+' son '+son.length+' seansın '+EK_SINDE[say[b]]+' zorladı',
+        metin:'Bu hafta kiloyu artırmak yerine aynı kiloda kalmak ya da o bölgeyi çalıştıran '+
+          'hareketin setini azaltmak seçenek. Ağrı sürerse panel değil, bakan biri karar versin.'};
+    }
+    const agir=son.filter(h=>h.n==='cokzor').length;
+    if(agir<2)return null;
+    return {bas:'Son '+son.length+' seansın '+EK_SI[agir]+' çok zor geçti',
+      metin:'Üst üste bu kadar zorlanma genelde artışın hızlı geldiğini gösterir. '+
+        'Bir hafta aynı kiloda kalmak, ertesi hafta artışı tekrar denemek seçenek.'};
   }},
 
   /* 5 — Kategori sıçraması. PENCERE EŞİTLİĞİ zorunlu (DEVAM.md §5.19):
@@ -4891,12 +4979,18 @@ async function oneriYaz(liste){
 /* ===== HARCAMA & KAZANÇ =====
    Tamamen yerel: d:money:YYYY-MM anahtarında aylık kayıt dizisi. Sunucuya hiçbir
    şey gitmez. Kayıt: {k:'in'|'out', c:kategori, a:tutar, n:not, d:tarih} */
-const MCATS={out:['Kira','Market','Ulaşım','Yeme-içme','Fatura','Sağlık','Eğlence','Diğer'],
+const MCATS={out:['Kira','Araba','Kredi/Taksit','Market','Ulaşım','Yeme-içme','Fatura','Sağlık','Eğlence','Diğer'],
              in:['Maaş','Ek gelir','Satış','Diğer']};
 /* Sabit giderler: gün gün grafikte soluk çiziliyor ve "hariç" düğmesiyle
    gizlenebiliyor. 5.000 ₺'lik kira sütunu 200-300 ₺'lik günleri düz çizgiye
-   çeviriyordu; toplamlar doğru ama günlük gidişat okunmuyordu. */
-const SABIT_KAT=['Kira','Fatura'];
+   çeviriyordu; toplamlar doğru ama günlük gidişat okunmuyordu.
+
+   BU LİSTE ay sonu tahmininin de temeli: buradaki kategoriler günlük tempoya
+   ÇEVRİLMİYOR, ayda bir kez sayılıyor. Kullanıcının gerçek sabit gideri burada
+   yoksa tuzak arka kapıdan geri geliyor — araba ödemesi 'Ulaşım' olarak
+   girildiğinde ayın 5'indeki tek ödeme 30 ile çarpılıp tahmini uçuruyordu.
+   Düzenli, ayda bir ödenen her kalem buraya girmeli. */
+const SABIT_KAT=['Kira','Araba','Kredi/Taksit','Fatura'];
 let mSabitHaric=false;
 const AYLAR=['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'];
 let mCur='',mData=[];
