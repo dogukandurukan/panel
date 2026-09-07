@@ -16,6 +16,25 @@ geliştirme değil, gerçek veri var. Deneme kaydı bırakma, bırakırsan temiz
 uzamıştı). Kartların kendisi sekmenin içinde. Sekme seçimi `d:tab`, tema gibi
 CİHAZA özel (`SYNC_SKIP`'te).
 
+**ÖNERİ BANDI** (`#oneriBox` — sabit şeridin de sekmelerin de üstünde):
+Sekiz kurallık deterministik motor (`ONERI` tablosu). Kurallar aşağıdaki
+kartların verisinden türüyor, yeni anahtar istemiyor; `d:oneriKapali` her
+öneriyi `[×]` ile 7 gün susturuyor. **Hiçbir kural tetiklenmezse bant
+`hidden`** — boşluk bile bırakmıyor. Sonuç `d:oneri`'ye yazılıyor, senkron
+gist'e taşıyor, `push_feed.py` 24 saatten tazeyse bildirimin gövdesine
+tek satır ekliyor.
+
+| Kural | Alan | Neye bakıyor |
+|---|---|---|
+| `kcal-hukum` | spor | `hdHukum()` — Haftalık Değerlendirme'nin hükmü, [Uygula] düğmesiyle |
+| `protein-dusuk` | spor | 7 günlük protein açığı (en az 4 gün kaydı) |
+| `hareket-tikandi` | spor | `takiliSeans()` ≥ 3 olan program hareketleri |
+| `tonaj-dusus` | spor | `d:vol` 2 hafta üst üste düşüyor |
+| `kategori-sicrama` | para | Kategori, geçen ayın **aynı gün penceresine** göre %60+ ve ≥₺500 |
+| `ay-sonu-acik` | para | Değişken gider tempo + kalan sabit gider > gelir |
+| `basvuru-tempo` | is | Son 7 gün, önceki 7 günün yarısından az |
+| `donus-yok` | is | 21 günde ≥10 başvuru ve **hiç** ret/dönüş eşleşmesi yok |
+
 **SABİT ŞERİT** (`.pinned` — sekmeden bağımsız, hep görünür):
 
 | Kart | Veri |
@@ -95,9 +114,12 @@ Actions log'una da şirket adı/konu basılmaz — log herkese açık.
 
 1. **Faz anahtarı (`d:phase`)** — bulk/cut. Cut'ta: protein 210-220, "Atladım"
    cezası −250 kcal'a döner, shake suyla (250 kcal), kalori bakım −400/500.
-   **Haftalık Değerlendirme'nin hüküm mantığı şu an yalnız bulk'a göre
-   yazılı** (`renderHaftalik()` içindeki dört dal); faz gelince cut için
-   tersine çevrilmeli. `bwSuggestion()` de aynı durumda.
+   **Hüküm mantığı artık `hdHukum(bu,t)`'da** — hem Haftalık Değerlendirme
+   hem öneri bandı onu çağırıyor, yani cut için çevrilecek **TEK yer** orası.
+   `bwSuggestion()` hâlâ ayrı, o da çevrilmeli.
+   `hdHukum()` "her şey yolunda" dalında `iyi:true` döndürüyor; öneri bandı
+   susma kararını o bayrağa bakarak veriyor. **Cut cümlelerini yazarken
+   bayrağı düşürme** — düşerse bant her gün "iyi gidiyorsun" demeye başlar.
 2. **Harcama/gelir kategorileri** — `harcama_feed.py`, Garanti bildirim
    maillerini ayrıştırır. `gmail_feed.py`'deki `classify()`/`notify_tag()`
    deseni örnek; "Otomatik bildirim" kovası bu mailleri zaten yakalıyor.
@@ -140,6 +162,9 @@ Actions log'una da şirket adı/konu basılmaz — log herkese açık.
 | **`WK` sıralaması: aynı kas grubu ARKA ARKAYA** | 30 Ağu | Eski dizilim itiş/çekiş dönüşümlüydü (bench → row → OHP → pulldown), kullanıcı "alakasız" buldu. Yeni hareket eklerken bu kuralı bozma. Gün 5'te OHP göğüs bloğundan sonra geliyor — bilinen bedel, kabul edildi. |
 | **Günün Programı düzenlemesi SADECE GÖRÜNÜM** | 29 Ağu | `d:schedOvr:TARİH` yalnız ekranı değiştiriyor; yoklama ve bildirim hâlâ orijinal `SLOTS`/`SCHED`'e bakıyor. Kullanıcı bunu bilerek böyle istedi (tam entegrasyon `SCHED`'in veri modelini + `yokPlanUret`'i + push senkronunu değiştirmeyi gerektirirdi). |
 | **İki sekme DENEME sürecinde** | 29 Ağu | Kullanıcı tek ekrana dönmek isterse **TARTIŞMA AÇMA**, sadece `git revert ec11cd6`. Tek commit, temiz geri alınır. `d:tab` artakalır, zararsız. |
+| **Öneri motoru MODELSİZ.** Kurallar `index.html`'de, deterministik | 7 Eyl | Kullanıcı kanal olarak "panelde kart + telefona bildirim" seçti, kapsam olarak spor/para/iş (rutin-uyku dışarıda, Alışkanlık Serileri zaten gösteriyor). LLM kararıyla tutarlı: anahtarsız, çevrimdışı, gizlilik sorunsuz. **Bedeli bilerek kabul edildi:** kurallar tarayıcıda çalışıyor, panel açılmadan `d:oneri` güncellenmiyor, 24 saatten eskisi bildirime girmiyor. **Kuralları `push_feed.py`'ye kopyalamayı ÖNERME** — iki kaynak, kaçınılmaz sapma. |
+| **Bant sadece tetiklenince görünür** | 7 Eyl | Her gün "iyi gidiyorsun" diyen kart üç gün sonra okunmaz. Söyleyecek şey yoksa `hidden`, boşluk da bırakmıyor. En fazla `ONERI_MAX`=3 öneri, gerisi "+N öneri daha". |
+| **`donus-yok` ret varken SUSAR** | 7 Eyl | "Hiç dönüş yok" ancak gerçekten hiç dönüş yokken söylenebilir — ret de bir dönüştür. Ret sayısı `d:myApps[].status`'tan gelmiyor (orası hep 'Bekliyor'), İş Başvuruları kartının kullandığı `retElle`/`retler` eşleştirmesinden geliyor. Kural neden söylemiyor, yalnızca sayıyor: panelin "CV'n kötü" diyecek verisi yok. |
 | **LLM / Jarvis bağlanmadı** | 3 Eyl | Konuşuldu, kullanıcı "çok gerek görmedim" dedi. Günlük brifing reddedildi (veri zaten ekranda). Doğal dille giriş istenirse önce **yerel ayrıştırıcı** yazılacak (anahtarsız, çevrimdışı, gizlilik sorunsuz); model ancak o yetmezse yedek olarak. Kendiliğinden yeniden önerme. |
 | **`PICK = 3`'e dokunulmadı** | — | B bölümüne bak. |
 
@@ -220,6 +245,20 @@ iOS ana ekran kısayolu önbellek tutabiliyor; değişiklik görünmezse sert ye
 20. **Kaydı olan ama boş gün ≠ sıfır.** Yemek kaydı var ama porsiyon
     işaretlenmemişse "0 kcal yedim" değil "girilmemiş" sayılır; yoksa
     ortalama sahte biçimde düşer. Kaç güne bölündüğü ekranda yazar.
+21. **Öneri kuralı `id`'leri KARARLIDIR.** `d:oneriKapali` susturmayı id'ye
+    göre tutuyor; bir id değişirse kullanıcının `[×]`'i sessizce kaybolur ve
+    susturduğu öneri geri gelir. Kural yeniden adlandırma, sil-yeniden yaz.
+22. **Pencere kaç güne bölündüyse metin onu yazsın.** Protein kuralı önce
+    "Son 7 günde ortalama" diyordu ama ortalama 4-6 güne de bölünmüş
+    olabiliyordu. `renderHaftalik()`'in deseni doğru: gerçek gün sayısını yaz.
+23. **Yüzde kıyasında TABAN da eşiği geçmeli.** `kategori-sicrama` önce
+    yalnız farkın ≥₺500 olmasına bakıyordu; geçen ay ₺20 harcanan bir
+    kategoride "%5900 yukarıda" gibi anlamsız ama kendinden emin bir sonuç
+    çıkıyordu. Taban da aynı eşiğe bağlı.
+24. **Bildirim, öneri uğruna düşmemeli.** `oneri_satiri()` gist'ten gelen
+    bozuk bir yapıda istisna atarsa `main()` içinde sarmalayıcı olmadığı için
+    YOKLAMA bildirimi de gitmiyordu. Gist içeriği dış veri: tipini doğrula,
+    istisnayı geniş yakala, sessizliğe düş.
 
 ---
 
@@ -259,3 +298,4 @@ iOS ana ekran kısayolu önbellek tutabiliyor; değişiklik görünmezse sert ye
 | 31 Ağu | **Panel ciddi kullanıma geçti.** Antrenman: 45 sn dinlenme + kas grubu sıralaması + efor etiketi · İş Başvuruları elle ret · Bugün Harcadıkların kartı · başvuru listesinde "tümünü göster" |
 | 1 Eyl | Harcama gün gün döküm + sabit gider ayrımı + tarih alanı · **Haftalık Değerlendirme kartı** |
 | 3 Eyl | **`SCHED` düzeltildi** (aktivite günü Perşembe→Çarşamba, v2 ile ayrışmıştı) · alışkanlık paydasından bilgi satırları çıkarıldı · LLM tartışıldı, eklenmedi |
+| 6-7 Eyl | **ÖNERİ MOTORU** — panel gösterge tablosundan tavsiye veren katmana geçti. `hdHukum()` ayrıştırıldı · bant + motor iskeleti · 8 kural (spor/para/iş) · `[×]` ile 7 gün susturma · bildirime öneri satırı. Tasarım `docs/superpowers/specs/`, plan `docs/superpowers/plans/` altında. |
