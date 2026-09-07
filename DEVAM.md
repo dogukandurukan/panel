@@ -12,7 +12,7 @@ geliştirme değil, gerçek veri var. Deneme kaydı bırakma, bırakırsan temiz
 
 ## 1. Panel bugün ne durumda
 
-`index.html` ~400 KB, tek dosya, bağımlılık yok. **İKİ SEKME** (tek sayfa çok
+`index.html` ~518 KB, tek dosya, bağımlılık yok. **İKİ SEKME** (tek sayfa çok
 uzamıştı). Kartların kendisi sekmenin içinde. Sekme seçimi `d:tab`, tema gibi
 CİHAZA özel (`SYNC_SKIP`'te).
 
@@ -129,8 +129,11 @@ Actions log'una da şirket adı/konu basılmaz — log herkese açık.
    göstergesi), D3, omega-3, magnezyum, whey.
 4. **Yürüyüş takibi (`d:walk:TARİH`)** — sabah/akşam köpek + gym gidiş-dönüş.
    Kalori hedefine ETKİ ETMEZ (yük zaten 2950 tabanına dahil).
-5. **Kültür derinliği** — FILMS/ARTISTS/BOOKS/FACTS'te 21 günlük "devamı"
-   metni var, **~14 Eylül'den sonra düğme kaybolmaya başlar.** Devamı yazılmalı.
+5. **Kültür derinliği** — 7 Eylül'de dört listeye 23'er kayıt daha yazıldı;
+   derinlik artık **6 Ekim'e kadar kesintisiz** (her listede 44 kayıt).
+   Ekim başında yeniden yazılmalı. Kontrol için:
+   `node` ile listeleri okuyup `doy()` sırasına göre boş kayıt ara —
+   FACTS'te derinlik `Array.isArray(x)`, diğerlerinde `x.length>5`.
 
 ### D. Küçük açık uçlar
 
@@ -144,7 +147,10 @@ Actions log'una da şirket adı/konu basılmaz — log herkese açık.
 - Yemek İÇERİĞİ sabit (`MP`); yüksek hacimli günde porsiyonu büyütmek ayrı iş.
 - Besin tablosu ~115 kayıt; tanınmayan yazıldıkça büyütülmeli. Yağ (Y)
   hesaplanmıyor — kutularda alan yok.
-- Kültür listeleri gömülü; `index.html` ~400 KB. Büyürse ayrı JSON'a taşınmalı.
+- Kültür listeleri gömülü; `index.html` **518 KB** (7 Eyl'de derinlikle
+  birlikte 465'ten çıktı). Her derinlik turu ~50 KB ekliyor. **Bir sonraki
+  turdan önce ayrı JSON'a taşımaya karar verilmeli** — mobilde ilk açılış
+  bunu tek parça indiriyor.
 - İnsan maili taraması yalnızca okunmamışları geziyor.
 - `.ana` (seçili düğme) sınıfı yalnızca `.yok-btns` ve `.ss-efor` içinde
   boyanıyor. `ssBitir`, `ssSonraki` ve sabah rutini `mrest` düğmeleri
