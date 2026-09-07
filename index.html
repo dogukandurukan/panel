@@ -4685,7 +4685,7 @@ async function oneriCtx(){
     vol:vol||{},
     money:{ay,buAy:await sGet('d:money:'+ay)||[],
            gecenAy:await sGet('d:money:'+shiftMonth(ay,-1))||[]},
-    apps:myApps||[],retler:retler||[],retElle:retElle||[],
+    apps:myApps||[],retler:retler||[],retElle:retElle||[],retGizli:retGizli||[],
     bugunGun:new Date().getDate()
   };
 }
@@ -4818,20 +4818,32 @@ const ONERI=[
         ' başvuru (panelden kaydedilenler).'};
   }},
 
-  /* 8 — Dönüş yokluğu. Panelde "görüşme" diye bir alan yok; durum
-     Bekliyor/Ret ikilisinden ibaret (check_rejections.py Ret yazıyor).
-     Kural dolaylı bakıyor: hiçbiri bu ikilinin dışına çıkmamışsa tetiklenir.
-     Sheet'te bir satır elle "Görüşme" yapıldıysa susar.
-     Çıktı GÖZLEM olarak yazılıyor — panelin "CV'n kötü" diyecek verisi yok. */
+  /* 8 — Dönüş yokluğu. a.status YALNIZCA kayıt oluşturulurken 'Bekliyor'
+     yazılıyor (iki oluşturma noktasında da öyle) ve bir daha hiç
+     güncellenmiyor — a.status'e bakarak ret sayılamaz. check_rejections.py
+     Google Sheet'in "Durum" sütununa yazıyor; o da ayrı bir kaynak
+     (sheetRows), myApps'e dokunmuyor. Gerçek ret bilgisi retElle (elle
+     işaretlenen, şirket|pozisyon anahtarlı) ve retler (Gmail'de görülen,
+     şirket anahtarlı, retGizli ile gizlenebilir) dizilerinde duruyor — İş
+     Başvuruları kartının kullandığı AYNI anahtarlarla eşleştiriliyor
+     (appAnahtar / retAnahtar). Ret de bir dönüştür: pencerede eşleşen tek
+     ret bile varsa kural TAMAMEN susar, çünkü "hiç dönüş yok" o an yalan
+     olur — reddi zaten İş Başvuruları şeridi gösteriyor. Çıktı GÖZLEM olarak
+     yazılıyor; panelin CV ya da ilan seçimi hakkında hüküm verecek verisi
+     yok. */
   {id:'donus-yok',alan:'is',kos(ctx){
     const liste=(ctx.apps||[]).filter(a=>a.date>=dayBack(20));
     if(liste.length<10)return null;
-    const disari=liste.filter(a=>['Bekliyor','Ret'].indexOf(String(a.status||'Bekliyor'))<0);
-    if(disari.length)return null;
-    const ret=liste.filter(a=>a.status==='Ret').length;
+    const elle=ctx.retElle||[],gizli=ctx.retGizli||[];
+    const coKey=co=>appAnahtar([co,'']);
+    const gmailSirket=(ctx.retler||[])
+      .filter(r=>gizli.indexOf(retAnahtar(r))===-1)
+      .map(r=>coKey(r.sirket));
+    const retliMi=a=>elle.indexOf(appAnahtar([a.company,a.position]))>-1||
+      gmailSirket.indexOf(coKey(a.company))>-1;
+    if(liste.some(retliMi))return null;   // ret de bir dönüştür; pencerede biri varsa "hiç dönüş yok" yalan olur
     return {bas:'21 günde '+liste.length+' başvuru, hiç dönüş yok',
-      metin:ret+' ret, '+(liste.length-ret)+' cevapsız. Mektup odağını ya da '+
-        'ilan seçimini gözden geçirmek isteyebilirsin.'};
+      metin:liste.length+' başvurunun hiçbirine dönüş yok (panelden kaydedilenler).'};
   }},
 ];
 
