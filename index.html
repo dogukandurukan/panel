@@ -4747,6 +4747,7 @@ const ONERI=[
   {id:'kategori-sicrama',alan:'para',kos(ctx){
     const g=ctx.bugunGun;
     if(g<5)return null;                       // pencere çok kısa, sayı uydurma
+    const ESIK=500;                           // hem fark hem taban için aynı alt sınır
     const topla=kayitlar=>{const o={};
       ayPenceresi(kayitlar,g).filter(r=>r.k==='out'&&SABIT_KAT.indexOf(r.c)<0)
         .forEach(r=>{o[r.c]=(o[r.c]||0)+num(r.a);});return o;};
@@ -4754,9 +4755,12 @@ const ONERI=[
     let en=null;
     for(const c in bu){
       const eski=gecen[c]||0;
-      if(eski<=0)continue;                    // geçen ay hiç yoksa oran anlamsız
+      /* Taban da ESIK'i geçmeli: geçen ay ₺10 harcanmış bir kategoride bu ay
+         ₺600 çıkması "%5900 yukarıda" der ama tek seferlik bir alışverişten
+         ibarettir — taban küçükken yüzde istatistiksel olarak anlamsız. */
+      if(eski<ESIK)continue;
       const fark=bu[c]-eski;
-      if(fark<500)continue;
+      if(fark<ESIK)continue;
       const oran=fark/eski*100;
       if(oran<60)continue;
       if(!en||fark>en.fark)en={c,fark,oran,tutar:bu[c],eski};
@@ -4774,7 +4778,18 @@ const ONERI=[
     if(g<7)return null;
     const y=+ctx.money.ay.slice(0,4),ay=+ctx.money.ay.slice(5,7);
     const gunSayisi=new Date(y,ay,0).getDate();
-    const out=(ctx.money.buAy||[]).filter(r=>r.k==='out');
+    /* Gider tarafı ayPenceresi ile bugüne kadarki döneme kırpılıyor — tıpkı
+       kategori-sicrama gibi. Tarih girişinde üst sınır yok: ayın 20'sine
+       planlanan bir harcama ayın 7'sinde girilebilir. Kırpılmazsa o kayıt
+       hem deg'e tek seferlik girer hem de deg/g*gunSayisi ile günlük hızmış
+       gibi ay sonuna kadar bir daha katlanır — aynı harcama iki kez sayılır.
+       Gelir KIRPILMIYOR: maaş tipik olarak ayın sabit bir gününde toplu
+       yatan, bilinen bir tutardır ve burada günlük hızla çarpılmıyor —
+       tahmine tek seferlik, tüm ayı kapsayan bir tavan olarak giriyor, o
+       yüzden ileri tarihli girilmiş olması onu "iki kez sayılan" bir şeye
+       çevirmiyor. Harcama & Kazanç kartının o ay için gösterdiği toplam
+       gelirle de böylece tutarlı kalıyor. */
+    const out=ayPenceresi(ctx.money.buAy,g).filter(r=>r.k==='out');
     const deg=out.filter(r=>SABIT_KAT.indexOf(r.c)<0).reduce((a,r)=>a+num(r.a),0);
     const sab=out.filter(r=>SABIT_KAT.indexOf(r.c)>-1).reduce((a,r)=>a+num(r.a),0);
     const gelir=(ctx.money.buAy||[]).filter(r=>r.k==='in').reduce((a,r)=>a+num(r.a),0);
