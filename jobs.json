@@ -1,89 +1,104 @@
 {
- "updated": "2026-09-06 12:08",
+ "updated": "2026-09-07 12:56",
  "ok": true,
  "count": 3,
- "pool": 27,
+ "pool": 17,
  "items": [
   {
-   "title": "Senior DevOps Engineer (all genders) | Data Platform",
-   "company": "Real Digital",
+   "title": "Senior Data Platform Engineer, Intelligent Platforms (all genders)",
+   "company": "hellofresh",
    "location": "Berlin",
-   "loc_raw": "Remote oder Köln / Darmstadt / Düsseldorf / Berlin",
+   "loc_raw": "Berlin, Berlin",
    "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/real-digital/remote-senior-devops-engineer-all-genders-data-platform-426742",
+   "url": "https://www.arbeitnow.com/jobs/companies/hellofresh/senior-data-platform-engineer-intelligent-platforms-all-genders-berlin-berlin-372321",
    "source": "Arbeitnow",
    "posted": "2026-09-06",
+   "days": 1,
+   "skills": [
+    "python",
+    "sql"
+   ],
+   "german": false,
+   "focus": "pipeline",
+   "summary": "About the role At HelloFresh, data is at the heart of everything we do — from the moment a customer places an order to the way we forecast demand, optimize our supply chain, and personalize experiences for millions of people. Making that data fast, reliable, a",
+   "keywords": [
+    "forecast",
+    "supply chain",
+    "cost",
+    "self-service",
+    "governance",
+    "real time",
+    "data quality",
+    "automation"
+   ],
+   "score": 88
+  },
+  {
+   "title": "Senior Business Intelligence Lead (all genders)",
+   "company": "Reev",
+   "location": "Almanya",
+   "loc_raw": "München",
+   "remote": false,
+   "url": "https://www.arbeitnow.com/jobs/companies/reev/senior-business-intelligence-lead-all-genders-munchen-198779",
+   "source": "Arbeitnow",
+   "posted": "2026-09-07",
    "days": 0,
+   "skills": [
+    "sql",
+    "spark",
+    "dbt",
+    "etl",
+    "data warehouse"
+   ],
+   "german": false,
+   "focus": "ml",
+   "summary": "Your Mission EV charging is evolving from a niche technology into everyday infrastructure. As reev grows, teams increasingly need reliable, consistently defined metrics. Today, different dashboards, reporting dates, filters, and assumptions can produce differe",
+   "keywords": [
+    "dashboard",
+    "finance",
+    "pipeline",
+    "stakeholder",
+    "automation",
+    "data quality",
+    "governance",
+    "saas",
+    "energy"
+   ],
+   "score": 86
+  },
+  {
+   "title": "Data Platform Engineer Working Student (m/w/d)",
+   "company": "Trusteq Gmbh",
+   "location": "Almanya",
+   "loc_raw": "München",
+   "remote": false,
+   "url": "https://www.arbeitnow.com/jobs/companies/trusteq-gmbh/data-platform-engineer-working-student-munchen-56537",
+   "source": "Arbeitnow",
+   "posted": "2026-09-06",
+   "days": 1,
    "skills": [
     "python",
     "sql",
+    "databricks",
     "azure",
-    "airflow",
-    "dbt",
+    "etl",
     "ci/cd"
    ],
    "german": false,
    "focus": "pipeline",
-   "summary": "Anstellungsdetails Permanent Contract, Full- or Part-Time, Remote or Cologne / Düsseldorf / Darmstadt / Berlin Info Who we areWe are the tech powerhouse behind Kaufland’s international online marketplaces and a company within the Schwarz Group. Driven by a sta",
+   "summary": "YOUR TASKS You support the design and development of Databricks-native data platforms and lakehouse architectures for internal projects and client engagements. You contribute to implementing medallion architectures (Bronze, Silver, and Gold), including Auto Lo",
    "keywords": [
+    "governance",
     "pipeline",
-    "cost"
+    "data quality"
    ],
-   "score": 112
-  },
-  {
-   "title": "Senior Data Scientist (m/f/x)",
-   "company": "Makersite GmbH",
-   "location": "Remote",
-   "loc_raw": "Remote job",
-   "remote": true,
-   "url": "https://www.arbeitnow.com/jobs/companies/makersite-gmbh/remote-senior-data-scientist-berlin-143991",
-   "source": "Arbeitnow",
-   "posted": "2026-09-05",
-   "days": 1,
-   "skills": [
-    "python",
-    "ci/cd",
-    "git",
-    "llm"
-   ],
-   "german": false,
-   "focus": "ml",
-   "summary": "Data Scientist (m/f/x) Location: EU (Remote) Who You’ll Work For : At Makersite, we're pioneering the future of sustainable product development and digital collaboration. As a leading platform for product lifecycle management (PLM), we empower companies to mak",
-   "keywords": [
-    "supply chain",
-    "scalab",
-    "cost",
-    "pipeline",
-    "experimentation"
-   ],
-   "score": 90
-  },
-  {
-   "title": "Senior Machine Learning Engineer – Video AI",
-   "company": "Snke",
-   "location": "Almanya",
-   "loc_raw": "München",
-   "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/snke/senior-machine-learning-engineer-video-ai-munchen-98891",
-   "source": "Arbeitnow",
-   "posted": "2026-09-06",
-   "days": 0,
-   "skills": [
-    "python"
-   ],
-   "german": false,
-   "focus": "ml",
-   "summary": "What you'll do As (Senior) Machine Learning – Video AI at Snke you will develop and deploy machine learning applications that analyze video and sensor data from the operating room to improve surgical workflows. You will work closely with software developers an",
-   "keywords": [
-    "automation",
-    "experimentation",
-    "pipeline"
-   ],
-   "score": 62
+   "score": 80
   }
  ],
  "seen": [
+  "https://www.arbeitnow.com/jobs/companies/hellofresh/senior-data-platform-engineer-intelligent-platforms-all-genders-berlin-berlin-372321",
+  "https://www.arbeitnow.com/jobs/companies/reev/senior-business-intelligence-lead-all-genders-munchen-198779",
+  "https://www.arbeitnow.com/jobs/companies/trusteq-gmbh/data-platform-engineer-working-student-munchen-56537",
   "https://www.arbeitnow.com/jobs/companies/real-digital/remote-senior-devops-engineer-all-genders-data-platform-426742",
   "https://www.arbeitnow.com/jobs/companies/makersite-gmbh/remote-senior-data-scientist-berlin-143991",
   "https://www.arbeitnow.com/jobs/companies/snke/senior-machine-learning-engineer-video-ai-munchen-98891",
