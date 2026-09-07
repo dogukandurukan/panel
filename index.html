@@ -4712,7 +4712,7 @@ const ONERI=[
     const pOrt=ctx.bu.p/ctx.bu.gun,pHed=ctx.bu.hP/ctx.bu.gun,acik=pHed-pOrt;
     if(acik<15)return null;
     return {bas:'Protein günde ort. '+Math.round(acik)+' g eksik',
-      metin:'Son 7 günde ortalama '+Math.round(pOrt)+' g, hedef '+Math.round(pHed)+' g. '+
+      metin:'Ortalama '+ctx.bu.gun+' günlük yemek kaydına göre '+Math.round(pOrt)+' g, hedef '+Math.round(pHed)+' g. '+
         'Akşam shake\'ini suyla değil sütle yaparsan ~12 g gelir.'};
   }},
 
