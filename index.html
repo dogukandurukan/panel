@@ -4739,6 +4739,55 @@ const ONERI=[
     return {bas:'Tonaj 2 haftadır düşüyor',
       metin:bin(h2)+' → '+bin(h1)+' → '+bin(h0)+' kg. Deload ya da uyku tarafına bakmak isteyebilirsin.'};
   }},
+
+  /* 5 — Kategori sıçraması. PENCERE EŞİTLİĞİ zorunlu (DEVAM.md §5.19):
+     ayın 15'indeki harcama geçen ayın İLK 15 gününe bakar, tüm ayına değil.
+     Sabit kategoriler dışarıda: kira geçen ay 3'ünde, bu ay 8'inde ödendiyse
+     kıyas anlamsız çıkar. */
+  {id:'kategori-sicrama',alan:'para',kos(ctx){
+    const g=ctx.bugunGun;
+    if(g<5)return null;                       // pencere çok kısa, sayı uydurma
+    const topla=kayitlar=>{const o={};
+      ayPenceresi(kayitlar,g).filter(r=>r.k==='out'&&SABIT_KAT.indexOf(r.c)<0)
+        .forEach(r=>{o[r.c]=(o[r.c]||0)+num(r.a);});return o;};
+    const bu=topla(ctx.money.buAy),gecen=topla(ctx.money.gecenAy);
+    let en=null;
+    for(const c in bu){
+      const eski=gecen[c]||0;
+      if(eski<=0)continue;                    // geçen ay hiç yoksa oran anlamsız
+      const fark=bu[c]-eski;
+      if(fark<500)continue;
+      const oran=fark/eski*100;
+      if(oran<60)continue;
+      if(!en||fark>en.fark)en={c,fark,oran,tutar:bu[c],eski};
+    }
+    if(!en)return null;
+    return {bas:en.c+' bu ay %'+Math.round(en.oran)+' yukarıda',
+      metin:'Ayın ilk '+g+' gününde '+tl(en.tutar)+' — geçen ay aynı dönem '+tl(en.eski)+'.'};
+  }},
+
+  /* 6 — Ay sonu açığı. SABİT GİDER GÜNLÜK ORTALAMAYLA ÇARPILMAZ
+     (DEVAM.md §5.19): kira 30 kez sayılırdı. Değişken gider tempoyla,
+     sabit gider geçen ayın toplamı tavan kabul edilerek yürütülüyor. */
+  {id:'ay-sonu-acik',alan:'para',kos(ctx){
+    const g=ctx.bugunGun;
+    if(g<7)return null;
+    const y=+ctx.money.ay.slice(0,4),ay=+ctx.money.ay.slice(5,7);
+    const gunSayisi=new Date(y,ay,0).getDate();
+    const out=(ctx.money.buAy||[]).filter(r=>r.k==='out');
+    const deg=out.filter(r=>SABIT_KAT.indexOf(r.c)<0).reduce((a,r)=>a+num(r.a),0);
+    const sab=out.filter(r=>SABIT_KAT.indexOf(r.c)>-1).reduce((a,r)=>a+num(r.a),0);
+    const gelir=(ctx.money.buAy||[]).filter(r=>r.k==='in').reduce((a,r)=>a+num(r.a),0);
+    if(gelir<=0)return null;                  // gelir bilinmiyorsa açık hesaplanamaz
+    const gecenSab=(ctx.money.gecenAy||[]).filter(r=>r.k==='out'&&SABIT_KAT.indexOf(r.c)>-1)
+      .reduce((a,r)=>a+num(r.a),0);
+    const kalanSabit=Math.max(0,gecenSab-sab);
+    const tahmin=deg/g*gunSayisi+sab+kalanSabit;
+    if(tahmin<=gelir)return null;
+    return {bas:'Bu tempoyla ay '+tl(tahmin-gelir)+' açıkla kapanır',
+      metin:'Değişken gider günde ort. '+tl(deg/g)+'; ay sonu tahmini '+tl(tahmin)+
+        ', bu ayki gelir '+tl(gelir)+'.'};
+  }},
 ];
 
 async function renderOneri(){
