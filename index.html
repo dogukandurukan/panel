@@ -350,9 +350,18 @@
   .gram-head{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);border-top:1px solid var(--line2);padding-top:11px;margin-top:12px;margin-bottom:5px;}
   .gram{display:flex;gap:8px;padding:5px 0;font-size:13px;line-height:1.45;} .gram .gi{font-family:var(--mono);color:var(--accent);font-size:12px;margin-top:1px;}
   .loading{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.06em;padding:12px 0;}
-  .statrow{display:flex;gap:9px;margin-bottom:13px;}
-  .stat{flex:1;text-align:center;background:var(--paper);border:1px solid var(--line2);border-radius:4px;padding:11px 6px 9px;}
+  /* .add-row ile aynı tuzak: flex:1 tek başına yetmiyor, min-width:auto
+     kutuyu içindeki rakamın genişliğinin altına indirmiyor. Altı haneli
+     tutarlarda (₺150.050, ₺228.563) üç ve dört kutuluk satırlar dar
+     ekranda kartın dışına akıyordu. */
+  .statrow{display:flex;gap:9px;margin-bottom:13px;flex-wrap:wrap;}
+  .stat{flex:1 1 130px;min-width:0;text-align:center;background:var(--paper);border:1px solid var(--line2);border-radius:4px;padding:11px 6px 9px;}
   .stat-n{font-family:var(--serif);font-weight:600;font-size:25px;line-height:1;}
+  /* Taban 130 px: dar ekranda satır başına iki kutu düşüyor (dörtlü satır
+     2+2, üçlü satır 2+1 — sonuncusu tam genişlik, "kalan"/"ay sonu tahmini"
+     için zaten uygun bir yer). Daha küçük bir taban üçünü tek satıra
+     sığdırırdı ama altı haneli tutar kutunun içinde kırpılıyordu. */
+  @media(max-width:480px){.stat-n{font-size:20px;}}
   .stat-l{font-family:var(--mono);font-size:9px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-top:5px;}
   .app-item{padding:8px 0;border-bottom:1px dotted var(--line2);} .app-item:last-child{border-bottom:none;}
   .app-top{display:flex;justify-content:space-between;align-items:baseline;gap:8px;}
