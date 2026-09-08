@@ -2308,23 +2308,35 @@ async function loadSess(){sess=await sGet('d:sess:'+todayKey())||{};await sonZor
    yani setler girildikten SONRA işaretleniyor; bugünkü cevabı beklemek freni
    hep bir seans geç çalıştırırdı.
 
-   Neden bölgeye göre değil seans geneline göre: hareket adını bölgeye
-   eşlemek gerekirdi ("Bench press" -> omuz?) ve DEVAM.md §5'teki tuzak tam
-   bu — elle yazılan ad kalıpları hareket adı değişince sessizce kayboluyor.
-   Bölge işareti bandın 'zorlanma' kuralını besliyor, freni değil.
+   İKİ TETİKLEYİCİ (8 Eyl'de bölge eklendi): önceki seansta "çok zor"
+   dediysen YA DA herhangi bir bölge işaretlediysen fren açılıyor.
+
+   Bölge işareti HAREKETE değil bütün seansa uygulanıyor. Hareket adını
+   bölgeye eşlemek ("Bench press" -> omuz?) daha isabetli olurdu ama
+   DEVAM.md §5'teki tuzak tam bu: elle yazılan ad kalıpları hareket adı
+   değişince sessizce kayboluyor. Kaba ama sessizce yanlış çalışmayan
+   davranış tercih edildi — hata yönü de doğru tarafa düşüyor: fazladan
+   frenlemek, gereken yerde frenlememekten iyi.
 
    Pencere 7 GÜN: kapanışı boş bırakmak "sorun yok" demek olmadığı için
    döngü geriye doğru cevaplı ilk seansı arıyor, ve sınır olmazsa bir kere
-   "çok zor" deyip bir daha hiç cevaplamayan biri freni kalıcı açık
-   bırakırdı. Bir hafta sonra fren kendiliğinden kalkıyor. */
+   işaretleyip bir daha hiç cevaplamayan biri freni kalıcı açık bırakırdı.
+   Bir hafta sonra fren kendiliğinden kalkıyor. */
 const FREN_GUN=7;
-let sonSeansZor=false;
+let sonSeansZor=false,frenSebep='';
 async function sonZorYukle(){
-  sonSeansZor=false;
+  sonSeansZor=false;frenSebep='';
   for(let i=1;i<=FREN_GUN;i++){                            // bugün hariç, en yakın cevaplı seans
     const se=await sGet('d:sess:'+dayBack(i));
     const h=se&&se.his;
-    if(h&&h.n){sonSeansZor=(h.n==='cokzor');return;}       // ilk cevap belirleyici
+    const bolge=(h&&h.b)||[];
+    if(!h||(!h.n&&!bolge.length))continue;                 // cevapsız gün atlanır
+    /* İlk cevaplı seans belirleyici; daha eskisine bakılmıyor. Bölge
+       varsa sebep olarak o yazılıyor — kullanıcıya "çok zor" demediği
+       hâlde neden frenlendiğini söylemek gerekiyor. */
+    if(bolge.length){sonSeansZor=true;frenSebep=bolge.join(', ');}
+    else if(h.n==='cokzor'){sonSeansZor=true;frenSebep='çok zor';}
+    return;
   }
 }
 async function saveSess(){await sSet('d:sess:'+todayKey(),sess);}
@@ -2509,9 +2521,10 @@ function renderSess(el,ex){
   if(ar&&!artis)html+=tikanmaNot(ad);
   /* Fren sessiz çalışmasın: üst ucu tutturup kilo artmayınca kullanıcı
      bunu hata sanmamalı. */
-  if(ar&&sonSeansZor)html+='<div class="ss-oner">Önceki seansta "çok zor" dedin — '+
-    'bu seans reçete kendiliğinden artmayacak, kilo aynı kalıyor. '+
-    'Antrenmanı bitirince "nasıl geçti"yi cevaplarsan fren ona göre kalkar.</div>';
+  if(ar&&sonSeansZor)html+='<div class="ss-oner">Önceki seansta '+
+    (frenSebep==='çok zor'?'"çok zor" dedin':esc(frenSebep)+' işaretledin')+
+    ' — bu seans reçete kendiliğinden artmayacak, kilo aynı kalıyor. '+
+    'Antrenmanı bitirince kapanışı cevaplarsan fren ona göre güncellenir.</div>';
   html+=eforNot(setler,ar,artis);
 
   if(h){
