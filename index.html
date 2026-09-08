@@ -878,6 +878,34 @@ const WK={
  0:{title:'FULL OFF — Tam Dinlenme',run:false,ex:[['Antrenman yok','—'],['Köpek yürüyüşleri (2 × 20 dk)','zaten var'],['Uzun sabah rutini (mobilite + core)','~12-15 dk']]}
 };
 
+/* ===== TEK GÜNLÜK PROGRAM UYARLAMASI =====
+   Bazı günlerde o güne özel bir dizilim gerekiyor. WK'ya dokunmak HER hafta
+   o günü değiştirirdi; buradaki tablo TARİHE bağlı, ertesi hafta kendiliğinden
+   normale dönüyor. Anahtar 'YYYY-AA-GG'.
+
+   Kural: uyarlama hareket SAYISINI korumalı ve "ağırlık günü mü" testini
+   bozmamalı. Alışkanlık halkası ve Haftalık Değerlendirme geçmiş günleri
+   WK[haftagünü] üzerinden sayıyor (d:ex tikleri İNDEKSE bağlı, DEVAM.md §5.5);
+   sayı ve nitelik aynı kaldığı sürece o hesaplar etkilenmiyor ve bu tabloyu
+   bilmeleri gerekmiyor. Sayıyı değiştirirsen oraları da elden geçir.
+
+   Eski satırlar silinmeyebilir; tarihi geçen kayıt zaten hiç okunmuyor. */
+const EX_OVR={
+  /* 8 Eylül 2026 — LOWER'ın omuz kuşağını yükleyen dört hareketi değiştirildi:
+     bar sırtta squat, yüklü bar tutulan RDL, omuz pedli standing calf ve
+     plank yerine omuzdan yük almayan karşılıkları. Bacak yükü korunuyor. */
+  '2026-09-08':[
+    ['Hack squat ya da makine squat','4 × 6-10'],
+    ['Leg press','3 × 10-12'],
+    ['Back extension (45°)','3 × 12-15'],
+    ['Leg curl (yatarak)','3 × 10-12'],
+    ['Seated calf raise','4 × 12-15'],
+    ['Dead bug (core)','3 set']
+  ]
+};
+/* Bugünün hareket listesi. Uyarlama yoksa programın kendisi. */
+const gununEx=()=>EX_OVR[todayKey()]||WK[dow].ex;
+
 const MORNING_LONG=[['Kedi-inek','10 tekrar'],['Kalça fleksör esnetme (diz üstü lunge)','2 × 30 sn / bacak'],['Güneş selamı','3-4 tur'],['Plank','3 × 45 sn'],['Dead bug','3 × 10 / taraf'],['Side plank','2 × 30 sn / taraf'],['Ayak bileği çemberi + tek ayak denge','3 dk']];
 /* Yeni programa göre: Pzt/Çarş/Cuma/Paz uzun (~12-15 dk), Sal/Cmt kısa hedefli
    (~5-7 dk), Perş dinamik ısınma (aktivite günü). Burada olmayan günler MORNING_LONG. */
@@ -1813,7 +1841,7 @@ async function yokCevapla(i,a){
   /* Spor dilimine "Evet" demek "antrenmana başladım" demektir: antrenman modunu
      doğrudan açar, böylece salonda ikinci bir düğme aramaya gerek kalmaz.
      Yalnızca ağırlık günlerinde — kürek/koşu gününde kaydedilecek set yok. */
-  if(a==='ok'&&YOK[SCHED[dow][i]]==='spor'&&!sess.on&&WK[dow].ex.some(e=>setHedef(e[1]))){
+  if(a==='ok'&&YOK[SCHED[dow][i]]==='spor'&&!sess.on&&gununEx().some(e=>setHedef(e[1]))){
     await sessBaslat();
     const k=document.getElementById('exList');
     if(k){tabAc(k);k.scrollIntoView({behavior:'smooth',block:'center'});}   // yoklama sabit şeritte, antrenman Spor sekmesinde
@@ -2332,7 +2360,7 @@ async function sessBaslat(){
 async function sessCik(){sess.on=false;await saveSess();renderEx();}
 
 async function sessSetKaydet(kg,tekrar){
-  const ex=WK[dow].ex,i=sess.i,ad=ex[i][0];
+  const ex=gununEx(),i=sess.i,ad=ex[i][0];
   if(!sess.s[i])sess.s[i]=[];
   sess.s[i].push({kg:kg,rep:tekrar,t:new Date().toTimeString().slice(0,5)});
   /* Ağırlık Takibi kartı tek değer okuyor: günün en ağır setini yaz. */
@@ -2411,7 +2439,7 @@ function seansKapanisHTML(){
 }
 
 async function sessGit(yon){
-  const n=WK[dow].ex.length;
+  const n=gununEx().length;
   sess.i=Math.min(n-1,Math.max(0,(sess.i||0)+yon));
   sess.rest=null;restBip=false;await saveSess();renderEx();
 }
@@ -2423,7 +2451,7 @@ async function sessBitir(){sess.on=false;sess.bitti=new Date().toTimeString().sl
 /* ---- çizim ---- */
 function renderEx(){
   const el=document.getElementById('exList');if(!el)return;
-  const ex=WK[dow].ex;
+  const ex=gununEx();
   document.getElementById('wkCount').textContent=Object.values(exDone).filter(Boolean).length+'/'+ex.length;
   if(sess.on){renderSess(el,ex);return;}
 
@@ -2645,7 +2673,7 @@ function renderWtLog(){const el=document.getElementById('wtList');if(!el)return;
   if(b)b.classList.toggle('secili',wtMod==='bugun');
   if(i)i.classList.toggle('secili',wtMod==='ilerleme');
   if(wtMod==='ilerleme'){renderIlerleme(el);return;}
-  const ex=WK[dow].ex.filter(e=>String(e[1]).indexOf('×')>-1);
+  const ex=gununEx().filter(e=>String(e[1]).indexOf('×')>-1);
   const tk=todayKey();const today=wtlog[tk]||{};const lw=wtlog[dateShift(tk,-7)]||{};
   document.getElementById('wtSub').textContent='Bugün: '+WK[dow].title;
   if(!ex.length){el.innerHTML='<div class="empty">Bugün ağırlık antrenmanı yok (kürek/koşu/dinlenme günü).</div>';return;}
@@ -2927,7 +2955,7 @@ function gunlukHedef(){
      yazılırsa (cAuto=false) kaydırma yapılmaz, kullanıcının sayısı geçerlidir. */
   const bazKcal=num(targets.kcal)+(oto?4*(bazC-CARB_BAZ):0);
   const o={kcal:bazKcal,p:num(targets.p),c:bazC,y:num(targets.y),bazKcal:bazKcal,bazC:bazC,neden:''};
-  if(!WK[dow].ex.some(e=>setHedef(e[1]))){o.neden=dow===0?'tam dinlenme günü':'ağırlık antrenmanı olmayan gün';return o;}
+  if(!gununEx().some(e=>setHedef(e[1]))){o.neden=dow===0?'tam dinlenme günü':'ağırlık antrenmanı olmayan gün';return o;}
   const t=gunTonaj(),taban=gunHacimTaban();
   /* Bulk'ta seans atlamak günlük enerji ihtiyacını 250 kcal düşürmez; sert
      kesmek kazancı yavaşlatıyor. v1: −40 g / −250 kcal. Cut fazında geri gelir. */
@@ -5977,7 +6005,7 @@ function bildirimeGit(hedef){
      aranmasın — "Evet, başladım" cevabının yaptığının aynısı.
      Yalnızca ağırlık günlerinde: kürek/koşu gününde kaydedilecek set yok.
      DİKKAT: bu, antrenman başlangıç saatini o an kaydeder. */
-  if(id==='kAntrenman'&&!sess.on&&WK[dow]&&WK[dow].ex.some(e=>setHedef(e[1])))sessBaslat();
+  if(id==='kAntrenman'&&!sess.on&&WK[dow]&&gununEx().some(e=>setHedef(e[1])))sessBaslat();
 }
 function hashHedefiIsle(){
   const h=location.hash.slice(1);

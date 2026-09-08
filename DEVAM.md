@@ -53,7 +53,7 @@ Yoklama **iki durumlu**: dilim sürüyorsa "Şu An Ne Yapıyorsun?", bittiyse
 | Kart | Veri |
 |---|---|
 | Sabah Rutini + Koşu | `MORNING_*` + `d:morning:TARİH`, `d:runkm:TARİH` |
-| Bugünün Antrenmanı | `WK` + `d:ex`, `d:sess`, `d:prog`, `d:vol` |
+| Bugünün Antrenmanı | `WK` (+ `EX_OVR` tek gün ezmesi) + `d:ex`, `d:sess`, `d:prog`, `d:vol` |
 | Kaldırılan Ağırlık | `d:wtlog` |
 | Alışkanlık Serileri | mevcut tiklerden türetilir |
 | Uyku Takibi | `d:sleepLog` |
@@ -273,7 +273,16 @@ iOS ana ekran kısayolu önbellek tutabiliyor; değişiklik görünmezse sert ye
     yalnız farkın ≥₺500 olmasına bakıyordu; geçen ay ₺20 harcanan bir
     kategoride "%5900 yukarıda" gibi anlamsız ama kendinden emin bir sonuç
     çıkıyordu. Taban da aynı eşiğe bağlı.
-24. **Bildirim, öneri uğruna düşmemeli.** `oneri_satiri()` gist'ten gelen
+24. **Tek günlük program ezmesi `EX_OVR`'a yazılır, `WK`'ya DEĞİL.** `WK`'yı
+    değiştirmek o haftagününü kalıcı değiştirir. `EX_OVR` tarihe bağlı
+    (`'YYYY-AA-GG'`) ve ertesi hafta kendiliğinden düşer. Bugünün listesini
+    okuyan her yer `gununEx()` çağırıyor — `WK[dow].ex` yazma.
+    **Ezme hareket SAYISINI ve "ağırlık günü mü" niteliğini korumalı:**
+    alışkanlık halkası ve Haftalık Değerlendirme geçmiş günleri
+    `WK[haftagünü]` üzerinden sayıyor ve `d:ex` tikleri indekse bağlı
+    (§5.5); sayı aynı kaldığı sürece o hesaplar ezmeyi bilmek zorunda
+    değil. Sayıyı değiştirirsen `exSayilir()` ve `hdTopla()`'yı da elden geçir.
+25. **Bildirim, öneri uğruna düşmemeli.** `oneri_satiri()` gist'ten gelen
     bozuk bir yapıda istisna atarsa `main()` içinde sarmalayıcı olmadığı için
     YOKLAMA bildirimi de gitmiyordu. Gist içeriği dış veri: tipini doğrula,
     istisnayı geniş yakala, sessizliğe düş.
