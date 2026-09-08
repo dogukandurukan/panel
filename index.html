@@ -75,8 +75,13 @@
   .check.on{background:var(--accent);border-color:var(--accent);}
   .check.on::after{content:'';width:5px;height:9px;border:solid var(--card);border-width:0 2px 2px 0;transform:rotate(45deg);margin-top:-2px;}
   .empty{color:var(--muted);font-size:13.5px;font-style:italic;padding:6px 0;}
-  .add-row{display:flex;gap:8px;margin-top:11px;}
-  .add-row input{flex:1;background:transparent;border:1px solid var(--line);border-radius:4px;padding:7px 10px;font-family:var(--sans);font-size:14px;color:var(--ink);}
+  /* flex-wrap + min-width:0 birlikte gerekli. flex:1'in taban genişliği 0
+     olsa da flex öğesinin varsayılan min-width:auto'su input'u kendi
+     içsel genişliğinin (yaklaşık 20 karakter) altına indirmiyor; üç öğeli
+     satır bu yüzden 375 px ekranda sayfayı 515 px'e taşırıyordu. Sayfanın
+     tamamı yatay kayınca ilgisiz kartlar da kırpılmış görünüyor. */
+  .add-row{display:flex;gap:8px;margin-top:11px;flex-wrap:wrap;}
+  .add-row input{flex:1 1 130px;min-width:0;background:transparent;border:1px solid var(--line);border-radius:4px;padding:7px 10px;font-family:var(--sans);font-size:14px;color:var(--ink);}
   .add-row input:focus{outline:none;border-color:var(--accent);}
   .add-row button{background:var(--accent);color:var(--card);border:none;border-radius:4px;padding:0 14px;font-weight:600;font-size:14px;cursor:pointer;}
   .task{display:flex;align-items:flex-start;gap:10px;padding:7px 0;border-bottom:1px dotted var(--line2);}
