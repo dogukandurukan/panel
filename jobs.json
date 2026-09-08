@@ -1,101 +1,99 @@
 {
- "updated": "2026-09-07 12:56",
+ "updated": "2026-09-08 12:21",
  "ok": true,
  "count": 3,
- "pool": 17,
+ "pool": 23,
  "items": [
   {
-   "title": "Senior Data Platform Engineer, Intelligent Platforms (all genders)",
-   "company": "hellofresh",
-   "location": "Berlin",
-   "loc_raw": "Berlin, Berlin",
+   "title": "Senior Data Engineer (m/f/d)",
+   "company": "Dishdigital",
+   "location": "Almanya",
+   "loc_raw": "Düsseldorf",
    "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/hellofresh/senior-data-platform-engineer-intelligent-platforms-all-genders-berlin-berlin-372321",
+   "url": "https://www.arbeitnow.com/jobs/companies/dishdigital/senior-data-engineer-dusseldorf-44649",
    "source": "Arbeitnow",
-   "posted": "2026-09-06",
-   "days": 1,
+   "posted": "2026-09-08",
+   "days": 0,
    "skills": [
     "python",
-    "sql"
+    "sql",
+    "airflow",
+    "dbt",
+    "git"
    ],
    "german": false,
    "focus": "pipeline",
-   "summary": "About the role At HelloFresh, data is at the heart of everything we do — from the moment a customer places an order to the way we forecast demand, optimize our supply chain, and personalize experiences for millions of people. Making that data fast, reliable, a",
+   "summary": "Your Contribution Are you passionate about designing scalable data platforms and helping others grow along the way? As a Senior Data Engineer, you will shape the architecture and technical direction of our Google Cloud data platform while enabling a team of en",
    "keywords": [
-    "forecast",
-    "supply chain",
-    "cost",
-    "self-service",
-    "governance",
-    "real time",
-    "data quality",
-    "automation"
-   ],
-   "score": 88
-  },
-  {
-   "title": "Senior Business Intelligence Lead (all genders)",
-   "company": "Reev",
-   "location": "Almanya",
-   "loc_raw": "München",
-   "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/reev/senior-business-intelligence-lead-all-genders-munchen-198779",
-   "source": "Arbeitnow",
-   "posted": "2026-09-07",
-   "days": 0,
-   "skills": [
-    "sql",
-    "spark",
-    "dbt",
-    "etl",
-    "data warehouse"
-   ],
-   "german": false,
-   "focus": "ml",
-   "summary": "Your Mission EV charging is evolving from a niche technology into everyday infrastructure. As reev grows, teams increasingly need reliable, consistently defined metrics. Today, different dashboards, reporting dates, filters, and assumptions can produce differe",
-   "keywords": [
-    "dashboard",
-    "finance",
+    "scalab",
     "pipeline",
-    "stakeholder",
-    "automation",
     "data quality",
     "governance",
-    "saas",
-    "energy"
+    "stakeholder"
    ],
    "score": 86
   },
   {
-   "title": "Data Platform Engineer Working Student (m/w/d)",
-   "company": "Trusteq Gmbh",
-   "location": "Almanya",
-   "loc_raw": "München",
+   "title": "Data Scientist (f/m/d)",
+   "company": "Pair",
+   "location": "Berlin",
+   "loc_raw": "Berlin (Hybrid)",
    "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/trusteq-gmbh/data-platform-engineer-working-student-munchen-56537",
+   "url": "https://www.arbeitnow.com/jobs/companies/pair/data-scientist-berlin-hybrid-327994",
    "source": "Arbeitnow",
-   "posted": "2026-09-06",
+   "posted": "2026-09-07",
    "days": 1,
    "skills": [
     "python",
     "sql",
-    "databricks",
-    "azure",
-    "etl",
-    "ci/cd"
+    "llm"
+   ],
+   "german": false,
+   "focus": "ml",
+   "summary": "Are you ready to change the market? Are you a passionate and experienced Data Scientist, excited to work on improving and maintaining our data architecture? Join us to become a part of our strong international team that is transforming the traditional debt col",
+   "keywords": [
+    "stakeholder",
+    "startup",
+    "finance"
+   ],
+   "score": 82
+  },
+  {
+   "title": "Data Engineer (m/f/d)",
+   "company": "Dishdigital",
+   "location": "Almanya",
+   "loc_raw": "Düsseldorf",
+   "remote": false,
+   "url": "https://www.arbeitnow.com/jobs/companies/dishdigital/data-engineer-dusseldorf-159968",
+   "source": "Arbeitnow",
+   "posted": "2026-09-08",
+   "days": 0,
+   "skills": [
+    "python",
+    "sql",
+    "spark",
+    "airflow",
+    "dbt",
+    "etl"
    ],
    "german": false,
    "focus": "pipeline",
-   "summary": "YOUR TASKS You support the design and development of Databricks-native data platforms and lakehouse architectures for internal projects and client engagements. You contribute to implementing medallion architectures (Bronze, Silver, and Gold), including Auto Lo",
+   "summary": "Your Contribution Are you passionate about building robust data pipelines and enabling data-driven innovation? As a Data Engineer, you will design and evolve scalable data platforms that power analytics, machine learning, and business insights across DISH. Wor",
    "keywords": [
-    "governance",
     "pipeline",
-    "data quality"
+    "scalab",
+    "cost",
+    "real-time",
+    "experimentation",
+    "stakeholder"
    ],
    "score": 80
   }
  ],
  "seen": [
+  "https://www.arbeitnow.com/jobs/companies/dishdigital/senior-data-engineer-dusseldorf-44649",
+  "https://www.arbeitnow.com/jobs/companies/pair/data-scientist-berlin-hybrid-327994",
+  "https://www.arbeitnow.com/jobs/companies/dishdigital/data-engineer-dusseldorf-159968",
   "https://www.arbeitnow.com/jobs/companies/hellofresh/senior-data-platform-engineer-intelligent-platforms-all-genders-berlin-berlin-372321",
   "https://www.arbeitnow.com/jobs/companies/reev/senior-business-intelligence-lead-all-genders-munchen-198779",
   "https://www.arbeitnow.com/jobs/companies/trusteq-gmbh/data-platform-engineer-working-student-munchen-56537",
