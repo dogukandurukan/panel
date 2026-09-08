@@ -113,7 +113,46 @@ Actions log'una da şirket adı/konu basılmaz — log herkese açık.
 
 ### C. Kodlanacaklar (öncelik sırasıyla)
 
-1. **Faz anahtarı (`d:phase`)** — bulk/cut. Cut'ta: protein 210-220, "Atladım"
+1. **MUAFİYET GÜNÜ (`d:off:TARİH`)** — SIRADAKİ İŞ, 8 Eyl'de kararlaştırıldı.
+   Hasta/tatil/sakatlık günlerinde spor ve rutinleri yapamadığında elle
+   işaretlenen gün.
+
+   **Bu, "otomatik atladı işaretlemesi YOK" kuralını çiğnemiyor.** O kural
+   panelin KENDİ KAFASINA GÖRE "atladı" yazmasını yasaklıyor — uydurma veri
+   olurdu. Kullanıcının "bugün hastayım" demesi uydurma değil, BEYAN.
+
+   Yeni bir kavram da değil: alışkanlık serilerinde `ok`/`miss`/**`skip`**
+   zaten var (Pazar ve koşusuz günler `skip`). Bu iş, o üçüncü durumu elle
+   tetiklenebilir yapmak. `skip` seriyi ne kırıyor ne uzatıyor.
+
+   **Asıl kazanç seri değil, bildirimlerin susması.** Hastayken telefonun
+   "14:00 antrenman, başladın mı?" diye dürtmesi kullanıcıyı bildirimleri
+   tamamen kapatmaya iter.
+
+   Kapsam (kullanıcı üçünü de seçti):
+   - **Spor + sabah rutini** → o gün `skip`.
+   - **Yemek/kalori hedefi** → yemek KAYDI tutulmaya devam eder, sadece
+     hedefe göre yargılanmaz; Haftalık Değerlendirme o günü paydadan düşürür.
+     (Yoksa "4/6 antrenman" gibi haksız oran çıkar. §5.19'un aynısı: hesap
+     penceresi ile toplam penceresi aynı olmalı.)
+   - **Yoklama** → o gün dilim sorulmaz.
+
+   Dokunulacak yerler: `HAB_KURAL`'ların `st` fonksiyonları · `hdTopla()`
+   (muaf günü tamamen atla, kaç güne bölündüğü zaten ekranda yazıyor) ·
+   `push_feed.py` (gist'ten `d:off:` okuyup o gün göndermez — `d:oneri` ile
+   aynı tesisat) · öneri motorunun spor kuralları (çoğu `hdTopla` üzerinden
+   kendiliğinden düzelir) · yoklama kartı.
+
+   Açık uçlar: **tatil çok günlü**, tek düğme yetmez — tarih aralığı gerekiyor.
+   Aralık muhtemelen gün başına ayrı anahtar yazmalı (`RESET_ONEK` ve senkron
+   anahtar bazında çalışıyor). Düğmenin nereye konacağı da belirsiz; Günün
+   Programı kartının başlığı ya da sabit şerit.
+
+   **Kişisel veri notu:** tip etiketleri (`hasta`/`tatil`/`sakatlık`) kodda
+   sabit olarak durabilir; hangi günün hangi tip olduğu localStorage ve
+   senkron gist'inde kalır, repoya YAZILMAZ.
+
+2. **Faz anahtarı (`d:phase`)** — bulk/cut. Cut'ta: protein 210-220, "Atladım"
    cezası −250 kcal'a döner, shake suyla (250 kcal), kalori bakım −400/500.
    **Hüküm mantığı artık `hdHukum(bu,t)`'da** — hem Haftalık Değerlendirme
    hem öneri bandı onu çağırıyor, yani cut için çevrilecek **TEK yer** orası.
@@ -121,15 +160,15 @@ Actions log'una da şirket adı/konu basılmaz — log herkese açık.
    `hdHukum()` "her şey yolunda" dalında `iyi:true` döndürüyor; öneri bandı
    susma kararını o bayrağa bakarak veriyor. **Cut cümlelerini yazarken
    bayrağı düşürme** — düşerse bant her gün "iyi gidiyorsun" demeye başlar.
-2. **Harcama/gelir kategorileri** — `harcama_feed.py`, Garanti bildirim
+3. **Harcama/gelir kategorileri** — `harcama_feed.py`, Garanti bildirim
    maillerini ayrıştırır. `gmail_feed.py`'deki `classify()`/`notify_tag()`
    deseni örnek; "Otomatik bildirim" kovası bu mailleri zaten yakalıyor.
    A3'e bağlı.
-3. **Takviye checklist (`d:supp:TARİH`)** — kreatin (her gün, seri
+4. **Takviye checklist (`d:supp:TARİH`)** — kreatin (her gün, seri
    göstergesi), D3, omega-3, magnezyum, whey.
-4. **Yürüyüş takibi (`d:walk:TARİH`)** — sabah/akşam köpek + gym gidiş-dönüş.
+5. **Yürüyüş takibi (`d:walk:TARİH`)** — sabah/akşam köpek + gym gidiş-dönüş.
    Kalori hedefine ETKİ ETMEZ (yük zaten 2950 tabanına dahil).
-5. **Kültür derinliği** — 7 Eylül'de dört listeye 23'er kayıt daha yazıldı;
+6. **Kültür derinliği** — 7 Eylül'de dört listeye 23'er kayıt daha yazıldı;
    derinlik artık **6 Ekim'e kadar kesintisiz** (her listede 44 kayıt).
    Ekim başında yeniden yazılmalı. Kontrol için:
    `node` ile listeleri okuyup `doy()` sırasına göre boş kayıt ara —
