@@ -581,7 +581,12 @@
   .mnav #mLabel{font-family:var(--mono);font-size:11px;color:var(--ink);min-width:82px;display:inline-block;text-align:center;}
   .mrow{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px dotted var(--line2);}
   .mrow:last-child{border-bottom:none;}
-  .mrow .mc{font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line2);border-radius:3px;padding:2px 6px;white-space:nowrap;}
+  /* Kategori rozeti tıklanabilir: yanlış kategoriyle girilen kaydı silip
+     yeniden yazmak yerine yerinde düzeltmek için. */
+  .mrow .mc{font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line2);border-radius:3px;padding:2px 6px;white-space:nowrap;cursor:pointer;}
+  .mrow .mc:hover{color:var(--accent);border-color:var(--accent);}
+  .mrow .mc:focus-visible{outline:1px solid var(--accent);outline-offset:1px;}
+  .mrow select.mc{cursor:pointer;background:var(--card);color:var(--ink);text-transform:none;font-size:11px;letter-spacing:0;}
   .mrow .mn{flex:1;font-size:13.5px;}
   .mrow .mv{font-family:var(--mono);font-size:13.5px;white-space:nowrap;}
   .mrow .md{font-family:var(--mono);font-size:10px;color:var(--muted);white-space:nowrap;}
@@ -5269,7 +5274,8 @@ function renderMoney(){
       ' <button class="ibtn" id="mFiltreSil" style="padding:2px 8px;margin-left:6px">tümünü göster</button>'
     : 'Kayıtlar';
   el.innerHTML='<div class="wtitle" style="margin-top:13px;border-top:1px solid var(--line2);padding-top:11px">'+baslik+'</div>'+
-    kayitlar.map(({r,i})=>'<div class="mrow"><span class="mc">'+esc(r.c)+'</span><span class="mn">'+esc(r.n||'—')+
+    kayitlar.map(({r,i})=>'<div class="mrow"><span class="mc" data-mkat="'+i+'" role="button" tabindex="0" '+
+      'title="kategoriyi değiştir">'+esc(r.c)+'</span><span class="mn">'+esc(r.n||'—')+
       '</span><span class="md">'+esc((r.d||'').slice(8,10)+'.'+(r.d||'').slice(5,7))+'</span>'+
       '<span class="mv '+(r.k==='in'?'up':'down')+'">'+(r.k==='in'?'+':'−')+tl(num(r.a))+'</span>'+
       '<button class="del" data-md="'+i+'">×</button></div>').slice().reverse().join('');
@@ -5277,6 +5283,34 @@ function renderMoney(){
   if(fsil)fsil.onclick=()=>{mFiltre='';renderMoney();};
   el.querySelectorAll('[data-md]').forEach(b=>b.onclick=async()=>{
     mData.splice(+b.dataset.md,1);await saveMoney();renderMoney();renderBugunHarcama();});
+  /* Kategori rozetine basınca yerinde açılır listeye dönüşüyor. Seçenekler
+     kaydın TÜRÜNE göre (gider/gelir) geliyor; kaydın mevcut kategorisi
+     listede yoksa (artık sunulmayan eski bir etiket) başa ekleniyor, yoksa
+     select ilk seçeneğe atlar ve kullanıcı farkında olmadan kategoriyi
+     değiştirmiş olurdu. */
+  el.querySelectorAll('[data-mkat]').forEach(sp=>{
+    const ac=()=>{
+      const i=+sp.dataset.mkat,r=mData[i];if(!r)return;
+      const secenekler=MCATS[r.k].slice();
+      if(secenekler.indexOf(r.c)<0)secenekler.unshift(r.c);
+      const sel=document.createElement('select');
+      sel.className='mc';
+      sel.innerHTML=secenekler.map(c=>'<option value="'+esc(c)+'"'+(c===r.c?' selected':'')+'>'+esc(c)+'</option>').join('');
+      sp.replaceWith(sel);
+      sel.focus();
+      let bitti=false;
+      const kapat=async(yeni)=>{
+        if(bitti)return;bitti=true;
+        if(yeni&&yeni!==r.c){r.c=yeni;await saveMoney();renderBugunHarcama();}
+        renderMoney();                                   // seçim yapılmasa da rozete geri dön
+      };
+      sel.onchange=()=>kapat(sel.value);
+      sel.onblur=()=>kapat(null);
+      sel.onkeydown=ev=>{if(ev.key==='Escape'){ev.preventDefault();kapat(null);}};
+    };
+    sp.onclick=ac;
+    sp.onkeydown=ev=>{if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();ac();}};
+  });
 }
 async function addMoney(){
   const amt=num(document.getElementById('mAmt').value);
