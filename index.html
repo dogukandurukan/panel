@@ -5110,7 +5110,13 @@ async function oneriYaz(liste){
 /* ===== HARCAMA & KAZANÇ =====
    Tamamen yerel: d:money:YYYY-MM anahtarında aylık kayıt dizisi. Sunucuya hiçbir
    şey gitmez. Kayıt: {k:'in'|'out', c:kategori, a:tutar, n:not, d:tarih} */
-const MCATS={out:['Kira','Araba','Kredi/Taksit','Market','Ulaşım','Yeme-içme','Fatura','Sağlık','Eğlence','Diğer'],
+/* 'Kredi': araba, Akbank ve Garanti kredileri buraya giriyor. Hangi kredi
+   olduğu NOT alanına yazılıyor — her banka için ayrı kategori açmak listeyi
+   şişirirdi ve dağılım grafiğini okunmaz hâle getirirdi; kategoriye basıp
+   süzünce üç kayıt zaten yan yana görünüyor.
+   'Araba' kategorisi duruyor ama artık kredi taksiti için değil: yakıt,
+   bakım, sigorta gibi araca ait DİĞER giderler için. */
+const MCATS={out:['Kira','Kredi','Araba','Market','Ulaşım','Yeme-içme','Fatura','Sağlık','Eğlence','Diğer'],
              in:['Maaş','Ek gelir','Satış','Diğer']};
 /* Sabit giderler: gün gün grafikte soluk çiziliyor ve "hariç" düğmesiyle
    gizlenebiliyor. 5.000 ₺'lik kira sütunu 200-300 ₺'lik günleri düz çizgiye
@@ -5120,8 +5126,14 @@ const MCATS={out:['Kira','Araba','Kredi/Taksit','Market','Ulaşım','Yeme-içme'
    ÇEVRİLMİYOR, ayda bir kez sayılıyor. Kullanıcının gerçek sabit gideri burada
    yoksa tuzak arka kapıdan geri geliyor — araba ödemesi 'Ulaşım' olarak
    girildiğinde ayın 5'indeki tek ödeme 30 ile çarpılıp tahmini uçuruyordu.
-   Düzenli, ayda bir ödenen her kalem buraya girmeli. */
-const SABIT_KAT=['Kira','Araba','Kredi/Taksit','Fatura'];
+   Düzenli, ayda bir ödenen her kalem buraya girmeli.
+
+   'Kredi/Taksit' ARTIK SEÇENEK DEĞİL ama listede duruyor: kategori adı her
+   kaydın içine metin olarak yazılıyor, o etiketle girilmiş eski kayıtlar
+   listeden çıkarılırsa değişken gider sayılıp ay sonu tahmininde 30 ile
+   çarpılırdı — düzeltmek istediğimiz hatanın ta kendisi. Eski etiketi
+   silmeden önce o kayıtların kalmadığından emin ol. */
+const SABIT_KAT=['Kira','Kredi','Araba','Fatura','Kredi/Taksit'];
 let mSabitHaric=false;
 const AYLAR=['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'];
 let mCur='',mData=[];
