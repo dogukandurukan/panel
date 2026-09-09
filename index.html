@@ -5288,7 +5288,11 @@ async function oneriYaz(liste){
    süzünce üç kayıt zaten yan yana görünüyor.
    'Araba' kategorisi duruyor ama artık kredi taksiti için değil: yakıt,
    bakım, sigorta gibi araca ait DİĞER giderler için. */
-const MCATS={out:['Kira','Kredi','Araba','Market','Ulaşım','Yeme-içme','Fatura','Sağlık','Eğlence','Diğer'],
+/* 'Bobo': köpeğe ait giderler (mama, veteriner, tasma, bakım) tek yerde.
+   Düzenli aylık bir kalem değil — SABIT_KAT'a girmiyor, ay sonu tahmininde
+   günlük tempoya çevriliyor. Sabitleşirse (ör. her ay aynı gün mama aboneliği)
+   SABIT_KAT'a taşınmalı. */
+const MCATS={out:['Kira','Kredi','Araba','Market','Ulaşım','Yeme-içme','Fatura','Sağlık','Bobo','Eğlence','Diğer'],
              in:['Maaş','Ek gelir','Satış','Diğer']};
 /* Sabit giderler: gün gün grafikte soluk çiziliyor ve "hariç" düğmesiyle
    gizlenebiliyor. 5.000 ₺'lik kira sütunu 200-300 ₺'lik günleri düz çizgiye
