@@ -922,7 +922,7 @@ const WK={
 /* İki haftalık uyarlamanın gün kalıpları. Aynı kalıp iki tarihte
    kullanıldığı için ayrı sabit: metni iki yere kopyalamak, birini
    düzeltip diğerini unutmaya davetiye. */
-const KOSU_CORE={title:'KOŞU + CORE — üst gövde yok',run:true,ex:[
+const KOSU_CORE={title:'KOŞU + CORE — üst gövde yok',run:true,slot:'Koşu',ex:[
   ['Koşu (kolay tempo)','25-30 dk'],
   ['Dead bug','3 set · 10 / taraf'],
   ['Ters mekik (leg raise)','3 set · 12'],
@@ -936,7 +936,7 @@ const LOWER_MAKINE={title:'LOWER — makine ağırlıklı (bar yok)',run:false,e
   ['Seated calf raise','4 × 12-15'],
   ['Dead bug (core)','3 set']]};
 
-const HAFIF_GUN={title:'HAFİF GÜN — yürüyüş + mobilite',run:false,ex:[
+const HAFIF_GUN={title:'HAFİF GÜN — yürüyüş + mobilite',run:false,slot:'Yürüyüş',ex:[
   ['Tempolu yürüyüş','35-45 dk'],
   ['Kalça fleksör esnetme','30 sn / bacak, 2 tur'],
   ['Ayak bileği + kalça mobilite','8-10 dk'],
@@ -950,7 +950,10 @@ const LEGS_MAKINE={title:'LEGS — hacim, makine ağırlıklı',run:false,ex:[
   ['Hip thrust (makine) ya da kalça köprüsü','4 × 8-12'],
   ['Seated calf raise','4 × 12-15']]};
 
-const KOSU_UZUN={title:'KOŞU — uzun-kolay ya da basket',run:true,ex:[
+/* slot 'Dinlenme': Cumartesi'nin koşu dilimi zaten sabahta ('Koşu + kahve +
+   kahvaltı'), 14:00'teki 'Antrenman + yemek' dilimi bu iki haftada boş.
+   'Dinlenme' YOK tablosunda yok, yani o dilim yoklama da sormuyor. */
+const KOSU_UZUN={title:'KOŞU — uzun-kolay ya da basket',run:true,slot:'Dinlenme',ex:[
   ['Koşu (uzun, kolay tempo)','35-45 dk'],
   ['Yürüyüş soğuma','10 dk'],
   ['Kalça + baldır esnetme','30 sn / bölge, 2 tur']]};
@@ -1712,13 +1715,27 @@ let schedDone={},schedShown=-2,schedOvr={};
 const YOK={
   'Sabah rutini':'rutin','Kürek':'spor','Antrenman':'spor','Antrenman + yemek':'spor',
   'Koşu + kahve + kahvaltı':'spor','Bisiklet + bobo + kahve':'spor','Basket / tenis':'spor',
+  /* EX_OVR'daki slot etiketleri: ezilen günde 'Antrenman' dilimi bunlarla
+     değişiyor, yoklama ve bildirim yine 'spor' olarak soruyor. */
+  'Koşu':'spor','Yürüyüş':'spor',
   'Gitar':'öğrenme','DJ':'öğrenme','Kişisel proje':'üretim','Kitap':'okuma','Yatış':'uyku'
 };
 const YOK_SORU={spor:'Antrenmana başladın mı?',rutin:'Rutini yaptın mı?',
   'öğrenme':'Çalıştın mı?','üretim':'Üzerinde çalıştın mı?',okuma:'Okudun mu?',uyku:'Yatağa girdin mi?'};
 
 let yok={},yokBildirilen={},yokIlkRender=true,yokSonCevap=null;
-const yokSlotlari=()=>SCHED[dow].map((is,i)=>YOK[is]?i:-1).filter(i=>i>-1);
+/* Bir TARİHİN günlük programı. Ezme varsa yalnızca 'Antrenman' dilimi o
+   günün etiketiyle değişiyor; 12 dilimlik tabloyu kopyalamak, ileride
+   SCHED'in bir dilimi değişince ezmelerin sessizce eskimesi demekti. */
+function gunSched(k){
+  const taban=SCHED[new Date(k+'T12:00:00').getDay()]||[];
+  const o=EX_OVR[k];
+  if(!o||!o.slot||o.slot==='Antrenman')return taban;
+  /* Cumartesi'de dilim 'Antrenman + yemek' — tam eşleşme yetmiyor. */
+  return taban.map(is=>String(is).indexOf('Antrenman')===0?o.slot:is);
+}
+const schedBugun=()=>gunSched(todayKey());
+const yokSlotlari=()=>schedBugun().map((is,i)=>YOK[is]?i:-1).filter(i=>i>-1);
 /* Cevaplanmış sayılma: açık yoklama cevabı VEYA programdan tiklenmiş olması.
    İki kart aynı gerçeği göstersin, kullanıcı iki yerde işaretlemek zorunda kalmasın. */
 const yokCevap=i=>yok[i]||(schedDone[i]?{a:'ok',t:''}:null);
@@ -1762,6 +1779,17 @@ function yokPlanUret(){
      gönderici YOK tablosunu tekrar yazmasın diye plana konuyor — program
      tek kaynakta, index.html'de kalıyor. */
   for(let d=0;d<7;d++)p[d]=(SCHED[d]||[]).map((is,i)=>YOK[is]?[SLOTS[i][0],is,i,YOK[is]]:null).filter(Boolean);
+  /* Tarihe bağlı ezmeler 't:YYYY-AA-GG' anahtarıyla ekleniyor: gönderici
+     önce bunlara bakıyor, yoksa haftagününe düşüyor. Ayrı önek sayesinde
+     eski bir gönderici yeni planı okusa da bozulmuyor, yalnızca ezmeyi
+     görmezden geliyor. Yalnızca ÖNÜMÜZDEKİ 21 gün yazılıyor — geçmiş
+     ezmelerin bildirimde karşılığı yok, plan da şişmesin. */
+  for(let i=0;i<21;i++){
+    const k=dayBack(-i);
+    if(!EX_OVR[k])continue;
+    const g=gunSched(k);
+    p['t:'+k]=g.map((is,j)=>YOK[is]?[SLOTS[j][0],is,j,YOK[is]]:null).filter(Boolean);
+  }
   return p;
 }
 
@@ -1922,7 +1950,7 @@ async function yokCevapla(i,a){
   /* Spor dilimine "Evet" demek "antrenmana başladım" demektir: antrenman modunu
      doğrudan açar, böylece salonda ikinci bir düğme aramaya gerek kalmaz.
      Yalnızca ağırlık günlerinde — kürek/koşu gününde kaydedilecek set yok. */
-  if(a==='ok'&&YOK[SCHED[dow][i]]==='spor'&&!sess.on&&gununEx().some(e=>setHedef(e[1]))){
+  if(a==='ok'&&YOK[schedBugun()[i]]==='spor'&&!sess.on&&gununEx().some(e=>setHedef(e[1]))){
     await sessBaslat();
     const k=document.getElementById('exList');
     if(k){tabAc(k);k.scrollIntoView({behavior:'smooth',block:'center'});}   // yoklama sabit şeritte, antrenman Spor sekmesinde
@@ -1941,7 +1969,7 @@ function yokBildir(i,ad){
 
 function renderYok(){
   const el=document.getElementById('yokBody');if(!el)return;
-  const plan=SCHED[dow],slotlar=yokSlotlari(),simdi=nowMin();
+  const plan=schedBugun(),slotlar=yokSlotlari(),simdi=nowMin();
   const basladi=i=>simdi>=hhmm(SLOTS[i][0]);
   const bekleyen=slotlar.filter(i=>basladi(i)&&!yokCevap(i));
 
@@ -2041,7 +2069,7 @@ async function loadSched(){schedDone=await sGet('d:sched:'+todayKey())||{};sched
 let schedEdit=null; // {i,alan:'t'|'d'} — açık olan düzenleme kutusu
 function renderSched(){
   const el=document.getElementById('schedList');if(!el)return;
-  const plan=SCHED[dow],act=activeSlot();schedShown=act;
+  const plan=schedBugun(),act=activeSlot();schedShown=act;
   document.getElementById('schedDay').textContent=DAYNAMES[dow];
   const nowEl=document.getElementById('schedNow');
   if(nowEl)nowEl.textContent=act>-1?(plan[act]?('Şu an: '+plan[act]):'Şu an: serbest')
@@ -3040,13 +3068,13 @@ function gunHacimTaban(){
   const son=ks.slice(-4).map(k=>num(vol[k])).filter(x=>x>0);
   return son.length>=2?slpMedian(son):null;
 }
-const yokSporAtlandi=()=>(SCHED[dow]||[]).some((is,i)=>YOK[is]==='spor'&&yok[i]&&yok[i].a==='skip');
+const yokSporAtlandi=()=>(schedBugun()||[]).some((is,i)=>YOK[is]==='spor'&&yok[i]&&yok[i].a==='skip');
 /* Antrenmanın ortasında hacim doğal olarak düşük görünür; hedefi o an kırpmak
    yanlış sinyal olur. Aşağı yönlü ayar yalnızca seans bittiğinde ya da spor
    dilimi geçtiğinde uygulanır. Yukarı yönlü ayar beklemez: hacim zaten aşılmış. */
 function sporBitti(){
   if(sess.bitti)return true;
-  let son=null;(SCHED[dow]||[]).forEach((is,i)=>{if(YOK[is]==='spor')son=hhmm(SLOTS[i][1]);});
+  let son=null;(schedBugun()||[]).forEach((is,i)=>{if(YOK[is]==='spor')son=hhmm(SLOTS[i][1]);});
   return son!==null&&nowMin()>=son;
 }
 

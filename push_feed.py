@@ -329,7 +329,13 @@ def main():
     simdi = dt.datetime.now(IST)
     # JS getDay(): Pazar 0 ... Cumartesi 6
     js_gun = (simdi.weekday() + 1) % 7
-    bugun = plan.get(str(js_gun)) or []
+    # Tarihe bağlı ezme ('t:YYYY-AA-GG') haftagününü geçer. Panel bunları
+    # yalnızca önümüzdeki 21 gün için yazıyor; yoksa haftagününe düşüyoruz.
+    # Ayrı önek, eski bir planı okurken de bozulmamayı sağlıyor.
+    tarih_anahtari = "t:" + simdi.strftime("%Y-%m-%d")
+    bugun = plan.get(tarih_anahtari) or plan.get(str(js_gun)) or []
+    if plan.get(tarih_anahtari):
+        print(f"o güne özel plan kullanıldı ({len(bugun)} dilim).")
     if not bugun:
         print(f"bugün ({js_gun}) için yoklama dilimi yok.")
         return 0
