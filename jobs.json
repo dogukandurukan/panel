@@ -1,96 +1,104 @@
 {
- "updated": "2026-09-08 12:21",
+ "updated": "2026-09-09 12:23",
  "ok": true,
  "count": 3,
- "pool": 23,
+ "pool": 25,
  "items": [
   {
-   "title": "Senior Data Engineer (m/f/d)",
-   "company": "Dishdigital",
-   "location": "Almanya",
-   "loc_raw": "Düsseldorf",
+   "title": "Data Engineer (f/m/d)",
+   "company": "Climate",
+   "location": "Berlin",
+   "loc_raw": "Berlin HQ",
    "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/dishdigital/senior-data-engineer-dusseldorf-44649",
+   "url": "https://www.arbeitnow.com/jobs/companies/climate/data-engineer-berlin-hq-96911",
    "source": "Arbeitnow",
    "posted": "2026-09-08",
-   "days": 0,
-   "skills": [
-    "python",
-    "sql",
-    "airflow",
-    "dbt",
-    "git"
-   ],
-   "german": false,
-   "focus": "pipeline",
-   "summary": "Your Contribution Are you passionate about designing scalable data platforms and helping others grow along the way? As a Senior Data Engineer, you will shape the architecture and technical direction of our Google Cloud data platform while enabling a team of en",
-   "keywords": [
-    "scalab",
-    "pipeline",
-    "data quality",
-    "governance",
-    "stakeholder"
-   ],
-   "score": 86
-  },
-  {
-   "title": "Data Scientist (f/m/d)",
-   "company": "Pair",
-   "location": "Berlin",
-   "loc_raw": "Berlin (Hybrid)",
-   "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/pair/data-scientist-berlin-hybrid-327994",
-   "source": "Arbeitnow",
-   "posted": "2026-09-07",
    "days": 1,
    "skills": [
     "python",
     "sql",
+    "ci/cd",
+    "git",
     "llm"
    ],
    "german": false,
    "focus": "ml",
-   "summary": "Are you ready to change the market? Are you a passionate and experienced Data Scientist, excited to work on improving and maintaining our data architecture? Join us to become a part of our strong international team that is transforming the traditional debt col",
+   "summary": "Job description We are currently seeking a Data Engineer for our international and diverse Climate Policy Team (CPT). The team is engaged in various projects on climate change mitigation, in particular on energy system transformation, the 1.5°C global warming ",
    "keywords": [
-    "stakeholder",
-    "startup",
-    "finance"
+    "energy",
+    "pipeline",
+    "automation",
+    "data quality",
+    "optimization"
    ],
-   "score": 82
+   "score": 94
   },
   {
-   "title": "Data Engineer (m/f/d)",
-   "company": "Dishdigital",
+   "title": "Senior Data Analyst (f/m/x)",
+   "company": "exmox",
    "location": "Almanya",
-   "loc_raw": "Düsseldorf",
+   "loc_raw": "Hamburg",
    "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/dishdigital/data-engineer-dusseldorf-159968",
+   "url": "https://www.arbeitnow.com/jobs/companies/exmox/senior-data-analyst-hamburg-353746",
    "source": "Arbeitnow",
-   "posted": "2026-09-08",
+   "posted": "2026-09-09",
    "days": 0,
    "skills": [
     "python",
     "sql",
     "spark",
-    "airflow",
-    "dbt",
-    "etl"
+    "databricks",
+    "tableau",
+    "looker"
    ],
    "german": false,
-   "focus": "pipeline",
-   "summary": "Your Contribution Are you passionate about building robust data pipelines and enabling data-driven innovation? As a Data Engineer, you will design and evolve scalable data platforms that power analytics, machine learning, and business insights across DISH. Wor",
+   "focus": "business",
+   "summary": "Your Mission This is a company built for growth, not comfort. When you join exmox, you're stepping onto a global, highly competitive playing field, solving real problems in environments that push you beyond your comfort zone. We build high-performing consumer ",
+   "keywords": [
+    "finance",
+    "automation",
+    "dashboard",
+    "self-service",
+    "data quality",
+    "stakeholder",
+    "a/b"
+   ],
+   "score": 92
+  },
+  {
+   "title": "Senior AI-Native Data Engineer (f/m/x)",
+   "company": "exmox",
+   "location": "Almanya",
+   "loc_raw": "Hamburg",
+   "remote": false,
+   "url": "https://www.arbeitnow.com/jobs/companies/exmox/senior-ai-native-data-engineer-hamburg-334970",
+   "source": "Arbeitnow",
+   "posted": "2026-09-09",
+   "days": 0,
+   "skills": [
+    "pyspark",
+    "spark",
+    "databricks",
+    "etl",
+    "git"
+   ],
+   "german": false,
+   "focus": "ml",
+   "summary": "Your Mission This is a company built for growth. When you join exmox, you're stepping onto a global, highly competitive playing field, building high-performing consumer products in mobile gaming. We're scaling a rewarded user engagement and acquisition platfor",
    "keywords": [
     "pipeline",
     "scalab",
-    "cost",
+    "optimization",
     "real-time",
-    "experimentation",
-    "stakeholder"
+    "data quality"
    ],
-   "score": 80
+   "score": 86
   }
  ],
  "seen": [
+  "https://www.arbeitnow.com/jobs/companies/climate/data-engineer-berlin-hq-96911",
+  "https://www.arbeitnow.com/jobs/companies/exmox/senior-data-analyst-hamburg-353746",
+  "https://www.arbeitnow.com/jobs/companies/exmox/senior-ai-native-data-engineer-hamburg-334970",
   "https://www.arbeitnow.com/jobs/companies/dishdigital/senior-data-engineer-dusseldorf-44649",
   "https://www.arbeitnow.com/jobs/companies/pair/data-scientist-berlin-hybrid-327994",
   "https://www.arbeitnow.com/jobs/companies/dishdigital/data-engineer-dusseldorf-159968",
