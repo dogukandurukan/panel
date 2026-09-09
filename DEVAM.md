@@ -316,11 +316,18 @@ iOS ana ekran kısayolu önbellek tutabiliyor; değişiklik görünmezse sert ye
     değiştirmek o haftagününü kalıcı değiştirir. `EX_OVR` tarihe bağlı
     (`'YYYY-AA-GG'`) ve ertesi hafta kendiliğinden düşer. Bugünün listesini
     okuyan her yer `gununEx()` çağırıyor — `WK[dow].ex` yazma.
-    **Ezme hareket SAYISINI ve "ağırlık günü mü" niteliğini korumalı:**
-    alışkanlık halkası ve Haftalık Değerlendirme geçmiş günleri
-    `WK[haftagünü]` üzerinden sayıyor ve `d:ex` tikleri indekse bağlı
-    (§5.5); sayı aynı kaldığı sürece o hesaplar ezmeyi bilmek zorunda
-    değil. Sayıyı değiştirirsen `exSayilir()` ve `hdTopla()`'yı da elden geçir.
+    **Kayıt WK ile aynı şekli taşıyor: `{title, run, ex}`** — başlık ve koşu
+    bayrağı da ezilebiliyor, yalnızca hareket listesi değil.
+    `gunProg(tarih)` bir TARİHİN programını veriyor; günü haftagününden değil
+    tarihten türeten her hesap onu çağırıyor (9 Eyl'de `exSayilir`,
+    `hdTopla`, alışkanlık halkaları hepsi tarihe duyarlı hâle getirildi).
+    Alışkanlıkta 'skip' artık Pazar'a değil, o günün ağırlık hareketi olup
+    olmamasına bakıyor — ezmeyle koşuya çevrilmiş gün kaçırılmış antrenman
+    sayılmıyor. **`d:ex` tikleri hâlâ İNDEKSE bağlı (§5.5):** bir tarihin
+    ezmesini o gün geçtikten SONRA değiştirirsen eski tiklerin anlamı kayar.
+    **Koşu/hafif günlerde şartnamede `×` kullanma** — `setHedef()` onu
+    ağırlık hareketi sayar ve gün ağırlık günü olur ('30 sn / bacak, 2 tur'
+    yaz, '2 × 30 sn' değil).
 25. **Bildirim, öneri uğruna düşmemeli.** `oneri_satiri()` gist'ten gelen
     bozuk bir yapıda istisna atarsa `main()` içinde sarmalayıcı olmadığı için
     YOKLAMA bildirimi de gitmiyordu. Gist içeriği dış veri: tipini doğrula,

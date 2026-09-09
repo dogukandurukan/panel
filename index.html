@@ -908,28 +908,84 @@ const WK={
    o günü değiştirirdi; buradaki tablo TARİHE bağlı, ertesi hafta kendiliğinden
    normale dönüyor. Anahtar 'YYYY-AA-GG'.
 
-   Kural: uyarlama hareket SAYISINI korumalı ve "ağırlık günü mü" testini
-   bozmamalı. Alışkanlık halkası ve Haftalık Değerlendirme geçmiş günleri
-   WK[haftagünü] üzerinden sayıyor (d:ex tikleri İNDEKSE bağlı, DEVAM.md §5.5);
-   sayı ve nitelik aynı kaldığı sürece o hesaplar etkilenmiyor ve bu tabloyu
-   bilmeleri gerekmiyor. Sayıyı değiştirirsen oraları da elden geçir.
+   Kayıt WK ile AYNI ŞEKLİ taşıyor ({title, run, ex}) — böylece yalnızca
+   hareket listesi değil, günün başlığı ve koşu bayrağı da ezilebiliyor.
+   Ağırlık gününü koşu gününe çevirmek bunu gerektiriyordu.
+
+   Bir günün "ağırlık günü" sayılıp sayılmaması hareket ŞARTNAMESİNDEN
+   çıkıyor: setHedef() '4 × 6-10' biçimini tanıyor. Bu yüzden koşu ve hafif
+   günlerde '×' kullanma — '2 × 30 sn' yazarsan o gün ağırlık günü sayılır ve
+   Haftalık Değerlendirme'nin "tamamlanan antrenman" oranına girer.
 
    Eski satırlar silinmeyebilir; tarihi geçen kayıt zaten hiç okunmuyor. */
+
+/* İki haftalık uyarlamanın gün kalıpları. Aynı kalıp iki tarihte
+   kullanıldığı için ayrı sabit: metni iki yere kopyalamak, birini
+   düzeltip diğerini unutmaya davetiye. */
+const KOSU_CORE={title:'KOŞU + CORE — üst gövde yok',run:true,ex:[
+  ['Koşu (kolay tempo)','25-30 dk'],
+  ['Dead bug','3 set · 10 / taraf'],
+  ['Ters mekik (leg raise)','3 set · 12'],
+  ['Kalça köprüsü','3 set · 15']]};
+
+const LOWER_MAKINE={title:'LOWER — makine ağırlıklı (bar yok)',run:false,ex:[
+  ['Hack squat ya da makine squat','4 × 6-10'],
+  ['Leg press','3 × 10-12'],
+  ['Leg curl (yatarak)','4 × 8-12'],
+  ['Leg extension','3 × 12-15'],
+  ['Seated calf raise','4 × 12-15'],
+  ['Dead bug (core)','3 set']]};
+
+const HAFIF_GUN={title:'HAFİF GÜN — yürüyüş + mobilite',run:false,ex:[
+  ['Tempolu yürüyüş','35-45 dk'],
+  ['Kalça fleksör esnetme','30 sn / bacak, 2 tur'],
+  ['Ayak bileği + kalça mobilite','8-10 dk'],
+  ['Dead bug','3 set · 10 / taraf']]};
+
+const LEGS_MAKINE={title:'LEGS — hacim, makine ağırlıklı',run:false,ex:[
+  ['Bulgar split squat (gövde ağırlığı)','4 × 8-10'],
+  ['Leg press (ayak yüksek, kalça vurgulu)','4 × 10-12'],
+  ['Leg extension','3 × 12-15'],
+  ['Leg curl (oturarak)','3 × 12-15'],
+  ['Hip thrust (makine) ya da kalça köprüsü','4 × 8-12'],
+  ['Seated calf raise','4 × 12-15']]};
+
+const KOSU_UZUN={title:'KOŞU — uzun-kolay ya da basket',run:true,ex:[
+  ['Koşu (uzun, kolay tempo)','35-45 dk'],
+  ['Yürüyüş soğuma','10 dk'],
+  ['Kalça + baldır esnetme','30 sn / bölge, 2 tur']]};
+
 const EX_OVR={
-  /* 8 Eylül 2026 — LOWER'ın omuz kuşağını yükleyen dört hareketi değiştirildi:
-     bar sırtta squat, yüklü bar tutulan RDL, omuz pedli standing calf ve
-     plank yerine omuzdan yük almayan karşılıkları. Bacak yükü korunuyor. */
-  '2026-09-08':[
+  /* 8 Eylül — LOWER'ın omuz kuşağını yükleyen dört hareketi değiştirilmişti. */
+  '2026-09-08':{title:'LOWER — makine ağırlıklı',run:false,ex:[
     ['Hack squat ya da makine squat','4 × 6-10'],
     ['Leg press','3 × 10-12'],
     ['Back extension (45°)','3 × 12-15'],
     ['Leg curl (yatarak)','3 × 10-12'],
     ['Seated calf raise','4 × 12-15'],
-    ['Dead bug (core)','3 set']
-  ]
+    ['Dead bug (core)','3 set']]},
+
+  /* 10-22 Eylül — iki haftalık uyarlama. Üst gövde çalışılmıyor; bacak,
+     koşu ve core devam ediyor. Bacak günleri MAKİNE ağırlıklı: back squat
+     ve RDL'de yük bacakta olsa da bar KOLLARLA tutuluyor, o yüzden dışarıda.
+     Haftalık iskelet: Pzt koşu+core · Sal LOWER · Çar aktivite (WK'dan) ·
+     Per hafif · Cum LEGS · Cmt koşu · Paz tam dinlenme (WK'dan).
+     22 Eylül'den sonra kayıt yok, program kendiliğinden normale dönüyor. */
+  '2026-09-10':HAFIF_GUN, '2026-09-17':HAFIF_GUN,
+  '2026-09-11':LEGS_MAKINE,'2026-09-18':LEGS_MAKINE,
+  '2026-09-12':KOSU_UZUN,  '2026-09-19':KOSU_UZUN,
+  '2026-09-14':KOSU_CORE,  '2026-09-21':KOSU_CORE,
+  '2026-09-15':LOWER_MAKINE,'2026-09-22':LOWER_MAKINE
 };
-/* Bugünün hareket listesi. Uyarlama yoksa programın kendisi. */
-const gununEx=()=>EX_OVR[todayKey()]||WK[dow].ex;
+
+/* Bir TARİHİN programı: ezme varsa o, yoksa haftagününün WK kaydı.
+   Günü haftagününden değil tarihten türeten her hesap bunu çağırmalı —
+   yoksa ezilmiş bir gün eski hâliyle sayılır. */
+function gunProg(k){
+  return EX_OVR[k]||WK[new Date(k+'T12:00:00').getDay()];
+}
+const gununEx=()=>gunProg(todayKey()).ex;
+const gunBugun=()=>gunProg(todayKey());
 
 const MORNING_LONG=[['Kedi-inek','10 tekrar'],['Kalça fleksör esnetme (diz üstü lunge)','2 × 30 sn / bacak'],['Güneş selamı','3-4 tur'],['Plank','3 × 45 sn'],['Dead bug','3 × 10 / taraf'],['Side plank','2 × 30 sn / taraf'],['Ayak bileği çemberi + tek ayak denge','3 dk']];
 /* Yeni programa göre: Pzt/Çarş/Cuma/Paz uzun (~12-15 dk), Sal/Cmt kısa hedefli
@@ -2070,7 +2126,7 @@ function mornIhmal(){
 function morningPlan(){
   let liste=(MORNING_SHORT[dow]||MORNING_LONG).slice();
   const notlar=[];
-  if(/LEGS|LOWER/i.test(WK[dow].title||'')){
+  if(/LEGS|LOWER/i.test(gunBugun().title||'')){
     const onceki=liste.map(x=>x[0]).join('|');
     MORN_BACAK.slice().reverse().forEach(([re,varsayilan])=>{
       const v=liste.find(x=>re.test(x[0]));
@@ -2190,7 +2246,7 @@ function mRestTick(){
     if(!mRestBip){mRestBip=true;beep();}
   }
 }
-async function renderRun(){const km=await sGet('d:runkm:'+todayKey())||'';runKmToday=km;const isRun=WK[dow].run;const el=document.getElementById('runArea');
+async function renderRun(){const km=await sGet('d:runkm:'+todayKey())||'';runKmToday=km;const isRun=gunBugun().run;const el=document.getElementById('runArea');
   el.innerHTML='<div class="runbox"><label>Bugün koştuğun mesafe</label><input type="number" id="runIn" placeholder="0" value="'+esc(km)+'"><span class="mkt-sub">km</span></div>'+
     (isRun?'<div class="runnote">Bugün aktivite günü — basket / tenis / kürek, keyifli-orta tempo. Kürek seçersen 20-30 dk yeterli. Yarın çekiş günü: maç modunda oynama.</div>':'');
   document.getElementById('runIn').oninput=e=>{runKmToday=e.target.value;sSet('d:runkm:'+todayKey(),e.target.value);renderHabits();};}
@@ -2200,7 +2256,7 @@ let exDone={},wtlog={};
 async function loadWorkout(){exDone=await sGet('d:ex:'+todayKey())||{};wtlog=await sGet('d:wtlog')||{};
   prog=await sGet(PROG_KEY)||{};vol=await sGet(VOL_KEY)||{};await volGeriDoldur();await loadSess();
   document.getElementById('wkTitle').textContent=DAYNAMES[dow];
-  document.getElementById('wkSub').textContent=WK[dow].title;renderEx();}
+  document.getElementById('wkSub').textContent=gunBugun().title;renderEx();}
 function prevWeight(name){let best=null;const tk=todayKey();for(const dk in wtlog){if(dk>=tk)continue;const v=wtlog[dk]&&wtlog[dk][name];if(v!==undefined&&v!==''&&v!=null){if(!best||dk>best.date)best={date:dk,kg:v};}}return best;}
 /* ===== ANTRENMAN MODU =====
    Salonda telefonu tek elle kullanırken liste işe yaramıyor: sırayla hangi
@@ -2713,7 +2769,7 @@ function renderWtLog(){const el=document.getElementById('wtList');if(!el)return;
   if(wtMod==='ilerleme'){renderIlerleme(el);return;}
   const ex=gununEx().filter(e=>String(e[1]).indexOf('×')>-1);
   const tk=todayKey();const today=wtlog[tk]||{};const lw=wtlog[dateShift(tk,-7)]||{};
-  document.getElementById('wtSub').textContent='Bugün: '+WK[dow].title;
+  document.getElementById('wtSub').textContent='Bugün: '+gunBugun().title;
   if(!ex.length){el.innerHTML='<div class="empty">Bugün ağırlık antrenmanı yok (kürek/koşu/dinlenme günü).</div>';return;}
   el.innerHTML=ex.map(e=>{const name=e[0];const cur=today[name]!==undefined?today[name]:'';
     let cmp;if(lw[name]!==undefined&&lw[name]!==''){cmp='geçen hafta bugün: '+esc(lw[name])+' kg';}
@@ -2766,14 +2822,23 @@ function mornRatio(o,d){if(!o)return 0;
 const waterGoalFor=d=>Math.ceil((d===6?3.5:3)*1000/WATER_GLASS_ML);
 const tickRatio=(o,n)=>n?Object.values(o||{}).filter(Boolean).length/n:0;
 /* '—' hedefli satırlar bilgi notu, yapılacak iş değil. */
-const exSayilir=d=>WK[d].ex.filter(e=>String(e[1]).trim()!=='—').length||WK[d].ex.length;
+/* Payda ARTIK TARİHE bağlı: ezilmiş bir gün kendi hareket sayısıyla
+   ölçülmeli, haftagününün eski listesiyle değil. */
+const exSayilir=k=>{const ex=gunProg(k).ex;
+  return ex.filter(e=>String(e[1]).trim()!=='—').length||ex.length;};
 const HABITS=[
  {ad:'Sabah rutini',birim:'gün',st:v=>mornRatio(v.m,v.d)>=HAB_MIN?'ok':'miss'},
- {ad:'Koşu',birim:'hafta',st:v=>WK[v.d].run?(num(v.r)>0?'ok':'miss'):'skip'},
+ {ad:'Koşu',birim:'hafta',st:v=>gunProg(v.k).run?(num(v.r)>0?'ok':'miss'):'skip'},
  /* Payda TİKLENEBİLİR satır sayısı: aktivite gününde '—' tekrarlı
     "Ağırlık antrenmanı yok" satırı da sayılıyordu, o yüzden basketi ve
     ısınmayı yapsan bile 2/3 = %67 ile eşiğin altında kalıp 'miss' oluyordu. */
- {ad:'Antrenman',birim:'gün',st:v=>v.d===0?'skip':(tickRatio(v.x,exSayilir(v.d))>=HAB_MIN?'ok':'miss')},
+ /* 'skip' artık Pazar'a değil, O GÜNÜN ağırlık hareketi olup olmamasına
+    bakıyor: tam dinlenme günü de, ezmeyle koşuya çevrilmiş bir gün de
+    kaçırılmış antrenman sayılmamalı. */
+ {ad:'Antrenman',birim:'gün',st:v=>{
+   const ex=gunProg(v.k).ex;
+   if(!ex.some(e=>setHedef(e[1])))return 'skip';
+   return tickRatio(v.x,exSayilir(v.k))>=HAB_MIN?'ok':'miss';}},
  {ad:'Su hedefi',birim:'gün',st:v=>num(v.w)>=waterGoalFor(v.d)?'ok':'miss'},
  {ad:'Almanca quiz',birim:'gün',st:v=>(v.q&&(num(v.q.right)+num(v.q.wrong))>=5)?'ok':'miss'},
  {ad:'Uyku alışkanlığı',birim:'gece',st:v=>{const h=slpHabit();if(!h)return 'skip';return slpFits(sleepLog[v.k],h)?'ok':'miss';}}
@@ -4722,9 +4787,10 @@ async function hdTopla(bas,son){
       if(t.kcal>0){const h=hdGunHedefi(d);o.gun++;
         o.kcal+=t.kcal;o.p+=t.p;o.c+=t.c;o.hKcal+=h.kcal;o.hP+=h.p;o.hC+=h.c;}
     }
-    if(WK[d].ex.some(e=>setHedef(e[1]))){
+    const gex=gunProg(k).ex;
+    if(gex.some(e=>setHedef(e[1]))){
       o.sporGun++;
-      if(tickRatio(await sGet('d:ex:'+k),WK[d].ex.length)>=HAB_MIN)o.sporTam++;
+      if(tickRatio(await sGet('d:ex:'+k),gex.length)>=HAB_MIN)o.sporTam++;
     }
     o.tonaj+=num(vol[k]);
   }
