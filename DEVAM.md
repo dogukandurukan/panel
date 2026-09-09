@@ -1,4 +1,4 @@
-# Panel — devir notu · 4 Eylül 2026
+# Panel — devir notu · 9 Eylül 2026
 
 Kalıcı kurallar `CLAUDE.md`'de (repo public, uydurma gösterge yok, tek dosya,
 iki tema, LinkedIn otomasyonu yok). **Bu dosya: panel bugün ne durumda, sırada
@@ -7,6 +7,22 @@ mesajları ayrıntılı, `git log --oneline` ile bak.
 
 **Kullanıcı paneli 31 Ağustos 2026'da ciddi kullanmaya başladı.** Artık
 geliştirme değil, gerçek veri var. Deneme kaydı bırakma, bırakırsan temizle.
+
+## ⏳ TARİHİ GEÇECEK ŞEYLER — önce buna bak
+
+| Ne | Ne zaman | Yapılacak |
+|---|---|---|
+| **Sakatlık uyarlaması** (`EX_OVR`, 10-22 Eyl) | **23 Eylül** | Kendiliğinden düşüyor, silmeye gerek yok. Ama kullanıcının omzu iyileşti mi diye SOR — düzelmediyse iki hafta daha yazılmalı. |
+| **Kalori hedefi 2500** (elle ayarlandı 9 Eyl) | 23 Eylül | Sakatlık bitince bulk'a mı dönülecek, cut sürecek mi? Kullanıcı karar verecek. Hedef `kcalOfs`'ta, koddan ezme. |
+| **Kültür derinliği** | **6 Ekim** | Dört listede 44'er kayıt var, sonrası boş. Yazılmadan önce ayrı JSON'a taşıma kararı verilmeli (dosya 518 KB). |
+
+**Uyarlamanın çerçevesi (9 Eyl):** iki hafta üst gövde çalışılmıyor, bacak
+ve koşu serbest — kısıt kullanıcının hekiminden geldi. **Sebebi burada
+yazmıyor: bu depo herkese açık ve sağlık bilgisi 1. kuralın yasakladığı
+kişisel verinin en hassas türü.** Gerekirse kullanıcıya sor.
+
+Bacak günleri MAKİNE ağırlıklı: "bacak serbest" ile "barlı bacak serbest"
+aynı şey değil, bar kollarla tutuluyor.
 
 ---
 
@@ -341,4 +357,6 @@ iOS ana ekran kısayolu önbellek tutabiliyor; değişiklik görünmezse sert ye
 | 31 Ağu | **Panel ciddi kullanıma geçti.** Antrenman: 45 sn dinlenme + kas grubu sıralaması + efor etiketi · İş Başvuruları elle ret · Bugün Harcadıkların kartı · başvuru listesinde "tümünü göster" |
 | 1 Eyl | Harcama gün gün döküm + sabit gider ayrımı + tarih alanı · **Haftalık Değerlendirme kartı** |
 | 3 Eyl | **`SCHED` düzeltildi** (aktivite günü Perşembe→Çarşamba, v2 ile ayrışmıştı) · alışkanlık paydasından bilgi satırları çıkarıldı · LLM tartışıldı, eklenmedi |
+| 8 Eyl | Seans kapanışı (nasıl geçti / zorlayan yer) · **artış freni** · `EX_OVR` tek günlük program uyarlaması · Araba/Kredi sabit gider · elle başvuru girişi · kültür derinliği 6 Ekim'e kadar · mobil taşma |
+| 9 Eyl | **Sakatlık uyarlaması** (10-22 Eyl, üst gövde yok) · `gunProg()` ile hesaplar tarihe bağlandı · `SCHED` de tarihe bağlandı + bildirim planına `t:TARİH` · **14 günlük plan + muaf gün** · kategori süzgeci · kayıt kategorisi düzenlenebilir · `Kredi` kategorisi |
 | 6-7 Eyl | **ÖNERİ MOTORU** — panel gösterge tablosundan tavsiye veren katmana geçti. `hdHukum()` ayrıştırıldı · bant + motor iskeleti · 8 kural (spor/para/iş) · `[×]` ile 7 gün susturma · bildirime öneri satırı. Tasarım `docs/superpowers/specs/`, plan `docs/superpowers/plans/` altında. |

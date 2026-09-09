@@ -12,6 +12,11 @@ https://dogukandurukan.github.io/panel/
    e-posta, CV metni) buraya girmez. Gmail kimlik bilgileri yalnızca GitHub
    Actions secrets'ta durur ve tarayıcıya hiç inmez. Kullanıcının cover letter
    profili yalnızca kendi tarayıcısının `localStorage`'ında tutulur.
+   **SAĞLIK BİLGİSİ DE KİŞİSEL VERİDİR** ve en hassas türüdür: teşhis, tanı
+   adı, ilaç, tahlil sonucu ne koda ne `DEVAM.md`'ye ne commit mesajına
+   girer — git geçmişi kalıcı ve herkese açık. Bir kısıt programı
+   etkiliyorsa KISITI yaz ("iki hafta üst gövde yok"), SEBEBİNİ değil.
+   9 Eylül'de bir teşhis `DEVAM.md`'ye yazıldı ve aynı oturumda çıkarıldı.
 2. **Her gösterge gerçek veriye bağlı olacak.** Arkasında veri olmayan nabız,
    sahte akış çizgisi, dekoratif "çalışıyor" göstergesi konulmaz. Nabız yalnızca
    `status==='in_progress'` iken atar; akış oku yalnızca ajan son 1 saatte
