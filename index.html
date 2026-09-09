@@ -65,10 +65,15 @@
     100%{border-color:var(--line);box-shadow:none;}
   }
   @media(prefers-reduced-motion:reduce){.card.vurgu{animation:none;border-color:var(--accent);}}
-  .card-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;border-bottom:1px solid var(--line2);padding-bottom:9px;margin-bottom:13px;}
+  .card-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;border-bottom:1px solid var(--line2);padding-bottom:9px;margin-bottom:13px;flex-wrap:wrap;}
   .kicker{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin:0 0 3px;}
   .card-title{font-family:var(--serif);font-weight:600;font-size:20px;margin:0;letter-spacing:-.01em;}
-  .meta{font-family:var(--mono);font-size:10.5px;color:var(--muted);text-align:right;white-space:nowrap;}
+  /* white-space:nowrap tek satırlık meta'lar için doğru ama üç düğmeli
+     başlıklarda (Kaldırılan Ağırlık: Bugün / İlerleme / Excel'e aktar) dar
+     ekranda kartın dışına taşıyordu. Düğme taşıyan meta sarmalanıyor;
+     metin taşıyanlar nowrap kalıyor ki tarih/sayı ortadan bölünmesin. */
+  .meta{font-family:var(--mono);font-size:10.5px;color:var(--muted);text-align:right;white-space:nowrap;min-width:0;}
+  .meta:has(.ibtn){white-space:normal;display:flex;flex-wrap:wrap;gap:5px;justify-content:flex-end;align-items:center;}
   .ibtn{background:none;border:1px solid var(--line);color:var(--muted);font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:4px 8px;border-radius:4px;cursor:pointer;}
   .ibtn:hover{border-color:var(--accent);color:var(--accent);}
   .check{width:17px;height:17px;min-width:17px;margin-top:2px;border:1.5px solid var(--muted);border-radius:4px;cursor:pointer;display:flex;align-items:center;justify-content:center;background:transparent;}
@@ -318,6 +323,14 @@
     text-transform:uppercase;color:var(--muted);}
   /* .ana yalnızca .yok-btns içinde boyanıyordu; seçili efor görünmeliydi. */
   .ss-efor .ibtn.ana{border-color:var(--accent);color:var(--accent);}
+  .plan-not{color:var(--muted);font-size:11.5px;line-height:1.5;margin:10px 0 8px;}
+  .plan-r{display:flex;align-items:center;gap:9px;padding:6px 0;border-bottom:1px dotted var(--line2);}
+  .plan-r:last-child{border-bottom:none;}
+  .plan-t{font-family:var(--mono);font-size:10.5px;color:var(--muted);white-space:nowrap;min-width:84px;}
+  .plan-b{flex:1;font-size:12.5px;min-width:0;}
+  .plan-r.muaf .plan-b{text-decoration:line-through;color:var(--muted);}
+  .plan-r .ibtn{padding:2px 8px;font-size:10px;flex:none;}
+  .plan-r .ibtn.ana{border-color:var(--accent);color:var(--accent);}
   .ss-kapanis{margin-top:14px;border-top:1px solid var(--line2);padding-top:12px;}
   .ss-kapanis-b{font-weight:600;color:var(--ink);font-size:13px;margin-bottom:2px;}
   .ss-kapanis-not{color:var(--muted);font-size:11px;margin-top:8px;line-height:1.4;}
@@ -760,7 +773,8 @@
     <!-- Antrenman -> Ağırlık Takibi -> Alışkanlık sırası korunuyor: sütun
          yerleştirme kartları SIRAYLA dağıtıyor, .stack sarmalayıcıya gerek yok
          (blok bölünemediği için sütunlar 982 px dengesizleşiyordu). -->
-        <section class="card" id="kAntrenman"><div class="card-head"><div><p class="kicker">Antrenman · Bugün</p><h2 class="card-title" id="wkTitle">Bugünün Antrenmanı</h2></div><div class="meta" id="wkCount">0/0</div></div>
+        <section class="card" id="kAntrenman"><div class="card-head"><div><p class="kicker">Antrenman · Bugün</p><h2 class="card-title" id="wkTitle">Bugünün Antrenmanı</h2></div><div class="meta"><button class="ibtn" id="planAc">14 gün ↓</button><br><span id="wkCount">0/0</span></div></div>
+      <div id="planKutu" hidden></div>
       <div class="wtitle" id="wkSub">—</div>
       <div id="exList"></div></section>
       <section class="card" style="margin-top:20px"><div class="card-head"><div><p class="kicker">Antrenman · Kayıt</p><h2 class="card-title">Kaldırılan Ağırlık</h2></div><div class="meta"><button class="ibtn" id="wtBugun" style="padding:6px 10px">Bugün</button><button class="ibtn" id="wtIlerleme" style="padding:6px 10px">İlerleme</button><button class="ibtn" id="wtExport" style="padding:6px 10px">Excel'e aktar</button></div></div>
@@ -984,7 +998,20 @@ const EX_OVR={
 /* Bir TARİHİN programı: ezme varsa o, yoksa haftagününün WK kaydı.
    Günü haftagününden değil tarihten türeten her hesap bunu çağırmalı —
    yoksa ezilmiş bir gün eski hâliyle sayılır. */
+/* ===== MUAF GÜN =====
+   Tatil / hastalık / sakatlık: o gün spor ve rutin beklenmiyor.
+   Panelin "otomatik atladı işaretlemesi yok" kuralını çiğnemiyor — panel
+   kendi kafasına göre yazmıyor, kullanıcı BEYAN ediyor.
+   Tek anahtarda tutuluyor (d:off = {tarih:1}): tarih başına ayrı anahtar
+   açmak senkronu ve sıfırlamayı gereksiz kalabalıklaştırırdı, aralık
+   işaretlemek de zorlaşırdı. */
+let offGunler={};
+const muafMi=k=>!!offGunler[k];
+const MUAF_GUN={title:'MUAF — bugün program yok',run:false,slot:'Dinlenme',
+  ex:[['Bugün program yok (muaf gün)','—']]};
+
 function gunProg(k){
+  if(muafMi(k))return MUAF_GUN;
   return EX_OVR[k]||WK[new Date(k+'T12:00:00').getDay()];
 }
 const gununEx=()=>gunProg(todayKey()).ex;
@@ -1729,6 +1756,10 @@ let yok={},yokBildirilen={},yokIlkRender=true,yokSonCevap=null;
    SCHED'in bir dilimi değişince ezmelerin sessizce eskimesi demekti. */
 function gunSched(k){
   const taban=SCHED[new Date(k+'T12:00:00').getDay()]||[];
+  /* Muaf günde takip edilen işler boşaltılıyor: yoklama sormuyor, bildirim
+     gitmiyor. Takip edilmeyenler (İş, Yemek, TV...) duruyor — gün yine
+     okunabilir kalsın, yalnızca hesap sorulmasın. */
+  if(muafMi(k))return taban.map(is=>YOK[is]?'':is);
   const o=EX_OVR[k];
   if(!o||!o.slot||o.slot==='Antrenman')return taban;
   /* Cumartesi'de dilim 'Antrenman + yemek' — tam eşleşme yetmiyor. */
@@ -1786,7 +1817,7 @@ function yokPlanUret(){
      ezmelerin bildirimde karşılığı yok, plan da şişmesin. */
   for(let i=0;i<21;i++){
     const k=dayBack(-i);
-    if(!EX_OVR[k])continue;
+    if(!EX_OVR[k]&&!muafMi(k))continue;
     const g=gunSched(k);
     p['t:'+k]=g.map((is,j)=>YOK[is]?[SLOTS[j][0],is,j,YOK[is]]:null).filter(Boolean);
   }
@@ -2568,6 +2599,44 @@ async function sessRestAyar(sn){sess.restSn=sn;sess.rest=Date.now()+sn*1000;rest
 async function sessRestUzat(sn){if(!sess.rest)return;sess.rest+=sn*1000;await saveSess();restTick();}
 async function sessRestAtla(){sess.rest=null;restBip=false;await saveSess();renderEx();}
 async function sessBitir(){sess.on=false;sess.bitti=new Date().toTimeString().slice(0,5);sess.rest=null;await saveSess();renderEx();}
+
+/* ===== 14 GÜNLÜK PROGRAM =====
+   Ne göründüğünü gün gelmeden bilmek ve ileri tarihli bir günü muaf
+   işaretlemek için. Tatil genelde önceden belli oluyor; "bugün muaf"
+   düğmesi o ihtiyacı karşılamıyordu. */
+const PLAN_GUN=14;
+const GUN_KISA=['Paz','Pzt','Sal','Çar','Per','Cum','Cmt'];
+let planAcik=false;
+
+async function muafDegistir(k){
+  if(offGunler[k])delete offGunler[k];else offGunler[k]=1;
+  await sSet('d:off',offGunler);
+  renderPlan();
+  if(k===todayKey()){                    // bugünü etkiliyorsa kartları tazele
+    await renderRun();renderEx();renderYok();renderSched();
+  }
+  renderHabits();renderHaftalik();renderOneri();
+}
+
+function renderPlan(){
+  const el=document.getElementById('planKutu');if(!el)return;
+  el.hidden=!planAcik;
+  if(!planAcik){el.innerHTML='';return;}
+  let html='<div class="plan-not">Bir güne "muaf" dersen o gün spor ve rutin '+
+    'beklenmiyor: yoklama sormuyor, bildirim gitmiyor, haftalık ortalamalara girmiyor. '+
+    'Seri kırılmıyor — atlanmış değil, muaf sayılıyor.</div>';
+  for(let i=0;i<PLAN_GUN;i++){
+    const k=dayBack(-i),g=gunProg(k),muaf=muafMi(k);
+    const d=new Date(k+'T12:00:00');
+    html+='<div class="plan-r'+(muaf?' muaf':'')+'">'+
+      '<span class="plan-t">'+k.slice(8,10)+'.'+k.slice(5,7)+' '+GUN_KISA[d.getDay()]+
+      (i===0?' · bugün':'')+'</span>'+
+      '<span class="plan-b">'+esc(g.title)+'</span>'+
+      '<button class="ibtn'+(muaf?' ana':'')+'" data-muaf="'+k+'">'+(muaf?'muaf ✓':'muaf')+'</button></div>';
+  }
+  el.innerHTML=html;
+  el.querySelectorAll('[data-muaf]').forEach(b=>b.onclick=()=>muafDegistir(b.dataset.muaf));
+}
 
 /* ---- çizim ---- */
 function renderEx(){
@@ -4806,6 +4875,10 @@ async function hdTopla(bas,son){
   const o={gun:0,kcal:0,p:0,c:0,hKcal:0,hP:0,hC:0,sporGun:0,sporTam:0,tonaj:0};
   for(let i=bas;i<=son;i++){
     const k=dayBack(i),d=new Date(k+'T12:00:00').getDay();
+    /* Muaf gün hiçbir ortalamaya girmiyor: tatilde tutturulmayan kalori
+       hedefi de, yapılmayan antrenman da haftanın hükmünü bozmamalı.
+       §5.19 ile aynı fikir — hesap penceresi ile toplam penceresi bir. */
+    if(muafMi(k))continue;
     const m=await sGet('d:meals:'+k);
     if(m&&m.length){
       const t=m.reduce((a,x)=>{const f=num(x.portion)/100;
@@ -5972,7 +6045,7 @@ const RESET_VERSION='2026-08-31-temiz';
 const RESET_ONEK=['d:morning:','d:runkm:','d:ex:','d:sess:','d:meals:','d:water:',
                   'd:dequiz:','d:yok:','d:sched:','d:schedOvr:'];
 const RESET_TEK=['d:prog','d:vol','d:volFill','d:deWrong','d:tasks','d:water',
-                 'd:sleepLog','d:wtlog','d:bw','d:oneri','d:oneriKapali'];
+                 'd:sleepLog','d:wtlog','d:bw','d:oneri','d:oneriKapali','d:off'];
 function sifirla(){
   const sil=[];
   for(let i=0;i<localStorage.length;i++){
@@ -6280,6 +6353,9 @@ if(navigator.serviceWorker){
   document.getElementById('deRefresh').onclick=async()=>{deExtra+=1;await sSet(K.de,{date:todayKey(),extra:deExtra});
     deQuiz={set:deExtra,i:0,right:0,wrong:0,pick:null};await saveQuiz();renderGerman();};   // yeni set -> quiz sıfırlanır
   document.getElementById('wtExport').onclick=exportCSV;
+  document.getElementById('planAc').onclick=()=>{planAcik=!planAcik;
+    document.getElementById('planAc').textContent=planAcik?'14 gün ↑':'14 gün ↓';
+    renderPlan();};
   document.getElementById('wtBugun').onclick=()=>{wtMod='bugun';renderWtLog();};
   document.getElementById('wtIlerleme').onclick=()=>{wtMod='ilerleme';renderWtLog();};
   document.getElementById('basvuruRefresh').onclick=loadBasvuru;
@@ -6292,7 +6368,7 @@ if(navigator.serviceWorker){
     await loadGmailJson();};
   document.getElementById('agentRefresh').onclick=()=>loadAgents(true);
   document.getElementById('jobsCfg').onclick=openJobsCfg;
-  jobProfile=await sGet(K.jobProfile)||null;jobsApplied=await sGet(K.jobsApplied)||[];myApps=await sGet(K.myApps)||[];retler=await sGet('d:retler')||[];retGizli=await sGet('d:retGizli')||[];retElle=await sGet('d:retElle')||[];oneriKapali=await sGet('d:oneriKapali')||{};
+  jobProfile=await sGet(K.jobProfile)||null;jobsApplied=await sGet(K.jobsApplied)||[];myApps=await sGet(K.myApps)||[];retler=await sGet('d:retler')||[];retGizli=await sGet('d:retGizli')||[];retElle=await sGet('d:retElle')||[];oneriKapali=await sGet('d:oneriKapali')||{};offGunler=await sGet('d:off')||{};
   document.getElementById('placeName').textContent=PLACE.name;
   renderTasks();await loadSched();await loadYok();await loadMorning();await renderRun();await loadWorkout();renderWtLog();await loadMeals();await loadWater();await loadSleep();await loadBW();await loadMoney();await renderBugunHarcama();await renderHaftalik();await renderOneri();loadHabits();await initSync();
   renderFacts();renderFilm();renderArtist();renderBook();renderHistory();renderGerman();renderNews();renderTR();renderRetler();renderWatch();renderUS();renderWorldIdx();renderGold();renderWorld();renderMktSummary();renderFinNote();

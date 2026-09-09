@@ -333,9 +333,14 @@ def main():
     # yalnızca önümüzdeki 21 gün için yazıyor; yoksa haftagününe düşüyoruz.
     # Ayrı önek, eski bir planı okurken de bozulmamayı sağlıyor.
     tarih_anahtari = "t:" + simdi.strftime("%Y-%m-%d")
-    bugun = plan.get(tarih_anahtari) or plan.get(str(js_gun)) or []
-    if plan.get(tarih_anahtari):
+    # DİKKAT: "or" kullanılamaz. Muaf günün planı BOŞ LİSTE ve boş liste
+    # Python'da falsy; "or" ile yazılsaydı muaf gün sessizce haftagünü
+    # planına düşer ve bildirim yine giderdi.
+    if tarih_anahtari in plan:
+        bugun = plan[tarih_anahtari] or []
         print(f"o güne özel plan kullanıldı ({len(bugun)} dilim).")
+    else:
+        bugun = plan.get(str(js_gun)) or []
     if not bugun:
         print(f"bugün ({js_gun}) için yoklama dilimi yok.")
         return 0
