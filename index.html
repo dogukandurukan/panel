@@ -614,7 +614,13 @@
   .hd-hukum{margin-top:15px;border:1px solid var(--accent);border-radius:5px;padding:12px 13px;}
   .hd-hukum p{margin:0 0 10px;font-size:14px;line-height:1.55;}
   .hd-not{font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:11px;letter-spacing:.04em;}
-  .catrow{display:flex;align-items:center;gap:9px;padding:5px 0;}
+  /* Kategori satırı artık süzgeç düğmesi; seçili olan çubuğuyla birlikte
+     vurgulanıyor ki hangi kategorinin süzüldüğü listeye bakmadan görünsün. */
+  .catrow{display:flex;align-items:center;gap:9px;padding:5px 0;cursor:pointer;border-radius:4px;}
+  .catrow:hover .cl{color:var(--ink);}
+  .catrow.on .cl{color:var(--accent);font-weight:600;}
+  .catrow.on .cv{color:var(--accent);}
+  .catrow:focus-visible{outline:1px solid var(--accent);outline-offset:2px;}
   .catrow .cl{font-size:12.5px;min-width:82px;color:var(--muted);}
   .catrow .cb{flex:1;height:6px;background:var(--line2);border-radius:4px;overflow:hidden;}
   .catrow .cb i{display:block;height:100%;background:var(--accent);border-radius:4px;}
@@ -5119,12 +5125,20 @@ const SABIT_KAT=['Kira','Araba','Kredi/Taksit','Fatura'];
 let mSabitHaric=false;
 const AYLAR=['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'];
 let mCur='',mData=[];
+/* Kategori süzgeci: Kategori Dağılımı'ndaki bir satıra basınca alttaki kayıt
+   listesi yalnızca o kategoriyi gösteriyor. Yalnızca LİSTEYİ süzüyor —
+   üstteki gelir/gider/kalan ve gün gün grafiği ayın tamamını göstermeye
+   devam ediyor; süzgeç oradaki sayıları da değiştirseydi "bu ay ne kadar
+   harcadım" sorusunun cevabı seçime göre değişirdi.
+   Ay değişince sıfırlanıyor (loadMoney): başka ayda olmayan bir kategoriyle
+   boş liste kalırdı. */
+let mFiltre='';
 function thisMonth(){const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0');}
 function shiftMonth(k,n){const[y,m]=k.split('-').map(Number);const d=new Date(y,m-1+n,1);
   return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0');}
 function monthLabel(k){const[y,m]=k.split('-').map(Number);return AYLAR[m-1]+' '+y;}
 function tl(n){return '₺'+Math.round(n).toLocaleString('tr-TR');}
-async function loadMoney(){mData=await sGet('d:money:'+mCur)||[];renderMoney();}
+async function loadMoney(){mData=await sGet('d:money:'+mCur)||[];mFiltre='';renderMoney();}
 async function saveMoney(){await sSet('d:money:'+mCur,mData);}
 function fillCats(){
   const kind=document.getElementById('mKind').value,sel=document.getElementById('mCat');
@@ -5215,19 +5229,40 @@ function renderMoney(){
   const byCat={};mData.filter(r=>r.k==='out').forEach(r=>{byCat[r.c]=(byCat[r.c]||0)+num(r.a);});
   const cats=Object.keys(byCat).sort((a,b)=>byCat[b]-byCat[a]);
   const enb=cats.length?byCat[cats[0]]:0;
+  /* Süzgeçteki kategori bu ayda artık yoksa (kayıt silindiyse) süzgeci bırak,
+     yoksa liste sessizce boş kalırdı. */
+  if(mFiltre&&cats.indexOf(mFiltre)<0)mFiltre='';
   document.getElementById('mCats').innerHTML=cats.length?
     '<div class="wtitle" style="margin-top:13px;border-top:1px solid var(--line2);padding-top:11px">Kategori Dağılımı</div>'+
-    cats.map(c=>'<div class="catrow"><span class="cl">'+esc(c)+'</span><span class="cb"><i style="width:'+
+    cats.map(c=>'<div class="catrow'+(mFiltre===c?' on':'')+'" data-mcat="'+esc(c)+'" role="button" tabindex="0">'+
+      '<span class="cl">'+esc(c)+'</span><span class="cb"><i style="width:'+
       (enb?Math.round(byCat[c]/enb*100):0)+'%"></i></span><span class="cv">'+tl(byCat[c])+
       (gider?' · %'+Math.round(byCat[c]/gider*100):'')+'</span></div>').join(''):'';
+  /* Aynı kategoriye tekrar basmak süzgeci kaldırıyor. */
+  document.getElementById('mCats').querySelectorAll('[data-mcat]').forEach(el=>{
+    const sec=()=>{mFiltre=(mFiltre===el.dataset.mcat)?'':el.dataset.mcat;renderMoney();};
+    el.onclick=sec;
+    el.onkeydown=ev=>{if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();sec();}};
+  });
   renderGunluk();
   const el=document.getElementById('mList');
   if(!mData.length){el.innerHTML='<div class="empty">Bu ay için kayıt yok. Yukarıdan ekle.</div>';return;}
-  el.innerHTML='<div class="wtitle" style="margin-top:13px;border-top:1px solid var(--line2);padding-top:11px">Kayıtlar</div>'+
-    mData.map((r,i)=>'<div class="mrow"><span class="mc">'+esc(r.c)+'</span><span class="mn">'+esc(r.n||'—')+
+  /* İndeks ÖNCE sabitleniyor, süzme SONRA: data-md mData'daki gerçek konumu
+     taşımak zorunda. Önce filtreleyip sonra map'lersek süzgeç açıkken silme
+     düğmesi listedeki sırayı gönderir ve BAŞKA bir kaydı siler. */
+  const kayitlar=mData.map((r,i)=>({r,i})).filter(x=>!mFiltre||x.r.c===mFiltre);
+  const toplamSuzulen=kayitlar.reduce((a,x)=>a+num(x.r.a),0);
+  const baslik=mFiltre
+    ? esc(mFiltre)+' · '+kayitlar.length+' kayıt · '+tl(toplamSuzulen)+
+      ' <button class="ibtn" id="mFiltreSil" style="padding:2px 8px;margin-left:6px">tümünü göster</button>'
+    : 'Kayıtlar';
+  el.innerHTML='<div class="wtitle" style="margin-top:13px;border-top:1px solid var(--line2);padding-top:11px">'+baslik+'</div>'+
+    kayitlar.map(({r,i})=>'<div class="mrow"><span class="mc">'+esc(r.c)+'</span><span class="mn">'+esc(r.n||'—')+
       '</span><span class="md">'+esc((r.d||'').slice(8,10)+'.'+(r.d||'').slice(5,7))+'</span>'+
       '<span class="mv '+(r.k==='in'?'up':'down')+'">'+(r.k==='in'?'+':'−')+tl(num(r.a))+'</span>'+
       '<button class="del" data-md="'+i+'">×</button></div>').slice().reverse().join('');
+  const fsil=document.getElementById('mFiltreSil');
+  if(fsil)fsil.onclick=()=>{mFiltre='';renderMoney();};
   el.querySelectorAll('[data-md]').forEach(b=>b.onclick=async()=>{
     mData.splice(+b.dataset.md,1);await saveMoney();renderMoney();renderBugunHarcama();});
 }
