@@ -1,101 +1,99 @@
 {
- "updated": "2026-09-09 12:23",
+ "updated": "2026-09-10 12:22",
  "ok": true,
  "count": 3,
- "pool": 25,
+ "pool": 33,
  "items": [
   {
-   "title": "Data Engineer (f/m/d)",
-   "company": "Climate",
+   "title": "Analytics Engineer (m/f/d)",
+   "company": "Enpal",
    "location": "Berlin",
-   "loc_raw": "Berlin HQ",
+   "loc_raw": "Berlin",
    "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/climate/data-engineer-berlin-hq-96911",
+   "url": "https://www.arbeitnow.com/jobs/companies/enpal/analytics-engineer-berlin-300399",
    "source": "Arbeitnow",
-   "posted": "2026-09-08",
-   "days": 1,
+   "posted": "2026-09-10",
+   "days": 0,
    "skills": [
     "python",
     "sql",
+    "dbt",
+    "snowflake",
+    "data warehouse",
+    "llm"
+   ],
+   "german": false,
+   "focus": "ml",
+   "summary": "About the role We are looking for a (Senior) Analytics Engineer to join our team. In this role, you will work closely with stakeholders across ERP, Supply Chain Management, Logistics to turn complex business questions into clear, reliable and actionable data s",
+   "keywords": [
+    "stakeholder",
+    "supply chain",
+    "scalab",
+    "data quality",
+    "pipeline",
+    "automation",
+    "energy"
+   ],
+   "score": 100
+  },
+  {
+   "title": "Senior Data Scientist (German-speaking)",
+   "company": "dataiku",
+   "location": "Remote",
+   "loc_raw": "Remote",
+   "remote": true,
+   "url": "https://www.arbeitnow.com/jobs/companies/dataiku/remote-senior-data-scientist-german-speaking-224551",
+   "source": "Arbeitnow",
+   "posted": "2026-09-10",
+   "days": 0,
+   "skills": [
+    "python",
+    "sql",
+    "pyspark",
+    "spark"
+   ],
+   "german": false,
+   "focus": "ml",
+   "summary": "Dataiku is the Platform for AI Success, the enterprise orchestration layer for building, deploying, and governing AI. In a single environment, teams design and operate analytics, machine learning, and AI agents with the transparency, collaboration, and control",
+   "keywords": [
+    "enterprise",
+    "governance"
+   ],
+   "score": 90
+  },
+  {
+   "title": "Senior Data Scientist (m/f/x)",
+   "company": "Makersite GmbH",
+   "location": "Remote",
+   "loc_raw": "Remote job",
+   "remote": true,
+   "url": "https://www.arbeitnow.com/jobs/companies/makersite-gmbh/remote-senior-data-scientist-berlin-242013",
+   "source": "Arbeitnow",
+   "posted": "2026-09-09",
+   "days": 1,
+   "skills": [
+    "python",
     "ci/cd",
     "git",
     "llm"
    ],
    "german": false,
    "focus": "ml",
-   "summary": "Job description We are currently seeking a Data Engineer for our international and diverse Climate Policy Team (CPT). The team is engaged in various projects on climate change mitigation, in particular on energy system transformation, the 1.5°C global warming ",
+   "summary": "Data Scientist (m/f/x) Location: EU (Remote) Who You’ll Work For : At Makersite, we're pioneering the future of sustainable product development and digital collaboration. As a leading platform for product lifecycle management (PLM), we empower companies to mak",
    "keywords": [
-    "energy",
-    "pipeline",
-    "automation",
-    "data quality",
-    "optimization"
-   ],
-   "score": 94
-  },
-  {
-   "title": "Senior Data Analyst (f/m/x)",
-   "company": "exmox",
-   "location": "Almanya",
-   "loc_raw": "Hamburg",
-   "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/exmox/senior-data-analyst-hamburg-353746",
-   "source": "Arbeitnow",
-   "posted": "2026-09-09",
-   "days": 0,
-   "skills": [
-    "python",
-    "sql",
-    "spark",
-    "databricks",
-    "tableau",
-    "looker"
-   ],
-   "german": false,
-   "focus": "business",
-   "summary": "Your Mission This is a company built for growth, not comfort. When you join exmox, you're stepping onto a global, highly competitive playing field, solving real problems in environments that push you beyond your comfort zone. We build high-performing consumer ",
-   "keywords": [
-    "finance",
-    "automation",
-    "dashboard",
-    "self-service",
-    "data quality",
-    "stakeholder",
-    "a/b"
-   ],
-   "score": 92
-  },
-  {
-   "title": "Senior AI-Native Data Engineer (f/m/x)",
-   "company": "exmox",
-   "location": "Almanya",
-   "loc_raw": "Hamburg",
-   "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/exmox/senior-ai-native-data-engineer-hamburg-334970",
-   "source": "Arbeitnow",
-   "posted": "2026-09-09",
-   "days": 0,
-   "skills": [
-    "pyspark",
-    "spark",
-    "databricks",
-    "etl",
-    "git"
-   ],
-   "german": false,
-   "focus": "ml",
-   "summary": "Your Mission This is a company built for growth. When you join exmox, you're stepping onto a global, highly competitive playing field, building high-performing consumer products in mobile gaming. We're scaling a rewarded user engagement and acquisition platfor",
-   "keywords": [
-    "pipeline",
+    "supply chain",
     "scalab",
-    "optimization",
-    "real-time",
-    "data quality"
+    "cost",
+    "pipeline",
+    "experimentation"
    ],
-   "score": 86
+   "score": 90
   }
  ],
  "seen": [
+  "https://www.arbeitnow.com/jobs/companies/enpal/analytics-engineer-berlin-300399",
+  "https://www.arbeitnow.com/jobs/companies/dataiku/remote-senior-data-scientist-german-speaking-224551",
+  "https://www.arbeitnow.com/jobs/companies/makersite-gmbh/remote-senior-data-scientist-berlin-242013",
   "https://www.arbeitnow.com/jobs/companies/climate/data-engineer-berlin-hq-96911",
   "https://www.arbeitnow.com/jobs/companies/exmox/senior-data-analyst-hamburg-353746",
   "https://www.arbeitnow.com/jobs/companies/exmox/senior-ai-native-data-engineer-hamburg-334970",
