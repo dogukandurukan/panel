@@ -1,96 +1,100 @@
 {
- "updated": "2026-09-10 12:22",
+ "updated": "2026-09-11 12:21",
  "ok": true,
  "count": 3,
- "pool": 33,
+ "pool": 28,
  "items": [
   {
-   "title": "Analytics Engineer (m/f/d)",
-   "company": "Enpal",
+   "title": "Senior DevOps Engineer (all genders) | Data Platform",
+   "company": "Real Digital",
    "location": "Berlin",
-   "loc_raw": "Berlin",
+   "loc_raw": "Remote oder Köln / Darmstadt / Düsseldorf / Berlin",
    "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/enpal/analytics-engineer-berlin-300399",
+   "url": "https://www.arbeitnow.com/jobs/companies/real-digital/remote-senior-devops-engineer-all-genders-data-platform-180543",
    "source": "Arbeitnow",
    "posted": "2026-09-10",
-   "days": 0,
+   "days": 1,
    "skills": [
     "python",
     "sql",
+    "azure",
+    "airflow",
     "dbt",
-    "snowflake",
+    "ci/cd"
+   ],
+   "german": false,
+   "focus": "pipeline",
+   "summary": "Anstellungsdetails Permanent Contract, Full- or Part-Time, Remote or Cologne / Düsseldorf / Darmstadt / Berlin Info Who we areWe are the tech powerhouse behind Kaufland’s international online marketplaces and a company within the Schwarz Group. Driven by a sta",
+   "keywords": [
+    "pipeline",
+    "cost"
+   ],
+   "score": 112
+  },
+  {
+   "title": "Senior Data Engineer (f/m/d)",
+   "company": "gropyus",
+   "location": "Berlin",
+   "loc_raw": "Berlin, Berlin",
+   "remote": false,
+   "url": "https://www.arbeitnow.com/jobs/companies/gropyus/senior-data-engineer-berlin-berlin-131723",
+   "source": "Arbeitnow",
+   "posted": "2026-09-10",
+   "days": 1,
+   "skills": [
+    "python",
+    "spark",
+    "dbt",
+    "git"
+   ],
+   "german": false,
+   "focus": "pipeline",
+   "summary": "About The Company GROPYUS is a technology-based construction company focused on building multi-story residential buildings. Thanks to its prefabricated building system with various design options, industrial offsite construction, and fully digitalized processe",
+   "keywords": [
+    "scalab",
+    "automation",
+    "pipeline",
+    "data quality",
+    "optimization",
+    "stakeholder",
+    "e-commerce"
+   ],
+   "score": 100
+  },
+  {
+   "title": "Senior/Staff AI Engineer, Quality & Evals (m/f/x)",
+   "company": "Cortea AI",
+   "location": "Berlin",
+   "loc_raw": "Berlin",
+   "remote": false,
+   "url": "https://www.arbeitnow.com/jobs/companies/cortea-ai/senior-staff-ai-engineer-quality-evals-berlin-67239",
+   "source": "Arbeitnow",
+   "posted": "2026-09-10",
+   "days": 1,
+   "skills": [
+    "python",
+    "etl",
     "data warehouse",
     "llm"
    ],
    "german": false,
    "focus": "ml",
-   "summary": "About the role We are looking for a (Senior) Analytics Engineer to join our team. In this role, you will work closely with stakeholders across ERP, Supply Chain Management, Logistics to turn complex business questions into clear, reliable and actionable data s",
+   "summary": "About us We’re Cortea , a Berlin startup transforming audits with AI . Manual, document-heavy audits waste expert time while demand keeps rising. Our AI-powered software and specialized AI agents remove the repetitive work so auditors can focus on judgment. Ba",
    "keywords": [
-    "stakeholder",
-    "supply chain",
-    "scalab",
-    "data quality",
+    "startup",
     "pipeline",
-    "automation",
-    "energy"
-   ],
-   "score": 100
-  },
-  {
-   "title": "Senior Data Scientist (German-speaking)",
-   "company": "dataiku",
-   "location": "Remote",
-   "loc_raw": "Remote",
-   "remote": true,
-   "url": "https://www.arbeitnow.com/jobs/companies/dataiku/remote-senior-data-scientist-german-speaking-224551",
-   "source": "Arbeitnow",
-   "posted": "2026-09-10",
-   "days": 0,
-   "skills": [
-    "python",
-    "sql",
-    "pyspark",
-    "spark"
-   ],
-   "german": false,
-   "focus": "ml",
-   "summary": "Dataiku is the Platform for AI Success, the enterprise orchestration layer for building, deploying, and governing AI. In a single environment, teams design and operate analytics, machine learning, and AI agents with the transparency, collaboration, and control",
-   "keywords": [
-    "enterprise",
-    "governance"
-   ],
-   "score": 90
-  },
-  {
-   "title": "Senior Data Scientist (m/f/x)",
-   "company": "Makersite GmbH",
-   "location": "Remote",
-   "loc_raw": "Remote job",
-   "remote": true,
-   "url": "https://www.arbeitnow.com/jobs/companies/makersite-gmbh/remote-senior-data-scientist-berlin-242013",
-   "source": "Arbeitnow",
-   "posted": "2026-09-09",
-   "days": 1,
-   "skills": [
-    "python",
-    "ci/cd",
-    "git",
-    "llm"
-   ],
-   "german": false,
-   "focus": "ml",
-   "summary": "Data Scientist (m/f/x) Location: EU (Remote) Who You’ll Work For : At Makersite, we're pioneering the future of sustainable product development and digital collaboration. As a leading platform for product lifecycle management (PLM), we empower companies to mak",
-   "keywords": [
-    "supply chain",
-    "scalab",
+    "dashboard",
     "cost",
-    "pipeline",
+    "optimization",
     "experimentation"
    ],
-   "score": 90
+   "score": 100
   }
  ],
  "seen": [
+  "https://www.arbeitnow.com/jobs/companies/real-digital/remote-senior-devops-engineer-all-genders-data-platform-180543",
+  "https://www.arbeitnow.com/jobs/companies/gropyus/senior-data-engineer-berlin-berlin-131723",
+  "https://www.arbeitnow.com/jobs/companies/cortea-ai/senior-staff-ai-engineer-quality-evals-berlin-67239",
   "https://www.arbeitnow.com/jobs/companies/enpal/analytics-engineer-berlin-300399",
   "https://www.arbeitnow.com/jobs/companies/dataiku/remote-senior-data-scientist-german-speaking-224551",
   "https://www.arbeitnow.com/jobs/companies/makersite-gmbh/remote-senior-data-scientist-berlin-242013",
