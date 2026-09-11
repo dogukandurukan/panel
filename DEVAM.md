@@ -1,4 +1,4 @@
-# Panel — devir notu · 9 Eylül 2026
+# Panel — devir notu · 11 Eylül 2026
 
 Kalıcı kurallar `CLAUDE.md`'de (repo public, uydurma gösterge yok, tek dosya,
 iki tema, LinkedIn otomasyonu yok). **Bu dosya: panel bugün ne durumda, sırada
@@ -12,17 +12,18 @@ geliştirme değil, gerçek veri var. Deneme kaydı bırakma, bırakırsan temiz
 
 | Ne | Ne zaman | Yapılacak |
 |---|---|---|
-| **Sakatlık uyarlaması** (`EX_OVR`, 10-22 Eyl) | **23 Eylül** | Kendiliğinden düşüyor, silmeye gerek yok. Ama kullanıcının omzu iyileşti mi diye SOR — düzelmediyse iki hafta daha yazılmalı. |
-| **Kalori hedefi 2500** (elle ayarlandı 9 Eyl) | 23 Eylül | Sakatlık bitince bulk'a mı dönülecek, cut sürecek mi? Kullanıcı karar verecek. Hedef `kcalOfs`'ta, koddan ezme. |
+| **Kalori hedefi 2500** (elle ayarlandı 9 Eyl) | **15 Eylül** | Uyarlama erken bitti, normal programa dönüldü — bulk'a mı dönülecek, cut mı sürecek? Kullanıcı karar verecek, SOR. Hedef `kcalOfs`'ta, koddan ezme. |
 | **Kültür derinliği** | **6 Ekim** | Dört listede 44'er kayıt var, sonrası boş. Yazılmadan önce ayrı JSON'a taşıma kararı verilmeli (dosya 518 KB). |
 
-**Uyarlamanın çerçevesi (9 Eyl):** iki hafta üst gövde çalışılmıyor, bacak
-ve koşu serbest — kısıt kullanıcının hekiminden geldi. **Sebebi burada
-yazmıyor: bu depo herkese açık ve sağlık bilgisi 1. kuralın yasakladığı
-kişisel verinin en hassas türü.** Gerekirse kullanıcıya sor.
+**Sakatlık uyarlaması 12 Eylül'de BİTTİ** (11 Eyl'de kullanıcı bildirdi).
+15-22 Eylül kayıtları `EX_OVR`'dan silindi, 15 Eylül Salı'dan itibaren normal
+`WK` işliyor. Geçmiş günler (10-12 Eyl) duruyor — silinseydi o günlerin
+tikleri yanlış programla eşleşirdi. Kalıpları geri gerekirse:
+`git show 237feca^:index.html` (KOSU_CORE, LOWER_MAKINE).
 
-Bacak günleri MAKİNE ağırlıklı: "bacak serbest" ile "barlı bacak serbest"
-aynı şey değil, bar kollarla tutuluyor.
+**Sağlık kuralı (9 Eyl'de eklendi, duruyor):** programı etkileyen KISIT
+yazılır, sebebi yazılmaz. Depo herkese açık; sağlık bilgisi 1. kuralın
+yasakladığı kişisel verinin en hassas türü ve git geçmişi kalıcı.
 
 ---
 
@@ -65,10 +66,18 @@ ekranda duruyor.
 
 | Kart | Veri |
 |---|---|
-| Günün Programı | `SCHED` + `d:sched:TARİH`, görünüm ezmesi `d:schedOvr:TARİH` |
+| Günün Programı — **← → ile gün gezinme** | `SCHED` + `d:sched:TARİH`, görünüm ezmesi `d:schedOvr:TARİH` |
 | Bugün Yapılacaklar | `d:tasks` |
 | ↳ **Bugün Harcadıkların** (aynı sütunda, `.stack`) | `d:money:YYYY-AA`, bugünün `out` kayıtları |
 | Yoklama — başlık duruma göre değişir | `YOK` + `d:yok:TARİH` |
+
+**GÜN GEZİNME (11 Eyl):** Günün Programı başlığındaki `←` `→` ±30 gün
+geziyor, `bugün` düğmesi geri getiriyor. Başka gün **SALT OKUNUR** — tik
+`d:sched:BUGÜN`'e, düzenleme `d:schedOvr:BUGÜN`'e yazıyor, yarının satırını
+tiklemek bugünün kaydını bozardı. Gezinilen günün altında o günün antrenmanı
+(başlık + hareket listesi) ve `bu günü muaf yap` düğmesi var. Gezinilen gün
+`schedGun` değişkeninde, CİHAZA BİLE yazılmıyor: sayfa yenilenince bugüne
+dönüyor, "hangi gündeydim" şaşkınlığı olmasın.
 
 Yoklama **iki durumlu**: dilim sürüyorsa "Şu An Ne Yapıyorsun?", bittiyse
 "Bugünü Kapat". Otomatik "atladı" işaretlemesi YOK — uydurma veri seriyi bozar.
@@ -78,7 +87,7 @@ Yoklama **iki durumlu**: dilim sürüyorsa "Şu An Ne Yapıyorsun?", bittiyse
 | Kart | Veri |
 |---|---|
 | Sabah Rutini + Koşu | `MORNING_*` + `d:morning:TARİH`, `d:runkm:TARİH` |
-| Bugünün Antrenmanı | `WK` (+ `EX_OVR` tek gün ezmesi) + `d:ex`, `d:sess`, `d:prog`, `d:vol` |
+| Bugünün Antrenmanı — **`Bugün yapamadım`** | `WK` (+ `EX_OVR` tek gün ezmesi) + `d:ex`, `d:sess`, `d:prog`, `d:vol` |
 | Kaldırılan Ağırlık | `d:wtlog` |
 | Alışkanlık Serileri | mevcut tiklerden türetilir |
 | Uyku Takibi | `d:sleepLog` |
@@ -99,6 +108,21 @@ Yoklama **iki durumlu**: dilim sürüyorsa "Şu An Ne Yapıyorsun?", bittiyse
 | İş Başvuruları — şerit | Sheet (gviz/JSONP) + `d:myApps` + `d:retler` + `d:retElle` |
 | Harcama & Kazanç — şerit | `d:money:YYYY-AA` + gün gün döküm |
 | Ajan Telemetrisi — şerit, en altta | api.github.com, anahtarsız |
+
+**`Bugün yapamadım` (11 Eyl):** Atlamayı işaretlemenin tek yolu Yoklama
+kartının içindeki `Atladım`dı, kullanıcı bulamadı — antrenmanı düşünürken
+baktığı yer Antrenman kartı. Düğme `d:yok`'a AYNI kaydı yazıyor (ayrı anahtar
+açılmadı), ikinci basış geri alıyor. Hangi dilime yazılacağını `antSlotIdx()`
+buluyor: 'Antrenman' ile başlayan dilim → ezmenin `slot` etiketi → günün ilk
+'spor' dilimi. Spor dilimi yoksa düğme gizli.
+
+**`kaydedildi ✓` işareti (11 Eyl):** panelde yazı kutuları her tuşta kaydediyor,
+kaydet düğmesi yok — kullanıcı yazdığının uçtuğunu sanıp "send" aradı.
+`kaydettiGoster(id)` 1.8 sn görünen bir onay basıyor; şu an yoklama not
+kutusunda ve koşu km kutusunda. **Yeni bir otomatik kaydeden kutu eklersen
+aynı deseni kur.** Günün Programı'nın satır düzenlemesine ayrıca görünür bir
+`✓` düğmesi kondu (blur zaten kaydediyordu, görünmüyordu) — `pointerdown` +
+`preventDefault` ile bağlı, normal `click`'te blur önce düşüp düğmeyi silerdi.
 
 ### Veri nereden geliyor
 
@@ -359,4 +383,5 @@ iOS ana ekran kısayolu önbellek tutabiliyor; değişiklik görünmezse sert ye
 | 3 Eyl | **`SCHED` düzeltildi** (aktivite günü Perşembe→Çarşamba, v2 ile ayrışmıştı) · alışkanlık paydasından bilgi satırları çıkarıldı · LLM tartışıldı, eklenmedi |
 | 8 Eyl | Seans kapanışı (nasıl geçti / zorlayan yer) · **artış freni** · `EX_OVR` tek günlük program uyarlaması · Araba/Kredi sabit gider · elle başvuru girişi · kültür derinliği 6 Ekim'e kadar · mobil taşma |
 | 9 Eyl | **Sakatlık uyarlaması** (10-22 Eyl, üst gövde yok) · `gunProg()` ile hesaplar tarihe bağlandı · `SCHED` de tarihe bağlandı + bildirim planına `t:TARİH` · **14 günlük plan + muaf gün** · kategori süzgeci · kayıt kategorisi düzenlenebilir · `Kredi` kategorisi |
+| 11 Eyl | Harcamalara `Bobo` kategorisi · **sakatlık uyarlaması bitti** (15-22 Eyl kayıtları silindi, 13 Eyl Pazar'a LEGS) · `gunSched` Antrenman dilimi olmayan güne ezme etiketi yazıyor · **Günün Programı'na ← → gün gezinme** + o günün antrenmanı + muaf düğmesi · Antrenman kartına **Bugün yapamadım** · `kaydedildi ✓` işareti |
 | 6-7 Eyl | **ÖNERİ MOTORU** — panel gösterge tablosundan tavsiye veren katmana geçti. `hdHukum()` ayrıştırıldı · bant + motor iskeleti · 8 kural (spor/para/iş) · `[×]` ile 7 gün susturma · bildirime öneri satırı. Tasarım `docs/superpowers/specs/`, plan `docs/superpowers/plans/` altında. |

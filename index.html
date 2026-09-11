@@ -543,6 +543,14 @@
   .sl-t{font-family:var(--mono);font-size:10.5px;color:var(--muted);white-space:nowrap;min-width:78px;margin-top:3px;cursor:pointer;}
   .sl-t:hover{text-decoration:underline dotted;}
   .sl-n{flex:1;font-size:14px;cursor:pointer;}
+  /* Otomatik kaydeden kutuların onay işareti: kutular yazar yazmaz kaydediyor
+     ama hiçbir iz bırakmıyordu, kullanıcı "send" düğmesi arıyordu. */
+  .kayd{font-size:10.5px;color:var(--muted);opacity:0;transition:opacity .25s;margin-left:6px;}
+  .kayd.acik{opacity:1;}
+  .sl-ex{margin-top:11px;padding-top:9px;border-top:1px dotted var(--line2);}
+  .sl-ex b{font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;}
+  .sl-ex .exr{display:flex;justify-content:space-between;gap:12px;font-size:13px;padding:3px 0;}
+  .sl-ex .exr span:last-child{color:var(--muted);font-family:var(--mono);font-size:11.5px;white-space:nowrap;}
   .sl-n:hover{text-decoration:underline dotted;}
   .sl-reset{font-family:var(--mono);font-size:11px;color:var(--muted);cursor:pointer;margin-left:6px;text-decoration:none;}
   .sl-reset:hover{color:var(--accent);}
@@ -736,7 +744,7 @@
        yönlendiren üç kart; bunlar bir sekmeye gömülürse gün boyu
        sekme değiştirmek gerekirdi. -->
   <div class="pinned">
-        <section class="card"><div class="card-head"><div><p class="kicker">Plan · <span id="schedDay">—</span></p><h2 class="card-title">Günün Programı</h2></div><div class="meta" id="schedCount">0/0</div></div>
+        <section class="card"><div class="card-head"><div><p class="kicker">Plan · <span id="schedDay">—</span></p><h2 class="card-title">Günün Programı</h2></div><div class="meta"><button class="ibtn" id="schedGeri" title="önceki gün">←</button><button class="ibtn" id="schedBugunBtn" hidden>bugün</button><button class="ibtn" id="schedIleri" title="sonraki gün">→</button><br><span id="schedCount">0/0</span></div></div>
       <div class="wtitle" id="schedNow">—</div>
       <div id="schedList"></div></section>
         <div class="stack">
@@ -773,7 +781,7 @@
     <!-- Antrenman -> Ağırlık Takibi -> Alışkanlık sırası korunuyor: sütun
          yerleştirme kartları SIRAYLA dağıtıyor, .stack sarmalayıcıya gerek yok
          (blok bölünemediği için sütunlar 982 px dengesizleşiyordu). -->
-        <section class="card" id="kAntrenman"><div class="card-head"><div><p class="kicker">Antrenman · Bugün</p><h2 class="card-title" id="wkTitle">Bugünün Antrenmanı</h2></div><div class="meta"><button class="ibtn" id="planAc">14 gün ↓</button><br><span id="wkCount">0/0</span></div></div>
+        <section class="card" id="kAntrenman"><div class="card-head"><div><p class="kicker">Antrenman · Bugün</p><h2 class="card-title" id="wkTitle">Bugünün Antrenmanı</h2></div><div class="meta"><button class="ibtn" id="planAc">14 gün ↓</button> <button class="ibtn" id="exYapamadim" hidden>Bugün yapamadım</button><br><span id="wkCount">0/0</span></div></div>
       <div id="planKutu" hidden></div>
       <div class="wtitle" id="wkSub">—</div>
       <div id="exList"></div></section>
@@ -936,20 +944,9 @@ const WK={
 /* İki haftalık uyarlamanın gün kalıpları. Aynı kalıp iki tarihte
    kullanıldığı için ayrı sabit: metni iki yere kopyalamak, birini
    düzeltip diğerini unutmaya davetiye. */
-const KOSU_CORE={title:'KOŞU + CORE — üst gövde yok',run:true,slot:'Koşu',ex:[
-  ['Koşu (kolay tempo)','25-30 dk'],
-  ['Dead bug','3 set · 10 / taraf'],
-  ['Ters mekik (leg raise)','3 set · 12'],
-  ['Kalça köprüsü','3 set · 15']]};
-
-const LOWER_MAKINE={title:'LOWER — makine ağırlıklı (bar yok)',run:false,ex:[
-  ['Hack squat ya da makine squat','4 × 6-10'],
-  ['Leg press','3 × 10-12'],
-  ['Leg curl (yatarak)','4 × 8-12'],
-  ['Leg extension','3 × 12-15'],
-  ['Seated calf raise','4 × 12-15'],
-  ['Dead bug (core)','3 set']]};
-
+/* KOSU_CORE ve LOWER_MAKINE burada duruyordu: uyarlamanın 15-22 Eylül
+   günlerinde kullanılıyorlardı, o kayıtlar silinince kimse çağırmaz oldu.
+   Omuz yine sakatlanırsa `git show 237feca^:index.html` içinden geri alınır. */
 const HAFIF_GUN={title:'HAFİF GÜN — yürüyüş + mobilite',run:false,slot:'Yürüyüş',ex:[
   ['Tempolu yürüyüş','35-45 dk'],
   ['Kalça fleksör esnetme','30 sn / bacak, 2 tur'],
@@ -982,17 +979,21 @@ const EX_OVR={
     ['Seated calf raise','4 × 12-15'],
     ['Dead bug (core)','3 set']]},
 
-  /* 10-22 Eylül — iki haftalık uyarlama. Üst gövde çalışılmıyor; bacak,
-     koşu ve core devam ediyor. Bacak günleri MAKİNE ağırlıklı: back squat
-     ve RDL'de yük bacakta olsa da bar KOLLARLA tutuluyor, o yüzden dışarıda.
-     Haftalık iskelet: Pzt koşu+core · Sal LOWER · Çar aktivite (WK'dan) ·
-     Per hafif · Cum LEGS · Cmt koşu · Paz tam dinlenme (WK'dan).
-     22 Eylül'den sonra kayıt yok, program kendiliğinden normale dönüyor. */
-  '2026-09-10':HAFIF_GUN, '2026-09-17':HAFIF_GUN,
-  '2026-09-11':LEGS_MAKINE,'2026-09-18':LEGS_MAKINE,
-  '2026-09-12':KOSU_UZUN,  '2026-09-19':KOSU_UZUN,
-  '2026-09-14':KOSU_CORE,  '2026-09-21':KOSU_CORE,
-  '2026-09-15':LOWER_MAKINE,'2026-09-22':LOWER_MAKINE
+  /* 10-22 Eylül için iki haftalık uyarlama yazılmıştı; 11 Eylül'de kullanıcı
+     omzunun iyileştiğini söyledi ve 15 Eylül Salı'dan itibaren normal programa
+     dönüyor. 15-22 Eylül kayıtları o yüzden SİLİNDİ — geçmiş günler (10-12 Eyl)
+     duruyor, yoksa o günlerin tikleri yanlış programla eşleşirdi.
+     Silinen günlerin şablonları git geçmişinde: `git show 237feca^:index.html`. */
+  '2026-09-10':HAFIF_GUN,
+  '2026-09-11':LEGS_MAKINE,
+  '2026-09-12':KOSU_UZUN,
+
+  /* 13 Eylül Pazar — normalde FULL OFF. Kullanıcı 11 Eylül'ün bacak gününü
+     yapamadı, Pazar'a aldı. Bar omza binmeyen hacim şablonu (WK[6]): ağırlık
+     elde taşınıyor, yeni iyileşmiş omuz için Salı'ya yumuşak giriş.
+     14 Eylül Pazartesi müşteri ziyareti — kullanıcı o günü 14 günlük plandan
+     MUAF işaretliyor (d:off cihazda, koddan yazılamaz). */
+  '2026-09-13':{title:'LEGS — hacim / tek taraflı',run:false,slot:'Antrenman',ex:WK[6].ex}
 };
 
 /* Bir TARİHİN programı: ezme varsa o, yoksa haftagününün WK kaydı.
@@ -1729,6 +1730,12 @@ function activeSlot(){const d=new Date(),n=d.getHours()*60+d.getMinutes();
   for(let i=0;i<SLOTS.length;i++){if(n>=hhmm(SLOTS[i][0])&&n<hhmm(SLOTS[i][1]))return i;}
   return -1;}   // 00:00-08:00 arası: aktif dilim yok
 let schedDone={},schedShown=-2,schedOvr={};
+/* Günün Programı'nda gezinilen gün (0 = bugün, +1 yarın). Yalnızca GÖRÜNÜM:
+   tik ve düzenleme hep bugünün verisine yazıyor, o yüzden başka güne
+   gidildiğinde satırlar salt okunur oluyor. Cihaza bile yazılmıyor —
+   sayfa yenilenince bugüne dönüyor, "hangi gündeydim" şaşkınlığı olmasın. */
+let schedGun=0;
+const schedKey=()=>dayBack(-schedGun);
 
 /* ===== YOKLAMA =====
    Günün Programı'ndaki tik "yaptım mı" sorusunu cevaplıyor ama "yapmadım"ı
@@ -1761,9 +1768,18 @@ function gunSched(k){
      okunabilir kalsın, yalnızca hesap sorulmasın. */
   if(muafMi(k))return taban.map(is=>YOK[is]?'':is);
   const o=EX_OVR[k];
-  if(!o||!o.slot||o.slot==='Antrenman')return taban;
+  if(!o||!o.slot)return taban;
   /* Cumartesi'de dilim 'Antrenman + yemek' — tam eşleşme yetmiyor. */
-  return taban.map(is=>String(is).indexOf('Antrenman')===0?o.slot:is);
+  if(taban.some(is=>String(is).indexOf('Antrenman')===0))
+    return o.slot==='Antrenman'?taban:
+      taban.map(is=>String(is).indexOf('Antrenman')===0?o.slot:is);
+  /* Antrenman dilimi OLMAYAN güne (Pazar) ezmeyle antrenman konduğunda etiket
+     günün ilk 'spor' dilimine yazılıyor. Olmasaydı 13 Eylül bacak gününde
+     yoklama hâlâ "Bisiklet + bobo + kahve" diye sorardı ve antrenman modu o
+     adla açılırdı. Spor dilimi de yoksa gün olduğu gibi kalıyor. */
+  const si=taban.findIndex(is=>YOK[is]==='spor');
+  if(si<0)return taban;
+  const yeniPlan=taban.slice();yeniPlan[si]=o.slot;return yeniPlan;
 }
 const schedBugun=()=>gunSched(todayKey());
 const yokSlotlari=()=>schedBugun().map((is,i)=>YOK[is]?i:-1).filter(i=>i>-1);
@@ -1990,6 +2006,37 @@ async function yokCevapla(i,a){
   if(document.getElementById('bars'))renderBars();   // atlanan antrenman karb hedefini düşürüyor
 }
 
+/* ===== "BUGÜN YAPAMADIM" =====
+   Atlamayı işaretlemenin tek yolu Yoklama kartının içindeki 'Atladım'dı ve
+   kullanıcı düğmeyi bulamadı: antrenmanı düşünürken baktığı yer Antrenman
+   kartı. Aynı işaret oradan da atılıyor — AYNI yere (d:yok) yazıyor, iki
+   kart tek gerçeği gösteriyor, ayrı bir "atladım" anahtarı açılmıyor. */
+function antSlotIdx(){
+  const plan=schedBugun();
+  let i=plan.findIndex(is=>String(is).indexOf('Antrenman')===0);
+  if(i<0){const o=EX_OVR[todayKey()];if(o&&o.slot)i=plan.indexOf(o.slot);}
+  if(i<0)i=plan.findIndex(is=>YOK[is]==='spor');
+  return i;
+}
+function exYapamadimGuncelle(){
+  const b=document.getElementById('exYapamadim');if(!b)return;
+  const i=antSlotIdx();
+  /* Takip edilen spor dilimi olmayan günde (tam dinlenme, muaf) saklanıyor:
+     yapamayacak bir şey yok, düğme gürültü olurdu. */
+  if(i<0){b.hidden=true;return;}
+  b.hidden=false;
+  b.textContent=(yok[i]&&yok[i].a==='skip')?'yapamadım ✓ · geri al':'Bugün yapamadım';
+}
+async function exYapamadim(){
+  const i=antSlotIdx();if(i<0)return;
+  if(yok[i]&&yok[i].a==='skip'){        /* geri al: kayıt siliniyor, "cevapsız"a dönüyor */
+    delete yok[i];await yokKaydet();renderYok();renderEx();renderHabits();
+    if(document.getElementById('bars'))renderBars();
+    return;
+  }
+  await yokCevapla(i,'skip');renderEx();renderHabits();
+}
+
 /* Tarayıcı bildirimi yalnızca panel AÇIKKEN çalışır; kart bunu açıkça yazıyor
    ki kapalı sekmede bildirim bekleyip kaçırma olmasın. */
 function yokBildir(i,ad){
@@ -2078,19 +2125,21 @@ function renderYok(){
     html+='<div class="yok-notbas">'+esc(plan[notlanabilir])+' · not</div>'+
       '<textarea class="yok-not" id="yokNot" data-i="'+notlanabilir+'" placeholder="'+
       'hareket, set, ağırlık, nasıl geçti">'+
-      esc((yok[notlanabilir]&&yok[notlanabilir].n)||'')+'</textarea>';
+      esc((yok[notlanabilir]&&yok[notlanabilir].n)||'')+'</textarea>'+
+      '<div style="text-align:right"><span class="kayd" id="yokNotOk"></span></div>';
   }
   html+=pushHTML();
   el.innerHTML=html;
 
   el.querySelectorAll('[data-yok]').forEach(b=>b.onclick=()=>yokCevapla(+b.dataset.i,b.dataset.yok));
   const nt=document.getElementById('yokNot');
-  if(nt)nt.oninput=()=>{const i=+nt.dataset.i;yok[i]=Object.assign({},yok[i],{n:nt.value});yokKaydet();};
+  if(nt)nt.oninput=()=>{const i=+nt.dataset.i;yok[i]=Object.assign({},yok[i],{n:nt.value});yokKaydet();kaydettiGoster('yokNotOk');};
   const b=(id,fn)=>{const x=document.getElementById(id);if(x)x.onclick=fn;};
   b('pwKur',pushKur); b('pwKaldir',pushKaldir);
   b('pwTamam',()=>{pushGizli='';pushDurum='';renderYok();});
   b('pwKopya',()=>{const k=document.getElementById('pwKey');if(!k)return;
     navigator.clipboard.writeText(k.textContent).then(()=>{pushDurum='Kopyalandı.';renderYok();}).catch(()=>{});});
+  exYapamadimGuncelle();      // Yoklama'dan 'Atladım' denince Antrenman kartındaki düğme de dönsün
 }
 async function loadSched(){schedDone=await sGet('d:sched:'+todayKey())||{};schedOvr=await sGet('d:schedOvr:'+todayKey())||{};renderSched();}
 /* Sadece o günün GÖRÜNÜMÜ değişiyor: saat/iş metni tıklanınca düzenlenebilir,
@@ -2100,20 +2149,32 @@ async function loadSched(){schedDone=await sGet('d:sched:'+todayKey())||{};sched
 let schedEdit=null; // {i,alan:'t'|'d'} — açık olan düzenleme kutusu
 function renderSched(){
   const el=document.getElementById('schedList');if(!el)return;
-  const plan=schedBugun(),act=activeSlot();schedShown=act;
-  document.getElementById('schedDay').textContent=DAYNAMES[dow];
+  const k=schedKey(),bugunMu=schedGun===0;
+  const plan=gunSched(k),prog=gunProg(k);
+  const act=bugunMu?activeSlot():-1;
+  schedShown=activeSlot();        /* saat dilimi değişince ticker yine tazelesin */
+  const gd=new Date(k+'T12:00:00');
+  document.getElementById('schedDay').textContent=
+    DAYNAMES[gd.getDay()]+(bugunMu?'':' · '+gd.getDate()+' '+AYLAR[gd.getMonth()].slice(0,3));
+  const bg=document.getElementById('schedBugunBtn');if(bg)bg.hidden=bugunMu;
   const nowEl=document.getElementById('schedNow');
-  if(nowEl)nowEl.textContent=act>-1?(plan[act]?('Şu an: '+plan[act]):'Şu an: serbest')
-    :(new Date().getHours()<8?'Program 08:00’de başlıyor':'Program bitti');
+  if(nowEl)nowEl.textContent=bugunMu
+    ?(act>-1?(plan[act]?('Şu an: '+plan[act]):'Şu an: serbest')
+      :(new Date().getHours()<8?'Program 08:00’de başlıyor':'Program bitti'))
+    :prog.title;
   el.innerHTML=plan.map((iş,i)=>{
-    const ov=schedOvr[i]||{},isim=ov.d!=null?ov.d:iş,t0=ov.t0||SLOTS[i][0],t1=ov.t1||SLOTS[i][1];
-    const bos=!isim,done=!!schedDone[i],gecmis=act>-1&&i<act,ovMu=!!schedOvr[i];
+    const ov=bugunMu?(schedOvr[i]||{}):{},isim=ov.d!=null?ov.d:iş,t0=ov.t0||SLOTS[i][0],t1=ov.t1||SLOTS[i][1];
+    const bos=!isim,done=!!schedDone[i],gecmis=act>-1&&i<act,ovMu=bugunMu&&!!schedOvr[i];
+    /* Başka gün SALT OKUNUR: tik d:sched:BUGÜN'e, düzenleme d:schedOvr:BUGÜN'e
+       yazıyor — yarının satırını tiklemek bugünün kaydını bozardı. */
+    if(!bugunMu)return '<div class="sl'+(bos?' free':'')+'"><span class="sl-t">'+t0+'–'+t1+'</span>'+
+      '<span class="sl-n" style="cursor:default">'+(bos?'serbest':esc(isim))+'</span></div>';
     let tHtml,nHtml;
     if(schedEdit&&schedEdit.i===i&&schedEdit.alan==='t')
-      tHtml='<input class="slp-in sched-t0" type="time" value="'+esc(t0)+'" style="width:64px">–<input class="slp-in sched-t1" type="time" value="'+esc(t1)+'" style="width:64px">';
+      tHtml='<span style="display:flex;gap:3px;align-items:center;flex-wrap:wrap"><input class="slp-in sched-t0" type="time" value="'+esc(t0)+'" style="width:64px">–<input class="slp-in sched-t1" type="time" value="'+esc(t1)+'" style="width:64px"><button class="ibtn sched-kt">✓</button></span>';
     else tHtml='<span class="sl-t" data-edit-t="'+i+'">'+t0+'–'+t1+'</span>';
     if(schedEdit&&schedEdit.i===i&&schedEdit.alan==='d')
-      nHtml='<input class="slp-in sched-d" type="text" value="'+esc(isim)+'" style="width:100%">';
+      nHtml='<span style="flex:1;display:flex;gap:5px;min-width:0"><input class="slp-in sched-d" type="text" value="'+esc(isim)+'" style="flex:1;min-width:0"><button class="ibtn sched-kd">✓</button></span>';
     else nHtml='<span class="sl-n" data-edit-d="'+i+'">'+(bos?'serbest':esc(isim))+(i===act?'<span class="sl-tag">şu an</span>':'')+'</span>'+
       (ovMu?'<span class="sl-reset" data-reset="'+i+'" title="varsayılana dön">↺</span>':'');
     return '<div class="sl'+(i===act?' now':'')+(gecmis?' past':'')+(done?' done':'')+(bos?' free':'')+'">'+
@@ -2121,9 +2182,20 @@ function renderSched(){
       (bos?'':'<div class="check '+(done?'on':'')+'" data-s="'+i+'"></div>')+
       nHtml+'</div>';
   }).join('');
+  /* Gezinilen günün antrenmanı: "önümüzdeki günlerde ne var" sorusunun
+     karşılığı. Bugün için yazılmıyor — Antrenman kartı zaten onu gösteriyor. */
+  if(!bugunMu){
+    el.innerHTML+='<div class="sl-ex"><b>'+esc(prog.title)+'</b>'+
+      prog.ex.map(e=>'<div class="exr"><span>'+esc(e[0])+'</span><span>'+esc(e[1])+'</span></div>').join('')+
+      (prog.run?'<div class="exr"><span>Koşu / kardiyo günü</span><span>✓</span></div>':'')+
+      '<button class="ibtn" data-muafg="'+k+'" style="margin-top:9px">'+
+      (muafMi(k)?'muaf ✓ · geri al':'bu günü muaf yap')+'</button></div>';
+    el.querySelectorAll('[data-muafg]').forEach(b=>b.onclick=()=>muafDegistir(b.dataset.muafg));
+  }
   const toplam=plan.filter(Boolean).length;
   document.getElementById('schedCount').textContent=
-    plan.filter((iş,i)=>iş&&schedDone[i]).length+'/'+toplam;
+    bugunMu?(plan.filter((iş,i)=>iş&&schedDone[i]).length+'/'+toplam):(toplam+' iş');
+  if(!bugunMu)return;             /* aşağısı bugünün düzenleme bağlantıları */
   el.querySelectorAll('[data-s]').forEach(c=>c.onclick=()=>{
     const i=+c.dataset.s;schedDone[i]=!schedDone[i];sSet('d:sched:'+todayKey(),schedDone);renderSched();});
   el.querySelectorAll('[data-edit-t]').forEach(s=>s.onclick=()=>{schedEdit={i:+s.dataset.editT,alan:'t'};renderSched();
@@ -2141,6 +2213,22 @@ function renderSched(){
   const t1=el.querySelector('.sched-t1');if(t1){t1.onblur=kaydetT;t1.onkeydown=ev=>{if(ev.key==='Enter')t1.blur();};}
   const t0i=el.querySelector('.sched-t0');if(t0i)t0i.onkeydown=ev=>{if(ev.key==='Enter')t1.blur();};
   const di=el.querySelector('.sched-d');if(di){di.onblur=kaydetD;di.onkeydown=ev=>{if(ev.key==='Enter')di.blur();};}
+  /* ✓ düğmeleri: blur zaten kaydediyor ama görünür bir "tamam" yoktu ve
+     kullanıcı yazdığının kaydolmadığını sandı. pointerdown + preventDefault
+     şart — normal click'te önce blur düşüp düğme silinirdi. */
+  const kd=el.querySelector('.sched-kd');if(kd)kd.onpointerdown=ev=>{ev.preventDefault();kaydetD();};
+  const kt=el.querySelector('.sched-kt');if(kt)kt.onpointerdown=ev=>{ev.preventDefault();kaydetT();};
+}
+
+/* ===== "KAYDEDİLDİ" İŞARETİ =====
+   Panelde yazı kutuları her tuşta kaydediyor, kaydet düğmesi yok. Hiçbir iz
+   bırakmadığı için kullanıcı yazdığının uçtuğunu sandı ("send yapamadım").
+   Kısa bir onay basıyoruz: kalıcı rozet değil, yazarken göz yormasın. */
+let kaydT={};
+function kaydettiGoster(id){
+  const el=document.getElementById(id);if(!el)return;
+  el.textContent='kaydedildi ✓';el.classList.add('acik');
+  clearTimeout(kaydT[id]);kaydT[id]=setTimeout(()=>el.classList.remove('acik'),1800);
 }
 
 /* morning + run */
@@ -2306,9 +2394,9 @@ function mRestTick(){
   }
 }
 async function renderRun(){const km=await sGet('d:runkm:'+todayKey())||'';runKmToday=km;const isRun=gunBugun().run;const el=document.getElementById('runArea');
-  el.innerHTML='<div class="runbox"><label>Bugün koştuğun mesafe</label><input type="number" id="runIn" placeholder="0" value="'+esc(km)+'"><span class="mkt-sub">km</span></div>'+
+  el.innerHTML='<div class="runbox"><label>Bugün koştuğun mesafe</label><input type="number" id="runIn" placeholder="0" value="'+esc(km)+'"><span class="mkt-sub">km</span><span class="kayd" id="runOk"></span></div>'+
     (isRun?'<div class="runnote">Bugün aktivite günü — basket / tenis / kürek, keyifli-orta tempo. Kürek seçersen 20-30 dk yeterli. Yarın çekiş günü: maç modunda oynama.</div>':'');
-  document.getElementById('runIn').oninput=e=>{runKmToday=e.target.value;sSet('d:runkm:'+todayKey(),e.target.value);renderHabits();};}
+  document.getElementById('runIn').oninput=e=>{runKmToday=e.target.value;sSet('d:runkm:'+todayKey(),e.target.value);renderHabits();kaydettiGoster('runOk');};}
 
 /* workout (today) */
 let exDone={},wtlog={};
@@ -2612,8 +2700,9 @@ async function muafDegistir(k){
   if(offGunler[k])delete offGunler[k];else offGunler[k]=1;
   await sSet('d:off',offGunler);
   renderPlan();
+  renderSched();                         // gezinilen gün muaf olabilir
   if(k===todayKey()){                    // bugünü etkiliyorsa kartları tazele
-    await renderRun();renderEx();renderYok();renderSched();
+    await renderRun();renderEx();renderYok();
   }
   renderHabits();renderHaftalik();renderOneri();
 }
@@ -2665,6 +2754,7 @@ function renderEx(){
   el.querySelectorAll('[data-his]').forEach(b=>b.onclick=()=>sessHis(b.dataset.his));
   el.querySelectorAll('[data-bolge]').forEach(b=>b.onclick=()=>sessBolge(b.dataset.bolge));
   el.querySelectorAll('[data-x]').forEach(c=>c.onclick=()=>{const i=+c.dataset.x;exDone[i]=!exDone[i];sSet('d:ex:'+todayKey(),exDone);renderEx();renderHabits();});
+  exYapamadimGuncelle();
 }
 
 function renderSess(el,ex){
@@ -6360,6 +6450,13 @@ if(navigator.serviceWorker){
   document.getElementById('planAc').onclick=()=>{planAcik=!planAcik;
     document.getElementById('planAc').textContent=planAcik?'14 gün ↑':'14 gün ↓';
     renderPlan();};
+  document.getElementById('exYapamadim').onclick=exYapamadim;
+  /* Günün Programı gezinmesi: ±30 gün yeter, ötesi program tablosunun
+     tekrarı — kullanıcı "önümde ne var" diye bakıyor, takvim gezmiyor. */
+  const schedGit=n=>{schedGun=Math.max(-30,Math.min(30,schedGun+n));renderSched();};
+  document.getElementById('schedGeri').onclick=()=>schedGit(-1);
+  document.getElementById('schedIleri').onclick=()=>schedGit(1);
+  document.getElementById('schedBugunBtn').onclick=()=>{schedGun=0;renderSched();};
   document.getElementById('wtBugun').onclick=()=>{wtMod='bugun';renderWtLog();};
   document.getElementById('wtIlerleme').onclick=()=>{wtMod='ilerleme';renderWtLog();};
   document.getElementById('basvuruRefresh').onclick=loadBasvuru;
