@@ -12,7 +12,6 @@ geliştirme değil, gerçek veri var. Deneme kaydı bırakma, bırakırsan temiz
 
 | Ne | Ne zaman | Yapılacak |
 |---|---|---|
-| **Kalori hedefi 2500** (elle ayarlandı 9 Eyl) | **15 Eylül** | Uyarlama erken bitti, normal programa dönüldü — bulk'a mı dönülecek, cut mı sürecek? Kullanıcı karar verecek, SOR. Hedef `kcalOfs`'ta, koddan ezme. |
 | **Kültür derinliği** | **6 Ekim** | Dört listede 44'er kayıt var, sonrası boş. Yazılmadan önce ayrı JSON'a taşıma kararı verilmeli (dosya 518 KB). |
 
 **Sakatlık uyarlaması 12 Eylül'de BİTTİ** (11 Eyl'de kullanıcı bildirdi).
@@ -233,6 +232,7 @@ Actions log'una da şirket adı/konu basılmaz — log herkese açık.
 | **Artış freni: önceki seans "çok zor" ise reçete artmaz** | 7 Eyl | Kullanıcı onayladı. Kilo DÜŞMÜYOR, sabit kalıyor — "paneli kiloyu kendiliğinden geri çekmesin" kuralı duruyor, yalnızca panelin kendi artışı frenleniyor. Fren iki şeyle açılıyor: "çok zor" YA DA herhangi bir bölge işareti (8 Eyl'de eklendi). Bölge işareti hareket bazında değil BÜTÜN seansa uygulanıyor — hareket adını bölgeye eşlemek ("Bench press" → omuz?) daha isabetli olurdu ama §5'teki elle-kalıp tuzağı olurdu. Kaba ama sessizce yanlış çalışmayan davranış seçildi; hata yönü de doğru tarafa düşüyor, fazladan frenlemek gereken yerde frenlememekten iyi. Pencere 7 gün, yoksa bir kez "çok zor" deyip bir daha cevaplamayan biri freni kalıcı açık bırakırdı. Seans ekranında yazıyor — sessiz çalışmıyor. |
 | **Elle başvuru girişi** | 7 Eyl | Kullanıcı ağırlıklı LinkedIn'den başvuruyor, o başvurular hiçbir yere düşmüyordu; `basvuru-tempo` ve `donus-yok` yalnızca `d:myApps`'e baktığı için hep sessiz kalıyordu. İş Başvuruları kartına şirket+pozisyon satırı eklendi, anahtar `el:` önekli. `appRows()` zaten Sheet ile birleştirip tekrarı ayıklıyor. |
 | **LLM / Jarvis bağlanmadı** | 3 Eyl | Konuşuldu, kullanıcı "çok gerek görmedim" dedi. Günlük brifing reddedildi (veri zaten ekranda). Doğal dille giriş istenirse önce **yerel ayrıştırıcı** yazılacak (anahtarsız, çevrimdışı, gizlilik sorunsuz); model ancak o yetmezse yedek olarak. Kendiliğinden yeniden önerme. |
+| **Kalori hedefi 2500'de KALIYOR** | 11 Eyl | Sakatlık uyarlaması bitip normal programa dönülünce soruldu: bulk'a dönülmeyecek, hedef 2500. Hedef `kcalOfs` damgasında, KODDAN EZME (§5.2). Kendiliğinden yeniden sorma — kullanıcı değiştirmek isterse Haftalık Değerlendirme'nin [Uygula] düğmesi ya da "hedefi düzenle" zaten var. Faz anahtarı (C1) hâlâ yazılmadı; yazılırsa bu hedefi taban almalı. |
 | **`PICK = 3`'e dokunulmadı** | — | B bölümüne bak. |
 
 ---
