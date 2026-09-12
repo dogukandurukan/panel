@@ -1,97 +1,101 @@
 {
- "updated": "2026-09-11 12:21",
+ "updated": "2026-09-12 12:00",
  "ok": true,
  "count": 3,
- "pool": 28,
+ "pool": 23,
  "items": [
   {
-   "title": "Senior DevOps Engineer (all genders) | Data Platform",
-   "company": "Real Digital",
+   "title": "Senior Analytics Engineer (f/m/d)",
+   "company": "Voize",
    "location": "Berlin",
-   "loc_raw": "Remote oder Köln / Darmstadt / Düsseldorf / Berlin",
+   "loc_raw": "Berlin",
    "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/real-digital/remote-senior-devops-engineer-all-genders-data-platform-180543",
+   "url": "https://www.arbeitnow.com/jobs/companies/voize/senior-analytics-engineer-berlin-219113",
    "source": "Arbeitnow",
-   "posted": "2026-09-10",
+   "posted": "2026-09-11",
    "days": 1,
    "skills": [
-    "python",
     "sql",
-    "azure",
-    "airflow",
     "dbt",
-    "ci/cd"
+    "snowflake",
+    "etl",
+    "data warehouse",
+    "git"
    ],
    "german": false,
-   "focus": "pipeline",
-   "summary": "Anstellungsdetails Permanent Contract, Full- or Part-Time, Remote or Cologne / Düsseldorf / Darmstadt / Berlin Info Who we areWe are the tech powerhouse behind Kaufland’s international online marketplaces and a company within the Schwarz Group. Driven by a sta",
+   "focus": "ml",
+   "summary": "🎤 Why voize? Because we’re more than just a job! At voize, we believe the greatest gift to frontline workers is time - time to care, connect, and be present. Today, that time is lost to busywork and complex systems that pull them away from what matters most: p",
    "keywords": [
-    "pipeline",
-    "cost"
+    "dashboard",
+    "scalab",
+    "finance",
+    "stakeholder",
+    "startup"
    ],
    "score": 112
   },
   {
-   "title": "Senior Data Engineer (f/m/d)",
-   "company": "gropyus",
-   "location": "Berlin",
-   "loc_raw": "Berlin, Berlin",
-   "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/gropyus/senior-data-engineer-berlin-berlin-131723",
-   "source": "Arbeitnow",
-   "posted": "2026-09-10",
-   "days": 1,
-   "skills": [
-    "python",
-    "spark",
-    "dbt",
-    "git"
-   ],
-   "german": false,
-   "focus": "pipeline",
-   "summary": "About The Company GROPYUS is a technology-based construction company focused on building multi-story residential buildings. Thanks to its prefabricated building system with various design options, industrial offsite construction, and fully digitalized processe",
-   "keywords": [
-    "scalab",
-    "automation",
-    "pipeline",
-    "data quality",
-    "optimization",
-    "stakeholder",
-    "e-commerce"
-   ],
-   "score": 100
-  },
-  {
-   "title": "Senior/Staff AI Engineer, Quality & Evals (m/f/x)",
-   "company": "Cortea AI",
+   "title": "AI Engineer - Data",
+   "company": "Almedia",
    "location": "Berlin",
    "loc_raw": "Berlin",
    "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/cortea-ai/senior-staff-ai-engineer-quality-evals-berlin-67239",
+   "url": "https://www.arbeitnow.com/jobs/companies/almedia/ai-engineer-data-berlin-450785",
    "source": "Arbeitnow",
-   "posted": "2026-09-10",
+   "posted": "2026-09-11",
    "days": 1,
    "skills": [
     "python",
-    "etl",
-    "data warehouse",
+    "sql",
+    "ci/cd",
     "llm"
    ],
    "german": false,
    "focus": "ml",
-   "summary": "About us We’re Cortea , a Berlin startup transforming audits with AI . Manual, document-heavy audits waste expert time while demand keeps rising. Our AI-powered software and specialized AI agents remove the repetitive work so auditors can focus on judgment. Ba",
+   "summary": "This isn’t your regular job. Almedia is a place where those who want to push harder can accelerate their careers faster than anywhere else. We’re aiming to become Germany’s second bootstrapped unicorn. Almedia is already Europe’s #3 fastest-growing company in ",
    "keywords": [
-    "startup",
-    "pipeline",
-    "dashboard",
-    "cost",
-    "optimization",
-    "experimentation"
+    "pipeline"
    ],
-   "score": 100
+   "score": 88
+  },
+  {
+   "title": "Senior Business Intelligence Lead (all genders)",
+   "company": "Reev",
+   "location": "Almanya",
+   "loc_raw": "München",
+   "remote": false,
+   "url": "https://www.arbeitnow.com/jobs/companies/reev/senior-business-intelligence-lead-all-genders-munchen-127181",
+   "source": "Arbeitnow",
+   "posted": "2026-09-11",
+   "days": 1,
+   "skills": [
+    "sql",
+    "spark",
+    "dbt",
+    "etl",
+    "data warehouse"
+   ],
+   "german": false,
+   "focus": "ml",
+   "summary": "Your Mission EV charging is evolving from a niche technology into everyday infrastructure. As reev grows, teams increasingly need reliable, consistently defined metrics. Today, different dashboards, reporting dates, filters, and assumptions can produce differe",
+   "keywords": [
+    "dashboard",
+    "finance",
+    "pipeline",
+    "stakeholder",
+    "automation",
+    "data quality",
+    "governance",
+    "saas",
+    "energy"
+   ],
+   "score": 86
   }
  ],
  "seen": [
+  "https://www.arbeitnow.com/jobs/companies/voize/senior-analytics-engineer-berlin-219113",
+  "https://www.arbeitnow.com/jobs/companies/almedia/ai-engineer-data-berlin-450785",
+  "https://www.arbeitnow.com/jobs/companies/reev/senior-business-intelligence-lead-all-genders-munchen-127181",
   "https://www.arbeitnow.com/jobs/companies/real-digital/remote-senior-devops-engineer-all-genders-data-platform-180543",
   "https://www.arbeitnow.com/jobs/companies/gropyus/senior-data-engineer-berlin-berlin-131723",
   "https://www.arbeitnow.com/jobs/companies/cortea-ai/senior-staff-ai-engineer-quality-evals-berlin-67239",
