@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-12 16:48",
+  "updated": "2026-09-13 14:38",
   "watch": [
     {
       "code": "TTKOM",
@@ -246,86 +246,84 @@
         "rsiTxt": "nötr",
         "rsi": 68.4,
         "volat": 2.8,
-        "volRatio": 2.07
+        "volRatio": 1.72
       }
     }
   ],
   "gold": {
-    "price": "6,815.92",
-    "chg": "-0.04%"
+    "price": "6,882.58",
+    "chg": "+0.94%"
   },
   "news": [],
   "world": [
     {
-      "t": "🌍 Saudi Arabia shuts key oil pipeline after drone attack launched from Iraq  (BBC World)",
-      "link": "https://www.bbc.co.uk/news/articles/c62m933465eo?at_medium=RSS&at_campaign=rss"
+      "t": "🌍 AI staff 'genuinely frightened' for humanity's future, ex-Anthropic researcher tells BBC  (BBC World)",
+      "link": "https://www.bbc.co.uk/news/articles/c1kx0gyje9wo?at_medium=RSS&at_campaign=rss"
     },
     {
-      "t": "🌍 $15m fund launched to create ‘unstoppable momentum’ to end FGM worldwide  (Guardian World)",
-      "link": "https://www.theguardian.com/global-development/2026/sep/11/15m-fund-launched-to-create-unstoppable-momentum-to-end-fgm-worldwide"
+      "t": "🌍 Burial of King Oyo takes place in Uganda as news anchor prepares for throne  (Guardian World)",
+      "link": "https://www.theguardian.com/world/2026/sep/12/burial-king-oyo-uganda"
     },
     {
-      "t": "🌍 ‘Divine triumph’: Iran celebrates Houthis’ capture of Yemen’s Red Sea coast  (Al Jazeera)",
-      "link": "https://www.aljazeera.com/news/2026/9/12/divine-triumph-iran-celebrates-houthis-capture-of-yemens-red-sea-coast?traffic_source=rss"
+      "t": "🌍 Fighting continues between Yemen gov’t forces, Houthis: What is the latest?  (Al Jazeera)",
+      "link": "https://www.aljazeera.com/news/2026/9/13/fighting-continues-between-yemen-govt-forces-houthis-what-is-the-latest?traffic_source=rss"
     },
     {
-      "t": "🌍 'People are still afraid of those three letters': Fighting the stigma of HIV  (NPR World)",
-      "link": "https://www.npr.org/2026/09/12/g-s1-142404/hiv-aids-brazil-stigma"
+      "t": "🌍 Indonesian passenger ship overturns, sparking search for about 130 missing  (NPR World)",
+      "link": "https://www.npr.org/2026/09/13/g-s1-143114/about-130-missing-after-indonesian-passenger-ship-overturns"
     },
     {
-      "t": "🌍 German police bodycam captures dramatic arrest of suspected power saboteur  (Euronews)",
-      "link": "https://www.euronews.com/2026/09/12/german-police-bodycam-captures-dramatic-arrest-of-suspected-power-saboteur"
+      "t": "🌍 UAE and Iran leaders meet at the BRICS summit for the first time since the war  (Euronews)",
+      "link": "https://www.euronews.com/2026/09/13/uae-and-iran-leaders-meet-at-the-brics-summit-for-the-first-time-since-the-war"
     },
     {
-      "t": "🌍 Trump visits Ireland, says unification would be 'fantastic'  (DW)",
-      "link": "https://www.dw.com/en/trump-visits-ireland-says-unification-would-be-fantastic/a-79244685?maca=en-rss-en-world-4025-rdf"
+      "t": "🌍 A Romani artist in Hungary reclaims his identity  (DW)",
+      "link": "https://www.dw.com/en/a-romani-artist-in-hungary-reclaims-his-identity/a-79247266?maca=en-rss-en-world-4025-rdf"
     }
   ],
   "tr": [
     {
-      "t": "🇹🇷 Zelenski: Rus saldırılarında Ukrayna'da 3 kişi öldü, çok sayıda kişi yaralandı  (TRT Haber)",
-      "link": "https://www.trthaber.com/haber/dunya/zelenski-rus-saldirilarinda-ukraynada-3-kisi-oldu-cok-sayida-kisi-yaralandi-956654.html"
+      "t": "🇹🇷 Anthropic'ten istifa eden Coxon, yapay zeka çalışanlarının teknolojideki hızlı ilerlemeden korktuklarını söyledi  (TRT Haber)",
+      "link": "https://www.trthaber.com/haber/dunya/anthropicten-istifa-eden-coxon-yapay-zeka-calisanlarinin-teknolojideki-hizli-ilerlemeden-korktuklarini-soyledi-956703.html"
     },
     {
-      "t": "🇹🇷 Aşil Kalkanı: Türkiye ve Yunanistan arasındaki yumuşama bitiyor mu?  (BBC Türkçe)",
-      "link": "https://www.bbc.com/turkce/articles/c4g7vdwzp1yo?at_medium=RSS&at_campaign=rss"
+      "t": "🇹🇷 Kaos GL'ye yönelik 'müstehcenlik' soruşturmasında yöneticiler gözaltına alındı  (BBC Türkçe)",
+      "link": "https://www.bbc.com/turkce/articles/c624e4q594zo?at_medium=RSS&at_campaign=rss"
     },
     {
-      "t": "🇹🇷 'Türkiye siyasi istikrarını sürdürüyor'  (Habertürk)",
-      "link": "https://www.haberturk.com/gundem/cumhurbaskani-yardimcisi-cevdet-yilmaz-osmaniyede-siyasi-istikrarin-ekonomiye-etkisini-anlatti-3912019"
+      "t": "🇹🇷 Vanlı Kara Haydar'ın eşi gözaltında  (Habertürk)",
+      "link": "https://www.haberturk.com/gundem/son-dakika-gozaltina-alinan-vanli-kara-haydar-in-esi-cagla-oz-van-a-getirildi-3912147"
     },
     {
-      "t": "🇹🇷 Türkiye'de yeni nesil çalışma modelleri yolda  (NTV)",
-      "link": "https://www.ntv.com.tr/turkiye/galeri-turkiyede-yeni-nesil-calisma-modelleri-yolda-1741541"
+      "t": "🇹🇷 Düğün öncesi gelin almada kavga çıktı; polis biber gazıyla müdahale etti  (NTV)",
+      "link": "https://www.ntv.com.tr/turkiye/video-dugun-oncesi-gelin-almada-kavga-cikti-polis-biber-gaziyla-mudahale-etti-1741660"
     },
     {
-      "t": "🇹🇷 İyilik Var web sitesi ve mobil uygulaması erişime açıldı  (TRT Haber)",
-      "link": "https://www.trthaber.com/haber/gundem/iyilik-var-web-sitesi-ve-mobil-uygulamasi-erisime-acildi-956653.html"
+      "t": "🇹🇷 Yerli üretim hedefi: Kimlik ve pasaport çipleri Türkiye'de üretilecek  (TRT Haber)",
+      "link": "https://www.trthaber.com/haber/bilim-teknoloji/yerli-uretim-hedefi-kimlik-ve-pasaport-cipleri-turkiyede-uretilecek-956702.html"
     },
     {
-      "t": "🇹🇷 Kaşif Kozinoğlu soruşturması: İkinci operasyonda gözaltına alınan dokuz kişi adliyeye sevk edildi  (BBC Türkçe)",
+      "t": "🇹🇷 Kaşif Kozinoğlu soruşturması: Gazeteci Selahattin Günday tutuklandı  (BBC Türkçe)",
       "link": "https://www.bbc.com/turkce/articles/cwyzxq2g545o?at_medium=RSS&at_campaign=rss"
     }
   ],
   "_teshis": {
     "dunya": [
-      "BBC World: 23 öğe / 2 alındı / 0 elendi | ilk: Saudi Arabia shuts key oil pipeline after drone attack launc",
-      "Guardian World: 45 öğe / 2 alındı / 0 elendi | ilk: $15m fund launched to create ‘unstoppable momentum’ to end F",
-      "Al Jazeera: 25 öğe / 2 alındı / 0 elendi | ilk: ‘Divine triumph’: Iran celebrates Houthis’ capture of Yemen’",
-      "NPR World: 10 öğe / 2 alındı / 0 elendi | ilk: 'People are still afraid of those three letters': Fighting t",
-      "Euronews: 50 öğe / 2 alındı / 0 elendi | ilk: German police bodycam captures dramatic arrest of suspected ",
-      "DW: 12 öğe / 2 alındı / 0 elendi | ilk: Trump visits Ireland, says unification would be 'fantastic'",
+      "BBC World: 24 öğe / 2 alındı / 0 elendi | ilk: AI staff 'genuinely frightened' for humanity's future, ex-An",
+      "Guardian World: 45 öğe / 2 alındı / 0 elendi | ilk: Burial of King Oyo takes place in Uganda as news anchor prep",
+      "Al Jazeera: 25 öğe / 2 alındı / 0 elendi | ilk: Fighting continues between Yemen gov’t forces, Houthis: What",
+      "NPR World: 10 öğe / 2 alındı / 0 elendi | ilk: Indonesian passenger ship overturns, sparking search for abo",
+      "Euronews: 50 öğe / 2 alındı / 0 elendi | ilk: UAE and Iran leaders meet at the BRICS summit for the first ",
+      "DW: 11 öğe / 2 alındı / 0 elendi | ilk: A Romani artist in Hungary reclaims his identity",
       "SONUÇ: 6 haber · veren: Al Jazeera, BBC World, DW, Euronews, Guardian World, NPR World",
-      "AA: OKUNAMADI RemoteDisconnected: Remote end closed connection without response",
-      "TRT Haber: 50 öğe / 2 alındı / 0 elendi | ilk: Zelenski: Rus saldırılarında Ukrayna'da 3 kişi öldü, çok say",
-      "BBC Türkçe: 16 öğe / 2 alındı / 0 elendi | ilk: Aşil Kalkanı: Türkiye ve Yunanistan arasındaki yumuşama biti",
-      "Habertürk: 30 öğe / 2 alındı / 0 elendi | ilk: 'Türkiye siyasi istikrarını sürdürüyor'",
-      "NTV: 20 öğe / 2 alındı / 0 elendi | ilk: Türkiye'de yeni nesil çalışma modelleri yolda",
+      "AA: OKUNAMADI TimeoutError: The read operation timed out",
+      "TRT Haber: 50 öğe / 2 alındı / 0 elendi | ilk: Anthropic'ten istifa eden Coxon, yapay zeka çalışanlarının t",
+      "BBC Türkçe: 16 öğe / 2 alındı / 0 elendi | ilk: Kaos GL'ye yönelik 'müstehcenlik' soruşturmasında yöneticile",
+      "Habertürk: 30 öğe / 2 alındı / 0 elendi | ilk: Vanlı Kara Haydar'ın eşi gözaltında",
+      "NTV: 20 öğe / 2 alındı / 0 elendi | ilk: Düğün öncesi gelin almada kavga çıktı; polis biber gazıyla m",
       "SONUÇ: 6 haber · veren: BBC Türkçe, Habertürk, NTV, TRT Haber · boş dönen: AA"
     ],
-    "hisse": "1 başlık geldi, 1 elendi",
-    "hisse_ham": [
-      "KAP *** YEO TEKNOLOJİ ENERJİ VE ENDÜSTRİ A.Ş. *** YEOTK *** Geleceğe D"
-    ]
+    "hisse": "0 başlık geldi, 0 elendi",
+    "hisse_ham": []
   }
 }
