@@ -1,92 +1,98 @@
 {
- "updated": "2026-09-13 12:59",
+ "updated": "2026-09-14 13:19",
  "ok": true,
  "count": 3,
- "pool": 24,
+ "pool": 19,
  "items": [
   {
-   "title": "Senior ML Engineer | Germany (3 Month project)",
-   "company": "Intetics 2",
+   "title": "Senior AI-Native Data Engineer (f/m/x)",
+   "company": "exmox",
    "location": "Almanya",
-   "loc_raw": "Germany",
-   "remote": true,
-   "url": "https://www.arbeitnow.com/jobs/companies/intetics-2/remote-senior-ml-engineer-germany-3-month-project-282468",
+   "loc_raw": "Hamburg",
+   "remote": false,
+   "url": "https://www.arbeitnow.com/jobs/companies/exmox/senior-ai-native-data-engineer-hamburg-424655",
    "source": "Arbeitnow",
-   "posted": "2026-09-12",
+   "posted": "2026-09-13",
+   "days": 1,
+   "skills": [
+    "pyspark",
+    "spark",
+    "databricks",
+    "etl",
+    "git"
+   ],
+   "german": false,
+   "focus": "ml",
+   "summary": "Your Mission This is a company built for growth. When you join exmox, you're stepping onto a global, highly competitive playing field, building high-performing consumer products in mobile gaming. We're scaling a rewarded user engagement and acquisition platfor",
+   "keywords": [
+    "pipeline",
+    "scalab",
+    "optimization",
+    "real-time",
+    "data quality"
+   ],
+   "score": 86
+  },
+  {
+   "title": "Principal Analytics Engineer (f/m/d)",
+   "company": "Trusted Shops SE (DE)",
+   "location": "Berlin",
+   "loc_raw": "Berlin, Berlin, Germany",
+   "remote": false,
+   "url": "https://www.arbeitnow.com/jobs/companies/trusted-shops-se-de/principal-analytics-engineer-berlin-225855",
+   "source": "Arbeitnow",
+   "posted": "2026-09-13",
+   "days": 1,
+   "skills": [
+    "dbt",
+    "ci/cd",
+    "git"
+   ],
+   "german": false,
+   "focus": "business",
+   "summary": "At Trusted Shops, we’re shaping Europe’s Community of Trust – a space where Businesses and Consumers connect with confidence, transparency, and security. Every day, millions of Users and thousands of Companies across Europe trust us to deliver safe, reliable, ",
+   "keywords": [
+    "self-service",
+    "cost",
+    "experimentation"
+   ],
+   "score": 82
+  },
+  {
+   "title": "Data Engineer (all genders)",
+   "company": "Eraneos",
+   "location": "Almanya",
+   "loc_raw": "Hamburg, München, Düsseldorf, remote",
+   "remote": false,
+   "url": "https://www.arbeitnow.com/jobs/companies/eraneos/remote-data-engineer-all-genders-12735",
+   "source": "Arbeitnow",
+   "posted": "2026-09-13",
    "days": 1,
    "skills": [
     "python",
     "sql",
-    "ci/cd",
-    "git",
-    "llm"
+    "spark",
+    "databricks",
+    "azure",
+    "airflow"
    ],
    "german": false,
-   "focus": "ml",
-   "summary": "We are looking for an experienced We are looking for an experienced ML Engineer / MLOps Engineer to join a cloud-native project for a German customer. The role is strongly engineering-focused and involves building production-grade ML infrastructure, working wi",
-   "keywords": [
-    "pipeline",
-    "experimentation",
-    "enterprise"
-   ],
-   "score": 106
-  },
-  {
-   "title": "Data Engineer (f/m/d)",
-   "company": "Climate",
-   "location": "Berlin",
-   "loc_raw": "Berlin HQ",
-   "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/climate/data-engineer-berlin-hq-131549",
-   "source": "Arbeitnow",
-   "posted": "2026-09-13",
-   "days": 0,
-   "skills": [
-    "python",
-    "sql",
-    "ci/cd",
-    "git",
-    "llm"
-   ],
-   "german": false,
-   "focus": "ml",
-   "summary": "Job description We are currently seeking a Data Engineer for our international and diverse Climate Policy Team (CPT). The team is engaged in various projects on climate change mitigation, in particular on energy system transformation, the 1.5°C global warming ",
+   "focus": "pipeline",
+   "summary": "What you can expect from us We’re a high‑energy cloud- and data engineering team looking for like-minded, motivated tech builders. We are driven by ownership and business outcomes. As the analytics unit within a global management consultancy, we turn data-driv",
    "keywords": [
     "energy",
+    "stakeholder",
     "pipeline",
-    "automation",
-    "data quality",
+    "cost",
     "optimization"
    ],
-   "score": 94
-  },
-  {
-   "title": "Data Scientist (f/m/d)",
-   "company": "Pair",
-   "location": "Berlin",
-   "loc_raw": "Berlin (Hybrid)",
-   "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/pair/data-scientist-berlin-hybrid-47229",
-   "source": "Arbeitnow",
-   "posted": "2026-09-11",
-   "days": 2,
-   "skills": [
-    "python",
-    "sql",
-    "llm"
-   ],
-   "german": false,
-   "focus": "ml",
-   "summary": "Are you ready to change the market? Are you a passionate and experienced Data Scientist, excited to work on improving and maintaining our data architecture? Join us to become a part of our strong international team that is transforming the traditional debt col",
-   "keywords": [
-    "stakeholder",
-    "startup",
-    "finance"
-   ],
-   "score": 77
+   "score": 80
   }
  ],
  "seen": [
+  "https://www.arbeitnow.com/jobs/companies/exmox/senior-ai-native-data-engineer-hamburg-424655",
+  "https://www.arbeitnow.com/jobs/companies/trusted-shops-se-de/principal-analytics-engineer-berlin-225855",
+  "https://www.arbeitnow.com/jobs/companies/eraneos/remote-data-engineer-all-genders-12735",
   "https://www.arbeitnow.com/jobs/companies/intetics-2/remote-senior-ml-engineer-germany-3-month-project-282468",
   "https://www.arbeitnow.com/jobs/companies/climate/data-engineer-berlin-hq-131549",
   "https://www.arbeitnow.com/jobs/companies/pair/data-scientist-berlin-hybrid-47229",
