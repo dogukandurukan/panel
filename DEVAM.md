@@ -1,4 +1,4 @@
-# Panel — devir notu · 11 Eylül 2026
+# Panel — devir notu · 15 Eylül 2026
 
 Kalıcı kurallar `CLAUDE.md`'de (repo public, uydurma gösterge yok, tek dosya,
 iki tema, LinkedIn otomasyonu yok). **Bu dosya: panel bugün ne durumda, sırada
@@ -28,9 +28,35 @@ yasakladığı kişisel verinin en hassas türü ve git geçmişi kalıcı.
 
 ## 1. Panel bugün ne durumda
 
-`index.html` ~518 KB, tek dosya, bağımlılık yok. **İKİ SEKME** (tek sayfa çok
+`index.html` ~530 KB, tek dosya, bağımlılık yok. **İKİ SEKME** (tek sayfa çok
 uzamıştı). Kartların kendisi sekmenin içinde. Sekme seçimi `d:tab`, tema gibi
 CİHAZA özel (`SYNC_SKIP`'te).
+
+**KART SAYISI KULLANIMI DÜŞÜRDÜ (15 Eyl).** Kullanıcı "panel kalabalık ve
+karışık gelmeye başladı, kullanımım düştü" dedi; o gün 26 kart vardı. İki şey
+yapıldı, ikisi de kart SİLMEDEN:
+
+- **Kartlar ekranı** (başlıktaki `Kartlar` düğmesi): 22 kart üç grupta
+  listeleniyor, her satırda göster-gizle tiki, grid içindekilerde `↑ ↓`.
+  Seçim `d:kartlar` = `{gizli:{id:1}, sira:{gridId:[id,...]}}`, **`SYNC_SKIP`'te
+  DEĞİL** — gizlenen kart telefonda da gizli olmalı. Gizlemek VERİ SİLMİYOR.
+  Kart kimlikleri `data-k` ile ELLE yazıldı: başlıktan türetmek Yoklama'da
+  kayardı (başlığı gün içinde değişiyor) ve kullanıcının gizlemesi kaybolurdu.
+  Gizli kart **DOM'dan çıkarılmıyor**, yalnızca `hidden`: render'lar
+  `getElementById` ile içini buluyor, koparılsa geri açıldığında bayat
+  gelirdi. `gridDizBir` gizliyi ölçüme sokmuyor, 1. sütuna park ediyor.
+  Sıra yalnızca iki gridin İÇİNDE değişiyor (sabit şerit ve tam genişlik
+  şeritleri yerinde; `.stack` sarmalayıcısı sırayı taşımayı ayrı iş yapardı).
+- **Kültür kartı**: Bilgi + Tarihten + Film + Sanatçı + Kitap beş ayrı karttı,
+  tek kartta beş bölme oldu (`KULT` tablosu). Bölme id'leri (`factList`,
+  `histBox`, `filmBox`, `artBox`, `bookBox`) ve render fonksiyonları
+  DEĞİŞMEDİ — kabuk değişti, kültür listelerine dokunulmadı. Tek `Başka`
+  düğmesi açık bölmeye soruyor (adımlar bölmeye göre farklı: bilgi/tarihten 4,
+  film/sanatçı/kitap 2). Seçili bölme `d:kultTab`, CİHAZA özel (`SYNC_SKIP`'te).
+  Bölme değişince kart boyu değişiyor: `gridDizBir('gridDunya')` çağrılıyor.
+
+Kart sayısı 26 → **22**. Bakmadığını kullanıcı kendi kapatacak: **hangi kartın
+gereksiz olduğunu panel tahmin etmiyor**, bu bilinçli.
 
 **ÖNERİ BANDI** (`#oneriBox` — sabit şeridin de sekmelerin de üstünde):
 Dokuz kurallık deterministik motor (`ONERI` tablosu). Kurallar aşağıdaki
@@ -99,7 +125,7 @@ Yoklama **iki durumlu**: dilim sürüyorsa "Şu An Ne Yapıyorsun?", bittiyse
 | Kart | Veri |
 |---|---|
 | Gelen Kutusu | **gizli gist** `d:gmail` |
-| Günün Bilgisi · Tarihten · Film · Sanatçı · Kitap | gömülü listeler + `facts.json` |
+| **Kültür** — tek kart, beş bölme (Bilgi \| Tarihten \| Film \| Sanatçı \| Kitap) | gömülü listeler + `facts.json` |
 | Döviz & Piyasalar · İzleme Listesi | `borsa.json` |
 | Bugün Ne Oluyor (Dünya \| Türkiye \| Piyasa) — şerit | `borsa.json`, başlıklar **linkli** |
 | Almanca (kelime \| quiz \| gramer) — şerit | gömülü havuz + `d:dequiz`, `d:deWrong` |
@@ -383,5 +409,6 @@ iOS ana ekran kısayolu önbellek tutabiliyor; değişiklik görünmezse sert ye
 | 3 Eyl | **`SCHED` düzeltildi** (aktivite günü Perşembe→Çarşamba, v2 ile ayrışmıştı) · alışkanlık paydasından bilgi satırları çıkarıldı · LLM tartışıldı, eklenmedi |
 | 8 Eyl | Seans kapanışı (nasıl geçti / zorlayan yer) · **artış freni** · `EX_OVR` tek günlük program uyarlaması · Araba/Kredi sabit gider · elle başvuru girişi · kültür derinliği 6 Ekim'e kadar · mobil taşma |
 | 9 Eyl | **Sakatlık uyarlaması** (10-22 Eyl, üst gövde yok) · `gunProg()` ile hesaplar tarihe bağlandı · `SCHED` de tarihe bağlandı + bildirim planına `t:TARİH` · **14 günlük plan + muaf gün** · kategori süzgeci · kayıt kategorisi düzenlenebilir · `Kredi` kategorisi |
+| 15 Eyl | **Kartlar ekranı** (göster/gizle + sıra, `d:kartlar`) · **Kültür kartı** (5 kart → 1 kart, 5 bölme) · panel 26 karttan 22'ye |
 | 11 Eyl | Harcamalara `Bobo` kategorisi · **sakatlık uyarlaması bitti** (15-22 Eyl kayıtları silindi, 13 Eyl Pazar'a LEGS) · `gunSched` Antrenman dilimi olmayan güne ezme etiketi yazıyor · **Günün Programı'na ← → gün gezinme** + o günün antrenmanı + muaf düğmesi · Antrenman kartına **Bugün yapamadım** · `kaydedildi ✓` işareti |
 | 6-7 Eyl | **ÖNERİ MOTORU** — panel gösterge tablosundan tavsiye veren katmana geçti. `hdHukum()` ayrıştırıldı · bant + motor iskeleti · 8 kural (spor/para/iş) · `[×]` ile 7 gün susturma · bildirime öneri satırı. Tasarım `docs/superpowers/specs/`, plan `docs/superpowers/plans/` altında. |
