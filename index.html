@@ -545,6 +545,14 @@
   .sl-n{flex:1;font-size:14px;cursor:pointer;}
   /* Otomatik kaydeden kutuların onay işareti: kutular yazar yazmaz kaydediyor
      ama hiçbir iz bırakmıyordu, kullanıcı "send" düğmesi arıyordu. */
+  /* Kartlar ekranı: hangi kart görünecek, hangi sırada. */
+  .kart-box{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:14px 16px;margin-bottom:20px;}
+  .kart-not{font-size:12px;color:var(--muted);line-height:1.45;margin-bottom:11px;}
+  .kart-grup{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:12px 0 5px;}
+  .kart-row{display:flex;align-items:center;gap:9px;padding:5px 0;border-bottom:1px dotted var(--line2);}
+  .kart-row .kart-ad{flex:1;font-size:13.5px;min-width:0;}
+  .kart-row .kart-ad.kapali{color:var(--muted);text-decoration:line-through;}
+  .kart-alt{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px;}
   .kayd{font-size:10.5px;color:var(--muted);opacity:0;transition:opacity .25s;margin-left:6px;}
   .kayd.acik{opacity:1;}
   .sl-ex{margin-top:11px;padding-top:9px;border-top:1px dotted var(--line2);}
@@ -729,13 +737,14 @@
     <div class="mast-top">
       <h1 class="mast-title">Daily<span class="sub">Kişisel Kontrol Panosu</span></h1>
       <div style="display:flex;flex-direction:column;align-items:flex-end;gap:9px;">
-        <button class="ibtn" id="syncBtn" title="Cihazlar arası senkron">&#8645; Senkron</button><button class="theme-toggle" id="themeToggle" title="Tema değiştir"><span class="tt-dot"></span><span id="themeLabel">HUD</span></button>
+        <button class="ibtn" id="kartBtn" title="Hangi kartlar görünsün">Kartlar</button><button class="ibtn" id="syncBtn" title="Cihazlar arası senkron">&#8645; Senkron</button><button class="theme-toggle" id="themeToggle" title="Tema değiştir"><span class="tt-dot"></span><span id="themeLabel">HUD</span></button>
         <div class="clock"><span id="clock">--:--:--</span><span class="cd" id="clockDate">—</span><span class="wx" id="wx">hava alınıyor…</span></div>
       </div>
     </div>
     <div class="dateline"><span id="greeting">Günaydın</span><span class="dot"></span><span id="placeName">İstanbul, Kadıköy</span><span class="dot"></span><span id="weekno">—</span></div>
   </header>
   <div id="syncBox" style="display:none"></div>
+  <div id="kartBox" class="kart-box" hidden></div>
   <!-- ÖNERİ BANDI: sekmelerin de sabit şeridin de üstünde. Kapsam iki sekmeye
        yayıldığı için (spor sekme 1, para+iş sekme 2) hiçbir sekmenin içine
        giremez. Kural tetiklenmezse hidden — söyleyecek şey yokken yer kaplamaz. -->
@@ -744,14 +753,14 @@
        yönlendiren üç kart; bunlar bir sekmeye gömülürse gün boyu
        sekme değiştirmek gerekirdi. -->
   <div class="pinned">
-        <section class="card"><div class="card-head"><div><p class="kicker">Plan · <span id="schedDay">—</span></p><h2 class="card-title">Günün Programı</h2></div><div class="meta"><button class="ibtn" id="schedGeri" title="önceki gün">←</button><button class="ibtn" id="schedBugunBtn" hidden>bugün</button><button class="ibtn" id="schedIleri" title="sonraki gün">→</button><br><span id="schedCount">0/0</span></div></div>
+        <section class="card" data-k="prog" data-ad="Günün Programı"><div class="card-head"><div><p class="kicker">Plan · <span id="schedDay">—</span></p><h2 class="card-title">Günün Programı</h2></div><div class="meta"><button class="ibtn" id="schedGeri" title="önceki gün">←</button><button class="ibtn" id="schedBugunBtn" hidden>bugün</button><button class="ibtn" id="schedIleri" title="sonraki gün">→</button><br><span id="schedCount">0/0</span></div></div>
       <div class="wtitle" id="schedNow">—</div>
       <div id="schedList"></div></section>
         <div class="stack">
-        <section class="card"><div class="card-head"><div><p class="kicker">Ajanda</p><h2 class="card-title">Bugün Yapılacaklar</h2></div><div class="meta" id="taskCount">0/0</div></div>
+        <section class="card" data-k="tasks" data-ad="Bugün Yapılacaklar"><div class="card-head"><div><p class="kicker">Ajanda</p><h2 class="card-title">Bugün Yapılacaklar</h2></div><div class="meta" id="taskCount">0/0</div></div>
       <div id="taskList"></div>
       <div class="add-row"><input id="taskInput" placeholder="Yeni iş ekle…" maxlength="120"><button id="taskAdd">Ekle</button></div></section>
-        <section class="card"><div class="card-head"><div><p class="kicker">Bütçe · Bugün</p><h2 class="card-title">Bugün Harcadıkların</h2></div><div class="meta" id="tdTotal">₺0</div></div>
+        <section class="card" data-k="harcadik" data-ad="Bugün Harcadıkların"><div class="card-head"><div><p class="kicker">Bütçe · Bugün</p><h2 class="card-title">Bugün Harcadıkların</h2></div><div class="meta" id="tdTotal">₺0</div></div>
       <div id="tdList"></div>
       <div class="add-row" id="tdAdd">
         <select id="tdCat" class="msel"></select>
@@ -760,7 +769,7 @@
         <button id="tdSave">Ekle</button>
       </div></section>
         </div>
-        <section class="card"><div class="card-head"><div><p class="kicker">Yoklama</p><h2 class="card-title" id="yokTitle">Şu An Ne Yapıyorsun?</h2></div><div class="meta" id="yokMeta">0/0</div></div>
+        <section class="card" data-k="yoklama" data-ad="Yoklama"><div class="card-head"><div><p class="kicker">Yoklama</p><h2 class="card-title" id="yokTitle">Şu An Ne Yapıyorsun?</h2></div><div class="meta" id="yokMeta">0/0</div></div>
       <div id="yokBody"></div></section>
   </div>
 
@@ -774,61 +783,61 @@
 
   <section class="tabpanel" id="tabSpor" role="tabpanel" aria-labelledby="tabBtnSpor">
   <div class="grid" id="gridSpor">
-        <section class="card" id="kRutin"><div class="card-head"><div><p class="kicker">Sabah · Her gün</p><h2 class="card-title">Sabah Rutini + Koşu</h2></div><div class="meta" id="morningCount">0/0</div></div>
+        <section class="card" data-k="rutin" data-ad="Sabah Rutini + Koşu" id="kRutin"><div class="card-head"><div><p class="kicker">Sabah · Her gün</p><h2 class="card-title">Sabah Rutini + Koşu</h2></div><div class="meta" id="morningCount">0/0</div></div>
       <div class="wtitle" id="morningSub">—</div>
       <div id="morningList"></div>
       <div id="runArea"></div></section>
     <!-- Antrenman -> Ağırlık Takibi -> Alışkanlık sırası korunuyor: sütun
          yerleştirme kartları SIRAYLA dağıtıyor, .stack sarmalayıcıya gerek yok
          (blok bölünemediği için sütunlar 982 px dengesizleşiyordu). -->
-        <section class="card" id="kAntrenman"><div class="card-head"><div><p class="kicker">Antrenman · Bugün</p><h2 class="card-title" id="wkTitle">Bugünün Antrenmanı</h2></div><div class="meta"><button class="ibtn" id="planAc">14 gün ↓</button> <button class="ibtn" id="exYapamadim" hidden>Bugün yapamadım</button><br><span id="wkCount">0/0</span></div></div>
+        <section class="card" data-k="antrenman" data-ad="Bugünün Antrenmanı" id="kAntrenman"><div class="card-head"><div><p class="kicker">Antrenman · Bugün</p><h2 class="card-title" id="wkTitle">Bugünün Antrenmanı</h2></div><div class="meta"><button class="ibtn" id="planAc">14 gün ↓</button> <button class="ibtn" id="exYapamadim" hidden>Bugün yapamadım</button><br><span id="wkCount">0/0</span></div></div>
       <div id="planKutu" hidden></div>
       <div class="wtitle" id="wkSub">—</div>
       <div id="exList"></div></section>
-      <section class="card" style="margin-top:20px"><div class="card-head"><div><p class="kicker">Antrenman · Kayıt</p><h2 class="card-title">Kaldırılan Ağırlık</h2></div><div class="meta"><button class="ibtn" id="wtBugun" style="padding:6px 10px">Bugün</button><button class="ibtn" id="wtIlerleme" style="padding:6px 10px">İlerleme</button><button class="ibtn" id="wtExport" style="padding:6px 10px">Excel'e aktar</button></div></div>
+      <section class="card" data-k="agirlik" data-ad="Kaldırılan Ağırlık" style="margin-top:20px"><div class="card-head"><div><p class="kicker">Antrenman · Kayıt</p><h2 class="card-title">Kaldırılan Ağırlık</h2></div><div class="meta"><button class="ibtn" id="wtBugun" style="padding:6px 10px">Bugün</button><button class="ibtn" id="wtIlerleme" style="padding:6px 10px">İlerleme</button><button class="ibtn" id="wtExport" style="padding:6px 10px">Excel'e aktar</button></div></div>
     <div class="wtitle" id="wtSub">—</div>
     <div id="wtList"></div></section>
-        <section class="card"><div class="card-head"><div><p class="kicker">Al&#305;&#351;kanl&#305;k &middot; Seriler</p><h2 class="card-title">Al&#305;&#351;kanl&#305;k Serileri</h2></div><div class="meta" id="habMeta">son 14 g&uuml;n</div></div>
+        <section class="card" data-k="seriler" data-ad="Alışkanlık Serileri"><div class="card-head"><div><p class="kicker">Al&#305;&#351;kanl&#305;k &middot; Seriler</p><h2 class="card-title">Al&#305;&#351;kanl&#305;k Serileri</h2></div><div class="meta" id="habMeta">son 14 g&uuml;n</div></div>
       <div id="habBox"></div></section>
-        <section class="card"><div class="card-head"><div><p class="kicker">Uyku &middot; D&uuml;n gece</p><h2 class="card-title">Uyku Takibi</h2></div><div class="meta" id="slpMeta">&mdash;</div></div>
+        <section class="card" data-k="uyku" data-ad="Uyku Takibi"><div class="card-head"><div><p class="kicker">Uyku &middot; D&uuml;n gece</p><h2 class="card-title">Uyku Takibi</h2></div><div class="meta" id="slpMeta">&mdash;</div></div>
       <div id="sleepBox"></div></section>
-        <section class="card"><div class="card-head"><div><p class="kicker">Vücut Ağırlığı · Bugün</p><h2 class="card-title">Kilo Takibi</h2></div><div class="meta" id="bwMeta">&mdash;</div></div>
+        <section class="card" data-k="kilo" data-ad="Kilo Takibi"><div class="card-head"><div><p class="kicker">Vücut Ağırlığı · Bugün</p><h2 class="card-title">Kilo Takibi</h2></div><div class="meta" id="bwMeta">&mdash;</div></div>
       <div id="bwBox"></div></section>
-        <section class="card"><div class="card-head"><div><p class="kicker">Beslenme · Bugün</p><h2 class="card-title">Bugünün Yemekleri</h2></div><div class="meta"><button class="ibtn" id="tgtAc">hedefi düzenle ↓</button></div></div>
+        <section class="card" data-k="yemek" data-ad="Bugünün Yemekleri"><div class="card-head"><div><p class="kicker">Beslenme · Bugün</p><h2 class="card-title">Bugünün Yemekleri</h2></div><div class="meta"><button class="ibtn" id="tgtAc">hedefi düzenle ↓</button></div></div>
       <div class="tgt" id="tgt" hidden></div><div id="bars"></div><div style="height:6px"></div><div id="mealList"></div>
       <div id="waterBox"></div></section>
   </div>
-    <section class="card" style="margin-top:20px" id="kHaftalik"><div class="card-head"><div><p class="kicker">Değerlendirme · Son 7 gün</p><h2 class="card-title">Haftalık Değerlendirme</h2></div><div class="meta" id="hdMeta">—</div></div>
+    <section class="card" data-k="haftalik" data-ad="Haftalık Değerlendirme" style="margin-top:20px" id="kHaftalik"><div class="card-head"><div><p class="kicker">Değerlendirme · Son 7 gün</p><h2 class="card-title">Haftalık Değerlendirme</h2></div><div class="meta" id="hdMeta">—</div></div>
     <div id="hdBox"></div></section>
   </section>
 
   <section class="tabpanel" id="tabDunya" role="tabpanel" aria-labelledby="tabBtnDunya" hidden>
   <div class="grid" id="gridDunya">
-        <section class="card"><div class="card-head"><div><p class="kicker">Gmail</p><h2 class="card-title">Gelen Kutusu</h2></div><div class="meta"><span id="gmailTime">—</span><br><button class="ibtn" id="gmailRefresh">Yenile</button></div></div>
+        <section class="card" data-k="gmail" data-ad="Gelen Kutusu"><div class="card-head"><div><p class="kicker">Gmail</p><h2 class="card-title">Gelen Kutusu</h2></div><div class="meta"><span id="gmailTime">—</span><br><button class="ibtn" id="gmailRefresh">Yenile</button></div></div>
       <div id="gmailStats" class="statrow"><div class="loading">Gelen kutusu okunuyor…</div></div>
       <div id="gmailList"></div></section>
-        <section class="card"><div class="card-head"><div><p class="kicker">Sohbetlik</p><h2 class="card-title">Günün Bilgisi</h2></div><div class="meta"><button class="ibtn" id="factNext">Başka</button></div></div>
+        <section class="card" data-k="bilgi" data-ad="Günün Bilgisi"><div class="card-head"><div><p class="kicker">Sohbetlik</p><h2 class="card-title">Günün Bilgisi</h2></div><div class="meta"><button class="ibtn" id="factNext">Başka</button></div></div>
       <div id="factList"></div></section>
-        <section class="card"><div class="card-head"><div><p class="kicker">Tarih</p><h2 class="card-title">Tarihten Bir Not</h2></div><div class="meta"><button class="ibtn" id="histNext">Başka</button></div></div>
+        <section class="card" data-k="tarihten" data-ad="Tarihten Bir Not"><div class="card-head"><div><p class="kicker">Tarih</p><h2 class="card-title">Tarihten Bir Not</h2></div><div class="meta"><button class="ibtn" id="histNext">Başka</button></div></div>
       <div id="histBox"></div></section>
-        <section class="card"><div class="card-head"><div><p class="kicker">Sinema</p><h2 class="card-title">Günün Filmi</h2></div><div class="meta"><button class="ibtn" id="filmNext">Başka</button></div></div>
+        <section class="card" data-k="film" data-ad="Günün Filmi"><div class="card-head"><div><p class="kicker">Sinema</p><h2 class="card-title">Günün Filmi</h2></div><div class="meta"><button class="ibtn" id="filmNext">Başka</button></div></div>
       <div id="filmBox"></div></section>
-        <section class="card"><div class="card-head"><div><p class="kicker">Müzik</p><h2 class="card-title">Günün Sanatçısı</h2></div><div class="meta"><button class="ibtn" id="artNext">Başka</button></div></div>
+        <section class="card" data-k="sanatci" data-ad="Günün Sanatçısı"><div class="card-head"><div><p class="kicker">Müzik</p><h2 class="card-title">Günün Sanatçısı</h2></div><div class="meta"><button class="ibtn" id="artNext">Başka</button></div></div>
       <div id="artBox"></div></section>
-        <section class="card"><div class="card-head"><div><p class="kicker">Okuma</p><h2 class="card-title">Günün Kitabı</h2></div><div class="meta"><button class="ibtn" id="bookNext">Başka</button></div></div>
+        <section class="card" data-k="kitap" data-ad="Günün Kitabı"><div class="card-head"><div><p class="kicker">Okuma</p><h2 class="card-title">Günün Kitabı</h2></div><div class="meta"><button class="ibtn" id="bookNext">Başka</button></div></div>
       <div id="bookBox"></div></section>
-        <section class="card"><div class="card-head"><div><p class="kicker">Piyasa · Canlı</p><h2 class="card-title">Döviz &amp; Piyasalar</h2></div><div class="meta"><span id="fxTime">—</span><br><button class="ibtn" id="fxRefresh">Yenile</button></div></div>
+        <section class="card" data-k="doviz" data-ad="Döviz &amp; Piyasalar"><div class="card-head"><div><p class="kicker">Piyasa · Canlı</p><h2 class="card-title">Döviz &amp; Piyasalar</h2></div><div class="meta"><span id="fxTime">—</span><br><button class="ibtn" id="fxRefresh">Yenile</button></div></div>
       <div id="marketList"><div class="loading">Kur çekiliyor…</div></div>
       <div id="goldRow"></div>
       <div id="idxList"></div>
       <div id="finNote"></div></section>
-        <section class="card"><div class="card-head"><div><p class="kicker">Piyasa · Hisse</p><h2 class="card-title">İzleme Listesi</h2></div><div class="meta" id="borsaTime">—</div></div>
+        <section class="card" data-k="izleme" data-ad="İzleme Listesi"><div class="card-head"><div><p class="kicker">Piyasa · Hisse</p><h2 class="card-title">İzleme Listesi</h2></div><div class="meta" id="borsaTime">—</div></div>
       <div id="watchList"></div>
       <div id="usList"></div>
       <div id="mktSummary"></div></section>
   </div>
 
-    <section class="card" style="margin-top:20px" ><div class="card-head"><div><p class="kicker">Gündem</p><h2 class="card-title">Bugün Ne Oluyor</h2></div><div class="meta" id="newsTime">—</div></div>
+    <section class="card" data-k="gundem" data-ad="Bugün Ne Oluyor" style="margin-top:20px" ><div class="card-head"><div><p class="kicker">Gündem</p><h2 class="card-title">Bugün Ne Oluyor</h2></div><div class="meta" id="newsTime">—</div></div>
     <div class="trio">
       <div class="tcol"><div class="wtitle">Dünya</div><div id="worldList"></div></div>
       <div class="tcol"><div class="wtitle">Türkiye</div><div id="trList"></div></div>
@@ -837,19 +846,19 @@
 
   <!-- Kelimeler + quiz + gramer tek şeritte: üçü aynı işin parçası, ayrı
        kartlar akışı bölüyordu. .trio 980'de 2, 700'de tek sütuna iner. -->
-  <section class="card" style="margin-top:20px"><div class="card-head"><div><p class="kicker" id="deKicker">Öğrenme · A1–A2</p><h2 class="card-title">Almanca</h2></div><div class="meta"><span id="deScore">—</span><br><button class="ibtn" id="deRefresh">Yeni set</button></div></div>
+  <section class="card" data-k="almanca" data-ad="Almanca" style="margin-top:20px"><div class="card-head"><div><p class="kicker" id="deKicker">Öğrenme · A1–A2</p><h2 class="card-title">Almanca</h2></div><div class="meta"><span id="deScore">—</span><br><button class="ibtn" id="deRefresh">Yeni set</button></div></div>
     <div class="trio">
       <div class="tcol"><div class="wtitle">Günün 5 kelimesi</div><div id="germanList"></div></div>
       <div class="tcol"><div class="wtitle">Quiz</div><div id="quizBox"></div></div>
       <div class="tcol"><div class="wtitle">Gramer</div><div id="gramList"></div></div>
     </div></section>
 
-    <section class="card" style="margin-top:20px" ><div class="card-head"><div><p class="kicker">Kariyer · Günlük</p><h2 class="card-title">Bugünün 3 İşi</h2></div>
+    <section class="card" data-k="isler" data-ad="Bugünün 3 İşi" style="margin-top:20px" ><div class="card-head"><div><p class="kicker">Kariyer · Günlük</p><h2 class="card-title">Bugünün 3 İşi</h2></div>
     <div class="meta"><span id="jobsTime">—</span><br><button class="ibtn" id="jobsCfg" style="margin-top:5px">⚙ Profil</button></div></div>
     <div id="jobsCfgBox" style="display:none"></div>
     <div id="jobsList"><div class="loading">jobs.json çekiliyor…</div></div></section>
 
-    <section class="card" style="margin-top:20px" ><div class="card-head"><div><p class="kicker">Kariyer</p><h2 class="card-title">İş Başvuruları</h2></div><div class="meta"><span id="basvuruTime">—</span><br><button class="ibtn" id="basvuruRefresh">Yenile</button></div></div>
+    <section class="card" data-k="basvuru" data-ad="İş Başvuruları" style="margin-top:20px" ><div class="card-head"><div><p class="kicker">Kariyer</p><h2 class="card-title">İş Başvuruları</h2></div><div class="meta"><span id="basvuruTime">—</span><br><button class="ibtn" id="basvuruRefresh">Yenile</button></div></div>
     <div id="basvuruStats" class="statrow"><div class="loading">Başvurular çekiliyor…</div></div>
     <div id="basvuruList"></div>
     <!-- Panel dışından (LinkedIn, şirket sitesi) yapılan başvurular hiçbir
@@ -862,7 +871,7 @@
     </div>
     <div id="retBox"></div></section>
 
-    <section class="card" style="margin-top:20px" ><div class="card-head"><div><p class="kicker">Bütçe</p><h2 class="card-title">Harcama &amp; Kazanç</h2></div>
+    <section class="card" data-k="para" data-ad="Harcama &amp; Kazanç" style="margin-top:20px" ><div class="card-head"><div><p class="kicker">Bütçe</p><h2 class="card-title">Harcama &amp; Kazanç</h2></div>
     <div class="meta"><span class="mnav"><button class="ibtn" id="mPrev" title="Önceki ay">◀</button><span id="mLabel">—</span><button class="ibtn" id="mNext" title="Sonraki ay">▶</button></span><br><button class="ibtn" id="mExport" style="margin-top:5px">Excel'e aktar</button></div></div>
     <div id="mStats" class="statrow"></div>
     <div id="mBar"></div>
@@ -878,7 +887,7 @@
     <div id="mCats"></div>
     <div id="mList"></div></section>
 
-    <section class="card" style="margin-top:20px" id="agentCard" >
+    <section class="card" data-k="telemetri" data-ad="Ajan Telemetrisi" style="margin-top:20px" id="agentCard" >
     <div class="card-head"><div><p class="kicker">Sistem · GitHub Actions</p><h2 class="card-title">Ajan Telemetrisi</h2></div>
       <div class="meta"><span id="agentTime">—</span><br><button class="ibtn" id="agentRefresh">Yenile</button></div></div>
     <div id="agentGrid"><div class="loading">GitHub Actions durumu çekiliyor…</div></div></section>
@@ -4373,7 +4382,11 @@ function gridDizBir(gid){
   const g=document.getElementById(gid);if(!g)return;
   if(!gridKart[gid])gridKart[gid]=[...g.children];   /* ilk cagri: kartlar dogrudan cocuk */
   if(gridGizli(g))return;                            /* olcum yanlis olurdu */
-  const kartlar=gridKart[gid];
+  /* Gizli kartlar (Kartlar ekranından kapatılanlar) ölçüme girmiyor — boyları
+     0, sütunları dengesiz bırakırdı. DOM'dan ÇIKARILMIYOR ama: render'lar
+     getElementById ile içlerini buluyor, koparılsalardı geri açıldığında kart
+     bayat içerikle gelirdi. */
+  const kartlar=gridKart[gid].filter(k=>!k.hidden);
   const n=gridSutun();
   g.style.gridTemplateColumns='repeat('+n+',minmax(0,1fr))';
   g.innerHTML='';
@@ -4381,7 +4394,7 @@ function gridDizBir(gid){
   for(let i=0;i<n;i++){const d=document.createElement('div');d.className='gcol';g.appendChild(d);kol.push(d);}
   /* Önce hepsi 1. sütuna: boy ölçümü DOĞRU GENİŞLİKTE yapılmalı, kart boyu
      sütun genişliğine bağlı. Telefonda (n=1) zaten iş bitiyor. */
-  kartlar.forEach(k=>kol[0].appendChild(k));
+  gridKart[gid].forEach(k=>kol[0].appendChild(k));
   if(n===1)return;
   const boy=kartlar.map(k=>k.offsetHeight+20);
   const toplam=boy.reduce((a,b)=>a+b,0),hedef=toplam/n;
@@ -4397,6 +4410,106 @@ function gridDizBir(gid){
   });
 }
 function gridDiz(){GRIDLER.forEach(gridDizBir);}
+
+/* ===== KARTLAR EKRANI =====
+   Kart sayısı 26'ya çıkınca kullanıcı "kalabalık, karışık" dedi ve kullanım
+   düştü. Hangi kartın gereksiz olduğunu PANEL tahmin etmiyor — kullanıcı
+   kapatıyor. Kapatmak veriyi SİLMİYOR: kart gizleniyor, anahtarları yerinde
+   duruyor, geri açınca aynı yerden devam ediyor.
+
+   Seçim d:kartlar'da: {gizli:{id:1}, sira:{gridId:[id,...]}}. SYNC_SKIP'e
+   KONMADI — gizlediğin kart telefonda da gizli olsun; tema/sekme gibi cihaza
+   özel bir tercih değil, panelin neye benzediği.
+
+   Sıra yalnızca iki gridin İÇİNDE değişiyor. Sabit şerit ve tam genişlik
+   şeritleri yerinde: ikisi de üç-dört kart, sıralama oraya değer katmıyor
+   ve sabit şeridin .stack sarmalayıcısı sırayı taşımayı ayrı bir işe
+   çevirirdi. */
+let kartCfg={gizli:{},sira:{}},kartAcik=false;
+const kartHepsi=()=>[...document.querySelectorAll('section.card[data-k]')];
+const kartGridi=el=>{const g=el.closest('.grid');return g?g.id:'';};
+function kartAd(el){return el.dataset.ad||(el.querySelector('.card-title')||{}).textContent||el.dataset.k;}
+
+/* Grid kart listesi ilk gridDizBir çağrısında önbelleğe alınıyor; kartlar
+   ekranı ondan ÖNCE de çalışabilmeli (açılışta gizleme uygulanıyor). */
+function kartOnbellek(){
+  GRIDLER.forEach(gid=>{const g=document.getElementById(gid);
+    if(g&&!gridKart[gid])gridKart[gid]=[...g.children];});
+}
+function kartUygula(diz){
+  kartOnbellek();
+  GRIDLER.forEach(gid=>{
+    const s=kartCfg.sira[gid];if(!s||!gridKart[gid])return;
+    /* Kayıtta olmayan kart (panele sonradan eklenen) sona düşer — kullanıcının
+       elle kurduğu sırayı bozmaktansa yeni kartı en altta göstermek yeğ. */
+    const yer=k=>{const i=s.indexOf(k.dataset.k);return i<0?1e6+gridKart[gid].indexOf(k):i;};
+    gridKart[gid]=gridKart[gid].slice().sort((a,b)=>yer(a)-yer(b));
+  });
+  kartHepsi().forEach(el=>{el.hidden=!!kartCfg.gizli[el.dataset.k];});
+  /* .stack iki kartı tek grid hücresinde tutuyor; ikisi de gizliyse hücre
+     boş bir kutu olarak kalırdı. */
+  document.querySelectorAll('.stack').forEach(w=>{
+    const ic=[...w.querySelectorAll('section.card[data-k]')];
+    w.hidden=ic.length>0&&ic.every(c=>c.hidden);});
+  if(diz!==false)gridDiz();
+}
+async function kartKaydet(){await sSet('d:kartlar',kartCfg);kartUygula();}
+async function kartGizle(id){
+  if(kartCfg.gizli[id])delete kartCfg.gizli[id];else kartCfg.gizli[id]=1;
+  await kartKaydet();renderKartlar();
+}
+async function kartTasi(id,yon){
+  const el=kartHepsi().find(k=>k.dataset.k===id),gid=el&&kartGridi(el);
+  if(!gid||!gridKart[gid])return;
+  const liste=gridKart[gid].slice(),i=liste.indexOf(el),j=i+yon;
+  if(i<0||j<0||j>=liste.length)return;
+  liste.splice(j,0,liste.splice(i,1)[0]);
+  gridKart[gid]=liste;
+  kartCfg.sira[gid]=liste.map(k=>k.dataset.k);
+  await kartKaydet();renderKartlar();
+}
+/* Bir grubun kartları: grid içindekiler KAYITLI SIRAYLA (DOM sırası dizilimden
+   sonra sütun sırası olur, kullanıcının gördüğü sıra değil), şeritler DOM'dan. */
+function kartGrubu(sec,gid){
+  const kok=document.querySelector(sec);if(!kok)return[];
+  const ic=(gid&&gridKart[gid])?gridKart[gid]:[];
+  return ic.concat([...kok.querySelectorAll('section.card[data-k]')].filter(c=>ic.indexOf(c)<0));
+}
+function renderKartlar(){
+  const el=document.getElementById('kartBox');if(!el)return;
+  el.hidden=!kartAcik;
+  if(!kartAcik){el.innerHTML='';return;}
+  const gruplar=[['Sabit şerit','.pinned',''],['Spor & Sağlık','#tabSpor','gridSpor'],
+                 ['Gündem, Kültür & İş','#tabDunya','gridDunya']];
+  let html='<div class="kart-not">Tiki kaldırdığın kart sayfadan kalkar — <b>veri silinmez</b>, '+
+    'geri açınca aynı yerden devam eder. ↑ ↓ yalnızca sekmelerin içindeki kartlarda çalışır; '+
+    'sabit şerit ve tam genişlik şeritleri yerinde durur. Seçim senkronla telefona da gider.</div>';
+  let gizliSay=0;
+  gruplar.forEach(([ad,sec,gid])=>{
+    const kartlar=kartGrubu(sec,gid);if(!kartlar.length)return;
+    html+='<div class="kart-grup">'+esc(ad)+'</div>';
+    html+=kartlar.map(c=>{
+      const id=c.dataset.k,gizli=!!kartCfg.gizli[id],tasinir=!!kartGridi(c);
+      if(gizli)gizliSay++;
+      return '<div class="kart-row"><div class="check '+(gizli?'':'on')+'" data-kg="'+id+'"></div>'+
+        '<span class="kart-ad'+(gizli?' kapali':'')+'">'+esc(kartAd(c))+'</span>'+
+        (tasinir?'<button class="ibtn" data-kt="'+id+'" data-y="-1" title="yukarı">↑</button>'+
+                 '<button class="ibtn" data-kt="'+id+'" data-y="1" title="aşağı">↓</button>':'')+
+        '</div>';
+    }).join('');
+  });
+  html+='<div class="kart-alt"><button class="ibtn" id="kartAc">Hepsini göster</button>'+
+    '<button class="ibtn" id="kartSira">Sırayı sıfırla</button>'+
+    '<button class="ibtn" id="kartKapat">Kapat</button>'+
+    '<span class="mkt-sub" style="align-self:center">'+gizliSay+' kart gizli</span></div>';
+  el.innerHTML=html;
+  el.querySelectorAll('[data-kg]').forEach(c=>c.onclick=()=>kartGizle(c.dataset.kg));
+  el.querySelectorAll('[data-kt]').forEach(b=>b.onclick=()=>kartTasi(b.dataset.kt,+b.dataset.y));
+  document.getElementById('kartAc').onclick=async()=>{kartCfg.gizli={};await kartKaydet();renderKartlar();};
+  document.getElementById('kartSira').onclick=async()=>{kartCfg.sira={};await kartKaydet();
+    location.reload();};   /* varsayılan sıra HTML'de; önbelleği tazelemenin en dürüst yolu yeniden yükleme */
+  document.getElementById('kartKapat').onclick=()=>{kartAcik=false;renderKartlar();};
+}
 
 /* ===== SEKMELER =====
    Seçim CİHAZA özel (d:tab, SYNC_SKIP'te): telefonda sekme değiştirmek
@@ -6414,6 +6527,13 @@ if(navigator.serviceWorker){
   document.getElementById('fxRefresh').onclick=()=>loadFX(true);
   document.querySelectorAll('.tabbtn').forEach(b=>b.onclick=()=>tabGec(b.dataset.tab,true));
   tabGec(await sGet('d:tab')||'spor',false);
+  /* Kart görünürlüğü dizilimden ÖNCE uygulanıyor: gizli kart ölçüme girerse
+     sütunlar dengesiz kurulur, sonra bir kez daha dizmek gerekirdi. */
+  kartCfg=await sGet('d:kartlar')||{gizli:{},sira:{}};
+  if(!kartCfg.gizli)kartCfg.gizli={};
+  if(!kartCfg.sira)kartCfg.sira={};
+  document.getElementById('kartBtn').onclick=()=>{kartAcik=!kartAcik;renderKartlar();};
+  kartUygula(false);
   gridDiz();
   /* Feed'ler (borsa/haber/iş) geldikçe kart boyları değişiyor; bir kez daha
      dengeleniyor. Sonrası sabit — kart açıp kapayınca yeniden dizilmiyor. */
