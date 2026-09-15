@@ -1,95 +1,103 @@
 {
- "updated": "2026-09-14 13:19",
+ "updated": "2026-09-15 12:46",
  "ok": true,
  "count": 3,
- "pool": 19,
+ "pool": 29,
  "items": [
   {
-   "title": "Senior AI-Native Data Engineer (f/m/x)",
-   "company": "exmox",
-   "location": "Almanya",
-   "loc_raw": "Hamburg",
+   "title": "Senior DevOps Engineer (all genders) | Data Platform",
+   "company": "Real Digital",
+   "location": "Berlin",
+   "loc_raw": "Remote oder Köln / Darmstadt / Düsseldorf / Berlin",
    "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/exmox/senior-ai-native-data-engineer-hamburg-424655",
+   "url": "https://www.arbeitnow.com/jobs/companies/real-digital/remote-senior-devops-engineer-all-genders-data-platform-245703",
    "source": "Arbeitnow",
-   "posted": "2026-09-13",
-   "days": 1,
+   "posted": "2026-09-15",
+   "days": 0,
    "skills": [
-    "pyspark",
-    "spark",
-    "databricks",
-    "etl",
-    "git"
+    "python",
+    "sql",
+    "azure",
+    "airflow",
+    "dbt",
+    "ci/cd"
    ],
    "german": false,
-   "focus": "ml",
-   "summary": "Your Mission This is a company built for growth. When you join exmox, you're stepping onto a global, highly competitive playing field, building high-performing consumer products in mobile gaming. We're scaling a rewarded user engagement and acquisition platfor",
+   "focus": "pipeline",
+   "summary": "Anstellungsdetails Permanent Contract, Full- or Part-Time, Remote or Cologne / Düsseldorf / Darmstadt / Berlin Info Who we areWe are the tech powerhouse behind Kaufland’s international online marketplaces and a company within the Schwarz Group. Driven by a sta",
    "keywords": [
     "pipeline",
-    "scalab",
-    "optimization",
-    "real-time",
-    "data quality"
+    "cost"
    ],
-   "score": 86
+   "score": 112
   },
   {
-   "title": "Principal Analytics Engineer (f/m/d)",
-   "company": "Trusted Shops SE (DE)",
-   "location": "Berlin",
-   "loc_raw": "Berlin, Berlin, Germany",
+   "title": "Senior Software Engineer (Data Platform, C++)",
+   "company": "Nebius",
+   "location": "UK",
+   "loc_raw": "London",
    "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/trusted-shops-se-de/principal-analytics-engineer-berlin-225855",
+   "url": "https://www.arbeitnow.co.uk/jobs/companies/nebius/senior-software-engineer-data-platform-c-london-46375",
    "source": "Arbeitnow",
-   "posted": "2026-09-13",
-   "days": 1,
+   "posted": "2026-09-15",
+   "days": 0,
    "skills": [
-    "dbt",
-    "ci/cd",
-    "git"
+    "sql",
+    "spark",
+    "airflow",
+    "etl",
+    "llm"
    ],
    "german": false,
-   "focus": "business",
-   "summary": "At Trusted Shops, we’re shaping Europe’s Community of Trust – a space where Businesses and Consumers connect with confidence, transparency, and security. Every day, millions of Users and thousands of Companies across Europe trust us to deliver safe, reliable, ",
+   "focus": "pipeline",
+   "summary": "About Nebius: Nebius is leading a new era in cloud infrastructure for the global AI economy. We are building a full-stack AI cloud platform that supports developers and enterprises from data and model training through to production deployment, without the cost",
    "keywords": [
-    "self-service",
+    "enterprise",
     "cost",
-    "experimentation"
+    "optimization",
+    "pipeline",
+    "stakeholder",
+    "automation",
+    "root cause"
    ],
-   "score": 82
+   "score": 71
   },
   {
-   "title": "Data Engineer (all genders)",
-   "company": "Eraneos",
-   "location": "Almanya",
-   "loc_raw": "Hamburg, München, Düsseldorf, remote",
+   "title": "Staff Engineer — Data Platform",
+   "company": "Yuno",
+   "location": "UK",
+   "loc_raw": "London",
    "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/eraneos/remote-data-engineer-all-genders-12735",
+   "url": "https://www.arbeitnow.co.uk/jobs/companies/yuno/staff-engineer-data-platform-london-429735",
    "source": "Arbeitnow",
-   "posted": "2026-09-13",
-   "days": 1,
+   "posted": "2026-09-15",
+   "days": 0,
    "skills": [
     "python",
     "sql",
     "spark",
-    "databricks",
-    "azure",
-    "airflow"
+    "airflow",
+    "dbt",
+    "llm"
    ],
    "german": false,
    "focus": "pipeline",
-   "summary": "What you can expect from us We’re a high‑energy cloud- and data engineering team looking for like-minded, motivated tech builders. We are driven by ownership and business outcomes. As the analytics unit within a global management consultancy, we turn data-driv",
+   "summary": "Europe · Remote · Full Time · Staff-Level Individual Contributor · +8 Years of Experience Who We Are At Yuno, we are building the payment infrastructure that allows all companies to participate in the global market. Founded by seasoned experts from the payment",
    "keywords": [
-    "energy",
-    "stakeholder",
+    "scalab",
     "pipeline",
-    "cost",
-    "optimization"
+    "real time",
+    "data quality",
+    "optimization",
+    "finance"
    ],
-   "score": 80
+   "score": 65
   }
  ],
  "seen": [
+  "https://www.arbeitnow.com/jobs/companies/real-digital/remote-senior-devops-engineer-all-genders-data-platform-245703",
+  "https://www.arbeitnow.co.uk/jobs/companies/nebius/senior-software-engineer-data-platform-c-london-46375",
+  "https://www.arbeitnow.co.uk/jobs/companies/yuno/staff-engineer-data-platform-london-429735",
   "https://www.arbeitnow.com/jobs/companies/exmox/senior-ai-native-data-engineer-hamburg-424655",
   "https://www.arbeitnow.com/jobs/companies/trusted-shops-se-de/principal-analytics-engineer-berlin-225855",
   "https://www.arbeitnow.com/jobs/companies/eraneos/remote-data-engineer-all-genders-12735",
