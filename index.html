@@ -546,6 +546,17 @@
   /* Otomatik kaydeden kutuların onay işareti: kutular yazar yazmaz kaydediyor
      ama hiçbir iz bırakmıyordu, kullanıcı "send" düğmesi arıyordu. */
   /* Kartlar ekranı: hangi kart görünecek, hangi sırada. */
+  /* Katlanır bölüm: başlığın kendisi düğme. Kartın gövdesi uzadıkça sayfa
+     okunmaz hâle geliyordu; az bakılan bölümler okun altında duruyor. */
+  .katla{display:flex;align-items:center;justify-content:space-between;gap:9px;width:100%;
+    background:none;border:0;border-top:1px solid var(--line2);margin-top:12px;padding:11px 0 9px;
+    cursor:pointer;text-align:left;font-family:var(--mono);font-size:11px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--accent);}
+  .katla .ok{font-size:11px;transition:transform .18s;color:var(--muted);}
+  .katla.acik .ok{transform:rotate(180deg);}
+  .katla:hover .ok{color:var(--accent);}
+  .ikili{display:grid;grid-template-columns:1.7fr 1fr;gap:22px;align-items:start;}
+  @media(max-width:760px){.ikili{grid-template-columns:1fr;gap:14px;}}
   .kult-tabs{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:11px;}
   .kult-t.ana{background:var(--ink);border-color:var(--ink);color:var(--card);}
   .kart-box{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:14px 16px;margin-bottom:20px;}
@@ -832,20 +843,23 @@
         <section class="card" data-k="doviz" data-ad="Döviz &amp; Piyasalar"><div class="card-head"><div><p class="kicker">Piyasa · Canlı</p><h2 class="card-title">Döviz &amp; Piyasalar</h2></div><div class="meta"><span id="fxTime">—</span><br><button class="ibtn" id="fxRefresh">Yenile</button></div></div>
       <div id="marketList"><div class="loading">Kur çekiliyor…</div></div>
       <div id="goldRow"></div>
-      <div id="idxList"></div>
-      <div id="finNote"></div></section>
+      <button class="katla" data-kat="dovizDetay">Dünya piyasaları<span class="ok">▾</span></button>
+      <div id="dovizDetay" hidden><div id="idxList"></div>
+      <div id="finNote"></div></div></section>
         <section class="card" data-k="izleme" data-ad="İzleme Listesi"><div class="card-head"><div><p class="kicker">Piyasa · Hisse</p><h2 class="card-title">İzleme Listesi</h2></div><div class="meta" id="borsaTime">—</div></div>
       <div id="watchList"></div>
-      <div id="usList"></div>
+      <button class="katla" data-kat="usList">ABD hisseleri<span class="ok">▾</span></button>
+      <div id="usList" hidden></div>
       <div id="mktSummary"></div></section>
   </div>
 
     <section class="card" data-k="gundem" data-ad="Bugün Ne Oluyor" style="margin-top:20px" ><div class="card-head"><div><p class="kicker">Gündem</p><h2 class="card-title">Bugün Ne Oluyor</h2></div><div class="meta" id="newsTime">—</div></div>
-    <div class="trio">
+    <button class="katla" data-kat="gundemDetay" style="margin-top:0;border-top:0">Başlıkları göster<span class="ok">▾</span></button>
+    <div id="gundemDetay" hidden><div class="trio">
       <div class="tcol"><div class="wtitle">Dünya</div><div id="worldList"></div></div>
       <div class="tcol"><div class="wtitle">Türkiye</div><div id="trList"></div></div>
       <div class="tcol"><div class="wtitle">Piyasa &amp; Şirket</div><div id="newsList"></div></div>
-    </div></section>
+    </div></div></section>
 
   <!-- Kelimeler + quiz + gramer tek şeritte: üçü aynı işin parçası, ayrı
        kartlar akışı bölüyordu. .trio 980'de 2, 700'de tek sütuna iner. -->
@@ -859,7 +873,14 @@
     <section class="card" data-k="isler" data-ad="Bugünün 3 İşi" style="margin-top:20px" ><div class="card-head"><div><p class="kicker">Kariyer · Günlük</p><h2 class="card-title">Bugünün 3 İşi</h2></div>
     <div class="meta"><span id="jobsTime">—</span><br><button class="ibtn" id="jobsCfg" style="margin-top:5px">⚙ Profil</button></div></div>
     <div id="jobsCfgBox" style="display:none"></div>
-    <div id="jobsList"><div class="loading">jobs.json çekiliyor…</div></div></section>
+    <!-- Solda günün ilanları, sağda başvuru özeti: ikisi aynı işin iki ucu
+         (ilana bak / nerede duruyorum) ve ayrı kartlarda bakmak gerekiyordu.
+         Sayılar İş Başvuruları kartının kullandığı hesabın aynısından geliyor
+         (basvuruSayilari), ikinci bir kaynak açılmadı. -->
+    <div class="ikili">
+      <div id="jobsList"><div class="loading">jobs.json çekiliyor…</div></div>
+      <div id="isOzet"></div>
+    </div></section>
 
     <section class="card" data-k="basvuru" data-ad="İş Başvuruları" style="margin-top:20px" ><div class="card-head"><div><p class="kicker">Kariyer</p><h2 class="card-title">İş Başvuruları</h2></div><div class="meta"><span id="basvuruTime">—</span><br><button class="ibtn" id="basvuruRefresh">Yenile</button></div></div>
     <div id="basvuruStats" class="statrow"><div class="loading">Başvurular çekiliyor…</div></div>
@@ -886,9 +907,10 @@
       <input id="mNote" placeholder="Not (ops.)" maxlength="60">
       <button id="mSave">Ekle</button>
     </div>
-    <div id="mGun"></div>
+    <button class="katla" data-kat="paraDetay">Dökümler ve kayıtlar<span class="ok">▾</span></button>
+    <div id="paraDetay" hidden><div id="mGun"></div>
     <div id="mCats"></div>
-    <div id="mList"></div></section>
+    <div id="mList"></div></div></section>
 
     <section class="card" data-k="telemetri" data-ad="Ajan Telemetrisi" style="margin-top:20px" id="agentCard" >
     <div class="card-head"><div><p class="kicker">Sistem · GitHub Actions</p><h2 class="card-title">Ajan Telemetrisi</h2></div>
@@ -4440,6 +4462,35 @@ function gridDizBir(gid){
 }
 function gridDiz(){GRIDLER.forEach(gridDizBir);}
 
+/* ===== KATLANIR BÖLÜMLER =====
+   Kartların içi de uzamıştı: Döviz kartı dünya piyasalarını, İzleme ABD
+   hisselerini, Harcama bütün kayıtları açıkta gösteriyordu. Az bakılan bölüm
+   okun altında; VARSAYILAN KAPALI, açtığın açık kalıyor.
+
+   Durum d:acik'te ({id:1}) ve SYNC_SKIP'te DEĞİL — kart gizlemeyle aynı
+   sınıfta: panelin neye benzediği, cihazın tercihi değil.
+
+   Bölümün adını DÜĞME yazıyor; renderUS/renderWorldIdx'teki iç başlıklar
+   bu yüzden kaldırıldı, yoksa aynı ad iki kez çıkardı. */
+let acikBol={};
+function katlaUygula(){
+  document.querySelectorAll('[data-kat]').forEach(b=>{
+    const el=document.getElementById(b.dataset.kat);if(!el)return;
+    const acik=!!acikBol[b.dataset.kat];
+    el.hidden=!acik;
+    b.classList.toggle('acik',acik);
+  });
+}
+async function katlaDegistir(id){
+  if(acikBol[id])delete acikBol[id];else acikBol[id]=1;
+  await sSet('d:acik',acikBol);
+  katlaUygula();
+  gridDiz();      /* kart boyu değişti: sütunlar yeniden dengeleniyor */
+}
+function katlaBagla(){
+  document.querySelectorAll('[data-kat]').forEach(b=>b.onclick=()=>katlaDegistir(b.dataset.kat));
+}
+
 /* ===== KARTLAR EKRANI =====
    Kart sayısı 26'ya çıkınca kullanıcı "kalabalık, karışık" dedi ve kullanım
    düştü. Hangi kartın gereksiz olduğunu PANEL tahmin etmiyor — kullanıcı
@@ -4627,15 +4678,15 @@ function renderWatch(){const el=document.getElementById('watchList');if(!el)retu
 let us=[];
 function renderUS(){const el=document.getElementById('usList');if(!el)return;
   if(!us.length){el.innerHTML='';return;}
-  const head='<div class="wtitle" style="margin-top:12px;border-top:1px solid var(--line2);padding-top:11px">ABD Hisseleri</div>';
-  el.innerHTML=head+us.map((s,i)=>stockRow(s,'us',i)).join('');}
+  /* Başlık yok: bölümün adını katlanır düğme yazıyor (çift başlık olurdu). */
+  el.innerHTML=us.map((s,i)=>stockRow(s,'us',i)).join('');}
 let worldIdx=[];
 /* Dunya piyasalari: endeks + emtia. borsa.json'daki `world` alani DUNYA HABERI,
    bu ondan ayri bir alan (`world_idx`). */
 function renderWorldIdx(){const el=document.getElementById('idxList');if(!el)return;
   if(!worldIdx.length){el.innerHTML='';return;}
-  const head='<div class="wtitle" style="margin-top:12px;border-top:1px solid var(--line2);padding-top:11px">Dünya Piyasaları</div>';
-  el.innerHTML=head+worldIdx.map((s,i)=>stockRow(s,'idx',i)).join('');}
+  /* Başlık yok: bölümün adını katlanır düğme yazıyor. */
+  el.innerHTML=worldIdx.map((s,i)=>stockRow(s,'idx',i)).join('');}
 
 /* borsa.json otomatik okuma (bot üretiyorsa, elle yapıştırmaya gerek kalmaz) */
 let world=[];
@@ -4733,17 +4784,41 @@ async function elleBasvuruEkle(){
   renderOneri();                                            // tempo kuralı hemen tazelensin
 }
 
+/* Başvuru satırları, elle ret işaretlemesi UYGULANMIŞ hâlde.
+   Satır KOPYALANIYOR: kaynak diziyi (sheetRows/myApps) bozmadan durumu
+   değiştirmek gerekiyor, yoksa elle ret geri alınamaz hâle geliyor. */
+function basvuruSatirlari(){
+  return appRows().map(r=>retElle.indexOf(appAnahtar(r))>-1?[r[0],r[1],r[2],r[3],'Ret']:r);
+}
+/* Toplam / bekliyor / ret. Kariyer kartındaki özet de bunu çağırıyor —
+   iki kart aynı sayıyı göstersin, ayrı hesap sapardı.
+   "Ret" dışında "Reddedildi"/"Olumsuz" gibi elle yazılmış varyantları da say —
+   "Reddedildi" kelimesi "ret" harf dizisini İÇERMEZ, ayrı kalıp gerekli. */
+function basvuruSayilari(){
+  const d=basvuruSatirlari(),toplam=d.length;
+  const ret=d.filter(r=>RET_RE.test(r[4]||'')).length;
+  return {toplam:toplam,ret:ret,bekliyor:toplam-ret};
+}
+/* Kariyer kartının sağ sütunu: günün ilanlarının yanında "nerede duruyorum". */
+function renderIsOzet(){
+  const el=document.getElementById('isOzet');if(!el)return;
+  const s=basvuruSayilari();
+  if(!s.toplam){el.innerHTML='<div class="wtitle">Başvurular</div><div class="empty">Başvuru listesi okunuyor…</div>';return;}
+  const kart=document.querySelector('section.card[data-k="basvuru"]');
+  el.innerHTML='<div class="wtitle">Başvurular</div><div class="statrow">'+
+    '<div class="stat"><div class="stat-n">'+s.toplam+'</div><div class="stat-l">Toplam</div></div>'+
+    '<div class="stat"><div class="stat-n">'+s.bekliyor+'</div><div class="stat-l">Bekliyor</div></div>'+
+    '<div class="stat"><div class="stat-n">'+s.ret+'</div><div class="stat-l">Ret</div></div></div>'+
+    /* Kart Kartlar ekranından gizlenmişse düğme boşa kaydırırdı. */
+    (kart&&!kart.hidden?'<button class="ibtn" id="isOzetGit">Tam liste ↓</button>':'');
+  const b=document.getElementById('isOzetGit');
+  if(b)b.onclick=()=>{tabAc(kart);kart.scrollIntoView({behavior:'smooth',block:'start'});};
+}
 function renderBasvuru(data){
   sheetRows=data;
-  data=appRows();
-  /* Satır KOPYALANIYOR: kaynak diziyi (sheetRows/myApps) bozmadan durumu
-     değiştirmek gerekiyor, yoksa elle ret geri alınamaz hâle geliyor. */
-  data=data.map(r=>retElle.indexOf(appAnahtar(r))>-1?[r[0],r[1],r[2],r[3],'Ret']:r);
-  const toplam=data.length;
-  /* "Ret" dışında "Reddedildi"/"Olumsuz" gibi elle yazılmış varyantları da say —
-     "Reddedildi" kelimesi "ret" harf dizisini İÇERMEZ, bu yüzden ayrı kalıp gerekli. */
-  const ret=data.filter(r=>RET_RE.test(r[4]||'')).length;
-  const bekliyor=toplam-ret;
+  data=basvuruSatirlari();
+  const {toplam,ret,bekliyor}=basvuruSayilari();
+  renderIsOzet();
   document.getElementById('basvuruStats').innerHTML=
     '<div class="stat"><div class="stat-n">'+toplam+'</div><div class="stat-l">Toplam</div></div>'+
     '<div class="stat"><div class="stat-n">'+bekliyor+'</div><div class="stat-l">Bekliyor</div></div>'+
@@ -6563,6 +6638,10 @@ if(navigator.serviceWorker){
   if(!kartCfg.sira)kartCfg.sira={};
   document.getElementById('kartBtn').onclick=()=>{kartAcik=!kartAcik;renderKartlar();};
   kartUygula(false);
+  /* Katlanır bölümler de dizilimden ÖNCE: kapalı bölümün boyu ölçüme girerse
+     sütunlar yanlış dengelenir. */
+  acikBol=await sGet('d:acik')||{};
+  katlaUygula();katlaBagla();
   gridDiz();
   /* Feed'ler (borsa/haber/iş) geldikçe kart boyları değişiyor; bir kez daha
      dengeleniyor. Sonrası sabit — kart açıp kapayınca yeniden dizilmiyor. */
@@ -6620,7 +6699,7 @@ if(navigator.serviceWorker){
   jobProfile=await sGet(K.jobProfile)||null;jobsApplied=await sGet(K.jobsApplied)||[];myApps=await sGet(K.myApps)||[];retler=await sGet('d:retler')||[];retGizli=await sGet('d:retGizli')||[];retElle=await sGet('d:retElle')||[];oneriKapali=await sGet('d:oneriKapali')||{};offGunler=await sGet('d:off')||{};
   document.getElementById('placeName').textContent=PLACE.name;
   renderTasks();await loadSched();await loadYok();await loadMorning();await renderRun();await loadWorkout();renderWtLog();await loadMeals();await loadWater();await loadSleep();await loadBW();await loadMoney();await renderBugunHarcama();await renderHaftalik();await renderOneri();loadHabits();await initSync();
-  renderFacts();renderFilm();renderArtist();renderBook();renderHistory();renderKult();renderGerman();renderNews();renderTR();renderRetler();renderWatch();renderUS();renderWorldIdx();renderGold();renderWorld();renderMktSummary();renderFinNote();
+  renderFacts();renderFilm();renderArtist();renderBook();renderHistory();renderKult();renderIsOzet();renderGerman();renderNews();renderTR();renderRetler();renderWatch();renderUS();renderWorldIdx();renderGold();renderWorld();renderMktSummary();renderFinNote();
   ['watchList','usList','idxList'].forEach(stkTiklaBagla);
   loadFX(false);loadBorsaJson();loadBasvuru();loadGmailJson();loadFactsJson();loadAgents(false);loadWx();loadJobsJson();
   setInterval(loadBorsaJson,15*60*1000);setInterval(loadBasvuru,15*60*1000);setInterval(loadGmailJson,15*60*1000);setInterval(()=>loadAgents(false),15*60*1000);setInterval(loadWx,30*60*1000);setInterval(loadJobsJson,60*60*1000);
