@@ -555,8 +555,6 @@
   .katla .ok{font-size:11px;transition:transform .18s;color:var(--muted);}
   .katla.acik .ok{transform:rotate(180deg);}
   .katla:hover .ok{color:var(--accent);}
-  .ikili{display:grid;grid-template-columns:1.7fr 1fr;gap:22px;align-items:start;}
-  @media(max-width:760px){.ikili{grid-template-columns:1fr;gap:14px;}}
   .kult-tabs{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:11px;}
   .kult-t.ana{background:var(--ink);border-color:var(--ink);color:var(--card);}
   .kart-box{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:14px 16px;margin-bottom:20px;}
@@ -873,14 +871,10 @@
     <section class="card" data-k="isler" data-ad="Bugünün 3 İşi" style="margin-top:20px" ><div class="card-head"><div><p class="kicker">Kariyer · Günlük</p><h2 class="card-title">Bugünün 3 İşi</h2></div>
     <div class="meta"><span id="jobsTime">—</span><br><button class="ibtn" id="jobsCfg" style="margin-top:5px">⚙ Profil</button></div></div>
     <div id="jobsCfgBox" style="display:none"></div>
-    <!-- Solda günün ilanları, sağda başvuru özeti: ikisi aynı işin iki ucu
-         (ilana bak / nerede duruyorum) ve ayrı kartlarda bakmak gerekiyordu.
-         Sayılar İş Başvuruları kartının kullandığı hesabın aynısından geliyor
-         (basvuruSayilari), ikinci bir kaynak açılmadı. -->
-    <div class="ikili">
-      <div id="jobsList"><div class="loading">jobs.json çekiliyor…</div></div>
-      <div id="isOzet"></div>
-    </div></section>
+    <!-- 15 Eyl'de sağa başvuru özeti (toplam/bekliyor/ret) konmuştu, kullanıcı
+         aynı gün kaldırttı: ilan listesi tam genişlikte okunuyor, başvuru
+         sayıları zaten hemen altındaki İş Başvuruları kartında. -->
+    <div id="jobsList"><div class="loading">jobs.json çekiliyor…</div></div></section>
 
     <section class="card" data-k="basvuru" data-ad="İş Başvuruları" style="margin-top:20px" ><div class="card-head"><div><p class="kicker">Kariyer</p><h2 class="card-title">İş Başvuruları</h2></div><div class="meta"><span id="basvuruTime">—</span><br><button class="ibtn" id="basvuruRefresh">Yenile</button></div></div>
     <div id="basvuruStats" class="statrow"><div class="loading">Başvurular çekiliyor…</div></div>
@@ -4799,26 +4793,10 @@ function basvuruSayilari(){
   const ret=d.filter(r=>RET_RE.test(r[4]||'')).length;
   return {toplam:toplam,ret:ret,bekliyor:toplam-ret};
 }
-/* Kariyer kartının sağ sütunu: günün ilanlarının yanında "nerede duruyorum". */
-function renderIsOzet(){
-  const el=document.getElementById('isOzet');if(!el)return;
-  const s=basvuruSayilari();
-  if(!s.toplam){el.innerHTML='<div class="wtitle">Başvurular</div><div class="empty">Başvuru listesi okunuyor…</div>';return;}
-  const kart=document.querySelector('section.card[data-k="basvuru"]');
-  el.innerHTML='<div class="wtitle">Başvurular</div><div class="statrow">'+
-    '<div class="stat"><div class="stat-n">'+s.toplam+'</div><div class="stat-l">Toplam</div></div>'+
-    '<div class="stat"><div class="stat-n">'+s.bekliyor+'</div><div class="stat-l">Bekliyor</div></div>'+
-    '<div class="stat"><div class="stat-n">'+s.ret+'</div><div class="stat-l">Ret</div></div></div>'+
-    /* Kart Kartlar ekranından gizlenmişse düğme boşa kaydırırdı. */
-    (kart&&!kart.hidden?'<button class="ibtn" id="isOzetGit">Tam liste ↓</button>':'');
-  const b=document.getElementById('isOzetGit');
-  if(b)b.onclick=()=>{tabAc(kart);kart.scrollIntoView({behavior:'smooth',block:'start'});};
-}
 function renderBasvuru(data){
   sheetRows=data;
   data=basvuruSatirlari();
   const {toplam,ret,bekliyor}=basvuruSayilari();
-  renderIsOzet();
   document.getElementById('basvuruStats').innerHTML=
     '<div class="stat"><div class="stat-n">'+toplam+'</div><div class="stat-l">Toplam</div></div>'+
     '<div class="stat"><div class="stat-n">'+bekliyor+'</div><div class="stat-l">Bekliyor</div></div>'+
@@ -6699,7 +6677,7 @@ if(navigator.serviceWorker){
   jobProfile=await sGet(K.jobProfile)||null;jobsApplied=await sGet(K.jobsApplied)||[];myApps=await sGet(K.myApps)||[];retler=await sGet('d:retler')||[];retGizli=await sGet('d:retGizli')||[];retElle=await sGet('d:retElle')||[];oneriKapali=await sGet('d:oneriKapali')||{};offGunler=await sGet('d:off')||{};
   document.getElementById('placeName').textContent=PLACE.name;
   renderTasks();await loadSched();await loadYok();await loadMorning();await renderRun();await loadWorkout();renderWtLog();await loadMeals();await loadWater();await loadSleep();await loadBW();await loadMoney();await renderBugunHarcama();await renderHaftalik();await renderOneri();loadHabits();await initSync();
-  renderFacts();renderFilm();renderArtist();renderBook();renderHistory();renderKult();renderIsOzet();renderGerman();renderNews();renderTR();renderRetler();renderWatch();renderUS();renderWorldIdx();renderGold();renderWorld();renderMktSummary();renderFinNote();
+  renderFacts();renderFilm();renderArtist();renderBook();renderHistory();renderKult();renderGerman();renderNews();renderTR();renderRetler();renderWatch();renderUS();renderWorldIdx();renderGold();renderWorld();renderMktSummary();renderFinNote();
   ['watchList','usList','idxList'].forEach(stkTiklaBagla);
   loadFX(false);loadBorsaJson();loadBasvuru();loadGmailJson();loadFactsJson();loadAgents(false);loadWx();loadJobsJson();
   setInterval(loadBorsaJson,15*60*1000);setInterval(loadBasvuru,15*60*1000);setInterval(loadGmailJson,15*60*1000);setInterval(()=>loadAgents(false),15*60*1000);setInterval(loadWx,30*60*1000);setInterval(loadJobsJson,60*60*1000);

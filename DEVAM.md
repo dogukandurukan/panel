@@ -76,13 +76,12 @@ kart boyu değişiyor, sütunlar yeniden dengeleniyor.
 `.wtitle` başlıkları bu yüzden kaldırıldı, yoksa aynı ad iki kez çıkardı.
 Yeni katlanır bölüm eklerken aynısına dikkat et.
 
-**KARİYER KARTI İKİ SÜTUN (15 Eyl).** Solda Bugünün 3 İşi, sağda başvuru
-özeti (toplam / bekliyor / ret + `Tam liste ↓`). Sayılar `basvuruSayilari()`
-ile geliyor — İş Başvuruları kartı da aynı fonksiyonu çağırıyor, **iki kart
-tek hesap**. `renderIsOzet()` `renderBasvuru()` içinden tetikleniyor (Sheet
-verisi JSONP ile sonradan düşüyor). İş Başvuruları kartı YERİNDE DURUYOR:
-elle giriş, ret işaretleme ve tam liste orada; kullanıcı gereksiz bulursa
-Kartlar ekranından gizler.
+**KARİYER KARTINA ÖZET KONDU, AYNI GÜN KALDIRILDI (15 Eyl).** Bugünün 3 İşi
+kartının sağına başvuru özeti (toplam / bekliyor / ret) eklendi; kullanıcı
+görünce "çıkar" dedi — ilan listesi tam genişlikte okunuyor ve sayılar zaten
+hemen altındaki İş Başvuruları kartında. **Yeniden önerme.** Geriye kalan:
+`basvuruSayilari()` / `basvuruSatirlari()` ayrıştırması duruyor, sayım tek
+yerden geliyor.
 
 **ÖNERİ BANDI** (`#oneriBox` — sabit şeridin de sekmelerin de üstünde):
 Dokuz kurallık deterministik motor (`ONERI` tablosu). Kurallar aşağıdaki
@@ -435,7 +434,7 @@ iOS ana ekran kısayolu önbellek tutabiliyor; değişiklik görünmezse sert ye
 | 3 Eyl | **`SCHED` düzeltildi** (aktivite günü Perşembe→Çarşamba, v2 ile ayrışmıştı) · alışkanlık paydasından bilgi satırları çıkarıldı · LLM tartışıldı, eklenmedi |
 | 8 Eyl | Seans kapanışı (nasıl geçti / zorlayan yer) · **artış freni** · `EX_OVR` tek günlük program uyarlaması · Araba/Kredi sabit gider · elle başvuru girişi · kültür derinliği 6 Ekim'e kadar · mobil taşma |
 | 9 Eyl | **Sakatlık uyarlaması** (10-22 Eyl, üst gövde yok) · `gunProg()` ile hesaplar tarihe bağlandı · `SCHED` de tarihe bağlandı + bildirim planına `t:TARİH` · **14 günlük plan + muaf gün** · kategori süzgeci · kayıt kategorisi düzenlenebilir · `Kredi` kategorisi |
-| 15 Eyl | **Katlanır bölümler** (`d:acik`: dünya piyasaları, ABD hisseleri, gündem başlıkları, harcama dökümleri — hepsi kapalı açılıyor) · **kariyer kartı iki sütun** (sağda başvuru özeti) |
+| 15 Eyl | **Katlanır bölümler** (`d:acik`: dünya piyasaları, ABD hisseleri, gündem başlıkları, harcama dökümleri — hepsi kapalı açılıyor) · kariyer kartına konan başvuru özeti aynı gün kaldırıldı |
 | 15 Eyl | **Kartlar ekranı** (göster/gizle + sıra, `d:kartlar`) · **Kültür kartı** (5 kart → 1 kart, 5 bölme) · panel 26 karttan 22'ye |
 | 11 Eyl | Harcamalara `Bobo` kategorisi · **sakatlık uyarlaması bitti** (15-22 Eyl kayıtları silindi, 13 Eyl Pazar'a LEGS) · `gunSched` Antrenman dilimi olmayan güne ezme etiketi yazıyor · **Günün Programı'na ← → gün gezinme** + o günün antrenmanı + muaf düğmesi · Antrenman kartına **Bugün yapamadım** · `kaydedildi ✓` işareti |
 | 6-7 Eyl | **ÖNERİ MOTORU** — panel gösterge tablosundan tavsiye veren katmana geçti. `hdHukum()` ayrıştırıldı · bant + motor iskeleti · 8 kural (spor/para/iş) · `[×]` ile 7 gün susturma · bildirime öneri satırı. Tasarım `docs/superpowers/specs/`, plan `docs/superpowers/plans/` altında. |
