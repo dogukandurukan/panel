@@ -546,6 +546,8 @@
   /* Otomatik kaydeden kutuların onay işareti: kutular yazar yazmaz kaydediyor
      ama hiçbir iz bırakmıyordu, kullanıcı "send" düğmesi arıyordu. */
   /* Kartlar ekranı: hangi kart görünecek, hangi sırada. */
+  .kult-tabs{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:11px;}
+  .kult-t.ana{background:var(--ink);border-color:var(--ink);color:var(--card);}
   .kart-box{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:14px 16px;margin-bottom:20px;}
   .kart-not{font-size:12px;color:var(--muted);line-height:1.45;margin-bottom:11px;}
   .kart-grup{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:12px 0 5px;}
@@ -816,16 +818,17 @@
         <section class="card" data-k="gmail" data-ad="Gelen Kutusu"><div class="card-head"><div><p class="kicker">Gmail</p><h2 class="card-title">Gelen Kutusu</h2></div><div class="meta"><span id="gmailTime">—</span><br><button class="ibtn" id="gmailRefresh">Yenile</button></div></div>
       <div id="gmailStats" class="statrow"><div class="loading">Gelen kutusu okunuyor…</div></div>
       <div id="gmailList"></div></section>
-        <section class="card" data-k="bilgi" data-ad="Günün Bilgisi"><div class="card-head"><div><p class="kicker">Sohbetlik</p><h2 class="card-title">Günün Bilgisi</h2></div><div class="meta"><button class="ibtn" id="factNext">Başka</button></div></div>
-      <div id="factList"></div></section>
-        <section class="card" data-k="tarihten" data-ad="Tarihten Bir Not"><div class="card-head"><div><p class="kicker">Tarih</p><h2 class="card-title">Tarihten Bir Not</h2></div><div class="meta"><button class="ibtn" id="histNext">Başka</button></div></div>
-      <div id="histBox"></div></section>
-        <section class="card" data-k="film" data-ad="Günün Filmi"><div class="card-head"><div><p class="kicker">Sinema</p><h2 class="card-title">Günün Filmi</h2></div><div class="meta"><button class="ibtn" id="filmNext">Başka</button></div></div>
-      <div id="filmBox"></div></section>
-        <section class="card" data-k="sanatci" data-ad="Günün Sanatçısı"><div class="card-head"><div><p class="kicker">Müzik</p><h2 class="card-title">Günün Sanatçısı</h2></div><div class="meta"><button class="ibtn" id="artNext">Başka</button></div></div>
-      <div id="artBox"></div></section>
-        <section class="card" data-k="kitap" data-ad="Günün Kitabı"><div class="card-head"><div><p class="kicker">Okuma</p><h2 class="card-title">Günün Kitabı</h2></div><div class="meta"><button class="ibtn" id="bookNext">Başka</button></div></div>
-      <div id="bookBox"></div></section>
+        <!-- KÜLTÜR: beş ayrı karttı (Bilgi, Tarihten, Film, Sanatçı, Kitap),
+             Dünya sekmesindeki 14 kartın beşini tek başına yiyordu. İçerik
+             aynı; sekmeye alındı. Bölmelerin id'leri DEĞİŞMEDİ, render
+             fonksiyonları aynı kutulara yazıyor. -->
+        <section class="card" data-k="kultur" data-ad="Kültür"><div class="card-head"><div><p class="kicker">Kültür · Bugün</p><h2 class="card-title" id="kultBaslik">Günün Bilgisi</h2></div><div class="meta"><button class="ibtn" id="kultNext">Başka</button></div></div>
+      <div class="kult-tabs" id="kultTabs"></div>
+      <div id="factList"></div>
+      <div id="histBox" hidden></div>
+      <div id="filmBox" hidden></div>
+      <div id="artBox" hidden></div>
+      <div id="bookBox" hidden></div></section>
         <section class="card" data-k="doviz" data-ad="Döviz &amp; Piyasalar"><div class="card-head"><div><p class="kicker">Piyasa · Canlı</p><h2 class="card-title">Döviz &amp; Piyasalar</h2></div><div class="meta"><span id="fxTime">—</span><br><button class="ibtn" id="fxRefresh">Yenile</button></div></div>
       <div id="marketList"><div class="loading">Kur çekiliyor…</div></div>
       <div id="goldRow"></div>
@@ -3570,6 +3573,32 @@ function derinBagla(kutuId,yenidenCiz){
 const factMetin=x=>Array.isArray(x)?x[0]:x;
 const factDerin=x=>Array.isArray(x)?x[1]:null;
 
+/* ===== KÜLTÜR SEKMELERİ =====
+   Beş kart tek kartta. Bölme id'leri ve render fonksiyonları olduğu gibi
+   duruyor — içeriği taşımak yerine kabuğu değiştirdim, kültür listelerine
+   (dosyanın yarısı) hiç dokunulmadı.
+   Seçili bölme d:kultTab'da ve SYNC_SKIP'te: tema ve sekme gibi CİHAZA özel
+   bir bakış tercihi, telefonda Film'e bakmak Mac'teki bölmeyi oynatmasın. */
+const KULT=[['bilgi','Bilgi','factList','Günün Bilgisi',()=>{factOff+=4;renderFacts();}],
+            ['tarihten','Tarihten','histBox','Tarihten Bir Not',()=>{histOff+=4;renderHistory();}],
+            ['film','Film','filmBox','Günün Filmi',()=>{filmOff+=2;renderFilm();}],
+            ['sanatci','Sanatçı','artBox','Günün Sanatçısı',()=>{artOff+=2;renderArtist();}],
+            ['kitap','Kitap','bookBox','Günün Kitabı',()=>{bookOff+=2;renderBook();}]];
+let kultTab='bilgi';
+function renderKult(){
+  const tb=document.getElementById('kultTabs');if(!tb)return;
+  if(!KULT.some(k=>k[0]===kultTab))kultTab='bilgi';
+  tb.innerHTML=KULT.map(k=>'<button class="ibtn kult-t'+(k[0]===kultTab?' ana':'')+
+    '" data-kul="'+k[0]+'">'+esc(k[1])+'</button>').join('');
+  KULT.forEach(k=>{const el=document.getElementById(k[2]);if(el)el.hidden=k[0]!==kultTab;});
+  const b=document.getElementById('kultBaslik');
+  const se=KULT.find(k=>k[0]===kultTab);
+  if(b&&se)b.textContent=se[3];
+  tb.querySelectorAll('[data-kul]').forEach(x=>x.onclick=()=>{
+    kultTab=x.dataset.kul;sSet('d:kultTab',kultTab);renderKult();
+    /* Bölme değişince kartın boyu değişiyor: sütunlar yeniden dengeleniyor. */
+    gridDizBir('gridDunya');});
+}
 function renderFacts(){
   const f=FACTS[(doy()+factOff)%FACTS.length],d=factDerin(f);
   document.getElementById('factList').innerHTML=
@@ -6220,7 +6249,7 @@ function openJobsCfg(){
    - Feed onbellekleri (borsa/haber/hava/ajan) senkrona girmez; her cihaz onlari
      kendi ceker, bosuna trafik olmasin. */
 const SYNC_FILE='panel-data.json';
-const SYNC_SKIP=['d:sync','d:mtime','d:resetVer','d:theme','d:tab','d:news','d:fx','d:agents','d:wx','d:bist','d:altin','d:watch','d:world','d:tr','d:us','d:worldIdx','d:gold','d:facts'];
+const SYNC_SKIP=['d:sync','d:mtime','d:resetVer','d:theme','d:tab','d:kultTab','d:news','d:fx','d:agents','d:wx','d:bist','d:altin','d:watch','d:world','d:tr','d:us','d:worldIdx','d:gold','d:facts'];
 const SYNC_POLL=5*60*1000;
 let syncCfg=null,syncTimer=null,syncBusy=false,syncMsg='';
 const syncable=k=>k&&k.indexOf('d:')===0&&SYNC_SKIP.indexOf(k)<0;
@@ -6559,11 +6588,10 @@ if(navigator.serviceWorker){
   document.getElementById('tdSave').onclick=addBugunHarcama;
   ['tdAmt','tdNote'].forEach(id=>{const e=document.getElementById(id);
     if(e)e.onkeydown=ev=>{if(ev.key==='Enter'){ev.preventDefault();addBugunHarcama();}};});
-  document.getElementById('factNext').onclick=()=>{factOff+=4;renderFacts();};
-  document.getElementById('filmNext').onclick=()=>{filmOff+=2;renderFilm();};
-  document.getElementById('artNext').onclick=()=>{artOff+=2;renderArtist();};
-  document.getElementById('bookNext').onclick=()=>{bookOff+=2;renderBook();};
-  document.getElementById('histNext').onclick=()=>{histOff+=4;renderHistory();};
+  /* 'Başka' hangi bölme açıksa ona sorar — beş ayrı düğme tek düğmeye indi. */
+  document.getElementById('kultNext').onclick=()=>{
+    const se=KULT.find(k=>k[0]===kultTab);if(se)se[4]();};
+  kultTab=await sGet('d:kultTab')||'bilgi';
   document.getElementById('deRefresh').onclick=async()=>{deExtra+=1;await sSet(K.de,{date:todayKey(),extra:deExtra});
     deQuiz={set:deExtra,i:0,right:0,wrong:0,pick:null};await saveQuiz();renderGerman();};   // yeni set -> quiz sıfırlanır
   document.getElementById('wtExport').onclick=exportCSV;
@@ -6592,7 +6620,7 @@ if(navigator.serviceWorker){
   jobProfile=await sGet(K.jobProfile)||null;jobsApplied=await sGet(K.jobsApplied)||[];myApps=await sGet(K.myApps)||[];retler=await sGet('d:retler')||[];retGizli=await sGet('d:retGizli')||[];retElle=await sGet('d:retElle')||[];oneriKapali=await sGet('d:oneriKapali')||{};offGunler=await sGet('d:off')||{};
   document.getElementById('placeName').textContent=PLACE.name;
   renderTasks();await loadSched();await loadYok();await loadMorning();await renderRun();await loadWorkout();renderWtLog();await loadMeals();await loadWater();await loadSleep();await loadBW();await loadMoney();await renderBugunHarcama();await renderHaftalik();await renderOneri();loadHabits();await initSync();
-  renderFacts();renderFilm();renderArtist();renderBook();renderHistory();renderGerman();renderNews();renderTR();renderRetler();renderWatch();renderUS();renderWorldIdx();renderGold();renderWorld();renderMktSummary();renderFinNote();
+  renderFacts();renderFilm();renderArtist();renderBook();renderHistory();renderKult();renderGerman();renderNews();renderTR();renderRetler();renderWatch();renderUS();renderWorldIdx();renderGold();renderWorld();renderMktSummary();renderFinNote();
   ['watchList','usList','idxList'].forEach(stkTiklaBagla);
   loadFX(false);loadBorsaJson();loadBasvuru();loadGmailJson();loadFactsJson();loadAgents(false);loadWx();loadJobsJson();
   setInterval(loadBorsaJson,15*60*1000);setInterval(loadBasvuru,15*60*1000);setInterval(loadGmailJson,15*60*1000);setInterval(()=>loadAgents(false),15*60*1000);setInterval(loadWx,30*60*1000);setInterval(loadJobsJson,60*60*1000);
