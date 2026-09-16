@@ -26,24 +26,44 @@ yasakladığı kişisel verinin en hassas türü ve git geçmişi kalıcı.
 
 ---
 
-## 0. Sırada ne var (16 Eyl)
+## 0. MOBİL YENİDEN TASARIM (16 Eyl) — önce bunu oku
 
-**Kullanıcı panelin GÖRSEL TASARIMI için dışarıdan fikir topluyor.** Masaüstünde
-`panel-handoff.md` var (bu depoda değil): panelin kısıtlarını, 22 kartın
-aktif/pasif envanterini, renk/tipografi token'larını ve 12 soruyu içeren bir
-tasarım brifingi. Başka bir yapay zekâya yapıştırıp **yerleşim, hiyerarşi,
-kart tipolojisi, durum dili, ikonografi** önerileri alacak.
+Konsept görseli hedef alınarak kabuk değişti. **Aşağıdaki §1'deki "iki sekme /
+sabit şerit" anlatımı ESKİ yerleşimdir**; kartların kendisi, id'leri ve
+render'ları aynı, yalnızca yerleri değişti.
 
-Gelen önerilerle çalışırken:
-- **Önce kısıt süzgeci.** Gelen fikirlerin bir kısmı framework, ikon paketi,
-  grafik kütüphanesi ya da build adımı isteyecek — hepsi CLAUDE.md'nin 3.
-  kuralına takılır. Fikir iyiyse kısıt içinde nasıl yapılacağını çıkar,
-  kütüphane önerme.
-- **İki tema.** Her görsel öneri `almanak` ve `hud`'da ayrı ayrı doğrulanacak.
-- **Uydurma gösterge yok** (2. kural): veriye bağlanmayan süs eklenmez.
-- Kullanıcının kendi teşhisi: "22 kart aynı ağırlıkta görünüyor, gözün nereye
-  gideceği belli değil" — aktif (senden bir şey isteyen) ve pasif (gösteren)
-  kartların görsel olarak ayrılması en olası iş.
+- **Üç bölüm:** `#tabBugun` / `#tabTakip` / `#tabKesif` (`tabGec('bugun'|'takip'|'kesif')`).
+  Mobilde (<760 px) alt menü + safe-area, masaüstünde üstte yapışkan sekme.
+  Açılış HER ZAMAN Bugün; `d:tab` yazılıyor ama okunmuyor. Eski 'spor'/'dunya'
+  değerleri takip/kesif'e çevriliyor.
+- **Bugün:** Şimdi / Sıradaki / Bugün kalan / bağlamsal öneriler (`renderBugun`,
+  `bugunTazele`). Yeni veri YOK: SLOTS + gunSched + d:yok + d:sched + d:tasks.
+  Altında eski sabit şeridin kartları (Program, Yapılacaklar, Harcadıkların, Yoklama).
+- **Takip:** Sağlık (`gridSaglik`) · Performans (`gridPerf`) · İlerleme · Para ·
+  Kariyer · Öğrenme. **Keşif:** Gelen kutusu · Piyasalar (`gridPiyasa`) · Gündem ·
+  Kültür · İş ilanları. Ajan Telemetrisi → Kartlar düğmesiyle açılan `#sistemBox`.
+- **Kart sırası:** `GRIDLER` artık grup gridleri. Yeni gridin kaydı yoksa eski
+  `d:kartlar.sira.gridSpor/gridDunya` birleşik sırası uygulanıyor (yeniden yazılmıyor).
+- **Hızlı Kayıt** (`+ Kayıt`, `qkAc(ekran)`): tek yazma yolları ayrıştırıldı —
+  `harcamaEkle`, `bwKaydet`, `suAyarla`, `uykuKaydet`, `ogunPorsiyon`,
+  `basvuruEkle`. Kart da sheet de bunları çağırıyor; **yeni kayıt eklerken
+  paralel yazma yolu açma.**
+- **Antrenman Modu:** `sess.on` iken `renderSess` tam ekran `#ssTam`'a çiziyor.
+  Kayıt mantığı aynı (`sessSetKaydet`). Son set 8 sn geri alınabilir
+  (`sessGeriAl`: d:sess, d:wtlog, d:ex, d:prog, d:vol önceki hâline).
+- **sSet sırası değişti:** önce yerel yazım, sonra `touchKey` (try içinde) —
+  senkron hatası kaydı engellemesin.
+- **Tokenlar:** `--surface-0/1/2 --text-primary/secondary --accent --on-accent
+  --success --warning --danger --focus-ring`. Eski `--paper --card --ink --muted
+  --up --down` bunların alias'ı; HUD yalnızca semantik tokenları eziyor. Cyan
+  parlama yalnızca `.card.aktif`.
+- **Mobilde input font-size 16px!important** (iOS zoom). Büyük sayı kutuları
+  (`.ss-num`, `.qk-tutar input`) ayrıca ezildi — yeni büyük input eklersen aynısı.
+
+**Açık uçlar:** bayat/hata/boş durum ayrımı her feed kartında yok (yalnız Gmail
+bayatlığı + sade iskelet). Sıradaki ile Bugün kalan aynı dilimi iki kez
+gösterebiliyor. Gerçek iPhone'da safe-area/klavye/titreşim doğrulanmadı.
+`design-references/` klasörü yerelde, repoda değil.
 
 ## 1. Panel bugün ne durumda
 
@@ -456,4 +476,5 @@ iOS ana ekran kısayolu önbellek tutabiliyor; değişiklik görünmezse sert ye
 | 15 Eyl | **Katlanır bölümler** (`d:acik`: dünya piyasaları, ABD hisseleri, gündem başlıkları, harcama dökümleri — hepsi kapalı açılıyor) · kariyer kartına konan başvuru özeti aynı gün kaldırıldı |
 | 15 Eyl | **Kartlar ekranı** (göster/gizle + sıra, `d:kartlar`) · **Kültür kartı** (5 kart → 1 kart, 5 bölme) · panel 26 karttan 22'ye |
 | 11 Eyl | Harcamalara `Bobo` kategorisi · **sakatlık uyarlaması bitti** (15-22 Eyl kayıtları silindi, 13 Eyl Pazar'a LEGS) · `gunSched` Antrenman dilimi olmayan güne ezme etiketi yazıyor · **Günün Programı'na ← → gün gezinme** + o günün antrenmanı + muaf düğmesi · Antrenman kartına **Bugün yapamadım** · `kaydedildi ✓` işareti |
+| 16 Eyl | **Mobil yeniden tasarım:** Bugün/Takip/Keşif kabuğu, Hızlı Kayıt, tam ekran Antrenman Modu, semantik tokenlar |
 | 6-7 Eyl | **ÖNERİ MOTORU** — panel gösterge tablosundan tavsiye veren katmana geçti. `hdHukum()` ayrıştırıldı · bant + motor iskeleti · 8 kural (spor/para/iş) · `[×]` ile 7 gün susturma · bildirime öneri satırı. Tasarım `docs/superpowers/specs/`, plan `docs/superpowers/plans/` altında. |
