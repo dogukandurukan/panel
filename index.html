@@ -928,6 +928,13 @@
     color:var(--on-accent);font-family:var(--mono);font-size:14px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;}
   .qk-quiz .qz{margin-top:0;border-top:0;padding-top:0;}
   .qk-quiz .qz-o{min-height:48px;font-size:15px;}
+  .vd{display:inline-flex;align-items:center;gap:6px;margin:6px 0 0;padding:2px 8px 2px 3px;border-radius:999px;
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.02em;line-height:1.5;}
+  .vd .vd-i{width:16px;height:16px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;}
+  .vd.eski{color:var(--warning);border:1px dashed var(--warning);}
+  .vd.eski .vd-i{border:1px dashed var(--warning);}
+  .vd.hata{color:var(--danger);border:1px solid var(--danger);}
+  .vd.hata .vd-i{background:var(--danger);color:var(--surface-1);}
   .qk-hata{color:var(--danger);font-size:13px;min-height:18px;}
   .qk-ipucu{font-size:12.5px;color:var(--text-secondary);}
   .qk-ogun{display:flex;align-items:center;gap:10px;min-height:52px;border-bottom:1px dotted var(--line2);}
@@ -4873,7 +4880,10 @@ async function loadFX(force){const cache=await sGet(K.fx);let fx=(cache&&cache.d
   if(!fx){try{const r=await fetch('https://open.er-api.com/v6/latest/USD');const d=await r.json();if(d.result!=='success')throw 0;
     const u=d.rates.TRY,e=d.rates.TRY/d.rates.EUR,g=d.rates.TRY/d.rates.GBP,t=new Date().toLocaleTimeString('tr-TR',{hour:'2-digit',minute:'2-digit'});
     fx={date:todayKey(),time:t,usdtry:u,eurtry:e,gbptry:g,prevUsd:(cache&&cache.usdtry)||u,prevEur:(cache&&cache.eurtry)||e,prevGbp:(cache&&cache.gbptry)||g};await sSet(K.fx,fx);
-  }catch(e){fx=cache||{usdtry:null,eurtry:null,gbptry:null,time:''};}}
+    veriDurumu('doviz','guncel');
+  }catch(e){fx=cache||{usdtry:null,eurtry:null,gbptry:null,time:''};
+    veriDurumu('doviz','hata',cache&&cache.time?'son kur '+(cache.date===todayKey()?'':cache.date.slice(8,10)+'.'+cache.date.slice(5,7)+' ')+cache.time:'');}}
+  else veriDurumu('doviz','guncel');
   renderMarket(fx);}
 function chg(n,p){if(!p||!n)return{cls:'flat',ar:'–',v:'0.00'};const x=(n-p)/p*100;return{cls:x>0?'up':x<0?'down':'flat',ar:x>0?'▲':x<0?'▼':'–',v:Math.abs(x).toFixed(2)};}
 function fmt(n){return n?n.toLocaleString('tr-TR',{minimumFractionDigits:2,maximumFractionDigits:2}):'—';}
@@ -5277,7 +5287,13 @@ async function loadBorsaJson(){try{const r=await fetch('borsa.json?_='+Date.now(
     if(nt)nt.textContent=ag?ag.txt:'—';
     const bt=document.getElementById('borsaTime');
     if(bt)bt.textContent=ag?ag.txt:'—';
-  }catch(e){/* borsa.json yok — kayıtlı veri / elle yapıştırma kullanılır */}}
+    const bd=(ag&&ag.dk>VD_ESIK_DK.borsa)?'eski':'guncel';
+    veriDurumu('izleme',bd,ag&&ag.txt);veriDurumu('gundem',bd,ag&&ag.txt);
+  }catch(e){
+    /* borsa.json okunamadı — kayıtlı veri gösteriliyor, bunu SÖYLE */
+    veriDurumu('izleme','hata',watch.length?'son kayıt gösteriliyor':'');
+    veriDurumu('gundem','hata',(world.length||trNews.length||news.length)?'son kayıt gösteriliyor':'');
+  }}
 
 /* iş başvuruları: Google Sheets (bağlantıya sahip olan görüntüleyebilir), salt okunur.
    fetch() yerine JSONP (script tag) kullanılıyor — gviz uç noktası fetch/XHR için CORS
@@ -5289,7 +5305,17 @@ const RET_RE=/(^|\s)ret(\b|$)|reddedil|olumsuz|rejected|declined/i;
 function loadBasvuru(){
   const statsEl=document.getElementById('basvuruStats');
   const old=document.getElementById('basvuruJsonp');if(old)old.remove();
+  let geldi=false;
+  const hataGoster=()=>{
+    if(geldi)return;
+    if(sheetRows.length)veriDurumu('basvuru','hata','son liste gösteriliyor');
+    else{veriDurumu('basvuru','hata');
+      statsEl.innerHTML='<div class="empty">Sheet çekilemedi — bağlantı paylaşımını (bağlantıya sahip olan görüntüleyebilir) ya da internetini kontrol et.</div>';}
+  };
+  /* JSONP'de hata olayı her zaman düşmüyor (çevrimdışı iOS): 20 sn'de cevap yoksa alınamadı say. */
+  setTimeout(hataGoster,20000);
   window.__basvuruCB=function(json){
+    geldi=true;
     try{
       const rows=(json&&json.table&&json.table.rows)||[];
       let data=rows.map(r=>(r.c||[]).map(c=>c?(c.f!=null?c.f:(c.v!=null?c.v:'')):''))
@@ -5297,14 +5323,16 @@ function loadBasvuru(){
       if(data.length&&/^şirket$/i.test((data[0][0]||'').toString().trim()))data=data.slice(1);
       renderBasvuru(data);
       document.getElementById('basvuruTime').textContent='son '+new Date().toLocaleTimeString('tr-TR',{hour:'2-digit',minute:'2-digit'});
+      veriDurumu('basvuru','guncel');
     }catch(e){
+      veriDurumu('basvuru','hata','veri ayrıştırılamadı');
       statsEl.innerHTML='<div class="empty">Veri ayrıştırılamadı.</div>';
     }
   };
   const s=document.createElement('script');
   s.id='basvuruJsonp';
   s.src='https://docs.google.com/spreadsheets/d/'+BASVURU_SHEET_ID+'/gviz/tq?tqx=out:json;responseHandler:__basvuruCB&_='+Date.now();
-  s.onerror=function(){statsEl.innerHTML='<div class="empty">Sheet çekilemedi — bağlantı paylaşımını (bağlantıya sahip olan görüntüleyebilir) kontrol et.</div>';};
+  s.onerror=hataGoster;
   document.body.appendChild(s);
 }
 let sheetRows=[],myApps=[],basvuruHepsi=false;
@@ -5455,10 +5483,29 @@ async function loadGmailJson(){
   const d=await sGet('d:gmail');
   if(d&&typeof d==='object'){renderGmail(d);return;}
   const kurulu=syncCfg&&syncCfg.token;
+  veriDurumu('gmail','yok');
   statsEl.innerHTML='<div class="empty">'+(kurulu
     ? 'Gelen kutusu verisi henüz senkronla gelmedi — besleyici 08/11/14/17/20\'de çalışıyor.'
     : '⇅ Senkron kurulu değil. Gelen kutusu verisi kişisel olduğu için repoya değil gizli gist\'e yazılıyor; kart ancak senkron kurulunca dolar.')+'</div>';
   listEl.innerHTML='';
+}
+/* ===== VERİ DURUMU ROZETİ (16 Eyl) =====
+   Feed kartları "güncel" ile "eski" ve "alınamadı"yı ayırmıyordu: fetch
+   düşünce kart sessizce son kaydı gösteriyor, kullanıcı güncel sanıyordu.
+   Rozet yalnızca SORUN varken görünür (eski / alınamadı); güncelken sessiz.
+   Metin + şekil taşır, yalnızca renge dayanmaz. Eşikler feed takvimine göre:
+   borsa günde 2 (26 sa), jobs günde 1 (30 sa), gmail günde 5 (6 sa). */
+const VD_ESIK_DK={borsa:26*60,jobs:30*60,gmail:6*60};
+function veriDurumu(k,durum,ek){
+  const kart=document.querySelector('section.card[data-k="'+k+'"]');if(!kart)return;
+  const bas=kart.querySelector('.card-head>div');if(!bas)return;
+  kart.dataset.veri=durum;
+  let r=bas.querySelector('.vd');
+  if(durum!=='eski'&&durum!=='hata'){if(r)r.remove();return;}
+  if(!r){r=document.createElement('p');bas.appendChild(r);}
+  r.className='vd '+durum;
+  r.innerHTML='<span class="vd-i" aria-hidden="true">'+(durum==='hata'?'!':'◷')+'</span>'+
+    esc((durum==='hata'?'Alınamadı':'Eski veri')+(ek?' · '+ek:''));
 }
 /* "2026-08-20 09:45" -> {txt:'3 sa önce', dk:185}. Damga İstanbul saatiyle
    üretiliyor, tarayıcı da aynı saat diliminde olduğu için yerel kabul ediliyor. */
@@ -5543,6 +5590,7 @@ function renderGmail(d){
   const bayat=!!(age&&age.dk>360);
   if(timeEl)timeEl.textContent=age?(age.txt+(bayat?' · veri eski':'')):'—';
   if(card)card.classList.toggle('feed-stale',bayat);
+  veriDurumu('gmail',(!d||d.ok===false)?'hata':(bayat?'eski':'guncel'),bayat&&age?age.txt:'');
   if(!d||d.ok===false){
     statsEl.innerHTML='<div class="empty">Çekilemedi'+(d&&d.error?(': '+esc(d.error)):'')+'.</div>';
     listEl.innerHTML='';
@@ -6526,10 +6574,11 @@ async function loadAgents(force){
     (d.workflow_runs||[]).forEach(run=>{if(!(run.name in byName))byName[run.name]=run;});  // her workflow'un en yenisi
     const time=new Date().toLocaleTimeString('tr-TR',{hour:'2-digit',minute:'2-digit'});
     await sSet(K.agents,{runs:byName,time});
-    renderAgents(byName);
+    renderAgents(byName);veriDurumu('telemetri','guncel');
     if(timeEl)timeEl.textContent='son '+time+(agentRateOk?'':' · kota ≈ dolu');
   }catch(e){
     const c=await sGet(K.agents);            // hata: sessizce son iyi veri
+    veriDurumu('telemetri','hata',c&&c.runs?'son durum '+c.time:'');
     if(c&&c.runs){renderAgents(c.runs);if(timeEl)timeEl.textContent='son '+c.time+' · çevrimdışı';}
     else if(el)el.innerHTML='<div class="empty">GitHub Actions durumu şu an alınamadı.</div>';
   }
@@ -6554,15 +6603,23 @@ async function loadJobsJson(){
   const el=document.getElementById('jobsList'),t=document.getElementById('jobsTime');
   try{
     const r=await fetch('jobs.json?_='+Date.now());
-    if(!r.ok)throw 0;
+    if(!r.ok)throw r.status;
     const d=await r.json();
     jobs=d.items||[];
     const ag=feedAge(d.updated);
     if(t)t.textContent=ag?ag.txt:'—';
+    veriDurumu('isler',(ag&&ag.dk>VD_ESIK_DK.jobs)?'eski':'guncel',ag&&ag.txt);
     renderJobs();
   }catch(e){
-    if(t)t.textContent='—';
-    el.innerHTML='<div class="empty">jobs.json henüz yok — jobs-feed workflow\'u ilk kez çalışınca burada görünecek.</div>';
+    if(e===404){                                   // dosya gerçekten yok: veri yok, hata değil
+      veriDurumu('isler','yok');if(t)t.textContent='—';
+      el.innerHTML='<div class="empty">jobs.json henüz yok — jobs-feed workflow\'u ilk kez çalışınca burada görünecek.</div>';
+    }else if(jobs.length){                         // ağ hatası: eldeki listeyi silme
+      veriDurumu('isler','hata','son liste gösteriliyor');
+    }else{
+      veriDurumu('isler','hata');if(t)t.textContent='—';
+      el.innerHTML='<div class="empty">İş ilanları okunamadı. Bağlantı gelince kendiliğinden yenilenir.</div>';
+    }
   }
 }
 function jobKey(j){return j.url||((j.company||'')+'|'+(j.title||''));}
@@ -7269,14 +7326,19 @@ function renderSimdi(){
   if(gk)gk.onclick=()=>kartaGit(document.querySelector('[data-k="yoklama"]'));
 }
 
-function renderSirada(){
-  const el=document.getElementById('siradaBox');if(!el)return;
-  const plan=schedBugun(),act=activeSlot(),simdi=nowMin();
-  const liste=[];
+/* Sıradaki kartının dilimleri: şu anki hariç, başlamamış ilk üç. Bugün kalan
+   aynı dilimleri tekrar yazmasın diye iki kart da buradan okuyor. */
+function siradakiDilimler(){
+  const plan=schedBugun(),act=activeSlot(),simdi=nowMin(),liste=[];
   for(let i=0;i<plan.length&&liste.length<3;i++){
     if(!plan[i]||i===act||simdi>=hhmm(SLOTS[i][0]))continue;
     liste.push(i);
   }
+  return liste;
+}
+function renderSirada(){
+  const el=document.getElementById('siradaBox');if(!el)return;
+  const plan=schedBugun(),liste=siradakiDilimler();
   el.innerHTML=liste.length?liste.map(i=>{
     const g=dilimGorunum(i,plan),takip=!!YOK[plan[i]];
     return '<div class="srow"><span class="st">'+esc(g.t0)+'</span><span class="sn">'+esc(g.ad)+'</span>'+
@@ -7286,16 +7348,18 @@ function renderSirada(){
 
 function renderKalan(){
   const el=document.getElementById('kalanBox');if(!el)return;
-  const plan=schedBugun(),act=activeSlot();
+  const plan=schedBugun(),act=activeSlot(),sirada=siradakiDilimler();
   const acik=[],kapali=[];
+  let siradaSay=0;
   yokSlotlari().forEach(i=>{
     if(i===act)return;                                   // Şimdi kartında
     const d=dilimDurum(i),g=dilimGorunum(i,plan);
+    if((d==='sirada')&&sirada.indexOf(i)>-1){siradaSay++;return;}   // Sıradaki kartında
     const s={tur:'dilim',i:i,ad:g.ad,t:g.t0,d:d};
     (d==='tamam'||d==='atlandi'?kapali:acik).push(s);
   });
   tasks.forEach((t,i)=>{(t.done?kapali:acik).push({tur:'gorev',i:i,ad:t.text,d:t.done?'tamam':'sirada'});});
-  const toplam=acik.length+kapali.length;
+  const toplam=acik.length+kapali.length+siradaSay;
   const meta=document.getElementById('kalanMeta');if(meta)meta.textContent=toplam?kapali.length+' / '+toplam:'—';
   const satir=s=>{
     const bitti=s.d==='tamam',atl=s.d==='atlandi';
@@ -7309,7 +7373,8 @@ function renderKalan(){
       '<span class="kt">'+(s.t?esc(s.t):'görev')+esc(durum)+'</span></div>';
   };
   let html=acik.length?acik.map(satir).join(''):
-    '<div class="kalan-bos">'+(toplam?'Bugün kalan iş yok.':'Takip edilen iş ya da görev yok.')+'</div>';
+    '<div class="kalan-bos">'+(siradaSay?'Kalan işlerin Sıradaki kartında.':(toplam?'Bugün kalan iş yok.':'Takip edilen iş ya da görev yok.'))+'</div>';
+  if(acik.length&&siradaSay)html+='<div class="kalan-bos" style="font-size:12.5px">+ '+siradaSay+' iş Sıradaki kartında</div>';
   if(kapali.length){
     html+='<button class="katla" data-kat="kalanKapali">Tamamlananlar ('+kapali.length+')<span class="ok">▾</span></button>'+
       '<div id="kalanKapali" hidden>'+kapali.map(satir).join('')+'</div>';

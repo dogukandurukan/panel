@@ -72,9 +72,16 @@ tek kart/sekme kararı kullanıcı tarafından geri alındı; `d:kultTab` artık
 okunmuyor. Eski `gizli.kultur` yeni dört karta bellekte yayılıyor. Tema
 olduğu gibi kalıyor (kullanıcı onayı).
 
-**Açık uçlar:** bayat/hata/boş durum ayrımı her feed kartında yok (yalnız Gmail
-bayatlığı + sade iskelet). Sıradaki ile Bugün kalan aynı dilimi iki kez
-gösterebiliyor. Gerçek iPhone'da safe-area/klavye/titreşim doğrulanmadı.
+**Veri durumu rozeti (16 Eyl gece):** `veriDurumu(dataK, 'guncel'|'eski'|'hata'|'yok', ek)`.
+Rozet YALNIZCA sorun varken görünür, kartın `data-veri` özniteliği her durumu
+taşır. Bağlı kartlar: izleme + gundem (borsa.json, eski > 26 sa), isler
+(jobs.json, eski > 30 sa, 404 = "yok", ağ hatasında eldeki liste silinmiyor),
+doviz (kur API), gmail (> 6 sa), basvuru (JSONP; 20 sn'de cevap yoksa hata),
+telemetri. Eşikler `VD_ESIK_DK`. Yeni feed kartı eklersen aynı çağrıyı ekle.
+**Bugün kalan, Sıradaki'deki dilimleri tekrar yazmıyor** (`siradakiDilimler()`
+ortak; sayaç toplamı yine hepsini sayıyor, "+N iş Sıradaki kartında" notu var).
+
+**Açık uçlar:** Gerçek iPhone'da safe-area/klavye/titreşim doğrulanmadı.
 `design-references/` klasörü yerelde, repoda değil.
 
 ## 1. Panel bugün ne durumda
