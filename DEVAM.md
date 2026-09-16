@@ -12,7 +12,7 @@ geliştirme değil, gerçek veri var. Deneme kaydı bırakma, bırakırsan temiz
 
 | Ne | Ne zaman | Yapılacak |
 |---|---|---|
-| **Kültür derinliği** | **6 Ekim** | Dört listede 44'er kayıt var, sonrası boş. Yazılmadan önce ayrı JSON'a taşıma kararı verilmeli (dosya 518 KB). |
+| **Kültür derinliği** | **6 Ekim** | Dört listede 44'er kayıt var, sonrası boş. Listeler artık **`kultur.json`**'da (16 Eyl'de taşındı) — yeni derinlik oraya yazılır, `index.html` büyümez. |
 
 **Sakatlık uyarlaması 12 Eylül'de BİTTİ** (11 Eyl'de kullanıcı bildirdi).
 15-22 Eylül kayıtları `EX_OVR`'dan silindi, 15 Eylül Salı'dan itibaren normal
@@ -80,6 +80,15 @@ doviz (kur API), gmail (> 6 sa), basvuru (JSONP; 20 sn'de cevap yoksa hata),
 telemetri. Eşikler `VD_ESIK_DK`. Yeni feed kartı eklersen aynı çağrıyı ekle.
 **Bugün kalan, Sıradaki'deki dilimleri tekrar yazmıyor** (`siradakiDilimler()`
 ortak; sayaç toplamı yine hepsini sayıyor, "+N iş Sıradaki kartında" notu var).
+
+**Kültür listeleri `kultur.json`'da (16 Eyl gece).** FACTS 236 · FILMS 133 ·
+ARTISTS 92 · BOOKS 110 · HISTORY 26; sıra ve alanlar aynı, rotasyon değişmedi.
+`kulturYukle()`: önce `d:kultur` önbelleği (SYNC_SKIP'te, `sSet` DEĞİL
+localStorage'a doğrudan — mtime/senkron tetiklemesin), sonra
+`fetch('kultur.json',{cache:'no-cache'})`. Liste boşken kartlar iskelet,
+alınamazsa "Alınamadı" rozeti. `index.html` 620 → 471 KB. **Dosyada her öğe tek
+satır** — elle eklerken JSON geçerliliğini `python3 -m json.tool kultur.json`
+ile kontrol et.
 
 **Açık uçlar:** Gerçek iPhone'da safe-area/klavye/titreşim doğrulanmadı.
 `design-references/` klasörü yerelde, repoda değil.

@@ -54,8 +54,9 @@ JSON okur.
 | `facts.json` | `facts_feed.py` | `facts-feed.yml` | Pazartesi 09:00 |
 
 `facts.json` yalnızca "bugün tarihte" verisi taşır (10 gün önden). Günün Bilgisi,
-Günün Filmi/Sanatçısı/Kitabı kartları `index.html` içindeki kürasyonlu listelerden
-beslenir — Vikipedi özeti tanım üretiyor, ilginç bilgi değil.
+Günün Filmi/Sanatçısı/Kitabı kartları `kultur.json`'daki kürasyonlu listelerden
+beslenir (16 Eyl 2026'ya kadar `index.html`'e gömülüydü; elle düzenlenen, feed'in
+üretmediği bir dosya — her öğe tek satır, sıra = gün rotasyonu) — Vikipedi özeti tanım üretiyor, ilginç bilgi değil.
 
 **Dünya Gündemi genel akıştan beslenmez.** Google News Türkiye'nin genel
 akışı yerel manşet akışıdır; kartın altına kandil takvimi ve FAST limiti
