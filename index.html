@@ -905,6 +905,7 @@
     background:var(--surface-2);border:1px solid var(--line);border-radius:12px;color:var(--text-primary);
     font-family:var(--sans);font-size:15px;cursor:pointer;}
   html[data-theme="hud"] .qk-opt{background:var(--surface-0);}
+  .qk-opt:last-child:nth-child(odd){grid-column:1/-1;min-height:64px;flex-direction:row;}
   .qk-opt .ic{width:26px;height:26px;color:var(--accent);}
   .qk-opt:hover{border-color:var(--accent);}
   .qk-form{margin-top:12px;display:flex;flex-direction:column;gap:12px;}
@@ -1146,6 +1147,10 @@
 <section class="card" data-k="yemek" data-ad="Bugünün Yemekleri"><div class="card-head"><div><p class="kicker">Beslenme · Bugün</p><h2 class="card-title">Bugünün Yemekleri</h2></div><div class="meta"><button class="ibtn" id="tgtAc">hedefi düzenle ↓</button></div></div>
       <div class="tgt" id="tgt" hidden></div><div id="bars"></div><div style="height:6px"></div><div id="mealList"></div>
       <div id="waterBox"></div></section>
+<section class="card" data-k="takviye" data-ad="Takviyeler"><div class="card-head"><div><p class="kicker">Sağlık · Bugün</p><h2 class="card-title">Takviyeler</h2></div><div class="meta" id="suppMeta">—</div></div>
+      <div id="suppBox"><div class="loading">Yükleniyor…</div></div>
+      <button class="katla" data-kat="suppDuzen">Listeyi düzenle<span class="ok">▾</span></button>
+      <div id="suppDuzen" hidden></div></section>
   </div>
   </section>
   <section class="grup" aria-label="Performans"><h2 class="bolum-bas">Performans</h2>
@@ -2614,6 +2619,7 @@ const IK={
   damla:'<path d="M12 3.5c3.5 4.5 6 7.7 6 10.7a6 6 0 0 1-12 0c0-3 2.5-6.2 6-10.7z"/>',
   yatak:'<path d="M3 18V7M3 14h18v4M21 14v-2.5a3 3 0 0 0-3-3h-7v5.5"/><circle cx="7" cy="11" r="1.8"/>',
   belge:'<path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4M10 12h5M10 16h5"/>',
+  hap:'<rect x="3.5" y="8.5" width="17" height="7" rx="3.5" transform="rotate(-35 12 12)"/><path d="M9.2 7.9l5.6 8.2"/>',
   kitap:'<path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5A2.5 2.5 0 0 1 6.5 18H20v3H6.5"/>'
 };
 const ikon=(ad,sinif)=>'<svg class="ic'+(sinif?' '+sinif:'')+'" viewBox="0 0 24 24" aria-hidden="true">'+IK[ad]+'</svg>';
@@ -2993,18 +2999,20 @@ const HABITS=[
    return tickRatio(v.x,exSayilir(v.k))>=HAB_MIN?'ok':'miss';}},
  {ad:'Su hedefi',birim:'gün',st:v=>num(v.w)>=waterGoalFor(v.d)?'ok':'miss'},
  {ad:'Almanca quiz',birim:'gün',st:v=>(v.q&&(num(v.q.right)+num(v.q.wrong))>=5)?'ok':'miss'},
+ /* Kreatin listede değilse satır hiç görünmez (renderHabits süzüyor). */
+ {ad:'Kreatin',birim:'gün',goster:()=>suppList.indexOf('Kreatin')>-1,st:v=>(v.s&&v.s['Kreatin'])?'ok':'miss'},
  {ad:'Uyku alışkanlığı',birim:'gece',st:v=>{const h=slpHabit();if(!h)return 'skip';return slpFits(sleepLog[v.k],h)?'ok':'miss';}}
 ];
 async function loadHabits(){
   habPast=[];
   for(let i=1;i<=HAB_LOOKBACK;i++){
     const k=dayBack(i),d=new Date(k+'T12:00:00').getDay();
-    const [m,x,w,q,r]=await Promise.all([sGet('d:morning:'+k),sGet('d:ex:'+k),sGet(K.water+':'+k),sGet('d:dequiz:'+k),sGet('d:runkm:'+k)]);
-    habPast.push({k,d,m,x,w,q,r});
+    const [m,x,w,q,r,s]=await Promise.all([sGet('d:morning:'+k),sGet('d:ex:'+k),sGet(K.water+':'+k),sGet('d:dequiz:'+k),sGet('d:runkm:'+k),sGet('d:supp:'+k)]);
+    habPast.push({k,d,m,x,w,q,r,s});
   }
   renderHabits();renderMorning();   // ihmal edilen hareket ancak geçmiş okununca bilinir
 }
-const habToday=()=>({k:todayKey(),d:dow,m:morningDone,x:exDone,w:waterCount,q:deQuiz,r:runKmToday});
+const habToday=()=>({k:todayKey(),d:dow,m:morningDone,x:exDone,w:waterCount,q:deQuiz,r:runKmToday,s:suppDone});
 function habDays(){return [habToday()].concat(habPast||[]);}
 function habStreak(h,days){
   let n=0;
@@ -3021,13 +3029,67 @@ function renderHabits(){
   const el=document.getElementById('habBox');if(!el)return;
   if(!habPast){el.innerHTML='<div class="loading">Seriler hesaplanıyor…</div>';return;}
   const days=habDays();
-  el.innerHTML=HABITS.map(h=>{
+  el.innerHTML=HABITS.filter(h=>!h.goster||h.goster()).map(h=>{
     const n=habStreak(h,days);
     let dots='';
     for(let i=HAB_DOTS-1;i>=0;i--){const v=days[i];dots+='<i class="'+(v?h.st(v):'skip')+'" title="'+(v?v.k:'')+'"></i>';}
     return '<div class="hab"><span class="hab-n">'+h.ad+'</span><span class="hab-dots">'+dots+'</span>'+
       '<span class="hab-s'+(n?'':' zero')+'">'+(n?'🔥 '+n+' '+h.birim:'—')+'</span></div>';
   }).join('')+'<div class="hab-foot">tik oranı %80+ sayılır · Pazar antrenmanda, koşusuz günler koşuda boş halka</div>';
+}
+
+/* ===== TAKVİYELER (16 Eyl) =====
+   Günlük tik listesi. d:supp:TARİH = {ad:1} — AD ile anahtarlı, sıra
+   numarasıyla değil (liste düzenlenince eski tikler kaymasın; bkz. sabah
+   rutini tuzağı). Liste d:suppList'te ve düzenlenebilir; bir takviyeyi
+   listeden çıkarmak geçmiş tiklerini SİLMEZ. Doz/saat yazılmıyor: panel
+   kullanıcının girmediği bir sağlık bilgisini uydurmaz. Kreatin serisi
+   Alışkanlık Serileri'nde (listede olduğu sürece). */
+const SUPP_VARSAYILAN=['Kreatin','D3','Omega-3','Magnezyum','Whey'];
+let suppList=SUPP_VARSAYILAN.slice(),suppDone={};
+async function takviyeYukle(){
+  const l=await sGet('d:suppList');
+  if(Array.isArray(l))suppList=l.filter(x=>typeof x==='string'&&x.trim());
+  suppDone=await sGet('d:supp:'+todayKey())||{};
+  renderTakviye();
+}
+/* Tek yazma yolu (kart + Hızlı Kayıt). */
+async function takviyeIsaretle(ad,deger){
+  const yeni=deger===undefined?!suppDone[ad]:!!deger;
+  if(yeni)suppDone[ad]=1;else delete suppDone[ad];
+  await sSet('d:supp:'+todayKey(),suppDone);
+  renderTakviye();renderHabits();bugunTazele();
+}
+async function takviyeListeKaydet(l){
+  suppList=l;await sSet('d:suppList',suppList);renderTakviye();renderHabits();bugunTazele();
+}
+const takviyeEksik=()=>suppList.filter(ad=>!suppDone[ad]);
+function renderTakviye(){
+  const el=document.getElementById('suppBox');if(!el)return;
+  const alinan=suppList.filter(ad=>suppDone[ad]).length;
+  const meta=document.getElementById('suppMeta');if(meta)meta.textContent=suppList.length?alinan+'/'+suppList.length:'—';
+  el.innerHTML=suppList.length?suppList.map((ad,i)=>{
+    const on=!!suppDone[ad];
+    return '<div class="krow'+(on?' bitti':'')+'"><button class="kbtn" data-supp="'+i+'" aria-pressed="'+on+'" aria-label="'+esc(ad)+(on?' alındı, geri al':' alındı olarak işaretle')+'">'+
+      '<span class="kk"><svg viewBox="0 0 24 24" aria-hidden="true">'+IK.tik+'</svg></span></button>'+
+      '<span class="kn">'+esc(ad)+'</span><span class="kt">'+(on?'alındı':'bekliyor')+'</span></div>';
+  }).join(''):'<div class="kalan-bos">Liste boş. Aşağıdan takviye ekle.</div>';
+  el.querySelectorAll('[data-supp]').forEach(b=>b.onclick=()=>takviyeIsaretle(suppList[+b.dataset.supp]));
+  const dz=document.getElementById('suppDuzen');
+  if(dz){
+    dz.innerHTML=suppList.map((ad,i)=>'<div class="kart-row"><span class="kart-ad">'+esc(ad)+'</span>'+
+      (i>0?'<button class="ibtn" data-sup-tasi="'+i+'" aria-label="'+esc(ad)+' yukarı">↑</button>':'')+
+      '<button class="ibtn" data-sup-sil="'+i+'" aria-label="'+esc(ad)+' listeden çıkar">Çıkar</button></div>').join('')+
+      '<div class="add-row"><input id="suppYeni" placeholder="Takviye adı" maxlength="40" autocomplete="off"><button id="suppEkle">Ekle</button></div>'+
+      '<div class="cfg-note">Çıkarmak geçmiş tikleri silmez; aynı adla geri eklersen seri kaldığı yerden devam eder.</div>';
+    dz.querySelectorAll('[data-sup-sil]').forEach(b=>b.onclick=()=>{const l=suppList.slice();l.splice(+b.dataset.supSil,1);takviyeListeKaydet(l);});
+    dz.querySelectorAll('[data-sup-tasi]').forEach(b=>b.onclick=()=>{const l=suppList.slice(),i=+b.dataset.supTasi;[l[i-1],l[i]]=[l[i],l[i-1]];takviyeListeKaydet(l);});
+    const ekle=()=>{const inp=document.getElementById('suppYeni'),v=(inp.value||'').replace(/\s+/g,' ').trim();
+      if(!v||suppList.some(x=>x.toLocaleLowerCase('tr')===v.toLocaleLowerCase('tr')))return;
+      takviyeListeKaydet(suppList.concat([v]));};
+    document.getElementById('suppEkle').onclick=ekle;
+    document.getElementById('suppYeni').onkeydown=ev=>{if(ev.key==='Enter'){ev.preventDefault();ekle();}};
+  }
 }
 
 /* ===== SU TAKİBİ =====
@@ -6431,7 +6493,7 @@ function localSnapshot(){
    d:jobProfile (is basvurulari ve CV profili), d:theme, d:tab, besleme
    onbellekleri (borsa/haber/hava — zaten kendini tazeliyor). */
 const RESET_VERSION='2026-08-31-temiz';
-const RESET_ONEK=['d:morning:','d:runkm:','d:ex:','d:sess:','d:meals:','d:water:',
+const RESET_ONEK=['d:supp:','d:morning:','d:runkm:','d:ex:','d:sess:','d:meals:','d:water:',
                   'd:dequiz:','d:yok:','d:sched:','d:schedOvr:'];
 const RESET_TEK=['d:prog','d:vol','d:volFill','d:deWrong','d:tasks','d:water',
                  'd:sleepLog','d:wtlog','d:bw','d:oneri','d:oneriKapali','d:off'];
@@ -6854,6 +6916,11 @@ function renderBaglam(){
     if(saat>=13&&bos)out.push({ik:'catal',m:bos+' öğün işaretlenmedi',d:'Öğün gir',f:()=>qkAc('ogun')});
   }catch(e){}
   try{
+    const eksik=takviyeEksik();
+    if(saat>=19&&suppList.length&&eksik.length)out.push({ik:'hap',m:eksik.length+' takviye alınmadı',
+      alt:eksik.slice(0,3).join(', ')+(eksik.length>3?'…':''),d:'İşaretle',f:()=>qkAc('takviye')});
+  }catch(e){}
+  try{
     const n=pickDE().words.length;
     if(saat>=17&&deQuiz&&deQuiz.i<n)out.push({ik:'kitap',m:'Almanca quiz bekliyor',alt:deQuiz.i+' / '+n,d:'Çalış',
       f:()=>qkAc('almanca')});
@@ -6891,6 +6958,7 @@ const QK={
   su:{ad:'Su',ik:'damla',alt:'Bardak '+WATER_GLASS_ML+' ml'},
   uyku:{ad:'Uyku',ik:'yatak',alt:'Dün gece kaçta yattın, kaçta kalktın?'},
   basvuru:{ad:'Başvuru',ik:'belge',alt:'Panel dışından yaptığın başvuru'},
+  takviye:{ad:'Takviye',ik:'hap',alt:'Bugün hangilerini aldın?'},
   almanca:{ad:'Almanca',ik:'kitap',alt:'Günün quiz\'i',menu:false}
 };
 /* Almanca popup'ı quiz'i KOPYALAMIYOR: Takip'teki #quizBox ve #germanList
@@ -6988,6 +7056,11 @@ function qkCiz(ekran){
       '<div class="deger" aria-live="polite" id="qkSuDeger">'+(waterCount*WATER_GLASS_ML/1000).toLocaleString('tr-TR')+' <small>/ '+hedefL.toLocaleString('tr-TR')+' L</small></div>'+
       '<button type="button" class="qk-pm" data-su="1" aria-label="Bir bardak ekle">'+ikon('arti')+'</button></div>'+
       '<div class="qk-ipucu">Her dokunuş hemen kaydedilir.</div>';
+  }else if(ekran==='takviye'){
+    html+=suppList.length?suppList.map((ad,i)=>'<div class="qk-ogun"><div class="on"><span>'+esc(ad)+'</span></div>'+
+      '<div class="qk-por"><button type="button" data-qk-supp="'+i+'" aria-pressed="'+!!suppDone[ad]+'" aria-label="'+esc(ad)+' alındı">✓</button></div></div>').join('')+
+      '<div class="qk-ipucu">Her dokunuş hemen kaydedilir. Liste Takip › Sağlık › Takviyeler\'den düzenlenir.</div>'
+      :'<div class="kalan-bos">Takviye listesi boş.</div>';
   }else if(ekran==='ogun'){
     html+=meals.length?meals.map((m,i)=>'<div class="qk-ogun"><div class="on"><b>'+esc(m.slot)+'</b><span>'+esc(m.text||'—')+'</span></div>'+
       '<div class="qk-por" role="group" aria-label="'+esc(m.slot)+' porsiyon">'+[[0,'—','yemedim'],[50,'½','yarısı'],[100,'✓','tamamı']].map(p=>
@@ -6996,7 +7069,7 @@ function qkCiz(ekran){
       :'<div class="kalan-bos">Bugün için öğün planı yok.</div>';
   }
   html+='<div class="qk-hata" id="qkHata" role="alert"></div>';
-  const aninda=ekran==='su'||ekran==='ogun';
+  const aninda=ekran==='su'||ekran==='ogun'||ekran==='takviye';
   html+=aninda?'<button type="button" class="qk-kaydet" data-qk-bitti>Tamam</button>':'<button type="submit" class="qk-kaydet">Kaydet</button>';
   html+=geri+'</form>';
   g.innerHTML=html;
@@ -7013,6 +7086,10 @@ function qkCiz(ekran){
     await suAyarla(waterCount+(+x.dataset.su));
     const d=document.getElementById('qkSuDeger');
     if(d)d.innerHTML=(waterCount*WATER_GLASS_ML/1000).toLocaleString('tr-TR')+' <small>/ '+waterTargetL().toLocaleString('tr-TR')+' L</small>';
+  });
+  g.querySelectorAll('[data-qk-supp]').forEach(x=>x.onclick=async()=>{
+    await takviyeIsaretle(suppList[+x.dataset.qkSupp]);
+    x.setAttribute('aria-pressed',String(!!suppDone[suppList[+x.dataset.qkSupp]]));
   });
   g.querySelectorAll('[data-ogun]').forEach(x=>x.onclick=async()=>{
     const i=+x.dataset.ogun;await ogunPorsiyon(i,+x.dataset.p);
@@ -7176,7 +7253,7 @@ function kabukBagla(){
   document.getElementById('jobsCfg').onclick=openJobsCfg;
   jobProfile=await sGet(K.jobProfile)||null;jobsApplied=await sGet(K.jobsApplied)||[];myApps=await sGet(K.myApps)||[];retler=await sGet('d:retler')||[];retGizli=await sGet('d:retGizli')||[];retElle=await sGet('d:retElle')||[];oneriKapali=await sGet('d:oneriKapali')||{};offGunler=await sGet('d:off')||{};
   document.getElementById('placeName').textContent=PLACE.name;
-  renderTasks();await loadSched();await loadYok();await loadMorning();await renderRun();await loadWorkout();renderWtLog();await loadMeals();await loadWater();await loadSleep();await loadBW();await loadMoney();await renderBugunHarcama();await renderHaftalik();await renderOneri();loadHabits();await initSync();
+  renderTasks();await loadSched();await loadYok();await loadMorning();await renderRun();await loadWorkout();renderWtLog();await loadMeals();await loadWater();await takviyeYukle();await loadSleep();await loadBW();await loadMoney();await renderBugunHarcama();await renderHaftalik();await renderOneri();loadHabits();await initSync();
   renderFacts();renderFilm();renderArtist();renderBook();renderHistory();kulturYukle();renderKult();renderGerman();renderNews();renderTR();renderRetler();renderWatch();renderUS();renderWorldIdx();renderGold();renderWorld();renderMktSummary();renderFinNote();
   ['watchList','usList','idxList'].forEach(stkTiklaBagla);
   loadFX(false);loadBorsaJson();loadBasvuru();loadGmailJson();loadFactsJson();loadAgents(false);loadWx();loadJobsJson();

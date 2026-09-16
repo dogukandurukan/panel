@@ -291,9 +291,20 @@ Actions log'una da şirket adı/konu basılmaz — log herkese açık.
    maillerini ayrıştırır. `gmail_feed.py`'deki `classify()`/`notify_tag()`
    deseni örnek; "Otomatik bildirim" kovası bu mailleri zaten yakalıyor.
    A3'e bağlı.
-3. **Takviye checklist (`d:supp:TARİH`)** — kreatin (her gün, seri
-   göstergesi), D3, omega-3, magnezyum, whey.
-4. **Yürüyüş takibi (`d:walk:TARİH`)** — sabah/akşam köpek + gym gidiş-dönüş.
+3. ~~**Takviye checklist**~~ — **16 Eyl'de yapıldı.** Takip › Sağlık ›
+   Takviyeler. `d:supp:TARİH` = `{ad:1}` (AD ile anahtarlı), liste
+   `d:suppList` (varsayılan Kreatin, D3, Omega-3, Magnezyum, Whey; kartta
+   düzenlenir, çıkarmak geçmişi silmez). Tek yazma yolu `takviyeIsaretle`.
+   Kreatin serisi Alışkanlık Serileri'nde (listede olduğu sürece). Hızlı
+   Kayıt'ta "Takviye", Bugün'de 19:00 sonrası eksik varsa öneri satırı.
+   Doz/saat bilerek yok. `d:supp:` RESET_ONEK'te.
+4. **Yürüyüş / adım takibi** — 16 Eyl'de kullanıcı iPhone Sağlık'tan adım
+   çekmeyi sordu. Web sayfası HealthKit'e erişemez; tek yol iOS Kestirmeler
+   otomasyonu (Sağlık örneği al → gizli gist'e yaz). DİKKAT: `syncPush`
+   gist'i yerel anlık görüntüyle EZİYOR, dışarıdan yazılan anahtar panel
+   pull etmeden push ederse kaybolur — Kestirme'yi bağlamadan önce push'u
+   "önce çek, birleştir, sonra yaz" yapmak gerekir. Kullanıcı onayı bekleniyor.
+   Eski not: **Yürüyüş takibi (`d:walk:TARİH`)** — sabah/akşam köpek + gym gidiş-dönüş.
    Kalori hedefine ETKİ ETMEZ (yük zaten 2950 tabanına dahil).
 5. **Kültür derinliği** — 7 Eylül'de dört listeye 23'er kayıt daha yazıldı;
    derinlik artık **6 Ekim'e kadar kesintisiz** (her listede 44 kayıt).
