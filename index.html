@@ -422,6 +422,12 @@
   .gm-clean span{font-size:13px;color:var(--muted);}
   .gm-bulk{margin-top:13px;padding-top:9px;border-top:1px dotted var(--line2);font-family:var(--mono);font-size:10px;color:var(--muted);line-height:1.6;}
   .gm-bulk a{color:var(--muted);}
+  #gmailStats{gap:6px;margin-bottom:8px;flex-wrap:nowrap;}
+  #gmailStats .stat{flex:1 1 0;padding:6px 2px 5px;}
+  #gmailStats .stat-n{font-size:17px;}
+  #gmailStats .stat-l{font-size:8.5px;letter-spacing:.06em;margin-top:3px;}
+  #gmailList .gm-clean{padding:4px 0 2px;}
+  #gmailList .gm-clean b{font-size:15px;}
   .gm-note{font-family:var(--mono);font-size:9px;letter-spacing:.06em;color:var(--muted);margin-top:9px;}
   /* besleme bayatladığında: sayılar soluklaşır, zaman damgası uyarı rengine döner */
   .feed-stale .statrow,.feed-stale #gmailList{opacity:.5;}
@@ -920,6 +926,8 @@
   .qk-iki{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
   .qk-kaydet{position:sticky;bottom:0;min-height:52px;width:100%;border:0;border-radius:12px;background:var(--accent);
     color:var(--on-accent);font-family:var(--mono);font-size:14px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;}
+  .qk-quiz .qz{margin-top:0;border-top:0;padding-top:0;}
+  .qk-quiz .qz-o{min-height:48px;font-size:15px;}
   .qk-hata{color:var(--danger);font-size:13px;min-height:18px;}
   .qk-ipucu{font-size:12.5px;color:var(--text-secondary);}
   .qk-ogun{display:flex;align-items:center;gap:10px;min-height:52px;border-bottom:1px dotted var(--line2);}
@@ -1172,6 +1180,18 @@
     <div id="mCats"></div>
     <div id="mList"></div></div></section>
   </section>
+  <section class="grup" aria-label="Öğrenme"><h2 class="bolum-bas">Öğrenme</h2>
+  <section class="card" data-k="almanca" data-ad="Almanca"><div class="card-head"><div><p class="kicker" id="deKicker">Öğrenme · A1–A2</p><h2 class="card-title">Almanca</h2></div><div class="meta"><span id="deScore">—</span><br><button class="ibtn" id="deRefresh">Yeni set</button></div></div>
+    <div class="trio">
+      <div class="tcol"><div class="wtitle">Günün 5 kelimesi</div><div id="germanList"></div></div>
+      <div class="tcol"><div class="wtitle">Quiz</div><div id="quizBox"></div></div>
+      <div class="tcol"><div class="wtitle">Gramer</div><div id="gramList"></div></div>
+    </div></section>
+  </section>
+  </section>
+
+  <!-- KEŞİF: okunan, bir şey istemeyen içerik; görsel önceliği düşük. -->
+  <section class="tabpanel" id="tabKesif" role="tabpanel" aria-labelledby="tabBtnKesif" data-tab="kesif" hidden>
   <section class="grup" aria-label="Kariyer"><h2 class="bolum-bas">Kariyer</h2>
   <section class="card" data-k="basvuru" data-ad="İş Başvuruları"><div class="card-head"><div><p class="kicker">Kariyer</p><h2 class="card-title">İş Başvuruları</h2></div><div class="meta"><span id="basvuruTime">—</span><br><button class="ibtn" id="basvuruRefresh">Yenile</button></div></div>
     <div id="basvuruStats" class="statrow"><div class="loading">Başvurular çekiliyor…</div></div>
@@ -1185,19 +1205,14 @@
       <button id="ebEkle">Başvurdum</button>
     </div>
     <div id="retBox"></div></section>
+  <section class="card" data-k="isler" data-ad="Bugünün 3 İşi"><div class="card-head"><div><p class="kicker">Kariyer · Günlük</p><h2 class="card-title">Bugünün 3 İşi</h2></div>
+    <div class="meta"><span id="jobsTime">—</span><br><button class="ibtn" id="jobsCfg" style="margin-top:5px">⚙ Profil</button></div></div>
+    <div id="jobsCfgBox" style="display:none"></div>
+    <!-- 15 Eyl'de sağa başvuru özeti (toplam/bekliyor/ret) konmuştu, kullanıcı
+         aynı gün kaldırttı: ilan listesi tam genişlikte okunuyor, başvuru
+         sayıları zaten hemen altındaki İş Başvuruları kartında. -->
+    <div id="jobsList"><div class="loading">jobs.json çekiliyor…</div></div></section>
   </section>
-  <section class="grup" aria-label="Öğrenme"><h2 class="bolum-bas">Öğrenme</h2>
-  <section class="card" data-k="almanca" data-ad="Almanca"><div class="card-head"><div><p class="kicker" id="deKicker">Öğrenme · A1–A2</p><h2 class="card-title">Almanca</h2></div><div class="meta"><span id="deScore">—</span><br><button class="ibtn" id="deRefresh">Yeni set</button></div></div>
-    <div class="trio">
-      <div class="tcol"><div class="wtitle">Günün 5 kelimesi</div><div id="germanList"></div></div>
-      <div class="tcol"><div class="wtitle">Quiz</div><div id="quizBox"></div></div>
-      <div class="tcol"><div class="wtitle">Gramer</div><div id="gramList"></div></div>
-    </div></section>
-  </section>
-  </section>
-
-  <!-- KEŞİF: okunan, bir şey istemeyen içerik; görsel önceliği düşük. -->
-  <section class="tabpanel" id="tabKesif" role="tabpanel" aria-labelledby="tabBtnKesif" data-tab="kesif" hidden>
   <section class="grup" aria-label="Gelen kutusu"><h2 class="bolum-bas">Gelen kutusu</h2>
   <section class="card" data-k="gmail" data-ad="Gelen Kutusu"><div class="card-head"><div><p class="kicker">Gmail</p><h2 class="card-title">Gelen Kutusu</h2></div><div class="meta"><span id="gmailTime">—</span><br><button class="ibtn" id="gmailRefresh">Yenile</button></div></div>
       <div id="gmailStats" class="statrow"><div class="loading">Gelen kutusu okunuyor…</div></div>
@@ -1227,23 +1242,21 @@
       <div class="tcol"><div class="wtitle">Piyasa &amp; Şirket</div><div id="newsList"></div></div>
     </div></div></section>
   </section>
+  <!-- KÜLTÜR (16 Eyl): 15 Eyl'de tek kartta beş sekmeydi; kullanıcı hepsini
+       aynı anda, ayrı ayrı görmek istedi. Bölme id'leri ve render'lar aynı. -->
   <section class="grup" aria-label="Kültür"><h2 class="bolum-bas">Kültür</h2>
-  <section class="card" data-k="kultur" data-ad="Kültür"><div class="card-head"><div><p class="kicker">Kültür · Bugün</p><h2 class="card-title" id="kultBaslik">Günün Bilgisi</h2></div><div class="meta"><button class="ibtn" id="kultNext">Başka</button></div></div>
-      <div class="kult-tabs" id="kultTabs"></div>
-      <div id="factList"></div>
-      <div id="histBox" hidden></div>
-      <div id="filmBox" hidden></div>
-      <div id="artBox" hidden></div>
-      <div id="bookBox" hidden></div></section>
-  </section>
-  <section class="grup" aria-label="İş ilanları"><h2 class="bolum-bas">İş ilanları</h2>
-  <section class="card" data-k="isler" data-ad="Bugünün 3 İşi"><div class="card-head"><div><p class="kicker">Kariyer · Günlük</p><h2 class="card-title">Bugünün 3 İşi</h2></div>
-    <div class="meta"><span id="jobsTime">—</span><br><button class="ibtn" id="jobsCfg" style="margin-top:5px">⚙ Profil</button></div></div>
-    <div id="jobsCfgBox" style="display:none"></div>
-    <!-- 15 Eyl'de sağa başvuru özeti (toplam/bekliyor/ret) konmuştu, kullanıcı
-         aynı gün kaldırttı: ilan listesi tam genişlikte okunuyor, başvuru
-         sayıları zaten hemen altındaki İş Başvuruları kartında. -->
-    <div id="jobsList"><div class="loading">jobs.json çekiliyor…</div></div></section>
+  <div class="grid" id="gridKultur">
+<section class="card" data-k="kultur" data-ad="Günün Bilgisi"><div class="card-head"><div><p class="kicker">Kültür · Bilgi</p><h2 class="card-title">Günün Bilgisi</h2></div><div class="meta"><button class="ibtn" data-kult-baska="bilgi" aria-label="Günün Bilgisi: başka">Başka</button></div></div>
+      <div id="factList"></div></section>
+<section class="card" data-k="kultTarih" data-ad="Tarihten Bir Not"><div class="card-head"><div><p class="kicker">Kültür · Tarihten</p><h2 class="card-title">Tarihten Bir Not</h2></div><div class="meta"><button class="ibtn" data-kult-baska="tarihten" aria-label="Tarihten Bir Not: başka">Başka</button></div></div>
+      <div id="histBox"></div></section>
+<section class="card" data-k="kultFilm" data-ad="Günün Filmi"><div class="card-head"><div><p class="kicker">Kültür · Film</p><h2 class="card-title">Günün Filmi</h2></div><div class="meta"><button class="ibtn" data-kult-baska="film" aria-label="Günün Filmi: başka">Başka</button></div></div>
+      <div id="filmBox"></div></section>
+<section class="card" data-k="kultSanat" data-ad="Günün Sanatçısı"><div class="card-head"><div><p class="kicker">Kültür · Sanatçı</p><h2 class="card-title">Günün Sanatçısı</h2></div><div class="meta"><button class="ibtn" data-kult-baska="sanatci" aria-label="Günün Sanatçısı: başka">Başka</button></div></div>
+      <div id="artBox"></div></section>
+<section class="card" data-k="kultKitap" data-ad="Günün Kitabı"><div class="card-head"><div><p class="kicker">Kültür · Kitap</p><h2 class="card-title">Günün Kitabı</h2></div><div class="meta"><button class="ibtn" data-kult-baska="kitap" aria-label="Günün Kitabı: başka">Başka</button></div></div>
+      <div id="bookBox"></div></section>
+  </div>
   </section>
   </section>
   </main>
@@ -4141,18 +4154,12 @@ const KULT=[['bilgi','Bilgi','factList','Günün Bilgisi',()=>{factOff+=4;render
             ['kitap','Kitap','bookBox','Günün Kitabı',()=>{bookOff+=2;renderBook();}]];
 let kultTab='bilgi';
 function renderKult(){
-  const tb=document.getElementById('kultTabs');if(!tb)return;
-  if(!KULT.some(k=>k[0]===kultTab))kultTab='bilgi';
-  tb.innerHTML=KULT.map(k=>'<button class="ibtn kult-t'+(k[0]===kultTab?' ana':'')+
-    '" data-kul="'+k[0]+'">'+esc(k[1])+'</button>').join('');
-  KULT.forEach(k=>{const el=document.getElementById(k[2]);if(el)el.hidden=k[0]!==kultTab;});
-  const b=document.getElementById('kultBaslik');
-  const se=KULT.find(k=>k[0]===kultTab);
-  if(b&&se)b.textContent=se[3];
-  tb.querySelectorAll('[data-kul]').forEach(x=>x.onclick=()=>{
-    kultTab=x.dataset.kul;sSet('d:kultTab',kultTab);renderKult();
-    /* Bölme değişince kartın boyu değişiyor: sütunlar yeniden dengeleniyor. */
-    gridDizBir('gridDunya');});
+  /* 16 Eyl: beş bölme artık beş ayrı kart, hepsi aynı anda görünür.
+     'Başka' her kartta kendi bölmesini ilerletir; d:kultTab artık okunmuyor. */
+  document.querySelectorAll('[data-kult-baska]').forEach(b=>b.onclick=()=>{
+    const se=KULT.find(k=>k[0]===b.dataset.kultBaska);if(!se)return;
+    se[4]();gridDizBir('gridKultur');
+  });
 }
 function renderFacts(){
   const f=FACTS[(doy()+factOff)%FACTS.length],d=factDerin(f);
@@ -4822,7 +4829,7 @@ async function loadQuiz(){
   const q=await sGet('d:dequiz:'+todayKey());
   deQuiz=(q&&q.set===deExtra)?q:{set:deExtra,i:0,right:0,wrong:0,pick:null};
 }
-async function saveQuiz(){await sSet('d:dequiz:'+todayKey(),deQuiz);renderHabits();}
+async function saveQuiz(){await sSet('d:dequiz:'+todayKey(),deQuiz);renderHabits();bugunTazele();}
 function renderQuiz(){
   const el=document.getElementById('quizBox');if(!el||!deQuiz)return;
   const words=pickDE().words,sc=document.getElementById('deScore');
@@ -4959,7 +4966,7 @@ function stockRow(s,piyasa,sira){const neg=/^-/.test(s.chg);const cls=neg?'down'
    offsetHeight'ı 0, o yüzden gizli sekmede dizme atlanır (kartlar CSS grid
    varsayılanıyla duruyor, bozulmuyor) ve sekme açılınca yeniden dizilir. */
 /* 16 Eyl: iki sekmenin iki büyük gridi, bölüm içi grup gridlerine bölündü. */
-const GRIDLER=['gridSaglik','gridPerf','gridPiyasa'];
+const GRIDLER=['gridSaglik','gridPerf','gridPiyasa','gridKultur'];
 /* Eski kayıtlı sıra (d:kartlar.sira.gridSpor / gridDunya) SİLİNMİYOR ve
    yeniden yazılmıyor: yeni gridin kendi kaydı yoksa kartlar eski iki listenin
    birleşik sırasına göre diziliyor. Kullanıcı ↑↓'ya basınca yeni grid id'siyle
@@ -5556,13 +5563,17 @@ function renderGmail(d){
     '<div class="stat"><div class="stat-n">'+c.info+'</div><div class="stat-l">Bildirim</div></div>'+
     '<div class="stat"><div class="stat-n">'+c.bulk+'</div><div class="stat-l">Bülten</div></div>';
 
-  let html='';
+  /* 16 Eyl: kart kısaldı. Açıkta yalnızca insan mailleri (aksiyon, kural 5);
+     iş/bildirim kovaları ve bülten/kapatılan satırları "Diğer mailler"
+     altında, varsayılan kapalı (d:acik.gmailDiger). */
+  let html='',diger='';
   GM_SEC.forEach(([kova,baslik,renk])=>{
     const grup=acik.filter(it=>(it.bucket||'reply')===kova);
     if(!grup.length)return;
-    html+='<div class="gm-sec"><span class="gm-sec-t">'+baslik+'</span><span class="gm-sec-l"></span>'+
+    const blok='<div class="gm-sec"><span class="gm-sec-t">'+baslik+'</span><span class="gm-sec-l"></span>'+
           '<span class="gm-sec-t">'+grup.length+'</span></div>'+
           grup.map(it=>gmItem(it,renk,false)).join('');
+    if(kova==='reply')html+=blok;else diger+=blok;
   });
   /* Cevap bekleyen sıfırsa bu bir eksiklik değil, kartın verdiği asıl haber:
      kimse senden bir şey istemiyor. Bunu sessiz bir "boş liste" olarak değil,
@@ -5578,20 +5589,25 @@ function renderGmail(d){
   if(c.bulk){
     const kimler=(d.bulk_top||[]).map(x=>esc(x[0])+' '+x[1]).join(' · ');
     const q=encodeURIComponent('is:unread in:inbox category:primary newer_than:'+gun+'d');
-    html+='<div class="gm-bulk">'+c.bulk+' bülten sessizde'+(kimler?' — '+kimler:'')+
+    diger+='<div class="gm-bulk">'+c.bulk+' bülten sessizde'+(kimler?' — '+kimler:'')+
       ' · <a target="_blank" rel="noopener" href="'+GM_ARAMA+q+'">Gmail\'de aç</a></div>';
   }
   /* Tik kalıcı: kapatılan mail bir daha listeye girmez. Yanlış tiki geri
      alabilmek için tek çıkış kapısı burası. */
   if(gizli.length){
-    html+='<div class="gm-bulk">'+gizli.length+' mail kapatıldı · '+
+    diger+='<div class="gm-bulk">'+gizli.length+' mail kapatıldı · '+
       '<a href="#" id="gmGizliTgl">'+(gmGizliAcik?'gizle':'göster')+'</a></div>';
-    if(gmGizliAcik)html+=gizli.map(it=>gmItem(it,'gm-inf',true)).join('');
+    if(gmGizliAcik)diger+=gizli.map(it=>gmItem(it,'gm-inf',true)).join('');
   }
+  const digerN=c.job+c.info;
+  if(diger)html+='<button class="katla" data-kat="gmailDiger">Diğer mailler'+(digerN?' ('+digerN+')':'')+
+    '<span class="ok">▾</span></button><div id="gmailDiger" hidden>'+diger+'</div>';
   if((c.reply||0)>0 && d.draft_note && d.draft_note.indexOf('ANTHROPIC_API_KEY')>-1){
     html+='<div class="gm-note">cevap taslağı kapalı · ANTHROPIC_API_KEY tanımlı değil</div>';
   }
   listEl.innerHTML=html;
+  katlaUygula();
+  listEl.querySelectorAll('[data-kat]').forEach(b=>b.onclick=()=>katlaDegistir(b.dataset.kat));
 
   const tgl=document.getElementById('gmGizliTgl');
   if(tgl)tgl.onclick=e=>{e.preventDefault();gmGizliAcik=!gmGizliAcik;renderGmail(d);};
@@ -7330,7 +7346,7 @@ function renderBaglam(){
   try{
     const n=pickDE().words.length;
     if(saat>=17&&deQuiz&&deQuiz.i<n)out.push({ik:'kitap',m:'Almanca quiz bekliyor',alt:deQuiz.i+' / '+n,d:'Çalış',
-      f:()=>kartaGit(document.querySelector('[data-k="almanca"]'))});
+      f:()=>qkAc('almanca')});
   }catch(e){}
   try{
     const bugunGider=(mCur===thisMonth()?mData:[]).some(r=>r.d===tk&&r.k==='out');
@@ -7364,8 +7380,22 @@ const QK={
   ogun:{ad:'Öğün',ik:'catal',alt:'Bugünün planından ne kadar yedin?'},
   su:{ad:'Su',ik:'damla',alt:'Bardak '+WATER_GLASS_ML+' ml'},
   uyku:{ad:'Uyku',ik:'yatak',alt:'Dün gece kaçta yattın, kaçta kalktın?'},
-  basvuru:{ad:'Başvuru',ik:'belge',alt:'Panel dışından yaptığın başvuru'}
+  basvuru:{ad:'Başvuru',ik:'belge',alt:'Panel dışından yaptığın başvuru'},
+  almanca:{ad:'Almanca',ik:'kitap',alt:'Günün quiz\'i',menu:false}
 };
+/* Almanca popup'ı quiz'i KOPYALAMIYOR: Takip'teki #quizBox ve #germanList
+   düğümleri sheet'e taşınıyor, kapanınca yerlerine dönüyor. renderQuiz /
+   renderGerman id ile yazdığı için aynen çalışıyor, ikinci bir quiz yok. */
+let qkTasinan=[];
+function qkDugumTasi(id,hedef){
+  const el=document.getElementById(id);if(!el||!hedef)return;
+  const yer=document.createComment('qk-yer:'+id);
+  el.parentNode.insertBefore(yer,el);hedef.appendChild(el);qkTasinan.push([el,yer]);
+}
+function qkDugumleriGeriKoy(){
+  qkTasinan.forEach(([el,yer])=>{if(yer.parentNode){yer.parentNode.insertBefore(el,yer);yer.remove();}el.hidden=false;});
+  qkTasinan=[];
+}
 let qkOncekiOdak=null,qkSonKat='Yeme-içme',qkEkran='menu';
 function qkAc(ekran){
   const qk=document.getElementById('qk');if(!qk)return;
@@ -7378,6 +7408,7 @@ function qkAc(ekran){
 }
 function qkKapat(){
   const qk=document.getElementById('qk');if(!qk||qk.hidden)return;
+  qkDugumleriGeriKoy();
   qk.hidden=true;document.getElementById('qkOrt').hidden=true;kilitGuncelle();
   const fab=document.getElementById('qkFab');if(fab)fab.setAttribute('aria-expanded','false');
   document.documentElement.style.removeProperty('--kb');
@@ -7389,19 +7420,35 @@ function qkBasari(metin,ekran){
   toastGoster(metin,{ad:'Bir tane daha',f:()=>qkAc(ekran)});
 }
 function qkCiz(ekran){
+  qkDugumleriGeriKoy();
   qkEkran=ekran;
   const g=document.getElementById('qkGovde'),b=document.getElementById('qkBaslik'),alt=document.getElementById('qkAlt');
   const tk=todayKey();
   const geri='<button class="btn-sade" data-qk-geri style="min-height:44px">'+ikon('geri')+'Diğer kayıtlar</button>';
   if(ekran==='menu'){
     b.textContent='Hızlı kayıt';alt.textContent='Ne eklemek istiyorsun?';
-    g.innerHTML='<div class="qk-menu">'+Object.keys(QK).map(k=>'<button class="qk-opt" data-qk-sec="'+k+'">'+
+    g.innerHTML='<div class="qk-menu">'+Object.keys(QK).filter(k=>QK[k].menu!==false).map(k=>'<button class="qk-opt" data-qk-sec="'+k+'">'+
       ikon(QK[k].ik)+'<span>'+QK[k].ad+'</span></button>').join('')+'</div>';
     g.querySelectorAll('[data-qk-sec]').forEach(x=>x.onclick=()=>qkCiz(x.dataset.qkSec));
     const ilk=g.querySelector('button');if(ilk)ilk.focus({preventScroll:true});
     return;
   }
   b.textContent=QK[ekran].ad;alt.textContent=QK[ekran].alt;
+  if(ekran==='almanca'){
+    g.innerHTML='<div class="qk-form"><div class="qk-quiz" id="qkQuizYer"></div>'+
+      '<button type="button" class="katla" id="qkKelimeAc" aria-expanded="false" aria-controls="qkKelimeYer">Günün 5 kelimesi<span class="ok">▾</span></button>'+
+      '<div id="qkKelimeYer" hidden></div>'+
+      '<button type="button" class="qk-kaydet" data-qk-bitti>Tamam</button>'+geri+'</div>';
+    qkDugumTasi('quizBox',document.getElementById('qkQuizYer'));
+    qkDugumTasi('germanList',document.getElementById('qkKelimeYer'));
+    const ka=document.getElementById('qkKelimeAc'),ky=document.getElementById('qkKelimeYer');
+    ka.onclick=()=>{ky.hidden=!ky.hidden;ka.classList.toggle('acik',!ky.hidden);ka.setAttribute('aria-expanded',String(!ky.hidden));};
+    g.querySelector('[data-qk-bitti]').onclick=qkKapat;
+    g.querySelector('[data-qk-geri]').onclick=()=>qkCiz('menu');
+    const ilk=g.querySelector('#qkQuizYer button:not(:disabled)')||g.querySelector('[data-qk-bitti]');
+    if(ilk)ilk.focus({preventScroll:true});
+    return;
+  }
   let html='<form class="qk-form" novalidate>';
   if(ekran==='harcama'){
     if(MCATS.out.indexOf(qkSonKat)<0)qkSonKat=MCATS.out[0];
@@ -7557,6 +7604,9 @@ function kabukBagla(){
   kartCfg=await sGet('d:kartlar')||{gizli:{},sira:{}};
   if(!kartCfg.gizli)kartCfg.gizli={};
   if(!kartCfg.sira)kartCfg.sira={};
+  /* Kültür tek karttı (data-k="kultur"); gizlenmişse yeni dört kart da gizli başlasın. */
+  if(kartCfg.gizli.kultur)['kultTarih','kultFilm','kultSanat','kultKitap'].forEach(k=>{
+    if(kartCfg.gizli[k]===undefined)kartCfg.gizli[k]=1;});
   document.getElementById('kartBtn').onclick=()=>{kartAcik=!kartAcik;renderKartlar();
     if(kartAcik){const kb=document.getElementById('kartBox');if(kb)kb.scrollIntoView({block:'start'});}};
   kartUygula(false);
@@ -7589,10 +7639,6 @@ function kabukBagla(){
   document.getElementById('tdSave').onclick=addBugunHarcama;
   ['tdAmt','tdNote'].forEach(id=>{const e=document.getElementById(id);
     if(e)e.onkeydown=ev=>{if(ev.key==='Enter'){ev.preventDefault();addBugunHarcama();}};});
-  /* 'Başka' hangi bölme açıksa ona sorar — beş ayrı düğme tek düğmeye indi. */
-  document.getElementById('kultNext').onclick=()=>{
-    const se=KULT.find(k=>k[0]===kultTab);if(se)se[4]();};
-  kultTab=await sGet('d:kultTab')||'bilgi';
   document.getElementById('deRefresh').onclick=async()=>{deExtra+=1;await sSet(K.de,{date:todayKey(),extra:deExtra});
     deQuiz={set:deExtra,i:0,right:0,wrong:0,pick:null};await saveQuiz();renderGerman();};   // yeni set -> quiz sıfırlanır
   document.getElementById('wtExport').onclick=exportCSV;

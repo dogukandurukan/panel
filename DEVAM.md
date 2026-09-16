@@ -60,6 +60,18 @@ render'ları aynı, yalnızca yerleri değişti.
 - **Mobilde input font-size 16px!important** (iOS zoom). Büyük sayı kutuları
   (`.ss-num`, `.qk-tutar input`) ayrıca ezildi — yeni büyük input eklersen aynısı.
 
+**16 Eyl akşam, kullanıcı isteğiyle:** (1) Bugün'deki "Almanca çalış" artık
+popup: `qkAc('almanca')` Takip'teki `#quizBox` ve `#germanList` DÜĞÜMLERİNİ
+sheet'e taşıyor, kapanınca geri koyuyor (`qkDugumTasi`/`qkDugumleriGeriKoy`) —
+ikinci quiz yok. (2) Keşif'in en üstünde **Kariyer**: İş Başvuruları + Bugünün
+3 İşi (başvurular Takip'ten çıktı). (3) Gelen Kutusu kısaldı: sayaçlar tek
+küçük satır, açıkta yalnızca insan mailleri; iş/bildirim/bülten/kapatılan
+"Diğer mailler" altında (`d:acik.gmailDiger`, varsayılan kapalı). (4) Kültür
+yine BEŞ AYRI KART (`gridKultur`, her kartta kendi "Başka"sı) — 15 Eyl'deki
+tek kart/sekme kararı kullanıcı tarafından geri alındı; `d:kultTab` artık
+okunmuyor. Eski `gizli.kultur` yeni dört karta bellekte yayılıyor. Tema
+olduğu gibi kalıyor (kullanıcı onayı).
+
 **Açık uçlar:** bayat/hata/boş durum ayrımı her feed kartında yok (yalnız Gmail
 bayatlığı + sade iskelet). Sıradaki ile Bugün kalan aynı dilimi iki kez
 gösterebiliyor. Gerçek iPhone'da safe-area/klavye/titreşim doğrulanmadı.
