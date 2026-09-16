@@ -1142,6 +1142,10 @@
   <div class="grid" id="gridSaglik">
 <section class="card" data-k="kilo" data-ad="Kilo Takibi"><div class="card-head"><div><p class="kicker">Vücut Ağırlığı · Bugün</p><h2 class="card-title">Kilo Takibi</h2></div><div class="meta" id="bwMeta">&mdash;</div></div>
       <div id="bwBox"></div></section>
+<section class="card" data-k="adim" data-ad="Adımlar"><div class="card-head"><div><p class="kicker">Sağlık · iPhone'dan</p><h2 class="card-title">Adımlar</h2></div><div class="meta" id="adimMeta">—</div></div>
+      <div id="adimBox"><div class="loading">Yükleniyor…</div></div>
+      <button class="katla" data-kat="adimKurulum">iPhone Kestirmesi kurulumu<span class="ok">▾</span></button>
+      <div id="adimKurulum" hidden></div></section>
 <section class="card" data-k="uyku" data-ad="Uyku Takibi"><div class="card-head"><div><p class="kicker">Uyku &middot; D&uuml;n gece</p><h2 class="card-title">Uyku Takibi</h2></div><div class="meta" id="slpMeta">&mdash;</div></div>
       <div id="sleepBox"></div></section>
 <section class="card" data-k="yemek" data-ad="Bugünün Yemekleri"><div class="card-head"><div><p class="kicker">Beslenme · Bugün</p><h2 class="card-title">Bugünün Yemekleri</h2></div><div class="meta"><button class="ibtn" id="tgtAc">hedefi düzenle ↓</button></div></div>
@@ -3036,6 +3040,77 @@ function renderHabits(){
     return '<div class="hab"><span class="hab-n">'+h.ad+'</span><span class="hab-dots">'+dots+'</span>'+
       '<span class="hab-s'+(n?'':' zero')+'">'+(n?'🔥 '+n+' '+h.birim:'—')+'</span></div>';
   }).join('')+'<div class="hab-foot">tik oranı %80+ sayılır · Pazar antrenmanda, koşusuz günler koşuda boş halka</div>';
+}
+
+/* ===== ADIMLAR (16 Eyl) =====
+   Web sayfası HealthKit'e erişemez. iPhone Kestirmeler otomasyonu son 7
+   günün adımlarını senkron gist'ine AYRI bir dosya olarak yazıyor
+   (saglik.json): {"v":1,"zaman":"YYYY-AA-GG SS:DD","adim":{"YYYY-AA-GG":8423,...}}.
+   Ayrı dosya bilerek: syncPush yalnızca panel-data.json'u PATCH'liyor, gist'in
+   diğer dosyalarına dokunmuyor — Kestirme ile panel birbirinin yazdığını ezemez.
+   Panel her syncPull'da dosyayı okuyup d:adim'e ({tarih:adım}) işliyor; geçmiş
+   oradan senkronla her cihaza gidiyor, Kestirme yalnızca son 7 günü taşısa da
+   eski günler kaybolmuyor. Veri repoya hiç girmez. Kalori hedefine ETKİ ETMEZ. */
+const ADIM_DOSYA='saglik.json';
+let adimLog={},adimGuncel='';
+async function adimYukle(){adimLog=await sGet('d:adim')||{};adimGuncel=await sGet('d:adimGuncel')||'';renderAdim();}
+async function adimUygula(dosya){
+  if(!dosya||dosya.truncated)return 0;
+  let p;try{p=JSON.parse(dosya.content||'{}');}catch(e){return 0;}
+  let g=p&&p.adim;
+  if(typeof g==='string'){try{g=JSON.parse(g);}catch(e){g=null;}}   // Kestirme sözlüğü metin olarak da gönderebilir
+  if(!g||typeof g!=='object')return 0;
+  adimLog=await sGet('d:adim')||{};                                // senkron az önce değiştirmiş olabilir
+  const bugun=todayKey(),sinir=dayBack(60);let n=0;
+  for(const k in g){
+    if(!/^\d{4}-\d{2}-\d{2}$/.test(k)||k>bugun||k<sinir)continue;
+    /* sayı gelirse olduğu gibi; metin gelirse TR biçimi ("6.100", "8.423,4") çözülür */
+    const v=typeof g[k]==='number'?Math.round(g[k])
+      :Math.round(Number(String(g[k]).trim().replace(/[.,](?=\d{3}(?!\d))/g,'').replace(',','.')));
+    if(!(v>=0&&v<200000))continue;
+    if(adimLog[k]!==v){adimLog[k]=v;n++;}
+  }
+  if(n)await sSet('d:adim',adimLog);
+  const z=(typeof p.zaman==='string'&&/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}/.test(p.zaman))?p.zaman.slice(0,16):'';
+  if(z&&z!==adimGuncel){adimGuncel=z;await sSet('d:adimGuncel',z);}
+  renderAdim();
+  return n;
+}
+const adimFmt=n=>Math.round(n).toLocaleString('tr-TR');
+function renderAdim(){
+  const el=document.getElementById('adimBox');if(!el)return;
+  const tk=todayKey(),bugun=adimLog[tk],ag=feedAge(adimGuncel);
+  const son7=[];for(let i=6;i>=0;i--){const k=dayBack(i);son7.push([k,adimLog[k]]);}
+  const dolu=son7.filter(x=>x[1]!=null),ort=dolu.length?dolu.reduce((a,x)=>a+x[1],0)/dolu.length:null;
+  const meta=document.getElementById('adimMeta');if(meta)meta.textContent=ag?ag.txt:'—';
+  if(!Object.keys(adimLog).length){
+    veriDurumu('adim','yok');
+    el.innerHTML='<div class="empty">iPhone Kestirmesi henüz veri göndermedi.</div>'+
+      '<div class="cfg-note">Kurulum aşağıda. Panel adımları senkron açılınca, gist\'ten okur.</div>';
+  }else{
+    veriDurumu('adim',(ag&&ag.dk>30*60)?'eski':'guncel',ag&&ag.txt);
+    const mx=Math.max.apply(null,dolu.map(x=>x[1]).concat([1]));
+    el.innerHTML='<div class="slp-sum" style="margin-top:0;border-top:0;padding-top:0">'+
+      '<div><div class="slp-dur">'+(bugun!=null?adimFmt(bugun):'—')+'</div>'+
+      '<div class="slp-note">bugün'+(bugun!=null&&adimGuncel?' · '+esc(adimGuncel.slice(11))+' itibarıyla':' · henüz gelmedi')+'</div></div>'+
+      '<div class="slp-streak">'+(ort!=null?'7g ort. '+adimFmt(ort)+'<br><span style="color:var(--text-secondary)">'+dolu.length+' günün ortalaması</span>':'')+'</div></div>'+
+      '<div class="slp-bars" role="img" aria-label="Son 7 günün adımları">'+son7.map(([k,v])=>
+        '<div class="slp-bar'+(v!=null?' ok':'')+'" title="'+k+(v!=null?' · '+adimFmt(v)+' adım':' · kayıt yok')+'">'+
+        '<i style="height:'+(v!=null?Math.max(6,v/mx*100):0)+'%"></i><span>'+SLP_DAYS[new Date(k+'T12:00:00').getDay()]+'</span></div>').join('')+'</div>';
+  }
+  const kur=document.getElementById('adimKurulum');
+  if(kur){
+    const gid=syncCfg&&syncCfg.gistId;
+    kur.innerHTML='<ol class="pw-adim">'+
+      '<li>GitHub\'da yeni bir fine-grained token oluştur: yalnızca <b>Gists: Read and write</b>.</li>'+
+      '<li>Kestirmeler\'de "Panel adım gönder" kestirmesini kur (Sağlık örnekleri → gün gün → gist\'e <b>'+ADIM_DOSYA+'</b>).</li>'+
+      '<li>Otomasyon: her akşam belirli saatte, "Hemen Çalıştır".</li></ol>'+
+      (gid?'<div class="qk-lbl" style="margin-top:8px">Kestirmede kullanılacak gist kimliği</div>'+
+        '<div class="pw-key" id="adimGist">'+esc(gid)+'</div><div class="sync-row"><button class="ibtn" id="adimGistKopya">Kopyala</button></div>'
+        :'<div class="cfg-note">Önce ⇅ Senkron\'u bu cihazda kur; gist kimliği burada görünür.</div>');
+    const kb=document.getElementById('adimGistKopya');
+    if(kb)kb.onclick=()=>navigator.clipboard.writeText(gid).then(()=>{kb.textContent='Kopyalandı';setTimeout(()=>kb.textContent='Kopyala',1500);}).catch(()=>{});
+  }
 }
 
 /* ===== TAKVİYELER (16 Eyl) =====
@@ -6562,6 +6637,7 @@ async function syncPull(sessiz){
       if(baska&&baska!==syncCfg.gistId){syncCfg.gistId=baska;await syncSaveCfg();syncBusy=false;return syncPull(sessiz);}
     }
     const degisen=mergeRemote(paket.data);
+    try{await adimUygula(g.files[ADIM_DOSYA]);}catch(e){}   // Kestirme'nin yazdığı ayrı dosya
     syncCfg.last=Date.now();await syncSaveCfg();
     syncMsg='';renderSyncState();
     if(degisen&&!sessiz)syncReload();
@@ -6677,7 +6753,7 @@ async function initSync(){
   document.getElementById('syncBtn').onclick=openSyncBox;
   if(!syncCfg||!syncCfg.token)return;
   await syncPull();
-  renderYok();
+  renderYok();renderAdim();
   await syncPush();                                    // bu cihazda biriken yenilikleri de gönder
   setInterval(()=>syncPull(),SYNC_POLL);
   document.addEventListener('visibilitychange',()=>{if(!document.hidden)syncPull();});
@@ -7253,7 +7329,7 @@ function kabukBagla(){
   document.getElementById('jobsCfg').onclick=openJobsCfg;
   jobProfile=await sGet(K.jobProfile)||null;jobsApplied=await sGet(K.jobsApplied)||[];myApps=await sGet(K.myApps)||[];retler=await sGet('d:retler')||[];retGizli=await sGet('d:retGizli')||[];retElle=await sGet('d:retElle')||[];oneriKapali=await sGet('d:oneriKapali')||{};offGunler=await sGet('d:off')||{};
   document.getElementById('placeName').textContent=PLACE.name;
-  renderTasks();await loadSched();await loadYok();await loadMorning();await renderRun();await loadWorkout();renderWtLog();await loadMeals();await loadWater();await takviyeYukle();await loadSleep();await loadBW();await loadMoney();await renderBugunHarcama();await renderHaftalik();await renderOneri();loadHabits();await initSync();
+  renderTasks();await loadSched();await loadYok();await loadMorning();await renderRun();await loadWorkout();renderWtLog();await loadMeals();await loadWater();await takviyeYukle();await adimYukle();await loadSleep();await loadBW();await loadMoney();await renderBugunHarcama();await renderHaftalik();await renderOneri();loadHabits();await initSync();
   renderFacts();renderFilm();renderArtist();renderBook();renderHistory();kulturYukle();renderKult();renderGerman();renderNews();renderTR();renderRetler();renderWatch();renderUS();renderWorldIdx();renderGold();renderWorld();renderMktSummary();renderFinNote();
   ['watchList','usList','idxList'].forEach(stkTiklaBagla);
   loadFX(false);loadBorsaJson();loadBasvuru();loadGmailJson();loadFactsJson();loadAgents(false);loadWx();loadJobsJson();

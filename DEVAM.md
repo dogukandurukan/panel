@@ -298,12 +298,16 @@ Actions log'una da şirket adı/konu basılmaz — log herkese açık.
    Kreatin serisi Alışkanlık Serileri'nde (listede olduğu sürece). Hızlı
    Kayıt'ta "Takviye", Bugün'de 19:00 sonrası eksik varsa öneri satırı.
    Doz/saat bilerek yok. `d:supp:` RESET_ONEK'te.
-4. **Yürüyüş / adım takibi** — 16 Eyl'de kullanıcı iPhone Sağlık'tan adım
-   çekmeyi sordu. Web sayfası HealthKit'e erişemez; tek yol iOS Kestirmeler
-   otomasyonu (Sağlık örneği al → gizli gist'e yaz). DİKKAT: `syncPush`
-   gist'i yerel anlık görüntüyle EZİYOR, dışarıdan yazılan anahtar panel
-   pull etmeden push ederse kaybolur — Kestirme'yi bağlamadan önce push'u
-   "önce çek, birleştir, sonra yaz" yapmak gerekir. Kullanıcı onayı bekleniyor.
+4. **Adım takibi — 16 Eyl'de panel tarafı yapıldı**, kullanıcı iPhone
+   Kestirmesini kuruyor. Web sayfası HealthKit'e erişemez; Kestirme son 7
+   günü senkron gist'ine AYRI dosya olarak yazıyor: `saglik.json` =
+   `{"v":1,"zaman":"YYYY-AA-GG SS:DD","adim":{"YYYY-AA-GG":n}}` (adim metin
+   olarak da gelebilir; TR sayı biçimi çözülüyor). `syncPull` dosyayı
+   `adimUygula` ile `d:adim` ({tarih:n}) + `d:adimGuncel`'e işliyor. Ayrı dosya
+   bilerek: `syncPush` yalnızca panel-data.json'u PATCH'liyor, iki yazıcı
+   birbirini ezemez. Kart: Takip › Sağlık › Adımlar (bugün, 7 gün, ort.,
+   30 sa'ten eski = rozet). Kalori hedefine ETKİ ETMEZ. Mesafe (km) henüz yok —
+   Kestirme'de birim/yerel biçim sorunu çıkarmasın diye ilk sürüm yalnız adım.
    Eski not: **Yürüyüş takibi (`d:walk:TARİH`)** — sabah/akşam köpek + gym gidiş-dönüş.
    Kalori hedefine ETKİ ETMEZ (yük zaten 2950 tabanına dahil).
 5. **Kültür derinliği** — 7 Eylül'de dört listeye 23'er kayıt daha yazıldı;
