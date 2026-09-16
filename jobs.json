@@ -1,100 +1,102 @@
 {
- "updated": "2026-09-15 12:46",
+ "updated": "2026-09-16 12:40",
  "ok": true,
  "count": 3,
- "pool": 29,
+ "pool": 22,
  "items": [
   {
-   "title": "Senior DevOps Engineer (all genders) | Data Platform",
-   "company": "Real Digital",
+   "title": "Senior ML Engineer (Token Factory)",
+   "company": "Nebius",
    "location": "Berlin",
-   "loc_raw": "Remote oder Köln / Darmstadt / Düsseldorf / Berlin",
+   "loc_raw": "Berlin",
    "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/real-digital/remote-senior-devops-engineer-all-genders-data-platform-245703",
+   "url": "https://www.arbeitnow.com/jobs/companies/nebius/senior-ml-engineer-token-factory-berlin-253386",
    "source": "Arbeitnow",
-   "posted": "2026-09-15",
+   "posted": "2026-09-16",
    "days": 0,
    "skills": [
     "python",
-    "sql",
-    "azure",
-    "airflow",
-    "dbt",
-    "ci/cd"
-   ],
-   "german": false,
-   "focus": "pipeline",
-   "summary": "Anstellungsdetails Permanent Contract, Full- or Part-Time, Remote or Cologne / Düsseldorf / Darmstadt / Berlin Info Who we areWe are the tech powerhouse behind Kaufland’s international online marketplaces and a company within the Schwarz Group. Driven by a sta",
-   "keywords": [
-    "pipeline",
-    "cost"
-   ],
-   "score": 112
-  },
-  {
-   "title": "Senior Software Engineer (Data Platform, C++)",
-   "company": "Nebius",
-   "location": "UK",
-   "loc_raw": "London",
-   "remote": false,
-   "url": "https://www.arbeitnow.co.uk/jobs/companies/nebius/senior-software-engineer-data-platform-c-london-46375",
-   "source": "Arbeitnow",
-   "posted": "2026-09-15",
-   "days": 0,
-   "skills": [
-    "sql",
-    "spark",
-    "airflow",
-    "etl",
+    "ci/cd",
     "llm"
    ],
    "german": false,
-   "focus": "pipeline",
+   "focus": "ml",
    "summary": "About Nebius: Nebius is leading a new era in cloud infrastructure for the global AI economy. We are building a full-stack AI cloud platform that supports developers and enterprises from data and model training through to production deployment, without the cost",
    "keywords": [
     "enterprise",
     "cost",
     "optimization",
     "pipeline",
-    "stakeholder",
-    "automation",
-    "root cause"
+    "startup"
    ],
-   "score": 71
+   "score": 94
   },
   {
-   "title": "Staff Engineer — Data Platform",
-   "company": "Yuno",
-   "location": "UK",
-   "loc_raw": "London",
+   "title": "Senior Business Intelligence Lead (all genders)",
+   "company": "Reev",
+   "location": "Almanya",
+   "loc_raw": "München",
    "remote": false,
-   "url": "https://www.arbeitnow.co.uk/jobs/companies/yuno/staff-engineer-data-platform-london-429735",
+   "url": "https://www.arbeitnow.com/jobs/companies/reev/senior-business-intelligence-lead-all-genders-munchen-274972",
+   "source": "Arbeitnow",
+   "posted": "2026-09-16",
+   "days": 0,
+   "skills": [
+    "sql",
+    "spark",
+    "dbt",
+    "etl",
+    "data warehouse"
+   ],
+   "german": false,
+   "focus": "ml",
+   "summary": "Your Mission EV charging is evolving from a niche technology into everyday infrastructure. As reev grows, teams increasingly need reliable, consistently defined metrics. Today, different dashboards, reporting dates, filters, and assumptions can produce differe",
+   "keywords": [
+    "dashboard",
+    "finance",
+    "pipeline",
+    "stakeholder",
+    "automation",
+    "data quality",
+    "governance",
+    "saas",
+    "energy"
+   ],
+   "score": 86
+  },
+  {
+   "title": "Data Platform Engineer Working Student (m/w/d)",
+   "company": "Trusteq Gmbh",
+   "location": "Almanya",
+   "loc_raw": "München",
+   "remote": false,
+   "url": "https://www.arbeitnow.com/jobs/companies/trusteq-gmbh/data-platform-engineer-working-student-munchen-195978",
    "source": "Arbeitnow",
    "posted": "2026-09-15",
-   "days": 0,
+   "days": 1,
    "skills": [
     "python",
     "sql",
-    "spark",
-    "airflow",
-    "dbt",
-    "llm"
+    "databricks",
+    "azure",
+    "etl",
+    "ci/cd"
    ],
    "german": false,
    "focus": "pipeline",
-   "summary": "Europe · Remote · Full Time · Staff-Level Individual Contributor · +8 Years of Experience Who We Are At Yuno, we are building the payment infrastructure that allows all companies to participate in the global market. Founded by seasoned experts from the payment",
+   "summary": "YOUR TASKS You support the design and development of Databricks-native data platforms and lakehouse architectures for internal projects and client engagements. You contribute to implementing medallion architectures (Bronze, Silver, and Gold), including Auto Lo",
    "keywords": [
-    "scalab",
+    "governance",
     "pipeline",
-    "real time",
-    "data quality",
-    "optimization",
-    "finance"
+    "data quality"
    ],
-   "score": 65
+   "score": 80
   }
  ],
  "seen": [
+  "https://www.arbeitnow.com/jobs/companies/nebius/senior-ml-engineer-token-factory-berlin-253386",
+  "https://www.arbeitnow.com/jobs/companies/reev/senior-business-intelligence-lead-all-genders-munchen-274972",
+  "https://www.arbeitnow.com/jobs/companies/trusteq-gmbh/data-platform-engineer-working-student-munchen-195978",
   "https://www.arbeitnow.com/jobs/companies/real-digital/remote-senior-devops-engineer-all-genders-data-platform-245703",
   "https://www.arbeitnow.co.uk/jobs/companies/nebius/senior-software-engineer-data-platform-c-london-46375",
   "https://www.arbeitnow.co.uk/jobs/companies/yuno/staff-engineer-data-platform-london-429735",
