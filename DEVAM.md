@@ -1,4 +1,4 @@
-# Panel — devir notu · 15 Eylül 2026
+# Panel — devir notu · 16 Eylül 2026
 
 Kalıcı kurallar `CLAUDE.md`'de (repo public, uydurma gösterge yok, tek dosya,
 iki tema, LinkedIn otomasyonu yok). **Bu dosya: panel bugün ne durumda, sırada
@@ -25,6 +25,25 @@ yazılır, sebebi yazılmaz. Depo herkese açık; sağlık bilgisi 1. kuralın
 yasakladığı kişisel verinin en hassas türü ve git geçmişi kalıcı.
 
 ---
+
+## 0. Sırada ne var (16 Eyl)
+
+**Kullanıcı panelin GÖRSEL TASARIMI için dışarıdan fikir topluyor.** Masaüstünde
+`panel-handoff.md` var (bu depoda değil): panelin kısıtlarını, 22 kartın
+aktif/pasif envanterini, renk/tipografi token'larını ve 12 soruyu içeren bir
+tasarım brifingi. Başka bir yapay zekâya yapıştırıp **yerleşim, hiyerarşi,
+kart tipolojisi, durum dili, ikonografi** önerileri alacak.
+
+Gelen önerilerle çalışırken:
+- **Önce kısıt süzgeci.** Gelen fikirlerin bir kısmı framework, ikon paketi,
+  grafik kütüphanesi ya da build adımı isteyecek — hepsi CLAUDE.md'nin 3.
+  kuralına takılır. Fikir iyiyse kısıt içinde nasıl yapılacağını çıkar,
+  kütüphane önerme.
+- **İki tema.** Her görsel öneri `almanak` ve `hud`'da ayrı ayrı doğrulanacak.
+- **Uydurma gösterge yok** (2. kural): veriye bağlanmayan süs eklenmez.
+- Kullanıcının kendi teşhisi: "22 kart aynı ağırlıkta görünüyor, gözün nereye
+  gideceği belli değil" — aktif (senden bir şey isteyen) ve pasif (gösteren)
+  kartların görsel olarak ayrılması en olası iş.
 
 ## 1. Panel bugün ne durumda
 
