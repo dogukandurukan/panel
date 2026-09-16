@@ -90,6 +90,14 @@ alınamazsa "Alınamadı" rozeti. `index.html` 620 → 471 KB. **Dosyada her ö�
 satır** — elle eklerken JSON geçerliliğini `python3 -m json.tool kultur.json`
 ile kontrol et.
 
+**Antrenman kısayolları (16 Eyl gece):** Şimdi kartında SPOR dilimi için
+düğme **Başla** (cevap "başladın mı? evet" demek; ağırlık gününde Antrenman
+Modu'nu açar), cevaplanınca "Başladın · SS:DD", seans açıksa "Antrenman moduna
+dön". Hızlı Kayıt menüsünün İLK seçeneği **Antrenman**: günün programı, set
+ilerlemesi, başla/devam (`sessBaslat`) ve "Bugün yapamadım" (`exYapamadim`).
+iPhone notu: ekran kilitliyken dinlenme uyarısı gelmez, Safari titreşim
+desteklemez — kullanıcıya söylendi.
+
 **Açık uçlar:** Gerçek iPhone'da safe-area/klavye/titreşim doğrulanmadı.
 `design-references/` klasörü yerelde, repoda değil.
 

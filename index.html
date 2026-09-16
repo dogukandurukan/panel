@@ -6880,13 +6880,17 @@ function renderSimdi(){
     html='<div class="simdi-ust"><span class="simdi-k"><i></i>Şimdi</span>'+
       (slotlar.length?'<span class="simdi-say">'+cevapli.length+' / '+slotlar.length+'</span>':'')+'</div>'+
       '<div class="simdi-ad">'+esc(g.ad)+'</div><div class="simdi-saat">'+esc(g.t0)+' – '+esc(g.t1)+'</div>'+seg;
+    /* Spor diliminde "Evet" antrenmanı BAŞLATIYOR (yokCevapla ağırlık gününde
+       Antrenman Modu'nu açar); "Tamamladım" yanıltıcıydı. */
+    const spor=YOK[plan[act]]==='spor';
     if(takip&&d==='bekliyor'){
-      html+='<div class="eylem"><button class="btn-ana" data-simdi="ok">'+ikon('tik')+'Tamamladım</button>'+
+      html+='<div class="eylem"><button class="btn-ana" data-simdi="ok">'+(spor?ikon('dambil')+'Başla':ikon('tik')+'Tamamladım')+'</button>'+
         '<button class="btn-ikincil" data-simdi="skip">'+ikon('atla')+'Atladım</button></div>';
     }else if(takip){
       const c=yokCevap(act);
-      html+='<div class="durum-pill">'+durumRozeti(d)+'<span>'+DURUM_AD[d]+(c&&c.t?' · '+esc(c.t):'')+'</span>'+
+      html+='<div class="durum-pill">'+durumRozeti(d)+'<span>'+(spor&&d==='tamam'?'Başladın':DURUM_AD[d])+(c&&c.t?' · '+esc(c.t):'')+'</span>'+
         '<button class="geri" data-simdi-geri="'+act+'">geri al</button></div>';
+      if(spor&&sess.on)html+='<div class="eylem"><button class="btn-ana" id="simdiDevam">'+ikon('dambil')+'Antrenman moduna dön</button></div>';
     }else{
       html+='<div class="simdi-not">Bu dilim yoklamada takip edilmiyor.</div>';
     }
@@ -6905,6 +6909,7 @@ function renderSimdi(){
   el.innerHTML=html;
   el.querySelectorAll('[data-simdi]').forEach(b=>b.onclick=()=>{b.disabled=true;yokCevapla(act,b.dataset.simdi);});
   el.querySelectorAll('[data-simdi-geri]').forEach(b=>b.onclick=()=>yokGeriAl(+b.dataset.simdiGeri));
+  const dv=document.getElementById('simdiDevam');if(dv)dv.onclick=()=>ssTamGoster(true);
   const gk=document.getElementById('simdiGeciken');
   if(gk)gk.onclick=()=>kartaGit(document.querySelector('[data-k="yoklama"]'));
 }
@@ -7028,6 +7033,7 @@ function toastGoster(metin,eylem){
    harcamaEkle · bwKaydet · ogunPorsiyon · suAyarla · uykuKaydet · basvuruEkle.
    Kayıt sonrası ilgili kart zaten o fonksiyonun içinde yeniden çiziliyor. */
 const QK={
+  antrenman:{ad:'Antrenman',ik:'dambil',alt:'Günün antrenmanı'},
   harcama:{ad:'Harcama',ik:'kart',alt:'Ne kadar harcadın?'},
   kilo:{ad:'Kilo',ik:'terazi',alt:'Bugünkü vücut ağırlığın'},
   ogun:{ad:'Öğün',ik:'catal',alt:'Bugünün planından ne kadar yedin?'},
@@ -7088,6 +7094,38 @@ function qkCiz(ekran){
     return;
   }
   b.textContent=QK[ekran].ad;alt.textContent=QK[ekran].alt;
+  if(ekran==='antrenman'){
+    /* Günün antrenmanı: liste + başlat/devam. Yazma yolları mevcut:
+       sessBaslat (Antrenman Modu) ve exYapamadim (d:yok'a atladı). */
+    const tk=todayKey(),prg=gunBugun(),ex=gununEx(),agir=ex.some(e=>setHedef(e[1]));
+    const si=antSlotIdx(),atladi=si>-1&&yok[si]&&yok[si].a==='skip',muaf=muafMi(tk);
+    alt.textContent=prg.title||DAYNAMES[dow];
+    const satirlar=ex.map((e,i)=>{
+      const h=setHedef(e[1]),adet=((sess.s&&sess.s[i])||[]).length,bitti=!!exDone[i];
+      const sag=bitti?'✓ tamam':(h&&adet?adet+'/'+h.set+' set':esc(e[1]));
+      return '<div class="qk-ogun"><div class="on"><span>'+esc(e[0])+'</span>'+
+        (bitti||adet?'<b style="text-transform:none;letter-spacing:0">'+esc(e[1])+'</b>':'')+'</div>'+
+        '<span class="kt" style="font-family:var(--mono);font-size:12px;color:'+(bitti?'var(--success)':'var(--text-secondary)')+'">'+sag+'</span></div>';
+    }).join('');
+    let eylem='';
+    if(muaf)eylem='<div class="durum-pill">'+durumRozeti('muaf')+'<span>Bugün muaf — antrenman beklenmiyor</span></div>';
+    else if(agir&&!atladi){
+      const etiket=sess.on||(sess.bas&&!sess.bitti)?'Antrenmana devam et':(sess.bitti?'Antrenman modunu yeniden aç':'Antrenmana başla');
+      eylem='<button type="button" class="qk-kaydet" id="qkAntBasla">'+esc(etiket)+'</button>';
+      if(sess.bitti)eylem='<div class="durum-pill">'+durumRozeti('tamam')+'<span>Antrenman '+esc(sess.bitti)+'’de bitti</span></div>'+eylem;
+    }else if(!agir)eylem='<div class="qk-ipucu">Bugün set/kg ile kaydedilen ağırlık antrenmanı yok.</div>';
+    if(atladi)eylem='<div class="durum-pill">'+durumRozeti('atlandi')+'<span>Bugün yapamadım olarak işaretli</span></div>'+eylem;
+    g.innerHTML='<div class="qk-form">'+(ex.length?'<div>'+satirlar+'</div>':'<div class="kalan-bos">Bugünün programında hareket yok.</div>')+eylem+
+      (si>-1&&!muaf?'<button type="button" class="btn-sade" id="qkAntYapamadim" style="min-height:48px">'+(atladi?'Yapamadım işaretini geri al':'Bugün yapamadım')+'</button>':'')+
+      geri+'</div>';
+    const bas=document.getElementById('qkAntBasla');
+    if(bas)bas.onclick=async()=>{qkKapat();await sessBaslat();};
+    const yp=document.getElementById('qkAntYapamadim');
+    if(yp)yp.onclick=async()=>{await exYapamadim();qkCiz('antrenman');toastGoster(atladi?'İşaret geri alındı':'Bugün yapamadım olarak kaydedildi');};
+    g.querySelector('[data-qk-geri]').onclick=()=>qkCiz('menu');
+    const f=bas||yp||g.querySelector('[data-qk-geri]');if(f)f.focus({preventScroll:true});
+    return;
+  }
   if(ekran==='almanca'){
     g.innerHTML='<div class="qk-form"><div class="qk-quiz" id="qkQuizYer"></div>'+
       '<button type="button" class="katla" id="qkKelimeAc" aria-expanded="false" aria-controls="qkKelimeYer">Günün 5 kelimesi<span class="ok">▾</span></button>'+
