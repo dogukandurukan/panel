@@ -1,99 +1,99 @@
 {
- "updated": "2026-09-16 12:40",
+ "updated": "2026-09-17 12:48",
  "ok": true,
  "count": 3,
- "pool": 22,
+ "pool": 32,
  "items": [
   {
-   "title": "Senior ML Engineer (Token Factory)",
-   "company": "Nebius",
+   "title": "Senior Analytics Engineer - Run & Grow",
+   "company": "SumUp",
    "location": "Berlin",
-   "loc_raw": "Berlin",
+   "loc_raw": "Berlin, Germany",
    "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/nebius/senior-ml-engineer-token-factory-berlin-253386",
+   "url": "https://www.arbeitnow.com/jobs/companies/sumup/senior-analytics-engineer-run-grow-berlin-116362",
    "source": "Arbeitnow",
    "posted": "2026-09-16",
-   "days": 0,
-   "skills": [
-    "python",
-    "ci/cd",
-    "llm"
-   ],
-   "german": false,
-   "focus": "ml",
-   "summary": "About Nebius: Nebius is leading a new era in cloud infrastructure for the global AI economy. We are building a full-stack AI cloud platform that supports developers and enterprises from data and model training through to production deployment, without the cost",
-   "keywords": [
-    "enterprise",
-    "cost",
-    "optimization",
-    "pipeline",
-    "startup"
-   ],
-   "score": 94
-  },
-  {
-   "title": "Senior Business Intelligence Lead (all genders)",
-   "company": "Reev",
-   "location": "Almanya",
-   "loc_raw": "München",
-   "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/reev/senior-business-intelligence-lead-all-genders-munchen-274972",
-   "source": "Arbeitnow",
-   "posted": "2026-09-16",
-   "days": 0,
+   "days": 1,
    "skills": [
     "sql",
-    "spark",
     "dbt",
-    "etl",
+    "snowflake",
     "data warehouse"
    ],
    "german": false,
    "focus": "ml",
-   "summary": "Your Mission EV charging is evolving from a niche technology into everyday infrastructure. As reev grows, teams increasingly need reliable, consistently defined metrics. Today, different dashboards, reporting dates, filters, and assumptions can produce differe",
+   "summary": "The Run & Grow Tribe of Tribes powers the systems, insights, and experiences that keep millions of merchants engaged, successful, and growing with SumUp across every market we operate in. We're at a genuine inflection point in how we use data, moving from frag",
    "keywords": [
-    "dashboard",
-    "finance",
     "pipeline",
-    "stakeholder",
-    "automation",
-    "data quality",
-    "governance",
-    "saas",
-    "energy"
+    "optimisation",
+    "scalab",
+    "data quality"
    ],
-   "score": 86
+   "score": 100
   },
   {
-   "title": "Data Platform Engineer Working Student (m/w/d)",
-   "company": "Trusteq Gmbh",
-   "location": "Almanya",
-   "loc_raw": "München",
+   "title": "Data Platform Engineer",
+   "company": "SumUp",
+   "location": "Berlin",
+   "loc_raw": "Berlin, Germany",
    "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/trusteq-gmbh/data-platform-engineer-working-student-munchen-195978",
+   "url": "https://www.arbeitnow.com/jobs/companies/sumup/data-platform-engineer-berlin-462000",
    "source": "Arbeitnow",
-   "posted": "2026-09-15",
+   "posted": "2026-09-16",
    "days": 1,
    "skills": [
     "python",
-    "sql",
     "databricks",
-    "azure",
-    "etl",
-    "ci/cd"
+    "airflow",
+    "dbt",
+    "snowflake",
+    "etl"
    ],
    "german": false,
    "focus": "pipeline",
-   "summary": "YOUR TASKS You support the design and development of Databricks-native data platforms and lakehouse architectures for internal projects and client engagements. You contribute to implementing medallion architectures (Bronze, Silver, and Gold), including Auto Lo",
+   "summary": "As part of the Platform tribe, you will help build a self-service, AI-Ready Data Platform. The Data Platform team supports our next big bets: Data, AI, and real-time analytics. We are a team focused on building scalable, reliable infrastructure to enable our g",
    "keywords": [
-    "governance",
-    "pipeline",
-    "data quality"
+    "self-service",
+    "real-time",
+    "scalab",
+    "cost",
+    "stakeholder",
+    "optimization",
+    "automation"
    ],
-   "score": 80
+   "score": 100
+  },
+  {
+   "title": "Analytics Engineer - Marketing & Growth",
+   "company": "Pergolux",
+   "location": "Berlin",
+   "loc_raw": "Berlin | Global Team",
+   "remote": false,
+   "url": "https://www.arbeitnow.com/jobs/companies/pergolux/analytics-engineer-marketing-growth-berlin-222553",
+   "source": "Arbeitnow",
+   "posted": "2026-09-17",
+   "days": 0,
+   "skills": [
+    "python",
+    "sql",
+    "looker",
+    "dbt",
+    "snowflake"
+   ],
+   "german": false,
+   "focus": "business",
+   "summary": "Senior Analytics Engineer Marketing & Growth : You will own and architect the systems and definitions that determine how every euro of marketing spend is measured, audited, and optimized. Your work will directly shape how we understand acquisition performance,",
+   "keywords": [
+    "stakeholder",
+    "cost"
+   ],
+   "score": 94
   }
  ],
  "seen": [
+  "https://www.arbeitnow.com/jobs/companies/sumup/senior-analytics-engineer-run-grow-berlin-116362",
+  "https://www.arbeitnow.com/jobs/companies/sumup/data-platform-engineer-berlin-462000",
+  "https://www.arbeitnow.com/jobs/companies/pergolux/analytics-engineer-marketing-growth-berlin-222553",
   "https://www.arbeitnow.com/jobs/companies/nebius/senior-ml-engineer-token-factory-berlin-253386",
   "https://www.arbeitnow.com/jobs/companies/reev/senior-business-intelligence-lead-all-genders-munchen-274972",
   "https://www.arbeitnow.com/jobs/companies/trusteq-gmbh/data-platform-engineer-working-student-munchen-195978",
