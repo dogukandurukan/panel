@@ -1,88 +1,110 @@
 {
- "updated": "2026-09-18 12:22",
+ "updated": "2026-09-19 12:10",
  "ok": true,
  "count": 3,
- "pool": 41,
+ "pool": 17,
  "items": [
   {
-   "title": "Data Engineer (f/m/d)",
-   "company": "Climate",
+   "title": "Senior Marketing Data Analyst Pricing (all genders)",
+   "company": "hellofresh",
    "location": "Berlin",
-   "loc_raw": "Berlin HQ",
+   "loc_raw": "Berlin, Berlin",
    "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/climate/data-engineer-berlin-hq-246069",
+   "url": "https://www.arbeitnow.com/jobs/companies/hellofresh/senior-marketing-data-analyst-pricing-all-genders-berlin-berlin-194706",
    "source": "Arbeitnow",
-   "posted": "2026-09-17",
+   "posted": "2026-09-18",
    "days": 1,
    "skills": [
     "python",
     "sql",
-    "ci/cd",
-    "git",
-    "llm"
+    "spark",
+    "databricks",
+    "power bi",
+    "tableau"
    ],
    "german": false,
-   "focus": "ml",
-   "summary": "Job description We are currently seeking a Data Engineer for our international and diverse Climate Policy Team (CPT). The team is engaged in various projects on climate change mitigation, in particular on energy system transformation, the 1.5°C global warming ",
+   "focus": "business",
+   "summary": "The role As a Senior Marketing Data Analyst on our Pricing Analytics team within the Global Marketing Analytics organisation, you'll play a pivotal role in driving data-informed pricing and discount decisions at HelloFresh. Based in our Berlin Headquarters, yo",
    "keywords": [
-    "energy",
+    "stakeholder",
+    "finance",
+    "experimentation",
+    "a/b",
     "pipeline",
-    "automation",
-    "data quality",
-    "optimization"
+    "scalab"
    ],
-   "score": 94
+   "score": 112
   },
   {
-   "title": "AI Engineer - Data",
-   "company": "Almedia",
+   "title": "Senior Data Engineer, Analytical Data Platform, Inteligent Platforms (all genders)",
+   "company": "hellofresh",
    "location": "Berlin",
-   "loc_raw": "Berlin",
+   "loc_raw": "Berlin, Berlin",
    "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/almedia/ai-engineer-data-berlin-457327",
+   "url": "https://www.arbeitnow.com/jobs/companies/hellofresh/senior-data-engineer-analytical-data-platform-inteligent-platforms-all-genders-berlin-berlin-207118",
    "source": "Arbeitnow",
-   "posted": "2026-09-17",
+   "posted": "2026-09-18",
    "days": 1,
    "skills": [
     "python",
     "sql",
-    "ci/cd",
-    "llm"
+    "spark",
+    "databricks",
+    "airflow",
+    "snowflake"
    ],
    "german": false,
-   "focus": "ml",
-   "summary": "This isn’t your regular job. Almedia is a place where those who want to push harder can accelerate their careers faster than anywhere else. We’re aiming to become Germany’s second bootstrapped unicorn. Almedia is already Europe’s #3 fastest-growing company in ",
+   "focus": "pipeline",
+   "summary": "About the role At HelloFresh, data is at the heart of everything we do — from the moment a customer places an order to the way we forecast demand, optimize our supply chain, and personalize experiences for millions of people. Making that data fast, reliable, a",
    "keywords": [
-    "pipeline",
-    "startup"
-   ],
-   "score": 88
-  },
-  {
-   "title": "Senior Applied AI Engineer, AI Platform (f/m/d)",
-   "company": "bunch",
-   "location": "Berlin",
-   "loc_raw": "Berlin",
-   "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/bunch/senior-applied-ai-engineer-ai-platform-berlin-162773",
-   "source": "Arbeitnow",
-   "posted": "2026-09-17",
-   "days": 1,
-   "skills": [
-    "llm"
-   ],
-   "german": false,
-   "focus": "ml",
-   "summary": "bunch is building the backbone of private markets. We are enabling next-gen fund operations with one integrated system that combines secure data infrastructure, AI-powered workflows and expert fund services. If you value ownership, growth through real responsi",
-   "keywords": [
-    "pipeline",
+    "forecast",
+    "supply chain",
+    "scalab",
+    "migration",
     "cost",
-    "dashboard"
+    "governance",
+    "pipeline",
+    "automation"
    ],
-   "score": 82
+   "score": 112
+  },
+  {
+   "title": "Data Platform Engineer",
+   "company": "sumup",
+   "location": "Berlin",
+   "loc_raw": "Berlin",
+   "remote": false,
+   "url": "https://www.arbeitnow.com/jobs/companies/sumup/data-platform-engineer-berlin-376146",
+   "source": "Arbeitnow",
+   "posted": "2026-09-18",
+   "days": 1,
+   "skills": [
+    "python",
+    "databricks",
+    "airflow",
+    "dbt",
+    "snowflake",
+    "etl"
+   ],
+   "german": false,
+   "focus": "pipeline",
+   "summary": "As part of the Platform tribe, you will help build a self-service, AI-Ready Data Platform. The Data Platform team supports our next big bets: Data, AI, and real-time analytics. We are a team focused on building scalable, reliable infrastructure to enable our g",
+   "keywords": [
+    "self-service",
+    "real-time",
+    "scalab",
+    "cost",
+    "stakeholder",
+    "optimization",
+    "automation"
+   ],
+   "score": 100
   }
  ],
  "seen": [
+  "https://www.arbeitnow.com/jobs/companies/hellofresh/senior-marketing-data-analyst-pricing-all-genders-berlin-berlin-194706",
+  "https://www.arbeitnow.com/jobs/companies/hellofresh/senior-data-engineer-analytical-data-platform-inteligent-platforms-all-genders-berlin-berlin-207118",
+  "https://www.arbeitnow.com/jobs/companies/sumup/data-platform-engineer-berlin-376146",
   "https://www.arbeitnow.com/jobs/companies/climate/data-engineer-berlin-hq-246069",
   "https://www.arbeitnow.com/jobs/companies/almedia/ai-engineer-data-berlin-457327",
   "https://www.arbeitnow.com/jobs/companies/bunch/senior-applied-ai-engineer-ai-platform-berlin-162773",
