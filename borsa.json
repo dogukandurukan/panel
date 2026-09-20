@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-19 17:03",
+  "updated": "2026-09-20 14:08",
   "watch": [
     {
       "code": "KONTR",
@@ -18,19 +18,19 @@
       }
     },
     {
-      "code": "OYAKC",
-      "price": "19.40",
-      "chg": "-7.44%",
-      "avg1w": "21.32",
-      "avg1m": "22.02",
-      "hist": [23.48, 22.9, 23.02, 22.44, 21.34, 21.06, 20.16, 20.74, 21.08, 20.82, 20.82, 20.82, 20.82, 20.5, 21.02, 20.96, 20.94, 20.64, 20.74, 20.84, 21.02, 20.64, 21.24, 22.06, 21.98, 21.58, 21.98, 21.6, 21.66, 21.04, 20.7, 20.58, 20.82, 20.84, 20.5, 20.84, 20.76, 20.96, 20.56, 20.72, 19.94, 19.91, 20.2, 19.93, 19.86, 20.3, 20.2, 20.26, 21.02, 21.3, 20.82, 21.3, 20.34, 20.94, 20.9, 20.92, 20.3, 20.28, 20.58, 20.26, 20.6, 20.66, 20.7, 20.84, 21.52, 21.52, 21.82, 22.02, 21.56, 21.88, 22.14, 22.08, 22.3, 22.86, 23.12, 23.02, 23.0, 22.48, 21.7, 21.9, 21.06, 21.56, 21.88, 22.44, 22.38, 22.16, 22.32, 21.78, 20.96, 19.4],
-      "histD": ["05-12", "05-13", "05-14", "05-15", "05-18", "05-20", "05-21", "05-22", "05-25", "05-26", "05-27", "05-28", "05-29", "06-01", "06-02", "06-03", "06-04", "06-05", "06-08", "06-09", "06-10", "06-11", "06-12", "06-15", "06-16", "06-17", "06-18", "06-19", "06-22", "06-23", "06-24", "06-25", "06-26", "06-29", "06-30", "07-01", "07-02", "07-03", "07-06", "07-07", "07-08", "07-09", "07-10", "07-13", "07-14", "07-16", "07-17", "07-20", "07-21", "07-22", "07-23", "07-24", "07-27", "07-28", "07-29", "07-30", "07-31", "08-03", "08-04", "08-05", "08-06", "08-07", "08-10", "08-11", "08-12", "08-13", "08-14", "08-17", "08-18", "08-19", "08-20", "08-21", "08-24", "08-25", "08-26", "08-27", "08-28", "08-31", "09-01", "09-02", "09-03", "09-04", "09-07", "09-08", "09-09", "09-10", "09-11", "09-14", "09-15", "09-16"],
+      "code": "ARCLK",
+      "price": "87.15",
+      "chg": "+0.35%",
+      "avg1w": "91.07",
+      "avg1m": "92.17",
+      "hist": [113.4, 112.1, 110.9, 107.3, 107.7, 102.0, 104.1, 105.0, 103.7, 103.7, 103.7, 103.7, 104.0, 107.7, 105.7, 105.5, 103.3, 103.2, 102.5, 102.0, 101.5, 102.9, 106.1, 105.5, 103.6, 103.8, 103.5, 103.1, 101.4, 100.8, 100.1, 104.1, 101.6, 99.35, 99.8, 99.75, 100.2, 99.6, 98.8, 96.8, 96.5, 98.9, 97.5, 97.95, 98.85, 97.6, 98.45, 98.6, 98.55, 99.0, 99.0, 99.3, 97.5, 98.35, 96.9, 97.25, 96.4, 97.45, 98.1, 98.0, 97.9, 97.45, 97.0, 97.15, 94.65, 95.35, 94.1, 93.05, 92.4, 92.45, 92.5, 92.85, 92.3, 93.35, 93.95, 93.05, 90.65, 90.25, 90.25, 88.85, 91.05, 93.4, 95.0, 95.4, 94.9, 95.8, 94.35, 91.2, 86.85, 87.15],
+      "histD": ["05-13", "05-14", "05-15", "05-18", "05-20", "05-21", "05-22", "05-25", "05-26", "05-27", "05-28", "05-29", "06-01", "06-02", "06-03", "06-04", "06-05", "06-08", "06-09", "06-10", "06-11", "06-12", "06-15", "06-16", "06-17", "06-18", "06-19", "06-22", "06-23", "06-24", "06-25", "06-26", "06-29", "06-30", "07-01", "07-02", "07-03", "07-06", "07-07", "07-08", "07-09", "07-10", "07-13", "07-14", "07-16", "07-17", "07-20", "07-21", "07-22", "07-23", "07-24", "07-27", "07-28", "07-29", "07-30", "07-31", "08-03", "08-04", "08-05", "08-06", "08-07", "08-10", "08-11", "08-12", "08-13", "08-14", "08-17", "08-18", "08-19", "08-20", "08-21", "08-24", "08-25", "08-26", "08-27", "08-28", "08-31", "09-01", "09-02", "09-03", "09-04", "09-07", "09-08", "09-09", "09-10", "09-11", "09-14", "09-15", "09-16", "09-18"],
       "ind": {
-        "ma": "MA20 altında",
+        "ma": "MA20 & MA50 altında (aşağı eğilim)",
         "rsiTxt": "nötr",
-        "rsi": 31.2,
-        "volat": 2.8,
-        "volRatio": 2.06
+        "rsi": 32.7,
+        "volat": 2.1,
+        "volRatio": 1.7
       }
     },
     {
@@ -50,18 +50,34 @@
       }
     },
     {
-      "code": "SASA",
-      "price": "2.52",
-      "chg": "-10.00%",
-      "avg1w": "2.77",
-      "avg1m": "2.47",
-      "hist": [3.23, 2.91, 3.01, 2.83, 2.71, 2.81, 2.53, 2.65, 2.7, 2.64, 2.64, 2.64, 2.64, 2.69, 2.75, 2.63, 2.59, 2.49, 2.59, 2.5, 2.5, 2.63, 2.6, 2.69, 2.71, 2.74, 2.78, 2.73, 2.74, 2.64, 2.54, 2.51, 2.52, 2.45, 2.45, 2.43, 2.4, 2.4, 2.34, 2.31, 2.23, 2.28, 2.42, 2.55, 2.52, 2.54, 2.43, 2.54, 2.51, 2.64, 2.65, 2.69, 2.57, 2.55, 2.45, 2.48, 2.47, 2.52, 2.52, 2.56, 2.58, 2.58, 2.33, 2.36, 2.49, 2.45, 2.39, 2.34, 2.25, 2.27, 2.27, 2.32, 2.33, 2.31, 2.34, 2.38, 2.39, 2.35, 2.36, 2.27, 2.23, 2.29, 2.51, 2.76, 2.73, 2.77, 2.82, 2.94, 2.8, 2.52],
-      "histD": ["05-12", "05-13", "05-14", "05-15", "05-18", "05-20", "05-21", "05-22", "05-25", "05-26", "05-27", "05-28", "05-29", "06-01", "06-02", "06-03", "06-04", "06-05", "06-08", "06-09", "06-10", "06-11", "06-12", "06-15", "06-16", "06-17", "06-18", "06-19", "06-22", "06-23", "06-24", "06-25", "06-26", "06-29", "06-30", "07-01", "07-02", "07-03", "07-06", "07-07", "07-08", "07-09", "07-10", "07-13", "07-14", "07-16", "07-17", "07-20", "07-21", "07-22", "07-23", "07-24", "07-27", "07-28", "07-29", "07-30", "07-31", "08-03", "08-04", "08-05", "08-06", "08-07", "08-10", "08-11", "08-12", "08-13", "08-14", "08-17", "08-18", "08-19", "08-20", "08-21", "08-24", "08-25", "08-26", "08-27", "08-28", "08-31", "09-01", "09-02", "09-03", "09-04", "09-07", "09-08", "09-09", "09-10", "09-11", "09-14", "09-15", "09-16"],
+      "code": "YKBNK",
+      "price": "36.24",
+      "chg": "+12.83%",
+      "avg1w": "35.28",
+      "avg1m": "36.12",
+      "hist": [37.44, 37.82, 36.82, 36.34, 35.68, 32.12, 32.86, 33.34, 33.16, 33.16, 33.16, 33.16, 33.42, 34.98, 34.38, 35.2, 33.6, 34.94, 35.54, 34.8, 35.02, 38.1, 40.46, 40.5, 40.9, 42.7, 43.38, 43.84, 42.88, 42.72, 40.5, 40.66, 40.08, 40.14, 40.6, 40.5, 38.02, 37.46, 37.6, 36.22, 35.86, 35.14, 34.1, 33.96, 33.52, 33.22, 32.9, 32.86, 33.14, 33.26, 33.36, 32.9, 32.74, 31.84, 31.0, 32.76, 34.0, 34.86, 34.28, 34.04, 34.02, 34.0, 34.06, 35.7, 35.54, 35.42, 34.92, 34.86, 35.62, 34.8, 35.1, 36.52, 36.66, 37.08, 36.86, 37.22, 36.52, 36.82, 36.08, 35.9, 35.9, 36.26, 37.62, 36.6, 36.2, 36.7, 36.64, 34.68, 32.12, 36.24],
+      "histD": ["05-13", "05-14", "05-15", "05-18", "05-20", "05-21", "05-22", "05-25", "05-26", "05-27", "05-28", "05-29", "06-01", "06-02", "06-03", "06-04", "06-05", "06-08", "06-09", "06-10", "06-11", "06-12", "06-15", "06-16", "06-17", "06-18", "06-19", "06-22", "06-23", "06-24", "06-25", "06-26", "06-29", "06-30", "07-01", "07-02", "07-03", "07-06", "07-07", "07-08", "07-09", "07-10", "07-13", "07-14", "07-16", "07-17", "07-20", "07-21", "07-22", "07-23", "07-24", "07-27", "07-28", "07-29", "07-30", "07-31", "08-03", "08-04", "08-05", "08-06", "08-07", "08-10", "08-11", "08-12", "08-13", "08-14", "08-17", "08-18", "08-19", "08-20", "08-21", "08-24", "08-25", "08-26", "08-27", "08-28", "08-31", "09-01", "09-02", "09-03", "09-04", "09-07", "09-08", "09-09", "09-10", "09-11", "09-14", "09-15", "09-16", "09-18"],
       "ind": {
         "ma": "MA20 & MA50 üstünde (yukarı eğilim)",
         "rsiTxt": "nötr",
-        "rsi": 49.4,
-        "volat": 5.3
+        "rsi": 52.0,
+        "volat": 4.7,
+        "volRatio": 1.04
+      }
+    },
+    {
+      "code": "SASA",
+      "price": "2.35",
+      "chg": "-6.75%",
+      "avg1w": "2.69",
+      "avg1m": "2.48",
+      "hist": [2.91, 3.01, 2.83, 2.71, 2.81, 2.53, 2.65, 2.7, 2.64, 2.64, 2.64, 2.64, 2.69, 2.75, 2.63, 2.59, 2.49, 2.59, 2.5, 2.5, 2.63, 2.6, 2.69, 2.71, 2.74, 2.78, 2.73, 2.74, 2.64, 2.54, 2.51, 2.52, 2.45, 2.45, 2.43, 2.4, 2.4, 2.34, 2.31, 2.23, 2.28, 2.42, 2.55, 2.52, 2.54, 2.43, 2.54, 2.51, 2.64, 2.65, 2.69, 2.57, 2.55, 2.45, 2.48, 2.47, 2.52, 2.52, 2.56, 2.58, 2.58, 2.33, 2.36, 2.49, 2.45, 2.39, 2.34, 2.25, 2.27, 2.27, 2.32, 2.33, 2.31, 2.34, 2.38, 2.39, 2.35, 2.36, 2.27, 2.23, 2.29, 2.51, 2.76, 2.73, 2.77, 2.82, 2.94, 2.8, 2.52, 2.35],
+      "histD": ["05-13", "05-14", "05-15", "05-18", "05-20", "05-21", "05-22", "05-25", "05-26", "05-27", "05-28", "05-29", "06-01", "06-02", "06-03", "06-04", "06-05", "06-08", "06-09", "06-10", "06-11", "06-12", "06-15", "06-16", "06-17", "06-18", "06-19", "06-22", "06-23", "06-24", "06-25", "06-26", "06-29", "06-30", "07-01", "07-02", "07-03", "07-06", "07-07", "07-08", "07-09", "07-10", "07-13", "07-14", "07-16", "07-17", "07-20", "07-21", "07-22", "07-23", "07-24", "07-27", "07-28", "07-29", "07-30", "07-31", "08-03", "08-04", "08-05", "08-06", "08-07", "08-10", "08-11", "08-12", "08-13", "08-14", "08-17", "08-18", "08-19", "08-20", "08-21", "08-24", "08-25", "08-26", "08-27", "08-28", "08-31", "09-01", "09-02", "09-03", "09-04", "09-07", "09-08", "09-09", "09-10", "09-11", "09-14", "09-15", "09-16", "09-18"],
+      "ind": {
+        "ma": "MA20 altında",
+        "rsiTxt": "nötr",
+        "rsi": 43.1,
+        "volat": 5.6
       }
     }
   ],
@@ -218,136 +234,113 @@
     },
     {
       "code": "BZ=F",
-      "price": "103.87",
-      "chg": "-0.91%",
-      "avg1w": "105.79",
-      "avg1m": "97.56",
+      "price": "99.29",
+      "chg": "-5.28%",
+      "avg1w": "104.87",
+      "avg1m": "97.34",
       "name": "Brent",
-      "hist": [107.77, 105.63, 105.72, 109.26, 112.1, 111.28, 105.02, 102.58, 103.54, 99.58, 94.29, 93.71, 92.05, 94.98, 96.0, 97.81, 95.03, 93.09, 94.25, 91.45, 93.1, 90.38, 87.33, 83.17, 78.96, 79.55, 79.85, 77.9, 77.08, 73.74, 75.26, 71.99, 73.15, 72.92, 71.57, 71.8, 71.99, 74.16, 78.02, 76.3, 76.01, 83.3, 84.73, 84.95, 84.23, 88.1, 89.22, 91.01, 94.07, 100.69, 96.78, 88.36, 84.09, 90.74, 89.03, 90.12, 83.77, 79.36, 79.45, 82.49, 83.55, 87.72, 88.91, 88.98, 87.07, 88.52, 90.87, 91.02, 91.62, 93.78, 94.39, 92.17, 88.58, 87.84, 89.7, 89.31, 90.49, 94.65, 95.63, 95.52, 96.28, 97.92, 101.21, 107.63, 104.61, 105.68, 108.75, 105.83, 104.82, 103.87],
+      "hist": [107.77, 105.63, 105.72, 109.26, 112.1, 111.28, 105.02, 102.58, 103.54, 99.58, 94.29, 93.71, 92.05, 94.98, 96.0, 97.81, 95.03, 93.09, 94.25, 91.45, 93.1, 90.38, 87.33, 83.17, 78.96, 79.55, 79.85, 77.9, 77.08, 73.74, 75.26, 71.99, 73.15, 72.92, 71.57, 71.8, 71.99, 74.16, 78.02, 76.3, 76.01, 83.3, 84.73, 84.95, 84.23, 88.1, 89.22, 91.01, 94.07, 100.69, 96.78, 88.36, 84.09, 90.74, 89.03, 90.12, 83.77, 79.36, 79.45, 82.49, 83.55, 87.72, 88.91, 88.98, 87.07, 88.52, 90.87, 91.02, 91.62, 93.78, 94.39, 92.17, 88.58, 87.84, 89.7, 89.31, 90.49, 94.65, 95.63, 95.52, 96.28, 97.92, 101.21, 107.63, 104.61, 105.68, 108.75, 105.83, 104.82, 99.29],
       "histD": ["05-12", "05-13", "05-14", "05-15", "05-18", "05-19", "05-20", "05-21", "05-22", "05-26", "05-27", "05-28", "05-29", "06-01", "06-02", "06-03", "06-04", "06-05", "06-08", "06-09", "06-10", "06-11", "06-12", "06-15", "06-16", "06-17", "06-18", "06-22", "06-23", "06-24", "06-25", "06-26", "06-29", "06-30", "07-01", "07-02", "07-06", "07-07", "07-08", "07-09", "07-10", "07-13", "07-14", "07-15", "07-16", "07-17", "07-20", "07-21", "07-22", "07-23", "07-24", "07-27", "07-28", "07-29", "07-30", "07-31", "08-03", "08-04", "08-05", "08-06", "08-07", "08-10", "08-11", "08-12", "08-13", "08-14", "08-17", "08-18", "08-19", "08-20", "08-21", "08-24", "08-25", "08-26", "08-27", "08-28", "08-31", "09-01", "09-02", "09-03", "09-04", "09-08", "09-09", "09-10", "09-11", "09-14", "09-15", "09-16", "09-17", "09-18"],
       "ind": {
         "ma": "MA20 & MA50 üstünde (yukarı eğilim)",
         "rsiTxt": "nötr",
-        "rsi": 61.7,
-        "volat": 2.6,
-        "volRatio": 1.22
+        "rsi": 53.5,
+        "volat": 3.1,
+        "volRatio": 1.07
       }
     }
   ],
   "gold": {
     "price": "6,936.78",
-    "chg": "+0.76%"
+    "chg": "+0.54%"
   },
   "news": [
     {
-      "t": "⚪ Smart Holding’den Smart Güneş Teknolojileri’nde (SMRTG) hisse alış açıklaması  (Rota Borsa)",
-      "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPZTV3U0I1VmlRZmkyenVkUDdkYmFUR0ZrZU9LYXhOZW9HZXZ3bWdOcXRvcm9xXzBla002bG1SdGJUWnJzOVhmVEh6MWlCZ2o3VUhpZzhjSmNLTFpKRmZTV3pzRy02cnhBT3V3VHVlVXdLVGNaTHVhbjRlQXFTdnlZMTJUV3BCRnFybHZCa2wxcjZlYjBWd1h3TGtkSjRvVFU?oc=5"
-    },
-    {
-      "t": "⚪ Smart Holding, SMRTG’de Hisse Alımıyla Payını Artırdı  (Finans Hattı)",
-      "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQMWNSQUVyUTBNdlJPMGNzeTNiaEZxVUlBWU9pSFNidEcwRDlTbTBNeFgxLU5QanotMTJUVm9HdFJzWlFwdkRydWI5M284M3NpSzVDOUN6bF84MHNadS1rSmJ6NngzN0N3cEEtd21oeUFRU3RzWHZJblFZbDFnZlptMjdB?oc=5"
-    },
-    {
       "t": "⚪ Günün öne çıkan gelişmeleri: AKCNS, SASA, MAVI, AKFGY, GSDHO  (getmidas.com)",
       "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPTE5UcFp1ZUE4U1BYZG4yWFVKa2FhX2VCOVowVTFzWVlnclhlM01qZEdERXFJRUl2R0wtdnBYN21qQ1dwSVFhNDhDSUZMVnFSWDg4Y1pPVEhMMlJleDdMN1JJQ0ZmQkgtSmdWWUFWTzM3X0hpSnRIb2tTc3RVSEVKSlRtYTRmcGxzUlV6a3ljcFUxVG5wNF8za2xRcGZSQlFtb2g5ampaNHFLTVE?oc=5"
-    },
-    {
-      "t": "🔴 SASA yöneticisi İbrahim Mustafa Turhan’a ‘korku ve panik’ soruşturması  (Ekovitrin Haber)",
-      "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNbzZoZFQ5dHZUR0doWFBzYTVaV3BZVG90Qi1oX1dCczdITHVTZTFibnQ2SGl1RmFUbjZLZkhNWGc1Y2JCNEZLc0xjLTUzRG1FUy1fMHdNRFp1d2lNZHl6RmJ0QWtmT3Q0VWMweWkzUnFrb2g4WkJ3Y0NNZUhMdlJOVTh3Y1dGbTg2aF9rdVV5NkRxWVBHemtyUg?oc=5"
     },
     {
       "t": "⚪ Midas ile gün sonu: LEN, AKCNS, GNRC, ORGE, SNAP, SASA  (getmidas.com)",
       "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPR3BESUtkMG0xekU5SzBCUlRKVGp2ZTRIaWozTjRiY1A5VWNyakZQM2duNkxLX3NZUzZQdk1WNEpWa1FRTlp6cVFTdm13OFJucUZwOFRkM3RTSS1EM3lhWHNCcGdsSmRFNE9XT2o0VFo1UlliWG1IeVg3SGJFYnFRajE5eklLdTlCQjhiNEo5VFoycTZ2LXg1N3RObE1tWEJObmc?oc=5"
     },
     {
-      "t": "🟢 Gübretaş'tan 190 milyon dolarlık liman yatırımı: 35 yıllık anlaşma imzalandı  (CNBC-e)",
-      "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPcDFkRkRfSmtJS1JhYkxIbHdJa3pNWEREUjZCZFh5Mm5iMmhmaWhqRmQwSWNwSWJWZjVMbUk0LUxXNnpKR1N4QWpOVkN5amhwWk8tQlBaTU5LOGRZOXVWREgzLVNSYU1Eb1Rzb1NocjdHalhsNDhiM0U4aS1iN1dsUFVrdU8yTGpNaGwtZlprY1FOaTNVc3JraUNuZVlwLXlZWEhJQWw1ZkxJZlUzVUE?oc=5"
-    },
-    {
-      "t": "🟢 Gübretaş (GUBRF) dev anlaşmayı duyurdu  (Rota Borsa)",
-      "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBFcGtRclhZdHJWY0QwMnBtVlAwZjFDZ1hUd3VHWlZydGk4WjN2Q1c5b3lmejdZN0kwckpoX0pFZGFLemdPQWdqd2s5eV8zaXFvSmZJMlNZYXFRQ21DQ1ZJeGZxZ0RRRklOYnVz?oc=5"
-    },
-    {
-      "t": "🟢 Gübretaş (GUBRF) İskenderun Limanı işletme hakkı devri anlaşması  (Sivas Ekspres Gazetesi)",
-      "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxOdmlpTDU5RVgzRmQ5d1h6NEs2ZVN0QzJnaVBlRlVsTHdZanhPZDFBWEZHQ2g4WWpZdURQVU1EYldScU9tWURzUk9wX0x4WXhWLVNiS0YyOXRjRUFRYjRIcUx5bTZTbnZncVFnWUJfdXZlTFFvbEgyaGFURDJnX19zb3lzVzk2alRqZnlKbDhEYlNsdl9adGRpSTJrb3QyYXZrODJiamFzUXFialFy?oc=5"
+      "t": "⚪ BofA’nın Petkim’de (PETKM) oy haklarının oranı yüzde 3’ü aştı  (Paratic Haber)",
+      "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPVE9JMzVLeHBGblJYdVptdzZqdUtoNHI2cHltWjlta1RYc1RtSlVZQVZuazFWbUNnaGxNQmdzblJ5X29Rak14Z0ZBMU5NWUMwSXhxZFJZd0hzWGpwU3ZMQTVxLXNYOWdPNWIyTHo2Q1VjcElESHJ1alV5ZUVua3lxNENHVQ?oc=5"
     }
   ],
   "world": [
     {
-      "t": "🌍 US and Denmark reach deal over Greenland after Trump annexation threats  (BBC World)",
-      "link": "https://www.bbc.co.uk/news/articles/c63d7lexyym1o?at_medium=RSS&at_campaign=rss"
+      "t": "🌍 'Massive' drone attack on Moscow region sees Ukraine hit oil refinery  (BBC World)",
+      "link": "https://www.bbc.co.uk/news/articles/c34gdjk1ne8yo?at_medium=RSS&at_campaign=rss"
     },
     {
       "t": "🌍 Men deported from US bound and beaten in Equatorial Guinea detention hotel, lawyers say  (Guardian World)",
       "link": "https://www.theguardian.com/us-news/2026/sep/18/us-men-deported-hotel-equatorial-guinea"
     },
     {
-      "t": "🌍 An unaffordable car market highlights Iran’s cost-of-living crisis  (Al Jazeera)",
-      "link": "https://www.aljazeera.com/economy/2026/9/19/an-unaffordable-car-market-highlights-irans-cost-of-living-crisis?traffic_source=rss"
+      "t": "🌍 Turkish FM says ready to meet Saudi defence needs – what does that mean?  (Al Jazeera)",
+      "link": "https://www.aljazeera.com/news/2026/9/20/turkish-fm-says-ready-to-meet-saudi-defence-needs-what-does-that-mean?traffic_source=rss"
     },
     {
-      "t": "🌍 France, Poland and European allies warn of escalating Russian 'hybrid' attacks  (NPR World)",
-      "link": "https://www.npr.org/2026/09/19/nx-s1-5974215/france-poland-and-european-allies-warn-of-escalating-russian-hybrid-attacks"
+      "t": "🌍 Ukraine fires over 1,000 drones at Russia, including hundreds launched at Moscow  (NPR World)",
+      "link": "https://www.npr.org/2026/09/20/nx-s1-5975372/ukraine-fires-drones-at-russia-moscow"
     },
     {
-      "t": "🌍 Flames and smoke spotted at Riyadh's King Khalid airport after overnight air raid alert  (Euronews)",
-      "link": "https://www.euronews.com/2026/09/19/flames-and-smoke-spotted-at-riyadhs-king-khalid-airport-after-overnight-air-raid-alert"
+      "t": "🌍 North Korea launches 'suspected ballistic missile' into East Sea  (Euronews)",
+      "link": "https://www.euronews.com/2026/09/20/north-korea-launches-suspected-ballistic-missile-into-east-sea"
     },
     {
-      "t": "🌍 Ever more Israelis moving to and investing in Cyprus  (DW)",
-      "link": "https://www.dw.com/en/ever-more-israelis-moving-to-and-investing-in-cyprus/a-79330240?maca=en-rss-en-world-4025-rdf"
+      "t": "🌍 Decolonizing perceptions about Africa  (DW)",
+      "link": "https://www.dw.com/en/decolonizing-perceptions-about-africa/a-79331178?maca=en-rss-en-world-4025-rdf"
     }
   ],
   "tr": [
     {
-      "t": "🇹🇷 DenizkurduI/2026 Tatbikatı 100 gemiyle icra edilecek  (TRT Haber)",
-      "link": "https://www.trthaber.com/haber/gundem/denizkurdu-i2026-tatbikati-100-gemiyle-icra-edilecek-957381.html"
+      "t": "🇹🇷 Yaklaşık 100 işgalci İsrailli, Yom Kippur öncesi Mescidi Aksa'ya baskın düzenledi  (TRT Haber)",
+      "link": "https://www.trthaber.com/haber/dunya/yaklasik-100-isgalci-israilli-yom-kippur-oncesi-mescid-i-aksaya-baskin-duzenledi-957438.html"
     },
     {
-      "t": "🇹🇷 Yeni Parti'nin yol haritası: Kurultay, örgütlenme, seçim hazırlığı ve 'yedek parti' hesabı  (BBC Türkçe)",
-      "link": "https://www.bbc.com/turkce/articles/c9770ey850m2o?at_medium=RSS&at_campaign=rss"
+      "t": "🇹🇷 Babülmendep Boğazı: Husiler Suudi Arabistan'ın stratejik zayıf noktasına nasıl ulaştı?  (BBC Türkçe)",
+      "link": "https://www.bbc.com/turkce/articles/cmwyz95vwv17o?at_medium=RSS&at_campaign=rss"
     },
     {
-      "t": "🇹🇷 Duran’dan millî irade vurgusu  (Habertürk)",
-      "link": "https://www.haberturk.com/gundem/istanbuldaki-panelde-demokrasi-mucadelesi-ve-vesayet-surecleri-konusuldu-3913628"
+      "t": "🇹🇷 Yıldız'dan ceza muhakemesi açıklaması  (Habertürk)",
+      "link": "https://www.haberturk.com/gundem/son-dakika-haberler-mhp-genel-baskan-yardimcisi-feti-yildiz-dan-ceza-muhakemesi-ve-ispat-ilkelerine--3913775"
     },
     {
-      "t": "🇹🇷 Kozinoğlu soruşturması. Hasan Atilla Uğur'un ifadesi ortaya çıktı, 3 soru yanıtsız kaldı  (NTV)",
-      "link": "https://www.ntv.com.tr/turkiye/galeri-kozinoglu-sorusturmasi-hasan-atilla-ugurun-ifadesi-ortaya-cikti-3-soru-yanitsiz-kaldi-1742596"
+      "t": "🇹🇷 Eski İzmir Büyükşehir Belediye Başkanı Özfatura yoğun bakımda  (NTV)",
+      "link": "https://www.ntv.com.tr/turkiye/eski-izmir-buyuksehir-belediye-baskani-ozfatura-yogun-bakimda-1742679"
     },
     {
-      "t": "🇹🇷 Zelenski: Rus saldırılarına yanıt olarak yeni uzun menzilli operasyonlara onay verdim  (TRT Haber)",
-      "link": "https://www.trthaber.com/haber/dunya/zelenski-rus-saldirilarina-yanit-olarak-yeni-uzun-menzilli-operasyonlara-onay-verdim-957380.html"
+      "t": "🇹🇷 Türkiye'den 90 üniversite dünya bilim alanları sıralamasına girdi  (TRT Haber)",
+      "link": "https://www.trthaber.com/haber/egitim/turkiyeden-90-universite-dunya-bilim-alanlari-siralamasina-girdi-957437.html"
     },
     {
-      "t": "🇹🇷 Almanya'da kritik seçimler: Merz için sandıkta varoluş sınavı  (BBC Türkçe)",
-      "link": "https://www.bbc.com/turkce/articles/c3n07w988kdpo?at_medium=RSS&at_campaign=rss"
+      "t": "🇹🇷 Bakan Fidan: 'Suudi Arabistan'a yönelik ciddi saldırılar var, askeri ihtiyaçları karşılamada sıkıntı olmaz'  (BBC Türkçe)",
+      "link": "https://www.bbc.com/turkce/articles/cq39m3gwrxr3o?at_medium=RSS&at_campaign=rss"
     }
   ],
   "_teshis": {
     "dunya": [
-      "BBC World: 29 öğe / 2 alındı / 0 elendi | ilk: US and Denmark reach deal over Greenland after Trump annexat",
+      "BBC World: 24 öğe / 2 alındı / 0 elendi | ilk: 'Massive' drone attack on Moscow region sees Ukraine hit oil",
       "Guardian World: 45 öğe / 2 alındı / 0 elendi | ilk: Men deported from US bound and beaten in Equatorial Guinea d",
-      "Al Jazeera: 25 öğe / 2 alındı / 0 elendi | ilk: An unaffordable car market highlights Iran’s cost-of-living ",
-      "NPR World: 10 öğe / 2 alındı / 0 elendi | ilk: France, Poland and European allies warn of escalating Russia",
-      "Euronews: 50 öğe / 2 alındı / 0 elendi | ilk: Flames and smoke spotted at Riyadh's King Khalid airport aft",
-      "DW: 13 öğe / 2 alındı / 0 elendi | ilk: Ever more Israelis moving to and investing in Cyprus",
+      "Al Jazeera: 25 öğe / 2 alındı / 0 elendi | ilk: Turkish FM says ready to meet Saudi defence needs – what doe",
+      "NPR World: 10 öğe / 2 alındı / 0 elendi | ilk: Ukraine fires over 1,000 drones at Russia, including hundred",
+      "Euronews: 50 öğe / 2 alındı / 1 elendi | ilk: Latest news bulletin | September 20th, 2026 – Midday",
+      "DW: 11 öğe / 2 alındı / 0 elendi | ilk: Decolonizing perceptions about Africa",
       "SONUÇ: 6 haber · veren: Al Jazeera, BBC World, DW, Euronews, Guardian World, NPR World",
       "AA: OKUNAMADI RemoteDisconnected: Remote end closed connection without response",
-      "TRT Haber: 50 öğe / 2 alındı / 0 elendi | ilk: DenizkurduI/2026 Tatbikatı 100 gemiyle icra edilecek",
-      "BBC Türkçe: 20 öğe / 2 alındı / 0 elendi | ilk: Yeni Parti'nin yol haritası: Kurultay, örgütlenme, seçim haz",
-      "Habertürk: 30 öğe / 2 alındı / 0 elendi | ilk: Duran’dan millî irade vurgusu",
-      "NTV: 20 öğe / 2 alındı / 0 elendi | ilk: Kozinoğlu soruşturması. Hasan Atilla Uğur'un ifadesi ortaya ",
+      "TRT Haber: 50 öğe / 2 alındı / 0 elendi | ilk: Yaklaşık 100 işgalci İsrailli, Yom Kippur öncesi Mescidi Aks",
+      "BBC Türkçe: 20 öğe / 2 alındı / 0 elendi | ilk: Babülmendep Boğazı: Husiler Suudi Arabistan'ın stratejik zay",
+      "Habertürk: 30 öğe / 2 alındı / 0 elendi | ilk: Yıldız'dan ceza muhakemesi açıklaması",
+      "NTV: 20 öğe / 2 alındı / 0 elendi | ilk: Eski İzmir Büyükşehir Belediye Başkanı Özfatura yoğun bakımd",
       "SONUÇ: 6 haber · veren: BBC Türkçe, Habertürk, NTV, TRT Haber · boş dönen: AA"
     ],
-    "hisse": "8 başlık geldi, 0 elendi",
+    "hisse": "3 başlık geldi, 0 elendi",
     "hisse_ham": [
-      "Smart Holding’den Smart Güneş Teknolojileri’nde (SMRTG) hisse alış açı",
-      "Smart Holding, SMRTG’de Hisse Alımıyla Payını Artırdı",
       "Günün öne çıkan gelişmeleri: AKCNS, SASA, MAVI, AKFGY, GSDHO",
-      "SASA yöneticisi İbrahim Mustafa Turhan’a ‘korku ve panik’ soruşturması",
       "Midas ile gün sonu: LEN, AKCNS, GNRC, ORGE, SNAP, SASA",
-      "Gübretaş'tan 190 milyon dolarlık liman yatırımı: 35 yıllık anlaşma imz"
+      "BofA’nın Petkim’de (PETKM) oy haklarının oranı yüzde 3’ü aştı"
     ]
   }
 }
