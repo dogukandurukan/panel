@@ -1,201 +1,1151 @@
 {
- "updated": "2026-09-21 13:23",
+ "version": 2,
+ "updated": "2026-09-21 23:06",
  "ok": true,
  "count": 3,
- "pool": 18,
+ "pool": 8,
+ "quota": {
+  "tr": 5,
+  "de": 3,
+  "nl": 1,
+  "uk": 1
+ },
  "items": [
   {
-   "title": "Senior Data Scientist, Marketing (d/f/m)",
-   "company": "Taxfix",
+   "id": "f87b46a2785d",
+   "title": "Data Engineer",
+   "company": "ASP Group",
    "location": "Berlin",
-   "loc_raw": "Berlin",
-   "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/taxfix/senior-data-scientist-marketing-berlin-454885",
+   "country": "DE",
+   "market": "international",
+   "bucket": "de",
+   "label": "DE",
+   "tier": 1,
+   "rank": 0,
+   "reserve": false,
+   "is_new": true,
+   "first_seen": "2026-09-21",
+   "workplace_type": "onsite",
    "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.com/jobs/companies/asp-group/data-engineer-berlin-123002",
+   "publication_date": "2026-09-21",
+   "fit_score": 82,
+   "fit_reason": "rol primary +30; konum +15; beceri 3×5 +15; kıdem mid +5; tazelik +10",
+   "matched_skills": [
+    "Azure",
+    "Microsoft Fabric",
+    "Databricks"
+   ],
+   "location_reason": "Arbeitnow konumu 'Berlin'",
+   "seniority": "mid",
+   "focus": "pipeline",
+   "focus_scores": {
+    "ml": 0,
+    "bi": 2,
+    "pipeline": 16,
+    "business": 1
+   },
+   "language": "en",
+   "generated_at": "2026-09-21 23:06",
+   "summary": "AI Service Partners (ASP) helps enterprise clients successfully implement and scale GenAI and data initiatives, from central data platforms to intelligent automation, working out of Munich and Berlin. We work close to the client, solving real operational probl",
+   "keywords": [
+    "enterprise",
+    "automation",
+    "pipeline",
+    "scalab",
+    "data quality"
+   ],
+   "url": "https://www.arbeitnow.com/jobs/companies/asp-group/data-engineer-berlin-123002",
+   "skills": [
+    "azure",
+    "microsoft fabric",
+    "databricks"
+   ],
+   "score": 82,
    "posted": "2026-09-21",
    "days": 0,
-   "skills": [
-    "python",
-    "sql",
-    "git",
-    "llm"
+   "remote": false,
+   "german": false
+  },
+  {
+   "id": "ff2e0e9b5156",
+   "title": "Data Lead (BI & Analytics)",
+   "company": "Andercore",
+   "location": "Berlin",
+   "country": "DE",
+   "market": "international",
+   "bucket": "de",
+   "label": "DE",
+   "tier": 1,
+   "rank": 1,
+   "reserve": false,
+   "is_new": true,
+   "first_seen": "2026-09-21",
+   "workplace_type": "onsite",
+   "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.com/jobs/companies/andercore/data-lead-bi-analytics-berlin-235326",
+   "publication_date": "2026-09-21",
+   "fit_score": 81,
+   "fit_reason": "rol primary +30; konum +15; beceri 5×5 +25; kıdem lead -6; tazelik +10",
+   "matched_skills": [
+    "SQL",
+    "Tableau",
+    "ETL",
+    "Databricks",
+    "dbt"
    ],
-   "german": false,
-   "focus": "ml",
-   "summary": "Our story: Every year millions of people are either filing their taxes in fear or giving up on their tax refund altogether. We're working on fixing that. Our intuitive app enables anyone, regardless of education or background, to file their taxes with newfound",
+   "location_reason": "Arbeitnow konumu 'Berlin'",
+   "seniority": "lead",
+   "focus": "bi",
+   "focus_scores": {
+    "ml": 0,
+    "bi": 23,
+    "pipeline": 9,
+    "business": 3
+   },
+   "language": "en",
+   "generated_at": "2026-09-21 23:06",
+   "summary": "About Andercore Andercore is the AI-native supplier of industrial materials for energy, infrastructure, and construction in wholesale and beyond. We trade with global suppliers and distribute to European customers on our own account. Our AI runs the full trade",
    "keywords": [
-    "stakeholder",
-    "forecast",
+    "energy",
+    "supply chain",
+    "finance",
+    "saas",
+    "stakeholder"
+   ],
+   "url": "https://www.arbeitnow.com/jobs/companies/andercore/data-lead-bi-analytics-berlin-235326",
+   "skills": [
+    "sql",
+    "tableau",
+    "etl",
+    "databricks",
+    "dbt"
+   ],
+   "score": 81,
+   "posted": "2026-09-21",
+   "days": 0,
+   "remote": false,
+   "german": false
+  },
+  {
+   "id": "840f2a02dda1",
+   "title": "Senior Data Scientist - Real-Time Esports Predictions (m/f/x)",
+   "company": "GRID eSports GmbH",
+   "location": "Berlin",
+   "country": "DE",
+   "market": "international",
+   "bucket": "de",
+   "label": "DE",
+   "tier": 1,
+   "rank": 2,
+   "reserve": false,
+   "is_new": true,
+   "first_seen": "2026-09-21",
+   "workplace_type": "onsite",
+   "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.com/jobs/companies/grid-esports-gmbh/senior-data-scientist-real-time-esports-predictions-berlin-136377",
+   "publication_date": "2026-09-21",
+   "fit_score": 65,
+   "fit_reason": "rol secondary +18; konum +15; beceri 2×5 +10; kıdem senior +5; tazelik +10",
+   "matched_skills": [
+    "Python",
+    "Airflow"
+   ],
+   "location_reason": "Arbeitnow konumu 'Berlin'",
+   "seniority": "senior",
+   "focus": "ml",
+   "focus_scores": {
+    "ml": 18,
+    "bi": 0,
+    "pipeline": 3,
+    "business": 0
+   },
+   "language": "en",
+   "generated_at": "2026-09-21 23:06",
+   "summary": "(100% remote, anywhere in Europe) Are you excited about building ML systems that make predictions in real-time? Are you driven by building things end-to-end, from research to live systems? At GRID, we are building real-time prediction systems for competitive e",
+   "keywords": [
+    "real-time",
     "pipeline"
    ],
-   "score": 100
-  },
-  {
-   "title": "Senior Data Scientist (f/m/d)",
-   "company": "Moss",
-   "location": "Berlin",
-   "loc_raw": "Berlin",
-   "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/moss/senior-data-scientist-berlin-232387",
-   "source": "Arbeitnow",
-   "posted": "2026-09-21",
-   "days": 0,
+   "url": "https://www.arbeitnow.com/jobs/companies/grid-esports-gmbh/senior-data-scientist-real-time-esports-predictions-berlin-136377",
    "skills": [
     "python",
-    "llm"
+    "airflow"
    ],
-   "german": false,
-   "focus": "ml",
-   "summary": "At Moss, we give finance professionals the power to automate their day-to-day and make forward-thinking decisions. Our culture is what makes that possible: we play to win, we obsess over quality, and we win as One Moss, and it works. Moss closed a €35 million ",
-   "keywords": [
-    "finance",
-    "anomaly",
-    "pipeline",
-    "cost",
-    "stakeholder",
-    "root cause",
-    "scalab",
-    "real-time"
-   ],
-   "score": 88
-  },
-  {
-   "title": "Senior Business Intelligence Lead (all genders)",
-   "company": "Reev",
-   "location": "Almanya",
-   "loc_raw": "München",
+   "score": 65,
+   "posted": "2026-09-21",
+   "days": 0,
    "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/reev/senior-business-intelligence-lead-all-genders-munchen-80998",
-   "source": "Arbeitnow",
-   "posted": "2026-09-20",
-   "days": 1,
-   "skills": [
-    "sql",
-    "spark",
-    "dbt",
-    "etl",
-    "data warehouse"
-   ],
-   "german": false,
-   "focus": "ml",
-   "summary": "Your Mission EV charging is evolving from a niche technology into everyday infrastructure. As reev grows, teams increasingly need reliable, consistently defined metrics. Today, different dashboards, reporting dates, filters, and assumptions can produce differe",
-   "keywords": [
-    "dashboard",
-    "finance",
-    "pipeline",
-    "stakeholder",
-    "automation",
-    "data quality",
-    "governance",
-    "saas",
-    "energy"
-   ],
-   "score": 86
+   "german": false
   }
  ],
- "seen": [
-  "https://www.arbeitnow.com/jobs/companies/taxfix/senior-data-scientist-marketing-berlin-454885",
-  "https://www.arbeitnow.com/jobs/companies/moss/senior-data-scientist-berlin-232387",
-  "https://www.arbeitnow.com/jobs/companies/reev/senior-business-intelligence-lead-all-genders-munchen-80998",
-  "https://www.arbeitnow.com/jobs/companies/real-digital/remote-senior-devops-engineer-all-genders-data-platform-16527",
-  "https://remotive.com/remote-jobs/data/senior-data-scientist-2091129",
-  "https://www.arbeitnow.com/jobs/companies/everdrop-gmbh/remote-paid-social-analytics-manager-munchen-383519",
-  "https://www.arbeitnow.com/jobs/companies/hellofresh/senior-marketing-data-analyst-pricing-all-genders-berlin-berlin-194706",
-  "https://www.arbeitnow.com/jobs/companies/hellofresh/senior-data-engineer-analytical-data-platform-inteligent-platforms-all-genders-berlin-berlin-207118",
-  "https://www.arbeitnow.com/jobs/companies/sumup/data-platform-engineer-berlin-376146",
-  "https://www.arbeitnow.com/jobs/companies/climate/data-engineer-berlin-hq-246069",
-  "https://www.arbeitnow.com/jobs/companies/almedia/ai-engineer-data-berlin-457327",
-  "https://www.arbeitnow.com/jobs/companies/bunch/senior-applied-ai-engineer-ai-platform-berlin-162773",
-  "https://www.arbeitnow.com/jobs/companies/sumup/senior-analytics-engineer-run-grow-berlin-116362",
-  "https://www.arbeitnow.com/jobs/companies/sumup/data-platform-engineer-berlin-462000",
-  "https://www.arbeitnow.com/jobs/companies/pergolux/analytics-engineer-marketing-growth-berlin-222553",
-  "https://www.arbeitnow.com/jobs/companies/nebius/senior-ml-engineer-token-factory-berlin-253386",
-  "https://www.arbeitnow.com/jobs/companies/reev/senior-business-intelligence-lead-all-genders-munchen-274972",
-  "https://www.arbeitnow.com/jobs/companies/trusteq-gmbh/data-platform-engineer-working-student-munchen-195978",
-  "https://www.arbeitnow.com/jobs/companies/real-digital/remote-senior-devops-engineer-all-genders-data-platform-245703",
-  "https://www.arbeitnow.co.uk/jobs/companies/nebius/senior-software-engineer-data-platform-c-london-46375",
-  "https://www.arbeitnow.co.uk/jobs/companies/yuno/staff-engineer-data-platform-london-429735",
-  "https://www.arbeitnow.com/jobs/companies/exmox/senior-ai-native-data-engineer-hamburg-424655",
-  "https://www.arbeitnow.com/jobs/companies/trusted-shops-se-de/principal-analytics-engineer-berlin-225855",
-  "https://www.arbeitnow.com/jobs/companies/eraneos/remote-data-engineer-all-genders-12735",
-  "https://www.arbeitnow.com/jobs/companies/intetics-2/remote-senior-ml-engineer-germany-3-month-project-282468",
-  "https://www.arbeitnow.com/jobs/companies/climate/data-engineer-berlin-hq-131549",
-  "https://www.arbeitnow.com/jobs/companies/pair/data-scientist-berlin-hybrid-47229",
-  "https://www.arbeitnow.com/jobs/companies/voize/senior-analytics-engineer-berlin-219113",
-  "https://www.arbeitnow.com/jobs/companies/almedia/ai-engineer-data-berlin-450785",
-  "https://www.arbeitnow.com/jobs/companies/reev/senior-business-intelligence-lead-all-genders-munchen-127181",
-  "https://www.arbeitnow.com/jobs/companies/real-digital/remote-senior-devops-engineer-all-genders-data-platform-180543",
-  "https://www.arbeitnow.com/jobs/companies/gropyus/senior-data-engineer-berlin-berlin-131723",
-  "https://www.arbeitnow.com/jobs/companies/cortea-ai/senior-staff-ai-engineer-quality-evals-berlin-67239",
-  "https://www.arbeitnow.com/jobs/companies/enpal/analytics-engineer-berlin-300399",
-  "https://www.arbeitnow.com/jobs/companies/dataiku/remote-senior-data-scientist-german-speaking-224551",
-  "https://www.arbeitnow.com/jobs/companies/makersite-gmbh/remote-senior-data-scientist-berlin-242013",
-  "https://www.arbeitnow.com/jobs/companies/climate/data-engineer-berlin-hq-96911",
-  "https://www.arbeitnow.com/jobs/companies/exmox/senior-data-analyst-hamburg-353746",
-  "https://www.arbeitnow.com/jobs/companies/exmox/senior-ai-native-data-engineer-hamburg-334970",
-  "https://www.arbeitnow.com/jobs/companies/dishdigital/senior-data-engineer-dusseldorf-44649",
-  "https://www.arbeitnow.com/jobs/companies/pair/data-scientist-berlin-hybrid-327994",
-  "https://www.arbeitnow.com/jobs/companies/dishdigital/data-engineer-dusseldorf-159968",
-  "https://www.arbeitnow.com/jobs/companies/hellofresh/senior-data-platform-engineer-intelligent-platforms-all-genders-berlin-berlin-372321",
-  "https://www.arbeitnow.com/jobs/companies/reev/senior-business-intelligence-lead-all-genders-munchen-198779",
-  "https://www.arbeitnow.com/jobs/companies/trusteq-gmbh/data-platform-engineer-working-student-munchen-56537",
-  "https://www.arbeitnow.com/jobs/companies/real-digital/remote-senior-devops-engineer-all-genders-data-platform-426742",
-  "https://www.arbeitnow.com/jobs/companies/makersite-gmbh/remote-senior-data-scientist-berlin-143991",
-  "https://www.arbeitnow.com/jobs/companies/snke/senior-machine-learning-engineer-video-ai-munchen-98891",
-  "https://www.arbeitnow.com/jobs/companies/liqid-lig/senior-data-engineer-berlin-462279",
-  "https://www.arbeitnow.com/jobs/companies/caronsale/machine-learning-engineer-berlin-36406",
-  "https://www.arbeitnow.com/jobs/companies/exmox/senior-data-analyst-hamburg-472812",
-  "https://www.arbeitnow.com/jobs/companies/flix/senior-data-analyst-crm-berlin-209278",
-  "https://www.arbeitnow.com/jobs/companies/kolibrigames/game-data-analyst-berlin-germany-197952",
-  "https://www.arbeitnow.com/jobs/companies/climate/data-engineer-berlin-hq-259699",
-  "https://www.arbeitnow.com/jobs/companies/80-beats-medical-gmbh/data-scientist-data-engineer-berlin-75231",
-  "https://www.arbeitnow.com/jobs/companies/reev/senior-business-intelligence-lead-all-genders-munchen-21515",
-  "https://www.arbeitnow.com/jobs/companies/westwing-group-se/senior-data-analyst-munich-office-56362",
-  "https://www.arbeitnow.com/jobs/companies/real-digital/remote-senior-devops-engineer-all-genders-data-platform-263620",
-  "https://www.arbeitnow.com/jobs/companies/glassflow/ai-engineer-berlin-157513",
-  "https://www.arbeitnow.co.uk/jobs/companies/quantum/senior-data-engineer-london-122244",
-  "https://www.arbeitnow.com/jobs/companies/makersite-gmbh/remote-senior-data-scientist-berlin-106805",
-  "https://www.arbeitnow.com/jobs/companies/emma-the-sleep-company/analytics-engineer-data-platform-frankfurt-156939",
-  "https://www.arbeitnow.com/jobs/companies/aevi/data-engineer-germany-230003",
-  "https://www.arbeitnow.com/jobs/companies/1global/data-engineer-berlin-412094",
-  "https://www.arbeitnow.com/jobs/companies/climate/data-engineer-berlin-hq-160932",
-  "https://www.arbeitnow.com/jobs/companies/exmox/senior-data-analyst-hamburg-248551",
-  "https://www.arbeitnow.com/jobs/companies/planetlabs/senior-data-engineer-constellation-services-berlin-107524",
-  "https://www.arbeitnow.com/jobs/companies/trusteq-gmbh/data-platform-engineer-working-student-munchen-442846",
-  "https://www.arbeitnow.com/jobs/companies/trusteq-gmbh/data-engineer-working-student-koln-276326",
-  "https://www.arbeitnow.com/jobs/companies/jetbrains/staff-senior-ai-engineer-ai-for-code-berlin-munich-277450",
-  "https://www.arbeitnow.co.uk/jobs/companies/sumup/senior-product-data-analyst-consumer-growth-london-167800",
-  "https://remotive.com/remote-jobs/software-development/senior-independent-ai-engineer-architect-1919266",
-  "https://www.arbeitnow.com/jobs/companies/statista/data-engineer-tracking-infrastructure-hamburg-or-berlin-476148",
-  "https://www.arbeitnow.com/jobs/companies/bettermile/working-student-data-analyst-berlin-170440",
-  "https://www.arbeitnow.com/jobs/companies/motor-ai/data-engineer-berlin-366460",
-  "https://www.arbeitnow.com/jobs/companies/cortex-reply/finops-data-analyst-consultant-munich-40383",
-  "https://www.arbeitnow.com/jobs/companies/makersite-gmbh/remote-senior-data-scientist-berlin-194751",
-  "https://www.arbeitnow.com/jobs/companies/dishdigital/senior-data-engineer-dusseldorf-138329",
-  "https://www.arbeitnow.com/jobs/companies/cube/senior-agentic-ai-engineer-berlin-203894",
-  "https://www.arbeitnow.com/jobs/companies/statista/data-engineer-data-platform-ontology-hamburg-or-berlin-418502",
-  "https://www.arbeitnow.com/jobs/companies/platoapp/data-engineer-berlin-6005",
-  "https://www.arbeitnow.com/jobs/companies/sumup/senior-machine-learning-engineer-i-berlin-296351",
-  "https://www.arbeitnow.com/jobs/companies/zenjob/senior-data-analyst-berlin-207954",
-  "https://www.arbeitnow.com/jobs/companies/multibase-gmbh/senior-bi-developer-microsoft-fabric-power-bi-gilching-69880",
-  "https://www.arbeitnow.com/jobs/companies/motor-ai/ai-ml-engineer-autonomous-systems-berlin-374054",
-  "https://www.arbeitnow.co.uk/jobs/companies/perk/senior-analytics-engineer-london-101557",
-  "https://www.arbeitnow.com/jobs/companies/liveeo-gmbh/geospatial-data-analyst-in-the-field-of-ai-satellite-data-liveeo-gmbh-berlin-office-hybrid-135984",
-  "https://www.arbeitnow.com/jobs/companies/dishdigital/senior-data-engineer-dusseldorf-259265",
-  "https://www.arbeitnow.com/jobs/companies/trusteq-gmbh/data-platform-engineer-working-student-munchen-230477",
-  "https://www.arbeitnow.com/jobs/companies/trusteq-gmbh/data-engineer-working-student-koln-358872",
-  "https://www.arbeitnow.com/jobs/companies/artefact/senior-ai-engineer-berlin-berlin-hamburg-hamburg-munchen-bavaria-74951",
-  "https://www.arbeitnow.com/jobs/companies/freenow/product-data-analyst-berlin-56919",
-  "https://www.arbeitnow.com/jobs/companies/makersite-gmbh/remote-senior-data-scientist-berlin-309145",
-  "https://remotive.com/remote-jobs/software-development/senior-data-engineer-2091097",
-  "https://www.arbeitnow.com/jobs/companies/westwing-group-se/senior-data-analyst-munich-office-472692",
-  "https://www.arbeitnow.com/jobs/companies/machine-learning-reply/devops-ml-engineer-munich-201312",
-  "https://www.arbeitnow.com/jobs/companies/raisin/working-student-data-engineer-berlin-berlin-303757",
-  "https://www.arbeitnow.com/jobs/companies/sumup/senior-data-scientist-ml-engineer-financial-crime-berlin-185839",
-  "https://www.arbeitnow.com/jobs/companies/finn/senior-data-analyst-operations-germany-49920",
-  "https://www.arbeitnow.com/jobs/companies/enpal/senior-data-engineer-metrify-berlin-61854",
-  "https://www.arbeitnow.com/jobs/companies/enpal/staff-data-engineer-metrify-berlin-347291",
-  "https://www.arbeitnow.com/jobs/companies/netlight/data-platform-data-architecture-consultant-berlin-248331"
+ "reserve": [
+  {
+   "id": "2cba7e2540f7",
+   "title": "ML Data Engineer (m/f/d) - Sensor Data & Pipelines",
+   "company": "autonomous-teaming",
+   "location": "Munich (DEU)",
+   "country": "DE",
+   "market": "international",
+   "bucket": "de",
+   "label": "DE",
+   "tier": 2,
+   "rank": 3,
+   "reserve": true,
+   "is_new": true,
+   "first_seen": "2026-09-21",
+   "workplace_type": "onsite",
+   "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.com/jobs/companies/autonomous-teaming/ml-data-engineer-sensor-data-pipelines-munich-deu-456196",
+   "publication_date": "2026-09-20",
+   "fit_score": 77,
+   "fit_reason": "rol primary +30; konum +10; beceri 3×5 +15; kıdem mid +5; tazelik +10",
+   "matched_skills": [
+    "SQL",
+    "Python",
+    "ETL"
+   ],
+   "location_reason": "Arbeitnow konumu 'Munich (DEU)'",
+   "seniority": "mid",
+   "focus": "pipeline",
+   "focus_scores": {
+    "ml": 8,
+    "bi": 1,
+    "pipeline": 18,
+    "business": 4
+   },
+   "language": "en",
+   "generated_at": "2026-09-21 23:06",
+   "summary": "What we offer Work in an international, agile team creating the future of autonomous systems Grow your career in a expanding and ambitious engineering team Build innovative products using state-of-the-art technologies in AI, robotics, and autonomy Benefit from",
+   "keywords": [
+    "pipeline",
+    "scalab",
+    "dashboard"
+   ],
+   "url": "https://www.arbeitnow.com/jobs/companies/autonomous-teaming/ml-data-engineer-sensor-data-pipelines-munich-deu-456196",
+   "skills": [
+    "sql",
+    "python",
+    "etl"
+   ],
+   "score": 77,
+   "posted": "2026-09-20",
+   "days": 1,
+   "remote": false,
+   "german": false
+  },
+  {
+   "id": "984c5f8aed57",
+   "title": "Data Engineer (m/f/d)",
+   "company": "Ecoplanet Green Operations Gmbh",
+   "location": "München",
+   "country": "DE",
+   "market": "international",
+   "bucket": "de",
+   "label": "DE",
+   "tier": 2,
+   "rank": 4,
+   "reserve": true,
+   "is_new": true,
+   "first_seen": "2026-09-21",
+   "workplace_type": "onsite",
+   "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.com/jobs/companies/ecoplanet-green-operations-gmbh/data-engineer-munchen-241063",
+   "publication_date": "2026-09-21",
+   "fit_score": 72,
+   "fit_reason": "rol primary +30; konum +10; beceri 2×5 +10; kıdem mid +5; tazelik +10",
+   "matched_skills": [
+    "SQL",
+    "Python"
+   ],
+   "location_reason": "Arbeitnow konumu 'München'",
+   "seniority": "mid",
+   "focus": "pipeline",
+   "focus_scores": {
+    "ml": 2,
+    "bi": 2,
+    "pipeline": 14,
+    "business": 4
+   },
+   "language": "en",
+   "generated_at": "2026-09-21 23:06",
+   "summary": "What we are building At ecoplanet, we're redefining energy for tomorrow. Our mission: turn energy management into the competitive edge every European business relies on to win its market. We're building the operating system for the energy transition — cutting ",
+   "keywords": [
+    "energy",
+    "cost",
+    "dashboard",
+    "forecast",
+    "real-time",
+    "scalab",
+    "pipeline",
+    "anomaly",
+    "data quality"
+   ],
+   "url": "https://www.arbeitnow.com/jobs/companies/ecoplanet-green-operations-gmbh/data-engineer-munchen-241063",
+   "skills": [
+    "sql",
+    "python"
+   ],
+   "score": 72,
+   "posted": "2026-09-21",
+   "days": 0,
+   "remote": false,
+   "german": false
+  },
+  {
+   "id": "a500f24e49ee",
+   "title": "Junior Data & Analytics Consultant (M/F/D)",
+   "company": "Kaiser X Labs",
+   "location": "Munich - Stuttgart - Frankfurt - Hanover",
+   "country": "DE",
+   "market": "international",
+   "bucket": "de",
+   "label": "DE",
+   "tier": 2,
+   "rank": 5,
+   "reserve": true,
+   "is_new": true,
+   "first_seen": "2026-09-21",
+   "workplace_type": "hybrid",
+   "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.com/jobs/companies/kaiser-x-labs/junior-data-analytics-consultant-munich-stuttgart-frankfurt-hanover-288721",
+   "publication_date": "2026-09-21",
+   "fit_score": 65,
+   "fit_reason": "rol primary +30; konum +10; beceri 4×5 +20; kıdem junior -15; tazelik +10",
+   "matched_skills": [
+    "SQL",
+    "Python",
+    "Power BI",
+    "Tableau"
+   ],
+   "location_reason": "Arbeitnow konumu 'Munich - Stuttgart - Frankfurt - Hanover'",
+   "seniority": "junior",
+   "focus": "business",
+   "focus_scores": {
+    "ml": 4,
+    "bi": 6,
+    "pipeline": 0,
+    "business": 18
+   },
+   "language": "en",
+   "generated_at": "2026-09-21 23:06",
+   "summary": "YOUR ROLE YOUR ROLE AND RESPONSIBILITIES INCLUDE APPLYING BOTH ANALYTICAL AND STRATEGIC AI‑DRIVEN APPROACHES. THROUGH TARGETED STAKEHOLDER ENGAGEMENT AND EARLY IDENTIFICATION OF AI OPPORTUNITIES, YOU PROVIDE KEY IMPULSES FOR KXL’S AI AND DATA STRATEGY. As a Ju",
+   "keywords": [
+    "stakeholder",
+    "dashboard",
+    "governance"
+   ],
+   "url": "https://www.arbeitnow.com/jobs/companies/kaiser-x-labs/junior-data-analytics-consultant-munich-stuttgart-frankfurt-hanover-288721",
+   "skills": [
+    "sql",
+    "python",
+    "power bi",
+    "tableau"
+   ],
+   "score": 65,
+   "posted": "2026-09-21",
+   "days": 0,
+   "remote": false,
+   "german": false
+  },
+  {
+   "id": "497413e7eed4",
+   "title": "Data Platform Engineer (f/m/d) for the European AI Factory HammerHAI",
+   "company": "Lrz",
+   "location": "Garching bei München",
+   "country": "DE",
+   "market": "international",
+   "bucket": "de",
+   "label": "DE",
+   "tier": 2,
+   "rank": 6,
+   "reserve": true,
+   "is_new": true,
+   "first_seen": "2026-09-21",
+   "workplace_type": "onsite",
+   "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.com/jobs/companies/lrz/data-platform-engineer-for-the-european-ai-factory-hammerhai-garching-bei-munchen-349180",
+   "publication_date": "2026-09-21",
+   "fit_score": 62,
+   "fit_reason": "rol primary +30; konum +10; beceri 0×5 +0; kıdem mid +5; tazelik +10",
+   "matched_skills": [],
+   "location_reason": "Arbeitnow konumu 'Garching bei München'",
+   "seniority": "mid",
+   "focus": "pipeline",
+   "focus_scores": {
+    "ml": 1,
+    "bi": 0,
+    "pipeline": 14,
+    "business": 1
+   },
+   "language": "en",
+   "generated_at": "2026-09-21 23:06",
+   "summary": "Description: Looking for an employer you can count on? Join us! Data Platform Engineer (f/m/d) for the European AI Factory HammerHAI Your Role and Responsibilities: Developing and maintaining the data facility of the AI Factory including its software environme",
+   "keywords": [
+    "stakeholder",
+    "enterprise"
+   ],
+   "url": "https://www.arbeitnow.com/jobs/companies/lrz/data-platform-engineer-for-the-european-ai-factory-hammerhai-garching-bei-munchen-349180",
+   "skills": [],
+   "score": 62,
+   "posted": "2026-09-21",
+   "days": 0,
+   "remote": false,
+   "german": false
+  },
+  {
+   "id": "81d63264ce6a",
+   "title": "(Junior) Data Scientist",
+   "company": "Quantilope Gmbh",
+   "location": "Hybrid (Hamburg) or Remote (Germany)",
+   "country": "DE",
+   "market": "international",
+   "bucket": "de",
+   "label": "DE",
+   "tier": 2,
+   "rank": 7,
+   "reserve": true,
+   "is_new": true,
+   "first_seen": "2026-09-21",
+   "workplace_type": "hybrid",
+   "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.com/jobs/companies/quantilope-gmbh/remote-junior-data-scientist-305623",
+   "publication_date": "2026-09-20",
+   "fit_score": 43,
+   "fit_reason": "rol secondary +18; konum +10; beceri 2×5 +10; kıdem junior -15; tazelik +10",
+   "matched_skills": [
+    "Python",
+    "Azure"
+   ],
+   "location_reason": "Arbeitnow konumu 'Hybrid (Hamburg) or Remote (Germany)'",
+   "seniority": "junior",
+   "focus": "ml",
+   "focus_scores": {
+    "ml": 15,
+    "bi": 1,
+    "pipeline": 1,
+    "business": 6
+   },
+   "language": "en",
+   "generated_at": "2026-09-21 23:06",
+   "summary": "Introduction: At quantilope, we're transforming how the world's biggest brands understand their customers. As a (Junior) Data Scientist, you'll collaborate closely with Product Managers, Product Designers, and Software Engineers to build and evolve our AI-powe",
+   "keywords": [
+    "scalab"
+   ],
+   "url": "https://www.arbeitnow.com/jobs/companies/quantilope-gmbh/remote-junior-data-scientist-305623",
+   "skills": [
+    "python",
+    "azure"
+   ],
+   "score": 43,
+   "posted": "2026-09-20",
+   "days": 1,
+   "remote": false,
+   "german": false
+  }
  ],
+ "stats": {
+  "candidates": {
+   "tr": {
+    "istanbul": 0,
+    "tr_remote": 0,
+    "region_remote": 0
+   },
+   "de": 8,
+   "nl": 0,
+   "uk": 0
+  },
+  "selected": {
+   "tr": 0,
+   "de": 3,
+   "nl": 0,
+   "uk": 0
+  },
+  "missing": {
+   "tr": {
+    "eksik": 5,
+    "sebep": "uygun aday yok"
+   },
+   "nl": {
+    "eksik": 1,
+    "sebep": "uygun aday yok"
+   },
+   "uk": {
+    "eksik": 1,
+    "sebep": "uygun aday yok"
+   }
+  },
+  "eliminated": {
+   "rol dışı (hedef rol yok)": 800,
+   "rol dışı (başlık)": 492,
+   "Almanca ilan": 5,
+   "ML/DS rolü, beceri örtüşmesi zayıf": 7,
+   "ülke belirlenemedi": 2,
+   "ileri seviye Almanca şartı": 1,
+   "süresi doldu (daha önce gösterildi)": 3
+  }
+ },
+ "history": {
+  "url:https://www.arbeitnow.com/jobs/companies/taxfix/senior-data-scientist-marketing-berlin-454885": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/moss/senior-data-scientist-berlin-232387": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/reev/senior-business-intelligence-lead-all-genders-munchen-80998": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/real-digital/remote-senior-devops-engineer-all-genders-data-platform-16527": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://remotive.com/remote-jobs/data/senior-data-scientist-2091129": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/everdrop-gmbh/remote-paid-social-analytics-manager-munchen-383519": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/hellofresh/senior-marketing-data-analyst-pricing-all-genders-berlin-berlin-194706": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/hellofresh/senior-data-engineer-analytical-data-platform-inteligent-platforms-all-genders-berlin-berlin-207118": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/sumup/data-platform-engineer-berlin-376146": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/climate/data-engineer-berlin-hq-246069": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/almedia/ai-engineer-data-berlin-457327": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/bunch/senior-applied-ai-engineer-ai-platform-berlin-162773": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/sumup/senior-analytics-engineer-run-grow-berlin-116362": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/sumup/data-platform-engineer-berlin-462000": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/pergolux/analytics-engineer-marketing-growth-berlin-222553": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/nebius/senior-ml-engineer-token-factory-berlin-253386": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/reev/senior-business-intelligence-lead-all-genders-munchen-274972": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/trusteq-gmbh/data-platform-engineer-working-student-munchen-195978": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/real-digital/remote-senior-devops-engineer-all-genders-data-platform-245703": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.co.uk/jobs/companies/nebius/senior-software-engineer-data-platform-c-london-46375": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.co.uk/jobs/companies/yuno/staff-engineer-data-platform-london-429735": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/exmox/senior-ai-native-data-engineer-hamburg-424655": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/trusted-shops-se-de/principal-analytics-engineer-berlin-225855": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/eraneos/remote-data-engineer-all-genders-12735": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/intetics-2/remote-senior-ml-engineer-germany-3-month-project-282468": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/climate/data-engineer-berlin-hq-131549": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/pair/data-scientist-berlin-hybrid-47229": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/voize/senior-analytics-engineer-berlin-219113": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/almedia/ai-engineer-data-berlin-450785": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/reev/senior-business-intelligence-lead-all-genders-munchen-127181": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/real-digital/remote-senior-devops-engineer-all-genders-data-platform-180543": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/gropyus/senior-data-engineer-berlin-berlin-131723": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/cortea-ai/senior-staff-ai-engineer-quality-evals-berlin-67239": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/enpal/analytics-engineer-berlin-300399": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/dataiku/remote-senior-data-scientist-german-speaking-224551": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/makersite-gmbh/remote-senior-data-scientist-berlin-242013": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/climate/data-engineer-berlin-hq-96911": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/exmox/senior-data-analyst-hamburg-353746": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/exmox/senior-ai-native-data-engineer-hamburg-334970": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/dishdigital/senior-data-engineer-dusseldorf-44649": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/pair/data-scientist-berlin-hybrid-327994": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/dishdigital/data-engineer-dusseldorf-159968": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/hellofresh/senior-data-platform-engineer-intelligent-platforms-all-genders-berlin-berlin-372321": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/reev/senior-business-intelligence-lead-all-genders-munchen-198779": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/trusteq-gmbh/data-platform-engineer-working-student-munchen-56537": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/real-digital/remote-senior-devops-engineer-all-genders-data-platform-426742": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/makersite-gmbh/remote-senior-data-scientist-berlin-143991": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/snke/senior-machine-learning-engineer-video-ai-munchen-98891": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/liqid-lig/senior-data-engineer-berlin-462279": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/caronsale/machine-learning-engineer-berlin-36406": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/exmox/senior-data-analyst-hamburg-472812": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/flix/senior-data-analyst-crm-berlin-209278": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/kolibrigames/game-data-analyst-berlin-germany-197952": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/climate/data-engineer-berlin-hq-259699": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/80-beats-medical-gmbh/data-scientist-data-engineer-berlin-75231": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/reev/senior-business-intelligence-lead-all-genders-munchen-21515": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/westwing-group-se/senior-data-analyst-munich-office-56362": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/real-digital/remote-senior-devops-engineer-all-genders-data-platform-263620": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/glassflow/ai-engineer-berlin-157513": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.co.uk/jobs/companies/quantum/senior-data-engineer-london-122244": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/makersite-gmbh/remote-senior-data-scientist-berlin-106805": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/emma-the-sleep-company/analytics-engineer-data-platform-frankfurt-156939": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/aevi/data-engineer-germany-230003": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/1global/data-engineer-berlin-412094": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/climate/data-engineer-berlin-hq-160932": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/exmox/senior-data-analyst-hamburg-248551": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/planetlabs/senior-data-engineer-constellation-services-berlin-107524": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/trusteq-gmbh/data-platform-engineer-working-student-munchen-442846": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/trusteq-gmbh/data-engineer-working-student-koln-276326": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/jetbrains/staff-senior-ai-engineer-ai-for-code-berlin-munich-277450": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.co.uk/jobs/companies/sumup/senior-product-data-analyst-consumer-growth-london-167800": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://remotive.com/remote-jobs/software-development/senior-independent-ai-engineer-architect-1919266": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/statista/data-engineer-tracking-infrastructure-hamburg-or-berlin-476148": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/bettermile/working-student-data-analyst-berlin-170440": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/motor-ai/data-engineer-berlin-366460": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/cortex-reply/finops-data-analyst-consultant-munich-40383": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/makersite-gmbh/remote-senior-data-scientist-berlin-194751": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/dishdigital/senior-data-engineer-dusseldorf-138329": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/cube/senior-agentic-ai-engineer-berlin-203894": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/statista/data-engineer-data-platform-ontology-hamburg-or-berlin-418502": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/platoapp/data-engineer-berlin-6005": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/sumup/senior-machine-learning-engineer-i-berlin-296351": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/zenjob/senior-data-analyst-berlin-207954": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/multibase-gmbh/senior-bi-developer-microsoft-fabric-power-bi-gilching-69880": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/motor-ai/ai-ml-engineer-autonomous-systems-berlin-374054": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.co.uk/jobs/companies/perk/senior-analytics-engineer-london-101557": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/liveeo-gmbh/geospatial-data-analyst-in-the-field-of-ai-satellite-data-liveeo-gmbh-berlin-office-hybrid-135984": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/dishdigital/senior-data-engineer-dusseldorf-259265": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/trusteq-gmbh/data-platform-engineer-working-student-munchen-230477": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/trusteq-gmbh/data-engineer-working-student-koln-358872": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/artefact/senior-ai-engineer-berlin-berlin-hamburg-hamburg-munchen-bavaria-74951": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/freenow/product-data-analyst-berlin-56919": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/makersite-gmbh/remote-senior-data-scientist-berlin-309145": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://remotive.com/remote-jobs/software-development/senior-data-engineer-2091097": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/westwing-group-se/senior-data-analyst-munich-office-472692": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/machine-learning-reply/devops-ml-engineer-munich-201312": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/raisin/working-student-data-engineer-berlin-berlin-303757": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/sumup/senior-data-scientist-ml-engineer-financial-crime-berlin-185839": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/finn/senior-data-analyst-operations-germany-49920": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/enpal/senior-data-engineer-metrify-berlin-61854": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/enpal/staff-data-engineer-metrify-berlin-347291": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "url:https://www.arbeitnow.com/jobs/companies/netlight/data-platform-data-architecture-consultant-berlin-248331": {
+   "first_seen": null,
+   "last_seen": "2026-09-21",
+   "status": "expired",
+   "legacy": true
+  },
+  "f87b46a2785d": {
+   "first_seen": "2026-09-21",
+   "status": "listed",
+   "last_seen": "2026-09-21"
+  },
+  "ff2e0e9b5156": {
+   "first_seen": "2026-09-21",
+   "status": "listed",
+   "last_seen": "2026-09-21"
+  },
+  "840f2a02dda1": {
+   "first_seen": "2026-09-21",
+   "status": "listed",
+   "last_seen": "2026-09-21"
+  },
+  "2cba7e2540f7": {
+   "first_seen": "2026-09-21",
+   "status": "listed",
+   "last_seen": "2026-09-21"
+  },
+  "984c5f8aed57": {
+   "first_seen": "2026-09-21",
+   "status": "listed",
+   "last_seen": "2026-09-21"
+  },
+  "a500f24e49ee": {
+   "first_seen": "2026-09-21",
+   "status": "listed",
+   "last_seen": "2026-09-21"
+  },
+  "497413e7eed4": {
+   "first_seen": "2026-09-21",
+   "status": "listed",
+   "last_seen": "2026-09-21"
+  },
+  "81d63264ce6a": {
+   "first_seen": "2026-09-21",
+   "status": "listed",
+   "last_seen": "2026-09-21"
+  }
+ },
  "note": "Kaynak: Arbeitnow + Remotive. Basvuruyu kullanici kendisi yapar."
 }
