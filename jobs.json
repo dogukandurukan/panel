@@ -1,86 +1,102 @@
 {
- "updated": "2026-09-20 12:35",
+ "updated": "2026-09-21 13:23",
  "ok": true,
  "count": 3,
- "pool": 8,
+ "pool": 18,
  "items": [
   {
-   "title": "Senior DevOps Engineer (all genders) | Data Platform",
-   "company": "Real Digital",
+   "title": "Senior Data Scientist, Marketing (d/f/m)",
+   "company": "Taxfix",
    "location": "Berlin",
-   "loc_raw": "Remote oder Köln / Darmstadt / Düsseldorf / Berlin",
+   "loc_raw": "Berlin",
    "remote": false,
-   "url": "https://www.arbeitnow.com/jobs/companies/real-digital/remote-senior-devops-engineer-all-genders-data-platform-16527",
+   "url": "https://www.arbeitnow.com/jobs/companies/taxfix/senior-data-scientist-marketing-berlin-454885",
    "source": "Arbeitnow",
-   "posted": "2026-09-19",
-   "days": 1,
+   "posted": "2026-09-21",
+   "days": 0,
    "skills": [
     "python",
     "sql",
-    "azure",
-    "airflow",
-    "dbt",
-    "ci/cd"
-   ],
-   "german": false,
-   "focus": "pipeline",
-   "summary": "Anstellungsdetails Permanent Contract, Full- or Part-Time, Remote or Cologne / Düsseldorf / Darmstadt / Berlin Info Who we areWe are the tech powerhouse behind Kaufland’s international online marketplaces and a company within the Schwarz Group. Driven by a sta",
-   "keywords": [
-    "pipeline",
-    "cost"
-   ],
-   "score": 112
-  },
-  {
-   "title": "Senior Data Scientist",
-   "company": "Lemon.io",
-   "location": "Remote",
-   "loc_raw": "Northern America, LATAM, Europe, APAC",
-   "remote": true,
-   "url": "https://remotive.com/remote-jobs/data/senior-data-scientist-2091129",
-   "source": "Remotive",
-   "posted": "2026-09-16T12:35:28",
-   "days": 3,
-   "skills": [
-    "python",
-    "databricks",
+    "git",
     "llm"
    ],
    "german": false,
    "focus": "ml",
-   "summary": "Are you a talented Senior Data Scientist looking for a remote job that lets you show your skills and get decent compensation? Look no further than Lemon.io — the marketplace that connects you with hand-picked startups in the US and Europe. What we offer: The r",
+   "summary": "Our story: Every year millions of people are either filing their taxes in fear or giving up on their tax refund altogether. We're working on fixing that. Our intuitive app enables anyone, regardless of education or background, to file their taxes with newfound",
    "keywords": [
-    "startup",
-    "automation"
+    "stakeholder",
+    "forecast",
+    "pipeline"
    ],
-   "score": 79
+   "score": 100
   },
   {
-   "title": "Paid Social & Analytics Manager (m/f/d)",
-   "company": "everdrop GmbH",
-   "location": "Remote",
-   "loc_raw": "Remote job",
-   "remote": true,
-   "url": "https://www.arbeitnow.com/jobs/companies/everdrop-gmbh/remote-paid-social-analytics-manager-munchen-383519",
+   "title": "Senior Data Scientist (f/m/d)",
+   "company": "Moss",
+   "location": "Berlin",
+   "loc_raw": "Berlin",
+   "remote": false,
+   "url": "https://www.arbeitnow.com/jobs/companies/moss/senior-data-scientist-berlin-232387",
    "source": "Arbeitnow",
-   "posted": "2026-09-19",
-   "days": 1,
+   "posted": "2026-09-21",
+   "days": 0,
    "skills": [
-    "tableau",
-    "a/b test"
+    "python",
+    "llm"
    ],
    "german": false,
-   "focus": "business",
-   "summary": "THIS IS THE JOB Location : Munich/ Hybrid or remote within Germany Team : Performance Marketing We’re everdrop – a fast-growing D2C brand on a mission to change the world of household and personal care. We’re looking for a performance-driven and analytical Pai",
+   "focus": "ml",
+   "summary": "At Moss, we give finance professionals the power to automate their day-to-day and make forward-thinking decisions. Our culture is what makes that possible: we play to win, we obsess over quality, and we win as One Moss, and it works. Moss closed a €35 million ",
    "keywords": [
-    "optimization",
-    "a/b",
-    "startup"
+    "finance",
+    "anomaly",
+    "pipeline",
+    "cost",
+    "stakeholder",
+    "root cause",
+    "scalab",
+    "real-time"
    ],
-   "score": 66
+   "score": 88
+  },
+  {
+   "title": "Senior Business Intelligence Lead (all genders)",
+   "company": "Reev",
+   "location": "Almanya",
+   "loc_raw": "München",
+   "remote": false,
+   "url": "https://www.arbeitnow.com/jobs/companies/reev/senior-business-intelligence-lead-all-genders-munchen-80998",
+   "source": "Arbeitnow",
+   "posted": "2026-09-20",
+   "days": 1,
+   "skills": [
+    "sql",
+    "spark",
+    "dbt",
+    "etl",
+    "data warehouse"
+   ],
+   "german": false,
+   "focus": "ml",
+   "summary": "Your Mission EV charging is evolving from a niche technology into everyday infrastructure. As reev grows, teams increasingly need reliable, consistently defined metrics. Today, different dashboards, reporting dates, filters, and assumptions can produce differe",
+   "keywords": [
+    "dashboard",
+    "finance",
+    "pipeline",
+    "stakeholder",
+    "automation",
+    "data quality",
+    "governance",
+    "saas",
+    "energy"
+   ],
+   "score": 86
   }
  ],
  "seen": [
+  "https://www.arbeitnow.com/jobs/companies/taxfix/senior-data-scientist-marketing-berlin-454885",
+  "https://www.arbeitnow.com/jobs/companies/moss/senior-data-scientist-berlin-232387",
+  "https://www.arbeitnow.com/jobs/companies/reev/senior-business-intelligence-lead-all-genders-munchen-80998",
   "https://www.arbeitnow.com/jobs/companies/real-digital/remote-senior-devops-engineer-all-genders-data-platform-16527",
   "https://remotive.com/remote-jobs/data/senior-data-scientist-2091129",
   "https://www.arbeitnow.com/jobs/companies/everdrop-gmbh/remote-paid-social-analytics-manager-munchen-383519",
