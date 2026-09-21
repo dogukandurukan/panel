@@ -936,6 +936,29 @@
   .vd.eski .vd-i{border:1px dashed var(--warning);}
   .vd.hata{color:var(--danger);border:1px solid var(--danger);}
   .vd.hata .vd-i{background:var(--danger);color:var(--surface-1);}
+  .seg-ctl{display:flex;gap:4px;padding:3px;border:1px solid var(--line);border-radius:10px;margin-bottom:10px;}
+  .seg-ctl button{flex:1;min-height:40px;border:0;border-radius:8px;background:none;color:var(--text-secondary);
+    font-family:var(--mono);font-size:12px;letter-spacing:.04em;cursor:pointer;}
+  .seg-ctl button[aria-selected="true"]{background:var(--accent);color:var(--on-accent);font-weight:600;}
+  .seg-ctl .seg-k{opacity:.6;margin-left:1px;}
+  .is-r{border-bottom:1px dotted var(--line2);}
+  .is-r:last-of-type{border-bottom:0;}
+  .is-r.applied .is-t{color:var(--text-secondary);}
+  .is-ozet{display:flex;align-items:center;gap:10px;width:100%;min-height:52px;padding:6px 0;background:none;border:0;
+    color:inherit;text-align:left;cursor:pointer;font:inherit;}
+  .is-ozet .ok{color:var(--text-secondary);font-size:11px;transition:transform .18s;}
+  .is-ozet[aria-expanded="true"] .ok{transform:rotate(180deg);}
+  .is-etk{flex:none;min-width:34px;text-align:center;font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.04em;
+    padding:3px 6px;border-radius:6px;border:1px solid var(--accent);color:var(--accent);}
+  .is-etk.tr{min-width:0;max-width:112px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .is-ana{flex:1;min-width:0;display:flex;flex-direction:column;}
+  .is-t{font-size:14.5px;font-weight:600;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .is-alt{font-family:var(--mono);font-size:11px;color:var(--text-secondary);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .is-detay{padding:0 0 12px 44px;}
+  .is-detay .job-act .ibtn{min-height:40px;}
+  .is-eksik{font-family:var(--mono);font-size:11px;color:var(--warning);border:1px dashed var(--warning);border-radius:8px;
+    padding:6px 10px;margin-top:8px;}
+  @media (max-width:759px){.is-detay{padding-left:0;}}
   .qk-hata{color:var(--danger);font-size:13px;min-height:18px;}
   .qk-ipucu{font-size:12.5px;color:var(--text-secondary);}
   .qk-ogun{display:flex;align-items:center;gap:10px;min-height:52px;border-bottom:1px dotted var(--line2);}
@@ -1221,7 +1244,7 @@
       <button id="ebEkle">Başvurdum</button>
     </div>
     <div id="retBox"></div></section>
-  <section class="card" data-k="isler" data-ad="Bugünün 3 İşi"><div class="card-head"><div><p class="kicker">Kariyer · Günlük</p><h2 class="card-title">Bugünün 3 İşi</h2></div>
+  <section class="card" data-k="isler" data-ad="Günün İşleri"><div class="card-head"><div><p class="kicker">Kariyer · Günlük</p><h2 class="card-title">Günün İşleri</h2></div>
     <div class="meta"><span id="jobsTime">—</span><br><button class="ibtn" id="jobsCfg" style="margin-top:5px">⚙ Profil</button></div></div>
     <div id="jobsCfgBox" style="display:none"></div>
     <!-- 15 Eyl'de sağa başvuru özeti (toplam/bekliyor/ret) konmuştu, kullanıcı
@@ -6178,7 +6201,8 @@ let jobs=[],jobsApplied=[],jobProfile=null;
 const SKILL_LABEL={'ci/cd':'CI/CD','sql':'SQL','dbt':'dbt','power bi':'Power BI','powerbi':'Power BI',
  'etl':'ETL','llm':'LLM','a/b test':'A/B testing','pyspark':'PySpark','mssql':'MSSQL','dax':'DAX',
  'data warehouse':'Data Warehouse','git':'Git','azure':'Azure','airflow':'Airflow','spark':'Spark',
- 'databricks':'Databricks','python':'Python','tableau':'Tableau','looker':'Looker','snowflake':'Snowflake'};
+ 'databricks':'Databricks','python':'Python','tableau':'Tableau','looker':'Looker','snowflake':'Snowflake',
+ 'microsoft fabric':'Microsoft Fabric','ssis':'SSIS','postgresql':'PostgreSQL','power query':'Power Query'};
 function skillLabel(s){return SKILL_LABEL[s]||String(s).replace(/\b\w/g,c=>c.toUpperCase());}
 
 async function loadJobsJson(){
@@ -6187,7 +6211,11 @@ async function loadJobsJson(){
     const r=await fetch('jobs.json?_='+Date.now());
     if(!r.ok)throw r.status;
     const d=await r.json();
-    jobs=d.items||[];
+    /* v2 (21 Eyl): seçilen + yedek ilanlar kovalı gelir; panel başvurulan /
+       gizlenen / ret alınan ilanı çıkarıp yedekten doldurur. v1 (eski düz
+       liste) de okunur — yalnızca kovasız gösterilir. */
+    jobs=(d.items||[]).concat(d.version>=2?(d.reserve||[]):[]);
+    jobsMeta=d.version>=2?{v2:true,quota:d.quota||IS_KOTA,stats:d.stats||{}}:{v2:false};
     const ag=feedAge(d.updated);
     if(t)t.textContent=ag?ag.txt:'—';
     veriDurumu('isler',(ag&&ag.dk>VD_ESIK_DK.jobs)?'eski':'guncel',ag&&ag.txt);
@@ -6205,6 +6233,80 @@ async function loadJobsJson(){
   }
 }
 function jobKey(j){return j.url||((j.company||'')+'|'+(j.title||''));}
+/* ===== GÜNÜN İŞLERİ (21 Eyl) =====
+   Türkiye 5 · Yurtdışı 5 (DE 3, NL 1, UK 1). Seçimi jobs_feed.py yapıyor;
+   panel yalnızca KULLANICIYA ÖZEL süzgeci uyguluyor, çünkü "başvurdum / ret /
+   uygun değil" bilgisi repoya (herkese açık) yazılamaz:
+     - önceki günlerde başvurulan, ret işaretlenen ya da gizlenen ilan çıkar,
+       sırası gelen yedek ilan yerine geçer;
+     - BUGÜN başvurulan ilan yerinde kalır (geri alınabilsin diye).
+   Kota dolmazsa başka ülkeyle doldurulmaz; eksik ve sebebi kartta yazar.
+   Gizlenenler d:jobsHidden ({id: tarih}, senkronla gider). Açık sekme
+   d:isSekme (cihaza özel). */
+const IS_KOTA={tr:5,de:3,nl:1,uk:1};
+const IS_KOVA_AD={tr:'Türkiye',de:'Almanya',nl:'Hollanda',uk:'UK'};
+const IS_YER={remote:'Remote',hybrid:'Hibrit',onsite:'Ofiste'};
+let jobsMeta={v2:false},jobsHidden={},isSekme='tr',isAcik={};
+const isId=j=>j.id||jobKey(j);
+function isBasvuru(j){
+  const k=jobKey(j);
+  const a=myApps.find(x=>x.key===k);
+  if(a)return a;
+  return jobsApplied.indexOf(k)>-1?{date:''}:null;
+}
+function isDurumu(j){
+  if(jobsHidden[isId(j)])return 'gizli';
+  if(retElle.indexOf(appAnahtar([j.company,j.title]))>-1)return 'ret';
+  const a=isBasvuru(j);
+  if(a)return a.date===todayKey()?'bugun':'basvuruldu';
+  return '';
+}
+/* Kova başına gösterilecekler: feed sırası (rank), kullanıcı süzgeci, kota. */
+function isSecimi(){
+  const kota=(jobsMeta.v2&&jobsMeta.quota)||IS_KOTA,out={};
+  ['tr','de','nl','uk'].forEach(b=>{
+    const aday=jobs.filter(j=>j.bucket===b).sort((x,y)=>(x.rank||0)-(y.rank||0));
+    const kalan=aday.filter(j=>{const d=isDurumu(j);return d===''||d==='bugun';});
+    const goster=kalan.slice(0,kota[b]||0);
+    let eksik='';
+    if(goster.length<(kota[b]||0)){
+      const m=jobsMeta.stats&&jobsMeta.stats.missing&&jobsMeta.stats.missing[b];
+      eksik=(aday.length>goster.length)?'işaretlediğin ilanlardan sonra yedek kalmadı':(m?m.sebep:'uygun aday yok');
+    }
+    out[b]={goster:goster,kota:kota[b]||0,eksik:eksik};
+  });
+  return out;
+}
+function isSatiri(j){
+  const id=isId(j),d=isDurumu(j),acik=!!isAcik[id];
+  const etiket=j.bucket==='tr'?(j.label||'Türkiye'):(j.country||j.location||'');
+  const yer=[j.company,j.location,IS_YER[j.workplace_type]||''].filter(Boolean).map(esc).join(' · ');
+  const bec=(j.matched_skills&&j.matched_skills.length?j.matched_skills:(j.skills||[]).map(skillLabel)).slice(0,5);
+  const yas=j.days==null?'':(j.days===0?'bugün':j.days+' gün önce');
+  return '<div class="is-r'+(d==='bugun'?' applied':'')+'">'+
+    '<button class="is-ozet" data-is-ac="'+esc(id)+'" aria-expanded="'+acik+'">'+
+      '<span class="is-etk'+(j.bucket==='tr'?' tr':'')+'">'+esc(etiket)+'</span>'+
+      '<span class="is-ana"><span class="is-t">'+esc(j.title)+'</span><span class="is-alt">'+yer+'</span></span>'+
+      (d==='bugun'?'<span class="job-done">✓ başvuruldu</span>':'')+
+      '<span class="ok" aria-hidden="true">▾</span></button>'+
+    '<div class="is-detay"'+(acik?'':' hidden')+'>'+
+      '<div class="job-badges">'+bec.map(x=>'<span class="jb">'+esc(x)+'</span>').join('')+
+        '<span class="jb loc">'+esc(j.source||'')+'</span>'+(yas?'<span class="jb">'+yas+'</span>':'')+
+        (j.focus?'<span class="jb">'+esc(FOCUS_TR[j.focus]||j.focus)+'</span>':'')+'</div>'+
+      (j.summary?'<div class="job-sum">'+esc(j.summary)+'…</div>':'')+
+      '<div class="job-act">'+
+        '<a class="ibtn" href="'+esc(j.url||j.source_url||'#')+'" target="_blank" rel="noopener">İlana git ↗</a>'+
+        '<button class="ibtn" data-jcl="'+esc(id)+'">Cover Letter → PDF</button>'+
+        '<button class="ibtn" data-jap="'+esc(id)+'">'+(d==='bugun'?'Geri al':'Başvurdum ✓')+'</button>'+
+        '<button class="ibtn" data-jgz="'+esc(id)+'">Uygun değil · gizle</button>'+
+      '</div></div></div>';
+}
+async function isGizle(j){
+  const id=isId(j);
+  jobsHidden[id]=todayKey();
+  await sSet('d:jobsHidden',jobsHidden);renderJobs();
+  toastGoster('İlan gizlendi; yerine sıradaki geldi.',{ad:'Geri al',f:async()=>{delete jobsHidden[id];await sSet('d:jobsHidden',jobsHidden);renderJobs();}});
+}
 function renderJobs(){
   const el=document.getElementById('jobsList');if(!el)return;
   /* Geçiş: eski sürüm yalnızca jobsApplied'a yazıyordu, myApps yoktu. Daha önce
@@ -6217,33 +6319,42 @@ function renderJobs(){
       tasindi=true;}});
   if(tasindi){sSet(K.myApps,myApps);if(typeof sheetRows!=='undefined')renderBasvuru(sheetRows);}
   if(!jobs.length){el.innerHTML='<div class="empty">Bugün kriterlere uyan ilan bulunamadı.</div>';return;}
-  el.innerHTML=jobs.map((j,i)=>{
-    const done=jobsApplied.indexOf(jobKey(j))>-1;
-    const retli=done&&retElle.indexOf(appAnahtar([j.company,j.title]))>-1;
-    const yas=j.days==null?'':(j.days===0?'bugün':j.days+' gün önce');
-    return '<div class="job'+(done?' applied':'')+'">'+
-      '<div class="job-top"><div style="flex:1;min-width:180px">'+
-        '<div class="job-t">'+esc(j.title)+'</div>'+
-        '<div class="job-co">'+esc(j.company)+'</div></div>'+
-        (retli?'<span class="job-done ret">✗ ret</span>'
-              :(done?'<span class="job-done">✓ başvuruldu</span>':''))+'</div>'+
-      '<div class="job-badges">'+
-        '<span class="jb loc">'+esc(j.location)+'</span>'+
-        (j.remote?'<span class="jb">remote</span>':'')+
-        (j.german?'<span class="jb de">Almanca ilan</span>':'')+
-        (yas?'<span class="jb">'+yas+'</span>':'')+
-        '<span class="jb">'+esc(j.source)+'</span>'+(j.focus?'<span class="jb">'+esc(FOCUS_TR[j.focus]||j.focus)+'</span>':'')+
-        (j.skills||[]).map(s=>'<span class="jb">'+esc(skillLabel(s))+'</span>').join('')+
-      '</div>'+
-      (j.summary?'<div class="job-sum">'+esc(j.summary)+'…</div>':'')+
-      '<div class="job-act">'+
-        '<a class="ibtn" href="'+esc(j.url)+'" target="_blank" rel="noopener">İlana git ↗</a>'+
-        '<button class="ibtn" data-jcl="'+i+'">Cover letter → PDF</button>'+
-        '<button class="ibtn" data-jap="'+i+'">'+(done?'Geri al':'Başvurdum ✓')+'</button>'+
-      '</div></div>';
-  }).join('');
-  el.querySelectorAll('[data-jcl]').forEach(b=>b.onclick=()=>coverLetter(jobs[+b.dataset.jcl]));
-  el.querySelectorAll('[data-jap]').forEach(b=>b.onclick=()=>toggleApplied(jobs[+b.dataset.jap]));
+  const byId={};jobs.forEach(j=>{byId[isId(j)]=j;});
+  let html;
+  if(!jobsMeta.v2){
+    /* eski jobs.json: kova yok — düz liste, aynı satır biçimi */
+    html='<div class="cfg-note">Eski biçimde ilan dosyası; feed bir sonraki çalışmasında Türkiye / Yurtdışı ayrımı gelir.</div>'+
+      jobs.filter(j=>{const d=isDurumu(j);return d===''||d==='bugun';}).map(isSatiri).join('');
+  }else{
+    const S=isSecimi();
+    const trN=S.tr.goster.length,ydN=S.de.goster.length+S.nl.goster.length+S.uk.goster.length;
+    const ydK=S.de.kota+S.nl.kota+S.uk.kota;
+    if(isSekme!=='tr'&&isSekme!=='yd')isSekme='tr';
+    html='<div class="seg-ctl" role="tablist" aria-label="İlan bölgesi">'+
+      '<button role="tab" data-is-sek="tr" aria-selected="'+(isSekme==='tr')+'">Türkiye · '+trN+'<span class="seg-k">/'+S.tr.kota+'</span></button>'+
+      '<button role="tab" data-is-sek="yd" aria-selected="'+(isSekme==='yd')+'">Yurtdışı · '+ydN+'<span class="seg-k">/'+ydK+'</span></button></div>';
+    const eksikSatiri=b=>S[b].eksik?'<div class="is-eksik">'+esc(IS_KOVA_AD[b])+': '+S[b].goster.length+'/'+S[b].kota+' — '+esc(S[b].eksik)+'</div>':'';
+    if(isSekme==='tr'){
+      html+=S.tr.goster.map(isSatiri).join('')+eksikSatiri('tr');
+    }else{
+      html+=['de','nl','uk'].map(b=>S[b].goster.map(isSatiri).join('')).join('')+
+        ['de','nl','uk'].map(eksikSatiri).join('');
+    }
+    const gizliN=jobs.filter(j=>jobsHidden[isId(j)]).length;
+    if(gizliN)html+='<div class="gm-bulk">'+gizliN+' ilan gizli · <a href="#" id="isGizliAc">hepsini geri getir</a></div>';
+  }
+  el.innerHTML=html;
+  el.querySelectorAll('[data-is-sek]').forEach(b=>b.onclick=()=>{
+    isSekme=b.dataset.isSek;try{localStorage.setItem('d:isSekme',JSON.stringify(isSekme));}catch(e){}renderJobs();});
+  el.querySelectorAll('[data-is-ac]').forEach(b=>b.onclick=()=>{
+    const id=b.dataset.isAc;isAcik[id]=!isAcik[id];renderJobs();
+    const y=el.querySelector('[data-is-ac="'+CSS.escape(id)+'"]');if(y)y.focus({preventScroll:true});});
+  el.querySelectorAll('[data-jcl]').forEach(b=>b.onclick=()=>coverLetter(byId[b.dataset.jcl]));
+  el.querySelectorAll('[data-jap]').forEach(b=>b.onclick=()=>toggleApplied(byId[b.dataset.jap]));
+  el.querySelectorAll('[data-jgz]').forEach(b=>b.onclick=()=>isGizle(byId[b.dataset.jgz]));
+  const ga=document.getElementById('isGizliAc');
+  if(ga)ga.onclick=async ev=>{ev.preventDefault();jobs.forEach(j=>{delete jobsHidden[isId(j)];});
+    await sSet('d:jobsHidden',jobsHidden);renderJobs();};
 }
 
 /* ===== MİNİMAL PDF YAZICI =====
@@ -6369,7 +6480,11 @@ function buildLetter(j){
   const p=jobProfile,B=profBlocks(p);
   const odak=j.focus||'pipeline';
   const mine=(p.skills||'').toLowerCase();
-  const ort=(j.skills||[]).filter(s=>mine.indexOf(s.toLowerCase())>-1);
+  /* Yalnızca PROFİLDE olan beceriler yazılır. Takma adlar: ilanda "Microsoft
+     Fabric" / profilde "Fabric" gibi yazım farkları kaçmasın. */
+  const TAKMA={'microsoft fabric':['microsoft fabric','fabric'],'postgresql':['postgresql','postgres'],
+    'power bi':['power bi','powerbi'],'pyspark':['pyspark','spark']};
+  const ort=(j.skills||[]).filter(s=>(TAKMA[s.toLowerCase()]||[s.toLowerCase()]).some(a=>mine.indexOf(a)>-1));
   /* ilanın odağına en uygun blok önce, ardından farklı bir ikinci blok */
   const birincil=B[odak]||B.pipeline||B.business||'';
   const sira=['business','pipeline','ml','bi'].filter(k=>k!==odak);
@@ -6539,7 +6654,7 @@ function openJobsCfg(){
    - Feed onbellekleri (borsa/haber/hava/ajan) senkrona girmez; her cihaz onlari
      kendi ceker, bosuna trafik olmasin. */
 const SYNC_FILE='panel-data.json';
-const SYNC_SKIP=['d:kultur','d:sync','d:mtime','d:resetVer','d:theme','d:tab','d:kultTab','d:news','d:fx','d:agents','d:wx','d:bist','d:altin','d:watch','d:world','d:tr','d:us','d:worldIdx','d:gold','d:facts'];
+const SYNC_SKIP=['d:isSekme','d:kultur','d:sync','d:mtime','d:resetVer','d:theme','d:tab','d:kultTab','d:news','d:fx','d:agents','d:wx','d:bist','d:altin','d:watch','d:world','d:tr','d:us','d:worldIdx','d:gold','d:facts'];
 const SYNC_POLL=5*60*1000;
 let syncCfg=null,syncTimer=null,syncBusy=false,syncMsg='';
 const syncable=k=>k&&k.indexOf('d:')===0&&SYNC_SKIP.indexOf(k)<0;
@@ -7365,7 +7480,7 @@ function kabukBagla(){
     await loadGmailJson();};
   document.getElementById('agentRefresh').onclick=()=>loadAgents(true);
   document.getElementById('jobsCfg').onclick=openJobsCfg;
-  jobProfile=await sGet(K.jobProfile)||null;jobsApplied=await sGet(K.jobsApplied)||[];myApps=await sGet(K.myApps)||[];retler=await sGet('d:retler')||[];retGizli=await sGet('d:retGizli')||[];retElle=await sGet('d:retElle')||[];oneriKapali=await sGet('d:oneriKapali')||{};offGunler=await sGet('d:off')||{};
+  jobProfile=await sGet(K.jobProfile)||null;jobsApplied=await sGet(K.jobsApplied)||[];jobsHidden=await sGet('d:jobsHidden')||{};isSekme=await sGet('d:isSekme')||'tr';myApps=await sGet(K.myApps)||[];retler=await sGet('d:retler')||[];retGizli=await sGet('d:retGizli')||[];retElle=await sGet('d:retElle')||[];oneriKapali=await sGet('d:oneriKapali')||{};offGunler=await sGet('d:off')||{};
   document.getElementById('placeName').textContent=PLACE.name;
   renderTasks();await loadSched();await loadYok();await loadMorning();await renderRun();await loadWorkout();renderWtLog();await loadMeals();await loadWater();await takviyeYukle();await adimYukle();await loadSleep();await loadBW();await loadMoney();await renderBugunHarcama();await renderHaftalik();await renderOneri();loadHabits();await initSync();
   renderFacts();renderFilm();renderArtist();renderBook();renderHistory();kulturYukle();renderKult();renderGerman();renderNews();renderTR();renderRetler();renderWatch();renderUS();renderWorldIdx();renderGold();renderWorld();renderMktSummary();renderFinNote();

@@ -98,6 +98,24 @@ ilerlemesi, başla/devam (`sessBaslat`) ve "Bugün yapamadım" (`exYapamadim`).
 iPhone notu: ekran kilitliyken dinlenme uyarısı gelmez, Safari titreşim
 desteklemez — kullanıcıya söylendi.
 
+**Günün İşleri v2 (21 Eyl).** `jobs_feed.py` yeniden yazıldı, testler
+`tests/test_jobs_feed.py` (ağsız, 15 test). Kotalar `QUOTA` {tr 5, de 3, nl 1,
+uk 1}, yedek `RESERVE`. Kesin filtre (rol/başlık dışlama, Almanca ilan, ileri
+Almanca ŞARTI — "plus" diyen kalır, yayın > 45 gün) → kova (TR: İstanbul
+onsite/hybrid > TR remote > Worldwide/Europe/EMEA; bölge ilanı açıklamada
+ABD/EU/UK ikamet-izin kısıtı varsa TR'ye girmez) → `fit_score` (+`fit_reason`)
+→ sıralama (yeni > önceki günlerden kalan; DE'de Berlin önce). ML/DS rolü ancak
+≥2 beceri eşleşirse. Tekrar politikası: `history` {id: first_seen, last_seen,
+status}; 14 gün sonra `expired`, kaynakta görünmeyen aday olmaz, 30 gün
+görünmeyen kayıt silinir; eski `seen` URL'leri `url:` önekli expired olarak
+taşındı. `jobs.json` v2: `items` (seçilen ≤10) + `reserve` + `stats` +
+`history`; eski alanlar (url, skills, score, posted) duruyor. Panel: `isSecimi()`
+kullanıcı süzgeci (bugün başvurulan yerinde kalır), `d:jobsHidden` (senkronlu),
+`d:isSekme` (SYNC_SKIP). Focus: başlık 3×, terim başına en fazla 3, "ai"/"model"
+tek başına ML seçtirmez. **Kaynak gerçeği (21 Eyl ölçümü):** Arbeitnow ~1300
+ilan, NL ve TR 0; Remotive public API parametreleri yok sayıp ~18 ilan veriyor
+→ TR ve NL kotaları çoğu gün dolmayacak. Yeni kaynak kullanıcı onayı bekliyor.
+
 **Açık uçlar:** Gerçek iPhone'da safe-area/klavye/titreşim doğrulanmadı.
 `design-references/` klasörü yerelde, repoda değil.
 
@@ -278,10 +296,10 @@ Actions log'una da şirket adı/konu basılmaz — log herkese açık.
 
 ### B. Karar bekleyenler
 
-- **"Bugünün 3 İşi" başvurunca yenisini getirmiyor.** `jobs_feed.py` havuzdan
-  (23-25 ilan) yalnızca `PICK = 3` yazıyor, panelde yedek yok. Öneri:
-  `PICK = 8` + panel başvurulmamış ilk 3'ü göstersin. Kullanıcı "şimdilik
-  dokunmayalım" dedi — **sorulmadan değiştirme.**
+- ~~**"Bugünün 3 İşi" başvurunca yenisini getirmiyor.**~~ **21 Eyl'de çözüldü:**
+  kart "Günün İşleri" oldu (Türkiye 5 · Yurtdışı 5 = DE 3, NL 1, UK 1), feed
+  kova başına YEDEK de yazıyor, panel başvurulan/ret/gizlenen ilanın yerine
+  yedeği koyuyor. Ayrıntı §0'da.
 - **Harcama verisi nereye?** Şu an `d:money:*` localStorage + senkron gist.
   Repoya yazılamaz. A3 cevaplanınca `harcama_feed.py` netleşir.
 
@@ -374,7 +392,7 @@ Actions log'una da şirket adı/konu basılmaz — log herkese açık.
 | **Elle başvuru girişi** | 7 Eyl | Kullanıcı ağırlıklı LinkedIn'den başvuruyor, o başvurular hiçbir yere düşmüyordu; `basvuru-tempo` ve `donus-yok` yalnızca `d:myApps`'e baktığı için hep sessiz kalıyordu. İş Başvuruları kartına şirket+pozisyon satırı eklendi, anahtar `el:` önekli. `appRows()` zaten Sheet ile birleştirip tekrarı ayıklıyor. |
 | **LLM / Jarvis bağlanmadı** | 3 Eyl | Konuşuldu, kullanıcı "çok gerek görmedim" dedi. Günlük brifing reddedildi (veri zaten ekranda). Doğal dille giriş istenirse önce **yerel ayrıştırıcı** yazılacak (anahtarsız, çevrimdışı, gizlilik sorunsuz); model ancak o yetmezse yedek olarak. Kendiliğinden yeniden önerme. |
 | **Kalori hedefi 2500'de KALIYOR** | 11 Eyl | Sakatlık uyarlaması bitip normal programa dönülünce soruldu: bulk'a dönülmeyecek, hedef 2500. Hedef `kcalOfs` damgasında, KODDAN EZME (§5.2). Kendiliğinden yeniden sorma — kullanıcı değiştirmek isterse Haftalık Değerlendirme'nin [Uygula] düğmesi ya da "hedefi düzenle" zaten var. Faz anahtarı (C1) hâlâ yazılmadı; yazılırsa bu hedefi taban almalı. |
-| **`PICK = 3`'e dokunulmadı** | — | B bölümüne bak. |
+| ~~`PICK = 3`'e dokunulmadı~~ | 21 Eyl | Kullanıcı açıkça değiştirtti: kotalı 10 ilan. Eski karar geçersiz. |
 
 ---
 

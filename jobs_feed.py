@@ -1,89 +1,210 @@
 # -*- coding: utf-8 -*-
 """
-GÜNÜN 3 İŞİ — İLAN FEED'İ
-=========================
+GÜNÜN İŞLERİ — İLAN FEED'İ (v2, 21 Eylül 2026)
+===============================================
 Her gün açık (anahtar gerektirmeyen) iş ilanı API'lerinden data/analytics
-ilanlarını çeker, hedef profile göre puanlar ve en iyi 3'ünü jobs.json'a yazar.
+ilanlarını çeker, KESİN filtreden geçirir, ülkeye göre gruplar, açıklanabilir
+bir uygunluk puanı verir ve kotalı bir seçimle jobs.json'a yazar.
+
+Kotalar (en fazla 10 ilan):
+  * Türkiye  5 — İstanbul onsite/hybrid > Türkiye remote > (yedek) Türkiye'den
+                 başvurulabilen Worldwide / Europe / EMEA remote
+  * Almanya  3 — Berlin > diğer Almanya şehirleri > Almanya remote
+  * Hollanda 1
+  * UK       1
+Bir ülkenin kotası dolmazsa BAŞKA ülkeyle doldurulmaz; eksik sayı ve sebebi
+hem Actions loguna hem jobs.json'daki `stats`'a yazılır.
 
 Kaynaklar — ikisi de herkese açık, kimlik doğrulaması istemez:
   * Arbeitnow   https://www.arbeitnow.com/api/job-board-api   (Almanya + UK ağırlıklı)
-  * Remotive    https://remotive.com/api/remote-jobs          (uzaktan çalışma)
+  * Remotive    https://remotive.com/api/remote-jobs          (yalnız remote)
+    Remotive public API: günde tek koşu, koşu başına tek istek (public uç
+    parametreleri yok sayıp ~18 ilan döndürüyor, bkz. from_remotive). İlanın gerçek Remotive URL'si korunur, kaynak panelde yazar.
+
+TEKRAR POLİTİKASI (eski "son 300 URL bir daha asla" listesinin yerine)
+  jobs.json'daki `history` her ilanın durumunu tutar:
+    first_seen  ilk kez listeye (seçim ya da yedek) girdiği gün
+    last_seen   kaynakta en son görüldüğü gün
+    status      listed | expired
+  * İlan kaynakta hâlâ duruyorsa ve ilk listelenişinden bu yana 14 gün
+    geçmediyse yeniden gösterilebilir (kaybolmaz).
+  * 14 gün dolunca `expired` olur, bir daha önerilmez.
+  * Kaynakta artık görünmeyen ilan aday olamaz (kaldırılmış sayılır).
+  * Eski `seen` listesindeki URL'ler `expired` olarak taşınır — eskiden de bir
+    daha gösterilmiyorlardı, davranış korunur.
+  * "Başvurdum", "Ret" ve "Uygun değil/gizle" bilgisi kullanıcının tarayıcısında
+    (ve gizli gist'te) durur; bu repo herkese açık olduğu için feed onu okumaz.
+    Bunun yerine her kova için YEDEK adaylar da yazılır, panel işaretlenenleri
+    çıkarıp yedeklerden doldurur.
 
 TASARIM NOTLARI
 ---------------
-* LinkedIn KULLANILMIYOR. LinkedIn'in bireysel iş arama API'si yok ve
-  otomatik erişim Kullanıcı Sözleşmesi'ne aykırı (hesap kısıtlama riski).
-  Panel yalnızca ilana giden bir bağlantı gösterir; başvuruyu kullanıcı yapar.
-* Kişisel veri (CV, iletişim) BU DOSYADA VE REPODA TUTULMAZ. Repo herkese
-  açık. CV/profil yalnızca kullanıcının tarayıcısında (localStorage) durur.
-* `seen` listesi sayesinde aynı ilan tekrar tekrar önerilmez.
+* LinkedIn KULLANILMIYOR (bireysel API yok, otomatik erişim sözleşmeye aykırı).
+* Kişisel veri (CV, iletişim, başvurulan şirketler) BU DOSYADA VE REPODA TUTULMAZ.
+* Test: `python3 -m unittest tests/test_jobs_feed.py` (ağ gerektirmez).
+  Ağla deneme koşusu: `JOBS_OUT=/tmp/jobs.json python3 jobs_feed.py`
 """
 
 import datetime as dt
+import hashlib
 import html
 import json
 import os
 import re
+import time
 import urllib.parse
 import urllib.request
 
 IST = dt.timezone(dt.timedelta(hours=3))
-UA = "panel-jobs-feed/1.0 (+https://github.com/dogukandurukan/panel)"
+UA = "panel-jobs-feed/2.0 (+https://github.com/dogukandurukan/panel)"
 TIMEOUT = 25
-OUT = "jobs.json"
-PICK = 3            # günde kaç ilan gösterilecek
-SEEN_KEEP = 300     # tekrar önlemek için hatırlanan ilan sayısı
+OUT = os.environ.get("JOBS_OUT", "jobs.json")
+PREV = os.environ.get("JOBS_PREV", "jobs.json")
 
-# --- hedef profil (kişisel veri değil; yalnızca arama kriteri) ---
-TITLE_RE = re.compile(
-    r"\b(data\s+engineer|analytics\s+engineer|data\s+scientist|data\s+analyst|"
-    r"business\s+intelligence|bi\s+(analyst|engineer|developer)|data\s+platform|"
-    r"machine\s+learning|\bml\s+engineer|\bai\s+engineer|analytics\s+(analyst|lead|manager)|"
-    r"data\s+architect|big\s+data|etl\s+(developer|engineer)|data\s+warehouse)\b",
-    re.I,
-)
-# başlıkta geçerse ilanı ele (yönetici/satış/staj vb. hedef dışı)
-EXCLUDE_RE = re.compile(
-    r"\b(intern|internship|praktikum|werkstudent|ausbildung|sales|recruiter|"
-    r"account\s+executive|teacher|nurse|driver|warehouse\s+(operative|worker))\b",
-    re.I,
-)
-# kullanıcının güçlü olduğu teknolojiler — ilan metninde geçerse puan
+QUOTA = {"tr": 5, "de": 3, "nl": 1, "uk": 1}
+# panel başvurulan/gizlenen ilanları çıkarınca bu yedeklerden doldurur
+RESERVE = {"tr": 5, "de": 5, "nl": 2, "uk": 2}
+BUCKET_ORDER = ["tr", "de", "nl", "uk"]
+BUCKET_AD = {"tr": "Türkiye", "de": "Almanya", "nl": "Hollanda", "uk": "UK"}
+COUNTRY_OF = {"de": "DE", "nl": "NL", "uk": "UK", "tr": "TR"}
+
+MAX_LIST_DAYS = 14      # işlem yapılmamış ilan en fazla bu kadar gün listede kalır
+MAX_POST_AGE = 45       # yayın tarihi bundan eskiyse aday değil
+HISTORY_KEEP = 30       # kaynakta bu kadar gün görünmeyen geçmiş kaydı silinir
+MIN_FIT = 35            # bunun altı "kalitesiz" — kotayı doldurmak için gösterilmez
+
+# ---------------------------------------------------------------- rol filtresi
+# Kullanıcının deneyimine doğrudan uyan roller
+ROLE_PRIMARY = re.compile(
+    r"\b(data\s+engineer|analytics\s+engineer|"
+    r"bi\s+(engineer|developer|analyst|consultant|specialist)|business\s+intelligence|\bbi\b|"
+    r"data\s+analyst|reporting\s+analyst|analytics\s+analyst|"
+    r"data\s+platform|etl\b|data\s+integration|azure\s+data|power\s?bi|"
+    r"data\s+warehouse|dwh\b|analytics\s+consultant|data\s*(&|and)\s*analytics)",
+    re.I)
+# Uygun olduğunda: ML / Data Science (daha düşük rol puanı)
+ROLE_SECONDARY = re.compile(
+    r"\b(data\s+scien(ce|tist)|machine\s+learning\s+engineer|ml\s+engineer|"
+    r"mlops\s+engineer|ml\s+data\s+engineer)", re.I)
+# Başlıkta geçerse ilan elenir
+TITLE_EXCLUDE = re.compile(
+    r"\b(intern|internship|praktikum|praktikant\w*|werkstudent\w*|working\s+student|"
+    r"student\w*|trainee|ausbildung|azubi|thesis|abschlussarbeit|"
+    r"sales|vertrieb|business\s+development|account\s+(executive|manager)|"
+    r"recruit\w*|talent\s+acquisition|marketing|"
+    r"front[-\s]?end|back[-\s]?end|full[-\s]?stack|mobile|ios|android|"
+    r"director|vice\s+president|vp|head\s+of|chief|cto|cdo|"
+    r"product\s+(manager|owner|director)|legal|counsel|"
+    r"teacher|nurse|driver)\b", re.I)
+# Yoğun ekip yönetimi — elemiyor, puan düşürüyor
+PEOPLE_MGMT = re.compile(
+    r"(people\s+management|line\s+management|direct\s+reports|manage\s+a\s+team\s+of|"
+    r"build\s+and\s+lead\s+(a|the)\s+team|lead\s+a\s+team\s+of\s+\d+|"
+    r"disziplinarische\s+führung|personalverantwortung)", re.I)
+
+# ---------------------------------------------------------------- beceriler
+# (etiket, desen). Her beceri ilanda kaç kez geçerse geçsin BİR kez sayılır.
 SKILLS = [
-    "python", "sql", "pyspark", "spark", "databricks", "azure", "airflow",
-    "power bi", "powerbi", "tableau", "looker", "dbt", "snowflake", "etl",
-    "data warehouse", "dax", "mssql", "ci/cd", "git", "a/b test", "llm",
+    ("SQL", r"\bsql\b|t-sql|\btsql\b"),
+    ("Python", r"\bpython\b"),
+    ("Power BI", r"\bpower\s?bi\b"),
+    ("Tableau", r"\btableau\b"),
+    ("Azure", r"\bazure\b"),
+    ("Microsoft Fabric", r"microsoft\s+fabric|\bms\s+fabric\b|\bfabric\s+(lakehouse|data\s+factory|warehouse|notebooks?)"),
+    ("SSIS", r"\bssis\b"),
+    ("ETL", r"\betl\b|\belt\b"),
+    ("Airflow", r"\bairflow\b"),
+    ("Databricks", r"\bdatabricks\b"),
+    ("PySpark", r"\bpyspark\b|\bspark\b"),
+    ("PostgreSQL", r"\bpostgres(ql)?\b"),
+    ("DAX", r"\bdax\b"),
+    ("Power Query", r"\bpower\s?query\b"),
+    ("Snowflake", r"\bsnowflake\b"),
+    ("dbt", r"\bdbt\b"),
 ]
-# --- dil tespiti ---
-# Mutlak eşik güvenilir değildi: "Baue mit LiveEO den Marktführer..." diye başlayan
-# ilan Almanca olduğu hâlde eşiğin altında kalıyordu. Bunun yerine Almanca ve
-# İngilizce işlev kelimelerinin yoğunluğu karşılaştırılıyor — hangisi baskınsa o.
+SKILLS_RE = [(ad, re.compile(p, re.I)) for ad, p in SKILLS]
+
+# ---------------------------------------------------------------- dil
 DE_WORDS = re.compile(
     r"\b(und|oder|wir|uns|unsere|unser|deine|dein|ihre|dich|bei|für|mit|von|"
     r"dem|den|der|die|das|ein|eine|einen|einem|nicht|auch|sowie|aufgaben|"
     r"kenntnisse|erfahrung|erfahrungen|arbeiten|stelle|bewerbung|profil|"
     r"suchen|bieten|willkommen|standort|mitarbeiter|unternehmen|abgeschlossenes|"
     r"idealerweise|zusammen|weiter|werden|haben|sind|ist|wird|kannst|"
-    r"gute|sehr|mehr|über|durch|schon|damit|dabei)\b", re.I
-)
+    r"gute|sehr|mehr|über|durch|schon|damit|dabei)\b", re.I)
 EN_WORDS = re.compile(
     r"\b(the|and|you|your|our|we|with|for|from|will|are|is|have|has|this|that|"
     r"work|team|role|experience|skills|about|what|who|how|be|to|of|in|on|as|"
     r"looking|join|help|build|across|within|able|strong|good|more|than|"
-    r"including|using|ensure|drive|support)\b", re.I
-)
+    r"including|using|ensure|drive|support)\b", re.I)
+TR_WORDS = re.compile(
+    r"\b(ve|bir|için|ile|olarak|deneyim\w*|aranan|nitelik\w*|bu|en\s+az|olan|veya|"
+    r"sahip|konusunda|bilgi\w*|çalışma|ekibimize|arıyoruz|yıl|iyi|tercih)\b", re.I)
+# "ileri seviye Almanca ŞART" — plus/avantaj diyenler elenmez
+DE_REQ = re.compile(
+    r"((fluent|fließend\w*|verhandlungssicher\w*|native|muttersprach\w*|excellent|"
+    r"very\s+good|sehr\s+gute?\w*|business[-\s]fluent|proficient|strong)\s+"
+    r"(command\s+of\s+|knowledge\s+of\s+|skills\s+in\s+|in\s+)?(german|deutsch\w*)"
+    r"|\b(german|deutsch\w*)\s*[(:\-–]?\s*(c1|c2|native|fluent|muttersprach\w*|verhandlungssicher\w*)"
+    r"|deutschkenntnisse\s+(auf\s+)?(c1|c2|muttersprach\w*|verhandlungssicher\w*)"
+    r"|german\s+(is|are)\s+(a\s+)?(must|required|mandatory))", re.I)
+DE_REQ_YUMUSAK = re.compile(
+    r"(plus|advantage|nice|bonus|beneficial|preferred|desirable|von\s+vorteil|"
+    r"wünschenswert|optional|not\s+required|kein\s+muss)", re.I)
+
+# ---------------------------------------------------------------- konum
+DE_YER = ("berlin", "germany", "deutschland", "(deu)", "münchen", "munich", "muenchen",
+          "hamburg", "frankfurt", "köln", "koeln", "cologne", "stuttgart", "düsseldorf",
+          "duesseldorf", "leipzig", "dresden", "nürnberg", "nuremberg", "hannover",
+          "hanover", "bremen", "essen", "dortmund", "bonn", "mannheim", "karlsruhe",
+          "freiburg", "münster", "aachen", "wolfsburg", "heidelberg", "potsdam",
+          "garching", "augsburg", "regensburg", "ingolstadt", "darmstadt", "wiesbaden",
+          "mainz", "kiel", "lübeck", "rostock", "erlangen", "würzburg", "ulm",
+          "bielefeld", "bochum", "duisburg", "wuppertal", "langenfeld", "bayern",
+          "bavaria", "hessen", "nrw", "nordrhein", "baden", "sachsen", "brandenburg",
+          "niedersachsen", "schleswig")
+NL_YER = ("netherlands", "nederland", "amsterdam", "rotterdam", "utrecht", "eindhoven",
+          "the hague", "den haag", "groningen", "leiden", "haarlem", "delft", "tilburg",
+          "arnhem", "nijmegen", "breda")
+UK_YER = ("united kingdom", "london", "manchester", "england", "birmingham", "edinburgh",
+          "glasgow", "bristol", "leeds", "cambridge", "oxford", "scotland", "wales",
+          "belfast", "liverpool", "newcastle", "sheffield", "nottingham", "reading")
+TR_YER = ("istanbul", "i̇stanbul", "türkiye", "turkey", "turkiye", "ankara", "izmir",
+          "i̇zmir", "bursa", "antalya", "kocaeli")
+# Remotive candidate_required_location jetonları
+REGION_TOK = {
+    "worldwide": "worldwide", "anywhere": "worldwide", "global": "worldwide",
+    "anywhere in the world": "worldwide",
+    "europe": "europe", "european": "europe", "cet": "europe", "cet timezone": "europe",
+    "emea": "emea",
+}
+COUNTRY_TOK = {
+    "turkey": "TR", "türkiye": "TR", "turkiye": "TR",
+    "germany": "DE", "deutschland": "DE",
+    "netherlands": "NL", "the netherlands": "NL", "holland": "NL",
+    "uk": "UK", "united kingdom": "UK", "england": "UK", "great britain": "UK", "gb": "UK",
+}
+# Türkiye'den başvuruyu engelleyen açıklama kalıpları (Worldwide/Europe/EMEA
+# etiketi tek başına güvence değil).
+TR_ENGEL = [
+    (r"\b(us|u\.s\.|usa|united\s+states|canada|uk|eu|latam|americas|north\s+america)[-\s](only|based)\b", "ülke kısıtı"),
+    (r"\bonly\s+(open\s+to\s+|accept\w*\s+|consider\w*\s+|hiring\s+)?(candidates|applicants|people|residents)?\s*"
+     r"(from|in|based\s+in|located\s+in|residing\s+in)\s+(the\s+)?(us|u\.s\.|usa|united\s+states|canada|uk|"
+     r"united\s+kingdom|eu|european\s+union|germany|spain|portugal|poland|latam|americas|north\s+america)\b", "ülke kısıtı"),
+    (r"\bmust\s+(be\s+)?(located|based|reside|residing|live|living)\s+in\s+(the\s+)?(us|u\.s\.|usa|united\s+states|"
+     r"canada|uk|united\s+kingdom|eu|european\s+union|germany|spain|portugal|poland|latam|americas|north\s+america)\b", "ikamet şartı"),
+    (r"\b(eu|european\s+union|us|u\.s\.|uk|canadian|american)\s+(work|working)\s+(authori[sz]ation|permit|visa|rights?)", "çalışma izni şartı"),
+    (r"\bright\s+to\s+work\s+in\s+(the\s+)?(uk|us|eu|european\s+union|germany|netherlands|united\s+kingdom|united\s+states)", "çalışma izni şartı"),
+    (r"\b(authori[sz]ed|eligible|legally\s+allowed)\s+to\s+work\s+in\s+(the\s+)?(us|u\.s\.|usa|united\s+states|canada|"
+     r"uk|united\s+kingdom|eu|european\s+union)", "çalışma izni şartı"),
+    (r"\b(eu|us|u\.s\.)\s+citizen(s|ship)?\b", "vatandaşlık şartı"),
+    (r"\b(us|u\.s\.|usa|north\s+american)\s+time\s?zones?\s+only\b", "saat dilimi kısıtı"),
+    (r"\bwe\s+(are\s+)?(not\s+able|unable)\s+to\s+(hire|sponsor)\b.{0,60}\boutside\s+(of\s+)?(the\s+)?(us|eu|uk|europe)", "ülke kısıtı"),
+]
+TR_ENGEL_RE = [(re.compile(p, re.I), neden) for p, neden in TR_ENGEL]
 
 
-def is_german(text, title=""):
-    """Almanca ilanları ayıklamak için: DE/EN işlev kelimesi yoğunluğunu kıyasla."""
-    sample = (text or "")[:2500]
-    de = len(DE_WORDS.findall(sample))
-    en = len(EN_WORDS.findall(sample))
-    if de + en < 8:                       # metin çok kısa -> başlığa bak
-        return bool(re.search(r"\b(und|für|mit|wir|deine)\b", title or "", re.I))
-    return de > en
-
-
+# ================================================================ yardımcılar
 def get_json(url):
     req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "application/json"})
     with urllib.request.urlopen(req, timeout=TIMEOUT) as r:
@@ -104,81 +225,114 @@ def clean(txt, limit=None):
     return t[:limit] if limit else t
 
 
-def where(location, remote):
-    """Konumu sınıflandır: (etiket, puan). Berlin en yüksek öncelik."""
-    l = (location or "").lower()
-    if "berlin" in l:
-        return "Berlin", 50
-    de = ("germany", "deutschland", "münchen", "munich", "hamburg", "frankfurt",
-          "köln", "cologne", "stuttgart", "düsseldorf", "leipzig", "dresden",
-          "nürnberg", "hannover", "bremen", "essen", "dortmund", "bonn",
-          "mannheim", "karlsruhe", "freiburg", "münster", "aachen", "wolfsburg")
-    if any(k in l for k in de):
-        return "Almanya", 30
-    nl = ("netherlands", "nederland", "amsterdam", "rotterdam", "utrecht",
-          "eindhoven", "hague", "den haag")
-    if any(k in l for k in nl):
-        return "Hollanda", 35
-    uk = ("united kingdom", "london", "manchester", "england", "birmingham",
-          "edinburgh", "glasgow", "bristol", "leeds", "cambridge", "oxford")
-    if any(k in l for k in uk):
-        return "UK", 15
-    if remote or "remote" in l or "anywhere" in l:
-        return "Remote", 20
-    return (location or "—")[:22], 0
+def kucult(t):
+    """Türkçe güvenli küçültme: 'İ'.lower() -> i + U+0307 tuzağı (DEVAM.md §5.10)."""
+    return (t or "").replace("İ", "i").lower().replace("i̇", "i")
 
 
-def score(job):
-    """İlanı hedef profile göre puanla. Yalnızca ilan verisine bakar."""
-    s = job["loc_score"]
-    if job["remote"]:
-        s += 20
-    t = job["title"].lower()
-    if re.search(r"\b(senior|sr\.?|lead)\b", t):
-        s += 12          # 5+ yıl deneyim
-    if re.search(r"\b(junior|jr\.?|graduate|entry)\b", t):
-        s -= 18
-    s += min(len(job["skills"]), 6) * 6      # eşleşen teknoloji başına puan
-    d = job.get("days")
-    if d is not None:
-        s += 14 if d <= 1 else 9 if d <= 3 else 4 if d <= 7 else 0
-    return s
-
-
-def age_days(iso):
+def age_days(iso, bugun=None):
     if not iso:
         return None
+    ref = bugun or dt.datetime.now(IST).date()
     for fmt in ("%Y-%m-%dT%H:%M:%S", "%Y-%m-%d %H:%M:%S", "%Y-%m-%d"):
         try:
-            d = dt.datetime.strptime(str(iso)[:19], fmt)
-            return max((dt.datetime.now() - d).days, 0)
+            d = dt.datetime.strptime(str(iso)[:19], fmt).date()
+            return max((ref - d).days, 0)
         except ValueError:
             continue
     return None
 
 
-FOCUS_RULES = [
-    ("ml",       r"machine learning|deep learning|\bmodel(s|ling|ing)?\b|mlops|\bnlp\b|"
-                 r"forecast|prediction|\bllm\b|\bai\b|data scien"),
-    ("pipeline", r"pipeline|\betl\b|\belt\b|ingest|airflow|dbt|spark|warehouse|lakehouse|"
-                 r"streaming|kafka|orchestrat|data platform|infrastructure"),
-    ("bi",       r"dashboard|power ?bi|tableau|looker|report(ing)?|\bkpi\b|visuali[sz]ation|"
-                 r"business intelligence|\bdax\b"),
-    ("business", r"stakeholder|business impact|commercial|decision|strategy|"
-                 r"cross-functional|product|growth|operations"),
+def dil(text, title=""):
+    """'de' | 'tr' | 'en' — işlev kelimesi yoğunluğu KIYASLANIR (mutlak eşik
+    yetmiyordu: Almanca sloganla başlayıp İngilizce devam eden ilanlar var)."""
+    sample = (text or "")[:2500]
+    de = len(DE_WORDS.findall(sample))
+    en = len(EN_WORDS.findall(sample))
+    tr = len(TR_WORDS.findall(sample))
+    if de + en + tr < 8:                   # metin çok kısa -> başlığa bak
+        if re.search(r"\b(und|für|mit|wir|deine)\b", title or "", re.I):
+            return "de"
+        if re.search(r"\b(ve|için|uzman\w*|mühendis\w*)\b", title or "", re.I):
+            return "tr"
+        return "en"
+    enc = max(de, en, tr)
+    return "de" if enc == de and de > en else ("tr" if enc == tr and tr > en else "en")
+
+
+def almanca_sart(text):
+    """İlan ileri seviye / ana dil Almanca ŞART koşuyor mu? 'plus' diyorsa hayır."""
+    for m in DE_REQ.finditer(text or ""):
+        pencere = (text or "")[m.end(): m.end() + 60]
+        once = (text or "")[max(0, m.start() - 25): m.start()]
+        if DE_REQ_YUMUSAK.search(pencere) or DE_REQ_YUMUSAK.search(once):
+            continue
+        return m.group(0)
+    return ""
+
+
+def tr_engeli(text):
+    """Worldwide/Europe/EMEA ilanında Türkiye'den başvuruyu engelleyen kısıt."""
+    for rx, neden in TR_ENGEL_RE:
+        m = rx.search(text or "")
+        if m:
+            return neden + ": \"" + m.group(0)[:60] + "\""
+    return ""
+
+
+def eslesen_beceriler(text):
+    return [ad for ad, rx in SKILLS_RE if rx.search(text or "")]
+
+
+def kidem(title, body):
+    t = title.lower()
+    if re.search(r"\b(junior|jr\.?|graduate|entry[-\s]level|berufseinsteiger)\b", t):
+        return "junior"
+    if re.search(r"\b(lead|principal|staff|team\s*lead|teamleiter\w*)\b", t):
+        return "lead"
+    if re.search(r"\bmanager\b", t):
+        return "manager"
+    if re.search(r"\b(senior|sr\.?)\b", t):
+        return "senior"
+    return "mid"
+
+
+# ---- focus: cover letter hangi deneyim bloğunu öne çıkaracak
+# "ai" / "model" gibi her yerde geçen kelimeler TEK BAŞINA ML seçtirmez;
+# başlık 3 kat ağırlıkta, her terim en fazla 3 kez sayılır.
+FOCUS_TERMS = {
+    "ml": [r"machine\s+learning", r"deep\s+learning", r"\bmlops\b", r"\bml\b", r"model\s+(training|deployment|serving)",
+           r"predictive\s+model", r"\bnlp\b", r"computer\s+vision", r"data\s+scien(ce|tist)", r"recommend(ation|er)\s+system",
+           r"(train|fine[-\s]?tun)\w*\s+(models?|llms?)"],
+    "bi": [r"\bpower\s?bi\b", r"\btableau\b", r"\blooker\b", r"dashboards?", r"\breporting\b", r"business\s+intelligence",
+           r"\bbi\b", r"\bdax\b", r"\bkpis?\b", r"visuali[sz]ation", r"semantic\s+model", r"self[-\s]service",
+           r"\bpower\s?query\b", r"\bssrs\b"],
+    "pipeline": [r"pipelines?", r"\betl\b", r"\belt\b", r"ingestion", r"\bairflow\b", r"\bdbt\b", r"\bspark\b", r"pyspark",
+                 r"databricks", r"data\s+warehous\w*", r"lakehouse", r"streaming", r"\bkafka\b", r"orchestrat\w*",
+                 r"data\s+platform", r"data\s+integration", r"\bssis\b"],
+    "business": [r"stakeholders?", r"business\s+impact", r"commercial", r"strateg\w+", r"cross[-\s]functional",
+                 r"\bgrowth\b", r"insights?", r"decision[-\s]making", r"product\s+analytics", r"a/b\s+test"],
+}
+FOCUS_RE = {k: [re.compile(p, re.I) for p in v] for k, v in FOCUS_TERMS.items()}
+FOCUS_TITLE = [
+    ("bi", re.compile(r"\b(bi|business\s+intelligence|power\s?bi|reporting|dashboard)\b", re.I)),
+    ("pipeline", re.compile(r"\b(data\s+engineer|analytics\s+engineer|etl|data\s+platform|data\s+integration|dwh|data\s+warehouse)\b", re.I)),
+    ("ml", re.compile(r"\b(data\s+scien\w*|machine\s+learning|ml|mlops)\b", re.I)),
+    ("business", re.compile(r"\b(data\s+analyst|analytics\s+consultant|analyst)\b", re.I)),
 ]
 
 
 def focus_of(title, body):
-    """İlanın ağırlık merkezini bul — panel cover letter'da hangi deneyimi öne
-    çıkaracağına buna bakarak karar veriyor."""
-    hay = (title + " " + body).lower()
-    best, bestn = "pipeline", 0
-    for name, pat in FOCUS_RULES:
-        n = len(re.findall(pat, hay))
-        if n > bestn:
-            best, bestn = name, n
-    return best
+    puan = {k: 0 for k in FOCUS_RE}
+    for k, rxs in FOCUS_RE.items():
+        for rx in rxs:
+            puan[k] += 3 * min(len(rx.findall(title or "")), 1) + min(len(rx.findall(body or "")), 3)
+    for k, rx in FOCUS_TITLE:
+        if rx.search(title or ""):
+            puan[k] += 8
+            break                                # başlıktaki en belirgin rol yeter
+    sira = ["bi", "pipeline", "ml", "business"]  # eşitlikte daha dar olan kazanır
+    return max(sira, key=lambda k: (puan[k], -sira.index(k))), puan
 
 
 KEY_RE = re.compile(
@@ -197,41 +351,139 @@ def keywords_of(body):
     return out[:12]
 
 
-def norm(*, title, company, location, remote, url, text, posted, source, tags):
-    body = clean(text, 4000)
-    hay = (title + " " + body + " " + " ".join(tags)).lower()
-    found = []
-    for sk in SKILLS:
-        if sk in hay and sk not in found:
-            found.append(sk)
-    label, lscore = where(location, remote)
-    # bazı kaynaklar başlığa iç referans ekliyor: "... (f/m/d)_metrify" -> temizle
-    t_clean = re.sub(r"_[A-Za-z0-9]+\s*$", "", clean(title, 110)).strip()
-    j = {
-        "title": t_clean,
+def baslik_temiz(title):
+    t = re.sub(r"_[A-Za-z0-9]+\s*$", "", clean(title, 140)).strip()   # "... (f/m/d)_metrify"
+    return t
+
+
+def anahtar(company, title):
+    """Kaynaklar arası tekrar anahtarı: şirket + cinsiyet/konum ekleri atılmış başlık."""
+    t = kucult(title)
+    t = re.sub(r"\((m|w|f|d|x|all\s*genders?|gn\*?|w/m/d|m/w/d|f/m/d|d/f/m|m/f/d|m/f/x|f/m/x)[^)]*\)", " ", t)
+    t = re.sub(r"[^a-z0-9ğüşöçı]+", "", t)[:60]
+    c = re.sub(r"\b(gmbh|ag|se|ltd|limited|inc|bv|b\.v\.|llc|a\.ş\.|as)\b", "", kucult(company))
+    c = re.sub(r"[^a-z0-9ğüşöçı]+", "", c)
+    return c + "|" + t
+
+
+def ilan_id(company, title):
+    return hashlib.sha1(anahtar(company, title).encode("utf-8")).hexdigest()[:12]
+
+
+# ================================================================ konum
+def _var(l, liste):
+    return any(k in l for k in liste)
+
+
+def konum_arbeitnow(location, remote, title, body):
+    """Arbeitnow: serbest metin konum + remote bayrağı."""
+    l = kucult(location)
+    hib = bool(re.search(r"\bhybrid\b|hybrides?\s+arbeiten", kucult(location + " " + title + " " + body[:1500])))
+    wp = "remote" if remote else ("hybrid" if hib else ("onsite" if l else "unknown"))
+    if _var(l, TR_YER):
+        ulke, sehir = "TR", ("İstanbul" if "istanbul" in l else location.split(",")[0].strip())
+    elif _var(l, NL_YER):
+        ulke, sehir = "NL", location.split(",")[0].strip()
+    elif _var(l, UK_YER):
+        ulke, sehir = "UK", location.split(",")[0].strip()
+    elif _var(l, DE_YER):
+        ulke, sehir = "DE", ("Berlin" if "berlin" in l else location.split(",")[0].strip())
+    else:
+        return {"country": None, "city": location[:40], "workplace_type": wp, "regions": [],
+                "location_reason": "ülke belirlenemedi: '" + location[:40] + "'"}
+    if ulke != "TR" and remote and not sehir:
+        sehir = ""
+    return {"country": ulke, "city": sehir, "workplace_type": wp, "regions": [],
+            "location_reason": "Arbeitnow konumu '" + location[:40] + "'" + (" · remote" if remote else "")}
+
+
+def konum_remotive(cand):
+    """Remotive `candidate_required_location`: jetonlara ayır, ülke/bölge çıkar."""
+    raw = (cand or "").strip()
+    jetonlar = [kucult(x).strip() for x in re.split(r"[,;/|]|\band\b", raw) if x.strip()]
+    ulkeler, bolgeler, diger = [], [], []
+    for j in jetonlar:
+        j2 = re.sub(r"\s*(only|timezones?|time\s+zones?)$", "", j).strip()
+        if j2 in COUNTRY_TOK:
+            ulkeler.append(COUNTRY_TOK[j2])
+        elif j2 in REGION_TOK:
+            bolgeler.append(REGION_TOK[j2])
+        elif j2:
+            diger.append(j2)
+    if not raw:
+        bolgeler.append("worldwide")
+    if "TR" in ulkeler:
+        ulke = "TR"
+    elif ulkeler:
+        ulke = ulkeler[0]
+    else:
+        ulke = None
+    return {"country": ulke, "city": "", "workplace_type": "remote",
+            "regions": sorted(set(bolgeler)), "countries_listed": ulkeler, "other_listed": diger,
+            "location_reason": "Remotive candidate_required_location '" + raw[:60] + "'"}
+
+
+# ================================================================ normalize
+def normalize(*, title, company, location, remote, url, text, posted, source, tags, cand=None):
+    body = clean(text, 6000)
+    t = baslik_temiz(title)
+    hay = t + " " + body + " " + " ".join(tags or [])
+    if source == "Remotive":
+        yer = konum_remotive(cand)
+        yer_metin = cand or "Remote"
+    else:
+        yer = konum_arbeitnow(location or "", remote, t, body)
+        yer_metin = clean(location, 60)
+    f, fpuan = focus_of(t, body)
+    return {
+        "id": ilan_id(company, t),
+        "key": anahtar(company, t),
+        "title": t,
         "company": clean(company, 60),
-        "location": label,
-        "loc_raw": clean(location, 60),
-        "loc_score": lscore,
-        "remote": bool(remote),
-        "url": url,
+        "location": yer_metin or "—",
         "source": source,
-        "posted": posted,
-        "days": age_days(posted),
-        "skills": found[:6],
-        # Almanca ilanlar tamamen eleniyor (kullanıcının Almancası yeterli değil);
-        # alan yine de tutuluyor ki elenme sebebi loglardan görülebilsin
-        "german": is_german(body, title),
-        "focus": focus_of(title, body),
-        "summary": body[:260],
-        # cover letter'ı ilana göre uyarlamak için panelin kullandığı anahtar kelimeler
-        "keywords": keywords_of(body),
+        "source_url": url or "",
+        "publication_date": posted,
+        "body": body,
+        "tags": tags or [],
+        "matched_skills": eslesen_beceriler(hay),
+        "language": dil(body, t),
+        "de_req": almanca_sart(body),
+        "focus": f,
+        "focus_scores": fpuan,
+        "seniority": kidem(t, body),
+        "people_mgmt": bool(PEOPLE_MGMT.search(body)),
+        **yer,
     }
-    j["score"] = score(j)
-    return j
 
 
-def from_arbeitnow(pages=4):
+def arbeitnow_kaydi(r):
+    created = r.get("created_at")
+    posted = None
+    if created:
+        try:
+            posted = dt.datetime.fromtimestamp(int(created), IST).strftime("%Y-%m-%d")
+        except (ValueError, TypeError, OSError):
+            posted = None
+    return normalize(
+        title=r.get("title") or "", company=r.get("company_name") or "—",
+        location=r.get("location") or "", remote=bool(r.get("remote")),
+        url=r.get("url") or "", text=r.get("description") or "",
+        posted=posted, source="Arbeitnow", tags=r.get("tags") or [],
+    )
+
+
+def remotive_kaydi(r):
+    return normalize(
+        title=r.get("title") or "", company=r.get("company_name") or "—",
+        location=None, remote=True, url=r.get("url") or "",
+        text=r.get("description") or "", posted=(r.get("publication_date") or "")[:10] or None,
+        source="Remotive", tags=r.get("tags") or [],
+        cand=r.get("candidate_required_location") or "",
+    )
+
+
+def from_arbeitnow(pages=10):
     out = []
     for p in range(1, pages + 1):
         try:
@@ -242,96 +494,309 @@ def from_arbeitnow(pages=4):
         rows = d.get("data") or []
         if not rows:
             break
-        for r in rows:
-            t = r.get("title") or ""
-            if not TITLE_RE.search(t) or EXCLUDE_RE.search(t):
-                continue
-            created = r.get("created_at")
-            posted = None
-            if created:
-                try:
-                    posted = dt.datetime.fromtimestamp(int(created)).strftime("%Y-%m-%d")
-                except (ValueError, TypeError, OSError):
-                    posted = None
-            out.append(norm(
-                title=t, company=r.get("company_name") or "—",
-                location=r.get("location") or "", remote=r.get("remote"),
-                url=r.get("url") or "", text=r.get("description") or "",
-                posted=posted, source="Arbeitnow", tags=r.get("tags") or [],
-            ))
+        out += [arbeitnow_kaydi(r) for r in rows]
+        time.sleep(1)                      # kibar ol
     return out
 
 
 def from_remotive():
-    out = []
-    for term in ("data engineer", "analytics engineer", "data scientist", "business intelligence"):
+    """Koşu başına TEK istek. 21 Eyl 2026'da ölçüldü: public API `category` ve
+    `search` parametrelerini yok sayıp her istekte aynı ~18 güncel ilanı
+    döndürüyor; ek istekler hiçbir ilan eklemiyor, yalnızca rate limit yiyordu.
+    Parametre yine gönderiliyor (API ileride dikkate alırsa işe yarar)."""
+    out, gorulen = [], set()
+    istekler = ["category=data"]
+    for i, q in enumerate(istekler):
+        if i:
+            time.sleep(3)
         try:
-            d = get_json("https://remotive.com/api/remote-jobs?limit=40&search="
-                         + urllib.parse.quote(term))
+            d = get_json("https://remotive.com/api/remote-jobs?" + q)
         except Exception as e:
-            print(f"  remotive '{term}' atlandi: {e}")
+            print(f"  remotive '{q}' atlandi: {e}")
             continue
         for r in d.get("jobs") or []:
-            t = r.get("title") or ""
-            if not TITLE_RE.search(t) or EXCLUDE_RE.search(t):
+            if r.get("id") in gorulen:
                 continue
-            out.append(norm(
-                title=t, company=r.get("company_name") or "—",
-                location=r.get("candidate_required_location") or "Remote", remote=True,
-                url=r.get("url") or "", text=r.get("description") or "",
-                posted=r.get("publication_date"), source="Remotive",
-                tags=r.get("tags") or [],
-            ))
+            gorulen.add(r.get("id"))
+            out.append(remotive_kaydi(r))
     return out
+
+
+# ================================================================ değerlendirme
+def rol(title):
+    if ROLE_PRIMARY.search(title):
+        return "primary"
+    if ROLE_SECONDARY.search(title):
+        return "secondary"
+    return None
+
+
+def kova(j):
+    """(kova, kademe, konum_puanı, etiket) ya da (None, sebep). Kademe küçük = öncelikli."""
+    u, wp = j.get("country"), j.get("workplace_type")
+    if u == "TR":
+        sehir = kucult(j.get("city"))
+        if "istanbul" in sehir and wp in ("onsite", "hybrid", "unknown"):
+            return ("tr", 1, 15, "İstanbul")
+        if wp == "remote":
+            return ("tr", 2, 12, "Türkiye Remote")
+        return (None, "Türkiye'de İstanbul dışı onsite: " + (j.get("city") or "?"))
+    if u in ("DE", "NL", "UK"):
+        b = u.lower()
+        sehirli = bool(j.get("city"))
+        if b == "de":
+            if "berlin" in kucult(j.get("city")):
+                return ("de", 1, 15, "DE")
+            return ("de", 2 if sehirli else 3, 10 if sehirli else 9, "DE")
+        return (b, 1 if sehirli else 2, 12 if sehirli else 9, u)
+    reg = j.get("regions") or []
+    if reg:
+        engel = tr_engeli(j.get("body", ""))
+        # başka ülkeler de sayılmış ama Türkiye yoksa: bölge etiketi var diye güvenme
+        if engel:
+            return (None, "TR yedeği değil — " + engel)
+        etiket = "Worldwide Remote" if "worldwide" in reg else ("EMEA Remote" if "emea" in reg else "Europe Remote")
+        return ("tr", 3, 6, etiket)
+    if j.get("country"):
+        return (None, "hedef dışı ülke: " + j["country"])
+    return (None, j.get("location_reason") or "konum belirsiz")
+
+
+def fit_score(j, konum_puani, bugun):
+    s, neden = 0, []
+    r = rol(j["title"])
+    rp = 30 if r == "primary" else 18
+    s += rp; neden.append(f"rol {r} +{rp}")
+    s += konum_puani; neden.append(f"konum +{konum_puani}")
+    wp = {"hybrid": 5, "remote": 4, "onsite": 2}.get(j.get("workplace_type"), 0)
+    s += wp
+    bp = min(len(j["matched_skills"]), 6) * 5
+    s += bp; neden.append(f"beceri {len(j['matched_skills'])}×5 +{bp}")
+    kp = {"mid": 5, "senior": 5, "junior": -15, "lead": -6, "manager": -8}.get(j["seniority"], 0)
+    if j.get("people_mgmt"):
+        kp -= 10
+    s += kp; neden.append(f"kıdem {j['seniority']} {kp:+d}")
+    d = age_days(j.get("publication_date"), bugun)
+    tp = 0 if d is None else (10 if d <= 1 else 7 if d <= 3 else 4 if d <= 7 else 2 if d <= 14 else 0)
+    s += tp; neden.append(f"tazelik +{tp}")
+    lp = 5 if j["language"] in ("en",) or (j["language"] == "tr" and j.get("country") == "TR") else 0
+    s += lp
+    return s, "; ".join(neden), d
+
+
+def degerlendir(j, bugun):
+    """Kesin filtre → kova → puan. Dönüş: (ilan|None, elenme_sebebi)."""
+    t = j["title"]
+    if TITLE_EXCLUDE.search(t):
+        return None, "rol dışı (başlık)"
+    r = rol(t)
+    if not r:
+        return None, "rol dışı (hedef rol yok)"
+    # ML / Data Science "uygun olduğunda": kullanıcının araçlarından en az ikisi
+    # ilanda geçmiyorsa (yalnız Python gibi) deneyimle örtüşmüyor sayılır
+    if r == "secondary" and len(j["matched_skills"]) < 2:
+        return None, "ML/DS rolü, beceri örtüşmesi zayıf"
+    if j["language"] == "de":
+        return None, "Almanca ilan"
+    if j["de_req"]:
+        return None, "ileri seviye Almanca şartı"
+    if j["language"] == "tr" and j.get("country") not in ("TR",):
+        return None, "Türkçe ilan ama Türkiye dışı"
+    d = age_days(j.get("publication_date"), bugun)
+    if d is not None and d > MAX_POST_AGE:
+        return None, "yayın tarihi eski"
+    k = kova(j)
+    if k[0] is None:
+        return None, k[1]
+    b, kademe, kpuan, etiket = k
+    fit, neden, d = fit_score(j, kpuan, bugun)
+    if fit < MIN_FIT:
+        return None, "düşük uygunluk"
+    j = dict(j)
+    j.update({"bucket": b, "tier": kademe, "label": etiket, "fit_score": fit, "fit_reason": neden,
+              "days": d, "market": "turkey" if b == "tr" else "international"})
+    return j, ""
+
+
+# ================================================================ seçim
+def gecmis_tasi(prev, bugun_s):
+    """Eski `seen` (URL listesi) -> history'de expired kayıtları. Kullanıcı verisi
+    değil, feed'in kendi hafızası; yine de hiçbir kayıt sessizce düşmüyor."""
+    h = dict(prev.get("history") or {})
+    for u in prev.get("seen") or []:
+        h.setdefault("url:" + u, {"first_seen": None, "last_seen": bugun_s, "status": "expired", "legacy": True})
+    return h
+
+
+def sec(adaylar, prev, bugun=None, log=print):
+    bugun = bugun or dt.datetime.now(IST).date()
+    bugun_s = bugun.isoformat()
+    history = gecmis_tasi(prev or {}, bugun_s)
+
+    # 1) değerlendir, kaynaklar arası tekrarı birleştir
+    elenen, uygun = {}, {}
+    for j in adaylar:
+        ok, neden = degerlendir(j, bugun)
+        if not ok:
+            elenen[neden.split(":")[0].split(" — ")[0]] = elenen.get(neden.split(":")[0].split(" — ")[0], 0) + 1
+            continue
+        onceki = uygun.get(ok["id"])
+        if onceki:
+            # aynı ilan iki kaynakta: daha yüksek puanlı kalır, diğer kaynak not edilir
+            kalan, giden = (ok, onceki) if ok["fit_score"] > onceki["fit_score"] else (onceki, ok)
+            kalan = dict(kalan); kalan["also_on"] = sorted(set(kalan.get("also_on", []) + [giden["source"]]))
+            uygun[ok["id"]] = kalan
+            elenen["tekrar (farklı kaynak)"] = elenen.get("tekrar (farklı kaynak)", 0) + 1
+        else:
+            uygun[ok["id"]] = ok
+
+    # 2) geçmişle karşılaştır: süresi dolan / eski listede olanlar çıkar
+    aktif = []
+    for j in uygun.values():
+        h = history.get(j["id"]) or history.get("url:" + j["source_url"])
+        if h:
+            h["last_seen"] = bugun_s
+            if h.get("status") == "expired":
+                elenen["süresi doldu (daha önce gösterildi)"] = elenen.get("süresi doldu (daha önce gösterildi)", 0) + 1
+                continue
+            ilk = dt.date.fromisoformat(h["first_seen"]) if h.get("first_seen") else bugun
+            if (bugun - ilk).days >= MAX_LIST_DAYS:
+                h["status"] = "expired"
+                elenen["süresi doldu (14 gün)"] = elenen.get("süresi doldu (14 gün)", 0) + 1
+                continue
+        j["is_new"] = not h or h.get("first_seen") in (None, bugun_s)
+        j["first_seen"] = (h or {}).get("first_seen") or bugun_s
+        aktif.append(j)
+
+    # 3) kovalara ayır ve sırala. Sıra: yeni > önceki günlerden kalan; TR'de
+    #    bölge remote (kademe 3) en sonda yedek.
+    kovalar = {b: [] for b in BUCKET_ORDER}
+    for j in aktif:
+        kovalar[j["bucket"]].append(j)
+    for b, liste in kovalar.items():
+        if b == "tr":
+            liste.sort(key=lambda j: (j["tier"] == 3, not j["is_new"], j["tier"], -j["fit_score"]))
+        else:
+            liste.sort(key=lambda j: (not j["is_new"], j["tier"], -j["fit_score"]))
+
+    items, reserve, stats = [], [], {"candidates": {}, "selected": {}, "missing": {}, "eliminated": elenen}
+    for b in BUCKET_ORDER:
+        liste = kovalar[b]
+        q = QUOTA[b]
+        secilen = liste[:q]
+        yedek = liste[q:q + RESERVE[b]]
+        for rank, j in enumerate(secilen + yedek):
+            j["rank"] = rank
+            j["reserve"] = rank >= q
+        items += secilen
+        reserve += yedek
+        if b == "tr":
+            stats["candidates"]["tr"] = {"istanbul": sum(j["tier"] == 1 for j in liste),
+                                         "tr_remote": sum(j["tier"] == 2 for j in liste),
+                                         "region_remote": sum(j["tier"] == 3 for j in liste)}
+        else:
+            stats["candidates"][b] = len(liste)
+        stats["selected"][b] = len(secilen)
+        if len(secilen) < q:
+            stats["missing"][b] = {"eksik": q - len(secilen),
+                                   "sebep": "uygun aday yok" if not liste else f"yalnızca {len(liste)} uygun aday"}
+
+    # 4) geçmişi güncelle (listeye giren her ilan: seçilen + yedek)
+    for j in items + reserve:
+        h = history.setdefault(j["id"], {"first_seen": bugun_s, "status": "listed"})
+        h["last_seen"] = bugun_s
+    sinir = (bugun - dt.timedelta(days=HISTORY_KEEP)).isoformat()
+    history = {k: v for k, v in history.items() if (v.get("last_seen") or bugun_s) >= sinir}
+
+    # 5) log — Actions logu herkese açık; yalnızca sayı ve ilan bilgisi, kişisel veri yok
+    c = stats["candidates"]
+    log(f"Turkey candidates found: {sum(c['tr'].values())} "
+        f"(İstanbul {c['tr']['istanbul']}, TR remote {c['tr']['tr_remote']}, Worldwide/Europe/EMEA {c['tr']['region_remote']})")
+    log(f"Germany candidates found: {c['de']}")
+    log(f"Netherlands candidates found: {c['nl']}")
+    log(f"UK candidates found: {c['uk']}")
+    log("Final selected count by bucket: " + ", ".join(f"{BUCKET_AD[b]} {stats['selected'][b]}/{QUOTA[b]}" for b in BUCKET_ORDER))
+    if stats["missing"]:
+        for b, m in stats["missing"].items():
+            log(f"Missing quota reason: {BUCKET_AD[b]} {m['eksik']} eksik — {m['sebep']}")
+    else:
+        log("Missing quota reason: yok, bütün kotalar doldu")
+    log("Elenenler: " + ", ".join(f"{k} {v}" for k, v in sorted(elenen.items(), key=lambda x: -x[1])))
+    return items, reserve, stats, history
+
+
+def cikti(j, simdi):
+    """jobs.json'daki ilan kaydı. Eski alanlar (url, skills, score, posted,
+    remote, german, summary) geriye uyumluluk için duruyor."""
+    return {
+        "id": j["id"],
+        "title": j["title"],
+        "company": j["company"],
+        "location": j["location"],
+        "country": j.get("country") or j["label"],     # TR / DE / NL / UK ya da "EMEA Remote" gibi bölge
+        "market": j["market"],
+        "bucket": j["bucket"],
+        "label": j["label"],
+        "tier": j["tier"],
+        "rank": j["rank"],
+        "reserve": j["reserve"],
+        "is_new": j["is_new"],
+        "first_seen": j["first_seen"],
+        "workplace_type": j["workplace_type"],
+        "source": j["source"],
+        "also_on": j.get("also_on", []),
+        "source_url": j["source_url"],
+        "publication_date": j["publication_date"],
+        "fit_score": j["fit_score"],
+        "fit_reason": j["fit_reason"],
+        "matched_skills": j["matched_skills"],
+        "location_reason": j["location_reason"],
+        "seniority": j["seniority"],
+        "focus": j["focus"],
+        "focus_scores": j["focus_scores"],
+        "language": j["language"],
+        "generated_at": simdi,
+        "summary": j["body"][:260],
+        "keywords": keywords_of(j["body"]),
+        # --- eski panel alanları (v1) ---
+        "url": j["source_url"],
+        "skills": [s.lower() for s in j["matched_skills"]],
+        "score": j["fit_score"],
+        "posted": j["publication_date"],
+        "days": j["days"],
+        "remote": j["workplace_type"] == "remote",
+        "german": False,
+    }
 
 
 def build():
     prev = {}
-    if os.path.exists(OUT):
+    if os.path.exists(PREV):
         try:
-            with open(OUT, encoding="utf-8") as f:
+            with open(PREV, encoding="utf-8") as f:
                 prev = json.load(f)
         except (ValueError, OSError):
             prev = {}
-    seen = list(prev.get("seen") or [])
-
-    jobs = []
     print("Arbeitnow...")
-    jobs += from_arbeitnow()
-    print(f"  {len(jobs)} uygun ilan")
-    n = len(jobs)
+    jobs = from_arbeitnow()
+    print(f"  {len(jobs)} ilan okundu")
     print("Remotive...")
-    jobs += from_remotive()
-    print(f"  {len(jobs) - n} uygun ilan")
-
-    # aynı ilanı iki kez gösterme (url + şirket/başlık ikilisi)
-    uniq, keys = [], set()
-    elenen_de = 0
-    for j in jobs:
-        if j["german"]:          # Almanca ilan gösterilmiyor
-            elenen_de += 1
-            continue
-        k = (j["company"].lower(), re.sub(r"\W+", "", j["title"].lower())[:40])
-        if not j["url"] or j["url"] in seen or k in keys:
-            continue
-        keys.add(k)
-        uniq.append(j)
-
-    print(f"  Almanca oldugu icin elenen: {elenen_de}")
-    uniq.sort(key=lambda x: -x["score"])
-    pick = uniq[:PICK]
-    for j in pick:
-        j.pop("loc_score", None)
-
-    seen = ([j["url"] for j in pick] + seen)[:SEEN_KEEP]
+    rm = from_remotive()
+    print(f"  {len(rm)} ilan okundu")
+    jobs += rm
+    items, reserve, stats, history = sec(jobs, prev)
+    simdi = dt.datetime.now(IST).strftime("%Y-%m-%d %H:%M")
     return {
-        "updated": dt.datetime.now(IST).strftime("%Y-%m-%d %H:%M"),
-        "ok": len(pick) > 0,
-        "count": len(pick),
-        "pool": len(uniq),
-        "items": pick,
-        "seen": seen,
-        # panel bu notu gösterebilir; kişisel veri içermez
+        "version": 2,
+        "updated": simdi,
+        "ok": len(items) > 0,
+        "count": len(items),
+        "pool": len(items) + len(reserve),
+        "quota": QUOTA,
+        "items": [cikti(j, simdi) for j in items],
+        "reserve": [cikti(j, simdi) for j in reserve],
+        "stats": stats,
+        "history": history,
         "note": "Kaynak: Arbeitnow + Remotive. Basvuruyu kullanici kendisi yapar.",
     }
 
@@ -340,8 +805,7 @@ if __name__ == "__main__":
     data = build()
     with open(OUT, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=1)
-    print(f"\n{OUT}: {data['count']} ilan yazildi (havuz {data['pool']})")
-    for j in data["items"]:
-        flag = " [DE]" if j["german"] else ""
-        print(f"  {j['score']:>3}p  {j['title'][:46]:46} | {j['company'][:20]:20} | "
-              f"{j['location']:9}{flag}")
+    print(f"\n{OUT}: {data['count']} ilan seçildi, {len(data['reserve'])} yedek")
+    for j in data["items"] + data["reserve"]:
+        print(f"  [{j['bucket']}{'*' if j['reserve'] else ' '}] {j['fit_score']:>3}p  {j['title'][:44]:44} | "
+              f"{j['company'][:18]:18} | {j['label']:16} | {j['focus']:8} | {j['source']} | {j['fit_reason']}")
