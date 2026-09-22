@@ -1,9 +1,9 @@
 {
  "version": 2,
- "updated": "2026-09-21 23:06",
+ "updated": "2026-09-22 12:37",
  "ok": true,
- "count": 3,
- "pool": 8,
+ "count": 4,
+ "pool": 10,
  "quota": {
   "tr": 5,
   "de": 3,
@@ -11,6 +11,247 @@
   "uk": 1
  },
  "items": [
+  {
+   "id": "5e53a49b4751",
+   "title": "Senior Analytics Engineer",
+   "company": "Cosuno",
+   "location": "Berlin/Remote",
+   "country": "DE",
+   "market": "international",
+   "bucket": "de",
+   "label": "DE",
+   "tier": 1,
+   "rank": 0,
+   "reserve": false,
+   "is_new": true,
+   "first_seen": "2026-09-22",
+   "workplace_type": "onsite",
+   "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.com/jobs/companies/cosuno/senior-analytics-engineer-berlin-20803",
+   "publication_date": "2026-09-22",
+   "fit_score": 92,
+   "fit_reason": "rol primary +30; konum +15; beceri 5×5 +25; kıdem senior +5; tazelik +10",
+   "matched_skills": [
+    "SQL",
+    "Python",
+    "ETL",
+    "PostgreSQL",
+    "dbt"
+   ],
+   "location_reason": "Arbeitnow konumu 'Berlin/Remote'",
+   "seniority": "senior",
+   "focus": "pipeline",
+   "focus_scores": {
+    "ml": 0,
+    "bi": 6,
+    "pipeline": 19,
+    "business": 2
+   },
+   "language": "en",
+   "generated_at": "2026-09-22 12:37",
+   "summary": "Your mission As a member of our Data team, you'll take full ownership of the systems that turn raw data into decisions—for our product, our internal teams, our customers, and our investors. You won't just maintain dashboards; you'll own the pipeline end to end",
+   "keywords": [
+    "dashboard",
+    "pipeline",
+    "stakeholder",
+    "automation",
+    "startup",
+    "cost"
+   ],
+   "url": "https://www.arbeitnow.com/jobs/companies/cosuno/senior-analytics-engineer-berlin-20803",
+   "skills": [
+    "sql",
+    "python",
+    "etl",
+    "postgresql",
+    "dbt"
+   ],
+   "score": 92,
+   "posted": "2026-09-22",
+   "days": 0,
+   "remote": false,
+   "german": false
+  },
+  {
+   "id": "b355299bdfe2",
+   "title": "Data Engineer (f/m/d)",
+   "company": "Climate",
+   "location": "Berlin HQ",
+   "country": "DE",
+   "market": "international",
+   "bucket": "de",
+   "label": "DE",
+   "tier": 1,
+   "rank": 1,
+   "reserve": false,
+   "is_new": true,
+   "first_seen": "2026-09-22",
+   "workplace_type": "onsite",
+   "source": "Arbeitnow",
+   "also_on": [
+    "Arbeitnow"
+   ],
+   "source_url": "https://www.arbeitnow.com/jobs/companies/climate/data-engineer-berlin-hq-88253",
+   "publication_date": "2026-09-22",
+   "fit_score": 82,
+   "fit_reason": "rol primary +30; konum +15; beceri 3×5 +15; kıdem mid +5; tazelik +10",
+   "matched_skills": [
+    "SQL",
+    "Python",
+    "PostgreSQL"
+   ],
+   "location_reason": "Arbeitnow konumu 'Berlin HQ'",
+   "seniority": "mid",
+   "focus": "pipeline",
+   "focus_scores": {
+    "ml": 3,
+    "bi": 1,
+    "pipeline": 13,
+    "business": 0
+   },
+   "language": "en",
+   "generated_at": "2026-09-22 12:37",
+   "summary": "Job description We are currently seeking a Data Engineer for our international and diverse Climate Policy Team (CPT). The team is engaged in various projects on climate change mitigation, in particular on energy system transformation, the 1.5°C global warming ",
+   "keywords": [
+    "energy",
+    "pipeline",
+    "automation",
+    "data quality",
+    "optimization"
+   ],
+   "url": "https://www.arbeitnow.com/jobs/companies/climate/data-engineer-berlin-hq-88253",
+   "skills": [
+    "sql",
+    "python",
+    "postgresql"
+   ],
+   "score": 82,
+   "posted": "2026-09-22",
+   "days": 0,
+   "remote": false,
+   "german": false
+  },
+  {
+   "id": "130ded59c5a5",
+   "title": "Manager of Data Science & Analytics, Help Experience",
+   "company": "Vinteden",
+   "location": "Berlin",
+   "country": "DE",
+   "market": "international",
+   "bucket": "de",
+   "label": "DE",
+   "tier": 1,
+   "rank": 2,
+   "reserve": false,
+   "is_new": true,
+   "first_seen": "2026-09-22",
+   "workplace_type": "onsite",
+   "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.com/jobs/companies/vinteden/manager-of-data-science-analytics-help-experience-berlin-305884",
+   "publication_date": "2026-09-22",
+   "fit_score": 57,
+   "fit_reason": "rol secondary +18; konum +15; beceri 3×5 +15; kıdem manager -8; tazelik +10",
+   "matched_skills": [
+    "SQL",
+    "Python",
+    "PySpark"
+   ],
+   "location_reason": "Arbeitnow konumu 'Berlin'",
+   "seniority": "manager",
+   "focus": "ml",
+   "focus_scores": {
+    "ml": 18,
+    "bi": 0,
+    "pipeline": 3,
+    "business": 5
+   },
+   "language": "en",
+   "generated_at": "2026-09-22 12:37",
+   "summary": "Brief info about Vinted Our mission is to make second-hand the first choice, and we're looking for people who want to help us get there. Every day, we work together to help our members buy and sell pre-loved clothing and lifestyle items, giving each piece a se",
+   "keywords": [
+    "experimentation",
+    "a/b"
+   ],
+   "url": "https://www.arbeitnow.com/jobs/companies/vinteden/manager-of-data-science-analytics-help-experience-berlin-305884",
+   "skills": [
+    "sql",
+    "python",
+    "pyspark"
+   ],
+   "score": 57,
+   "posted": "2026-09-22",
+   "days": 0,
+   "remote": false,
+   "german": false
+  },
+  {
+   "id": "ed1c4109d539",
+   "title": "Data Engineer III - FMX",
+   "company": "Fanaticsfbg",
+   "location": "London",
+   "country": "UK",
+   "market": "international",
+   "bucket": "uk",
+   "label": "UK",
+   "tier": 1,
+   "rank": 0,
+   "reserve": false,
+   "is_new": true,
+   "first_seen": "2026-09-22",
+   "workplace_type": "onsite",
+   "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/fanaticsfbg/data-engineer-iii-fmx-london-486015",
+   "publication_date": "2026-09-22",
+   "fit_score": 94,
+   "fit_reason": "rol primary +30; konum +12; beceri 6×5 +30; kıdem mid +5; tazelik +10",
+   "matched_skills": [
+    "SQL",
+    "Python",
+    "ETL",
+    "Airflow",
+    "Databricks",
+    "Snowflake"
+   ],
+   "location_reason": "Arbeitnow konumu 'London'",
+   "seniority": "mid",
+   "focus": "pipeline",
+   "focus_scores": {
+    "ml": 0,
+    "bi": 0,
+    "pipeline": 23,
+    "business": 3
+   },
+   "language": "en",
+   "generated_at": "2026-09-22 12:37",
+   "summary": "About Us Fanatics is building a leading global digital sports platform. We ignite the passions of global sports fans and maximize the presence and reach for our hundreds of sports partners globally by offering products and services across Fanatics Commerce, Fa",
+   "keywords": [
+    "retail",
+    "pipeline",
+    "governance",
+    "stakeholder",
+    "data quality",
+    "e-commerce"
+   ],
+   "url": "https://www.arbeitnow.co.uk/jobs/companies/fanaticsfbg/data-engineer-iii-fmx-london-486015",
+   "skills": [
+    "sql",
+    "python",
+    "etl",
+    "airflow",
+    "databricks",
+    "snowflake"
+   ],
+   "score": 94,
+   "posted": "2026-09-22",
+   "days": 0,
+   "remote": false,
+   "german": false
+  }
+ ],
+ "reserve": [
   {
    "id": "f87b46a2785d",
    "title": "Data Engineer",
@@ -21,9 +262,9 @@
    "bucket": "de",
    "label": "DE",
    "tier": 1,
-   "rank": 0,
-   "reserve": false,
-   "is_new": true,
+   "rank": 3,
+   "reserve": true,
+   "is_new": false,
    "first_seen": "2026-09-21",
    "workplace_type": "onsite",
    "source": "Arbeitnow",
@@ -47,7 +288,7 @@
     "business": 1
    },
    "language": "en",
-   "generated_at": "2026-09-21 23:06",
+   "generated_at": "2026-09-22 12:37",
    "summary": "AI Service Partners (ASP) helps enterprise clients successfully implement and scale GenAI and data initiatives, from central data platforms to intelligent automation, working out of Munich and Berlin. We work close to the client, solving real operational probl",
    "keywords": [
     "enterprise",
@@ -64,7 +305,7 @@
    ],
    "score": 82,
    "posted": "2026-09-21",
-   "days": 0,
+   "days": 1,
    "remote": false,
    "german": false
   },
@@ -78,9 +319,9 @@
    "bucket": "de",
    "label": "DE",
    "tier": 1,
-   "rank": 1,
-   "reserve": false,
-   "is_new": true,
+   "rank": 4,
+   "reserve": true,
+   "is_new": false,
    "first_seen": "2026-09-21",
    "workplace_type": "onsite",
    "source": "Arbeitnow",
@@ -106,7 +347,7 @@
     "business": 3
    },
    "language": "en",
-   "generated_at": "2026-09-21 23:06",
+   "generated_at": "2026-09-22 12:37",
    "summary": "About Andercore Andercore is the AI-native supplier of industrial materials for energy, infrastructure, and construction in wholesale and beyond. We trade with global suppliers and distribute to European customers on our own account. Our AI runs the full trade",
    "keywords": [
     "energy",
@@ -125,7 +366,7 @@
    ],
    "score": 81,
    "posted": "2026-09-21",
-   "days": 0,
+   "days": 1,
    "remote": false,
    "german": false
   },
@@ -139,9 +380,9 @@
    "bucket": "de",
    "label": "DE",
    "tier": 1,
-   "rank": 2,
-   "reserve": false,
-   "is_new": true,
+   "rank": 5,
+   "reserve": true,
+   "is_new": false,
    "first_seen": "2026-09-21",
    "workplace_type": "onsite",
    "source": "Arbeitnow",
@@ -164,7 +405,7 @@
     "business": 0
    },
    "language": "en",
-   "generated_at": "2026-09-21 23:06",
+   "generated_at": "2026-09-22 12:37",
    "summary": "(100% remote, anywhere in Europe) Are you excited about building ML systems that make predictions in real-time? Are you driven by building things end-to-end, from research to live systems? At GRID, we are building real-time prediction systems for competitive e",
    "keywords": [
     "real-time",
@@ -177,12 +418,10 @@
    ],
    "score": 65,
    "posted": "2026-09-21",
-   "days": 0,
+   "days": 1,
    "remote": false,
    "german": false
-  }
- ],
- "reserve": [
+  },
   {
    "id": "2cba7e2540f7",
    "title": "ML Data Engineer (m/f/d) - Sensor Data & Pipelines",
@@ -193,17 +432,17 @@
    "bucket": "de",
    "label": "DE",
    "tier": 2,
-   "rank": 3,
+   "rank": 6,
    "reserve": true,
-   "is_new": true,
+   "is_new": false,
    "first_seen": "2026-09-21",
    "workplace_type": "onsite",
    "source": "Arbeitnow",
    "also_on": [],
    "source_url": "https://www.arbeitnow.com/jobs/companies/autonomous-teaming/ml-data-engineer-sensor-data-pipelines-munich-deu-456196",
    "publication_date": "2026-09-20",
-   "fit_score": 77,
-   "fit_reason": "rol primary +30; konum +10; beceri 3×5 +15; kıdem mid +5; tazelik +10",
+   "fit_score": 74,
+   "fit_reason": "rol primary +30; konum +10; beceri 3×5 +15; kıdem mid +5; tazelik +7",
    "matched_skills": [
     "SQL",
     "Python",
@@ -219,7 +458,7 @@
     "business": 4
    },
    "language": "en",
-   "generated_at": "2026-09-21 23:06",
+   "generated_at": "2026-09-22 12:37",
    "summary": "What we offer Work in an international, agile team creating the future of autonomous systems Grow your career in a expanding and ambitious engineering team Build innovative products using state-of-the-art technologies in AI, robotics, and autonomy Benefit from",
    "keywords": [
     "pipeline",
@@ -232,9 +471,9 @@
     "python",
     "etl"
    ],
-   "score": 77,
+   "score": 74,
    "posted": "2026-09-20",
-   "days": 1,
+   "days": 2,
    "remote": false,
    "german": false
   },
@@ -248,9 +487,9 @@
    "bucket": "de",
    "label": "DE",
    "tier": 2,
-   "rank": 4,
+   "rank": 7,
    "reserve": true,
-   "is_new": true,
+   "is_new": false,
    "first_seen": "2026-09-21",
    "workplace_type": "onsite",
    "source": "Arbeitnow",
@@ -273,7 +512,7 @@
     "business": 4
    },
    "language": "en",
-   "generated_at": "2026-09-21 23:06",
+   "generated_at": "2026-09-22 12:37",
    "summary": "What we are building At ecoplanet, we're redefining energy for tomorrow. Our mission: turn energy management into the competitive edge every European business relies on to win its market. We're building the operating system for the energy transition — cutting ",
    "keywords": [
     "energy",
@@ -293,161 +532,64 @@
    ],
    "score": 72,
    "posted": "2026-09-21",
-   "days": 0,
+   "days": 1,
    "remote": false,
    "german": false
   },
   {
-   "id": "a500f24e49ee",
-   "title": "Junior Data & Analytics Consultant (M/F/D)",
-   "company": "Kaiser X Labs",
-   "location": "Munich - Stuttgart - Frankfurt - Hanover",
-   "country": "DE",
+   "id": "a812d6fff592",
+   "title": "Research Data Engineer",
+   "company": "Relationrx",
+   "location": "London",
+   "country": "UK",
    "market": "international",
-   "bucket": "de",
-   "label": "DE",
-   "tier": 2,
-   "rank": 5,
+   "bucket": "uk",
+   "label": "UK",
+   "tier": 1,
+   "rank": 1,
    "reserve": true,
    "is_new": true,
-   "first_seen": "2026-09-21",
-   "workplace_type": "hybrid",
-   "source": "Arbeitnow",
-   "also_on": [],
-   "source_url": "https://www.arbeitnow.com/jobs/companies/kaiser-x-labs/junior-data-analytics-consultant-munich-stuttgart-frankfurt-hanover-288721",
-   "publication_date": "2026-09-21",
-   "fit_score": 65,
-   "fit_reason": "rol primary +30; konum +10; beceri 4×5 +20; kıdem junior -15; tazelik +10",
-   "matched_skills": [
-    "SQL",
-    "Python",
-    "Power BI",
-    "Tableau"
-   ],
-   "location_reason": "Arbeitnow konumu 'Munich - Stuttgart - Frankfurt - Hanover'",
-   "seniority": "junior",
-   "focus": "business",
-   "focus_scores": {
-    "ml": 4,
-    "bi": 6,
-    "pipeline": 0,
-    "business": 18
-   },
-   "language": "en",
-   "generated_at": "2026-09-21 23:06",
-   "summary": "YOUR ROLE YOUR ROLE AND RESPONSIBILITIES INCLUDE APPLYING BOTH ANALYTICAL AND STRATEGIC AI‑DRIVEN APPROACHES. THROUGH TARGETED STAKEHOLDER ENGAGEMENT AND EARLY IDENTIFICATION OF AI OPPORTUNITIES, YOU PROVIDE KEY IMPULSES FOR KXL’S AI AND DATA STRATEGY. As a Ju",
-   "keywords": [
-    "stakeholder",
-    "dashboard",
-    "governance"
-   ],
-   "url": "https://www.arbeitnow.com/jobs/companies/kaiser-x-labs/junior-data-analytics-consultant-munich-stuttgart-frankfurt-hanover-288721",
-   "skills": [
-    "sql",
-    "python",
-    "power bi",
-    "tableau"
-   ],
-   "score": 65,
-   "posted": "2026-09-21",
-   "days": 0,
-   "remote": false,
-   "german": false
-  },
-  {
-   "id": "497413e7eed4",
-   "title": "Data Platform Engineer (f/m/d) for the European AI Factory HammerHAI",
-   "company": "Lrz",
-   "location": "Garching bei München",
-   "country": "DE",
-   "market": "international",
-   "bucket": "de",
-   "label": "DE",
-   "tier": 2,
-   "rank": 6,
-   "reserve": true,
-   "is_new": true,
-   "first_seen": "2026-09-21",
+   "first_seen": "2026-09-22",
    "workplace_type": "onsite",
    "source": "Arbeitnow",
    "also_on": [],
-   "source_url": "https://www.arbeitnow.com/jobs/companies/lrz/data-platform-engineer-for-the-european-ai-factory-hammerhai-garching-bei-munchen-349180",
-   "publication_date": "2026-09-21",
-   "fit_score": 62,
-   "fit_reason": "rol primary +30; konum +10; beceri 0×5 +0; kıdem mid +5; tazelik +10",
-   "matched_skills": [],
-   "location_reason": "Arbeitnow konumu 'Garching bei München'",
+   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/relationrx/research-data-engineer-london-403066",
+   "publication_date": "2026-09-22",
+   "fit_score": 79,
+   "fit_reason": "rol primary +30; konum +12; beceri 3×5 +15; kıdem mid +5; tazelik +10",
+   "matched_skills": [
+    "Python",
+    "Airflow",
+    "PySpark"
+   ],
+   "location_reason": "Arbeitnow konumu 'London'",
    "seniority": "mid",
    "focus": "pipeline",
    "focus_scores": {
-    "ml": 1,
+    "ml": 9,
     "bi": 0,
-    "pipeline": 14,
-    "business": 1
+    "pipeline": 19,
+    "business": 2
    },
    "language": "en",
-   "generated_at": "2026-09-21 23:06",
-   "summary": "Description: Looking for an employer you can count on? Join us! Data Platform Engineer (f/m/d) for the European AI Factory HammerHAI Your Role and Responsibilities: Developing and maintaining the data facility of the AI Factory including its software environme",
+   "generated_at": "2026-09-22 12:37",
+   "summary": "About Relation Relation is a sector defining TechBio company developing transformational medicines, with technology at our core. Our ambition is to understand human biology in unprecedented ways, discovering therapies to treat some of life’s most devastating d",
    "keywords": [
-    "stakeholder",
-    "enterprise"
+    "scalab",
+    "pipeline",
+    "experimentation",
+    "governance",
+    "stakeholder"
    ],
-   "url": "https://www.arbeitnow.com/jobs/companies/lrz/data-platform-engineer-for-the-european-ai-factory-hammerhai-garching-bei-munchen-349180",
-   "skills": [],
-   "score": 62,
-   "posted": "2026-09-21",
-   "days": 0,
-   "remote": false,
-   "german": false
-  },
-  {
-   "id": "81d63264ce6a",
-   "title": "(Junior) Data Scientist",
-   "company": "Quantilope Gmbh",
-   "location": "Hybrid (Hamburg) or Remote (Germany)",
-   "country": "DE",
-   "market": "international",
-   "bucket": "de",
-   "label": "DE",
-   "tier": 2,
-   "rank": 7,
-   "reserve": true,
-   "is_new": true,
-   "first_seen": "2026-09-21",
-   "workplace_type": "hybrid",
-   "source": "Arbeitnow",
-   "also_on": [],
-   "source_url": "https://www.arbeitnow.com/jobs/companies/quantilope-gmbh/remote-junior-data-scientist-305623",
-   "publication_date": "2026-09-20",
-   "fit_score": 43,
-   "fit_reason": "rol secondary +18; konum +10; beceri 2×5 +10; kıdem junior -15; tazelik +10",
-   "matched_skills": [
-    "Python",
-    "Azure"
-   ],
-   "location_reason": "Arbeitnow konumu 'Hybrid (Hamburg) or Remote (Germany)'",
-   "seniority": "junior",
-   "focus": "ml",
-   "focus_scores": {
-    "ml": 15,
-    "bi": 1,
-    "pipeline": 1,
-    "business": 6
-   },
-   "language": "en",
-   "generated_at": "2026-09-21 23:06",
-   "summary": "Introduction: At quantilope, we're transforming how the world's biggest brands understand their customers. As a (Junior) Data Scientist, you'll collaborate closely with Product Managers, Product Designers, and Software Engineers to build and evolve our AI-powe",
-   "keywords": [
-    "scalab"
-   ],
-   "url": "https://www.arbeitnow.com/jobs/companies/quantilope-gmbh/remote-junior-data-scientist-305623",
+   "url": "https://www.arbeitnow.co.uk/jobs/companies/relationrx/research-data-engineer-london-403066",
    "skills": [
     "python",
-    "azure"
+    "airflow",
+    "pyspark"
    ],
-   "score": 43,
-   "posted": "2026-09-20",
-   "days": 1,
+   "score": 79,
+   "posted": "2026-09-22",
+   "days": 0,
    "remote": false,
    "german": false
   }
@@ -459,15 +601,15 @@
     "tr_remote": 0,
     "region_remote": 0
    },
-   "de": 8,
+   "de": 10,
    "nl": 0,
-   "uk": 0
+   "uk": 2
   },
   "selected": {
    "tr": 0,
    "de": 3,
    "nl": 0,
-   "uk": 0
+   "uk": 1
   },
   "missing": {
    "tr": {
@@ -477,20 +619,16 @@
    "nl": {
     "eksik": 1,
     "sebep": "uygun aday yok"
-   },
-   "uk": {
-    "eksik": 1,
-    "sebep": "uygun aday yok"
    }
   },
   "eliminated": {
-   "rol dışı (hedef rol yok)": 800,
-   "rol dışı (başlık)": 492,
+   "rol dışı (hedef rol yok)": 739,
+   "rol dışı (başlık)": 544,
+   "ML/DS rolü, beceri örtüşmesi zayıf": 14,
    "Almanca ilan": 5,
-   "ML/DS rolü, beceri örtüşmesi zayıf": 7,
-   "ülke belirlenemedi": 2,
-   "ileri seviye Almanca şartı": 1,
-   "süresi doldu (daha önce gösterildi)": 3
+   "ülke belirlenemedi": 1,
+   "tekrar (farklı kaynak)": 1,
+   "süresi doldu (daha önce gösterildi)": 2
   }
  },
  "history": {
@@ -508,7 +646,7 @@
   },
   "url:https://www.arbeitnow.com/jobs/companies/reev/senior-business-intelligence-lead-all-genders-munchen-80998": {
    "first_seen": null,
-   "last_seen": "2026-09-21",
+   "last_seen": "2026-09-22",
    "status": "expired",
    "legacy": true
   },
@@ -520,7 +658,7 @@
   },
   "url:https://remotive.com/remote-jobs/data/senior-data-scientist-2091129": {
    "first_seen": null,
-   "last_seen": "2026-09-21",
+   "last_seen": "2026-09-22",
    "status": "expired",
    "legacy": true
   },
@@ -1109,42 +1247,67 @@
   "f87b46a2785d": {
    "first_seen": "2026-09-21",
    "status": "listed",
-   "last_seen": "2026-09-21"
+   "last_seen": "2026-09-22"
   },
   "ff2e0e9b5156": {
    "first_seen": "2026-09-21",
    "status": "listed",
-   "last_seen": "2026-09-21"
+   "last_seen": "2026-09-22"
   },
   "840f2a02dda1": {
    "first_seen": "2026-09-21",
    "status": "listed",
-   "last_seen": "2026-09-21"
+   "last_seen": "2026-09-22"
   },
   "2cba7e2540f7": {
    "first_seen": "2026-09-21",
    "status": "listed",
-   "last_seen": "2026-09-21"
+   "last_seen": "2026-09-22"
   },
   "984c5f8aed57": {
    "first_seen": "2026-09-21",
    "status": "listed",
-   "last_seen": "2026-09-21"
+   "last_seen": "2026-09-22"
   },
   "a500f24e49ee": {
    "first_seen": "2026-09-21",
    "status": "listed",
-   "last_seen": "2026-09-21"
+   "last_seen": "2026-09-22"
   },
   "497413e7eed4": {
    "first_seen": "2026-09-21",
    "status": "listed",
-   "last_seen": "2026-09-21"
+   "last_seen": "2026-09-22"
   },
   "81d63264ce6a": {
    "first_seen": "2026-09-21",
    "status": "listed",
    "last_seen": "2026-09-21"
+  },
+  "5e53a49b4751": {
+   "first_seen": "2026-09-22",
+   "status": "listed",
+   "last_seen": "2026-09-22"
+  },
+  "b355299bdfe2": {
+   "first_seen": "2026-09-22",
+   "status": "listed",
+   "last_seen": "2026-09-22"
+  },
+  "130ded59c5a5": {
+   "first_seen": "2026-09-22",
+   "status": "listed",
+   "last_seen": "2026-09-22"
+  },
+  "ed1c4109d539": {
+   "first_seen": "2026-09-22",
+   "status": "listed",
+   "last_seen": "2026-09-22"
+  },
+  "a812d6fff592": {
+   "first_seen": "2026-09-22",
+   "status": "listed",
+   "last_seen": "2026-09-22"
   }
  },
  "note": "Kaynak: Arbeitnow + Remotive. Basvuruyu kullanici kendisi yapar."
