@@ -116,6 +116,30 @@ tek başına ML seçtirmez. **Kaynak gerçeği (21 Eyl ölçümü):** Arbeitnow 
 ilan, NL ve TR 0; Remotive public API parametreleri yok sayıp ~18 ilan veriyor
 → TR ve NL kotaları çoğu gün dolmayacak. Yeni kaynak kullanıcı onayı bekliyor.
 
+**23 Eyl, ikinci tur (kullanıcı isteği).** TR kotası **3**, sıralama **REMOTE
+ÖNCELİKLİ**: kademe 1 Türkiye remote · 2 Worldwide/Europe/EMEA remote (TR'den
+başvurulabilen) · 3 İstanbul hibrit · 4 İstanbul onsite. TR kovasında ML/DS
+eşiği 1 beceri (diğer kovalarda 2) — arz çok dar. Dördüncü kaynak:
+**WeWorkRemotely** RSS (tek istek; kategori akışları 301, genel akış süzülüyor;
+`region` alanı bölge veriyor). İlk koşuda TR 0 → 2 (Toptal Worldwide + Lemon.io
+Europe). NL hâlâ 0: anahtarsız kaynaklarda Hollanda ilanı yok.
+
+**23 Eyl düzeltmeleri.** (1) **Türkiye günlerce boş kaldı**: eski `seen`
+listesinden taşınan ilanlar `expired` yazılıyordu, yani eski sistemde bir kez
+görünmüş her ilan kalıcı eleniyordu ve TR'ye uyan tek tük ilan hep oradan
+çıkıyordu. Artık göç günü `first_seen` sayılıyor, normal 14 günlük pencere
+işliyor (`gecmis_tasi`). İlk denemede TR 0 → 1 oldu. (2) **NL ve UK kotası 1 → 3**
+(`QUOTA`, `RESERVE`), panelde Yurtdışı toplamı 9. (3) **Yeni anahtarsız
+kaynaklar:** Himalayas (`locationRestrictions` ilanın hangi ülkelerle sınırlı
+olduğunu AÇIKÇA veriyor; sayfa başına 20 kayıt, cursor, 12 sayfa) ve Remote OK
+(tek istek; API şartı gereği kaynak adı + ilana bağlantı gösteriliyor).
+**Ölçüm (23 Eyl):** Himalayas ve Remote OK `search`/`category` parametrelerini
+YOK SAYIYOR (Remotive gibi); son ~400 ilanda veri rolü 2-3 tane ve çoğu ABD
+kısıtlı. İkisi de bugün seçime ilan vermedi — kotayı asıl Arbeitnow dolduruyor.
+**İstanbul onsite/hybrid ilanı hiçbir anahtarsız kaynakta yok**; TR kotası için
+sıradaki adım Jooble/Adzuna (anahtar + GitHub Secret, kullanıcı onayı bekliyor).
+(4) Keşif › Kariyer'de **Günün İşleri artık İş Başvuruları'nın üstünde**.
+
 **Açık uçlar:** Gerçek iPhone'da safe-area/klavye/titreşim doğrulanmadı.
 `design-references/` klasörü yerelde, repoda değil.
 

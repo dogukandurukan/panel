@@ -7,17 +7,28 @@ ilanlarını çeker, KESİN filtreden geçirir, ülkeye göre gruplar, açıklan
 bir uygunluk puanı verir ve kotalı bir seçimle jobs.json'a yazar.
 
 Kotalar (en fazla 10 ilan):
-  * Türkiye  5 — İstanbul onsite/hybrid > Türkiye remote > (yedek) Türkiye'den
-                 başvurulabilen Worldwide / Europe / EMEA remote
+  * Türkiye  3 — REMOTE ÖNCELİKLİ (kullanıcı isteği, 23 Eyl):
+                 Türkiye remote > Türkiye'den başvurulabilen Worldwide/Europe/
+                 EMEA remote > İstanbul hybrid > İstanbul onsite
   * Almanya  3 — Berlin > diğer Almanya şehirleri > Almanya remote
-  * Hollanda 1
-  * UK       1
+  * Hollanda 3
+  * UK       3
 Bir ülkenin kotası dolmazsa BAŞKA ülkeyle doldurulmaz; eksik sayı ve sebebi
 hem Actions loguna hem jobs.json'daki `stats`'a yazılır.
 
 Kaynaklar — ikisi de herkese açık, kimlik doğrulaması istemez:
   * Arbeitnow   https://www.arbeitnow.com/api/job-board-api   (Almanya + UK ağırlıklı)
   * Remotive    https://remotive.com/api/remote-jobs          (yalnız remote)
+  * Himalayas   https://himalayas.app/jobs/api                (remote; ilanın hangi
+    ülkelerle sınırlı olduğunu `locationRestrictions` ile AÇIKÇA veriyor — TR
+    uygunluğu tahmin edilmiyor). Sayfa başına 20 kayıt, cursor ile ilerleniyor;
+    `search`/`category` parametreleri YOK SAYILIYOR (23 Eyl'de ölçüldü).
+  * Remote OK   https://remoteok.com/api                      (remote; tek istek)
+  * WeWorkRemotely https://weworkremotely.com/remote-jobs.rss (remote; tek istek,
+    RSS. Kategori akışları 301 dönüyor, genel akış süzülüyor. `region` alanı
+    "Anywhere in the World" / "Europe Only" gibi bölge veriyor.)
+    API şartı: kaynak adı ve ilana giden bağlantı gösterilecek — panel ikisini
+    de yapıyor ("Remote OK" etiketi + "İlana git").
     Remotive public API: günde tek koşu, koşu başına tek istek (public uç
     parametreleri yok sayıp ~18 ilan döndürüyor, bkz. from_remotive). İlanın gerçek Remotive URL'si korunur, kaynak panelde yazar.
 
@@ -61,9 +72,9 @@ TIMEOUT = 25
 OUT = os.environ.get("JOBS_OUT", "jobs.json")
 PREV = os.environ.get("JOBS_PREV", "jobs.json")
 
-QUOTA = {"tr": 5, "de": 3, "nl": 1, "uk": 1}
+QUOTA = {"tr": 3, "de": 3, "nl": 3, "uk": 3}          # 23 Eyl: NL 5->3 istek üzerine, NL/UK 1 -> 3
 # panel başvurulan/gizlenen ilanları çıkarınca bu yedeklerden doldurur
-RESERVE = {"tr": 5, "de": 5, "nl": 2, "uk": 2}
+RESERVE = {"tr": 5, "de": 5, "nl": 3, "uk": 3}
 BUCKET_ORDER = ["tr", "de", "nl", "uk"]
 BUCKET_AD = {"tr": "Türkiye", "de": "Almanya", "nl": "Hollanda", "uk": "UK"}
 COUNTRY_OF = {"de": "DE", "nl": "NL", "uk": "UK", "tr": "TR"}
@@ -174,7 +185,7 @@ TR_YER = ("istanbul", "i̇stanbul", "türkiye", "turkey", "turkiye", "ankara", "
 # Remotive candidate_required_location jetonları
 REGION_TOK = {
     "worldwide": "worldwide", "anywhere": "worldwide", "global": "worldwide",
-    "anywhere in the world": "worldwide",
+    "anywhere in the world": "worldwide", "anywhere in world": "worldwide",
     "europe": "europe", "european": "europe", "cet": "europe", "cet timezone": "europe",
     "emea": "emea",
 }
@@ -428,7 +439,7 @@ def normalize(*, title, company, location, remote, url, text, posted, source, ta
     body = clean(text, 6000)
     t = baslik_temiz(title)
     hay = t + " " + body + " " + " ".join(tags or [])
-    if source == "Remotive":
+    if cand is not None:                    # remote kaynaklar: Remotive / Himalayas / Remote OK
         yer = konum_remotive(cand)
         yer_metin = cand or "Remote"
     else:
@@ -481,6 +492,106 @@ def remotive_kaydi(r):
         source="Remotive", tags=r.get("tags") or [],
         cand=r.get("candidate_required_location") or "",
     )
+
+
+def himalayas_kaydi(r):
+    kis = r.get("locationRestrictions")
+    if isinstance(kis, str):
+        kis = [x.strip(" '\"[]") for x in kis.strip("[]").split(",") if x.strip(" '\"[]")]
+    kis = kis or []
+    posted = None
+    try:
+        posted = dt.datetime.fromtimestamp(int(r.get("pubDate") or 0), IST).strftime("%Y-%m-%d")
+    except (ValueError, TypeError, OSError):
+        posted = None
+    return normalize(
+        title=r.get("title") or "", company=r.get("companyName") or "—",
+        location=None, remote=True,
+        url=r.get("applicationLink") or r.get("guid") or "",
+        text=r.get("description") or r.get("excerpt") or "", posted=posted,
+        source="Himalayas", tags=[], cand=", ".join(kis) or "Worldwide",
+    )
+
+
+def remoteok_kaydi(r):
+    return normalize(
+        title=r.get("position") or r.get("title") or "", company=r.get("company") or "—",
+        location=None, remote=True, url=r.get("url") or "",
+        text=r.get("description") or "", posted=(r.get("date") or "")[:10] or None,
+        source="Remote OK", tags=r.get("tags") or [],
+        cand=r.get("location") or "Worldwide",
+    )
+
+
+def from_himalayas(pages=12):
+    """Sayfa başına 20 kayıt; `search`/`category` çalışmıyor, bu yüzden son ~400
+    ilan gezilip veri rolleri süzülüyor. İstekler arası 1 sn."""
+    out, cur = [], None
+    for _ in range(pages):
+        u = "https://himalayas.app/jobs/api?limit=100" + (("&cursor=" + urllib.parse.quote(cur)) if cur else "")
+        try:
+            d = get_json(u)
+        except Exception as e:
+            print(f"  himalayas atlandi: {e}")
+            break
+        out += [himalayas_kaydi(r) for r in (d.get("jobs") or [])]
+        cur = d.get("nextCursor")
+        if not cur:
+            break
+        time.sleep(1)
+    return out
+
+
+def from_remoteok():
+    try:
+        d = get_json("https://remoteok.com/api")
+    except Exception as e:
+        print(f"  remoteok atlandi: {e}")
+        return []
+    # ilk kayıt API şartlarını taşıyan meta satırı
+    return [remoteok_kaydi(r) for r in (d or [])[1:] if r.get("position")]
+
+
+WWR_BOLGE = {"anywhere in the world": "Worldwide", "europe only": "Europe", "emea only": "EMEA",
+             "north america only": "North America", "usa only": "USA", "latin america only": "LATAM",
+             "asia only": "Asia", "africa only": "Africa", "oceania only": "Oceania"}
+
+
+def wwr_kaydi(item):
+    """WeWorkRemotely RSS öğesi. Başlık 'Şirket: Pozisyon' biçiminde."""
+    ham = (item.findtext("title") or "").strip()
+    sirket, _, poz = ham.partition(":")
+    if not poz:
+        sirket, poz = "—", ham
+    bolge = (item.findtext("region") or "").strip()
+    posted = None
+    pd = item.findtext("pubDate")
+    if pd:
+        try:
+            posted = dt.datetime.strptime(pd[:25].strip(), "%a, %d %b %Y %H:%M:%S").strftime("%Y-%m-%d")
+        except ValueError:
+            posted = None
+    return normalize(
+        title=poz.strip(), company=sirket.strip(), location=None, remote=True,
+        url=(item.findtext("link") or item.findtext("guid") or "").strip(),
+        text=item.findtext("description") or "", posted=posted, source="WeWorkRemotely",
+        tags=[x for x in [(item.findtext("category") or "").strip()] if x],
+        cand=WWR_BOLGE.get(kucult(bolge), bolge or "Worldwide"),
+    )
+
+
+def from_wwr():
+    """Tek istek, RSS (stdlib xml.etree). Kategori akışları 301 dönüyor; genel
+    akış kullanılıp veri rolleri kendi filtremizle süzülüyor (23 Eyl ölçümü)."""
+    import xml.etree.ElementTree as ET
+    try:
+        req = urllib.request.Request("https://weworkremotely.com/remote-jobs.rss", headers={"User-Agent": UA})
+        with urllib.request.urlopen(req, timeout=TIMEOUT) as r:
+            kok = ET.fromstring(r.read())
+    except Exception as e:
+        print(f"  weworkremotely atlandi: {e}")
+        return []
+    return [wwr_kaydi(x) for x in kok.findall(".//item")]
 
 
 def from_arbeitnow(pages=10):
@@ -536,10 +647,12 @@ def kova(j):
     u, wp = j.get("country"), j.get("workplace_type")
     if u == "TR":
         sehir = kucult(j.get("city"))
-        if "istanbul" in sehir and wp in ("onsite", "hybrid", "unknown"):
-            return ("tr", 1, 15, "İstanbul")
         if wp == "remote":
-            return ("tr", 2, 12, "Türkiye Remote")
+            return ("tr", 1, 15, "Türkiye Remote")
+        if "istanbul" in sehir and wp == "hybrid":
+            return ("tr", 3, 12, "İstanbul Hibrit")
+        if "istanbul" in sehir:
+            return ("tr", 4, 10, "İstanbul")
         return (None, "Türkiye'de İstanbul dışı onsite: " + (j.get("city") or "?"))
     if u in ("DE", "NL", "UK"):
         b = u.lower()
@@ -556,7 +669,7 @@ def kova(j):
         if engel:
             return (None, "TR yedeği değil — " + engel)
         etiket = "Worldwide Remote" if "worldwide" in reg else ("EMEA Remote" if "emea" in reg else "Europe Remote")
-        return ("tr", 3, 6, etiket)
+        return ("tr", 2, 12, etiket)
     if j.get("country"):
         return (None, "hedef dışı ülke: " + j["country"])
     return (None, j.get("location_reason") or "konum belirsiz")
@@ -592,10 +705,6 @@ def degerlendir(j, bugun):
     r = rol(t)
     if not r:
         return None, "rol dışı (hedef rol yok)"
-    # ML / Data Science "uygun olduğunda": kullanıcının araçlarından en az ikisi
-    # ilanda geçmiyorsa (yalnız Python gibi) deneyimle örtüşmüyor sayılır
-    if r == "secondary" and len(j["matched_skills"]) < 2:
-        return None, "ML/DS rolü, beceri örtüşmesi zayıf"
     if j["language"] == "de":
         return None, "Almanca ilan"
     if j["de_req"]:
@@ -609,6 +718,10 @@ def degerlendir(j, bugun):
     if k[0] is None:
         return None, k[1]
     b, kademe, kpuan, etiket = k
+    # ML / Data Science "uygun olduğunda": kullanıcının araçları ilanda geçmeli.
+    # Türkiye kovasında eşik 1 — o kovanın arzı çok dar (23 Eyl ölçümü).
+    if r == "secondary" and len(j["matched_skills"]) < (1 if b == "tr" else 2):
+        return None, "ML/DS rolü, beceri örtüşmesi zayıf"
     fit, neden, d = fit_score(j, kpuan, bugun)
     if fit < MIN_FIT:
         return None, "düşük uygunluk"
@@ -620,11 +733,20 @@ def degerlendir(j, bugun):
 
 # ================================================================ seçim
 def gecmis_tasi(prev, bugun_s):
-    """Eski `seen` (URL listesi) -> history'de expired kayıtları. Kullanıcı verisi
-    değil, feed'in kendi hafızası; yine de hiçbir kayıt sessizce düşmüyor."""
+    """Eski `seen` (URL listesi) -> history kaydı.
+
+    23 Eyl: bunlar önce `expired` yazılıyordu, yani eski sistemde bir kez
+    gösterilmiş her ilan SONSUZA DEK eleniyordu. Türkiye kovasına uyan tek tük
+    ilan da tam bunların arasından çıktığı için kova günlerce boş kaldı. Artık
+    göç günü `first_seen` sayılıyor: normal 14 günlük pencere işliyor,
+    başvurulan/gizlenen ilanları zaten panel süzüyor."""
     h = dict(prev.get("history") or {})
     for u in prev.get("seen") or []:
-        h.setdefault("url:" + u, {"first_seen": None, "last_seen": bugun_s, "status": "expired", "legacy": True})
+        h.setdefault("url:" + u, {"first_seen": bugun_s, "last_seen": bugun_s, "status": "listed", "legacy": True})
+    for k, v in h.items():
+        if v.get("legacy") and v.get("status") == "expired" and not v.get("first_seen"):
+            v["first_seen"] = bugun_s
+            v["status"] = "listed"
     return h
 
 
@@ -674,10 +796,9 @@ def sec(adaylar, prev, bugun=None, log=print):
     for j in aktif:
         kovalar[j["bucket"]].append(j)
     for b, liste in kovalar.items():
-        if b == "tr":
-            liste.sort(key=lambda j: (j["tier"] == 3, not j["is_new"], j["tier"], -j["fit_score"]))
-        else:
-            liste.sort(key=lambda j: (not j["is_new"], j["tier"], -j["fit_score"]))
+        # TR dahil hepsi: yeni > önceki günlerden kalan, sonra kademe, sonra puan.
+        # TR kademeleri remote önceliğini taşıyor (bkz. kova()).
+        liste.sort(key=lambda j: (not j["is_new"], j["tier"], -j["fit_score"]))
 
     items, reserve, stats = [], [], {"candidates": {}, "selected": {}, "missing": {}, "eliminated": elenen}
     for b in BUCKET_ORDER:
@@ -691,9 +812,10 @@ def sec(adaylar, prev, bugun=None, log=print):
         items += secilen
         reserve += yedek
         if b == "tr":
-            stats["candidates"]["tr"] = {"istanbul": sum(j["tier"] == 1 for j in liste),
-                                         "tr_remote": sum(j["tier"] == 2 for j in liste),
-                                         "region_remote": sum(j["tier"] == 3 for j in liste)}
+            # kademeler: 1 TR remote · 2 bölge remote · 3 İstanbul hibrit · 4 İstanbul onsite
+            stats["candidates"]["tr"] = {"tr_remote": sum(j["tier"] == 1 for j in liste),
+                                         "region_remote": sum(j["tier"] == 2 for j in liste),
+                                         "istanbul": sum(j["tier"] in (3, 4) for j in liste)}
         else:
             stats["candidates"][b] = len(liste)
         stats["selected"][b] = len(secilen)
@@ -711,7 +833,7 @@ def sec(adaylar, prev, bugun=None, log=print):
     # 5) log — Actions logu herkese açık; yalnızca sayı ve ilan bilgisi, kişisel veri yok
     c = stats["candidates"]
     log(f"Turkey candidates found: {sum(c['tr'].values())} "
-        f"(İstanbul {c['tr']['istanbul']}, TR remote {c['tr']['tr_remote']}, Worldwide/Europe/EMEA {c['tr']['region_remote']})")
+        f"(TR remote {c['tr']['tr_remote']}, Worldwide/Europe/EMEA {c['tr']['region_remote']}, İstanbul {c['tr']['istanbul']})")
     log(f"Germany candidates found: {c['de']}")
     log(f"Netherlands candidates found: {c['nl']}")
     log(f"UK candidates found: {c['uk']}")
@@ -780,10 +902,12 @@ def build():
     print("Arbeitnow...")
     jobs = from_arbeitnow()
     print(f"  {len(jobs)} ilan okundu")
-    print("Remotive...")
-    rm = from_remotive()
-    print(f"  {len(rm)} ilan okundu")
-    jobs += rm
+    for ad, fn in (("Remotive", from_remotive), ("Himalayas", from_himalayas),
+                   ("Remote OK", from_remoteok), ("WeWorkRemotely", from_wwr)):
+        print(ad + "...")
+        yeni = fn()
+        print(f"  {len(yeni)} ilan okundu")
+        jobs += yeni
     items, reserve, stats, history = sec(jobs, prev)
     simdi = dt.datetime.now(IST).strftime("%Y-%m-%d %H:%M")
     return {

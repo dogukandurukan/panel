@@ -29,6 +29,21 @@ def an(title, location, company="Acme", remote=False, body=EN, created=TS, url=N
     })
 
 
+def hi(title, kis, company="Himco", body=EN, pub=None):
+    return F.himalayas_kaydi({
+        "title": title, "companyName": company, "locationRestrictions": kis,
+        "description": body, "pubDate": str(int(dt.datetime(2026, 9, 20, 9, tzinfo=F.IST).timestamp()) if pub is None else pub),
+        "applicationLink": "https://himalayas.app/companies/" + company + "/jobs/" + title.replace(" ", "-"),
+    })
+
+
+def ro(title, loc, company="ROco", body=EN, date="2026-09-20T08:00:00"):
+    return F.remoteok_kaydi({
+        "position": title, "company": company, "location": loc, "description": body,
+        "date": date, "url": "https://remoteok.com/remote-jobs/" + title.replace(" ", "-"), "tags": [],
+    })
+
+
 def rm(title, cand, company="Remoco", body=EN, date="2026-09-20T10:00:00", url=None):
     return F.remotive_kaydi({
         "id": hash(title + company), "title": title, "company_name": company,
@@ -67,15 +82,19 @@ class Secim(unittest.TestCase):
     def test_tam_gruplama(self):
         items, res, stats, _ = sec(self.tam_set())
         k = kovalar(items)
-        self.assertEqual({b: len(v) for b, v in k.items()}, {"tr": 5, "de": 3, "nl": 1, "uk": 1})
-        self.assertEqual(stats["missing"], {})
-        self.assertEqual(len(items), 10)
+        self.assertEqual({b: len(v) for b, v in k.items()}, {"tr": 3, "de": 3, "nl": 1, "uk": 1})
+        self.assertEqual(stats["missing"].keys(), {"nl", "uk"})   # kota 3, elde 1 aday
+        self.assertEqual(len(items), 8)
 
-    # 2
-    def test_istanbul_tr_remote_once(self):
-        items, *_ = sec([rm("Data Engineer", "Turkey", company="R"), an("Data Engineer", "Istanbul", company="I")])
+    # 2 — 23 Eyl: kullanıcı isteğiyle TR'de REMOTE önce, İstanbul hibrit/onsite sonra
+    def test_tr_remote_once_istanbul_sonra(self):
+        items, *_ = sec([
+            an("Data Engineer", "Istanbul", company="ONSITE"),
+            an("BI Developer", "Istanbul", company="HIBRIT", body=EN + " This is a hybrid role in our Istanbul office."),
+            rm("Analytics Engineer", "Turkey", company="TRREMOTE"),
+        ])
         tr = kovalar(items)["tr"]
-        self.assertEqual([j["label"] for j in tr], ["İstanbul", "Türkiye Remote"])
+        self.assertEqual([j["label"] for j in tr], ["Türkiye Remote", "İstanbul Hibrit", "İstanbul"])
 
     # 3
     def test_berlin_oncelikli(self):
@@ -85,16 +104,16 @@ class Secim(unittest.TestCase):
         self.assertEqual(de[0]["company"], "B")
         self.assertEqual(len(de), 3)
 
-    # 4
-    def test_tr_bolge_yedegi(self):
-        items, _, stats, _ = sec([an("Data Engineer", "Istanbul", company="I"),
-                                  rm("Data Engineer", "Worldwide", company="W"),
-                                  rm("BI Analyst", "EMEA", company="E"),
-                                  rm("Analytics Engineer", "Europe", company="U")])
+    # 4 — bölge remote'ları TR kovasını doldurur, İstanbul onsite en sonda kalır
+    def test_tr_bolge_remote_doldurur(self):
+        items, *_ = sec([an("Data Engineer", "Istanbul", company="I"),
+                         rm("Data Engineer", "Worldwide", company="W"),
+                         rm("BI Analyst", "EMEA", company="E"),
+                         rm("Analytics Engineer", "Europe", company="U")])
         tr = kovalar(items)["tr"]
-        self.assertEqual(tr[0]["label"], "İstanbul")
-        self.assertEqual(sorted(j["label"] for j in tr[1:]), ["EMEA Remote", "Europe Remote", "Worldwide Remote"])
-        self.assertEqual(stats["missing"]["tr"]["eksik"], 1)
+        self.assertEqual(len(tr), 3)
+        self.assertTrue(all(j["workplace_type"] == "remote" for j in tr))
+        self.assertNotIn("I", [j["company"] for j in tr])
 
     # 5
     def test_us_only_tr_listesine_girmez(self):
@@ -138,16 +157,15 @@ class Secim(unittest.TestCase):
         self.assertTrue((items + res)[0]["also_on"])
 
     # 10 — başvuru/ret/gizle panelde; feed tarafı: 14 gün ve eski 'seen' listesi
-    def test_suresi_dolan_ve_eski_seen_tekrar_onerilmez(self):
+    def test_suresi_dolan_ilan_tekrar_onerilmez(self):
         eski = an("Data Engineer", "Berlin", company="Eski", url="https://x/eski")
         yeni = an("Data Engineer", "Berlin", company="Yeni")
         on4 = an("Data Engineer", "Berlin", company="Ondort")
-        prev = {"seen": ["https://x/eski"],
-                "history": {on4["id"]: {"first_seen": "2026-09-06", "last_seen": "2026-09-20", "status": "listed"}}}
+        prev = {"history": {eski["id"]: {"first_seen": "2026-09-01", "last_seen": "2026-09-20", "status": "expired"},
+                            on4["id"]: {"first_seen": "2026-09-06", "last_seen": "2026-09-20", "status": "listed"}}}
         items, res, stats, hist = sec([eski, yeni, on4], prev)
         self.assertEqual([j["company"] for j in items + res], ["Yeni"])
         self.assertEqual(hist[on4["id"]]["status"], "expired")
-        self.assertIn("url:https://x/eski", hist)
 
     def test_onceki_gunden_kalan_aktif_ilan_kaybolmaz(self):
         dun = an("Data Engineer", "Berlin", company="Dun")
@@ -157,13 +175,57 @@ class Secim(unittest.TestCase):
         self.assertEqual([j["company"] for j in de], ["Bugun", "Dun"])   # yeni önce, eski hâlâ listede
         self.assertFalse(de[1]["is_new"])
 
+    def test_nl_uk_kotasi_uce_cikti(self):
+        s = [an("Data Engineer", "Amsterdam", company="N%d" % i) for i in range(4)] + \
+            [an("Data Analyst", "London", company="U%d" % i) for i in range(4)]
+        items, *_ = sec(s)
+        k = kovalar(items)
+        self.assertEqual(len(k["nl"]), 3)
+        self.assertEqual(len(k["uk"]), 3)
+
+    def test_yeni_kaynaklar(self):
+        """Himalayas locationRestrictions ve Remote OK location alanları kovaya çevrilir."""
+        items, res, stats, _ = sec([
+            hi("Data Engineer", ["Worldwide"], company="H1"),
+            hi("Analytics Engineer", "['Germany']", company="H2"),
+            hi("BI Analyst", ["United States"], company="H3"),        # TR'ye uygun değil
+            ro("Data Analyst", "Worldwide", company="R1"),
+            ro("Data Engineer", "Netherlands", company="R2"),
+        ])
+        esle = {j["company"]: (j["bucket"], j["label"], j["source"]) for j in items + res}
+        self.assertEqual(esle["H1"], ("tr", "Worldwide Remote", "Himalayas"))
+        self.assertEqual(esle["H2"][0], "de")
+        self.assertNotIn("H3", esle)
+        self.assertEqual(esle["R1"], ("tr", "Worldwide Remote", "Remote OK"))
+        self.assertEqual(esle["R2"][0], "nl")
+
+    def test_wwr_kaydi(self):
+        import xml.etree.ElementTree as ET
+        rss = ("<rss><channel><item><title>Toptal: Senior Data Engineer</title>"
+               "<region>Anywhere in the World</region><category>Data</category>"
+               "<pubDate>Tue, 22 Sep 2026 07:31:13 +0000</pubDate>"
+               "<link>https://weworkremotely.com/remote-jobs/toptal-sde</link>"
+               "<description>" + EN + "</description></item></channel></rss>")
+        j = F.wwr_kaydi(ET.fromstring(rss).find(".//item"))
+        self.assertEqual((j["company"], j["title"], j["source"]), ("Toptal", "Senior Data Engineer", "WeWorkRemotely"))
+        self.assertEqual(j["publication_date"], "2026-09-22")
+        items, *_ = sec([j])
+        self.assertEqual((items[0]["bucket"], items[0]["label"]), ("tr", "Worldwide Remote"))
+
+    def test_eski_seen_14_gun_hakki_alir(self):
+        """23 Eyl düzeltmesi: eski `seen` kalıcı eleme DEĞİL."""
+        j = an("Data Engineer", "Berlin", company="Eski", url="https://x/eski")
+        items, res, _, hist = sec([j], {"seen": ["https://x/eski"]})
+        self.assertEqual([x["company"] for x in items], ["Eski"])
+        self.assertEqual(hist["url:https://x/eski"]["status"], "listed")
+
     # 11
     def test_kota_yanlis_ulkeyle_doldurulmaz(self):
         items, _, stats, _ = sec([an("Data Engineer", "Berlin", company="B%d" % i) for i in range(8)])
         k = kovalar(items)
         self.assertEqual(len(k["de"]), 3)
         self.assertNotIn("nl", k); self.assertNotIn("uk", k); self.assertNotIn("tr", k)
-        self.assertEqual(stats["missing"]["nl"]["eksik"], 1)
+        self.assertEqual(stats["missing"]["nl"]["eksik"], 3)
         self.assertEqual(stats["missing"]["uk"]["sebep"], "uygun aday yok")
 
     # 13

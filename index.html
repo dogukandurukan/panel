@@ -1232,6 +1232,13 @@
   <!-- KEŞİF: okunan, bir şey istemeyen içerik; görsel önceliği düşük. -->
   <section class="tabpanel" id="tabKesif" role="tabpanel" aria-labelledby="tabBtnKesif" data-tab="kesif" hidden>
   <section class="grup" aria-label="Kariyer"><h2 class="bolum-bas">Kariyer</h2>
+  <section class="card" data-k="isler" data-ad="Günün İşleri"><div class="card-head"><div><p class="kicker">Kariyer · Günlük</p><h2 class="card-title">Günün İşleri</h2></div>
+    <div class="meta"><span id="jobsTime">—</span><br><button class="ibtn" id="jobsCfg" style="margin-top:5px">⚙ Profil</button></div></div>
+    <div id="jobsCfgBox" style="display:none"></div>
+    <!-- 15 Eyl'de sağa başvuru özeti (toplam/bekliyor/ret) konmuştu, kullanıcı
+         aynı gün kaldırttı: ilan listesi tam genişlikte okunuyor, başvuru
+         sayıları zaten hemen altındaki İş Başvuruları kartında. -->
+    <div id="jobsList"><div class="loading">jobs.json çekiliyor…</div></div></section>
   <section class="card" data-k="basvuru" data-ad="İş Başvuruları"><div class="card-head"><div><p class="kicker">Kariyer</p><h2 class="card-title">İş Başvuruları</h2></div><div class="meta"><span id="basvuruTime">—</span><br><button class="ibtn" id="basvuruRefresh">Yenile</button></div></div>
     <div id="basvuruStats" class="statrow"><div class="loading">Başvurular çekiliyor…</div></div>
     <div id="basvuruList"></div>
@@ -1244,13 +1251,6 @@
       <button id="ebEkle">Başvurdum</button>
     </div>
     <div id="retBox"></div></section>
-  <section class="card" data-k="isler" data-ad="Günün İşleri"><div class="card-head"><div><p class="kicker">Kariyer · Günlük</p><h2 class="card-title">Günün İşleri</h2></div>
-    <div class="meta"><span id="jobsTime">—</span><br><button class="ibtn" id="jobsCfg" style="margin-top:5px">⚙ Profil</button></div></div>
-    <div id="jobsCfgBox" style="display:none"></div>
-    <!-- 15 Eyl'de sağa başvuru özeti (toplam/bekliyor/ret) konmuştu, kullanıcı
-         aynı gün kaldırttı: ilan listesi tam genişlikte okunuyor, başvuru
-         sayıları zaten hemen altındaki İş Başvuruları kartında. -->
-    <div id="jobsList"><div class="loading">jobs.json çekiliyor…</div></div></section>
   </section>
   <section class="grup" aria-label="Gelen kutusu"><h2 class="bolum-bas">Gelen kutusu</h2>
   <section class="card" data-k="gmail" data-ad="Gelen Kutusu"><div class="card-head"><div><p class="kicker">Gmail</p><h2 class="card-title">Gelen Kutusu</h2></div><div class="meta"><span id="gmailTime">—</span><br><button class="ibtn" id="gmailRefresh">Yenile</button></div></div>
