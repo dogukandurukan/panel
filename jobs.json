@@ -1,6 +1,6 @@
 {
  "version": 2,
- "updated": "2026-09-23 13:51",
+ "updated": "2026-09-23 21:08",
  "ok": true,
  "count": 5,
  "pool": 10,
@@ -48,7 +48,7 @@
     "business": 4
    },
    "language": "en",
-   "generated_at": "2026-09-23 13:51",
+   "generated_at": "2026-09-23 21:08",
    "summary": "What is working at Bettermile like? We mean it when we say “cutting edge” and have a high level of creative freedom in our everyday work You will be surrounded by like-minded, driven, skilled, and highly motivated people who are keen to contribute to successfu",
    "keywords": [
     "cost",
@@ -106,7 +106,7 @@
     "business": 2
    },
    "language": "en",
-   "generated_at": "2026-09-23 13:51",
+   "generated_at": "2026-09-23 21:08",
    "summary": "At Statista , we’re all about facts and data, for we are the world's leading business data platform. By providing reliable and easy-to-use data as well as various data analytics products and services, we empower people worldwide to make fact-based decisions. F",
    "keywords": [
     "pipeline",
@@ -143,7 +143,9 @@
    "first_seen": "2026-09-23",
    "workplace_type": "onsite",
    "source": "Arbeitnow",
-   "also_on": [],
+   "also_on": [
+    "Arbeitnow"
+   ],
    "source_url": "https://www.arbeitnow.com/jobs/companies/rebuy/senior-data-scientist-forecasting-elasticity-berlin-159182",
    "publication_date": "2026-09-23",
    "fit_score": 75,
@@ -164,7 +166,7 @@
     "business": 13
    },
    "language": "en",
-   "generated_at": "2026-09-23 13:51",
+   "generated_at": "2026-09-23 21:08",
    "summary": "Ready to become part of the most important mission on this planet? We are rebuy, pioneers in the sustainable reuse of electronics and media, and we are looking for you! Our mission: to make circular living accessible to all, one transaction at a time. By givin",
    "keywords": [
     "forecast",
@@ -188,10 +190,10 @@
    "german": false
   },
   {
-   "id": "b344a73f2ecb",
-   "title": "Data Engineer",
-   "company": "Fanduel",
-   "location": "Edinburgh",
+   "id": "bdcf7792a4ae",
+   "title": "Senior Data Platform Engineer",
+   "company": "Deepl",
+   "location": "London",
    "country": "UK",
    "market": "international",
    "bucket": "uk",
@@ -203,43 +205,37 @@
    "first_seen": "2026-09-23",
    "workplace_type": "onsite",
    "source": "Arbeitnow",
-   "also_on": [
-    "Arbeitnow"
-   ],
-   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/fanduel/data-engineer-edinburgh-490285",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/deepl/senior-data-platform-engineer-london-140270",
    "publication_date": "2026-09-23",
-   "fit_score": 79,
-   "fit_reason": "rol primary +30; konum +12; beceri 3×5 +15; kıdem mid +5; tazelik +10",
+   "fit_score": 74,
+   "fit_reason": "rol primary +30; konum +12; beceri 2×5 +10; kıdem senior +5; tazelik +10",
    "matched_skills": [
-    "SQL",
     "Python",
-    "PySpark"
+    "Databricks"
    ],
-   "location_reason": "Arbeitnow konumu 'Edinburgh'",
-   "seniority": "mid",
+   "location_reason": "Arbeitnow konumu 'London'",
+   "seniority": "senior",
    "focus": "pipeline",
    "focus_scores": {
-    "ml": 3,
+    "ml": 0,
     "bi": 0,
-    "pipeline": 12,
+    "pipeline": 20,
     "business": 2
    },
    "language": "en",
-   "generated_at": "2026-09-23 13:51",
-   "summary": "FanDuel Group is a world-class team of brands and products that deliver sports betting, gaming and entertainment to millions of US sports fans every day. That’s no easy task and wouldn't be possible without a fantastic team who have helped us pioneer new produ",
+   "generated_at": "2026-09-23 21:08",
+   "summary": "Meet DeepL DeepL is a global AI product and research company focused on building secure, intelligent solutions to complex business problems. Over 200,000 business customers and millions of individuals across 228 global markets today trust DeepL's Language AI p",
    "keywords": [
-    "pipeline",
-    "stakeholder",
-    "scalab",
-    "data quality"
+    "real-time",
+    "governance"
    ],
-   "url": "https://www.arbeitnow.co.uk/jobs/companies/fanduel/data-engineer-edinburgh-490285",
+   "url": "https://www.arbeitnow.co.uk/jobs/companies/deepl/senior-data-platform-engineer-london-140270",
    "skills": [
-    "sql",
     "python",
-    "pyspark"
+    "databricks"
    ],
-   "score": 79,
+   "score": 74,
    "posted": "2026-09-23",
    "days": 0,
    "remote": false,
@@ -280,7 +276,7 @@
     "business": 7
    },
    "language": "en",
-   "generated_at": "2026-09-23 13:51",
+   "generated_at": "2026-09-23 21:08",
    "summary": "We’re on a mission to make migration easy. We started building Marshmallow in 2017. Since then, we’ve grown from 3 to 700+ people, gained unicorn status, raised ~£140M over three funding rounds, turned profitable, insured millions of drivers and lent millions ",
    "keywords": [
     "migration",
@@ -316,7 +312,9 @@
    "first_seen": "2026-09-23",
    "workplace_type": "onsite",
    "source": "Arbeitnow",
-   "also_on": [],
+   "also_on": [
+    "Arbeitnow"
+   ],
    "source_url": "https://www.arbeitnow.com/jobs/companies/rebuy/senior-data-scientist-forecasting-elasticity-freelance-berlin-238991",
    "publication_date": "2026-09-23",
    "fit_score": 75,
@@ -337,7 +335,7 @@
     "business": 13
    },
    "language": "en",
-   "generated_at": "2026-09-23 13:51",
+   "generated_at": "2026-09-23 21:08",
    "summary": "Ready to become part of the most important mission on this planet? We are rebuy, pioneers in the sustainable reuse of electronics and media, and we are looking for you! Our mission: to make circular living accessible to all, one transaction at a time. By givin",
    "keywords": [
     "forecast",
@@ -396,7 +394,7 @@
     "business": 4
    },
    "language": "en",
-   "generated_at": "2026-09-23 13:51",
+   "generated_at": "2026-09-23 21:08",
    "summary": "About Peec AI Peec AI is the analytics platform for AI search. People increasingly discover products and make buying decisions through ChatGPT, Claude, Gemini, and Google's AI Overviews instead of traditional search, and most brands have no idea where they sho",
    "keywords": [
     "experimentation",
@@ -455,7 +453,7 @@
     "business": 2
    },
    "language": "en",
-   "generated_at": "2026-09-23 13:51",
+   "generated_at": "2026-09-23 21:08",
    "summary": "Your Mission This is a company built for growth. When you join exmox, you're stepping onto a global, highly competitive playing field, building high-performing consumer products in mobile gaming. We're scaling a rewarded user engagement and acquisition platfor",
    "keywords": [
     "pipeline",
@@ -516,7 +514,7 @@
     "business": 15
    },
    "language": "en",
-   "generated_at": "2026-09-23 13:51",
+   "generated_at": "2026-09-23 21:08",
    "summary": "ABOUT US METYCLE: where innovation meets sustainability We are reshaping the global secondary metals industry to accelerate the circular flow of metals. By combining global trading, advanced processing and digital intelligence, we make secondary metals more pr",
    "keywords": [
     "scalab",
@@ -543,10 +541,10 @@
    "german": false
   },
   {
-   "id": "5e53a49b4751",
-   "title": "Senior Analytics Engineer",
-   "company": "Cosuno",
-   "location": "Berlin/Remote",
+   "id": "b355299bdfe2",
+   "title": "Data Engineer (f/m/d)",
+   "company": "Climate",
+   "location": "Berlin HQ",
    "country": "DE",
    "market": "international",
    "bucket": "de",
@@ -559,46 +557,41 @@
    "workplace_type": "onsite",
    "source": "Arbeitnow",
    "also_on": [],
-   "source_url": "https://www.arbeitnow.com/jobs/companies/cosuno/senior-analytics-engineer-berlin-20803",
+   "source_url": "https://www.arbeitnow.com/jobs/companies/climate/data-engineer-berlin-hq-88253",
    "publication_date": "2026-09-22",
-   "fit_score": 92,
-   "fit_reason": "rol primary +30; konum +15; beceri 5×5 +25; kıdem senior +5; tazelik +10",
+   "fit_score": 82,
+   "fit_reason": "rol primary +30; konum +15; beceri 3×5 +15; kıdem mid +5; tazelik +10",
    "matched_skills": [
     "SQL",
     "Python",
-    "ETL",
-    "PostgreSQL",
-    "dbt"
+    "PostgreSQL"
    ],
-   "location_reason": "Arbeitnow konumu 'Berlin/Remote'",
-   "seniority": "senior",
+   "location_reason": "Arbeitnow konumu 'Berlin HQ'",
+   "seniority": "mid",
    "focus": "pipeline",
    "focus_scores": {
-    "ml": 0,
-    "bi": 6,
-    "pipeline": 19,
-    "business": 2
+    "ml": 3,
+    "bi": 1,
+    "pipeline": 13,
+    "business": 0
    },
    "language": "en",
-   "generated_at": "2026-09-23 13:51",
-   "summary": "Your mission As a member of our Data team, you'll take full ownership of the systems that turn raw data into decisions—for our product, our internal teams, our customers, and our investors. You won't just maintain dashboards; you'll own the pipeline end to end",
+   "generated_at": "2026-09-23 21:08",
+   "summary": "Job description We are currently seeking a Data Engineer for our international and diverse Climate Policy Team (CPT). The team is engaged in various projects on climate change mitigation, in particular on energy system transformation, the 1.5°C global warming ",
    "keywords": [
-    "dashboard",
+    "energy",
     "pipeline",
-    "stakeholder",
     "automation",
-    "startup",
-    "cost"
+    "data quality",
+    "optimization"
    ],
-   "url": "https://www.arbeitnow.com/jobs/companies/cosuno/senior-analytics-engineer-berlin-20803",
+   "url": "https://www.arbeitnow.com/jobs/companies/climate/data-engineer-berlin-hq-88253",
    "skills": [
     "sql",
     "python",
-    "etl",
-    "postgresql",
-    "dbt"
+    "postgresql"
    ],
-   "score": 92,
+   "score": 82,
    "posted": "2026-09-22",
    "days": 1,
    "remote": false,
@@ -612,7 +605,7 @@
     "istanbul_hibrit": 0,
     "istanbul_onsite": 0
    },
-   "de": 10,
+   "de": 8,
    "nl": 0,
    "uk": 2
   },
@@ -637,16 +630,15 @@
    }
   },
   "eliminated": {
-   "rol dışı (hedef rol yok)": 1022,
-   "rol dışı (başlık)": 679,
-   "ülke belirlenemedi": 6,
-   "ML/DS rolü, beceri örtüşmesi zayıf": 8,
-   "tekrar (farklı kaynak)": 1,
+   "rol dışı (başlık)": 625,
+   "rol dışı (hedef rol yok)": 1079,
+   "ülke belirlenemedi": 8,
+   "ML/DS rolü, beceri örtüşmesi zayıf": 7,
+   "tekrar (farklı kaynak)": 2,
    "ileri seviye Almanca şartı": 1,
    "Almanca ilan": 5,
-   "dünya geneli remote (Türkiye ilanı değil)": 2,
+   "dünya geneli remote (Türkiye ilanı değil)": 1,
    "Remotive candidate_required_location 'United States'": 1,
-   "Remotive candidate_required_location 'Singapore'": 1,
    "yayın tarihi eski": 2
   }
  },
@@ -1389,6 +1381,11 @@
    "last_seen": "2026-09-23"
   },
   "670377662f20": {
+   "first_seen": "2026-09-23",
+   "status": "listed",
+   "last_seen": "2026-09-23"
+  },
+  "bdcf7792a4ae": {
    "first_seen": "2026-09-23",
    "status": "listed",
    "last_seen": "2026-09-23"
