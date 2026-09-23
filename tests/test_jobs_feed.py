@@ -52,8 +52,8 @@ def rm(title, cand, company="Remoco", body=EN, date="2026-09-20T10:00:00", url=N
     })
 
 
-def sec(adaylar, prev=None):
-    return F.sec(adaylar, prev or {}, BUGUN, log=lambda *_: None)
+def sec(adaylar, prev=None, tr_kaynak=True):
+    return F.sec(adaylar, prev or {}, BUGUN, log=lambda *_: None, tr_kaynak=tr_kaynak)
 
 
 def kovalar(items):
@@ -215,6 +215,12 @@ class Secim(unittest.TestCase):
         self.assertNotIn("Şirket|Veri Analisti", esle)          # İstanbul dışı onsite
         self.assertNotIn("Şirket|Veri Analisti Stajyer", esle)  # stajyer elenir
         self.assertEqual([j["source"] for j in items], ["Jooble"] * len(items))
+
+    def test_tr_kaynak_yokken_sebep_acik_yazilir(self):
+        _, _, stats, _ = sec([an("Data Engineer", "Berlin")], tr_kaynak=False)
+        self.assertIn("Jooble anahtarı eklenmedi", stats["missing"]["tr"]["sebep"])
+        _, _, stats2, _ = sec([an("Data Engineer", "Berlin")], tr_kaynak=True)
+        self.assertEqual(stats2["missing"]["tr"]["sebep"], "uygun aday yok")
 
     def test_jooble_anahtarsiz_sessizce_atlanir(self):
         eski = os.environ.pop("JOOBLE_API_KEY", None)

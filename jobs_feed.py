@@ -823,9 +823,13 @@ def gecmis_tasi(prev, bugun_s):
     return h
 
 
-def sec(adaylar, prev, bugun=None, log=print):
+def sec(adaylar, prev, bugun=None, log=print, tr_kaynak=None):
     bugun = bugun or dt.datetime.now(IST).date()
     bugun_s = bugun.isoformat()
+    # Türkiye'nin tek kaynağı Jooble; anahtar yoksa "uygun aday yok" demek
+    # yanıltıcı olur (bakılacak Türkiye ilanı hiç çekilmedi).
+    if tr_kaynak is None:
+        tr_kaynak = bool((os.environ.get("JOOBLE_API_KEY") or "").strip())
     history = gecmis_tasi(prev or {}, bugun_s)
 
     # 1) değerlendir, kaynaklar arası tekrarı birleştir
@@ -893,8 +897,13 @@ def sec(adaylar, prev, bugun=None, log=print):
             stats["candidates"][b] = len(liste)
         stats["selected"][b] = len(secilen)
         if len(secilen) < q:
-            stats["missing"][b] = {"eksik": q - len(secilen),
-                                   "sebep": "uygun aday yok" if not liste else f"yalnızca {len(liste)} uygun aday"}
+            if b == "tr" and not tr_kaynak:
+                sebep = "Türkiye kaynağı bağlı değil — Jooble anahtarı eklenmedi"
+            elif not liste:
+                sebep = "uygun aday yok"
+            else:
+                sebep = f"yalnızca {len(liste)} uygun aday"
+            stats["missing"][b] = {"eksik": q - len(secilen), "sebep": sebep}
 
     # 4) geçmişi güncelle (listeye giren her ilan: seçilen + yedek)
     for j in items + reserve:
@@ -983,7 +992,7 @@ def build():
         yeni = fn()
         print(f"  {len(yeni)} ilan okundu")
         jobs += yeni
-    items, reserve, stats, history = sec(jobs, prev)
+    items, reserve, stats, history = sec(jobs, prev, tr_kaynak=bool((os.environ.get("JOOBLE_API_KEY") or "").strip()))
     simdi = dt.datetime.now(IST).strftime("%Y-%m-%d %H:%M")
     return {
         "version": 2,
