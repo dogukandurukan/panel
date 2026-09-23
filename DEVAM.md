@@ -116,6 +116,19 @@ tek başına ML seçtirmez. **Kaynak gerçeği (21 Eyl ölçümü):** Arbeitnow 
 ilan, NL ve TR 0; Remotive public API parametreleri yok sayıp ~18 ilan veriyor
 → TR ve NL kotaları çoğu gün dolmayacak. Yeni kaynak kullanıcı onayı bekliyor.
 
+**LINKEDIN UYARI MAİLLERİ (23 Eyl).** `linkedin_feed.py` — LinkedIn'e istek
+YOK; kullanıcının iş uyarısı mailleri Gmail'den okunup (gmail-feed workflow'una
+üçüncü adım olarak eklendi, aynı secret'lar) ilanlar gizli gist'e
+`d:linkedinIsler` yazılıyor. Panel `linkedinYukle()` ile okuyup Türkiye
+bölümünde feed ilanlarının ÖNÜNDE gösteriyor (rank negatif). İlan metni
+gelmediği için puan/beceri yok; kaynak "LinkedIn uyarısı". Cover letter odağı
+başlıktan (`liOdak`). Yalnızca konumu/uyarısı Türkiye olanlar alınır (`LI_TR`).
+**Tuzak:** JS'te `toLocaleLowerCase('tr')` 'I'yı 'ı' yapıyor — "Istanbul" ve
+"BI" eşleşmiyordu; `trKucuk()` önce I/İ'yi 'i'ye çeviriyor. Ayrıştırıcı testi
+`tests/test_linkedin_feed.py` (ağsız). Gerçek mail şablonuyla HENÜZ
+denenmedi — kullanıcı uyarıları kurunca Actions logundaki "N uyarı maili
+okundu, M ilan çıkarıldı" satırına bakılacak.
+
 **JOOBLE HAZIR, ANAHTAR BEKLİYOR (23 Eyl).** Türkiye kovasının tek gerçekçi
 kaynağı. `from_jooble()` yazıldı ve test edildi; POST `https://jooble.org/api/{key}`
 gövde `{"keywords": …, "location": "Türkiye"}`, 6 sorgu (data engineer, data

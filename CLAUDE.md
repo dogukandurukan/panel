@@ -81,6 +81,12 @@ kitap 5. Eklenen her madde doğrulanabilir olmalı — emin olunmayan iddia
 yumuşatılır ya da yazılmaz.
 | `jobs.json` | `jobs_feed.py` | `jobs-feed.yml` | her gün 08:00 |
 
+**LinkedIn ilanları `linkedin_feed.py` ile gelir ve 7. kuralı bozmaz:** LinkedIn'e
+hiçbir istek atılmaz; kullanıcının kendi kurduğu "iş uyarısı" MAİLLERİ Gmail'den
+okunup ilanlar gizli gist'e (`d:linkedinIsler`) yazılır, panel Türkiye bölümünde
+gösterir. Uyarı maili ilan METNİ taşımadığı için bu ilanlara puan/beceri
+eşleşmesi uygulanmaz; kaynak etiketi "LinkedIn uyarısı" olarak görünür.
+
 `jobs_feed.py` kaynaklarının biri hariç hepsi anahtarsız (Arbeitnow, Remotive,
 Himalayas, Remote OK, WeWorkRemotely). **Jooble** Türkiye ilanları için gerekli
 ve tek anahtarlı kaynak: `JOOBLE_API_KEY` yalnızca GitHub Actions secret'ında

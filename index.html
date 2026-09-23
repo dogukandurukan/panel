@@ -6214,7 +6214,8 @@ async function loadJobsJson(){
     /* v2 (21 Eyl): seçilen + yedek ilanlar kovalı gelir; panel başvurulan /
        gizlenen / ret alınan ilanı çıkarıp yedekten doldurur. v1 (eski düz
        liste) de okunur — yalnızca kovasız gösterilir. */
-    jobs=(d.items||[]).concat(d.version>=2?(d.reserve||[]):[]);
+    jobsFeed=(d.items||[]).concat(d.version>=2?(d.reserve||[]):[]);
+    jobs=linkedinIsler.concat(jobsFeed);
     jobsMeta=d.version>=2?{v2:true,quota:d.quota||IS_KOTA,stats:d.stats||{}}:{v2:false};
     const ag=feedAge(d.updated);
     if(t)t.textContent=ag?ag.txt:'—';
@@ -6247,6 +6248,48 @@ const IS_KOTA={tr:5,de:3,nl:1,uk:1};
 const IS_KOVA_AD={tr:'Türkiye',de:'Almanya',nl:'Hollanda',uk:'UK'};
 const IS_YER={remote:'Remote',hybrid:'Hibrit',onsite:'Ofiste'};
 let jobsMeta={v2:false},jobsHidden={},isSekme='tr',isAcik={};
+/* ===== LINKEDIN İŞ UYARISI İLANLARI (23 Eyl) =====
+   LinkedIn'e hiç istek atılmıyor: kullanıcının kendi kurduğu iş uyarısı
+   mailleri Gmail'de duruyor, linkedin_feed.py onları ayrıştırıp gizli gist'e
+   `d:linkedinIsler` olarak yazıyor (repo herkese açık, oraya yazılmaz).
+   Bu ilanlar Türkiye bölümünde, feed ilanlarının ÖNÜNDE gösteriliyor —
+   kullanıcının kendi araması, en alakalı olan o. İlan METNİ gelmediği için
+   puan ve beceri eşleşmesi yok; kaynak etiketi bunu açıkça söylüyor. */
+let jobsFeed=[],linkedinIsler=[];
+const LI_TR=/türkiye|turkiye|turkey|istanbul|i̇stanbul|ankara|izmir|i̇zmir|bursa|antalya|kocaeli/i;
+/* DİKKAT (CLAUDE.md tuzağı, JS karşılığı): toLocaleLowerCase('tr') 'I'yı 'ı'
+   yapıyor — "Istanbul" -> "ıstanbul", "BI" -> "bı" olup kalıplar eşleşmiyordu.
+   Önce I/İ'yi 'i'ye çevirip sonra küçültüyoruz. */
+const trKucuk=t=>String(t||'').replace(/[Iİ]/g,'i').toLowerCase();
+function liOdak(baslik){
+  const t=trKucuk(baslik);
+  if(/\bbi\b|business intelligence|power ?bi|rapor|dashboard|iş zeka/.test(t))return 'bi';
+  if(/data engineer|veri mühendis|analytics engineer|etl|data platform|veri platform/.test(t))return 'pipeline';
+  if(/scientist|bilimci|machine learning|makine öğren|\bml\b/.test(t))return 'ml';
+  return 'business';
+}
+function liIlan(j,i){
+  const yer=String(j.location||''),l=trKucuk(yer);
+  const uzak=/remote|uzaktan/.test(l),hibrit=/hybrid|hibrit/.test(l),ist=/istanbul|i̇stanbul/.test(l);
+  return {id:j.id,title:j.title,company:j.company,location:yer||'Türkiye',
+    bucket:'tr',market:'turkey',country:'TR',
+    label:uzak?(ist?'İstanbul Remote':'Türkiye Remote'):(hibrit?'İstanbul Hibrit':(ist?'İstanbul':'Türkiye')),
+    workplace_type:uzak?'remote':(hibrit?'hybrid':'onsite'),
+    source:'LinkedIn uyarısı',url:j.url,source_url:j.url,
+    matched_skills:[],skills:[],focus:liOdak(j.title),
+    rank:-1000+i,reserve:false,is_new:true,days:null,summary:''};
+}
+async function linkedinYukle(){
+  let d=null;try{d=await sGet('d:linkedinIsler');}catch(e){}
+  const ham=(d&&Array.isArray(d.isler))?d.isler:[];
+  /* Uyarı başka ülke için kurulmuş olabilir: yalnızca Türkiye konumlu olanlar. */
+  linkedinIsler=ham.filter(j=>j&&j.title&&LI_TR.test(String(j.location||'')+' '+String(j.alert||''))).map(liIlan);
+  jobsBirlestir();
+}
+function jobsBirlestir(){
+  jobs=linkedinIsler.concat(jobsFeed);
+  if(document.getElementById('jobsList'))renderJobs();
+}
 const isId=j=>j.id||jobKey(j);
 function isBasvuru(j){
   const k=jobKey(j);
@@ -6272,6 +6315,7 @@ function isSecimi(){
     if(goster.length<(kota[b]||0)){
       const m=jobsMeta.stats&&jobsMeta.stats.missing&&jobsMeta.stats.missing[b];
       eksik=(aday.length>goster.length)?'işaretlediğin ilanlardan sonra yedek kalmadı':(m?m.sebep:'uygun aday yok');
+      if(b==='tr'&&!linkedinIsler.length)eksik+=' · LinkedIn iş uyarısı da bağlı değil';
     }
     out[b]={goster:goster,kota:kota[b]||0,eksik:eksik};
   });
@@ -6321,7 +6365,7 @@ function renderJobs(){
   if(!jobs.length){el.innerHTML='<div class="empty">Bugün kriterlere uyan ilan bulunamadı.</div>';return;}
   const byId={};jobs.forEach(j=>{byId[isId(j)]=j;});
   let html;
-  if(!jobsMeta.v2){
+  if(!jobsMeta.v2&&!linkedinIsler.length){
     /* eski jobs.json: kova yok — düz liste, aynı satır biçimi */
     html='<div class="cfg-note">Eski biçimde ilan dosyası; feed bir sonraki çalışmasında Türkiye / Yurtdışı ayrımı gelir.</div>'+
       jobs.filter(j=>{const d=isDurumu(j);return d===''||d==='bugun';}).map(isSatiri).join('');
@@ -6753,6 +6797,7 @@ async function syncPull(sessiz){
     }
     const degisen=mergeRemote(paket.data);
     try{await adimUygula(g.files[ADIM_DOSYA]);}catch(e){}   // Kestirme'nin yazdığı ayrı dosya
+    try{await linkedinYukle();}catch(e){}                   // LinkedIn uyarısı ilanları
     syncCfg.last=Date.now();await syncSaveCfg();
     syncMsg='';renderSyncState();
     if(degisen&&!sessiz)syncReload();
@@ -7480,7 +7525,7 @@ function kabukBagla(){
     await loadGmailJson();};
   document.getElementById('agentRefresh').onclick=()=>loadAgents(true);
   document.getElementById('jobsCfg').onclick=openJobsCfg;
-  jobProfile=await sGet(K.jobProfile)||null;jobsApplied=await sGet(K.jobsApplied)||[];jobsHidden=await sGet('d:jobsHidden')||{};isSekme=await sGet('d:isSekme')||'tr';myApps=await sGet(K.myApps)||[];retler=await sGet('d:retler')||[];retGizli=await sGet('d:retGizli')||[];retElle=await sGet('d:retElle')||[];oneriKapali=await sGet('d:oneriKapali')||{};offGunler=await sGet('d:off')||{};
+  jobProfile=await sGet(K.jobProfile)||null;jobsApplied=await sGet(K.jobsApplied)||[];jobsHidden=await sGet('d:jobsHidden')||{};isSekme=await sGet('d:isSekme')||'tr';await linkedinYukle();myApps=await sGet(K.myApps)||[];retler=await sGet('d:retler')||[];retGizli=await sGet('d:retGizli')||[];retElle=await sGet('d:retElle')||[];oneriKapali=await sGet('d:oneriKapali')||{};offGunler=await sGet('d:off')||{};
   document.getElementById('placeName').textContent=PLACE.name;
   renderTasks();await loadSched();await loadYok();await loadMorning();await renderRun();await loadWorkout();renderWtLog();await loadMeals();await loadWater();await takviyeYukle();await adimYukle();await loadSleep();await loadBW();await loadMoney();await renderBugunHarcama();await renderHaftalik();await renderOneri();loadHabits();await initSync();
   renderFacts();renderFilm();renderArtist();renderBook();renderHistory();kulturYukle();renderKult();renderGerman();renderNews();renderTR();renderRetler();renderWatch();renderUS();renderWorldIdx();renderGold();renderWorld();renderMktSummary();renderFinNote();
