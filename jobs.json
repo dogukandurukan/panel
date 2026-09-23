@@ -1,9 +1,9 @@
 {
  "version": 2,
- "updated": "2026-09-23 13:35",
+ "updated": "2026-09-23 13:51",
  "ok": true,
- "count": 8,
- "pool": 14,
+ "count": 5,
+ "pool": 10,
  "quota": {
   "tr": 3,
   "de": 3,
@@ -11,119 +11,6 @@
   "uk": 3
  },
  "items": [
-  {
-   "id": "b8f864437953",
-   "title": "Senior Data Engineer – AWS Data Lake & Pipeline Architecture",
-   "company": "Toptal",
-   "location": "Worldwide",
-   "country": "Worldwide Remote",
-   "market": "turkey",
-   "bucket": "tr",
-   "label": "Worldwide Remote",
-   "tier": 2,
-   "rank": 0,
-   "reserve": false,
-   "is_new": true,
-   "first_seen": "2026-09-23",
-   "workplace_type": "remote",
-   "source": "WeWorkRemotely",
-   "also_on": [],
-   "source_url": "https://weworkremotely.com/remote-jobs/toptal-senior-data-engineer-aws-data-lake-pipeline-architecture",
-   "publication_date": "2026-09-15",
-   "fit_score": 78,
-   "fit_reason": "rol primary +30; konum +12; beceri 4×5 +20; kıdem senior +5; tazelik +2",
-   "matched_skills": [
-    "SQL",
-    "Python",
-    "ETL",
-    "PySpark"
-   ],
-   "location_reason": "Remotive candidate_required_location 'Worldwide'",
-   "seniority": "senior",
-   "focus": "pipeline",
-   "focus_scores": {
-    "ml": 6,
-    "bi": 3,
-    "pipeline": 19,
-    "business": 1
-   },
-   "language": "en",
-   "generated_at": "2026-09-23 13:35",
-   "summary": "Headquarters: Summary We are seeking a Data Engineer to support the development of a Data Intelligence Platform. This role focuses on data modeling, data services, data pipelines, and cloud-based data infrastructure for reporting, analytics, and data science. ",
-   "keywords": [
-    "pipeline",
-    "automation",
-    "scalab",
-    "migration",
-    "cost",
-    "governance",
-    "stakeholder"
-   ],
-   "url": "https://weworkremotely.com/remote-jobs/toptal-senior-data-engineer-aws-data-lake-pipeline-architecture",
-   "skills": [
-    "sql",
-    "python",
-    "etl",
-    "pyspark"
-   ],
-   "score": 78,
-   "posted": "2026-09-15",
-   "days": 8,
-   "remote": true,
-   "german": false
-  },
-  {
-   "id": "32f9b6a0b335",
-   "title": "Senior Data Scientist",
-   "company": "Lemon.io",
-   "location": "Northern America, LATAM, Europe, APAC",
-   "country": "Europe Remote",
-   "market": "turkey",
-   "bucket": "tr",
-   "label": "Europe Remote",
-   "tier": 2,
-   "rank": 1,
-   "reserve": false,
-   "is_new": true,
-   "first_seen": "2026-09-23",
-   "workplace_type": "remote",
-   "source": "Remotive",
-   "also_on": [],
-   "source_url": "https://remotive.com/remote-jobs/data/senior-data-scientist-2091129",
-   "publication_date": "2026-09-16",
-   "fit_score": 58,
-   "fit_reason": "rol secondary +18; konum +12; beceri 2×5 +10; kıdem senior +5; tazelik +4",
-   "matched_skills": [
-    "Python",
-    "Databricks"
-   ],
-   "location_reason": "Remotive candidate_required_location 'Northern America, LATAM, Europe, APAC'",
-   "seniority": "senior",
-   "focus": "ml",
-   "focus_scores": {
-    "ml": 16,
-    "bi": 0,
-    "pipeline": 1,
-    "business": 3
-   },
-   "language": "en",
-   "generated_at": "2026-09-23 13:35",
-   "summary": "Are you a talented Senior Data Scientist looking for a remote job that lets you show your skills and get decent compensation? Look no further than Lemon.io — the marketplace that connects you with hand-picked startups in the US and Europe. What we offer: The r",
-   "keywords": [
-    "startup",
-    "automation"
-   ],
-   "url": "https://remotive.com/remote-jobs/data/senior-data-scientist-2091129",
-   "skills": [
-    "python",
-    "databricks"
-   ],
-   "score": 58,
-   "posted": "2026-09-16",
-   "days": 7,
-   "remote": true,
-   "german": false
-  },
   {
    "id": "b82315afecc2",
    "title": "Senior Data Engineer - Better Planner (d/f/m)",
@@ -161,7 +48,7 @@
     "business": 4
    },
    "language": "en",
-   "generated_at": "2026-09-23 13:35",
+   "generated_at": "2026-09-23 13:51",
    "summary": "What is working at Bettermile like? We mean it when we say “cutting edge” and have a high level of creative freedom in our everyday work You will be surrounded by like-minded, driven, skilled, and highly motivated people who are keen to contribute to successfu",
    "keywords": [
     "cost",
@@ -219,7 +106,7 @@
     "business": 2
    },
    "language": "en",
-   "generated_at": "2026-09-23 13:35",
+   "generated_at": "2026-09-23 13:51",
    "summary": "At Statista , we’re all about facts and data, for we are the world's leading business data platform. By providing reliable and easy-to-use data as well as various data analytics products and services, we empower people worldwide to make fact-based decisions. F",
    "keywords": [
     "pipeline",
@@ -277,7 +164,7 @@
     "business": 13
    },
    "language": "en",
-   "generated_at": "2026-09-23 13:35",
+   "generated_at": "2026-09-23 13:51",
    "summary": "Ready to become part of the most important mission on this planet? We are rebuy, pioneers in the sustainable reuse of electronics and media, and we are looking for you! Our mission: to make circular living accessible to all, one transaction at a time. By givin",
    "keywords": [
     "forecast",
@@ -301,10 +188,10 @@
    "german": false
   },
   {
-   "id": "7bc725f31c51",
-   "title": "Senior Data Engineer",
-   "company": "Quantum",
-   "location": "London",
+   "id": "b344a73f2ecb",
+   "title": "Data Engineer",
+   "company": "Fanduel",
+   "location": "Edinburgh",
    "country": "UK",
    "market": "international",
    "bucket": "uk",
@@ -316,132 +203,9 @@
    "first_seen": "2026-09-23",
    "workplace_type": "onsite",
    "source": "Arbeitnow",
-   "also_on": [],
-   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/quantum/senior-data-engineer-london-433529",
-   "publication_date": "2026-09-22",
-   "fit_score": 89,
-   "fit_reason": "rol primary +30; konum +12; beceri 5×5 +25; kıdem senior +5; tazelik +10",
-   "matched_skills": [
-    "SQL",
-    "Python",
-    "Azure",
-    "Airflow",
-    "dbt"
+   "also_on": [
+    "Arbeitnow"
    ],
-   "location_reason": "Arbeitnow konumu 'London'",
-   "seniority": "senior",
-   "focus": "pipeline",
-   "focus_scores": {
-    "ml": 0,
-    "bi": 1,
-    "pipeline": 20,
-    "business": 6
-   },
-   "language": "en",
-   "generated_at": "2026-09-23 13:35",
-   "summary": "Our Company At Quantum, we connect global brands with high-intent consumers. We turn intent into action and complexity into clarity. Our Mission is clear, to help smarter, faster buying decisions. Our vision, to be the world’s most used digital comparison serv",
-   "keywords": [
-    "real time",
-    "scalab",
-    "real-time",
-    "pipeline",
-    "data quality",
-    "stakeholder",
-    "automation"
-   ],
-   "url": "https://www.arbeitnow.co.uk/jobs/companies/quantum/senior-data-engineer-london-433529",
-   "skills": [
-    "sql",
-    "python",
-    "azure",
-    "airflow",
-    "dbt"
-   ],
-   "score": 89,
-   "posted": "2026-09-22",
-   "days": 1,
-   "remote": false,
-   "german": false
-  },
-  {
-   "id": "71dcf0067fd2",
-   "title": "Senior Data Engineer",
-   "company": "Codat",
-   "location": "London",
-   "country": "UK",
-   "market": "international",
-   "bucket": "uk",
-   "label": "UK",
-   "tier": 1,
-   "rank": 1,
-   "reserve": false,
-   "is_new": true,
-   "first_seen": "2026-09-23",
-   "workplace_type": "onsite",
-   "source": "Arbeitnow",
-   "also_on": [],
-   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/codat/senior-data-engineer-london-337477",
-   "publication_date": "2026-09-22",
-   "fit_score": 84,
-   "fit_reason": "rol primary +30; konum +12; beceri 6×5 +30; kıdem senior -5; tazelik +10",
-   "matched_skills": [
-    "SQL",
-    "Python",
-    "Airflow",
-    "Databricks",
-    "PySpark",
-    "dbt"
-   ],
-   "location_reason": "Arbeitnow konumu 'London'",
-   "seniority": "senior",
-   "focus": "pipeline",
-   "focus_scores": {
-    "ml": 0,
-    "bi": 0,
-    "pipeline": 17,
-    "business": 7
-   },
-   "language": "en",
-   "generated_at": "2026-09-23 13:35",
-   "summary": "About Codat Codat is an advisory intelligence solution purpose-built for modern commercial banking. Through rich, specialized data, forward-looking insights, and integrated workflows, Codat empowers banking teams to deepen their relationships, grow their reven",
-   "keywords": [
-    "real time",
-    "pipeline",
-    "data quality",
-    "stakeholder"
-   ],
-   "url": "https://www.arbeitnow.co.uk/jobs/companies/codat/senior-data-engineer-london-337477",
-   "skills": [
-    "sql",
-    "python",
-    "airflow",
-    "databricks",
-    "pyspark",
-    "dbt"
-   ],
-   "score": 84,
-   "posted": "2026-09-22",
-   "days": 1,
-   "remote": false,
-   "german": false
-  },
-  {
-   "id": "b344a73f2ecb",
-   "title": "Data Engineer",
-   "company": "Fanduel",
-   "location": "Edinburgh",
-   "country": "UK",
-   "market": "international",
-   "bucket": "uk",
-   "label": "UK",
-   "tier": 1,
-   "rank": 2,
-   "reserve": false,
-   "is_new": true,
-   "first_seen": "2026-09-23",
-   "workplace_type": "onsite",
-   "source": "Arbeitnow",
-   "also_on": [],
    "source_url": "https://www.arbeitnow.co.uk/jobs/companies/fanduel/data-engineer-edinburgh-490285",
    "publication_date": "2026-09-23",
    "fit_score": 79,
@@ -461,7 +225,7 @@
     "business": 2
    },
    "language": "en",
-   "generated_at": "2026-09-23 13:35",
+   "generated_at": "2026-09-23 13:51",
    "summary": "FanDuel Group is a world-class team of brands and products that deliver sports betting, gaming and entertainment to millions of US sports fans every day. That’s no easy task and wouldn't be possible without a fantastic team who have helped us pioneer new produ",
    "keywords": [
     "pipeline",
@@ -476,6 +240,59 @@
     "pyspark"
    ],
    "score": 79,
+   "posted": "2026-09-23",
+   "days": 0,
+   "remote": false,
+   "german": false
+  },
+  {
+   "id": "670377662f20",
+   "title": "Pricing Data Scientist",
+   "company": "Marshmallow",
+   "location": "London",
+   "country": "UK",
+   "market": "international",
+   "bucket": "uk",
+   "label": "UK",
+   "tier": 1,
+   "rank": 1,
+   "reserve": false,
+   "is_new": true,
+   "first_seen": "2026-09-23",
+   "workplace_type": "hybrid",
+   "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/marshmallow/pricing-data-scientist-london-161577",
+   "publication_date": "2026-09-23",
+   "fit_score": 65,
+   "fit_reason": "rol secondary +18; konum +12; beceri 2×5 +10; kıdem mid +5; tazelik +10",
+   "matched_skills": [
+    "SQL",
+    "Python"
+   ],
+   "location_reason": "Arbeitnow konumu 'London'",
+   "seniority": "mid",
+   "focus": "ml",
+   "focus_scores": {
+    "ml": 14,
+    "bi": 1,
+    "pipeline": 0,
+    "business": 7
+   },
+   "language": "en",
+   "generated_at": "2026-09-23 13:51",
+   "summary": "We’re on a mission to make migration easy. We started building Marshmallow in 2017. Since then, we’ve grown from 3 to 700+ people, gained unicorn status, raised ~£140M over three funding rounds, turned profitable, insured millions of drivers and lent millions ",
+   "keywords": [
+    "migration",
+    "optimisation",
+    "real time"
+   ],
+   "url": "https://www.arbeitnow.co.uk/jobs/companies/marshmallow/pricing-data-scientist-london-161577",
+   "skills": [
+    "sql",
+    "python"
+   ],
+   "score": 65,
    "posted": "2026-09-23",
    "days": 0,
    "remote": false,
@@ -520,7 +337,7 @@
     "business": 13
    },
    "language": "en",
-   "generated_at": "2026-09-23 13:35",
+   "generated_at": "2026-09-23 13:51",
    "summary": "Ready to become part of the most important mission on this planet? We are rebuy, pioneers in the sustainable reuse of electronics and media, and we are looking for you! Our mission: to make circular living accessible to all, one transaction at a time. By givin",
    "keywords": [
     "forecast",
@@ -579,7 +396,7 @@
     "business": 4
    },
    "language": "en",
-   "generated_at": "2026-09-23 13:35",
+   "generated_at": "2026-09-23 13:51",
    "summary": "About Peec AI Peec AI is the analytics platform for AI search. People increasingly discover products and make buying decisions through ChatGPT, Claude, Gemini, and Google's AI Overviews instead of traditional search, and most brands have no idea where they sho",
    "keywords": [
     "experimentation",
@@ -638,7 +455,7 @@
     "business": 2
    },
    "language": "en",
-   "generated_at": "2026-09-23 13:35",
+   "generated_at": "2026-09-23 13:51",
    "summary": "Your Mission This is a company built for growth. When you join exmox, you're stepping onto a global, highly competitive playing field, building high-performing consumer products in mobile gaming. We're scaling a rewarded user engagement and acquisition platfor",
    "keywords": [
     "pipeline",
@@ -699,7 +516,7 @@
     "business": 15
    },
    "language": "en",
-   "generated_at": "2026-09-23 13:35",
+   "generated_at": "2026-09-23 13:51",
    "summary": "ABOUT US METYCLE: where innovation meets sustainability We are reshaping the global secondary metals industry to accelerate the circular flow of metals. By combining global trading, advanced processing and digital intelligence, we make secondary metals more pr",
    "keywords": [
     "scalab",
@@ -763,7 +580,7 @@
     "business": 2
    },
    "language": "en",
-   "generated_at": "2026-09-23 13:35",
+   "generated_at": "2026-09-23 13:51",
    "summary": "Your mission As a member of our Data team, you'll take full ownership of the systems that turn raw data into decisions—for our product, our internal teams, our customers, and our investors. You won't just maintain dashboards; you'll own the pipeline end to end",
    "keywords": [
     "dashboard",
@@ -786,95 +603,48 @@
    "days": 1,
    "remote": false,
    "german": false
-  },
-  {
-   "id": "670377662f20",
-   "title": "Pricing Data Scientist",
-   "company": "Marshmallow",
-   "location": "London",
-   "country": "UK",
-   "market": "international",
-   "bucket": "uk",
-   "label": "UK",
-   "tier": 1,
-   "rank": 3,
-   "reserve": true,
-   "is_new": true,
-   "first_seen": "2026-09-23",
-   "workplace_type": "hybrid",
-   "source": "Arbeitnow",
-   "also_on": [],
-   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/marshmallow/pricing-data-scientist-london-161577",
-   "publication_date": "2026-09-23",
-   "fit_score": 65,
-   "fit_reason": "rol secondary +18; konum +12; beceri 2×5 +10; kıdem mid +5; tazelik +10",
-   "matched_skills": [
-    "SQL",
-    "Python"
-   ],
-   "location_reason": "Arbeitnow konumu 'London'",
-   "seniority": "mid",
-   "focus": "ml",
-   "focus_scores": {
-    "ml": 14,
-    "bi": 1,
-    "pipeline": 0,
-    "business": 7
-   },
-   "language": "en",
-   "generated_at": "2026-09-23 13:35",
-   "summary": "We’re on a mission to make migration easy. We started building Marshmallow in 2017. Since then, we’ve grown from 3 to 700+ people, gained unicorn status, raised ~£140M over three funding rounds, turned profitable, insured millions of drivers and lent millions ",
-   "keywords": [
-    "migration",
-    "optimisation",
-    "real time"
-   ],
-   "url": "https://www.arbeitnow.co.uk/jobs/companies/marshmallow/pricing-data-scientist-london-161577",
-   "skills": [
-    "sql",
-    "python"
-   ],
-   "score": 65,
-   "posted": "2026-09-23",
-   "days": 0,
-   "remote": false,
-   "german": false
   }
  ],
  "stats": {
   "candidates": {
    "tr": {
     "tr_remote": 0,
-    "region_remote": 2,
-    "istanbul": 0
+    "istanbul_hibrit": 0,
+    "istanbul_onsite": 0
    },
    "de": 10,
    "nl": 0,
-   "uk": 4
+   "uk": 2
   },
   "selected": {
-   "tr": 2,
+   "tr": 0,
    "de": 3,
    "nl": 0,
-   "uk": 3
+   "uk": 2
   },
   "missing": {
    "tr": {
-    "eksik": 1,
-    "sebep": "yalnızca 2 uygun aday"
+    "eksik": 3,
+    "sebep": "uygun aday yok"
    },
    "nl": {
     "eksik": 3,
     "sebep": "uygun aday yok"
+   },
+   "uk": {
+    "eksik": 1,
+    "sebep": "yalnızca 2 uygun aday"
    }
   },
   "eliminated": {
-   "rol dışı (hedef rol yok)": 1039,
-   "rol dışı (başlık)": 661,
-   "ülke belirlenemedi": 7,
-   "ML/DS rolü, beceri örtüşmesi zayıf": 7,
+   "rol dışı (hedef rol yok)": 1022,
+   "rol dışı (başlık)": 679,
+   "ülke belirlenemedi": 6,
+   "ML/DS rolü, beceri örtüşmesi zayıf": 8,
+   "tekrar (farklı kaynak)": 1,
    "ileri seviye Almanca şartı": 1,
    "Almanca ilan": 5,
+   "dünya geneli remote (Türkiye ilanı değil)": 2,
    "Remotive candidate_required_location 'United States'": 1,
    "Remotive candidate_required_location 'Singapore'": 1,
    "yayın tarihi eski": 2
