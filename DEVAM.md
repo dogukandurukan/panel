@@ -116,6 +116,17 @@ tek başına ML seçtirmez. **Kaynak gerçeği (21 Eyl ölçümü):** Arbeitnow 
 ilan, NL ve TR 0; Remotive public API parametreleri yok sayıp ~18 ilan veriyor
 → TR ve NL kotaları çoğu gün dolmayacak. Yeni kaynak kullanıcı onayı bekliyor.
 
+**23 Eyl, ÜÇÜNCÜ tur — TÜRKİYE = GERÇEK TÜRKİYE İLANI.** Kullanıcı LinkedIn
+ekran görüntüsüyle geldi (Istanbul/Türkiye Remote, Istanbul Hybrid ilanları) ve
+"dünya çapında remote getirdin" dedi. Karar: **Worldwide/Europe/EMEA remote
+ilanlar TAMAMEN çıkarıldı** (ne TR'ye ne başka kovaya girerler; eleme sebebi
+"dünya geneli remote (Türkiye ilanı değil)"). TR kademeleri: 1 Türkiye remote ·
+2 İstanbul hibrit · 3 İstanbul onsite. "Turkey" listeleyen ama metninde başka
+ülke izin/ikamet şartı olan ilan da elenir. **Sonuç: mevcut dört anahtarsız
+kaynakta Türkiye ilanı YOK, kova her gün 0 kalacak** — kullanıcı bunu bilerek
+kabul etti, Jooble (anahtar + Secret) sonraki oturuma bırakıldı. Bunu tekrar
+"eksik" sanıp bölge remote'ları geri EKLEME.
+
 **23 Eyl, ikinci tur (kullanıcı isteği).** TR kotası **3**, sıralama **REMOTE
 ÖNCELİKLİ**: kademe 1 Türkiye remote · 2 Worldwide/Europe/EMEA remote (TR'den
 başvurulabilen) · 3 İstanbul hibrit · 4 İstanbul onsite. TR kovasında ML/DS

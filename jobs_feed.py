@@ -7,9 +7,11 @@ ilanlarını çeker, KESİN filtreden geçirir, ülkeye göre gruplar, açıklan
 bir uygunluk puanı verir ve kotalı bir seçimle jobs.json'a yazar.
 
 Kotalar (en fazla 10 ilan):
-  * Türkiye  3 — REMOTE ÖNCELİKLİ (kullanıcı isteği, 23 Eyl):
-                 Türkiye remote > Türkiye'den başvurulabilen Worldwide/Europe/
-                 EMEA remote > İstanbul hybrid > İstanbul onsite
+  * Türkiye  3 — YALNIZCA KONUMU TÜRKİYE OLAN ilanlar (23 Eyl, kullanıcı kararı):
+                 Türkiye remote > İstanbul hybrid > İstanbul onsite.
+                 "Worldwide / Europe / EMEA remote" ilanlar TÜRKİYE SAYILMIYOR ve
+                 hiçbir kovaya girmiyor — kullanıcı LinkedIn'deki gibi gerçek
+                 Türkiye ilanları istiyor, dünya geneli remote listesi değil.
   * Almanya  3 — Berlin > diğer Almanya şehirleri > Almanya remote
   * Hollanda 3
   * UK       3
@@ -648,11 +650,16 @@ def kova(j):
     if u == "TR":
         sehir = kucult(j.get("city"))
         if wp == "remote":
+            # "Turkey" listelenmiş ama metin başka ülkeye izin/ikamet şartı
+            # koyuyorsa (ör. "right to work in the UK") gerçek bir TR ilanı değil
+            engel = tr_engeli(j.get("body", ""))
+            if engel:
+                return (None, "TR listelenmiş ama " + engel)
             return ("tr", 1, 15, "Türkiye Remote")
         if "istanbul" in sehir and wp == "hybrid":
-            return ("tr", 3, 12, "İstanbul Hibrit")
+            return ("tr", 2, 12, "İstanbul Hibrit")
         if "istanbul" in sehir:
-            return ("tr", 4, 10, "İstanbul")
+            return ("tr", 3, 10, "İstanbul")
         return (None, "Türkiye'de İstanbul dışı onsite: " + (j.get("city") or "?"))
     if u in ("DE", "NL", "UK"):
         b = u.lower()
@@ -662,14 +669,10 @@ def kova(j):
                 return ("de", 1, 15, "DE")
             return ("de", 2 if sehirli else 3, 10 if sehirli else 9, "DE")
         return (b, 1 if sehirli else 2, 12 if sehirli else 9, u)
-    reg = j.get("regions") or []
-    if reg:
-        engel = tr_engeli(j.get("body", ""))
-        # başka ülkeler de sayılmış ama Türkiye yoksa: bölge etiketi var diye güvenme
-        if engel:
-            return (None, "TR yedeği değil — " + engel)
-        etiket = "Worldwide Remote" if "worldwide" in reg else ("EMEA Remote" if "emea" in reg else "Europe Remote")
-        return ("tr", 2, 12, etiket)
+    # Worldwide / Europe / EMEA remote: 23 Eyl'de kullanıcı kararıyla TAMAMEN
+    # çıkarıldı. Türkiye kovası yalnızca konumu Türkiye olan ilanları alır.
+    if j.get("regions"):
+        return (None, "dünya geneli remote (Türkiye ilanı değil)")
     if j.get("country"):
         return (None, "hedef dışı ülke: " + j["country"])
     return (None, j.get("location_reason") or "konum belirsiz")
@@ -812,10 +815,10 @@ def sec(adaylar, prev, bugun=None, log=print):
         items += secilen
         reserve += yedek
         if b == "tr":
-            # kademeler: 1 TR remote · 2 bölge remote · 3 İstanbul hibrit · 4 İstanbul onsite
+            # kademeler: 1 TR remote · 2 İstanbul hibrit · 3 İstanbul onsite
             stats["candidates"]["tr"] = {"tr_remote": sum(j["tier"] == 1 for j in liste),
-                                         "region_remote": sum(j["tier"] == 2 for j in liste),
-                                         "istanbul": sum(j["tier"] in (3, 4) for j in liste)}
+                                         "istanbul_hibrit": sum(j["tier"] == 2 for j in liste),
+                                         "istanbul_onsite": sum(j["tier"] == 3 for j in liste)}
         else:
             stats["candidates"][b] = len(liste)
         stats["selected"][b] = len(secilen)
@@ -833,7 +836,8 @@ def sec(adaylar, prev, bugun=None, log=print):
     # 5) log — Actions logu herkese açık; yalnızca sayı ve ilan bilgisi, kişisel veri yok
     c = stats["candidates"]
     log(f"Turkey candidates found: {sum(c['tr'].values())} "
-        f"(TR remote {c['tr']['tr_remote']}, Worldwide/Europe/EMEA {c['tr']['region_remote']}, İstanbul {c['tr']['istanbul']})")
+        f"(TR remote {c['tr']['tr_remote']}, İstanbul hibrit {c['tr']['istanbul_hibrit']}, "
+        f"İstanbul onsite {c['tr']['istanbul_onsite']})")
     log(f"Germany candidates found: {c['de']}")
     log(f"Netherlands candidates found: {c['nl']}")
     log(f"UK candidates found: {c['uk']}")

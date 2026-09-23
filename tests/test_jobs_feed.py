@@ -70,7 +70,7 @@ class Secim(unittest.TestCase):
             an("BI Developer", "İstanbul", company="T2"),
             rm("Data Analyst", "Turkey", company="T3"),
             rm("Analytics Engineer", "Türkiye", company="T4"),
-            rm("Senior Data Engineer", "Worldwide", company="T5"),
+            rm("Senior Data Engineer", "Istanbul, Turkey", company="T5"),
             an("Data Engineer", "Berlin", company="D1"),
             an("Analytics Engineer", "München", company="D2"),
             an("BI Engineer", "Hamburg", company="D3"),
@@ -82,7 +82,7 @@ class Secim(unittest.TestCase):
     def test_tam_gruplama(self):
         items, res, stats, _ = sec(self.tam_set())
         k = kovalar(items)
-        self.assertEqual({b: len(v) for b, v in k.items()}, {"tr": 3, "de": 3, "nl": 1, "uk": 1})
+        self.assertEqual({b: len(v) for b, v in k.items()}, {"tr": 3, "de": 3, "nl": 1, "uk": 1})   # TR: hepsi Türkiye konumlu
         self.assertEqual(stats["missing"].keys(), {"nl", "uk"})   # kota 3, elde 1 aday
         self.assertEqual(len(items), 8)
 
@@ -104,16 +104,14 @@ class Secim(unittest.TestCase):
         self.assertEqual(de[0]["company"], "B")
         self.assertEqual(len(de), 3)
 
-    # 4 — bölge remote'ları TR kovasını doldurur, İstanbul onsite en sonda kalır
-    def test_tr_bolge_remote_doldurur(self):
-        items, *_ = sec([an("Data Engineer", "Istanbul", company="I"),
-                         rm("Data Engineer", "Worldwide", company="W"),
-                         rm("BI Analyst", "EMEA", company="E"),
-                         rm("Analytics Engineer", "Europe", company="U")])
-        tr = kovalar(items)["tr"]
-        self.assertEqual(len(tr), 3)
-        self.assertTrue(all(j["workplace_type"] == "remote" for j in tr))
-        self.assertNotIn("I", [j["company"] for j in tr])
+    # 4 — 23 Eyl kararı: dünya geneli remote ilanlar TÜRKİYE SAYILMAZ, hiç gelmez
+    def test_dunya_geneli_remote_tr_sayilmaz(self):
+        items, res, stats, _ = sec([an("Data Engineer", "Istanbul", company="I"),
+                                    rm("Data Engineer", "Worldwide", company="W"),
+                                    rm("BI Analyst", "EMEA", company="E"),
+                                    rm("Analytics Engineer", "Europe", company="U")])
+        self.assertEqual([j["company"] for j in items + res], ["I"])
+        self.assertEqual(stats["eliminated"].get("dünya geneli remote (Türkiye ilanı değil)"), 3)
 
     # 5
     def test_us_only_tr_listesine_girmez(self):
@@ -121,7 +119,7 @@ class Secim(unittest.TestCase):
             rm("Data Engineer", "USA", company="A"),
             rm("Data Engineer", "Worldwide", company="B", body=EN + " This role is US-only; candidates must be located in the United States."),
             rm("Data Engineer", "Europe", company="C", body=EN + " Applicants need EU work authorization."),
-            rm("Data Engineer", "Worldwide", company="D", body=EN + " You must have the right to work in the UK."),
+            rm("Data Engineer", "Turkey, USA", company="D", body=EN + " You must have the right to work in the UK."),
         ])
         self.assertEqual(kovalar(items).get("tr", []), [])
 
@@ -193,10 +191,10 @@ class Secim(unittest.TestCase):
             ro("Data Engineer", "Netherlands", company="R2"),
         ])
         esle = {j["company"]: (j["bucket"], j["label"], j["source"]) for j in items + res}
-        self.assertEqual(esle["H1"], ("tr", "Worldwide Remote", "Himalayas"))
+        self.assertNotIn("H1", esle)                       # Worldwide artık TR sayılmıyor
         self.assertEqual(esle["H2"][0], "de")
         self.assertNotIn("H3", esle)
-        self.assertEqual(esle["R1"], ("tr", "Worldwide Remote", "Remote OK"))
+        self.assertNotIn("R1", esle)
         self.assertEqual(esle["R2"][0], "nl")
 
     def test_wwr_kaydi(self):
@@ -209,8 +207,7 @@ class Secim(unittest.TestCase):
         j = F.wwr_kaydi(ET.fromstring(rss).find(".//item"))
         self.assertEqual((j["company"], j["title"], j["source"]), ("Toptal", "Senior Data Engineer", "WeWorkRemotely"))
         self.assertEqual(j["publication_date"], "2026-09-22")
-        items, *_ = sec([j])
-        self.assertEqual((items[0]["bucket"], items[0]["label"]), ("tr", "Worldwide Remote"))
+        self.assertEqual(sec([j])[2]["eliminated"].get("dünya geneli remote (Türkiye ilanı değil)"), 1)
 
     def test_eski_seen_14_gun_hakki_alir(self):
         """23 Eyl düzeltmesi: eski `seen` kalıcı eleme DEĞİL."""
