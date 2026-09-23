@@ -197,6 +197,33 @@ class Secim(unittest.TestCase):
         self.assertNotIn("R1", esle)
         self.assertEqual(esle["R2"][0], "nl")
 
+    def test_jooble_tr_ilanlari(self):
+        """Jooble kaydı TR kovasına düşer; Türkçe başlıklar da tanınır."""
+        ilan = lambda t, y, sn: F.jooble_kaydi({
+            "title": t, "company": "Şirket", "location": y, "snippet": sn,
+            "link": "https://tr.jooble.org/jdp/" + t.replace(" ", "-"), "updated": "2026-09-20T00:00:00.0000000"})
+        tr_remote = ilan("Data Analyst", "İstanbul", "Uzaktan çalışma. SQL, Python ve Power BI deneyimi aranıyor.")
+        hibrit = ilan("Veri Mühendisi", "İstanbul", "Hibrit çalışma modeli. SQL, ETL ve Azure deneyimi.")
+        ofis = ilan("İş Zekası Uzmanı", "İstanbul", "Power BI, DAX ve SQL ile raporlama yapacak ekip arkadaşı.")
+        ankara = ilan("Veri Analisti", "Ankara", "Ofisten çalışma. SQL ve Excel.")
+        stajyer = ilan("Veri Analisti Stajyer", "İstanbul", "SQL öğrenmek isteyen stajyer.")
+        items, res, stats, _ = sec([tr_remote, hibrit, ofis, ankara, stajyer])
+        esle = {j["company"] + "|" + j["title"]: (j["bucket"], j["label"], j["workplace_type"]) for j in items + res}
+        self.assertEqual(esle["Şirket|Data Analyst"], ("tr", "Türkiye Remote", "remote"))
+        self.assertEqual(esle["Şirket|Veri Mühendisi"], ("tr", "İstanbul Hibrit", "hybrid"))
+        self.assertEqual(esle["Şirket|İş Zekası Uzmanı"], ("tr", "İstanbul", "onsite"))
+        self.assertNotIn("Şirket|Veri Analisti", esle)          # İstanbul dışı onsite
+        self.assertNotIn("Şirket|Veri Analisti Stajyer", esle)  # stajyer elenir
+        self.assertEqual([j["source"] for j in items], ["Jooble"] * len(items))
+
+    def test_jooble_anahtarsiz_sessizce_atlanir(self):
+        eski = os.environ.pop("JOOBLE_API_KEY", None)
+        try:
+            self.assertEqual(F.from_jooble(), [])
+        finally:
+            if eski is not None:
+                os.environ["JOOBLE_API_KEY"] = eski
+
     def test_wwr_kaydi(self):
         import xml.etree.ElementTree as ET
         rss = ("<rss><channel><item><title>Toptal: Senior Data Engineer</title>"

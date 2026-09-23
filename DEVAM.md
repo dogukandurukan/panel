@@ -116,6 +116,19 @@ tek başına ML seçtirmez. **Kaynak gerçeği (21 Eyl ölçümü):** Arbeitnow 
 ilan, NL ve TR 0; Remotive public API parametreleri yok sayıp ~18 ilan veriyor
 → TR ve NL kotaları çoğu gün dolmayacak. Yeni kaynak kullanıcı onayı bekliyor.
 
+**JOOBLE HAZIR, ANAHTAR BEKLİYOR (23 Eyl).** Türkiye kovasının tek gerçekçi
+kaynağı. `from_jooble()` yazıldı ve test edildi; POST `https://jooble.org/api/{key}`
+gövde `{"keywords": …, "location": "Türkiye"}`, 6 sorgu (data engineer, data
+analyst, business intelligence, veri analisti, veri mühendisi, power bi), aralarında
+2 sn. **Anahtar YALNIZCA `JOOBLE_API_KEY` secret'ında**; `jobs-feed.yml`'de run
+adımına `env:` ile veriliyor, repoya/panele girmez. Anahtar yoksa ya da geçersizse
+kaynak sessizce atlanıyor, feed normal çalışıyor (ikisi de denendi). Türkçe başlıklar
+artık tanınıyor (veri analisti/mühendisi, iş zekası, raporlama uzmanı; stajyer,
+satış, pazarlama, direktör elenir). Kullanıcı anahtarı sonra ekleyecek — eklenince
+TR kovası kendiliğinden dolar, kodda değişiklik gerekmez.
+**Ölçüm (23 Eyl):** anahtarsız 5 kaynakta 1741 ilan var, Türkiye'yi anan 2 tanesi
+veri rolü bile değil. Türkiye 0 bu yüzden.
+
 **23 Eyl, ÜÇÜNCÜ tur — TÜRKİYE = GERÇEK TÜRKİYE İLANI.** Kullanıcı LinkedIn
 ekran görüntüsüyle geldi (Istanbul/Türkiye Remote, Istanbul Hybrid ilanları) ve
 "dünya çapında remote getirdin" dedi. Karar: **Worldwide/Europe/EMEA remote

@@ -18,7 +18,10 @@ Kotalar (en fazla 10 ilan):
 Bir ülkenin kotası dolmazsa BAŞKA ülkeyle doldurulmaz; eksik sayı ve sebebi
 hem Actions loguna hem jobs.json'daki `stats`'a yazılır.
 
-Kaynaklar — ikisi de herkese açık, kimlik doğrulaması istemez:
+Kaynaklar — Jooble dışındakiler herkese açık, kimlik doğrulaması istemez:
+  * Jooble      https://jooble.org/api/{key}                  (TÜRKİYE kaynağı;
+    tek anahtar gerektiren kaynak. Anahtar SADECE GitHub Actions secret'ında
+    (JOOBLE_API_KEY); repoya ve panele girmez. Anahtar yoksa sessizce atlanır.)
   * Arbeitnow   https://www.arbeitnow.com/api/job-board-api   (Almanya + UK ağırlıklı)
   * Remotive    https://remotive.com/api/remote-jobs          (yalnız remote)
   * Himalayas   https://himalayas.app/jobs/api                (remote; ilanın hangi
@@ -93,12 +96,16 @@ ROLE_PRIMARY = re.compile(
     r"bi\s+(engineer|developer|analyst|consultant|specialist)|business\s+intelligence|\bbi\b|"
     r"data\s+analyst|reporting\s+analyst|analytics\s+analyst|"
     r"data\s+platform|etl\b|data\s+integration|azure\s+data|power\s?bi|"
-    r"data\s+warehouse|dwh\b|analytics\s+consultant|data\s*(&|and)\s*analytics)",
+    r"data\s+warehouse|dwh\b|analytics\s+consultant|data\s*(&|and)\s*analytics|"
+    # Türkçe ilan başlıkları (Jooble gibi TR kaynakları için)
+    r"veri\s+(analist|analiz|m[üu]hendis|ambar|taban)\w*|i[şs]\s+zekas\w*|"
+    r"raporlama\s+(uzman|analist|m[üu]hendis)\w*|anali[tz]ik\s+m[üu]hendis\w*|"
+    r"veri\s+platform\w*|veri\s+entegrasyon\w*)",
     re.I)
 # Uygun olduğunda: ML / Data Science (daha düşük rol puanı)
 ROLE_SECONDARY = re.compile(
     r"\b(data\s+scien(ce|tist)|machine\s+learning\s+engineer|ml\s+engineer|"
-    r"mlops\s+engineer|ml\s+data\s+engineer)", re.I)
+    r"mlops\s+engineer|ml\s+data\s+engineer|veri\s+bilimci\w*|makine\s+[öo][ğg]renmesi)", re.I)
 # Başlıkta geçerse ilan elenir
 TITLE_EXCLUDE = re.compile(
     r"\b(intern|internship|praktikum|praktikant\w*|werkstudent\w*|working\s+student|"
@@ -108,7 +115,10 @@ TITLE_EXCLUDE = re.compile(
     r"front[-\s]?end|back[-\s]?end|full[-\s]?stack|mobile|ios|android|"
     r"director|vice\s+president|vp|head\s+of|chief|cto|cdo|"
     r"product\s+(manager|owner|director)|legal|counsel|"
-    r"teacher|nurse|driver)\b", re.I)
+    r"teacher|nurse|driver|"
+    # Türkçe elemeler
+    r"staj\w*|sat[ıi][şs]\w*|pazarlama|m[üu][şs]teri\s+temsilcis\w*|"
+    r"direkt[öo]r\w*|genel\s+m[üu]d[üu]r\w*|i[şs]e\s+al[ıi]m)\b", re.I)
 # Yoğun ekip yönetimi — elemiyor, puan düşürüyor
 PEOPLE_MGMT = re.compile(
     r"(people\s+management|line\s+management|direct\s+reports|manage\s+a\s+team\s+of|"
@@ -596,6 +606,66 @@ def from_wwr():
     return [wwr_kaydi(x) for x in kok.findall(".//item")]
 
 
+# ---------------------------------------------------------------- Jooble (TR)
+# Türkiye ilanları için TEK gerçekçi kaynak: Arbeitnow/Remotive/Himalayas/
+# RemoteOK/WWR'de Türkiye ilanı yok (23 Eyl ölçümü: 1741 ilanda 2 tanesi
+# Türkiye'yi anıyor, ikisi de veri rolü değil).
+# ANAHTAR: yalnızca GitHub Actions secret'ı JOOBLE_API_KEY. Repoya girmez,
+# panele inmez. Anahtar yoksa kaynak sessizce atlanır — feed çalışmaya devam
+# eder, yalnızca Türkiye kovası boş kalır.
+JOOBLE_SORGULAR = ["data engineer", "data analyst", "business intelligence",
+                   "veri analisti", "veri mühendisi", "power bi"]
+JOOBLE_KONUM = "Türkiye"
+
+
+def jooble_kaydi(r):
+    metin = clean(r.get("snippet") or "", 2000)
+    yer = clean(r.get("location") or "", 60)
+    hay = kucult((r.get("title") or "") + " " + metin + " " + yer)
+    uzak = bool(re.search(r"\bremote\b|uzaktan|home\s*office|evden", hay))
+    hibrit = bool(re.search(r"\bhybrid\b|hibrit|karma\s+[çc]al[ıi][şs]ma", hay))
+    posted = (r.get("updated") or "")[:10] or None
+    j = normalize(
+        title=r.get("title") or "", company=r.get("company") or "—",
+        location=yer, remote=uzak, url=r.get("link") or "",
+        text=metin, posted=posted, source="Jooble", tags=[],
+    )
+    # Arbeitnow kalıbı "hybrid" kelimesini gövdede arıyor; Jooble'da gövde
+    # yalnızca kısa bir özet, o yüzden burada açıkça işaretliyoruz.
+    if not uzak and hibrit:
+        j["workplace_type"] = "hybrid"
+    return j
+
+
+def from_jooble():
+    anahtar = (os.environ.get("JOOBLE_API_KEY") or "").strip()
+    if not anahtar:
+        print("  JOOBLE_API_KEY yok — Jooble atlandı (Türkiye kovası boş kalabilir)")
+        return []
+    out, gorulen = [], set()
+    for i, sorgu in enumerate(JOOBLE_SORGULAR):
+        if i:
+            time.sleep(2)
+        try:
+            govde = json.dumps({"keywords": sorgu, "location": JOOBLE_KONUM}).encode("utf-8")
+            req = urllib.request.Request(
+                "https://jooble.org/api/" + urllib.parse.quote(anahtar), data=govde,
+                headers={"Content-Type": "application/json", "User-Agent": UA})
+            with urllib.request.urlopen(req, timeout=TIMEOUT) as r:
+                d = json.loads(r.read().decode("utf-8", "replace"))
+        except Exception as e:
+            # Anahtar hatalıysa da feed çökmesin; sebebi logla (anahtar BASILMAZ)
+            print(f"  jooble '{sorgu}' atlandi: {type(e).__name__}")
+            continue
+        for r in d.get("jobs") or []:
+            k = (r.get("link") or "") + (r.get("title") or "")
+            if k in gorulen:
+                continue
+            gorulen.add(k)
+            out.append(jooble_kaydi(r))
+    return out
+
+
 def from_arbeitnow(pages=10):
     out = []
     for p in range(1, pages + 1):
@@ -906,8 +976,9 @@ def build():
     print("Arbeitnow...")
     jobs = from_arbeitnow()
     print(f"  {len(jobs)} ilan okundu")
-    for ad, fn in (("Remotive", from_remotive), ("Himalayas", from_himalayas),
-                   ("Remote OK", from_remoteok), ("WeWorkRemotely", from_wwr)):
+    for ad, fn in (("Jooble (TR)", from_jooble), ("Remotive", from_remotive),
+                   ("Himalayas", from_himalayas), ("Remote OK", from_remoteok),
+                   ("WeWorkRemotely", from_wwr)):
         print(ad + "...")
         yeni = fn()
         print(f"  {len(yeni)} ilan okundu")

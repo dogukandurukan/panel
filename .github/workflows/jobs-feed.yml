@@ -14,7 +14,11 @@ jobs:
         with:
           python-version: '3.11'
       # jobs_feed.py yalnızca standart kütüphane kullanır — pip kurulumu gerekmez
+      # Jooble = Türkiye ilanları. Anahtar YALNIZCA secret'ta durur; tanımlı
+      # değilse jobs_feed onu sessizce atlar ve feed normal çalışır.
       - run: python jobs_feed.py
+        env:
+          JOOBLE_API_KEY: ${{ secrets.JOOBLE_API_KEY }}
       - name: jobs.json'u commit et
         run: |
           git config user.name "jobs-feed"

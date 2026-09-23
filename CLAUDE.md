@@ -81,6 +81,11 @@ kitap 5. Eklenen her madde doğrulanabilir olmalı — emin olunmayan iddia
 yumuşatılır ya da yazılmaz.
 | `jobs.json` | `jobs_feed.py` | `jobs-feed.yml` | her gün 08:00 |
 
+`jobs_feed.py` kaynaklarının biri hariç hepsi anahtarsız (Arbeitnow, Remotive,
+Himalayas, Remote OK, WeWorkRemotely). **Jooble** Türkiye ilanları için gerekli
+ve tek anahtarlı kaynak: `JOOBLE_API_KEY` yalnızca GitHub Actions secret'ında
+durur, repoya ve panele inmez; tanımlı değilse kaynak sessizce atlanır.
+
 Bir istisna: `push_feed.py` dosya üretmez, telefona web push bildirimi gönderir
 (`push.yml`, yoklama saatlerinde). Abonelik bilgisi **repoya değil, senkronun
 kullandığı gizli gist'e** yazılır — uç nokta cihazı tanımlayan kalıcı bir adres
