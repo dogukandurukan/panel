@@ -26,7 +26,33 @@ yasakladığı kişisel verinin en hassas türü ve git geçmişi kalıcı.
 
 ---
 
-## 0. MOBİL YENİDEN TASARIM (16 Eyl) — önce bunu oku
+## 0. SIRADA NE VAR (23 Eyl akşamı, oturum sonu)
+
+**Kullanıcı bekliyor: iki doğrulama.**
+
+1. **LinkedIn uyarı ilanları telefonda kontrol edilecek.** `linkedin_feed.py`
+   ilk gerçek koşusunda 12 uyarı maili okuyup 40 ilan çıkardı ve gizli gist'e
+   yazdı (`d:linkedinIsler`), ama panelde nasıl göründüğü HENÜZ GÖRÜLMEDİ.
+   Kullanıcı Keşif › Günün İşleri › Türkiye'ye bakıp şuna cevap verecek:
+   şirket adı doğru mu, konum boş mu, başlık "Şimdi başvur" gibi çöp mü?
+   Sapma varsa düzeltilecek yer `ilanlari_ayikla` / `sirket_konum`
+   (tests/test_linkedin_feed.py'ye gerçek şablondan bir örnek eklenerek).
+2. **Jooble anahtarı.** Entegrasyon hazır ve test edildi; kullanıcı
+   jooble.org'dan ücretsiz anahtarı alıp `JOOBLE_API_KEY` secret'ı olarak
+   ekleyecek, sonra jobs-feed elle çalıştırılacak. Anahtar gelene kadar TR
+   kovası yalnızca LinkedIn ilanlarıyla dolar.
+
+**Sonraki adım fikirleri (kullanıcı onayı bekler):** Jooble sorgularını
+(`JOOBLE_SORGULAR`) gelen sonuçlara göre ayarlamak; LinkedIn ilanlarının
+Türkiye dışı olanlarını da (Berlin vb.) ilgili kovaya koymak; gmail-feed
+sıklığını düşürmek (şu an 5×/gün, LinkedIn ayrıştırması da o koşularda).
+
+**Bekleyen eski işler:** bulk/cut faz anahtarı (§2 C1), harcama kategorileri
+(C2), yürüyüş/adım Kestirmesi (kullanıcı kuracak), kültür derinliği 6 Ekim.
+
+---
+
+## 0b. MOBİL YENİDEN TASARIM (16 Eyl)
 
 Konsept görseli hedef alınarak kabuk değişti. **Aşağıdaki §1'deki "iki sekme /
 sabit şerit" anlatımı ESKİ yerleşimdir**; kartların kendisi, id'leri ve
