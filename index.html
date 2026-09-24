@@ -6520,6 +6520,50 @@ function profBlocks(p){
     return{pipeline:p.exp1||'',business:p.exp2||'',ml:p.exp1||'',bi:p.exp2||''};
   return b;
 }
+/* Uzun tire (—, –, --) mektupta makine yazısı gibi duruyor; kullanıcı istemedi
+   (24 Eyl). Profil blokları da tire içerebildiği için TÜM paragraflar buradan
+   geçer. Cümlede iki tire varsa aradaki kısım ara söz: içinde virgül varsa
+   parantez, yoksa virgüller. Tek tire virgül olur. "3–5" gibi aralıklar kalır. */
+function tireTemizle(t){
+  const TIRE=/\s*—\s*|\s+(?:–|--)\s+/g;
+  return String(t||'').split(/(?<=[.!?])\s+/).map(c=>{
+    const n=(c.match(TIRE)||[]).length;
+    if(n===2){
+      const [bas,ara,son]=c.split(TIRE);
+      const s0=son.replace(/^[,;]\s*/,'');
+      c=/,/.test(ara)?bas+' ('+ara+')'+(/^[.,;!?]/.test(s0)?'':' ')+s0
+        :bas+', '+ara+(/^[.,;!?]/.test(s0)?'':', ')+s0;
+    }
+    return c.replace(TIRE,', ').replace(/,\s*,/g,',').replace(/,\s*([.!?])/g,'$1');
+  }).join(' ');
+}
+/* İlandaki temalar: ilanın keywords'ünde VE profil bloklarında geçiyorsa yazılır.
+   Yalnızca ilanda geçen tema "deneyimim var" diye yazılmaz (uydurma iddia). */
+const TEMA_CUMLE={
+  'stakeholder':'working closely with stakeholders','governance':'data governance',
+  'data quality':'data quality','cost':'cost optimisation','automation':'automation',
+  'forecast':'forecasting','experimentation':'experimentation','migration':'platform migrations',
+  'real-time':'real-time data','real time':'real-time data','root cause':'root cause analysis',
+  'anomaly':'anomaly detection','retail':'retail data','finance':'financial data'
+};
+function listeYaz(a){return a.length<2?(a[0]||''):a.slice(0,-1).join(', ')+' and '+a[a.length-1];}
+/* "Bu role neden uygunum" paragrafı — yalnızca gerçek veriden: ilanın
+   matched skills'i ∩ profil becerileri, ilan temaları ∩ profil metni, kıdem. */
+function uygunlukParagrafi(j,ort,B){
+  const profilMetni=Object.values(B).join(' ').toLowerCase();
+  const temalar=[...new Set((j.keywords||[]).map(k=>k.toLowerCase())
+    .filter(k=>TEMA_CUMLE[k]&&profilMetni.indexOf(k.replace(/-/g,' ').split(' ')[0])>-1)
+    .map(k=>TEMA_CUMLE[k]))].slice(0,3);
+  const c=[];
+  if(ort.length)c.push('Looking at what you need, the fit feels natural. '+
+    (ort.length>1?listeYaz(ort.map(skillLabel))+' are':skillLabel(ort[0])+' is')+
+    ' part of my everyday work, so I would not need time to ramp up on the tooling.');
+  if(temalar.length)c.push((c.length?'The role also':'The role')+' puts weight on '+listeYaz(temalar)+
+    ', and that is exactly the kind of work behind the examples above.');
+  if(j.seniority==='senior')c.push('With five years of hands-on delivery behind me, I am comfortable taking ownership at the level this role expects.');
+  else if(j.seniority==='mid'||j.seniority==='junior')c.push('The scope of the role matches where I am now: I can own work independently from the first weeks and keep growing with the team.');
+  return c.join(' ');
+}
 function buildLetter(j){
   const p=jobProfile,B=profBlocks(p);
   const odak=j.focus||'pipeline';
@@ -6534,26 +6578,27 @@ function buildLetter(j){
   const sira=['business','pipeline','ml','bi'].filter(k=>k!==odak);
   let ikincil='';
   for(const k of sira){if(B[k]&&B[k]!==birincil){ikincil=B[k];break;}}
-  const esles=ort.length?(' The emphasis on '+ort.map(skillLabel).join(', ')+
-    ' lines up directly with the tooling I work in day to day.'):'';
   /* NOT: ilandaki anahtar kelimelerden "bunlarda deneyimim var" cümlesi
      üretmiyoruz. Kelimeler ilandan geliyor, CV'den değil — doğrulanmamış
-     iddia olur; ayrıca kökler ("scalab") cümleyi bozuyordu. */
+     iddia olur; ayrıca kökler ("scalab") cümleyi bozuyordu. Temalar yalnızca
+     profil metninde de geçiyorsa yazılır (uygunlukParagrafi). */
   const paras=[
-    'I am writing to express my strong interest in the '+j.title+' role at '+j.company+
-      '. '+(p.opening||'')+' Your description centres on '+(FOCUS_LINE[odak]||FOCUS_LINE.pipeline)+
-      ' — which is precisely where I have spent the last five years.',
+    'I would like to apply for the '+j.title+' role at '+j.company+'. '+(p.opening||'')+
+      ' What caught my attention is the focus on '+(FOCUS_LINE[odak]||FOCUS_LINE.pipeline)+
+      ', which is the kind of work I have been doing for the last five years.',
     birincil,
   ];
   if(ikincil)paras.push(ikincil);
-  paras.push('My technical foundation — '+(p.skills||'')+' — maps well to the requirements.'+
-    esles+(p.education?(' '+p.education):''));
+  paras.push(uygunlukParagrafi(j,ort,B));
+  paras.push((p.skills?'More broadly, I work with '+p.skills.replace(/[.\s]+$/,'')+'.':'')+
+    (p.education?(' '+p.education):''));
   if(p.closing)paras.push(p.closing);
-  paras.push('Thank you for your time and consideration.');
+  paras.push('Thank you for your time. I would be glad to talk about how I could contribute to the team.');
   return{
     name:p.name||'',contact:p.contact||'',
     date:new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}),
-    to:'Hiring Team — '+j.title,company:j.company,paras:paras.filter(Boolean)
+    to:'Re: '+j.title,company:j.company,
+    paras:paras.map(x=>tireTemizle(x).trim()).filter(Boolean)
   };
 }
 /* Yazdırma görünümü: yeni sekmede A4 düzeninde açılır ve yazdırma penceresi
@@ -6573,8 +6618,8 @@ function coverLetter(j){
     {t:L.name,size:17,bold:1,gapAfter:2},
     {t:L.contact,size:9,gapAfter:22},
     {t:L.date,size:10,gapAfter:16},
-    {t:L.to,size:11,bold:1,gapAfter:1},
-    {t:L.company,size:11,gapAfter:18},
+    {t:L.company,size:11,bold:1,gapAfter:1},
+    {t:L.to,size:11,gapAfter:18},
     {t:'Dear Hiring Team,',size:11,gapAfter:11},
   ];
   L.paras.forEach(t=>bloklar.push({t:t,size:11,gapAfter:11}));
