@@ -462,6 +462,7 @@ Actions log'una da şirket adı/konu basılmaz — log herkese açık.
 
 | Karar | Tarih | Gerekçe |
 |---|---|---|
+| **Cover letter: uzun tire (—, –, --) YOK + "neden uygunum" paragrafı** (`tireTemizle`, `uygunlukParagrafi`) | 24 Eyl | Kullanıcı "insan yazmış gibi olsun, hep böyle kalsın" dedi. Yeni kalıp cümle eklerken de tire kullanma; profil blokları da temizleniyor. Uygunluk paragrafı yalnız gerçek eşleşmeden (ilan becerisi ∩ profil, ilan teması ∩ profil metni, kıdem). |
 | **Cumartesi koşusu seriye SAYILMAZ.** `SCHED[6]`'da "Koşu + kahve + kahvaltı" var ama `WK[6].run=false` | 3 Eyl | Kullanıcı "bazen koşuyorum, zorunlu değil" dedi. Km girilip kaydediliyor, seriyi ne kırıyor ne uzatıyor. Pazar'daki "Bisiklet" de koşu sayılmıyor — bisiklet koşu değil. |
 | **Piyasa haber linkleri Google yönlendirmesine gidiyor** (`news.google.com/rss/articles/...`) | 30 Ağu | Kullanıcı kabul etti. Linki çözmeye çalışma — kırılgan. Dünya/Türkiye zaten doğrudan kaynağa gidiyor. |
 | **`WK` sıralaması: aynı kas grubu ARKA ARKAYA** | 30 Ağu | Eski dizilim itiş/çekiş dönüşümlüydü (bench → row → OHP → pulldown), kullanıcı "alakasız" buldu. Yeni hareket eklerken bu kuralı bozma. Gün 5'te OHP göğüs bloğundan sonra geliyor — bilinen bedel, kabul edildi. |
