@@ -26,17 +26,13 @@ yasakladığı kişisel verinin en hassas türü ve git geçmişi kalıcı.
 
 ---
 
-## 0. SIRADA NE VAR (23 Eyl akşamı, oturum sonu)
+## 0. SIRADA NE VAR (24 Eyl)
 
-**Kullanıcı bekliyor: iki doğrulama.**
+**Kullanıcı bekliyor: bir iş.**
 
-1. **LinkedIn uyarı ilanları telefonda kontrol edilecek.** `linkedin_feed.py`
-   ilk gerçek koşusunda 12 uyarı maili okuyup 40 ilan çıkardı ve gizli gist'e
-   yazdı (`d:linkedinIsler`), ama panelde nasıl göründüğü HENÜZ GÖRÜLMEDİ.
-   Kullanıcı Keşif › Günün İşleri › Türkiye'ye bakıp şuna cevap verecek:
-   şirket adı doğru mu, konum boş mu, başlık "Şimdi başvur" gibi çöp mü?
-   Sapma varsa düzeltilecek yer `ilanlari_ayikla` / `sirket_konum`
-   (tests/test_linkedin_feed.py'ye gerçek şablondan bir örnek eklenerek).
+1. ✅ **LinkedIn uyarı ilanları doğrulandı (24 Eyl).** Kullanıcı panelde baktı:
+   bilgiler geliyor, ilanlar düzgün. Sapma görürse dönecek; düzeltme yeri
+   `ilanlari_ayikla` / `sirket_konum` (+ tests/test_linkedin_feed.py).
 2. **Jooble anahtarı.** Entegrasyon hazır ve test edildi; kullanıcı
    jooble.org'dan ücretsiz anahtarı alıp `JOOBLE_API_KEY` secret'ı olarak
    ekleyecek, sonra jobs-feed elle çalıştırılacak. Anahtar gelene kadar TR
