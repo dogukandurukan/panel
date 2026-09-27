@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-26 17:49",
+  "updated": "2026-09-27 14:53",
   "watch": [
     {
       "code": "SMRTG",
@@ -219,29 +219,29 @@
     },
     {
       "code": "BZ=F",
-      "price": "104.32",
-      "chg": "-2.14%",
-      "avg1w": "102.72",
-      "avg1m": "100.26",
+      "price": "97.44",
+      "chg": "-8.59%",
+      "avg1w": "101.34",
+      "avg1m": "99.93",
       "name": "Brent",
-      "hist": [111.28, 105.02, 102.58, 103.54, 99.58, 94.29, 93.71, 92.05, 94.98, 96.0, 97.81, 95.03, 93.09, 94.25, 91.45, 93.1, 90.38, 87.33, 83.17, 78.96, 79.55, 79.85, 77.9, 77.08, 73.74, 75.26, 71.99, 73.15, 72.92, 71.57, 71.8, 71.99, 74.16, 78.02, 76.3, 76.01, 83.3, 84.73, 84.95, 84.23, 88.1, 89.22, 91.01, 94.07, 100.69, 96.78, 88.36, 84.09, 90.74, 89.03, 90.12, 83.77, 79.36, 79.45, 82.49, 83.55, 87.72, 88.91, 88.98, 87.07, 88.52, 90.87, 91.02, 91.62, 93.78, 94.39, 92.17, 88.58, 87.84, 89.7, 89.31, 90.49, 94.65, 95.63, 95.52, 96.28, 97.92, 101.21, 107.63, 104.61, 105.68, 108.75, 105.83, 104.82, 103.87, 100.34, 99.25, 103.08, 106.6, 104.32],
+      "hist": [111.28, 105.02, 102.58, 103.54, 99.58, 94.29, 93.71, 92.05, 94.98, 96.0, 97.81, 95.03, 93.09, 94.25, 91.45, 93.1, 90.38, 87.33, 83.17, 78.96, 79.55, 79.85, 77.9, 77.08, 73.74, 75.26, 71.99, 73.15, 72.92, 71.57, 71.8, 71.99, 74.16, 78.02, 76.3, 76.01, 83.3, 84.73, 84.95, 84.23, 88.1, 89.22, 91.01, 94.07, 100.69, 96.78, 88.36, 84.09, 90.74, 89.03, 90.12, 83.77, 79.36, 79.45, 82.49, 83.55, 87.72, 88.91, 88.98, 87.07, 88.52, 90.87, 91.02, 91.62, 93.78, 94.39, 92.17, 88.58, 87.84, 89.7, 89.31, 90.49, 94.65, 95.63, 95.52, 96.28, 97.92, 101.21, 107.63, 104.61, 105.68, 108.75, 105.83, 104.82, 103.87, 100.34, 99.25, 103.08, 106.6, 97.44],
       "histD": ["05-19", "05-20", "05-21", "05-22", "05-26", "05-27", "05-28", "05-29", "06-01", "06-02", "06-03", "06-04", "06-05", "06-08", "06-09", "06-10", "06-11", "06-12", "06-15", "06-16", "06-17", "06-18", "06-22", "06-23", "06-24", "06-25", "06-26", "06-29", "06-30", "07-01", "07-02", "07-06", "07-07", "07-08", "07-09", "07-10", "07-13", "07-14", "07-15", "07-16", "07-17", "07-20", "07-21", "07-22", "07-23", "07-24", "07-27", "07-28", "07-29", "07-30", "07-31", "08-03", "08-04", "08-05", "08-06", "08-07", "08-10", "08-11", "08-12", "08-13", "08-14", "08-17", "08-18", "08-19", "08-20", "08-21", "08-24", "08-25", "08-26", "08-27", "08-28", "08-31", "09-01", "09-02", "09-03", "09-04", "09-08", "09-09", "09-10", "09-11", "09-14", "09-15", "09-16", "09-17", "09-18", "09-21", "09-22", "09-23", "09-24", "09-25"],
       "ind": {
-        "ma": "MA20 & MA50 üstünde (yukarı eğilim)",
+        "ma": "MA20 altında",
         "rsiTxt": "nötr",
-        "rsi": 58.5,
-        "volat": 3.0,
-        "volRatio": 1.16
+        "rsi": 48.4,
+        "volat": 3.9,
+        "volRatio": 1.29
       }
     }
   ],
   "gold": {
-    "price": "6,795.93",
-    "chg": "+0.67%"
+    "price": "6,797.55",
+    "chg": "+0.50%"
   },
   "news": [
     {
-      "t": "⚪ Smart Güneş açıkladı: Fonların SMRTG pozisyonları belli oldu  (Paratic Haber)",
+      "t": "⚪ Smart Güneş açıkladı: Fonların SMRTG pozisyonları belli oldu  (paratic.com)",
       "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOLUNHTmZaV1Ffa29OWnJGWU1wclNESWVRd2VJTG1hU0JDNjAwOGNuNXo0V1JnSUxZWUZOTTFsMVpObWRpUkgxWlVfZWZLSEdTN2xIR2NqSGVRb1YxMHNaNzM0bVZUcWNRUWpNTndUcjRscXFWc1JtRFM0SWNvVkhHaFFTdnNNOVU?oc=5"
     },
     {
@@ -249,12 +249,8 @@
       "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9mRExnb1dIWkVYWkFSZ1pOaFBxSWxES3ZBdXl4T3N3OFd0VThTdVN1eGJORGZxS2wyOV82M0xCbXJhQW5qVFFJMDBNd0pWelJLOHdXam1FRzBJd3ZOOUJjbm1mWDZUZmJuMGE2ck5QdktDc29wWGhSbUhwa3NmNk0?oc=5"
     },
     {
-      "t": "🟢 Gübretaş Maden 1,5 milyar TL kâr dağıtımı yapacak  (Paratic Haber)",
-      "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE1rdnV5RTdqNzBkQkpqbk1SZnJEWml3djJjR2hiNGZUdzZXN052cVRka2YwZEV2cmx0X1g1YWNGNXVIMDhZTU81WFVlYnVDbUZLQ0IyWmVHZzl2U3RnU1M2aUZpMnVRRXFBUDRNRXJLa0tGYUVSMXVVS0NB?oc=5"
-    },
-    {
-      "t": "🟢 Gübretaş (GUBRF) bağlı ortaklığından temettü dağıtma kararı  (Rota Borsa)",
-      "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxONU9NajBVdmM5bUdLYzRWWTZLVDAzS0p6a3UwQTRoZF9rb0ZTbFkxcGs0T25XMzRtYnpHb25XN0FSZERWallYVGl3bEpKbERaTjlrSnBJSjhzZ0dGcl81enlWYjB3Q1VJdUFyOVk5ZlBsT3ZpdjJNdERUYWpFUGF2N1RsV3lZdzAtUHc?oc=5"
+      "t": "⚪ Smart Güneş Teknolojileri’nden (SMRTG) kamuoyu açıklaması  (Rota Borsa)",
+      "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNelJFd2s2ZjNKNktpbV9IVXpvSFpmcHN5NDRzdzVrenQwZFpKbUY5STBGNHNST3pPMkMweFVRdDhJU1pUai16M2ZuRFU0eGZhbjJPQS03NWRfLUxsa2tsRmxHdDFoSXA1aG05YnRKRFEtRDJpanNKNlNZYUNzei1TSUJMWQ?oc=5"
     },
     {
       "t": "⚪ YEOTK Hisse Yorumları (YEO TEKNOLOJI ENERJI Güncel Yorumlar)  (Mynet Finans)",
@@ -263,79 +259,77 @@
   ],
   "world": [
     {
-      "t": "🌍 Huge crowds greet Pope in Paris for open-air Mass  (BBC World)",
-      "link": "https://www.bbc.co.uk/news/articles/cm4gjjwvvlzro?at_medium=RSS&at_campaign=rss"
+      "t": "🌍 Iranian minister says only negotiation can end conflict after Trump rejects Hormuz deal  (BBC World)",
+      "link": "https://www.bbc.co.uk/news/articles/cmvgyyw2jeego?at_medium=RSS&at_campaign=rss"
     },
     {
-      "t": "🌍 Rebel offensive against Ethiopian army stokes fears of return to civil war  (Guardian World)",
-      "link": "https://www.theguardian.com/world/2026/sep/24/fears-return-to-war-tigray-rebels-launch-offensive-against-ethiopian-army"
+      "t": "🌍 ‘It’s hard to sell a house when it’s covered in baboon faeces’: Cape Town divided over plan to remove its monkeys  (Guardian World)",
+      "link": "https://www.theguardian.com/environment/2026/sep/27/baboons-cape-town-divided-over-plan-to-remove-its-monkeys-aoe"
     },
     {
-      "t": "🌍 Russell edges out Verstappen to win in Baku, Antonelli settles for fifth  (Al Jazeera)",
-      "link": "https://www.aljazeera.com/sports/2026/9/26/russell-edges-out-verstappen-to-win-in-baku-antonelli-settles-for-fifth?traffic_source=rss"
+      "t": "🌍 ‘No role for UNRWA in Gaza’: Does the Board of Peace toe Israeli lines?  (Al Jazeera)",
+      "link": "https://www.aljazeera.com/news/2026/9/27/no-role-for-unrwa-in-gaza-does-the-board-of-peace-toe-israeli-lines?traffic_source=rss"
     },
     {
-      "t": "🌍 Meth is a key driver in Fiji's fast-growing HIV epidemic: 1 in 60 adults are affected  (NPR World)",
-      "link": "https://www.npr.org/2026/09/26/g-s1-144667/hiv-crystal-meth-epidemic-fiji"
+      "t": "🌍 Multiple arrests on suspicion of explosives offenses near U.K. base used by U.S. forces  (NPR World)",
+      "link": "https://www.npr.org/2026/09/27/nx-s1-5982480/multiple-arrests-suspicion-explosives-offenses-uk-base-us-forces"
     },
     {
-      "t": "🌍 Trump reportedly rejects Iranian plan to reopen Strait of Hormuz  (Euronews)",
-      "link": "https://www.euronews.com/2026/09/26/trump-reportedly-rejects-iranian-plan-to-reopen-strait-of-hormuz"
+      "t": "🌍 Ethiopia’s army chief accuses Egypt and Sudan of backing armed alliance seeking to oust Abiy Ahmed  (Euronews)",
+      "link": "https://www.euronews.com/2026/09/27/ethiopias-army-chief-accuses-egypt-and-sudan-of-backing-armed-alliance-seeking-to-oust-abi"
     },
     {
-      "t": "🌍 Pakistan: Suicide attack at police stop kills at least 11  (DW)",
-      "link": "https://www.dw.com/en/pakistan-suicide-attack-at-police-stop-kills-at-least-11/a-79443050?maca=en-rss-en-world-4025-rdf"
+      "t": "🌍 'Scourge' of abuse must be rooted out, says Pope, during Lourdes visit  (BBC World)",
+      "link": "https://www.bbc.co.uk/news/articles/cm5y5nj8ejj8o?at_medium=RSS&at_campaign=rss"
     }
   ],
   "tr": [
     {
-      "t": "🇹🇷 TikTok, çocukları aşırı kullanıma teşvik ettiği iddiasıyla ABD'de açılan davada uzlaştı  (TRT Haber)",
-      "link": "https://www.trthaber.com/haber/dunya/tiktok-cocuklari-asiri-kullanima-tesvik-ettigi-iddiasiyla-abdde-acilan-davada-uzlasti-958240.html"
+      "t": "🇹🇷 Cumhurbaşkanı Erdoğan'dan 27 Eylül Azerbaycan Anım Günü mesajı  (TRT Haber)",
+      "link": "https://www.trthaber.com/haber/gundem/cumhurbaskani-erdogandan-27-eylul-azerbaycan-anim-gunu-mesaji-958301.html"
     },
     {
-      "t": "🇹🇷 Fon krizinde SPK neden eleştiriliyor?  (BBC Türkçe)",
-      "link": "https://www.bbc.com/turkce/articles/c6kg09x8yjn8o?at_medium=RSS&at_campaign=rss"
-    },
-    {
-      "t": "🇹🇷 Kadıköy Çizgi Festivali başladı  (Habertürk)",
-      "link": "https://www.haberturk.com/gundem/kadikoy-cizgi-festivali-basladi-3915304"
-    },
-    {
-      "t": "🇹🇷 Fon soruşturması. Bakan Gürlek: Paranın izini sonuna kadar süreceğiz  (NTV)",
-      "link": "https://www.ntv.com.tr/turkiye/fon-sorusturmasi-bakan-gurlek-paranin-izini-sonuna-kadar-surecegiz-1743612"
-    },
-    {
-      "t": "🇹🇷 İstanbul'da zehir tacirlerine operasyon: 164 şüpheli tutuklandı  (TRT Haber)",
-      "link": "https://www.trthaber.com/haber/turkiye/istanbulda-zehir-tacirlerine-operasyon-164-supheli-tutuklandi-958239.html"
-    },
-    {
-      "t": "🇹🇷 İran'dan ABD'ye Hürmüz Boğazı'nı yedi gün içinde yeniden açma teklifi  (BBC Türkçe)",
+      "t": "🇹🇷 İran'dan Trump'ın Hürmüz Boğazı teklifini reddetmesinin ardından açıklama: 'Tek çözüm müzakere'  (BBC Türkçe)",
       "link": "https://www.bbc.com/turkce/articles/ckqxvvzzyjyno?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "t": "🇹🇷 Baba ve kızı yaşamını yitirdi! Ev yangınında kahreden detay!  (Habertürk)",
+      "link": "https://www.haberturk.com/gundem/son-dakika-baba-ve-kizi-yasamini-yitirdi-ev-yangininda-kahreden-detay-3915425"
+    },
+    {
+      "t": "🇹🇷 AK Parti Sözcüsü Ömer Çelik: Cumhurbaşkanımız insanlık ittifakının gür sesi  (NTV)",
+      "link": "https://www.ntv.com.tr/turkiye/ak-parti-sozcusu-omer-celik-cumhurbaskanimiz-insanlik-ittifakinin-gur-sesi-1743740"
+    },
+    {
+      "t": "🇹🇷 İletişim Başkanı Duran, Preveze Deniz Zaferi'nin 488. yıl dönümünü kutladı  (TRT Haber)",
+      "link": "https://www.trthaber.com/haber/gundem/iletisim-baskani-duran-preveze-deniz-zaferinin-488-yil-donumunu-kutladi-958300.html"
+    },
+    {
+      "t": "🇹🇷 Türkiye, Husi-Suudi çatışmasına neden dahil olma eğiliminde?  (BBC Türkçe)",
+      "link": "https://www.bbc.com/turkce/articles/cvzezz5r73n7o?at_medium=RSS&at_campaign=rss"
     }
   ],
   "_teshis": {
     "dunya": [
-      "BBC World: 24 öğe / 2 alındı / 0 elendi | ilk: Huge crowds greet Pope in Paris for open-air Mass",
-      "Guardian World: 45 öğe / 2 alındı / 0 elendi | ilk: Rebel offensive against Ethiopian army stokes fears of retur",
-      "Al Jazeera: 25 öğe / 2 alındı / 0 elendi | ilk: Russell edges out Verstappen to win in Baku, Antonelli settl",
-      "NPR World: 10 öğe / 2 alındı / 0 elendi | ilk: Meth is a key driver in Fiji's fast-growing HIV epidemic: 1 ",
-      "Euronews: 50 öğe / 2 alındı / 0 elendi | ilk: Trump reportedly rejects Iranian plan to reopen Strait of Ho",
-      "DW: 12 öğe / 2 alındı / 0 elendi | ilk: Pakistan: Suicide attack at police stop kills at least 11",
-      "SONUÇ: 6 haber · veren: Al Jazeera, BBC World, DW, Euronews, Guardian World, NPR World",
+      "BBC World: 26 öğe / 2 alındı / 0 elendi | ilk: Iranian minister says only negotiation can end conflict afte",
+      "Guardian World: 45 öğe / 2 alındı / 0 elendi | ilk: ‘It’s hard to sell a house when it’s covered in baboon faece",
+      "Al Jazeera: 25 öğe / 2 alındı / 0 elendi | ilk: ‘No role for UNRWA in Gaza’: Does the Board of Peace toe Isr",
+      "NPR World: 10 öğe / 2 alındı / 0 elendi | ilk: Multiple arrests on suspicion of explosives offenses near U.",
+      "Euronews: 50 öğe / 2 alındı / 1 elendi | ilk: Ethiopia’s army chief accuses Egypt and Sudan of backing arm",
+      "DW: 11 öğe / 2 alındı / 0 elendi | ilk: Iran sticks to Hormuz plan after Trump rejects it",
+      "SONUÇ: 6 haber · veren: Al Jazeera, BBC World, Euronews, Guardian World, NPR World",
       "AA: OKUNAMADI RemoteDisconnected: Remote end closed connection without response",
-      "TRT Haber: 50 öğe / 2 alındı / 0 elendi | ilk: TikTok, çocukları aşırı kullanıma teşvik ettiği iddiasıyla A",
-      "BBC Türkçe: 20 öğe / 2 alındı / 0 elendi | ilk: Fon krizinde SPK neden eleştiriliyor?",
-      "Habertürk: 30 öğe / 2 alındı / 0 elendi | ilk: Kadıköy Çizgi Festivali başladı",
-      "NTV: 20 öğe / 2 alındı / 0 elendi | ilk: Fon soruşturması. Bakan Gürlek: Paranın izini sonuna kadar s",
+      "TRT Haber: 50 öğe / 2 alındı / 0 elendi | ilk: Cumhurbaşkanı Erdoğan'dan 27 Eylül Azerbaycan Anım Günü mesa",
+      "BBC Türkçe: 20 öğe / 2 alındı / 0 elendi | ilk: İran'dan Trump'ın Hürmüz Boğazı teklifini reddetmesinin ardı",
+      "Habertürk: 30 öğe / 2 alındı / 0 elendi | ilk: Baba ve kızı yaşamını yitirdi! Ev yangınında kahreden detay!",
+      "NTV: 20 öğe / 2 alındı / 0 elendi | ilk: AK Parti Sözcüsü Ömer Çelik: Cumhurbaşkanımız insanlık ittif",
       "SONUÇ: 6 haber · veren: BBC Türkçe, Habertürk, NTV, TRT Haber · boş dönen: AA"
     ],
-    "hisse": "6 başlık geldi, 1 elendi",
+    "hisse": "4 başlık geldi, 0 elendi",
     "hisse_ham": [
       "Smart Güneş açıkladı: Fonların SMRTG pozisyonları belli oldu",
-      "KAP *** SMART GÜNEŞ ENERJİSİ TEKNOLOJİLERİ ARAŞTIRMA GELİŞTİRME ÜRETİM",
       "SMART GUNES ENER - KAP Haberleri - 2026-09-24 tarihli",
-      "Gübretaş Maden 1,5 milyar TL kâr dağıtımı yapacak",
-      "Gübretaş (GUBRF) bağlı ortaklığından temettü dağıtma kararı",
+      "Smart Güneş Teknolojileri’nden (SMRTG) kamuoyu açıklaması",
       "YEOTK Hisse Yorumları (YEO TEKNOLOJI ENERJI Güncel Yorumlar)"
     ]
   }
