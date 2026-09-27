@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-27 14:53",
+  "updated": "2026-09-27 18:27",
   "watch": [
     {
       "code": "SMRTG",
@@ -236,12 +236,12 @@
     }
   ],
   "gold": {
-    "price": "6,797.55",
-    "chg": "+0.50%"
+    "price": "6,795.93",
+    "chg": "+0.47%"
   },
   "news": [
     {
-      "t": "⚪ Smart Güneş açıkladı: Fonların SMRTG pozisyonları belli oldu  (paratic.com)",
+      "t": "⚪ Smart Güneş açıkladı: Fonların SMRTG pozisyonları belli oldu  (Paratic Haber)",
       "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOLUNHTmZaV1Ffa29OWnJGWU1wclNESWVRd2VJTG1hU0JDNjAwOGNuNXo0V1JnSUxZWUZOTTFsMVpObWRpUkgxWlVfZWZLSEdTN2xIR2NqSGVRb1YxMHNaNzM0bVZUcWNRUWpNTndUcjRscXFWc1JtRFM0SWNvVkhHaFFTdnNNOVU?oc=5"
     },
     {
@@ -263,67 +263,67 @@
       "link": "https://www.bbc.co.uk/news/articles/cmvgyyw2jeego?at_medium=RSS&at_campaign=rss"
     },
     {
-      "t": "🌍 ‘It’s hard to sell a house when it’s covered in baboon faeces’: Cape Town divided over plan to remove its monkeys  (Guardian World)",
-      "link": "https://www.theguardian.com/environment/2026/sep/27/baboons-cape-town-divided-over-plan-to-remove-its-monkeys-aoe"
+      "t": "🌍 At least 27 dead after two mass shootings in South Africa, police say  (Guardian World)",
+      "link": "https://www.theguardian.com/world/2026/sep/27/mass-shootings-south-africa-johannesburg-cape-town"
     },
     {
-      "t": "🌍 ‘No role for UNRWA in Gaza’: Does the Board of Peace toe Israeli lines?  (Al Jazeera)",
-      "link": "https://www.aljazeera.com/news/2026/9/27/no-role-for-unrwa-in-gaza-does-the-board-of-peace-toe-israeli-lines?traffic_source=rss"
+      "t": "🌍 Strait of Hormuz tensions linger as Iran and US move further from a deal  (Al Jazeera)",
+      "link": "https://www.aljazeera.com/economy/2026/9/27/strait-of-hormuz-tensions-linger-as-iran-and-us-move-further-from-a-deal?traffic_source=rss"
     },
     {
-      "t": "🌍 Multiple arrests on suspicion of explosives offenses near U.K. base used by U.S. forces  (NPR World)",
-      "link": "https://www.npr.org/2026/09/27/nx-s1-5982480/multiple-arrests-suspicion-explosives-offenses-uk-base-us-forces"
+      "t": "🌍 South Africa reels from spate of mass shootings that killed 38 people in a week  (NPR World)",
+      "link": "https://www.npr.org/2026/09/27/nx-s1-5982488/south-africa-mass-shootings-killed-38-week"
     },
     {
-      "t": "🌍 Ethiopia’s army chief accuses Egypt and Sudan of backing armed alliance seeking to oust Abiy Ahmed  (Euronews)",
-      "link": "https://www.euronews.com/2026/09/27/ethiopias-army-chief-accuses-egypt-and-sudan-of-backing-armed-alliance-seeking-to-oust-abi"
+      "t": "🌍 Iran's Revolutionary Guards claim seizure of second US underwater drone in Strait of Hormuz  (Euronews)",
+      "link": "https://www.euronews.com/2026/09/27/irans-revolutionary-guards-claim-seizure-of-second-us-underwater-drone-in-strait-of-hormuz"
     },
     {
-      "t": "🌍 'Scourge' of abuse must be rooted out, says Pope, during Lourdes visit  (BBC World)",
-      "link": "https://www.bbc.co.uk/news/articles/cm5y5nj8ejj8o?at_medium=RSS&at_campaign=rss"
+      "t": "🌍 European cities seek ways of boosting affordable housing  (DW)",
+      "link": "https://www.dw.com/en/european-cities-seek-ways-of-boosting-affordable-housing/a-79438939?maca=en-rss-en-world-4025-rdf"
     }
   ],
   "tr": [
     {
-      "t": "🇹🇷 Cumhurbaşkanı Erdoğan'dan 27 Eylül Azerbaycan Anım Günü mesajı  (TRT Haber)",
-      "link": "https://www.trthaber.com/haber/gundem/cumhurbaskani-erdogandan-27-eylul-azerbaycan-anim-gunu-mesaji-958301.html"
+      "t": "🇹🇷 Kozinoğlu soruşturmasında şüpheli ölüm  (TRT Haber)",
+      "link": "https://www.trthaber.com/haber/gundem/kozinoglu-sorusturmasinda-supheli-olum-958318.html"
+    },
+    {
+      "t": "🇹🇷 Rusya'dan Türkiye'deki S-400'lerin üçüncü bir ülkeye olası transferine yeşil ışık  (BBC Türkçe)",
+      "link": "https://www.bbc.com/turkce/articles/cxvgyd6yjjdjo?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "t": "🇹🇷 Türkiye sınırında 18 kilometrelik TIR kuyruğu!  (Habertürk)",
+      "link": "https://www.haberturk.com/gundem/turkiye-sinirinda-18-kilometrelik-tir-kuyrugu-3915446"
+    },
+    {
+      "t": "🇹🇷 Yemen'de hükümet güçleriyle İran destekli Husiler arasındaki çatışmalar sürüyor  (TRT Haber)",
+      "link": "https://www.trthaber.com/haber/dunya/yemende-hukumet-gucleriyle-iran-destekli-husiler-arasindaki-catismalar-suruyor-958317.html"
     },
     {
       "t": "🇹🇷 İran'dan Trump'ın Hürmüz Boğazı teklifini reddetmesinin ardından açıklama: 'Tek çözüm müzakere'  (BBC Türkçe)",
       "link": "https://www.bbc.com/turkce/articles/ckqxvvzzyjyno?at_medium=RSS&at_campaign=rss"
     },
     {
-      "t": "🇹🇷 Baba ve kızı yaşamını yitirdi! Ev yangınında kahreden detay!  (Habertürk)",
-      "link": "https://www.haberturk.com/gundem/son-dakika-baba-ve-kizi-yasamini-yitirdi-ev-yangininda-kahreden-detay-3915425"
-    },
-    {
-      "t": "🇹🇷 AK Parti Sözcüsü Ömer Çelik: Cumhurbaşkanımız insanlık ittifakının gür sesi  (NTV)",
-      "link": "https://www.ntv.com.tr/turkiye/ak-parti-sozcusu-omer-celik-cumhurbaskanimiz-insanlik-ittifakinin-gur-sesi-1743740"
-    },
-    {
-      "t": "🇹🇷 İletişim Başkanı Duran, Preveze Deniz Zaferi'nin 488. yıl dönümünü kutladı  (TRT Haber)",
-      "link": "https://www.trthaber.com/haber/gundem/iletisim-baskani-duran-preveze-deniz-zaferinin-488-yil-donumunu-kutladi-958300.html"
-    },
-    {
-      "t": "🇹🇷 Türkiye, Husi-Suudi çatışmasına neden dahil olma eğiliminde?  (BBC Türkçe)",
-      "link": "https://www.bbc.com/turkce/articles/cvzezz5r73n7o?at_medium=RSS&at_campaign=rss"
+      "t": "🇹🇷 Servisten inip saldırdı!  (Habertürk)",
+      "link": "https://www.haberturk.com/gundem/kagithanede-yumruklu-saldirida-dustu-kalcasi-kirildi-3915444"
     }
   ],
   "_teshis": {
     "dunya": [
-      "BBC World: 26 öğe / 2 alındı / 0 elendi | ilk: Iranian minister says only negotiation can end conflict afte",
-      "Guardian World: 45 öğe / 2 alındı / 0 elendi | ilk: ‘It’s hard to sell a house when it’s covered in baboon faece",
-      "Al Jazeera: 25 öğe / 2 alındı / 0 elendi | ilk: ‘No role for UNRWA in Gaza’: Does the Board of Peace toe Isr",
-      "NPR World: 10 öğe / 2 alındı / 0 elendi | ilk: Multiple arrests on suspicion of explosives offenses near U.",
-      "Euronews: 50 öğe / 2 alındı / 1 elendi | ilk: Ethiopia’s army chief accuses Egypt and Sudan of backing arm",
-      "DW: 11 öğe / 2 alındı / 0 elendi | ilk: Iran sticks to Hormuz plan after Trump rejects it",
-      "SONUÇ: 6 haber · veren: Al Jazeera, BBC World, Euronews, Guardian World, NPR World",
+      "BBC World: 28 öğe / 2 alındı / 0 elendi | ilk: Iranian minister says only negotiation can end conflict afte",
+      "Guardian World: 45 öğe / 2 alındı / 0 elendi | ilk: At least 27 dead after two mass shootings in South Africa, p",
+      "Al Jazeera: 25 öğe / 2 alındı / 0 elendi | ilk: Strait of Hormuz tensions linger as Iran and US move further",
+      "NPR World: 10 öğe / 2 alındı / 0 elendi | ilk: South Africa reels from spate of mass shootings that killed ",
+      "Euronews: 50 öğe / 2 alındı / 0 elendi | ilk: Iran's Revolutionary Guards claim seizure of second US under",
+      "DW: 11 öğe / 2 alındı / 0 elendi | ilk: European cities seek ways of boosting affordable housing",
+      "SONUÇ: 6 haber · veren: Al Jazeera, BBC World, DW, Euronews, Guardian World, NPR World",
       "AA: OKUNAMADI RemoteDisconnected: Remote end closed connection without response",
-      "TRT Haber: 50 öğe / 2 alındı / 0 elendi | ilk: Cumhurbaşkanı Erdoğan'dan 27 Eylül Azerbaycan Anım Günü mesa",
-      "BBC Türkçe: 20 öğe / 2 alındı / 0 elendi | ilk: İran'dan Trump'ın Hürmüz Boğazı teklifini reddetmesinin ardı",
-      "Habertürk: 30 öğe / 2 alındı / 0 elendi | ilk: Baba ve kızı yaşamını yitirdi! Ev yangınında kahreden detay!",
-      "NTV: 20 öğe / 2 alındı / 0 elendi | ilk: AK Parti Sözcüsü Ömer Çelik: Cumhurbaşkanımız insanlık ittif",
-      "SONUÇ: 6 haber · veren: BBC Türkçe, Habertürk, NTV, TRT Haber · boş dönen: AA"
+      "TRT Haber: 50 öğe / 2 alındı / 0 elendi | ilk: Kozinoğlu soruşturmasında şüpheli ölüm",
+      "BBC Türkçe: 20 öğe / 2 alındı / 0 elendi | ilk: Rusya'dan Türkiye'deki S-400'lerin üçüncü bir ülkeye olası t",
+      "Habertürk: 30 öğe / 2 alındı / 0 elendi | ilk: Türkiye sınırında 18 kilometrelik TIR kuyruğu!",
+      "NTV: 20 öğe / 2 alındı / 0 elendi | ilk: Kozinoğlu soruşturmasında gözaltına alınmıştı. Dönemin cezae",
+      "SONUÇ: 6 haber · veren: BBC Türkçe, Habertürk, TRT Haber · boş dönen: AA"
     ],
     "hisse": "4 başlık geldi, 0 elendi",
     "hisse_ham": [
