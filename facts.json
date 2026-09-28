@@ -1,169 +1,8 @@
 {
- "updated": "2026-09-21 14:49",
+ "updated": "2026-09-28 15:44",
  "ok": true,
  "history_days": 10,
  "history": {
-  "09-21": [
-   {
-    "year": 1995,
-    "text": "Buca Cezaevi'nde isyan çıktı. Düzenlenen operasyonda 3 kişi öldü.",
-    "title": "Buca_Cezaevi",
-    "url": "https://tr.wikipedia.org/wiki/Buca_Cezaevi",
-    "detay": "İzmir Buca Cezaevi, resmi adıyla İzmir Kapalı ve Açık Ceza İnfaz Kurumu, belli bir tipte olmayan kapalı ve açık cezaevidir. İzmir ili Buca ilçesinde bulunmaktaydı. 1959 yılında kurulmuştur. 2020 Ege Denizi depreminde hasar gören cezaevi önce boşaltıldı, Aralık 2020'de ise yıkılmaya başlandı. En son görev yapan kurum müdürü Murat Gündüz'dü."
-   },
-   {
-    "year": 1960,
-    "text": "27 Mayıs günü \"Hürriyet ve Anayasa Bayramı\" olarak kabul edildi.",
-    "title": "27_Mayıs",
-    "url": "https://tr.wikipedia.org/wiki/27_May%C4%B1s",
-    "detay": "27 Mayıs, Miladi takvime göre yılın 147. günüdür. Yıl sonuna kadar kalan 218 gün vardır."
-   },
-   {
-    "year": 1932,
-    "text": "Himaye-i Etfal Cemiyeti tarafından düzenlenen \"Alaturka Güreş\" müsabakaları Taksim Stadyumu'nda yapıldı.",
-    "title": "Taksim_Stadyumu",
-    "url": "https://tr.wikipedia.org/wiki/Taksim_Stadyumu",
-    "detay": "Taksim Stadyumu, bugünkü Taksim Parkı'nın yerinde 1921-1940 arasında var olan Taksim Kışlası'nın avlusundaki bir stadyumdu."
-   }
-  ],
-  "09-22": [
-   {
-    "year": 2018,
-    "text": "İran'nın Ahvaz şehrinde bir askeri geçit törenine silahlı saldırı gerçekleşti. Saldırıda 25 kişi öldü, 70 kişi yaralandı.",
-    "title": "İran",
-    "url": "https://tr.wikipedia.org/wiki/%C4%B0ran",
-    "detay": "İran, resmî adıyla İran İslam Cumhuriyeti, Batı Asya'da yer alan bir ülkedir. Kuzeybatıda Türkiye ve batıda Irak, kuzeyde Azerbaycan, Ermenistan, Hazar Denizi ve Türkmenistan, doğuda Afganistan, güneydoğuda Pakistan, güneyde Umman Körfezi ve Basra Körfezi ile komşudur. İran, 1.648.195 km2 (636.372 mil2) alanda yaklaşık 92 milyonluk çok etnikli nüfusuyla hem coğrafi büyüklük hem de nüfus bakımından dünyada 17. sırada yer almaktadır. Asya'nın en büyük altıncı ülkesidir ve dünyanın en dağlık ülkelerinden biridir."
-   },
-   {
-    "year": 1986,
-    "text": "12 Eylül darbesi sonrası Alparslan Türkeş, ilk kez Milliyetçi Çalışma Partisi'nin (MÇP) İstanbul mitinginde konuştu.",
-    "title": "12_Eylül_Darbesi",
-    "url": "https://tr.wikipedia.org/wiki/12_Eyl%C3%BCl_Darbesi",
-    "detay": "12 Eylül Darbesi veya 1980 İhtilali, resmî isimlendirmeleriyle 12 Eylül 1980 Harekâtı veya Bayrak Harekâtı, Türk Silahlı Kuvvetlerinin 12 Eylül 1980 tarihinde Türkiye'de emir komuta zinciri içinde gerçekleştirdiği askerî darbedir. 27 Mayıs Darbesi ve 12 Mart Muhtırası'nın ardından Türkiye Cumhuriyeti tarihinde Silahlı Kuvvetlerin yönetime karşı gerçekleştirdiği üçüncü ve son başarılı açık müdahaledir."
-   },
-   {
-    "year": 1940,
-    "text": "Bakanlar Kurulu, İstanbul'da çıkan Le Journal d'Orient gazetesini yedi gün süreyle kapattı. Gazetenin resmi dış politikaya aykırı yayın yaptığı ileri sürüldü.",
-    "title": "İstanbul",
-    "url": "https://tr.wikipedia.org/wiki/%C4%B0stanbul",
-    "detay": "İstanbul, Türkiye'nin ekonomik, kültürel ve tarihî merkezini oluşturan en kalabalık şehridir. 15,7 milyonu aşan nüfusuyla Türkiye nüfusunun yaklaşık %18,3'ine ev sahipliği yapmaktadır. İstanbul, Avrupa'daki en kalabalık şehirlerden biri olmasının yanı sıra, dünya genelinde de nüfus bakımından en kalabalık şehirler arasında yer alır. İstanbul, iki kıtada yer alan bir şehir olup, nüfusunun yaklaşık üçte ikisi Avrupa yakasında, geri kalanı ise Asya yakasında yaşamaktadır."
-   }
-  ],
-  "09-23": [
-   {
-    "year": 2008,
-    "text": "Finlandiya'nın Kauhajoki kentinde Kauhajoki okul saldırısı gerçekleşti.",
-    "title": "Finlandiya",
-    "url": "https://tr.wikipedia.org/wiki/Finlandiya",
-    "detay": "Finlandiya, resmî adıyla Finlandiya Cumhuriyeti, Kuzey Avrupa'daki bir Nordik ülkesi. Doğuda Rusya, kuzeyde Norveç ve batıda İsveç'le komşudur. Batıda Botniya ve güneyde Finlandiya körfezlerine kıyısı vardır. Yüzölçümü 338.455 km² ve nüfusu 5,5 milyondur. Helsinki ülkenin başkenti ve en büyük şehridir. Finlerin ana dili olan Fince, yeryüzündeki az sayıda Baltık-Fin dilinden biridir. Finlandiya'nın iklim özellikleri enleme göre değişkenlik gösterir: Güneyde nemli karasal iklim, kuzeyde kutup altı iklimi görülür."
-   },
-   {
-    "year": 1980,
-    "text": "Millî Güvenlik Konseyi, çıkardığı kanunla 1981 yılını Atatürk Yılı kabul ve ilan etti.",
-    "title": "Millî_Güvenlik_Konseyi",
-    "url": "https://tr.wikipedia.org/wiki/Mill%C3%AE_G%C3%BCvenlik_Konseyi",
-    "detay": "Millî Güvenlik Konseyi, 12 Eylül Darbesi ile ülke yönetimine el konulmasından sonra yasama yetkisini kullanmak üzere Genelkurmay Başkanı Orgeneral Kenan Evren, Kara Kuvvetleri Komutanı Orgeneral Nurettin Ersin, Hava Kuvvetleri Komutanı Orgeneral Tahsin Şahinkaya, Deniz Kuvvetleri Komutanı Oramiral Nejat Tümer ve Jandarma Genel Komutanı Orgeneral Sedat Celasun'dan oluşan askerî cunta."
-   },
-   {
-    "year": 1931,
-    "text": "Ekonomik kriz nedeniyle iki gün kapalı kalan Londra Borsası yeniden açıldı.",
-    "title": "Londra_Borsası",
-    "url": "https://tr.wikipedia.org/wiki/Londra_Borsas%C4%B1",
-    "detay": "Londra Borsası, Londra, Birleşik Krallık'ta bulunan borsa'dır. Ağustos 2010 itibarı ile 2.63 trilyon dolar değerindedir. Dünyanın dördüncü, Avrupa'nın birinci en yüksek işlem hacmine sahip borsasıdır."
-   }
-  ],
-  "09-24": [
-   {
-    "year": 2015,
-    "text": "Hac'da izdiham: Suudi Arabistan'da Hac sırasında yaşanan izdiham sonrasında en az 769 kişi öldü ve 900'den fazla kişi de yaralandı.",
-    "title": "Suudi_Arabistan",
-    "url": "https://tr.wikipedia.org/wiki/Suudi_Arabistan",
-    "detay": "Suudi Arabistan, resmî adıyla Suudi Arabistan Krallığı, Arap Yarımadası'nda bulunan en büyük ülkedir. Kuzeybatıda Ürdün; kuzey ve kuzeydoğuda Irak; doğuda Kuveyt, Katar, Bahreyn ve Birleşik Arap Emirlikleri; güneydoğuda Umman; güneyde Yemen ile komşudur. Kuzeydoğusu Basra Körfezi ve batısı Kızıldeniz ile çevrilidir. Buraya \"iki kutsal caminin arazisi\" de denir çünkü İslam'a göre iki kutsal şehir olan Mekke ve Medine bu ülkededir. Suudi Arabistan, Orta Doğu'daki bütün Körfez ülkeleri gibi hızla gelişmektedir."
-   },
-   {
-    "year": 1960,
-    "text": "27 Mayıs Darbesi ile iktidardan uzaklaştırılan Demokrat Parti yönetiminin yargılanması amacıyla Yüksek Adalet Divanı kuruldu.",
-    "title": "27_Mayıs_Darbesi",
-    "url": "https://tr.wikipedia.org/wiki/27_May%C4%B1s_Darbesi",
-    "detay": "27 Mayıs Darbesi, 27 Mayıs 1960 tarihinde yapılan ve Türkiye Cumhuriyeti tarihinde gerçekleşmiş ilk askerî darbe. Ayrıca 27 Mayıs Askerî Müdahalesi, 27 Mayıs İhtilali veya 27 Mayıs Devrimi olarak da anılır. Darbe emir komuta zinciri içinde yapılmamıştır, 37 düşük rütbeli subayın planları ile Tümgeneral Cemal Madanoğlu'nun komutanlığında icra edilmiştir. Kritik mevziler bu subayların ellerindeki asker ve silahlarla önce ordudaki Komuta Kademesinin etkisiz hâle getirilmesi ile ele geçirilmiştir."
-   },
-   {
-    "year": 1906,
-    "text": "Amerika Birleşik Devletleri'nin Wyoming eyaletindeki Devils Tower (Şeytan Kulesi), ABD Başkanı Theodore Roosevelt tarafından ülkenin ilk Ulusal Anıtı olarak ilan edildi.",
-    "title": "Amerika_Birleşik_Devletleri",
-    "url": "https://tr.wikipedia.org/wiki/Amerika_Birle%C5%9Fik_Devletleri",
-    "detay": "Amerika Birleşik Devletleri (ABD), daha yaygın kullanılan adıyla Amerika veya Birleşik Devletler, Kuzey Amerika kıtasında Kanada ve Meksika arasında bulunan bir ülkedir. 50 eyaletin birleşiminden meydana gelen federal anayasal bir cumhuriyet ile yönetilir. Bir federal bölgeye sahiptir ve 9,8 milyon km2 yüz ölçümü ile dünyanın karasal alan bakımından dördüncü, toplam alan bakımındansa üçüncü en büyük ülkesi ve 334 milyonu aşan nüfusu ile de en kalabalık üçüncü ülkesidir."
-   }
-  ],
-  "09-25": [
-   {
-    "year": 2018,
-    "text": "Bill Cosby, ağırlaştırılmış cinsel saldırı suçundan 3 - 10 yıl hapis cezasına çarptırıldı",
-    "title": "Bill_Cosby",
-    "url": "https://tr.wikipedia.org/wiki/Bill_Cosby",
-    "detay": "William Henry Cosby Jr., Altın Küre ve Emmy ödüllü Amerikalı komedyen, televizyon yapımcısı, oyuncu ve hüküm giymiş cinsel suçlu. Bill Cosby hakkında 2010'ların ortalarında 60'tan fazla kadın tarafından cinsel saldırı, tecavüz, uyuşturucu kullanarak kolaylaştırılmış tecavüz, çocuk cinsel istismarı, cinsel suistimal teşebbüsü gibi çeşitli suçlamalarda bulunulmuştur."
-   },
-   {
-    "year": 1993,
-    "text": "Karun Hazinesi, ABD'den Türkiye'ye geri getirildi.",
-    "title": "Karun_Hazinesi",
-    "url": "https://tr.wikipedia.org/wiki/Karun_Hazinesi",
-    "detay": "Karun Hazinesi, çoğu MÖ 560-546 yılları arasında Lidya ülkesini yöneten Kroisos veya Krezüs (Karun) dönemine ait olan ve Uşak'ın 25 km batısında ve İzmir Karayolu üzerinde bulunan Güre Kasabası yakınlarındaki tümülüslerden 1960'lı yıllarda çıkarılarak ABD'ye kaçırılan ve 1993 yılında uzun bir hukukî süreç sonucunda geri alınan eserlerin toplu adı. Bazı kaynaklarda Lidya Hazinesi olarak da anılır. Hazinenin ele geçirilen kısmında yaklaşık 450 parça bulunur."
-   },
-   {
-    "year": 1917,
-    "text": "Lev Troçki, Petrograd Sovyeti Başkanı seçildi.",
-    "title": "Lev_Troçki",
-    "url": "https://tr.wikipedia.org/wiki/Lev_Tro%C3%A7ki",
-    "detay": "Lev Davidoviç Bronştayn ya da yaygın bilinen adıyla Lev Troçki ; Rus devrimci, Sovyet siyasetçi ve siyasi teorisyendir. 1905 Devrimi, 1917 Ekim Devrimi, Rus İç Savaşı ve Sovyetler Birliği'nin kurulmasında önemli rol oynayan Troçki, 1929'da sürgüne gönderildi ve 1940'ta Meksika'da öldürüldü. Troçki ve Vladimir Lenin, 1917'den Lenin'in 1924'teki ölümüne kadar Sovyet devletinin en önde gelen iki figürü olarak kabul ediliyordu."
-   }
-  ],
-  "09-26": [
-   {
-    "year": 2014,
-    "text": "Meksika'nın Iguala kentinde toplu bir kaçırma olayı yaşandı",
-    "title": "Meksika",
-    "url": "https://tr.wikipedia.org/wiki/Meksika",
-    "detay": "Meksika, resmî adıyla Birleşik Meksika Devletleri, Kuzey Amerika'da bir ülkedir. Kuzeyde Amerika Birleşik Devletleri; güney ve batıda Büyük Okyanus; güneydoğuda Guatemala, Belize ve Karayip Denizi; doğuda ise Meksika Körfezi ile komşudur. 1.972.550 km² yüzölçümü ile Amerika kıtasındaki altıncı, dünyada ise 13. en büyük bağımsız ülke konumundadır. Worldometer en son Birleşmiş Milletler verilerinin detaylandırılmasına göre Haziran 2026'da 132,997,658 kişilik nüfusa sahip olan Meksika, nüfus bakımından dünyanın 11."
-   },
-   {
-    "year": 1978,
-    "text": "Amerika Birleşik Devletleri Başkanı Jimmy Carter Türkiye'ye uygulanan ambargoyu kaldıran yasayı onayladı.",
-    "title": "Amerika_Birleşik_Devletleri",
-    "url": "https://tr.wikipedia.org/wiki/Amerika_Birle%C5%9Fik_Devletleri",
-    "detay": "Amerika Birleşik Devletleri (ABD), daha yaygın kullanılan adıyla Amerika veya Birleşik Devletler, Kuzey Amerika kıtasında Kanada ve Meksika arasında bulunan bir ülkedir. 50 eyaletin birleşiminden meydana gelen federal anayasal bir cumhuriyet ile yönetilir. Bir federal bölgeye sahiptir ve 9,8 milyon km2 yüz ölçümü ile dünyanın karasal alan bakımından dördüncü, toplam alan bakımındansa üçüncü en büyük ülkesi ve 334 milyonu aşan nüfusu ile de en kalabalık üçüncü ülkesidir."
-   },
-   {
-    "year": 1932,
-    "text": "I. Türk Dili Kurultayı toplandı. Dil Bayramı ilk kez kutlandı.",
-    "title": "I._Türk_Dili_Kurultayı",
-    "url": "https://tr.wikipedia.org/wiki/I._T%C3%BCrk_Dili_Kurultay%C4%B1",
-    "detay": "I. Türk Dili Kurultayı, 26 Eylül 1932-5 Ekim 1932 tarihleri arasında Türk Dil Kurumu tarafından düzenlenen dil kurultayı."
-   }
-  ],
-  "09-27": [
-   {
-    "year": 2020,
-    "text": "Dağlık Karabağ çatışmaları başladı.",
-    "title": "İkinci_Dağlık_Karabağ_Savaşı",
-    "url": "https://tr.wikipedia.org/wiki/%C4%B0kinci_Da%C4%9Fl%C4%B1k_Karaba%C4%9F_Sava%C5%9F%C4%B1",
-    "detay": "İkinci Dağlık Karabağ Savaşı, 2020 Dağlık Karabağ Savaşı veya 44 Günlük Savaş Dağlık Karabağ'da Türkiye destekli Azerbaycan ile Ermenistan ve onun desteklediği tanınmayan Dağlık Karabağ Cumhuriyeti arasında yaşanmış silahlı çatışmalardır."
-   },
-   {
-    "year": 1962,
-    "text": "Yemen Arap Cumhuriyeti (Kuzey Yemen) kuruldu. Albay Sallal iktidarı ele geçirdi. 22 Mayıs 1990'da Güney Yemen'le birleşerek Yemen Cumhuriyeti adını almıştır.",
-    "title": "Yemen_Arap_Cumhuriyeti",
-    "url": "https://tr.wikipedia.org/wiki/Yemen_Arap_Cumhuriyeti",
-    "detay": "Yemen Arap Cumhuriyeti veya bilindik ismiyle Kuzey Yemen, 1962 ile 1990 yılları arasında günümüz Yemen topraklarında var olmuş devlet."
-   },
-   {
-    "year": 1919,
-    "text": "Merzifon'u işgal eden İngilizler şehri terk etti.",
-    "title": "Merzifon",
-    "url": "https://tr.wikipedia.org/wiki/Merzifon",
-    "detay": "Merzifon, Amasya'nın bir ilçesidir. İlçenin yüzölçümü 888 km²dir. Merzifon ilçesinin deniz seviyesinden ortalama yüksekliği 741 metredir."
-   }
-  ],
   "09-28": [
    {
     "year": 2018,
@@ -231,6 +70,167 @@
     "title": "Karındeşen_Jack",
     "url": "https://tr.wikipedia.org/wiki/Kar%C4%B1nde%C5%9Fen_Jack",
     "detay": "Karındeşen Jack, 1888 yılında Londra’daki Whitechapel semti ve çevresindeki çoğunlukla fakir bölgelerde faal olduğuna inanılan kimliği tespit edilememiş bir seri katile verilen genel isimdir. Karındeşen Jack ismi katil olduğunu iddia eden bir kişi tarafından yollanıp medya tarafından yayılmış bir mektuptan ortaya çıkmıştır. Bu mektubun çoğunlukla bir kandırmaca olduğuna inanılmış ve gazeteciler tarafından hikâyeye olan ilgiyi güçlendirerek gazetelerin tirajını arttırmak amacıyla yazılmış olabileceği düşünülmüştür."
+   }
+  ],
+  "10-01": [
+   {
+    "year": 2017,
+    "text": "Las Vegas Strip saldırısı: Las Vegas Strip'teki \"Route 91 Harvest Country Müzik Festivali\"nde kitlesel silahlı saldırı meydana geldi.",
+    "title": "Las_Vegas_Strip",
+    "url": "https://tr.wikipedia.org/wiki/Las_Vegas_Strip",
+    "detay": "Las Vegas Strip ; Clark County, Nevada'daki Güney Las Vegas Bulvarı'nın bir uzantısıdır. Resort otel ve kumarhanelerin yoğunluğuyla ünlüdür. Yaklaşık 6.8 km uzunluğundadır. Las Vegas şehir sınırının hemen güneyinde bulunmaktadır."
+   },
+   {
+    "year": 1972,
+    "text": "Boksör Cemal Kamacı, 63,5 kiloda Avrupa Şampiyonu oldu.",
+    "title": "Avrupa",
+    "url": "https://tr.wikipedia.org/wiki/Avrupa",
+    "detay": "Avrupa, kuzeyde Arktik Okyanusu, batıda Atlantik Okyanusu, güneyde Akdeniz ve doğuda Asya ile çevrili bir kıtadır. Avrupa'nın Asya'dan Ural Dağları, Ural Nehri, Hazar Denizi, Büyük Kafkaslar, Karadeniz ve Türk Boğazlarının su yolları ile ayrıldığı kabul edilir."
+   },
+   {
+    "year": 1940,
+    "text": "Einstein, Amerikan vatandaşı oldu.",
+    "title": "Albert_Einstein",
+    "url": "https://tr.wikipedia.org/wiki/Albert_Einstein",
+    "detay": "Albert Einstein, en çok görelilik kuramını geliştirmesiyle tanınan Almanya doğumlu teorik fizikçi ve bilim adamı. Einstein, kuantum mekaniğine de önemli katkılarda bulundu. Özel görelilikten kaynaklanan kütle-enerji denkliği formülü E = mc2, \"dünyanın en ünlü denklemi\" olarak adlandırıldı. Teorik fiziğe yaptığı hizmetlerden ve özellikle fotoelektrik etki yasasını keşfetmesinden dolayı 1921'de Nobel Fizik Ödülü'nü aldı."
+   }
+  ],
+  "10-02": [
+   {
+    "year": 2022,
+    "text": "Endonezya'da bir futbol maçında 131 kişinin ölümü, 547 kişinin de yaralanmasıyla son bulan bir izdiham yaşandı.",
+    "title": "Endonezya",
+    "url": "https://tr.wikipedia.org/wiki/Endonezya",
+    "detay": "Endonezya, resmî adıyla Endonezya Cumhuriyeti, Hint ve Pasifik okyanusları arasında, Güneydoğu Asya ve Okyanusya'da toprakları bulunan bir ülkedir. 17 binden fazla adadan oluşur. Bu adaların en büyükleri Sumatra, Cava ve Sulavesi ile kısmen Borneo ve Yeni Gine'dir. Endonezya dünyanın en büyük ada ülkesidir, 1.904.569 km²'lik yüzölçümüyle dünyada 14. sıradadır. 2026 yılı itibarıyla 285 milyon civarında nüfusuyla dünyanın en kalabalık dördüncü ülkesi ve aynı zamanda en kalabalık Müslüman ülkesidir."
+   },
+   {
+    "year": 1979,
+    "text": "10 Temmuz 1977'de kahvehane basıp 2 kişiyi öldüren sol görüşlü militan Necdet Adalı, Ankara Sıkıyönetim Komutanlığı 1 Numaralı Askerî Mahkemesi tarafından ölüm cezasına çarptırıldı.",
+    "title": "Necdet_Adalı",
+    "url": "https://tr.wikipedia.org/wiki/Necdet_Adal%C4%B1",
+    "detay": "Necdet Adalı, Türk Marksist militan. 10 Temmuz 1977'de kahvehane basıp iki kişiyi öldürdü. Yargılandı ve 2 Ekim 1979'da idama mahkûm oldu. Cezası 12 Eylül Darbesi'nden sonra infaz edildi. 12 Eylül Askerî İdaresi tarafından idam edilen 15'i sol görüşlü 48 mahkûmdan biridir."
+   },
+   {
+    "year": 1941,
+    "text": "Almanlar, Sovyetler Birliği'ne karşı Tayfun Harekâtı olarak bilinen bir genel taarruz başlattılar.",
+    "title": "Sovyetler_Birliği",
+    "url": "https://tr.wikipedia.org/wiki/Sovyetler_Birli%C4%9Fi",
+    "detay": "Sovyetler Birliği, resmî adıyla Sovyet Sosyalist Cumhuriyetler Birliği, kısa adlarıyla SSCB veya Sovyetler, 1922'den 1991'deki dağılışına kadar Avrasya'nın büyük bir bölümünü kapsayan kıtalararası bir ülkeydi. Var olduğu süre boyunca on bir zaman dilimine yayılan ve sınırlarını on dört ülkeyle paylaşan bir ülke, ayrıca yüzölçümü bakımından en büyük ülke ve en kalabalık üçüncü ülkeydi."
+   }
+  ],
+  "10-03": [
+   {
+    "year": 2013,
+    "text": "Gambiya, İngiliz Milletler Topluluğu'ndan ayrıldığını açıkladı.",
+    "title": "Gambiya",
+    "url": "https://tr.wikipedia.org/wiki/Gambiya",
+    "detay": "Gambiya, resmî adı ile Gambiya Cumhuriyeti, Batı Afrika'da bir ülkedir. Coğrafi olarak Gambiya, kıta Afrika'sının en küçük ülkesidir; batı kısmı hariç her tarafı Senegal ile çevrilidir; batı kısmı ise Atlantik Okyanusu ile sınırlıdır."
+   },
+   {
+    "year": 1984,
+    "text": "Devrimci Yol davası sonucu idam cezasına çarptırılan Hıdır Aslan ve İlyas Has'ın cezaları TBMM'de onaylandı.",
+    "title": "Devrimci_Yol",
+    "url": "https://tr.wikipedia.org/wiki/Devrimci_Yol",
+    "detay": "Devrimci Yol (DEV-YOL), 1974 sonrası Türkiye Halk Kurtuluş Partisi-Cephesinin fikrî ve örgütsel olarak devamı niteliğinde olan bir harekettir. 1974 affı sonrası eski THKP-C ve DEV-GENÇ kökenli kadrolar geçmişin değerlendirmesini esas alan tartışmalar yürütmüştür. Kökeni THKP-C Genel Komitesi içerisinde yaşanan ayrılığa kadar giden farklı değerlendirmeler, sürecin ayrılıkla sonuçlanmasına neden olmuştur."
+   },
+   {
+    "year": 1932,
+    "text": "Birleşik Krallık mandası Irak bağımsızlığını ilan etti.",
+    "title": "Irak",
+    "url": "https://tr.wikipedia.org/wiki/Irak",
+    "detay": "Irak, resmî adıyla Irak Cumhuriyeti, Batı Asya'da yer alan bir ülkedir. Güneyde Suudi Arabistan, kuzeyde Türkiye, doğuda İran, güneydoğuda Basra Körfezi ve Kuveyt, güneybatıda Ürdün ve batıda Suriye ile komşudur. Irak, 438.317 km2 (169.235 mil2) bir alanı kapsamaktadır ve yüzölçümü bakımından dünyanın 58. büyük ülkesi olup, 46 milyonu aşkın nüfusuyla en kalabalık 31. ülke konumundadır. 8 milyondan fazla nüfusa sahip olan Bağdat, ülkenin başkenti ve en büyük şehridir."
+   }
+  ],
+  "10-04": [
+   {
+    "year": 2023,
+    "text": "Dağlık Karabağ Cumhuriyeti çöktü ve Hankendi şehri, Azerbaycan kontrolüne geçti.",
+    "title": "Dağlık_Karabağ_Cumhuriyeti",
+    "url": "https://tr.wikipedia.org/wiki/Da%C4%9Fl%C4%B1k_Karaba%C4%9F_Cumhuriyeti",
+    "detay": "Dağlık Karabağ Cumhuriyeti veya 2017-2023 yılları arasındaki resmî ismiyle Artsah Cumhuriyeti, Güney Kafkasya'da, Azerbaycan'ın uluslararası tanınmış sınırları içinde de facto devletti. Azerbaycan Devleti'nin 2023 yılında egemenliğini tesis etmesinin ardından lağvedilmiştir."
+   },
+   {
+    "year": 1964,
+    "text": "Antalya Belediyesi'nce düzenlenen ilk ‘Antalya Altın Portakal Film Festivali’ başladı.",
+    "title": "1._Altın_Portakal_Film_Festivali",
+    "url": "https://tr.wikipedia.org/wiki/1._Alt%C4%B1n_Portakal_Film_Festivali",
+    "detay": "1. Altın Portakal Ulusal Uzun Metraj Film Yarışması, 4 ve 10 Ekim 1964 tarihleri arasında gerçekleşti."
+   },
+   {
+    "year": 1914,
+    "text": "Afyon ve Burdur'u etkisi altına alan büyük depremde 300 kişi hayatını yitirdi.",
+    "title": "Afyonkarahisar_(il)",
+    "url": "https://tr.wikipedia.org/wiki/Afyonkarahisar_(il)",
+    "detay": "Afyonkarahisar, Ege Bölgesi'nin İç Batı Anadolu Bölümü'nde yer alan bir ildir. İlin nüfusu 750.193'tür. Bu nüfusun %78,07'si şehirde yaşamaktadır. İlin yüzölçümü 14.016 km²dir. İlde km²ye 53 kişi düşmektedir."
+   }
+  ],
+  "10-05": [
+   {
+    "year": 2008,
+    "text": "Kırgızistan'nın Oş şehrinde 6,6 büyüklüğünde deprem meydana geldi. 75 kişi öldü, 200'den fazla kişi yaralandı.",
+    "title": "Kırgızistan",
+    "url": "https://tr.wikipedia.org/wiki/K%C4%B1rg%C4%B1zistan",
+    "detay": "Kırgızistan, resmî adıyla Kırgız Cumhuriyeti, Orta Asya'daki bir ülkedir. Kırgızistan, günümüzdeki yedi bağımsız Türk devletlerinden biri olup Türk Devletleri Teşkilatı ve TÜRKSOY'un üyesidir. Denize kıyısı olmayan ülkenin komşuları kuzeyde Kazakistan; batıda Özbekistan, güneybatıda Tacikistan ve güneydoğuda Çin'dir."
+   },
+   {
+    "year": 1958,
+    "text": "Fransa'da 5. Cumhuriyet ilan edildi ve Charles de Gaulle Cumhurbaşkanı seçildi.",
+    "title": "Fransa",
+    "url": "https://tr.wikipedia.org/wiki/Fransa",
+    "detay": "Fransa, resmî adıyla Fransız Cumhuriyeti, Batı Avrupa'da yer alan bir ülkedir. Denizaşırı bölgeleri ve toprakları arasında Güney Amerika'daki Fransız Guyanası, Kuzey Atlantik'teki Saint Pierre ve Miquelon, Fransız Batı Hint Adaları ve Okyanusya ile Hint Okyanusu'ndaki birçok ada bulunmaktadır. Anakara Fransa, kuzeyde Belçika ve Lüksemburg; kuzeydoğuda Almanya; doğuda İsviçre; güneydoğuda İtalya ve Monako; güneyde Andorra ve İspanya; ve kuzeybatıda Birleşik Krallık ile deniz sınırı paylaşmaktadır."
+   },
+   {
+    "year": 1911,
+    "text": "İtalyan kuvvetleri, Trablusgarp'ın sahil şeridini ele geçirdi.",
+    "title": "Trablusgarp",
+    "url": "https://tr.wikipedia.org/wiki/Trablusgarp",
+    "detay": "Trablusgarp Bölgesi, Libya'yı oluşturan üç bölgeden birine eskiden verilen ad. Diğer ikisi Fizan ve Sirenayka veya Kirenayka'dır. Trablusgarp Bölgesi bugünkü Trablus şehrinin çevresine karşılık gelir."
+   }
+  ],
+  "10-06": [
+   {
+    "year": 2014,
+    "text": "Türkiye'de Kobani olayları başladı.",
+    "title": "Türkiye",
+    "url": "https://tr.wikipedia.org/wiki/T%C3%BCrkiye",
+    "detay": "Türkiye, resmî adıyla Türkiye Cumhuriyeti, topraklarının büyük bölümü Batı Asya'da Anadolu'da, diğer bir bölümü ise Güneydoğu Avrupa'nın uzantısı Doğu Trakya'da olan kıtalararası bir ülkedir. Batıda Bulgaristan ve Yunanistan, doğuda Gürcistan, Ermenistan, İran ve Azerbaycan, güneyde ise Irak ve Suriye ile sınır komşusudur. Güneyini Kıbrıs ve Akdeniz, batısını Ege Denizi, kuzeyini ise Karadeniz çevreler."
+   },
+   {
+    "year": 1976,
+    "text": "Çin lideri Mao'nun ölümünün ardından başa geçen Hua Guofeng, Kültür Devrimi'nin sona erdiğini açıkladı ve \"Dörtlü Çete\" tutuklandı.",
+    "title": "Çin",
+    "url": "https://tr.wikipedia.org/wiki/%C3%87in",
+    "detay": "Çin, resmî adıyla Çin Halk Cumhuriyeti, Doğu Asya'da Çin Komünist Partisi tarafından tek parti rejimiyle yönetilen üniter egemen devlet. 1,4 milyarı aşkın nüfusuyla Hindistan'dan sonra dünyanın en kalabalık ikinci ülkesidir ve dünya nüfusunun %17'sini temsil etmektedir. Çin, 9,6 milyon kilometrekarelik bir alanda on dört ülkeyle kara sınırına sahiptir ve bu da onu yüzölçümü bakımından üçüncü büyük ülke yapmaktadır."
+   },
+   {
+    "year": 1923,
+    "text": "İstanbul'un Kurtuluşu: Şükrü Naili Paşa komutasındaki Türk birlikleri İstanbul'a girdi ve yaklaşık 5 yıl süren işgal resmen sonlandı.",
+    "title": "İstanbul'un_Kurtuluşu",
+    "url": "https://tr.wikipedia.org/wiki/%C4%B0stanbul'un_Kurtulu%C5%9Fu",
+    "detay": "İtilaf Devletleri donanmaları 30 Ekim 1918'de imzalanan Mondros Ateşkes Antlaşması'na dayanarak 13 Kasım 1918'de Haydarpaşa önlerine demirleyip İstanbul'a girdi. Fiilen gerçekleşmiş olan işgal, 16 Mart 1920 tarihinde resmi işgale dönüştü."
+   }
+  ],
+  "10-07": [
+   {
+    "year": 2023,
+    "text": "Hamas ve diğer birkaç Filistinli militan grup İsrail'e bir saldırı başlattı ve bu saldırıda çoğunluğu sivillerden oluşan yaklaşık 1.200 kişi öldürüldü. Siviller ve askerler de dahil olmak üzere 240'tan fazla kişi rehin alındı. Saldırı İsrail-Hamas savaşını başlattı.",
+    "title": "Hamas",
+    "url": "https://tr.wikipedia.org/wiki/Hamas",
+    "detay": "Hamas veya resmî adıyla İslami Direniş Hareketi, Filistin Ulusal Yönetimi'nde seçimle belirlenmiş Filistin Parlamentosunda çoğunluğu elinde tutan Filistinli paramiliter örgüt ve Sünni İslamcı ve militarist siyasi parti."
+   },
+   {
+    "year": 1982,
+    "text": "Toplamda 7485 kez sahne alacak Cats müzikali Broadway'de prömiyerini yaptı.",
+    "title": "Cats",
+    "url": "https://tr.wikipedia.org/wiki/Cats",
+    "detay": "Cats, Andrew Lloyd Webber’in, T.S Eliot’un 'Old Possum’s Book Of Practical Cats' adlı kitabından uyarlayarak bestelediği bir müzikaldir. Müzikal, çok bilinen Memory şarkısını da bütün dünyaya tanıtmıştır."
+   },
+   {
+    "year": 1949,
+    "text": "Doğu Almanya kuruldu.",
+    "title": "Doğu_Almanya",
+    "url": "https://tr.wikipedia.org/wiki/Do%C4%9Fu_Almanya",
+    "detay": "Doğu Almanya veya resmî adıyla Demokratik Alman Cumhuriyeti, günümüzdeki Almanya'nın doğu kısmında bulunmuş, 1949 ile 1990 yılları arasında var olmuş sosyalist cumhuriyet. ADC; 1945'te II."
    }
   ]
  }
