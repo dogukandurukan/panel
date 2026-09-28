@@ -1,9 +1,9 @@
 {
  "version": 2,
- "updated": "2026-09-27 13:22",
+ "updated": "2026-09-28 14:26",
  "ok": true,
  "count": 6,
- "pool": 12,
+ "pool": 14,
  "quota": {
   "tr": 3,
   "de": 3,
@@ -11,6 +11,56 @@
   "uk": 3
  },
  "items": [
+  {
+   "id": "763226c19cc9",
+   "title": "InnoMaster Big Data Engineering - part-time Master's Program",
+   "company": "Innogames",
+   "location": "Hamburg",
+   "country": "DE",
+   "market": "international",
+   "bucket": "de",
+   "label": "DE",
+   "tier": 2,
+   "rank": 0,
+   "reserve": false,
+   "is_new": true,
+   "first_seen": "2026-09-28",
+   "workplace_type": "onsite",
+   "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.com/jobs/companies/innogames/innomaster-big-data-engineering-part-time-masters-program-hamburg-170006",
+   "publication_date": "2026-09-27",
+   "fit_score": 67,
+   "fit_reason": "rol primary +30; konum +10; beceri 1×5 +5; kıdem mid +5; tazelik +10",
+   "matched_skills": [
+    "Python"
+   ],
+   "location_reason": "Arbeitnow konumu 'Hamburg'",
+   "seniority": "mid",
+   "focus": "business",
+   "focus_scores": {
+    "ml": 1,
+    "bi": 0,
+    "pipeline": 0,
+    "business": 2
+   },
+   "language": "en",
+   "generated_at": "2026-09-28 14:26",
+   "summary": "Part-time Master's Program starting April 2027 Do you have a passion for Big Data? Do you want to make your Master studies exciting and practical? Do you wish to continue studying after your Bachelor's degree while simultaneously stepping into the professional",
+   "keywords": [
+    "cost",
+    "finance"
+   ],
+   "url": "https://www.arbeitnow.com/jobs/companies/innogames/innomaster-big-data-engineering-part-time-masters-program-hamburg-170006",
+   "skills": [
+    "python"
+   ],
+   "score": 67,
+   "posted": "2026-09-27",
+   "days": 1,
+   "remote": false,
+   "german": false
+  },
   {
    "id": "26a148080300",
    "title": "Senior Analytics Engineer (f/m/x) - Enpal Energy",
@@ -21,17 +71,17 @@
    "bucket": "de",
    "label": "DE",
    "tier": 1,
-   "rank": 0,
+   "rank": 1,
    "reserve": false,
-   "is_new": true,
+   "is_new": false,
    "first_seen": "2026-09-27",
    "workplace_type": "onsite",
    "source": "Arbeitnow",
    "also_on": [],
    "source_url": "https://www.arbeitnow.com/jobs/companies/enpal/senior-analytics-engineer-enpal-energy-berlin-8015",
    "publication_date": "2026-09-26",
-   "fit_score": 97,
-   "fit_reason": "rol primary +30; konum +15; beceri 7×5 +30; kıdem senior +5; tazelik +10",
+   "fit_score": 94,
+   "fit_reason": "rol primary +30; konum +15; beceri 7×5 +30; kıdem senior +5; tazelik +7",
    "matched_skills": [
     "SQL",
     "Python",
@@ -51,7 +101,7 @@
     "business": 5
    },
    "language": "en",
-   "generated_at": "2026-09-27 13:22",
+   "generated_at": "2026-09-28 14:26",
    "summary": "Our goal is to have a solar system on every roof, a storage unit in every house, and an electric car in every garage. Enpal makes this possible with an integrated total solution for decentralized energy—from solar systems and battery storage to wall boxes, sma",
    "keywords": [
     "energy",
@@ -75,9 +125,9 @@
     "snowflake",
     "dbt"
    ],
-   "score": 97,
+   "score": 94,
    "posted": "2026-09-26",
-   "days": 1,
+   "days": 2,
    "remote": false,
    "german": false
   },
@@ -91,17 +141,17 @@
    "bucket": "de",
    "label": "DE",
    "tier": 1,
-   "rank": 1,
+   "rank": 2,
    "reserve": false,
-   "is_new": true,
+   "is_new": false,
    "first_seen": "2026-09-27",
    "workplace_type": "onsite",
    "source": "Arbeitnow",
    "also_on": [],
    "source_url": "https://www.arbeitnow.com/jobs/companies/good-hood-gmbh/data-engineer-berlin-19767",
    "publication_date": "2026-09-26",
-   "fit_score": 92,
-   "fit_reason": "rol primary +30; konum +15; beceri 5×5 +25; kıdem mid +5; tazelik +10",
+   "fit_score": 89,
+   "fit_reason": "rol primary +30; konum +15; beceri 5×5 +25; kıdem mid +5; tazelik +7",
    "matched_skills": [
     "SQL",
     "Python",
@@ -119,7 +169,7 @@
     "business": 5
    },
    "language": "en",
-   "generated_at": "2026-09-27 13:22",
+   "generated_at": "2026-09-28 14:26",
    "summary": "Your mission We're looking for a Data Engineer to join our Information and AI Platform and own our data pipelines end to end — from data modeling to experimentation to production. Own our pipelines end-to-end, from stakeholder metric definition through dbt mod",
    "keywords": [
     "pipeline",
@@ -138,9 +188,248 @@
     "snowflake",
     "dbt"
    ],
-   "score": 92,
+   "score": 89,
    "posted": "2026-09-26",
+   "days": 2,
+   "remote": false,
+   "german": false
+  },
+  {
+   "id": "44c188a86a80",
+   "title": "Senior Data Engineer",
+   "company": "Bursonglobalcareers",
+   "location": "London",
+   "country": "UK",
+   "market": "international",
+   "bucket": "uk",
+   "label": "UK",
+   "tier": 1,
+   "rank": 0,
+   "reserve": false,
+   "is_new": true,
+   "first_seen": "2026-09-28",
+   "workplace_type": "hybrid",
+   "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/bursonglobalcareers/senior-data-engineer-london-375027",
+   "publication_date": "2026-09-27",
+   "fit_score": 87,
+   "fit_reason": "rol primary +30; konum +12; beceri 4×5 +20; kıdem senior +5; tazelik +10",
+   "matched_skills": [
+    "SQL",
+    "Python",
+    "Azure",
+    "ETL"
+   ],
+   "location_reason": "Arbeitnow konumu 'London'",
+   "seniority": "senior",
+   "focus": "pipeline",
+   "focus_scores": {
+    "ml": 0,
+    "bi": 4,
+    "pipeline": 19,
+    "business": 7
+   },
+   "language": "en",
+   "generated_at": "2026-09-28 14:26",
+   "summary": "Who we are: Burson, part of WPP, is the global communications leader built to create value for clients through reputation. With highly specialized teams, industry-leading technologies and breakthrough creative, we help brands and businesses redefine reputation",
+   "keywords": [
+    "enterprise",
+    "pipeline",
+    "scalab",
+    "cost",
+    "optimization",
+    "governance"
+   ],
+   "url": "https://www.arbeitnow.co.uk/jobs/companies/bursonglobalcareers/senior-data-engineer-london-375027",
+   "skills": [
+    "sql",
+    "python",
+    "azure",
+    "etl"
+   ],
+   "score": 87,
+   "posted": "2026-09-27",
    "days": 1,
+   "remote": false,
+   "german": false
+  },
+  {
+   "id": "bbbe0ccae13e",
+   "title": "Security Analytics Engineer",
+   "company": "sonyinteractiveentertainmentglobal",
+   "location": "London",
+   "country": "UK",
+   "market": "international",
+   "bucket": "uk",
+   "label": "UK",
+   "tier": 1,
+   "rank": 1,
+   "reserve": false,
+   "is_new": true,
+   "first_seen": "2026-09-28",
+   "workplace_type": "onsite",
+   "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/sonyinteractiveentertainmentglobal/security-analytics-engineer-london-453235",
+   "publication_date": "2026-09-28",
+   "fit_score": 84,
+   "fit_reason": "rol primary +30; konum +12; beceri 4×5 +20; kıdem mid +5; tazelik +10",
+   "matched_skills": [
+    "SQL",
+    "Python",
+    "Snowflake",
+    "dbt"
+   ],
+   "location_reason": "Arbeitnow konumu 'London'",
+   "seniority": "mid",
+   "focus": "pipeline",
+   "focus_scores": {
+    "ml": 1,
+    "bi": 9,
+    "pipeline": 19,
+    "business": 4
+   },
+   "language": "en",
+   "generated_at": "2026-09-28 14:26",
+   "summary": "Why Sony Interactive Entertainment? Sony Interactive Entertainment isn’t just the Best Place to Play — it’s also the Best Place to Work. Sony Interactive Entertainment (SIE) is the company behind the PlayStation brand. As a subsidiary of Sony Group Corporation",
+   "keywords": [
+    "pipeline",
+    "dashboard",
+    "automation",
+    "stakeholder",
+    "data quality",
+    "governance"
+   ],
+   "url": "https://www.arbeitnow.co.uk/jobs/companies/sonyinteractiveentertainmentglobal/security-analytics-engineer-london-453235",
+   "skills": [
+    "sql",
+    "python",
+    "snowflake",
+    "dbt"
+   ],
+   "score": 84,
+   "posted": "2026-09-28",
+   "days": 0,
+   "remote": false,
+   "german": false
+  },
+  {
+   "id": "52013fb646ae",
+   "title": "Senior Analytics Engineer",
+   "company": "Deliveroo",
+   "location": "London",
+   "country": "UK",
+   "market": "international",
+   "bucket": "uk",
+   "label": "UK",
+   "tier": 1,
+   "rank": 2,
+   "reserve": false,
+   "is_new": false,
+   "first_seen": "2026-09-26",
+   "workplace_type": "onsite",
+   "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/deliveroo/senior-analytics-engineer-london-49716",
+   "publication_date": "2026-09-27",
+   "fit_score": 84,
+   "fit_reason": "rol primary +30; konum +12; beceri 4×5 +20; kıdem senior +5; tazelik +10",
+   "matched_skills": [
+    "SQL",
+    "Python",
+    "ETL",
+    "Snowflake"
+   ],
+   "location_reason": "Arbeitnow konumu 'London'",
+   "seniority": "senior",
+   "focus": "pipeline",
+   "focus_scores": {
+    "ml": 3,
+    "bi": 7,
+    "pipeline": 12,
+    "business": 1
+   },
+   "language": "en",
+   "generated_at": "2026-09-28 14:26",
+   "summary": "Our Global Structure Deliveroo is now part of DoorDash, bringing together teams with even greater reach, scale, and ambition. Depending on your role, you may collaborate with teammates, systems, and leaders across DoorDash and Wolt. Together, we’re unlocking n",
+   "keywords": [
+    "optimisation",
+    "automation",
+    "finance"
+   ],
+   "url": "https://www.arbeitnow.co.uk/jobs/companies/deliveroo/senior-analytics-engineer-london-49716",
+   "skills": [
+    "sql",
+    "python",
+    "etl",
+    "snowflake"
+   ],
+   "score": 84,
+   "posted": "2026-09-27",
+   "days": 1,
+   "remote": false,
+   "german": false
+  }
+ ],
+ "reserve": [
+  {
+   "id": "2e0a1e77dd75",
+   "title": "Data Platform Engineer (m/f/d)",
+   "company": "Flix",
+   "location": "Berlin, Berlin, Germany",
+   "country": "DE",
+   "market": "international",
+   "bucket": "de",
+   "label": "DE",
+   "tier": 1,
+   "rank": 3,
+   "reserve": true,
+   "is_new": false,
+   "first_seen": "2026-09-26",
+   "workplace_type": "onsite",
+   "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.com/jobs/companies/flix/data-platform-engineer-berlin-324571",
+   "publication_date": "2026-09-26",
+   "fit_score": 89,
+   "fit_reason": "rol primary +30; konum +15; beceri 5×5 +25; kıdem mid +5; tazelik +7",
+   "matched_skills": [
+    "SQL",
+    "Python",
+    "PySpark",
+    "Snowflake",
+    "dbt"
+   ],
+   "location_reason": "Arbeitnow konumu 'Berlin, Berlin, Germany'",
+   "seniority": "mid",
+   "focus": "pipeline",
+   "focus_scores": {
+    "ml": 2,
+    "bi": 0,
+    "pipeline": 23,
+    "business": 4
+   },
+   "language": "en",
+   "generated_at": "2026-09-28 14:26",
+   "summary": "We're looking for a Data Platform Engineer (m/f/d) to join our team and help build and operate the data infrastructure that powers Flix's mobility platform. At FlixTech, our data platform enables teams across the company to process, analyze, and act on large v",
+   "keywords": [
+    "scalab",
+    "stakeholder",
+    "automation",
+    "pipeline"
+   ],
+   "url": "https://www.arbeitnow.com/jobs/companies/flix/data-platform-engineer-berlin-324571",
+   "skills": [
+    "sql",
+    "python",
+    "pyspark",
+    "snowflake",
+    "dbt"
+   ],
+   "score": 89,
+   "posted": "2026-09-26",
+   "days": 2,
    "remote": false,
    "german": false
   },
@@ -154,9 +443,9 @@
    "bucket": "de",
    "label": "DE",
    "tier": 1,
-   "rank": 2,
-   "reserve": false,
-   "is_new": true,
+   "rank": 4,
+   "reserve": true,
+   "is_new": false,
    "first_seen": "2026-09-27",
    "workplace_type": "onsite",
    "source": "Arbeitnow",
@@ -180,7 +469,7 @@
     "business": 13
    },
    "language": "en",
-   "generated_at": "2026-09-27 13:22",
+   "generated_at": "2026-09-28 14:26",
    "summary": "Your mission We're a small data team with a big job: helping everyone at Cosuno make better decisions. Our data platform is stable and in good hands. What we need now is someone who takes our most important, open-ended business questions and answers them prope",
    "keywords": [
     "dashboard",
@@ -196,279 +485,7 @@
    ],
    "score": 79,
    "posted": "2026-09-25",
-   "days": 2,
-   "remote": false,
-   "german": false
-  },
-  {
-   "id": "d59b9fdbe9f5",
-   "title": "Machine Learning Engineer",
-   "company": "Grahamcapitalmanagement",
-   "location": "London",
-   "country": "UK",
-   "market": "international",
-   "bucket": "uk",
-   "label": "UK",
-   "tier": 1,
-   "rank": 0,
-   "reserve": false,
-   "is_new": true,
-   "first_seen": "2026-09-27",
-   "workplace_type": "onsite",
-   "source": "Arbeitnow",
-   "also_on": [],
-   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/grahamcapitalmanagement/machine-learning-engineer-london-412766",
-   "publication_date": "2026-09-27",
-   "fit_score": 67,
-   "fit_reason": "rol secondary +18; konum +12; beceri 3×5 +15; kıdem mid +5; tazelik +10",
-   "matched_skills": [
-    "SQL",
-    "Python",
-    "PySpark"
-   ],
-   "location_reason": "Arbeitnow konumu 'London'",
-   "seniority": "mid",
-   "focus": "ml",
-   "focus_scores": {
-    "ml": 18,
-    "bi": 0,
-    "pipeline": 1,
-    "business": 8
-   },
-   "language": "en",
-   "generated_at": "2026-09-27 13:22",
-   "summary": "Graham Capital Management, L.P. (collectively with its affiliates, \"Graham\") is an alternative investment manager founded in 1994 by Kenneth G. Tropin. Specializing in discretionary and quantitative macro strategies, Graham is dedicated to delivering strong, u",
-   "keywords": [
-    "stakeholder",
-    "forecast",
-    "optimization"
-   ],
-   "url": "https://www.arbeitnow.co.uk/jobs/companies/grahamcapitalmanagement/machine-learning-engineer-london-412766",
-   "skills": [
-    "sql",
-    "python",
-    "pyspark"
-   ],
-   "score": 67,
-   "posted": "2026-09-27",
-   "days": 0,
-   "remote": false,
-   "german": false
-  },
-  {
-   "id": "687f46dbf188",
-   "title": "Senior Data Scientist (Economist)",
-   "company": "Deliveroo",
-   "location": "London",
-   "country": "UK",
-   "market": "international",
-   "bucket": "uk",
-   "label": "UK",
-   "tier": 1,
-   "rank": 1,
-   "reserve": false,
-   "is_new": true,
-   "first_seen": "2026-09-27",
-   "workplace_type": "onsite",
-   "source": "Arbeitnow",
-   "also_on": [],
-   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/deliveroo/senior-data-scientist-economist-london-338243",
-   "publication_date": "2026-09-27",
-   "fit_score": 62,
-   "fit_reason": "rol secondary +18; konum +12; beceri 2×5 +10; kıdem senior +5; tazelik +10",
-   "matched_skills": [
-    "SQL",
-    "Python"
-   ],
-   "location_reason": "Arbeitnow konumu 'London'",
-   "seniority": "senior",
-   "focus": "ml",
-   "focus_scores": {
-    "ml": 15,
-    "bi": 0,
-    "pipeline": 0,
-    "business": 6
-   },
-   "language": "en",
-   "generated_at": "2026-09-27 13:22",
-   "summary": "Our Global Structure Deliveroo is now part of DoorDash, bringing together teams with even greater reach, scale, and ambition. Depending on your role, you may collaborate with teammates, systems, and leaders across DoorDash and Wolt. Together, we’re unlocking n",
-   "keywords": [
-    "experimentation",
-    "stakeholder"
-   ],
-   "url": "https://www.arbeitnow.co.uk/jobs/companies/deliveroo/senior-data-scientist-economist-london-338243",
-   "skills": [
-    "sql",
-    "python"
-   ],
-   "score": 62,
-   "posted": "2026-09-27",
-   "days": 0,
-   "remote": false,
-   "german": false
-  },
-  {
-   "id": "c1b0c7f37f01",
-   "title": "Junior Data Scientist",
-   "company": "Livescore9",
-   "location": "London",
-   "country": "UK",
-   "market": "international",
-   "bucket": "uk",
-   "label": "UK",
-   "tier": 1,
-   "rank": 2,
-   "reserve": false,
-   "is_new": true,
-   "first_seen": "2026-09-27",
-   "workplace_type": "hybrid",
-   "source": "Arbeitnow",
-   "also_on": [],
-   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/livescore9/junior-data-scientist-london-385613",
-   "publication_date": "2026-09-26",
-   "fit_score": 45,
-   "fit_reason": "rol secondary +18; konum +12; beceri 2×5 +10; kıdem junior -15; tazelik +10",
-   "matched_skills": [
-    "SQL",
-    "Python"
-   ],
-   "location_reason": "Arbeitnow konumu 'London'",
-   "seniority": "junior",
-   "focus": "ml",
-   "focus_scores": {
-    "ml": 16,
-    "bi": 1,
-    "pipeline": 4,
-    "business": 8
-   },
-   "language": "en",
-   "generated_at": "2026-09-27 13:22",
-   "summary": "Soho, London Hybrid working: 3 days in the office Tues - Thurs The Role We are looking for a brilliant and motivated Junior Data Scientist to join our Marketing Analytics team. In this role, you will help us measure, optimize, and supercharge our marketing inv",
-   "keywords": [
-    "pipeline",
-    "optimization",
-    "stakeholder",
-    "data quality",
-    "experimentation",
-    "a/b"
-   ],
-   "url": "https://www.arbeitnow.co.uk/jobs/companies/livescore9/junior-data-scientist-london-385613",
-   "skills": [
-    "sql",
-    "python"
-   ],
-   "score": 45,
-   "posted": "2026-09-26",
-   "days": 1,
-   "remote": false,
-   "german": false
-  }
- ],
- "reserve": [
-  {
-   "id": "30d3c0ab5748",
-   "title": "Data Scientist / Data Engineer",
-   "company": "Nucs AI",
-   "location": "Germany",
-   "country": "DE",
-   "market": "international",
-   "bucket": "de",
-   "label": "DE",
-   "tier": 3,
-   "rank": 3,
-   "reserve": true,
-   "is_new": true,
-   "first_seen": "2026-09-27",
-   "workplace_type": "remote",
-   "source": "Himalayas",
-   "also_on": [],
-   "source_url": "https://himalayas.app/companies/nucs-ai/jobs/data-scientist-data-engineer",
-   "publication_date": "2026-09-27",
-   "fit_score": 63,
-   "fit_reason": "rol primary +30; konum +9; beceri 0×5 +0; kıdem mid +5; tazelik +10",
-   "matched_skills": [],
-   "location_reason": "Remotive candidate_required_location 'Germany'",
-   "seniority": "mid",
-   "focus": "pipeline",
-   "focus_scores": {
-    "ml": 9,
-    "bi": 1,
-    "pipeline": 10,
-    "business": 1
-   },
-   "language": "en",
-   "generated_at": "2026-09-27 13:22",
-   "summary": "About Nucs AI Nucs AI is revolutionizing cancer care through cutting-edge AI and medical imaging technology. Founded in 2024 by a multidisciplinary team of oncologists, AI researchers, and healthcare innovators, we’re tackling one of medicine’s most pressing c",
-   "keywords": [
-    "pipeline",
-    "data quality",
-    "dashboard"
-   ],
-   "url": "https://himalayas.app/companies/nucs-ai/jobs/data-scientist-data-engineer",
-   "skills": [],
-   "score": 63,
-   "posted": "2026-09-27",
-   "days": 0,
-   "remote": true,
-   "german": false
-  },
-  {
-   "id": "2e0a1e77dd75",
-   "title": "Data Platform Engineer (m/f/d)",
-   "company": "Flix",
-   "location": "Berlin, Berlin, Germany",
-   "country": "DE",
-   "market": "international",
-   "bucket": "de",
-   "label": "DE",
-   "tier": 1,
-   "rank": 4,
-   "reserve": true,
-   "is_new": false,
-   "first_seen": "2026-09-26",
-   "workplace_type": "onsite",
-   "source": "Arbeitnow",
-   "also_on": [],
-   "source_url": "https://www.arbeitnow.com/jobs/companies/flix/data-platform-engineer-berlin-324571",
-   "publication_date": "2026-09-26",
-   "fit_score": 92,
-   "fit_reason": "rol primary +30; konum +15; beceri 5×5 +25; kıdem mid +5; tazelik +10",
-   "matched_skills": [
-    "SQL",
-    "Python",
-    "PySpark",
-    "Snowflake",
-    "dbt"
-   ],
-   "location_reason": "Arbeitnow konumu 'Berlin, Berlin, Germany'",
-   "seniority": "mid",
-   "focus": "pipeline",
-   "focus_scores": {
-    "ml": 2,
-    "bi": 0,
-    "pipeline": 23,
-    "business": 4
-   },
-   "language": "en",
-   "generated_at": "2026-09-27 13:22",
-   "summary": "We're looking for a Data Platform Engineer (m/f/d) to join our team and help build and operate the data infrastructure that powers Flix's mobility platform. At FlixTech, our data platform enables teams across the company to process, analyze, and act on large v",
-   "keywords": [
-    "scalab",
-    "stakeholder",
-    "automation",
-    "pipeline"
-   ],
-   "url": "https://www.arbeitnow.com/jobs/companies/flix/data-platform-engineer-berlin-324571",
-   "skills": [
-    "sql",
-    "python",
-    "pyspark",
-    "snowflake",
-    "dbt"
-   ],
-   "score": 92,
-   "posted": "2026-09-26",
-   "days": 1,
+   "days": 3,
    "remote": false,
    "german": false
   },
@@ -511,7 +528,7 @@
     "business": 2
    },
    "language": "en",
-   "generated_at": "2026-09-27 13:22",
+   "generated_at": "2026-09-28 14:26",
    "summary": "Your Mission This is a company built for growth. When you join exmox, you're stepping onto a global, highly competitive playing field, building high-performing consumer products in mobile gaming. We're scaling a rewarded user engagement and acquisition platfor",
    "keywords": [
     "pipeline",
@@ -531,7 +548,7 @@
    ],
    "score": 92,
    "posted": "2026-09-27",
-   "days": 0,
+   "days": 1,
    "remote": false,
    "german": false
   },
@@ -554,8 +571,8 @@
    "also_on": [],
    "source_url": "https://www.arbeitnow.com/jobs/companies/metycle/data-analyst-cologne-ger-27415",
    "publication_date": "2026-09-26",
-   "fit_score": 82,
-   "fit_reason": "rol primary +30; konum +10; beceri 4×5 +20; kıdem mid +5; tazelik +10",
+   "fit_score": 79,
+   "fit_reason": "rol primary +30; konum +10; beceri 4×5 +20; kıdem mid +5; tazelik +7",
    "matched_skills": [
     "SQL",
     "Databricks",
@@ -572,7 +589,7 @@
     "business": 15
    },
    "language": "en",
-   "generated_at": "2026-09-27 13:22",
+   "generated_at": "2026-09-28 14:26",
    "summary": "ABOUT US METYCLE: where innovation meets sustainability We are reshaping the global secondary metals industry to accelerate the circular flow of metals. By combining global trading, advanced processing and digital intelligence, we make secondary metals more pr",
    "keywords": [
     "scalab",
@@ -592,17 +609,17 @@
     "snowflake",
     "dbt"
    ],
-   "score": 82,
+   "score": 79,
    "posted": "2026-09-26",
-   "days": 1,
+   "days": 2,
    "remote": false,
    "german": false
   },
   {
-   "id": "2cba7e2540f7",
-   "title": "ML Data Engineer (m/f/d) - Sensor Data & Pipelines",
-   "company": "autonomous-teaming",
-   "location": "Munich (DEU)",
+   "id": "984c5f8aed57",
+   "title": "Data Engineer (m/f/d)",
+   "company": "Ecoplanet Green Operations Gmbh",
+   "location": "München",
    "country": "DE",
    "market": "international",
    "bucket": "de",
@@ -615,48 +632,52 @@
    "workplace_type": "onsite",
    "source": "Arbeitnow",
    "also_on": [],
-   "source_url": "https://www.arbeitnow.com/jobs/companies/autonomous-teaming/ml-data-engineer-sensor-data-pipelines-munich-deu-455358",
+   "source_url": "https://www.arbeitnow.com/jobs/companies/ecoplanet-green-operations-gmbh/data-engineer-munchen-449957",
    "publication_date": "2026-09-25",
-   "fit_score": 74,
-   "fit_reason": "rol primary +30; konum +10; beceri 3×5 +15; kıdem mid +5; tazelik +7",
+   "fit_score": 69,
+   "fit_reason": "rol primary +30; konum +10; beceri 2×5 +10; kıdem mid +5; tazelik +7",
    "matched_skills": [
     "SQL",
-    "Python",
-    "ETL"
+    "Python"
    ],
-   "location_reason": "Arbeitnow konumu 'Munich (DEU)'",
+   "location_reason": "Arbeitnow konumu 'München'",
    "seniority": "mid",
    "focus": "pipeline",
    "focus_scores": {
-    "ml": 8,
-    "bi": 1,
-    "pipeline": 18,
+    "ml": 2,
+    "bi": 2,
+    "pipeline": 14,
     "business": 4
    },
    "language": "en",
-   "generated_at": "2026-09-27 13:22",
-   "summary": "What we offer Work in an international, agile team creating the future of autonomous systems Grow your career in a expanding and ambitious engineering team Build innovative products using state-of-the-art technologies in AI, robotics, and autonomy Benefit from",
+   "generated_at": "2026-09-28 14:26",
+   "summary": "What we are building At ecoplanet, we're redefining energy for tomorrow. Our mission: turn energy management into the competitive edge every European business relies on to win its market. We're building the operating system for the energy transition — cutting ",
    "keywords": [
-    "pipeline",
+    "energy",
+    "cost",
+    "dashboard",
+    "forecast",
+    "real-time",
     "scalab",
-    "dashboard"
+    "pipeline",
+    "anomaly",
+    "data quality"
    ],
-   "url": "https://www.arbeitnow.com/jobs/companies/autonomous-teaming/ml-data-engineer-sensor-data-pipelines-munich-deu-455358",
+   "url": "https://www.arbeitnow.com/jobs/companies/ecoplanet-green-operations-gmbh/data-engineer-munchen-449957",
    "skills": [
     "sql",
-    "python",
-    "etl"
+    "python"
    ],
-   "score": 74,
+   "score": 69,
    "posted": "2026-09-25",
-   "days": 2,
+   "days": 3,
    "remote": false,
    "german": false
   },
   {
-   "id": "52013fb646ae",
+   "id": "2003e5d33c4b",
    "title": "Senior Analytics Engineer",
-   "company": "Deliveroo",
+   "company": "Materialbank",
    "location": "London",
    "country": "UK",
    "market": "international",
@@ -667,46 +688,159 @@
    "reserve": true,
    "is_new": false,
    "first_seen": "2026-09-26",
-   "workplace_type": "onsite",
+   "workplace_type": "hybrid",
    "source": "Arbeitnow",
    "also_on": [],
-   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/deliveroo/senior-analytics-engineer-london-49716",
+   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/materialbank/senior-analytics-engineer-london-245078",
    "publication_date": "2026-09-27",
-   "fit_score": 84,
-   "fit_reason": "rol primary +30; konum +12; beceri 4×5 +20; kıdem senior +5; tazelik +10",
+   "fit_score": 82,
+   "fit_reason": "rol primary +30; konum +12; beceri 5×5 +25; kıdem senior -5; tazelik +10",
    "matched_skills": [
     "SQL",
     "Python",
-    "ETL",
-    "Snowflake"
+    "Tableau",
+    "Snowflake",
+    "dbt"
    ],
    "location_reason": "Arbeitnow konumu 'London'",
    "seniority": "senior",
    "focus": "pipeline",
    "focus_scores": {
-    "ml": 3,
-    "bi": 7,
-    "pipeline": 12,
-    "business": 1
+    "ml": 0,
+    "bi": 10,
+    "pipeline": 11,
+    "business": 8
    },
    "language": "en",
-   "generated_at": "2026-09-27 13:22",
-   "summary": "Our Global Structure Deliveroo is now part of DoorDash, bringing together teams with even greater reach, scale, and ambition. Depending on your role, you may collaborate with teammates, systems, and leaders across DoorDash and Wolt. Together, we’re unlocking n",
+   "generated_at": "2026-09-28 14:26",
+   "summary": "Material Bank is the world’s largest material marketplace for the architecture and design industry. Operating in 37 countries, our platform has become the standard for design professionals around the globe. Every day, Material Bank connects thousands of design",
    "keywords": [
-    "optimisation",
+    "dashboard",
+    "stakeholder",
     "automation",
-    "finance"
+    "e-commerce",
+    "saas",
+    "experimentation",
+    "a/b"
    ],
-   "url": "https://www.arbeitnow.co.uk/jobs/companies/deliveroo/senior-analytics-engineer-london-49716",
+   "url": "https://www.arbeitnow.co.uk/jobs/companies/materialbank/senior-analytics-engineer-london-245078",
    "skills": [
     "sql",
     "python",
-    "etl",
-    "snowflake"
+    "tableau",
+    "snowflake",
+    "dbt"
    ],
-   "score": 84,
+   "score": 82,
    "posted": "2026-09-27",
-   "days": 0,
+   "days": 1,
+   "remote": false,
+   "german": false
+  },
+  {
+   "id": "d59b9fdbe9f5",
+   "title": "Machine Learning Engineer",
+   "company": "Grahamcapitalmanagement",
+   "location": "London",
+   "country": "UK",
+   "market": "international",
+   "bucket": "uk",
+   "label": "UK",
+   "tier": 1,
+   "rank": 4,
+   "reserve": true,
+   "is_new": false,
+   "first_seen": "2026-09-27",
+   "workplace_type": "onsite",
+   "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/grahamcapitalmanagement/machine-learning-engineer-london-412766",
+   "publication_date": "2026-09-27",
+   "fit_score": 67,
+   "fit_reason": "rol secondary +18; konum +12; beceri 3×5 +15; kıdem mid +5; tazelik +10",
+   "matched_skills": [
+    "SQL",
+    "Python",
+    "PySpark"
+   ],
+   "location_reason": "Arbeitnow konumu 'London'",
+   "seniority": "mid",
+   "focus": "ml",
+   "focus_scores": {
+    "ml": 18,
+    "bi": 0,
+    "pipeline": 1,
+    "business": 8
+   },
+   "language": "en",
+   "generated_at": "2026-09-28 14:26",
+   "summary": "Graham Capital Management, L.P. (collectively with its affiliates, \"Graham\") is an alternative investment manager founded in 1994 by Kenneth G. Tropin. Specializing in discretionary and quantitative macro strategies, Graham is dedicated to delivering strong, u",
+   "keywords": [
+    "stakeholder",
+    "forecast",
+    "optimization"
+   ],
+   "url": "https://www.arbeitnow.co.uk/jobs/companies/grahamcapitalmanagement/machine-learning-engineer-london-412766",
+   "skills": [
+    "sql",
+    "python",
+    "pyspark"
+   ],
+   "score": 67,
+   "posted": "2026-09-27",
+   "days": 1,
+   "remote": false,
+   "german": false
+  },
+  {
+   "id": "687f46dbf188",
+   "title": "Senior Data Scientist (Economist)",
+   "company": "Deliveroo",
+   "location": "London",
+   "country": "UK",
+   "market": "international",
+   "bucket": "uk",
+   "label": "UK",
+   "tier": 1,
+   "rank": 5,
+   "reserve": true,
+   "is_new": false,
+   "first_seen": "2026-09-27",
+   "workplace_type": "onsite",
+   "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/deliveroo/senior-data-scientist-economist-london-338243",
+   "publication_date": "2026-09-27",
+   "fit_score": 62,
+   "fit_reason": "rol secondary +18; konum +12; beceri 2×5 +10; kıdem senior +5; tazelik +10",
+   "matched_skills": [
+    "SQL",
+    "Python"
+   ],
+   "location_reason": "Arbeitnow konumu 'London'",
+   "seniority": "senior",
+   "focus": "ml",
+   "focus_scores": {
+    "ml": 15,
+    "bi": 0,
+    "pipeline": 0,
+    "business": 6
+   },
+   "language": "en",
+   "generated_at": "2026-09-28 14:26",
+   "summary": "Our Global Structure Deliveroo is now part of DoorDash, bringing together teams with even greater reach, scale, and ambition. Depending on your role, you may collaborate with teammates, systems, and leaders across DoorDash and Wolt. Together, we’re unlocking n",
+   "keywords": [
+    "experimentation",
+    "stakeholder"
+   ],
+   "url": "https://www.arbeitnow.co.uk/jobs/companies/deliveroo/senior-data-scientist-economist-london-338243",
+   "skills": [
+    "sql",
+    "python"
+   ],
+   "score": 62,
+   "posted": "2026-09-27",
+   "days": 1,
    "remote": false,
    "german": false
   }
@@ -718,9 +852,9 @@
     "istanbul_hibrit": 0,
     "istanbul_onsite": 0
    },
-   "de": 11,
+   "de": 9,
    "nl": 0,
-   "uk": 4
+   "uk": 6
   },
   "selected": {
    "tr": 0,
@@ -739,16 +873,14 @@
    }
   },
   "eliminated": {
-   "rol dışı (hedef rol yok)": 1157,
-   "rol dışı (başlık)": 675,
-   "Almanca ilan": 13,
-   "ülke belirlenemedi": 11,
+   "rol dışı (hedef rol yok)": 1088,
+   "rol dışı (başlık)": 748,
+   "Almanca ilan": 14,
+   "ülke belirlenemedi": 15,
+   "ileri seviye Almanca şartı": 2,
    "ML/DS rolü, beceri örtüşmesi zayıf": 1,
-   "ileri seviye Almanca şartı": 1,
-   "dünya geneli remote (Türkiye ilanı değil)": 3,
-   "Remotive candidate_required_location 'United States'": 7,
-   "Remotive candidate_required_location 'Canada'": 1,
-   "Remotive candidate_required_location 'Panama, United States'": 1,
+   "dünya geneli remote (Türkiye ilanı değil)": 1,
+   "Remotive candidate_required_location 'United States'": 1,
    "yayın tarihi eski": 2
   }
  },
@@ -1388,7 +1520,7 @@
   "984c5f8aed57": {
    "first_seen": "2026-09-21",
    "status": "listed",
-   "last_seen": "2026-09-27"
+   "last_seen": "2026-09-28"
   },
   "a500f24e49ee": {
    "first_seen": "2026-09-21",
@@ -1398,7 +1530,7 @@
   "497413e7eed4": {
    "first_seen": "2026-09-21",
    "status": "listed",
-   "last_seen": "2026-09-27"
+   "last_seen": "2026-09-28"
   },
   "81d63264ce6a": {
    "first_seen": "2026-09-21",
@@ -1463,12 +1595,12 @@
   "0f5a255c397e": {
    "first_seen": "2026-09-23",
    "status": "listed",
-   "last_seen": "2026-09-27"
+   "last_seen": "2026-09-28"
   },
   "46896f42874a": {
    "first_seen": "2026-09-23",
    "status": "listed",
-   "last_seen": "2026-09-27"
+   "last_seen": "2026-09-28"
   },
   "71dcf0067fd2": {
    "first_seen": "2026-09-23",
@@ -1613,7 +1745,7 @@
   "2e0a1e77dd75": {
    "first_seen": "2026-09-26",
    "status": "listed",
-   "last_seen": "2026-09-27"
+   "last_seen": "2026-09-28"
   },
   "1d4500532322": {
    "first_seen": "2026-09-26",
@@ -1628,12 +1760,12 @@
   "52013fb646ae": {
    "first_seen": "2026-09-26",
    "status": "listed",
-   "last_seen": "2026-09-27"
+   "last_seen": "2026-09-28"
   },
   "2003e5d33c4b": {
    "first_seen": "2026-09-26",
    "status": "listed",
-   "last_seen": "2026-09-26"
+   "last_seen": "2026-09-28"
   },
   "db32ca003906": {
    "first_seen": "2026-09-26",
@@ -1648,27 +1780,27 @@
   "26a148080300": {
    "first_seen": "2026-09-27",
    "status": "listed",
-   "last_seen": "2026-09-27"
+   "last_seen": "2026-09-28"
   },
   "2d4e227874c6": {
    "first_seen": "2026-09-27",
    "status": "listed",
-   "last_seen": "2026-09-27"
+   "last_seen": "2026-09-28"
   },
   "71664b3c27a2": {
    "first_seen": "2026-09-27",
    "status": "listed",
-   "last_seen": "2026-09-27"
+   "last_seen": "2026-09-28"
   },
   "d59b9fdbe9f5": {
    "first_seen": "2026-09-27",
    "status": "listed",
-   "last_seen": "2026-09-27"
+   "last_seen": "2026-09-28"
   },
   "687f46dbf188": {
    "first_seen": "2026-09-27",
    "status": "listed",
-   "last_seen": "2026-09-27"
+   "last_seen": "2026-09-28"
   },
   "c1b0c7f37f01": {
    "first_seen": "2026-09-27",
@@ -1679,6 +1811,21 @@
    "first_seen": "2026-09-27",
    "status": "listed",
    "last_seen": "2026-09-27"
+  },
+  "763226c19cc9": {
+   "first_seen": "2026-09-28",
+   "status": "listed",
+   "last_seen": "2026-09-28"
+  },
+  "44c188a86a80": {
+   "first_seen": "2026-09-28",
+   "status": "listed",
+   "last_seen": "2026-09-28"
+  },
+  "bbbe0ccae13e": {
+   "first_seen": "2026-09-28",
+   "status": "listed",
+   "last_seen": "2026-09-28"
   }
  },
  "note": "Kaynak: Arbeitnow + Remotive. Basvuruyu kullanici kendisi yapar."
