@@ -1,9 +1,9 @@
 {
  "version": 2,
- "updated": "2026-10-05 15:02",
+ "updated": "2026-10-06 14:48",
  "ok": true,
- "count": 6,
- "pool": 6,
+ "count": 5,
+ "pool": 9,
  "quota": {
   "tr": 3,
   "de": 3,
@@ -12,10 +12,10 @@
  },
  "items": [
   {
-   "id": "8e83c3a964a5",
-   "title": "Staff Data Platform Engineer",
-   "company": "Kayak",
-   "location": "Berlin Office",
+   "id": "0a5357073e22",
+   "title": "Manager - Tax Data Analytics Engineer",
+   "company": "Wolt - English",
+   "location": "Berlin, Germany",
    "country": "DE",
    "market": "international",
    "bucket": "de",
@@ -23,49 +23,404 @@
    "tier": 1,
    "rank": 0,
    "reserve": false,
-   "is_new": false,
-   "first_seen": "2026-10-03",
+   "is_new": true,
+   "first_seen": "2026-10-06",
    "workplace_type": "onsite",
    "source": "Arbeitnow",
-   "also_on": [],
-   "source_url": "https://www.arbeitnow.com/jobs/companies/kayak/staff-data-platform-engineer-berlin-323763",
-   "publication_date": "2026-10-03",
-   "fit_score": 63,
-   "fit_reason": "rol primary +30; konum +15; beceri 2×5 +10; kıdem lead -6; tazelik +7",
-   "matched_skills": [
-    "Python",
-    "Airflow"
+   "also_on": [
+    "Arbeitnow"
    ],
-   "location_reason": "Arbeitnow konumu 'Berlin Office'",
-   "seniority": "lead",
+   "source_url": "https://www.arbeitnow.com/jobs/companies/wolt-english/manager-tax-data-analytics-engineer-berlin-257915",
+   "publication_date": "2026-10-05",
+   "fit_score": 84,
+   "fit_reason": "rol primary +30; konum +15; beceri 7×5 +30; kıdem manager -8; tazelik +10",
+   "matched_skills": [
+    "SQL",
+    "Python",
+    "ETL",
+    "Airflow",
+    "PySpark",
+    "Snowflake",
+    "dbt"
+   ],
+   "location_reason": "Arbeitnow konumu 'Berlin, Germany'",
+   "seniority": "manager",
    "focus": "pipeline",
    "focus_scores": {
     "ml": 1,
-    "bi": 2,
-    "pipeline": 26,
-    "business": 4
+    "bi": 3,
+    "pipeline": 18,
+    "business": 2
    },
    "language": "en",
-   "generated_at": "2026-10-05 15:02",
-   "summary": "KAYAK, part of Booking Holdings (NASDAQ: BKNG), is a leading travel search engine. With billions of queries across our platforms, we help people find their perfect flight, stay, rental car and vacation package. We're also transforming business travel with a ne",
+   "generated_at": "2026-10-06 14:48",
+   "summary": "About Wolt At Wolt, we create technology that brings joy, simplicity and earnings to the neighborhoods of the world. In 2014 we started with delivery of restaurant food. Now we're building the delivery of (almost) everything and you'll find us in over 500 citi",
    "keywords": [
-    "real-time",
-    "cost",
-    "governance",
+    "pipeline",
+    "scalab",
+    "data quality"
+   ],
+   "url": "https://www.arbeitnow.com/jobs/companies/wolt-english/manager-tax-data-analytics-engineer-berlin-257915",
+   "skills": [
+    "sql",
+    "python",
+    "etl",
+    "airflow",
+    "pyspark",
+    "snowflake",
+    "dbt"
+   ],
+   "score": 84,
+   "posted": "2026-10-05",
+   "days": 1,
+   "remote": false,
+   "german": false
+  },
+  {
+   "id": "c27281295a52",
+   "title": "Product Data Engineer - m/f/d",
+   "company": "Langdock",
+   "location": "Berlin",
+   "country": "DE",
+   "market": "international",
+   "bucket": "de",
+   "label": "DE",
+   "tier": 1,
+   "rank": 1,
+   "reserve": false,
+   "is_new": true,
+   "first_seen": "2026-10-06",
+   "workplace_type": "onsite",
+   "source": "Arbeitnow",
+   "also_on": [
+    "Arbeitnow"
+   ],
+   "source_url": "https://www.arbeitnow.com/jobs/companies/langdock/product-data-engineer-berlin-29508",
+   "publication_date": "2026-10-05",
+   "fit_score": 77,
+   "fit_reason": "rol primary +30; konum +15; beceri 2×5 +10; kıdem mid +5; tazelik +10",
+   "matched_skills": [
+    "SQL",
+    "dbt"
+   ],
+   "location_reason": "Arbeitnow konumu 'Berlin'",
+   "seniority": "mid",
+   "focus": "pipeline",
+   "focus_scores": {
+    "ml": 0,
+    "bi": 6,
+    "pipeline": 16,
+    "business": 1
+   },
+   "language": "en",
+   "generated_at": "2026-10-06 14:48",
+   "summary": "Where Europe's enterprises adopt AI Langdock is the AI platform used by more than 10,000 companies to give employees secure access to the leading AI models, to build and share agents and to automate repetitive workflows. We have grown past $40M ARR while remai",
+   "keywords": [
+    "enterprise",
+    "automation",
+    "dashboard",
     "pipeline",
     "data quality",
-    "self-service",
-    "scalab",
-    "automation"
+    "finance",
+    "self-service"
    ],
-   "url": "https://www.arbeitnow.com/jobs/companies/kayak/staff-data-platform-engineer-berlin-323763",
+   "url": "https://www.arbeitnow.com/jobs/companies/langdock/product-data-engineer-berlin-29508",
    "skills": [
-    "python",
-    "airflow"
+    "sql",
+    "dbt"
    ],
-   "score": 63,
-   "posted": "2026-10-03",
-   "days": 2,
+   "score": 77,
+   "posted": "2026-10-05",
+   "days": 1,
+   "remote": false,
+   "german": false
+  },
+  {
+   "id": "b03e67d762af",
+   "title": "Founding Data Scientist",
+   "company": "Almedia",
+   "location": "Berlin",
+   "country": "DE",
+   "market": "international",
+   "bucket": "de",
+   "label": "DE",
+   "tier": 1,
+   "rank": 2,
+   "reserve": false,
+   "is_new": true,
+   "first_seen": "2026-10-06",
+   "workplace_type": "onsite",
+   "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.com/jobs/companies/almedia/founding-data-scientist-berlin-415008",
+   "publication_date": "2026-10-05",
+   "fit_score": 70,
+   "fit_reason": "rol secondary +18; konum +15; beceri 3×5 +15; kıdem mid +5; tazelik +10",
+   "matched_skills": [
+    "SQL",
+    "Python",
+    "dbt"
+   ],
+   "location_reason": "Arbeitnow konumu 'Berlin'",
+   "seniority": "mid",
+   "focus": "ml",
+   "focus_scores": {
+    "ml": 14,
+    "bi": 0,
+    "pipeline": 3,
+    "business": 7
+   },
+   "language": "en",
+   "generated_at": "2026-10-06 14:48",
+   "summary": "This isn’t your regular job. Almedia is a place where those who want to push harder can accelerate their careers faster than anywhere else. We’re aiming to become Germany’s second bootstrapped unicorn. Almedia is already Europe’s #3 fastest-growing company in ",
+   "keywords": [
+    "pipeline",
+    "experimentation",
+    "stakeholder",
+    "startup"
+   ],
+   "url": "https://www.arbeitnow.com/jobs/companies/almedia/founding-data-scientist-berlin-415008",
+   "skills": [
+    "sql",
+    "python",
+    "dbt"
+   ],
+   "score": 70,
+   "posted": "2026-10-05",
+   "days": 1,
+   "remote": false,
+   "german": false
+  },
+  {
+   "id": "1f5f3612f694",
+   "title": "Finance Data Scientist",
+   "company": "Elevenlabs",
+   "location": "United Kingdom",
+   "country": "UK",
+   "market": "international",
+   "bucket": "uk",
+   "label": "UK",
+   "tier": 1,
+   "rank": 0,
+   "reserve": false,
+   "is_new": true,
+   "first_seen": "2026-10-06",
+   "workplace_type": "onsite",
+   "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/elevenlabs/finance-data-scientist-united-kingdom-226596",
+   "publication_date": "2026-10-06",
+   "fit_score": 67,
+   "fit_reason": "rol secondary +18; konum +12; beceri 3×5 +15; kıdem mid +5; tazelik +10",
+   "matched_skills": [
+    "SQL",
+    "Python",
+    "dbt"
+   ],
+   "location_reason": "Arbeitnow konumu 'United Kingdom'",
+   "seniority": "mid",
+   "focus": "ml",
+   "focus_scores": {
+    "ml": 14,
+    "bi": 2,
+    "pipeline": 2,
+    "business": 5
+   },
+   "language": "en",
+   "generated_at": "2026-10-06 14:48",
+   "summary": "About ElevenLabs ElevenLabs is an AI research and product company transforming how we interact with technology. We launched in January 2023 with the first human-like AI voice model. Today, we serve millions of users and thousands of businesses - from fast-grow",
+   "keywords": [
+    "startup",
+    "enterprise",
+    "experimentation",
+    "finance",
+    "forecast",
+    "data quality",
+    "stakeholder"
+   ],
+   "url": "https://www.arbeitnow.co.uk/jobs/companies/elevenlabs/finance-data-scientist-united-kingdom-226596",
+   "skills": [
+    "sql",
+    "python",
+    "dbt"
+   ],
+   "score": 67,
+   "posted": "2026-10-06",
+   "days": 0,
+   "remote": false,
+   "german": false
+  },
+  {
+   "id": "d24203837c90",
+   "title": "Data Scientist",
+   "company": "loveholidays",
+   "location": "London",
+   "country": "UK",
+   "market": "international",
+   "bucket": "uk",
+   "label": "UK",
+   "tier": 1,
+   "rank": 1,
+   "reserve": false,
+   "is_new": true,
+   "first_seen": "2026-10-06",
+   "workplace_type": "onsite",
+   "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/loveholidays/data-scientist-london-343613",
+   "publication_date": "2026-10-06",
+   "fit_score": 62,
+   "fit_reason": "rol secondary +18; konum +12; beceri 2×5 +10; kıdem mid +5; tazelik +10",
+   "matched_skills": [
+    "SQL",
+    "Python"
+   ],
+   "location_reason": "Arbeitnow konumu 'London'",
+   "seniority": "mid",
+   "focus": "ml",
+   "focus_scores": {
+    "ml": 17,
+    "bi": 1,
+    "pipeline": 0,
+    "business": 6
+   },
+   "language": "en",
+   "generated_at": "2026-10-06 14:48",
+   "summary": "Why loveholidays? We’re on a mission to open the world to everyone, giving our customers unlimited choice, unmatched ease and unmissable value for their next getaway. Our trailblaze together culture is what drives our success, powered by our people and the way",
+   "keywords": [
+    "scalab",
+    "experimentation",
+    "stakeholder"
+   ],
+   "url": "https://www.arbeitnow.co.uk/jobs/companies/loveholidays/data-scientist-london-343613",
+   "skills": [
+    "sql",
+    "python"
+   ],
+   "score": 62,
+   "posted": "2026-10-06",
+   "days": 0,
+   "remote": false,
+   "german": false
+  }
+ ],
+ "reserve": [
+  {
+   "id": "9732e6ca17a2",
+   "title": "Senior Data Analyst - Experimentation & A/B Testing (f/m/d)",
+   "company": "adjoe",
+   "location": "Hamburg",
+   "country": "DE",
+   "market": "international",
+   "bucket": "de",
+   "label": "DE",
+   "tier": 2,
+   "rank": 3,
+   "reserve": true,
+   "is_new": true,
+   "first_seen": "2026-10-06",
+   "workplace_type": "onsite",
+   "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.com/jobs/companies/adjoe/senior-data-analyst-experimentation-a-b-testing-hamburg-450983",
+   "publication_date": "2026-10-05",
+   "fit_score": 87,
+   "fit_reason": "rol primary +30; konum +10; beceri 5×5 +25; kıdem senior +5; tazelik +10",
+   "matched_skills": [
+    "SQL",
+    "Python",
+    "Tableau",
+    "Airflow",
+    "dbt"
+   ],
+   "location_reason": "Arbeitnow konumu 'Hamburg'",
+   "seniority": "senior",
+   "focus": "business",
+   "focus_scores": {
+    "ml": 0,
+    "bi": 5,
+    "pipeline": 7,
+    "business": 18
+   },
+   "language": "en",
+   "generated_at": "2026-10-06 14:48",
+   "summary": "adjoe builds the technologies behind mobile apps growth and monetization. With our core product Playtime Arcade , we've become the global leader in rewarded advertising, an ad unit built on a simple premise: users earn real in-app rewards for engaging with new",
+   "keywords": [
+    "optimization",
+    "dashboard",
+    "pipeline",
+    "stakeholder",
+    "real-time",
+    "a/b",
+    "anomaly",
+    "experimentation",
+    "automation",
+    "energy"
+   ],
+   "url": "https://www.arbeitnow.com/jobs/companies/adjoe/senior-data-analyst-experimentation-a-b-testing-hamburg-450983",
+   "skills": [
+    "sql",
+    "python",
+    "tableau",
+    "airflow",
+    "dbt"
+   ],
+   "score": 87,
+   "posted": "2026-10-05",
+   "days": 1,
+   "remote": false,
+   "german": false
+  },
+  {
+   "id": "04e0be8810c2",
+   "title": "Data Scientist (m/f/d)",
+   "company": "limehome",
+   "location": "München, Bayern, Germany",
+   "country": "DE",
+   "market": "international",
+   "bucket": "de",
+   "label": "DE",
+   "tier": 2,
+   "rank": 4,
+   "reserve": true,
+   "is_new": true,
+   "first_seen": "2026-10-06",
+   "workplace_type": "onsite",
+   "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.com/jobs/companies/limehome/data-scientist-munchen-120982",
+   "publication_date": "2026-10-06",
+   "fit_score": 60,
+   "fit_reason": "rol secondary +18; konum +10; beceri 2×5 +10; kıdem mid +5; tazelik +10",
+   "matched_skills": [
+    "SQL",
+    "Python"
+   ],
+   "location_reason": "Arbeitnow konumu 'München, Bayern, Germany'",
+   "seniority": "mid",
+   "focus": "ml",
+   "focus_scores": {
+    "ml": 19,
+    "bi": 2,
+    "pipeline": 0,
+    "business": 12
+   },
+   "language": "en",
+   "generated_at": "2026-10-06 14:48",
+   "summary": "Shape the Future of Data-Driven Decision Making as our Data Scientist (m/f/d) At Limehome, data is one of our biggest competitive advantages. As a Data Scientist, you'll turn complex business challenges into scalable statistical and machine learning solutions ",
+   "keywords": [
+    "scalab",
+    "stakeholder",
+    "experimentation"
+   ],
+   "url": "https://www.arbeitnow.com/jobs/companies/limehome/data-scientist-munchen-120982",
+   "skills": [
+    "sql",
+    "python"
+   ],
+   "score": 60,
+   "posted": "2026-10-06",
+   "days": 0,
    "remote": false,
    "german": false
   },
@@ -79,8 +434,8 @@
    "bucket": "de",
    "label": "DE",
    "tier": 2,
-   "rank": 1,
-   "reserve": false,
+   "rank": 5,
+   "reserve": true,
    "is_new": false,
    "first_seen": "2026-09-23",
    "workplace_type": "onsite",
@@ -106,7 +461,7 @@
     "business": 15
    },
    "language": "en",
-   "generated_at": "2026-10-05 15:02",
+   "generated_at": "2026-10-06 14:48",
    "summary": "ABOUT US METYCLE: where innovation meets sustainability We are reshaping the global secondary metals industry to accelerate the circular flow of metals. By combining global trading, advanced processing and digital intelligence, we make secondary metals more pr",
    "keywords": [
     "scalab",
@@ -128,247 +483,68 @@
    ],
    "score": 82,
    "posted": "2026-10-05",
-   "days": 0,
+   "days": 1,
    "remote": false,
    "german": false
   },
   {
-   "id": "d88e411798a2",
-   "title": "Data Engineer",
-   "company": "Bookboost",
+   "id": "deafe0a84aa2",
+   "title": "O&M Data Engineer – Munich (Fixed Term 2 years)",
+   "company": "Sungrow Europe - Welcome traveler!",
    "location": "Germany - Munich",
    "country": "DE",
    "market": "international",
    "bucket": "de",
    "label": "DE",
    "tier": 2,
-   "rank": 2,
-   "reserve": false,
-   "is_new": false,
-   "first_seen": "2026-09-25",
-   "workplace_type": "onsite",
-   "source": "Arbeitnow",
-   "also_on": [],
-   "source_url": "https://www.arbeitnow.com/jobs/companies/bookboost/data-engineer-germany-munich-98908",
-   "publication_date": "2026-10-03",
-   "fit_score": 64,
-   "fit_reason": "rol primary +30; konum +10; beceri 1×5 +5; kıdem mid +5; tazelik +7",
-   "matched_skills": [
-    "PySpark"
-   ],
-   "location_reason": "Arbeitnow konumu 'Germany - Munich'",
-   "seniority": "mid",
-   "focus": "pipeline",
-   "focus_scores": {
-    "ml": 4,
-    "bi": 0,
-    "pipeline": 17,
-    "business": 0
-   },
-   "language": "en",
-   "generated_at": "2026-10-05 15:02",
-   "summary": "Your mission Bookboost is the Hospitality Engagement Platform that empowers hotels to understand and engage their guests like never before. We unify guest data, automate personalised communication, and deliver experiences that drive revenue, loyalty, and opera",
-   "keywords": [
-    "pipeline",
-    "scalab"
-   ],
-   "url": "https://www.arbeitnow.com/jobs/companies/bookboost/data-engineer-germany-munich-98908",
-   "skills": [
-    "pyspark"
-   ],
-   "score": 64,
-   "posted": "2026-10-03",
-   "days": 2,
-   "remote": false,
-   "german": false
-  },
-  {
-   "id": "420069ee6653",
-   "title": "Senior Consultant (Data Engineer)",
-   "company": "Coeo",
-   "location": "Reading",
-   "country": "UK",
-   "market": "international",
-   "bucket": "uk",
-   "label": "UK",
-   "tier": 1,
-   "rank": 0,
-   "reserve": false,
-   "is_new": true,
-   "first_seen": "2026-10-05",
-   "workplace_type": "hybrid",
-   "source": "Arbeitnow",
-   "also_on": [],
-   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/coeo/senior-consultant-data-engineer-reading-472423",
-   "publication_date": "2026-10-04",
-   "fit_score": 97,
-   "fit_reason": "rol primary +30; konum +12; beceri 7×5 +30; kıdem senior +5; tazelik +10",
-   "matched_skills": [
-    "SQL",
-    "Python",
-    "Power BI",
-    "Azure",
-    "Microsoft Fabric",
-    "Databricks",
-    "PySpark"
-   ],
-   "location_reason": "Arbeitnow konumu 'Reading'",
-   "seniority": "senior",
-   "focus": "pipeline",
-   "focus_scores": {
-    "ml": 0,
-    "bi": 11,
-    "pipeline": 24,
-    "business": 9
-   },
-   "language": "en",
-   "generated_at": "2026-10-05 15:02",
-   "summary": "Job Title: Senior Consultant (Data Engineer) Location: Reading, UK (Hybrid) Company: Coeo Ltd Please Note : You must have a UK passport or be able to live and work in the UK without employer sponsorship. At Coeo, we believe data has the power to transform orga",
-   "keywords": [
-    "governance",
-    "stakeholder",
-    "scalab",
-    "optimization",
-    "pipeline",
-    "automation",
-    "data quality",
-    "enterprise",
-    "dashboard",
-    "self-service"
-   ],
-   "url": "https://www.arbeitnow.co.uk/jobs/companies/coeo/senior-consultant-data-engineer-reading-472423",
-   "skills": [
-    "sql",
-    "python",
-    "power bi",
-    "azure",
-    "microsoft fabric",
-    "databricks",
-    "pyspark"
-   ],
-   "score": 97,
-   "posted": "2026-10-04",
-   "days": 1,
-   "remote": false,
-   "german": false
-  },
-  {
-   "id": "1828a51952b0",
-   "title": "Data Analyst",
-   "company": "Nexgencloud",
-   "location": "London",
-   "country": "UK",
-   "market": "international",
-   "bucket": "uk",
-   "label": "UK",
-   "tier": 1,
-   "rank": 1,
-   "reserve": false,
-   "is_new": true,
-   "first_seen": "2026-10-05",
-   "workplace_type": "onsite",
-   "source": "Arbeitnow",
-   "also_on": [],
-   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/nexgencloud/data-analyst-london-175094",
-   "publication_date": "2026-10-04",
-   "fit_score": 79,
-   "fit_reason": "rol primary +30; konum +12; beceri 3×5 +15; kıdem mid +5; tazelik +10",
-   "matched_skills": [
-    "SQL",
-    "Power BI",
-    "Databricks"
-   ],
-   "location_reason": "Arbeitnow konumu 'London'",
-   "seniority": "mid",
-   "focus": "business",
-   "focus_scores": {
-    "ml": 0,
-    "bi": 7,
-    "pipeline": 6,
-    "business": 12
-   },
-   "language": "en",
-   "generated_at": "2026-10-05 15:02",
-   "summary": "ABOUT NEXGEN CLOUD NexGen Cloud is a fast-growing GPU cloud and AI infrastructure business. We're the company behind Hyperstack — a self-serve, on-demand cloud platform built for high-performance AI, HPC, and compute-heavy workloads. Powered by 100% renewable ",
-   "keywords": [
-    "energy",
-    "startup",
-    "enterprise",
-    "cost",
-    "pipeline",
-    "finance",
-    "automation",
-    "saas"
-   ],
-   "url": "https://www.arbeitnow.co.uk/jobs/companies/nexgencloud/data-analyst-london-175094",
-   "skills": [
-    "sql",
-    "power bi",
-    "databricks"
-   ],
-   "score": 79,
-   "posted": "2026-10-04",
-   "days": 1,
-   "remote": false,
-   "german": false
-  },
-  {
-   "id": "6883be5f227d",
-   "title": "Senior Machine Learning Engineer (Safety)",
-   "company": "Faculty",
-   "location": "UK - London",
-   "country": "UK",
-   "market": "international",
-   "bucket": "uk",
-   "label": "UK",
-   "tier": 1,
-   "rank": 2,
-   "reserve": false,
+   "rank": 6,
+   "reserve": true,
    "is_new": false,
    "first_seen": "2026-10-04",
    "workplace_type": "onsite",
    "source": "Arbeitnow",
    "also_on": [],
-   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/faculty/senior-machine-learning-engineer-safety-london-99264",
-   "publication_date": "2026-10-04",
-   "fit_score": 62,
-   "fit_reason": "rol secondary +18; konum +12; beceri 2×5 +10; kıdem senior +5; tazelik +10",
+   "source_url": "https://www.arbeitnow.com/jobs/companies/sungrow-europe-welcome-traveler/om-data-engineer-munich-fixed-term-2-years-germany-munich-165252",
+   "publication_date": "2026-10-03",
+   "fit_score": 79,
+   "fit_reason": "rol primary +30; konum +10; beceri 4×5 +20; kıdem mid +5; tazelik +7",
    "matched_skills": [
+    "SQL",
     "Python",
+    "Power BI",
     "Azure"
    ],
-   "location_reason": "Arbeitnow konumu 'UK - London'",
-   "seniority": "senior",
-   "focus": "ml",
+   "location_reason": "Arbeitnow konumu 'Germany - Munich'",
+   "seniority": "mid",
+   "focus": "pipeline",
    "focus_scores": {
-    "ml": 18,
-    "bi": 0,
-    "pipeline": 1,
-    "business": 7
+    "ml": 1,
+    "bi": 5,
+    "pipeline": 9,
+    "business": 5
    },
    "language": "en",
-   "generated_at": "2026-10-05 15:02",
-   "summary": "Why Faculty? We established Faculty in 2014 because we thought that AI would be the most important technology of our time. Since then, we’ve worked with over 350 global customers to transform their performance through human-centric AI. You can read about our r",
+   "generated_at": "2026-10-06 14:48",
+   "summary": "Your mission Hello and welcome to Sungrow Europe! We are looking for a Data Engineer who can turn complex EMS, SCADA and contract data into reliable operational insight across our ESS fleet. Configure, commission and optimise EMS settings, control strategies, ",
    "keywords": [
-    "finance",
-    "retail",
-    "energy",
-    "scalab",
-    "stakeholder"
+    "pipeline",
+    "dashboard",
+    "energy"
    ],
-   "url": "https://www.arbeitnow.co.uk/jobs/companies/faculty/senior-machine-learning-engineer-safety-london-99264",
+   "url": "https://www.arbeitnow.com/jobs/companies/sungrow-europe-welcome-traveler/om-data-engineer-munich-fixed-term-2-years-germany-munich-165252",
    "skills": [
+    "sql",
     "python",
+    "power bi",
     "azure"
    ],
-   "score": 62,
-   "posted": "2026-10-04",
-   "days": 1,
+   "score": 79,
+   "posted": "2026-10-03",
+   "days": 3,
    "remote": false,
    "german": false
   }
  ],
- "reserve": [],
  "stats": {
   "candidates": {
    "tr": {
@@ -376,15 +552,15 @@
     "istanbul_hibrit": 0,
     "istanbul_onsite": 0
    },
-   "de": 3,
+   "de": 7,
    "nl": 0,
-   "uk": 3
+   "uk": 2
   },
   "selected": {
    "tr": 0,
    "de": 3,
    "nl": 0,
-   "uk": 3
+   "uk": 2
   },
   "missing": {
    "tr": {
@@ -394,20 +570,24 @@
    "nl": {
     "eksik": 3,
     "sebep": "uygun aday yok"
+   },
+   "uk": {
+    "eksik": 1,
+    "sebep": "yalnızca 2 uygun aday"
    }
   },
   "eliminated": {
-   "rol dışı (hedef rol yok)": 1088,
-   "rol dışı (başlık)": 765,
-   "ülke belirlenemedi": 8,
-   "Almanca ilan": 8,
-   "ML/DS rolü, beceri örtüşmesi zayıf": 6,
+   "rol dışı (hedef rol yok)": 1097,
+   "rol dışı (başlık)": 730,
+   "Almanca ilan": 9,
+   "ML/DS rolü, beceri örtüşmesi zayıf": 2,
+   "ülke belirlenemedi": 14,
+   "tekrar (farklı kaynak)": 2,
    "ileri seviye Almanca şartı": 2,
-   "dünya geneli remote (Türkiye ilanı değil)": 3,
-   "Remotive candidate_required_location 'France'": 1,
-   "Remotive candidate_required_location 'United States'": 4,
+   "dünya geneli remote (Türkiye ilanı değil)": 4,
+   "Remotive candidate_required_location 'United States'": 5,
    "yayın tarihi eski": 2,
-   "süresi doldu (14 gün)": 2
+   "süresi doldu (daha önce gösterildi)": 2
   }
  },
  "history": {
@@ -1041,7 +1221,7 @@
   "2cba7e2540f7": {
    "first_seen": "2026-09-21",
    "status": "expired",
-   "last_seen": "2026-10-05"
+   "last_seen": "2026-10-06"
   },
   "984c5f8aed57": {
    "first_seen": "2026-09-21",
@@ -1056,7 +1236,7 @@
   "497413e7eed4": {
    "first_seen": "2026-09-21",
    "status": "expired",
-   "last_seen": "2026-10-05"
+   "last_seen": "2026-10-06"
   },
   "81d63264ce6a": {
    "first_seen": "2026-09-21",
@@ -1126,7 +1306,7 @@
   "46896f42874a": {
    "first_seen": "2026-09-23",
    "status": "listed",
-   "last_seen": "2026-10-05"
+   "last_seen": "2026-10-06"
   },
   "71dcf0067fd2": {
    "first_seen": "2026-09-23",
@@ -1531,7 +1711,7 @@
   "deafe0a84aa2": {
    "first_seen": "2026-10-04",
    "status": "listed",
-   "last_seen": "2026-10-04"
+   "last_seen": "2026-10-06"
   },
   "6883be5f227d": {
    "first_seen": "2026-10-04",
@@ -1552,6 +1732,41 @@
    "first_seen": "2026-10-05",
    "status": "listed",
    "last_seen": "2026-10-05"
+  },
+  "0a5357073e22": {
+   "first_seen": "2026-10-06",
+   "status": "listed",
+   "last_seen": "2026-10-06"
+  },
+  "c27281295a52": {
+   "first_seen": "2026-10-06",
+   "status": "listed",
+   "last_seen": "2026-10-06"
+  },
+  "b03e67d762af": {
+   "first_seen": "2026-10-06",
+   "status": "listed",
+   "last_seen": "2026-10-06"
+  },
+  "1f5f3612f694": {
+   "first_seen": "2026-10-06",
+   "status": "listed",
+   "last_seen": "2026-10-06"
+  },
+  "d24203837c90": {
+   "first_seen": "2026-10-06",
+   "status": "listed",
+   "last_seen": "2026-10-06"
+  },
+  "9732e6ca17a2": {
+   "first_seen": "2026-10-06",
+   "status": "listed",
+   "last_seen": "2026-10-06"
+  },
+  "04e0be8810c2": {
+   "first_seen": "2026-10-06",
+   "status": "listed",
+   "last_seen": "2026-10-06"
   }
  },
  "note": "Kaynak: Arbeitnow + Remotive. Basvuruyu kullanici kendisi yapar."
