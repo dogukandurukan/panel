@@ -1,9 +1,9 @@
 {
  "version": 2,
- "updated": "2026-10-08 14:46",
+ "updated": "2026-10-09 14:39",
  "ok": true,
- "count": 5,
- "pool": 10,
+ "count": 6,
+ "pool": 14,
  "quota": {
   "tr": 3,
   "de": 3,
@@ -11,6 +11,493 @@
   "uk": 3
  },
  "items": [
+  {
+   "id": "de63a9729c4e",
+   "title": "Data Platform & Data Architecture Consultant",
+   "company": "Netlight",
+   "location": "Berlin",
+   "country": "DE",
+   "market": "international",
+   "bucket": "de",
+   "label": "DE",
+   "tier": 1,
+   "rank": 0,
+   "reserve": false,
+   "is_new": true,
+   "first_seen": "2026-10-09",
+   "workplace_type": "onsite",
+   "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.com/jobs/companies/netlight/data-platform-data-architecture-consultant-berlin-103519",
+   "publication_date": "2026-10-09",
+   "fit_score": 87,
+   "fit_reason": "rol primary +30; konum +15; beceri 4×5 +20; kıdem mid +5; tazelik +10",
+   "matched_skills": [
+    "Azure",
+    "Microsoft Fabric",
+    "Databricks",
+    "Snowflake"
+   ],
+   "location_reason": "Arbeitnow konumu 'Berlin'",
+   "seniority": "mid",
+   "focus": "pipeline",
+   "focus_scores": {
+    "ml": 1,
+    "bi": 0,
+    "pipeline": 18,
+    "business": 7
+   },
+   "language": "en",
+   "generated_at": "2026-10-09 14:39",
+   "summary": "About the role As a Data Platform & Data Architecture Consultant , you are the person clients trust to turn their data infrastructure from a bottleneck into a competitive advantage. You design data landscapes, stand up and scale cloud data platforms, and set t",
+   "keywords": [
+    "cost",
+    "governance",
+    "stakeholder",
+    "enterprise"
+   ],
+   "url": "https://www.arbeitnow.com/jobs/companies/netlight/data-platform-data-architecture-consultant-berlin-103519",
+   "skills": [
+    "azure",
+    "microsoft fabric",
+    "databricks",
+    "snowflake"
+   ],
+   "score": 87,
+   "posted": "2026-10-09",
+   "days": 0,
+   "remote": false,
+   "german": false
+  },
+  {
+   "id": "3deac2f0fbd5",
+   "title": "Senior Data Scientist, Growth (f/m/x)",
+   "company": "hellofresh",
+   "location": "Berlin, Berlin",
+   "country": "DE",
+   "market": "international",
+   "bucket": "de",
+   "label": "DE",
+   "tier": 1,
+   "rank": 1,
+   "reserve": false,
+   "is_new": true,
+   "first_seen": "2026-10-09",
+   "workplace_type": "onsite",
+   "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.com/jobs/companies/hellofresh/senior-data-scientist-growth-berlin-berlin-308972",
+   "publication_date": "2026-10-09",
+   "fit_score": 75,
+   "fit_reason": "rol secondary +18; konum +15; beceri 4×5 +20; kıdem senior +5; tazelik +10",
+   "matched_skills": [
+    "SQL",
+    "Python",
+    "Databricks",
+    "PySpark"
+   ],
+   "location_reason": "Arbeitnow konumu 'Berlin, Berlin'",
+   "seniority": "senior",
+   "focus": "ml",
+   "focus_scores": {
+    "ml": 16,
+    "bi": 0,
+    "pipeline": 3,
+    "business": 11
+   },
+   "language": "en",
+   "generated_at": "2026-10-09 14:39",
+   "summary": "About the role: What's in the Box The Growth Alliance powers HelloFresh ’s marketing engine, from media investment and in-channel optimization, to the conversion funnel, to how and when we communicate with customers. As a Senior Data Scientist , you will desig",
+   "keywords": [
+    "optimization",
+    "optimisation",
+    "stakeholder",
+    "experimentation",
+    "pipeline",
+    "e-commerce",
+    "forecast",
+    "supply chain",
+    "scalab"
+   ],
+   "url": "https://www.arbeitnow.com/jobs/companies/hellofresh/senior-data-scientist-growth-berlin-berlin-308972",
+   "skills": [
+    "sql",
+    "python",
+    "databricks",
+    "pyspark"
+   ],
+   "score": 75,
+   "posted": "2026-10-09",
+   "days": 0,
+   "remote": false,
+   "german": false
+  },
+  {
+   "id": "48042b7ebbcd",
+   "title": "Senior Data Scientist, Workforce Management Analytics",
+   "company": "wolt",
+   "location": "Berlin",
+   "country": "DE",
+   "market": "international",
+   "bucket": "de",
+   "label": "DE",
+   "tier": 1,
+   "rank": 2,
+   "reserve": false,
+   "is_new": true,
+   "first_seen": "2026-10-09",
+   "workplace_type": "onsite",
+   "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.com/jobs/companies/wolt/senior-data-scientist-workforce-management-analytics-berlin-34463",
+   "publication_date": "2026-10-08",
+   "fit_score": 70,
+   "fit_reason": "rol secondary +18; konum +15; beceri 3×5 +15; kıdem senior +5; tazelik +10",
+   "matched_skills": [
+    "SQL",
+    "Python",
+    "Airflow"
+   ],
+   "location_reason": "Arbeitnow konumu 'Berlin'",
+   "seniority": "senior",
+   "focus": "ml",
+   "focus_scores": {
+    "ml": 17,
+    "bi": 3,
+    "pipeline": 3,
+    "business": 4
+   },
+   "language": "en",
+   "generated_at": "2026-10-09 14:39",
+   "summary": "About Wolt At Wolt, we create technology that brings joy, simplicity and earnings to the neighborhoods of the world. In 2014 we started with delivery of restaurant food. Now we’re building the delivery of (almost) everything and you’ll find us in over 500 citi",
+   "keywords": [
+    "forecast",
+    "dashboard",
+    "root cause",
+    "cost",
+    "optimization",
+    "pipeline",
+    "stakeholder",
+    "real-time"
+   ],
+   "url": "https://www.arbeitnow.com/jobs/companies/wolt/senior-data-scientist-workforce-management-analytics-berlin-34463",
+   "skills": [
+    "sql",
+    "python",
+    "airflow"
+   ],
+   "score": 70,
+   "posted": "2026-10-08",
+   "days": 1,
+   "remote": false,
+   "german": false
+  },
+  {
+   "id": "7051d5f61bd7",
+   "title": "Data Engineer",
+   "company": "Ivcevidensia",
+   "location": "Keynsham, Bristol, England",
+   "country": "UK",
+   "market": "international",
+   "bucket": "uk",
+   "label": "UK",
+   "tier": 1,
+   "rank": 0,
+   "reserve": false,
+   "is_new": true,
+   "first_seen": "2026-10-09",
+   "workplace_type": "onsite",
+   "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/ivcevidensia/data-engineer-keynsham-bristol-england-437639",
+   "publication_date": "2026-10-09",
+   "fit_score": 94,
+   "fit_reason": "rol primary +30; konum +12; beceri 6×5 +30; kıdem mid +5; tazelik +10",
+   "matched_skills": [
+    "SQL",
+    "Power BI",
+    "Azure",
+    "ETL",
+    "Databricks",
+    "PySpark"
+   ],
+   "location_reason": "Arbeitnow konumu 'Keynsham, Bristol, England'",
+   "seniority": "mid",
+   "focus": "pipeline",
+   "focus_scores": {
+    "ml": 0,
+    "bi": 4,
+    "pipeline": 26,
+    "business": 5
+   },
+   "language": "en",
+   "generated_at": "2026-10-09 14:39",
+   "summary": "About Us IVC Evidensia is the UK and Europe’s leading veterinary care group, made up of over 900 practices and referral hospitals, united by a shared purpose of happier animals, happier owners. At IVC Evidensia, we believe careers should be built without limit",
+   "keywords": [
+    "scalab",
+    "pipeline",
+    "automation",
+    "finance",
+    "stakeholder",
+    "retail"
+   ],
+   "url": "https://www.arbeitnow.co.uk/jobs/companies/ivcevidensia/data-engineer-keynsham-bristol-england-437639",
+   "skills": [
+    "sql",
+    "power bi",
+    "azure",
+    "etl",
+    "databricks",
+    "pyspark"
+   ],
+   "score": 94,
+   "posted": "2026-10-09",
+   "days": 0,
+   "remote": false,
+   "german": false
+  },
+  {
+   "id": "ceccf654ad87",
+   "title": "Senior Data Analyst – Labour & Productivity",
+   "company": "Sohohouseco",
+   "location": "London",
+   "country": "UK",
+   "market": "international",
+   "bucket": "uk",
+   "label": "UK",
+   "tier": 1,
+   "rank": 1,
+   "reserve": false,
+   "is_new": true,
+   "first_seen": "2026-10-09",
+   "workplace_type": "onsite",
+   "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/sohohouseco/senior-data-analyst-labour-productivity-london-202987",
+   "publication_date": "2026-10-08",
+   "fit_score": 89,
+   "fit_reason": "rol primary +30; konum +12; beceri 5×5 +25; kıdem senior +5; tazelik +10",
+   "matched_skills": [
+    "SQL",
+    "Python",
+    "Power BI",
+    "Tableau",
+    "dbt"
+   ],
+   "location_reason": "Arbeitnow konumu 'London'",
+   "seniority": "senior",
+   "focus": "business",
+   "focus_scores": {
+    "ml": 2,
+    "bi": 6,
+    "pipeline": 2,
+    "business": 9
+   },
+   "language": "en",
+   "generated_at": "2026-10-09 14:39",
+   "summary": "The Role.. We are starting a labour optimisation programme with our Operations team, alongside FP&A and Data Science. The aim is to improve our wage percentage to sales while improving service standards at the same time. We are not interested in an approach th",
+   "keywords": [
+    "optimisation",
+    "forecast",
+    "finance",
+    "stakeholder",
+    "retail"
+   ],
+   "url": "https://www.arbeitnow.co.uk/jobs/companies/sohohouseco/senior-data-analyst-labour-productivity-london-202987",
+   "skills": [
+    "sql",
+    "python",
+    "power bi",
+    "tableau",
+    "dbt"
+   ],
+   "score": 89,
+   "posted": "2026-10-08",
+   "days": 1,
+   "remote": false,
+   "german": false
+  },
+  {
+   "id": "5ed9a0b814eb",
+   "title": "Staff Data Engineer - GTM",
+   "company": "intercom",
+   "location": "London",
+   "country": "UK",
+   "market": "international",
+   "bucket": "uk",
+   "label": "UK",
+   "tier": 1,
+   "rank": 2,
+   "reserve": false,
+   "is_new": true,
+   "first_seen": "2026-10-09",
+   "workplace_type": "onsite",
+   "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/intercom/staff-data-engineer-gtm-london-138765",
+   "publication_date": "2026-10-09",
+   "fit_score": 68,
+   "fit_reason": "rol primary +30; konum +12; beceri 3×5 +15; kıdem lead -6; tazelik +10",
+   "matched_skills": [
+    "Airflow",
+    "Snowflake",
+    "dbt"
+   ],
+   "location_reason": "Arbeitnow konumu 'London'",
+   "seniority": "lead",
+   "focus": "pipeline",
+   "focus_scores": {
+    "ml": 0,
+    "bi": 0,
+    "pipeline": 17,
+    "business": 2
+   },
+   "language": "en",
+   "generated_at": "2026-10-09 14:39",
+   "summary": "Fin , now part of Salesforce, is on a mission to help businesses provide perfect customer experiences. Our AI Agent Fin is the highest-performing AI Customer Agent on the market today, enabling businesses to deliver impeccable, always-on customer support acros",
+   "keywords": [
+    "ecommerce",
+    "pipeline",
+    "forecast",
+    "finance",
+    "energy",
+    "cost",
+    "saas"
+   ],
+   "url": "https://www.arbeitnow.co.uk/jobs/companies/intercom/staff-data-engineer-gtm-london-138765",
+   "skills": [
+    "airflow",
+    "snowflake",
+    "dbt"
+   ],
+   "score": 68,
+   "posted": "2026-10-09",
+   "days": 0,
+   "remote": false,
+   "german": false
+  }
+ ],
+ "reserve": [
+  {
+   "id": "c3316c3ebae2",
+   "title": "Senior Data Scientist/ML Engineer - Financial Crime",
+   "company": "sumup",
+   "location": "Berlin",
+   "country": "DE",
+   "market": "international",
+   "bucket": "de",
+   "label": "DE",
+   "tier": 1,
+   "rank": 3,
+   "reserve": true,
+   "is_new": true,
+   "first_seen": "2026-10-09",
+   "workplace_type": "onsite",
+   "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.com/jobs/companies/sumup/senior-data-scientist-ml-engineer-financial-crime-berlin-420071",
+   "publication_date": "2026-10-09",
+   "fit_score": 65,
+   "fit_reason": "rol secondary +18; konum +15; beceri 2×5 +10; kıdem senior +5; tazelik +10",
+   "matched_skills": [
+    "Python",
+    "PySpark"
+   ],
+   "location_reason": "Arbeitnow konumu 'Berlin'",
+   "seniority": "senior",
+   "focus": "ml",
+   "focus_scores": {
+    "ml": 22,
+    "bi": 1,
+    "pipeline": 4,
+    "business": 3
+   },
+   "language": "en",
+   "generated_at": "2026-10-09 14:39",
+   "summary": "Help build ML systems that make financial crime harder to hide Financial crime is constantly changing. New patterns and behaviours emerge all the time, and the data we work with is complex. Our work helps make financial activity safer and more trustworthy for ",
+   "keywords": [
+    "pipeline",
+    "scalab",
+    "governance",
+    "stakeholder",
+    "experimentation",
+    "data quality",
+    "anomaly",
+    "automation"
+   ],
+   "url": "https://www.arbeitnow.com/jobs/companies/sumup/senior-data-scientist-ml-engineer-financial-crime-berlin-420071",
+   "skills": [
+    "python",
+    "pyspark"
+   ],
+   "score": 65,
+   "posted": "2026-10-09",
+   "days": 0,
+   "remote": false,
+   "german": false
+  },
+  {
+   "id": "0cc44433723f",
+   "title": "Senior Analytics Engineer",
+   "company": "Finom",
+   "location": "Germany",
+   "country": "DE",
+   "market": "international",
+   "bucket": "de",
+   "label": "DE",
+   "tier": 2,
+   "rank": 4,
+   "reserve": true,
+   "is_new": true,
+   "first_seen": "2026-10-09",
+   "workplace_type": "onsite",
+   "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.com/jobs/companies/finom/senior-analytics-engineer-germany-217384",
+   "publication_date": "2026-10-08",
+   "fit_score": 87,
+   "fit_reason": "rol primary +30; konum +10; beceri 5×5 +25; kıdem senior +5; tazelik +10",
+   "matched_skills": [
+    "SQL",
+    "Python",
+    "Databricks",
+    "PySpark",
+    "dbt"
+   ],
+   "location_reason": "Arbeitnow konumu 'Germany'",
+   "seniority": "senior",
+   "focus": "pipeline",
+   "focus_scores": {
+    "ml": 0,
+    "bi": 7,
+    "pipeline": 12,
+    "business": 3
+   },
+   "language": "en",
+   "generated_at": "2026-10-09 14:39",
+   "summary": "As our Senior Analytics Engineer for Operations, you'll own that data end to end, the model behind it, the metrics it produces, and the trust the business places in both. This role isn't just \"build the metric, ship the dashboard.\" We want someone who looks pa",
+   "keywords": [
+    "dashboard",
+    "stakeholder",
+    "self-service",
+    "data quality",
+    "governance",
+    "automation"
+   ],
+   "url": "https://www.arbeitnow.com/jobs/companies/finom/senior-analytics-engineer-germany-217384",
+   "skills": [
+    "sql",
+    "python",
+    "databricks",
+    "pyspark",
+    "dbt"
+   ],
+   "score": 87,
+   "posted": "2026-10-08",
+   "days": 1,
+   "remote": false,
+   "german": false
+  },
   {
    "id": "2553f48ff8f0",
    "title": "Senior Data Engineer (Full-time)",
@@ -21,9 +508,9 @@
    "bucket": "de",
    "label": "DE",
    "tier": 1,
-   "rank": 0,
-   "reserve": false,
-   "is_new": true,
+   "rank": 5,
+   "reserve": true,
+   "is_new": false,
    "first_seen": "2026-10-08",
    "workplace_type": "onsite",
    "source": "Arbeitnow",
@@ -50,7 +537,7 @@
     "business": 5
    },
    "language": "en",
-   "generated_at": "2026-10-08 14:46",
+   "generated_at": "2026-10-09 14:39",
    "summary": "Pregnancy, childbirth, and early parenthood bring about a lot of changes. And with each phase, new questions arise: small ones, big ones, practical ones, emotional ones. Glimmer helps to see more clearly what's happening right now, what's important, and what's",
    "keywords": [
     "scalab",
@@ -76,7 +563,7 @@
    ],
    "score": 97,
    "posted": "2026-10-08",
-   "days": 0,
+   "days": 1,
    "remote": false,
    "german": false
   },
@@ -90,19 +577,17 @@
    "bucket": "de",
    "label": "DE",
    "tier": 1,
-   "rank": 1,
-   "reserve": false,
-   "is_new": true,
+   "rank": 6,
+   "reserve": true,
+   "is_new": false,
    "first_seen": "2026-10-08",
    "workplace_type": "onsite",
    "source": "Arbeitnow",
-   "also_on": [
-    "Arbeitnow"
-   ],
+   "also_on": [],
    "source_url": "https://www.arbeitnow.com/jobs/companies/voize/senior-analytics-engineer-berlin-174871",
    "publication_date": "2026-10-07",
-   "fit_score": 87,
-   "fit_reason": "rol primary +30; konum +15; beceri 4×5 +20; kıdem senior +5; tazelik +10",
+   "fit_score": 84,
+   "fit_reason": "rol primary +30; konum +15; beceri 4×5 +20; kıdem senior +5; tazelik +7",
    "matched_skills": [
     "SQL",
     "ETL",
@@ -119,7 +604,7 @@
     "business": 1
    },
    "language": "en",
-   "generated_at": "2026-10-08 14:46",
+   "generated_at": "2026-10-09 14:39",
    "summary": "🎤 Why voize? Because we’re more than just a job! At voize, we believe the greatest gift to frontline workers is time - time to care, connect, and be present. Today, that time is lost to busywork and complex systems that pull them away from what matters most: p",
    "keywords": [
     "dashboard",
@@ -135,481 +620,241 @@
     "snowflake",
     "dbt"
    ],
-   "score": 87,
+   "score": 84,
    "posted": "2026-10-07",
-   "days": 1,
+   "days": 2,
    "remote": false,
    "german": false
   },
   {
-   "id": "b05ab5b805d3",
-   "title": "AI-First Analytics Engineer (m/f/d)",
-   "company": "Sport Alliance GmbH",
-   "location": "Remote (Germany)",
+   "id": "deafe0a84aa2",
+   "title": "O&M Data Engineer – Munich (Fixed Term 2 years)",
+   "company": "Sungrow Europe - Welcome traveler!",
+   "location": "Germany - Munich",
    "country": "DE",
    "market": "international",
    "bucket": "de",
    "label": "DE",
    "tier": 2,
-   "rank": 2,
-   "reserve": false,
-   "is_new": true,
-   "first_seen": "2026-10-08",
+   "rank": 7,
+   "reserve": true,
+   "is_new": false,
+   "first_seen": "2026-10-04",
    "workplace_type": "onsite",
    "source": "Arbeitnow",
    "also_on": [],
-   "source_url": "https://www.arbeitnow.com/jobs/companies/sport-alliance-gmbh/remote-ai-first-analytics-engineer-131383",
+   "source_url": "https://www.arbeitnow.com/jobs/companies/sungrow-europe-welcome-traveler/om-data-engineer-munich-fixed-term-2-years-germany-munich-334518",
    "publication_date": "2026-10-08",
-   "fit_score": 77,
-   "fit_reason": "rol primary +30; konum +10; beceri 3×5 +15; kıdem mid +5; tazelik +10",
+   "fit_score": 82,
+   "fit_reason": "rol primary +30; konum +10; beceri 4×5 +20; kıdem mid +5; tazelik +10",
    "matched_skills": [
     "SQL",
     "Python",
-    "dbt"
+    "Power BI",
+    "Azure"
    ],
-   "location_reason": "Arbeitnow konumu 'Remote (Germany)'",
+   "location_reason": "Arbeitnow konumu 'Germany - Munich'",
    "seniority": "mid",
    "focus": "pipeline",
    "focus_scores": {
     "ml": 1,
-    "bi": 2,
-    "pipeline": 15,
-    "business": 2
+    "bi": 5,
+    "pipeline": 9,
+    "business": 5
    },
    "language": "en",
-   "generated_at": "2026-10-08 14:46",
-   "summary": "Join Sport Alliance and shape the data foundation behind Magicline and Finion, used by thousands of fitness businesses and more than 10 million members. You'll own the modelling layer that powers analytics, operations and AI across the business. You'll join an",
+   "generated_at": "2026-10-09 14:39",
+   "summary": "Your mission Hello and welcome to Sungrow Europe! We are looking for a Data Engineer who can turn complex EMS, SCADA and contract data into reliable operational insight across our ESS fleet. Configure, commission and optimise EMS settings, control strategies, ",
    "keywords": [
-    "scalab",
-    "data quality",
-    "governance",
     "pipeline",
-    "finance",
-    "root cause",
-    "cost"
+    "dashboard",
+    "energy"
    ],
-   "url": "https://www.arbeitnow.com/jobs/companies/sport-alliance-gmbh/remote-ai-first-analytics-engineer-131383",
+   "url": "https://www.arbeitnow.com/jobs/companies/sungrow-europe-welcome-traveler/om-data-engineer-munich-fixed-term-2-years-germany-munich-334518",
    "skills": [
     "sql",
     "python",
-    "dbt"
+    "power bi",
+    "azure"
    ],
-   "score": 77,
+   "score": 82,
    "posted": "2026-10-08",
-   "days": 0,
+   "days": 1,
    "remote": false,
    "german": false
   },
   {
-   "id": "5404802fe8d5",
-   "title": "Data Analytics Engineer I",
-   "company": "Checkout.com",
+   "id": "9f06bdf0a40a",
+   "title": "Lead Data Scientist",
+   "company": "Sohohouseco",
    "location": "London",
    "country": "UK",
    "market": "international",
    "bucket": "uk",
    "label": "UK",
    "tier": 1,
-   "rank": 0,
-   "reserve": false,
+   "rank": 3,
+   "reserve": true,
    "is_new": true,
-   "first_seen": "2026-10-08",
+   "first_seen": "2026-10-09",
    "workplace_type": "onsite",
    "source": "Arbeitnow",
    "also_on": [],
-   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/checkoutcom/data-analytics-engineer-i-london-113277",
+   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/sohohouseco/lead-data-scientist-london-345651",
    "publication_date": "2026-10-08",
-   "fit_score": 89,
-   "fit_reason": "rol primary +30; konum +12; beceri 5×5 +25; kıdem mid +5; tazelik +10",
+   "fit_score": 61,
+   "fit_reason": "rol secondary +18; konum +12; beceri 4×5 +20; kıdem lead -6; tazelik +10",
    "matched_skills": [
-    "SQL",
     "Python",
-    "Tableau",
+    "Airflow",
     "Snowflake",
     "dbt"
    ],
    "location_reason": "Arbeitnow konumu 'London'",
-   "seniority": "mid",
-   "focus": "pipeline",
+   "seniority": "lead",
+   "focus": "ml",
    "focus_scores": {
-    "ml": 0,
-    "bi": 3,
-    "pipeline": 14,
-    "business": 2
+    "ml": 18,
+    "bi": 0,
+    "pipeline": 3,
+    "business": 6
    },
    "language": "en",
-   "generated_at": "2026-10-08 14:46",
-   "summary": "Company Description We’re Checkout.com . You might not know our name, but companies like eBay, Spotify, Klarna, Uber, and Sony do, because we’re behind many of the digital experiences you use every day. We are where the world checks out, enabling over 10 billi",
+   "generated_at": "2026-10-09 14:39",
+   "summary": "The Role.. We're looking for a hands-on, generalist data scientist to own ML across all parts of our broad business, including Membership, Food & Beverage, Operations, Digital and Events. As Lead Data Scientist, you'll be the go-to expert for turning our vast ",
    "keywords": [
-    "scalab",
-    "finance",
-    "pipeline",
-    "data quality",
+    "forecast",
+    "stakeholder",
     "governance",
-    "stakeholder"
+    "pipeline",
+    "experimentation",
+    "finance",
+    "a/b",
+    "retail"
    ],
-   "url": "https://www.arbeitnow.co.uk/jobs/companies/checkoutcom/data-analytics-engineer-i-london-113277",
+   "url": "https://www.arbeitnow.co.uk/jobs/companies/sohohouseco/lead-data-scientist-london-345651",
    "skills": [
-    "sql",
     "python",
-    "tableau",
+    "airflow",
     "snowflake",
     "dbt"
    ],
-   "score": 89,
+   "score": 61,
    "posted": "2026-10-08",
-   "days": 0,
+   "days": 1,
    "remote": false,
    "german": false
   },
   {
-   "id": "fcefde113424",
-   "title": "Analytics Engineer",
-   "company": "Elevenlabs",
-   "location": "United Kingdom",
+   "id": "127f7f5440da",
+   "title": "Principal Machine Learning Engineer, Matching & Recommendations",
+   "company": "Bumble Inc.",
+   "location": "UK London",
    "country": "UK",
    "market": "international",
    "bucket": "uk",
    "label": "UK",
    "tier": 1,
-   "rank": 1,
-   "reserve": false,
-   "is_new": true,
-   "first_seen": "2026-10-08",
-   "workplace_type": "onsite",
-   "source": "Arbeitnow",
-   "also_on": [],
-   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/elevenlabs/analytics-engineer-united-kingdom-394479",
-   "publication_date": "2026-10-08",
-   "fit_score": 79,
-   "fit_reason": "rol primary +30; konum +12; beceri 3×5 +15; kıdem mid +5; tazelik +10",
-   "matched_skills": [
-    "SQL",
-    "Python",
-    "dbt"
-   ],
-   "location_reason": "Arbeitnow konumu 'United Kingdom'",
-   "seniority": "mid",
-   "focus": "pipeline",
-   "focus_scores": {
-    "ml": 1,
-    "bi": 3,
-    "pipeline": 12,
-    "business": 5
-   },
-   "language": "en",
-   "generated_at": "2026-10-08 14:46",
-   "summary": "About ElevenLabs ElevenLabs is an AI research and product company transforming how we interact with technology. We launched in January 2023 with the first human-like AI voice model. Today, we serve millions of users and thousands of businesses - from fast-grow",
-   "keywords": [
-    "startup",
-    "enterprise",
-    "experimentation",
-    "finance",
-    "stakeholder",
-    "data quality"
-   ],
-   "url": "https://www.arbeitnow.co.uk/jobs/companies/elevenlabs/analytics-engineer-united-kingdom-394479",
-   "skills": [
-    "sql",
-    "python",
-    "dbt"
-   ],
-   "score": 79,
-   "posted": "2026-10-08",
-   "days": 0,
-   "remote": false,
-   "german": false
-  }
- ],
- "reserve": [
-  {
-   "id": "5c0f92d10c97",
-   "title": "Senior Data Scientist (m/f/d)",
-   "company": "Sport Alliance GmbH",
-   "location": "Remote (Germany)",
-   "country": "DE",
-   "market": "international",
-   "bucket": "de",
-   "label": "DE",
-   "tier": 2,
-   "rank": 3,
-   "reserve": true,
-   "is_new": true,
-   "first_seen": "2026-10-08",
-   "workplace_type": "onsite",
-   "source": "Arbeitnow",
-   "also_on": [],
-   "source_url": "https://www.arbeitnow.com/jobs/companies/sport-alliance-gmbh/remote-senior-data-scientist-52368",
-   "publication_date": "2026-10-07",
-   "fit_score": 65,
-   "fit_reason": "rol secondary +18; konum +10; beceri 3×5 +15; kıdem senior +5; tazelik +10",
-   "matched_skills": [
-    "SQL",
-    "Python",
-    "dbt"
-   ],
-   "location_reason": "Arbeitnow konumu 'Remote (Germany)'",
-   "seniority": "senior",
-   "focus": "ml",
-   "focus_scores": {
-    "ml": 16,
-    "bi": 0,
-    "pipeline": 3,
-    "business": 0
-   },
-   "language": "en",
-   "generated_at": "2026-10-08 14:46",
-   "summary": "Join Sport Alliance’s Data Products team and build ML solutions for Magicline and PerfectGym Next, used by thousands of fitness businesses and millions of members. You’ll work closely with engineers and product managers to take ML use cases from idea to produc",
-   "keywords": [
-    "pipeline",
-    "scalab",
-    "cost"
-   ],
-   "url": "https://www.arbeitnow.com/jobs/companies/sport-alliance-gmbh/remote-senior-data-scientist-52368",
-   "skills": [
-    "sql",
-    "python",
-    "dbt"
-   ],
-   "score": 65,
-   "posted": "2026-10-07",
-   "days": 1,
-   "remote": false,
-   "german": false
-  },
-  {
-   "id": "047a3a33580c",
-   "title": "Aviation Finance & Data Analyst (d/f/m)",
-   "company": "Skailark",
-   "location": "Munich",
-   "country": "DE",
-   "market": "international",
-   "bucket": "de",
-   "label": "DE",
-   "tier": 2,
    "rank": 4,
    "reserve": true,
    "is_new": true,
-   "first_seen": "2026-10-08",
+   "first_seen": "2026-10-09",
    "workplace_type": "onsite",
    "source": "Arbeitnow",
    "also_on": [],
-   "source_url": "https://www.arbeitnow.com/jobs/companies/skailark/aviation-finance-data-analyst-munich-253996",
-   "publication_date": "2026-10-07",
-   "fit_score": 62,
-   "fit_reason": "rol primary +30; konum +10; beceri 0×5 +0; kıdem mid +5; tazelik +10",
-   "matched_skills": [],
-   "location_reason": "Arbeitnow konumu 'Munich'",
-   "seniority": "mid",
-   "focus": "business",
+   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/bumble-inc/principal-machine-learning-engineer-matching-recommendations-london-417918",
+   "publication_date": "2026-10-09",
+   "fit_score": 56,
+   "fit_reason": "rol secondary +18; konum +12; beceri 3×5 +15; kıdem lead -6; tazelik +10",
+   "matched_skills": [
+    "Python",
+    "Airflow",
+    "PySpark"
+   ],
+   "location_reason": "Arbeitnow konumu 'UK London'",
+   "seniority": "lead",
+   "focus": "ml",
    "focus_scores": {
-    "ml": 0,
+    "ml": 22,
     "bi": 0,
-    "pipeline": 1,
-    "business": 10
+    "pipeline": 7,
+    "business": 6
    },
    "language": "en",
-   "generated_at": "2026-10-08 14:46",
-   "summary": "We are developing the digital twin of commercial aviation, empowering our clients with fully integrated 360° industry data to drive greater efficiency and sustainability. ✈ The Challenge: Aircraft and airlines generate and collect massive amounts of data, but ",
+   "generated_at": "2026-10-09 14:39",
+   "summary": "At Bumble, we’re building the Love Company — a place where healthy, equitable relationships and friendships can start and grow. Machine Learning sits at the heart of that mission, helping us understand what makes a meaningful connection and powering the matchi",
    "keywords": [
-    "finance",
-    "cost",
+    "experimentation",
+    "optimisation",
     "scalab",
     "pipeline",
-    "startup"
+    "a/b"
    ],
-   "url": "https://www.arbeitnow.com/jobs/companies/skailark/aviation-finance-data-analyst-munich-253996",
-   "skills": [],
-   "score": 62,
-   "posted": "2026-10-07",
-   "days": 1,
+   "url": "https://www.arbeitnow.co.uk/jobs/companies/bumble-inc/principal-machine-learning-engineer-matching-recommendations-london-417918",
+   "skills": [
+    "python",
+    "airflow",
+    "pyspark"
+   ],
+   "score": 56,
+   "posted": "2026-10-09",
+   "days": 0,
    "remote": false,
    "german": false
   },
   {
-   "id": "7cf762051956",
-   "title": "Senior Solutions Architect (EDW Enterprise Data Warehouse Migrations)",
-   "company": "databricks",
-   "location": "Berlin; Munich",
-   "country": "DE",
+   "id": "60773deb097b",
+   "title": "Data Engineering Senior Manager",
+   "company": "Fanduel",
+   "location": "Edinburgh",
+   "country": "UK",
    "market": "international",
-   "bucket": "de",
-   "label": "DE",
+   "bucket": "uk",
+   "label": "UK",
    "tier": 1,
    "rank": 5,
    "reserve": true,
-   "is_new": false,
-   "first_seen": "2026-10-07",
+   "is_new": true,
+   "first_seen": "2026-10-09",
    "workplace_type": "onsite",
    "source": "Arbeitnow",
    "also_on": [],
-   "source_url": "https://www.arbeitnow.com/jobs/companies/databricks/senior-solutions-architect-edw-enterprise-data-warehouse-migrations-berlin-munich-125987",
-   "publication_date": "2026-10-07",
-   "fit_score": 97,
-   "fit_reason": "rol primary +30; konum +15; beceri 7×5 +30; kıdem senior +5; tazelik +10",
+   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/fanduel/data-engineering-senior-manager-edinburgh-332883",
+   "publication_date": "2026-10-08",
+   "fit_score": 56,
+   "fit_reason": "rol primary +30; konum +12; beceri 3×5 +15; kıdem manager -18; tazelik +10",
    "matched_skills": [
-    "SQL",
     "Python",
-    "Azure",
-    "ETL",
     "Databricks",
-    "PySpark",
     "Snowflake"
    ],
-   "location_reason": "Arbeitnow konumu 'Berlin; Munich'",
-   "seniority": "senior",
-   "focus": "pipeline",
-   "focus_scores": {
-    "ml": 1,
-    "bi": 0,
-    "pipeline": 20,
-    "business": 5
-   },
-   "language": "en",
-   "generated_at": "2026-10-08 14:46",
-   "summary": "At Databricks, we are passionate about enabling data teams to solve the world's toughest problems. Our customers leverage the Databricks Data Intelligence Platform to power their mission critical Data and AI applications to improve how their organisations leve",
-   "keywords": [
-    "real-time",
-    "migration",
-    "governance",
-    "scalab",
-    "enterprise"
-   ],
-   "url": "https://www.arbeitnow.com/jobs/companies/databricks/senior-solutions-architect-edw-enterprise-data-warehouse-migrations-berlin-munich-125987",
-   "skills": [
-    "sql",
-    "python",
-    "azure",
-    "etl",
-    "databricks",
-    "pyspark",
-    "snowflake"
-   ],
-   "score": 97,
-   "posted": "2026-10-07",
-   "days": 1,
-   "remote": false,
-   "german": false
-  },
-  {
-   "id": "730869c63824",
-   "title": "Manager - Tax Data Analytics Engineer",
-   "company": "wolt",
-   "location": "Berlin",
-   "country": "DE",
-   "market": "international",
-   "bucket": "de",
-   "label": "DE",
-   "tier": 1,
-   "rank": 6,
-   "reserve": true,
-   "is_new": false,
-   "first_seen": "2026-10-07",
-   "workplace_type": "onsite",
-   "source": "Arbeitnow",
-   "also_on": [],
-   "source_url": "https://www.arbeitnow.com/jobs/companies/wolt/manager-tax-data-analytics-engineer-berlin-154947",
-   "publication_date": "2026-10-06",
-   "fit_score": 81,
-   "fit_reason": "rol primary +30; konum +15; beceri 7×5 +30; kıdem manager -8; tazelik +7",
-   "matched_skills": [
-    "SQL",
-    "Python",
-    "ETL",
-    "Airflow",
-    "PySpark",
-    "Snowflake",
-    "dbt"
-   ],
-   "location_reason": "Arbeitnow konumu 'Berlin'",
+   "location_reason": "Arbeitnow konumu 'Edinburgh'",
    "seniority": "manager",
    "focus": "pipeline",
    "focus_scores": {
-    "ml": 1,
-    "bi": 3,
-    "pipeline": 18,
-    "business": 2
+    "ml": 0,
+    "bi": 2,
+    "pipeline": 9,
+    "business": 5
    },
    "language": "en",
-   "generated_at": "2026-10-08 14:46",
-   "summary": "About Wolt At Wolt, we create technology that brings joy, simplicity and earnings to the neighborhoods of the world. In 2014 we started with delivery of restaurant food. Now we’re building the delivery of (almost) everything and you’ll find us in over 500 citi",
+   "generated_at": "2026-10-09 14:39",
+   "summary": "ABOUT FANDUEL FanDuel Group (“FanDuel\") is an innovative sports-tech entertainment company that is changing the way consumers engage with their favorite sports, teams, and leagues. The premier gaming destination in the United States, FanDuel consists of a port",
    "keywords": [
-    "pipeline",
+    "retail",
     "scalab",
-    "data quality"
-   ],
-   "url": "https://www.arbeitnow.com/jobs/companies/wolt/manager-tax-data-analytics-engineer-berlin-154947",
-   "skills": [
-    "sql",
-    "python",
-    "etl",
-    "airflow",
-    "pyspark",
-    "snowflake",
-    "dbt"
-   ],
-   "score": 81,
-   "posted": "2026-10-06",
-   "days": 2,
-   "remote": false,
-   "german": false
-  },
-  {
-   "id": "038e804c5d7c",
-   "title": "Senior Data Scientist, Workforce Management Analytics",
-   "company": "Wolt - English",
-   "location": "Berlin, Germany",
-   "country": "DE",
-   "market": "international",
-   "bucket": "de",
-   "label": "DE",
-   "tier": 1,
-   "rank": 7,
-   "reserve": true,
-   "is_new": false,
-   "first_seen": "2026-10-07",
-   "workplace_type": "onsite",
-   "source": "Arbeitnow",
-   "also_on": [],
-   "source_url": "https://www.arbeitnow.com/jobs/companies/wolt-english/senior-data-scientist-workforce-management-analytics-berlin-477715",
-   "publication_date": "2026-10-07",
-   "fit_score": 70,
-   "fit_reason": "rol secondary +18; konum +15; beceri 3×5 +15; kıdem senior +5; tazelik +10",
-   "matched_skills": [
-    "SQL",
-    "Python",
-    "Airflow"
-   ],
-   "location_reason": "Arbeitnow konumu 'Berlin, Germany'",
-   "seniority": "senior",
-   "focus": "ml",
-   "focus_scores": {
-    "ml": 17,
-    "bi": 3,
-    "pipeline": 3,
-    "business": 4
-   },
-   "language": "en",
-   "generated_at": "2026-10-08 14:46",
-   "summary": "About Wolt At Wolt, we create technology that brings joy, simplicity and earnings to the neighborhoods of the world. In 2014 we started with delivery of restaurant food. Now we're building the delivery of (almost) everything and you'll find us in over 500 citi",
-   "keywords": [
-    "forecast",
-    "dashboard",
-    "root cause",
-    "cost",
-    "optimization",
     "pipeline",
-    "stakeholder",
-    "real-time"
+    "governance",
+    "cost"
    ],
-   "url": "https://www.arbeitnow.com/jobs/companies/wolt-english/senior-data-scientist-workforce-management-analytics-berlin-477715",
+   "url": "https://www.arbeitnow.co.uk/jobs/companies/fanduel/data-engineering-senior-manager-edinburgh-332883",
    "skills": [
-    "sql",
     "python",
-    "airflow"
+    "databricks",
+    "snowflake"
    ],
-   "score": 70,
-   "posted": "2026-10-07",
+   "score": 56,
+   "posted": "2026-10-08",
    "days": 1,
    "remote": false,
    "german": false
@@ -624,13 +869,13 @@
    },
    "de": 10,
    "nl": 0,
-   "uk": 2
+   "uk": 8
   },
   "selected": {
    "tr": 0,
    "de": 3,
    "nl": 0,
-   "uk": 2
+   "uk": 3
   },
   "missing": {
    "tr": {
@@ -640,25 +885,23 @@
    "nl": {
     "eksik": 3,
     "sebep": "uygun aday yok"
-   },
-   "uk": {
-    "eksik": 1,
-    "sebep": "yalnızca 2 uygun aday"
    }
   },
   "eliminated": {
-   "rol dışı (başlık)": 690,
-   "rol dışı (hedef rol yok)": 1160,
-   "ileri seviye Almanca şartı": 2,
-   "ML/DS rolü, beceri örtüşmesi zayıf": 6,
-   "ülke belirlenemedi": 3,
-   "Almanca ilan": 9,
-   "tekrar (farklı kaynak)": 1,
+   "rol dışı (başlık)": 728,
+   "rol dışı (hedef rol yok)": 1102,
+   "Almanca ilan": 5,
+   "ML/DS rolü, beceri örtüşmesi zayıf": 4,
+   "ülke belirlenemedi": 17,
+   "ileri seviye Almanca şartı": 3,
    "dünya geneli remote (Türkiye ilanı değil)": 4,
+   "Remotive candidate_required_location 'Singapore'": 1,
    "Remotive candidate_required_location 'United States'": 6,
-   "Remotive candidate_required_location 'Mexico'": 1,
+   "Remotive candidate_required_location 'Canada'": 1,
+   "Remotive candidate_required_location 'Argentina'": 1,
    "yayın tarihi eski": 2,
-   "süresi doldu (daha önce gösterildi)": 1
+   "süresi doldu (daha önce gösterildi)": 2,
+   "süresi doldu (14 gün)": 1
   }
  },
  "history": {
@@ -1292,7 +1535,7 @@
   "2cba7e2540f7": {
    "first_seen": "2026-09-21",
    "status": "expired",
-   "last_seen": "2026-10-08"
+   "last_seen": "2026-10-09"
   },
   "984c5f8aed57": {
    "first_seen": "2026-09-21",
@@ -1307,7 +1550,7 @@
   "497413e7eed4": {
    "first_seen": "2026-09-21",
    "status": "expired",
-   "last_seen": "2026-10-06"
+   "last_seen": "2026-10-09"
   },
   "81d63264ce6a": {
    "first_seen": "2026-09-21",
@@ -1506,8 +1749,8 @@
   },
   "d88e411798a2": {
    "first_seen": "2026-09-25",
-   "status": "listed",
-   "last_seen": "2026-10-08"
+   "status": "expired",
+   "last_seen": "2026-10-09"
   },
   "7086a548c3ed": {
    "first_seen": "2026-09-25",
@@ -1782,7 +2025,7 @@
   "deafe0a84aa2": {
    "first_seen": "2026-10-04",
    "status": "listed",
-   "last_seen": "2026-10-06"
+   "last_seen": "2026-10-09"
   },
   "6883be5f227d": {
    "first_seen": "2026-10-04",
@@ -1842,7 +2085,7 @@
   "7cf762051956": {
    "first_seen": "2026-10-07",
    "status": "listed",
-   "last_seen": "2026-10-08"
+   "last_seen": "2026-10-09"
   },
   "730869c63824": {
    "first_seen": "2026-10-07",
@@ -1892,17 +2135,17 @@
   "2553f48ff8f0": {
    "first_seen": "2026-10-08",
    "status": "listed",
-   "last_seen": "2026-10-08"
+   "last_seen": "2026-10-09"
   },
   "11a3039b634a": {
    "first_seen": "2026-10-08",
    "status": "listed",
-   "last_seen": "2026-10-08"
+   "last_seen": "2026-10-09"
   },
   "b05ab5b805d3": {
    "first_seen": "2026-10-08",
    "status": "listed",
-   "last_seen": "2026-10-08"
+   "last_seen": "2026-10-09"
   },
   "5404802fe8d5": {
    "first_seen": "2026-10-08",
@@ -1917,12 +2160,67 @@
   "5c0f92d10c97": {
    "first_seen": "2026-10-08",
    "status": "listed",
-   "last_seen": "2026-10-08"
+   "last_seen": "2026-10-09"
   },
   "047a3a33580c": {
    "first_seen": "2026-10-08",
    "status": "listed",
    "last_seen": "2026-10-08"
+  },
+  "de63a9729c4e": {
+   "first_seen": "2026-10-09",
+   "status": "listed",
+   "last_seen": "2026-10-09"
+  },
+  "3deac2f0fbd5": {
+   "first_seen": "2026-10-09",
+   "status": "listed",
+   "last_seen": "2026-10-09"
+  },
+  "48042b7ebbcd": {
+   "first_seen": "2026-10-09",
+   "status": "listed",
+   "last_seen": "2026-10-09"
+  },
+  "7051d5f61bd7": {
+   "first_seen": "2026-10-09",
+   "status": "listed",
+   "last_seen": "2026-10-09"
+  },
+  "ceccf654ad87": {
+   "first_seen": "2026-10-09",
+   "status": "listed",
+   "last_seen": "2026-10-09"
+  },
+  "5ed9a0b814eb": {
+   "first_seen": "2026-10-09",
+   "status": "listed",
+   "last_seen": "2026-10-09"
+  },
+  "c3316c3ebae2": {
+   "first_seen": "2026-10-09",
+   "status": "listed",
+   "last_seen": "2026-10-09"
+  },
+  "0cc44433723f": {
+   "first_seen": "2026-10-09",
+   "status": "listed",
+   "last_seen": "2026-10-09"
+  },
+  "9f06bdf0a40a": {
+   "first_seen": "2026-10-09",
+   "status": "listed",
+   "last_seen": "2026-10-09"
+  },
+  "127f7f5440da": {
+   "first_seen": "2026-10-09",
+   "status": "listed",
+   "last_seen": "2026-10-09"
+  },
+  "60773deb097b": {
+   "first_seen": "2026-10-09",
+   "status": "listed",
+   "last_seen": "2026-10-09"
   }
  },
  "note": "Kaynak: Arbeitnow + Remotive. Basvuruyu kullanici kendisi yapar."
