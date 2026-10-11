@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-10 19:01",
+  "updated": "2026-10-11 15:36",
   "watch": [
     {
       "code": "SASA",
@@ -247,7 +247,7 @@
         "rsiTxt": "nötr",
         "rsi": 58.1,
         "volat": 2.2,
-        "volRatio": 1.04
+        "volRatio": 0.6
       }
     }
   ],
@@ -257,102 +257,92 @@
   },
   "news": [
     {
-      "t": "🟢 Smart Güneş’in bağlı ortaklığından 19,5 milyon dolarlık sözleşme  (Borsa Gundem)",
-      "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNR2RUNDVGNHBCU25JNzQ3OWRzckstWnZiN2dMdm9DSEhSYzJRV3cyU01xQjlNMVFjOV9JMFBOYS1pWVpLdnUwZFVZaEUyX1FKeXdMSVlKQ0t3RWx6a0JXMktGMGgteHVLYktYZE5HSkxxcUhlUDZNQzlTNGN0RlNwZERScUFMY2RsbHV5SmU4T0VtZXFaZDhCcw?oc=5"
+      "t": "🟢 Enerji Şirketi Arçelik İle 19,5 Milyon Dolarlık Sözleşme İmzaladı!  (Para Ajansı)",
+      "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxONUhFMUIzRWpUU2gyUEZiS1VVZHBQaTdTLXVhaldaZUdmLUdGQ1ViN3hKZ0lNam5YLW80aFBZQnRySEFOU2ZZYkc3YTBuTmtyUkZ3MHVBaWJsMkdsa3lfaU5lWEs1MmIzMGowalEwa2E2MXBfYlFEeDFnUzlUZ3psUzFpZk1ka1VxSlFPcGZfaHJ3QVIzSzUtWlBlY2tLXzFkOU1Zcy1OaTd1OTVsREw0SUR6LXVsZ3lfa01Reg?oc=5"
     },
     {
-      "t": "🟢 Smart Güneş Teknolojileri (SMRTG) yeni anlaşmayı duyurdu  (Rota Borsa)",
-      "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxPX2VXWHJBaGp3VHNGazVPNG9ORi1yMzZZU1FUb0ZDV1FqVVQ0Slg1RWNnQ19CdDV1N2FPcl80MWhLdDg4OUJtdDkwY29JenpsOGtkTVBSTjBXU3RtaVd6alVUVlhBZFNMRFhubVFsR01BbmtsdE4yeGxJZ2xpY0lLZFIyVF9MZw?oc=5"
+      "t": "🟢 Borsa İstanbul’da Temettü Haftası: 3 Şirket Kâr Payı Dağıtıyor  (Para Analiz)",
+      "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPOThPX1NCNHJpV3E3MlV1UzlPOElaZjV0aG5meXBzd0xZdnNvMkRfejdrZzhmaFd5OW1wcklhV1ktdXg0clhGVE51b2pvemhYbW1iQU1Uc0pRbElBVEVTaVczRTYyc2hUNjZlY1FHMndLdUNCQ3dwOWQtdGdSemVqTE85cFVDM3owTjZZQUs2TjI0YXNlX1Iyag?oc=5"
     },
     {
-      "t": "🟢 Astor Enerji, Fortune 500 Türkiye'de 108. sıraya yükseldi  (Anadolu Ajansı)",
-      "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNVWFBSmtjbzdHWE13dWdNTU5iclVEOHVoX2VoUXd1bnRzdmg4ZVhxTVJMVDlUWDlyRDZwSjFvVG02N0VsT21sSFQ2X3JqWE5mOXZqZTI5ZjNJbGZYbkl6Vm5lb1RsT3dvZWtnZjhpdjZfMHdndWNVcHp6eWtzN0g4U1NlamJRbE9KYUlwbEdUNUNaOVFSdFFlQ19fVGpHQU16T3FBVWxFSXhod0VrNi1kaExXMm14VUhyc3fSAcIBQVVfeXFMTU9tR2MxMlJITmRQNWRGX2llQ210dUhPOXZSLXM4cEdYY0JVT3Z3Y1ZYMjN3RWt3ZjdiNFoyZGlSYUpoVURfWnJMR3d4eU1STHFHenQxOHJZcVhCVUpRN3B0ZHE4V1gxRWFiSG5lRnFLb2FFMkpubWY3MzZMdEdHRFN5RFNEREZVQ2FXVWljeWsySjNyb3Q2YlpqSVdnUWtFUnNaQXVTM2l2UWJSYUdRT2VPMjVHMW96VFRGR0hjQUlPMmc?oc=5"
-    },
-    {
-      "t": "⚪ Astor Enerji güvenlik ve süreç iyileştirme sistemini pilot uygulamaya aldı  (Ekonomim)",
-      "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOOEY5YlQ2V2NLcFVvTG81a3JQT3RJZ3BFbnlPV0RWZm5nSnM3VTdCQTMzc0hkVkQwamxJclBpR1JmMjFVWk1XVHVMUVRVVEltUHF4dTRocGtSWVgwYUNrVTh4LWw5N2kxN3BHLS1EYUdjakRRby1mTkx1ei1LRFpLWXlRSElhSDBQaVFmemZETlNXRkdNc181eEluNDlBR3Vsc29RaWstdWR6QTJHUzQzeUlJLTZCUTNqYnVleWhNVmLSAcYBQVVfeXFMUHBXYTBUVUdQb1hZX1dNYnJ3NEpZWE55VlAwX0w3dkNDdUZsLUVuSGhnNGVPZTBQQjlNMzZXOU5VRWQ3Y1ZkV2I3bEVmbzN1UTAxUjUzYWJBdTNvQTBEVDVTeWN6M0FuNGtQNWJWYjZUSVR4RmNVVUV6NXZqQnJwNHVVTzJiN2lZaGl1ZDZMU3IyY2FZMzh2UEF1UmdHTGpZUzFfWjRaeGg3WUlQTHlJdFdKeGJSbUhuRi1vUUxxZFhOS29FSndR?oc=5"
-    },
-    {
-      "t": "⚪ İhale Dergisi | İhale Haberleri | İhale Sonuçları | İhale Bülteni  (Yatırımlar Dergisi)",
-      "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxPVGRaUHVFaGpmTVpJQ3I4UXR3cU5lT3BmUTZZTE5Demo4U045MjlGUGtLMjB0LVBvc3JfZVRXajV5RHVxNWMyamNsSUt3QWVPTDBuUmVrUUhIMDJVX05UdmJ4ZEJKcWJOVWVzMnFsRUhMVUtXby15Nk9UVWVxZGNqWFdWdzhDZHlFa3B1YlVNdnZSOVZDS1E?oc=5"
+      "t": "⚪ HSBC’den MSCI analizi: Sabancı Holding ve Astor Enerji için dikkat çeken tahmin  (ekotürk)",
+      "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxObE8tSm5yUnlhbGFJUVJpTjhua1NpeW10Zk9kck54cE9QZjVITE13bzZXck00Z255UGx0cnJUQ0hVLVdGTHRVVVBlT1pIaHpoVnlyY1NNNWcwaWd0c1FZaTF1NzJSX0dna3FTVC1UeXNoT2pGY0dPRTd6YklteTRoTE1zUWx2Q2Z1N01hSzZxWjhfRXZUSVgwUmJtNGljUlFUbkdINlR4WXdXakFN?oc=5"
     }
   ],
   "world": [
     {
-      "t": "🌍 Christa Pike discharged from hospital and returned to prison, her lawyers say  (BBC World)",
-      "link": "https://www.bbc.co.uk/news/articles/cmlyle97pqd7o?at_medium=RSS&at_campaign=rss"
+      "t": "🌍 'Time for Ukraine to get new president,' says Trump after Zelensky condemns diesel deal  (BBC World)",
+      "link": "https://www.bbc.co.uk/news/articles/cqe8r5l7n92jo?at_medium=RSS&at_campaign=rss"
     },
     {
       "t": "🌍 Controversial vaccine trial touted by RFK Jr gets go-ahead in Guinea-Bissau  (Guardian World)",
       "link": "https://www.theguardian.com/society/2026/oct/09/vaccine-trial-guinea-bissau-rfk-jr"
     },
     {
-      "t": "🌍 Trump Accounts: Free money, but who gets a say?  (Al Jazeera)",
-      "link": "https://www.aljazeera.com/video/newsfeed/2026/10/10/trump-accounts-free-money-but-who-gets-a-say?traffic_source=rss"
+      "t": "🌍 Saudi Arabia vows response over Houthi ‘war crime’ attack on Riyadh airport  (Al Jazeera)",
+      "link": "https://www.aljazeera.com/video/newsfeed/2026/10/11/saudi-arabia-vows-response-over-houthi-war-crime-attack-on-riyadh-airport?traffic_source=rss"
     },
     {
-      "t": "🌍 U.S. and Russia tout diesel deal to ease sanctions and reopen fuel flows  (NPR World)",
-      "link": "https://www.npr.org/2026/10/10/nx-s1-5996938/u-s-and-russia-tout-diesel-deal-to-ease-sanctions-and-reopen-fuel-flows"
+      "t": "🌍 A heroic, 7-day bike ride made this teen a global star. Where is she now?  (NPR World)",
+      "link": "https://www.npr.org/2026/10/11/g-s1-147267/bicycle-teenager-india-pandemic"
     },
     {
-      "t": "🌍 Evacuations and injuries reported at Riyadh airport after another alleged Houthi attack  (Euronews)",
-      "link": "https://www.euronews.com/2026/10/10/evacuations-and-injuries-reported-at-riyadh-airport-after-another-alleged-houthi-attack"
+      "t": "🌍 Zaporizhzhia airstrikes kill 17 as Russia intensifies attacks across Ukraine  (Euronews)",
+      "link": "https://www.euronews.com/video/2026/10/11/zaporizhzhia-airstrikes-kill-17-as-russia-intensifies-attacks-across-ukraine"
     },
     {
-      "t": "🌍 US midterms: Women candidates could make history  (DW)",
-      "link": "https://www.dw.com/en/us-midterms-women-candidates-could-make-history/a-79625179?maca=en-rss-en-world-4025-rdf"
+      "t": "🌍 Couples looking to have children often turn to surrogacy agencies in Georgia without understanding the hidden costs  (DW)",
+      "link": "https://www.dw.com/en/couples-looking-to-have-children-often-turn-to-surrogacy-agencies-in-georgia-without-understanding-the-hidden-costs/a-79629971?maca=en-rss-en-world-4025-rdf"
     }
   ],
   "tr": [
     {
-      "t": "🇹🇷 ABD'de Isaias Kasırgası nedeniyle 2 kişi öldü, 800 binden fazla kişi elektriksiz kaldı  (AA)",
-      "link": "https://www.aa.com.tr/tr/dunya/abdde-isaias-kasirgasi-nedeniyle-2-kisi-oldu-800-binden-fazla-kisi-elektriksiz-kaldi/4084606"
+      "t": "🇹🇷 Cumhurbaşkanlığı Yarı Maratonu tamamlandı  (TRT Haber)",
+      "link": "https://www.trthaber.com/haber/gundem/cumhurbaskanligi-yari-maratonu-tamamlandi-959817.html"
     },
     {
-      "t": "🇹🇷 Riyad'da havaalanına saldırı sonrası tahliye haberleri  (BBC Türkçe)",
+      "t": "🇹🇷 İsrail tartışması Türkiye-Azerbaycan ilişkilerini nasıl etkiliyor?  (BBC Türkçe)",
+      "link": "https://www.bbc.com/turkce/articles/cxr5y34qjj4eo?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "t": "🇹🇷 39 Eski belediye başkanı hayatını kaybetti  (Habertürk)",
+      "link": "https://www.haberturk.com/gundem/son-dakika-haberler-kavak-in-eski-belediye-baskani-ahmet-altan-hayatini-kaybetti-samsun-haberleri-3918888"
+    },
+    {
+      "t": "🇹🇷 Sigara satışında kimlik şartı. Bakan Memişoğlu: Mahremiyet gözeten seçenekleri değerlendiriyoruz  (NTV)",
+      "link": "https://www.ntv.com.tr/turkiye/sigara-satisinda-kimlik-sarti-bakan-memisoglu-mahremiyet-gozeten-secenekleri-degerlendiriyoruz-1745845"
+    },
+    {
+      "t": "🇹🇷 Kürşad Zorlu: Arzumuz Türkmenistan'ın daimi üyeliğe gelmesi  (TRT Haber)",
+      "link": "https://www.trthaber.com/haber/turk-dunyasi/kursad-zorlu-arzumuz-turkmenistanin-daimi-uyelige-gelmesi-959816.html"
+    },
+    {
+      "t": "🇹🇷 Riyad'da havalimanına saldırı: 12 ölü, 300 yaralı  (BBC Türkçe)",
       "link": "https://www.bbc.com/turkce/articles/cw8rz5268e26o?at_medium=RSS&at_campaign=rss"
-    },
-    {
-      "t": "🇹🇷 Ataşehir Belediyesi AK Parti'ye geçti  (Habertürk)",
-      "link": "https://www.haberturk.com/gundem/atasehir-belediye-baskan-vekilligi-secimi-ve-eyupsultan-belediyesi-baskanlik-vekili-secim-sonucu-3918639"
-    },
-    {
-      "t": "🇹🇷 Cumhurbaşkanı Erdoğan'dan Uluslararası Demokratlar Birliği Genel Kuruluna mesaj  (NTV)",
-      "link": "https://www.ntv.com.tr/turkiye/cumhurbaskani-erdogandan-uluslararasi-demokratlar-birligi-genel-kuruluna-mesaj-1745718"
-    },
-    {
-      "t": "🇹🇷 Londra'da yüz binlerce kişi Filistin'e destek için yürüdü  (AA)",
-      "link": "https://www.aa.com.tr/tr/dunya/londrada-yuz-binlerce-kisi-filistine-destek-icin-yurudu/4084599"
-    },
-    {
-      "t": "🇹🇷 Mersin'de tıra çarpan hafif ticari araçtaki 2 kişi öldü  (TRT Haber)",
-      "link": "https://www.trthaber.com/haber/turkiye/mersinde-tira-carpan-hafif-ticari-aractaki-2-kisi-oldu-959761.html"
     }
   ],
   "_teshis": {
     "dunya": [
-      "BBC World: 29 öğe / 2 alındı / 0 elendi | ilk: Christa Pike discharged from hospital and returned to prison",
+      "BBC World: 35 öğe / 2 alındı / 0 elendi | ilk: 'Time for Ukraine to get new president,' says Trump after Ze",
       "Guardian World: 45 öğe / 2 alındı / 0 elendi | ilk: Controversial vaccine trial touted by RFK Jr gets go-ahead i",
-      "Al Jazeera: 25 öğe / 2 alındı / 0 elendi | ilk: Trump Accounts: Free money, but who gets a say?",
-      "NPR World: 10 öğe / 2 alındı / 0 elendi | ilk: U.S. and Russia tout diesel deal to ease sanctions and reope",
-      "Euronews: 50 öğe / 2 alındı / 0 elendi | ilk: Evacuations and injuries reported at Riyadh airport after an",
-      "DW: 13 öğe / 2 alındı / 0 elendi | ilk: US midterms: Women candidates could make history",
+      "Al Jazeera: 25 öğe / 2 alındı / 0 elendi | ilk: Saudi Arabia vows response over Houthi ‘war crime’ attack on",
+      "NPR World: 10 öğe / 2 alındı / 0 elendi | ilk: A heroic, 7-day bike ride made this teen a global star. Wher",
+      "Euronews: 50 öğe / 2 alındı / 1 elendi | ilk: Zaporizhzhia airstrikes kill 17 as Russia intensifies attack",
+      "DW: 11 öğe / 2 alındı / 0 elendi | ilk: Couples looking to have children often turn to surrogacy age",
       "SONUÇ: 6 haber · veren: Al Jazeera, BBC World, DW, Euronews, Guardian World, NPR World",
-      "AA: 24 öğe / 2 alındı / 0 elendi | ilk: ABD'de Isaias Kasırgası nedeniyle 2 kişi öldü, 800 binden fa",
-      "TRT Haber: 50 öğe / 2 alındı / 0 elendi | ilk: ABD'de kasırga nedeniyle 2 kişi öldü, 800 binden fazla kişi ",
-      "BBC Türkçe: 20 öğe / 2 alındı / 0 elendi | ilk: Riyad'da havaalanına saldırı sonrası tahliye haberleri",
-      "Habertürk: 30 öğe / 2 alındı / 0 elendi | ilk: Ataşehir Belediyesi AK Parti'ye geçti",
-      "NTV: 20 öğe / 2 alındı / 1 elendi | ilk: Cumhurbaşkanı Erdoğan'dan Uluslararası Demokratlar Birliği G",
-      "SONUÇ: 6 haber · veren: AA, BBC Türkçe, Habertürk, NTV, TRT Haber"
+      "AA: OKUNAMADI RemoteDisconnected: Remote end closed connection without response",
+      "TRT Haber: 50 öğe / 2 alındı / 0 elendi | ilk: Cumhurbaşkanlığı Yarı Maratonu tamamlandı",
+      "BBC Türkçe: 20 öğe / 2 alındı / 0 elendi | ilk: İsrail tartışması Türkiye-Azerbaycan ilişkilerini nasıl etki",
+      "Habertürk: 30 öğe / 2 alındı / 0 elendi | ilk: 39 Eski belediye başkanı hayatını kaybetti",
+      "NTV: 20 öğe / 2 alındı / 0 elendi | ilk: Sigara satışında kimlik şartı. Bakan Memişoğlu: Mahremiyet g",
+      "SONUÇ: 6 haber · veren: BBC Türkçe, Habertürk, NTV, TRT Haber · boş dönen: AA"
     ],
-    "hisse": "7 başlık geldi, 2 elendi",
+    "hisse": "4 başlık geldi, 1 elendi",
     "hisse_ham": [
       "KAP *** SASA POLYESTER SANAYİ A.Ş. *** SASA *** Pay Dışında Sermaye Pi",
-      "KAP *** SMART GÜNEŞ ENERJİSİ TEKNOLOJİLERİ ARAŞTIRMA GELİŞTİRME ÜRETİM",
-      "Smart Güneş’in bağlı ortaklığından 19,5 milyon dolarlık sözleşme",
-      "Smart Güneş Teknolojileri (SMRTG) yeni anlaşmayı duyurdu",
-      "Astor Enerji, Fortune 500 Türkiye'de 108. sıraya yükseldi",
-      "Astor Enerji güvenlik ve süreç iyileştirme sistemini pilot uygulamaya "
+      "Enerji Şirketi Arçelik İle 19,5 Milyon Dolarlık Sözleşme İmzaladı!",
+      "Borsa İstanbul’da Temettü Haftası: 3 Şirket Kâr Payı Dağıtıyor",
+      "HSBC’den MSCI analizi: Sabancı Holding ve Astor Enerji için dikkat çek"
     ]
   }
 }
