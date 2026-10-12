@@ -1,169 +1,8 @@
 {
- "updated": "2026-10-05 16:25",
+ "updated": "2026-10-12 17:14",
  "ok": true,
  "history_days": 10,
  "history": {
-  "10-05": [
-   {
-    "year": 2008,
-    "text": "Kırgızistan'nın Oş şehrinde 6,6 büyüklüğünde deprem meydana geldi. 75 kişi öldü, 200'den fazla kişi yaralandı.",
-    "title": "Kırgızistan",
-    "url": "https://tr.wikipedia.org/wiki/K%C4%B1rg%C4%B1zistan",
-    "detay": "Kırgızistan, resmî adıyla Kırgız Cumhuriyeti, Orta Asya'daki bir ülkedir. Kırgızistan, günümüzdeki yedi bağımsız Türk devletlerinden biri olup Türk Devletleri Teşkilatı ve TÜRKSOY'un üyesidir. Denize kıyısı olmayan ülkenin komşuları kuzeyde Kazakistan; batıda Özbekistan, güneybatıda Tacikistan ve güneydoğuda Çin'dir."
-   },
-   {
-    "year": 1958,
-    "text": "Fransa'da 5. Cumhuriyet ilan edildi ve Charles de Gaulle Cumhurbaşkanı seçildi.",
-    "title": "Fransa",
-    "url": "https://tr.wikipedia.org/wiki/Fransa",
-    "detay": "Fransa, resmî adıyla Fransız Cumhuriyeti, Batı Avrupa'da yer alan bir ülkedir. Denizaşırı bölgeleri ve toprakları arasında Güney Amerika'daki Fransız Guyanası, Kuzey Atlantik'teki Saint Pierre ve Miquelon, Fransız Batı Hint Adaları ve Okyanusya ile Hint Okyanusu'ndaki birçok ada bulunmaktadır. Anakara Fransa, kuzeyde Belçika ve Lüksemburg; kuzeydoğuda Almanya; doğuda İsviçre; güneydoğuda İtalya ve Monako; güneyde Andorra ve İspanya; ve kuzeybatıda Birleşik Krallık ile deniz sınırı paylaşmaktadır."
-   },
-   {
-    "year": 1911,
-    "text": "İtalyan kuvvetleri, Trablusgarp'ın sahil şeridini ele geçirdi.",
-    "title": "Trablusgarp",
-    "url": "https://tr.wikipedia.org/wiki/Trablusgarp",
-    "detay": "Trablusgarp Bölgesi, Libya'yı oluşturan üç bölgeden birine eskiden verilen ad. Diğer ikisi Fizan ve Sirenayka veya Kirenayka'dır. Trablusgarp Bölgesi bugünkü Trablus şehrinin çevresine karşılık gelir."
-   }
-  ],
-  "10-06": [
-   {
-    "year": 2014,
-    "text": "Türkiye'de Kobani olayları başladı.",
-    "title": "Türkiye",
-    "url": "https://tr.wikipedia.org/wiki/T%C3%BCrkiye",
-    "detay": "Türkiye, resmî adıyla Türkiye Cumhuriyeti, topraklarının büyük bölümü Batı Asya'da Anadolu'da, diğer bir bölümü ise Güneydoğu Avrupa'nın uzantısı Doğu Trakya'da olan kıtalararası bir ülkedir. Batıda Bulgaristan ve Yunanistan, doğuda Gürcistan, Ermenistan, İran ve Azerbaycan, güneyde ise Irak ve Suriye ile sınır komşusudur. Güneyini Kıbrıs ve Akdeniz, batısını Ege Denizi, kuzeyini ise Karadeniz çevreler."
-   },
-   {
-    "year": 1976,
-    "text": "Çin lideri Mao'nun ölümünün ardından başa geçen Hua Guofeng, Kültür Devrimi'nin sona erdiğini açıkladı ve \"Dörtlü Çete\" tutuklandı.",
-    "title": "Çin",
-    "url": "https://tr.wikipedia.org/wiki/%C3%87in",
-    "detay": "Çin, resmî adıyla Çin Halk Cumhuriyeti, Doğu Asya'da Çin Komünist Partisi tarafından tek parti rejimiyle yönetilen üniter egemen devlet. 1,4 milyarı aşkın nüfusuyla Hindistan'dan sonra dünyanın en kalabalık ikinci ülkesidir ve dünya nüfusunun %17'sini temsil etmektedir. Çin, 9,6 milyon kilometrekarelik bir alanda on dört ülkeyle kara sınırına sahiptir ve bu da onu yüzölçümü bakımından üçüncü büyük ülke yapmaktadır."
-   },
-   {
-    "year": 1923,
-    "text": "İstanbul'un Kurtuluşu: Şükrü Naili Paşa komutasındaki Türk birlikleri İstanbul'a girdi ve yaklaşık 5 yıl süren işgal resmen sonlandı.",
-    "title": "İstanbul'un_Kurtuluşu",
-    "url": "https://tr.wikipedia.org/wiki/%C4%B0stanbul'un_Kurtulu%C5%9Fu",
-    "detay": "İtilaf Devletleri donanmaları 30 Ekim 1918'de imzalanan Mondros Ateşkes Antlaşması'na dayanarak 13 Kasım 1918'de Haydarpaşa önlerine demirleyip İstanbul'a girdi. Fiilen gerçekleşmiş olan işgal, 16 Mart 1920 tarihinde resmi işgale dönüştü."
-   }
-  ],
-  "10-07": [
-   {
-    "year": 2023,
-    "text": "Hamas ve diğer birkaç Filistinli militan grup İsrail'e bir saldırı başlattı ve bu saldırıda çoğunluğu sivillerden oluşan yaklaşık 1.200 kişi öldürüldü. Siviller ve askerler de dahil olmak üzere 240'tan fazla kişi rehin alındı. Saldırı İsrail-Hamas savaşını başlattı.",
-    "title": "Hamas",
-    "url": "https://tr.wikipedia.org/wiki/Hamas",
-    "detay": "Hamas veya resmî adıyla İslami Direniş Hareketi, Filistin Ulusal Yönetimi'nde seçimle belirlenmiş Filistin Parlamentosunda çoğunluğu elinde tutan Filistinli paramiliter örgüt ve Sünni İslamcı ve militarist siyasi parti."
-   },
-   {
-    "year": 1982,
-    "text": "Toplamda 7485 kez sahne alacak Cats müzikali Broadway'de prömiyerini yaptı.",
-    "title": "Cats",
-    "url": "https://tr.wikipedia.org/wiki/Cats",
-    "detay": "Cats, Andrew Lloyd Webber’in, T.S Eliot’un 'Old Possum’s Book Of Practical Cats' adlı kitabından uyarlayarak bestelediği bir müzikaldir. Müzikal, çok bilinen Memory şarkısını da bütün dünyaya tanıtmıştır."
-   },
-   {
-    "year": 1949,
-    "text": "Doğu Almanya kuruldu.",
-    "title": "Doğu_Almanya",
-    "url": "https://tr.wikipedia.org/wiki/Do%C4%9Fu_Almanya",
-    "detay": "Doğu Almanya veya resmî adıyla Demokratik Alman Cumhuriyeti, günümüzdeki Almanya'nın doğu kısmında bulunmuş, 1949 ile 1990 yılları arasında var olmuş sosyalist cumhuriyet. ADC; 1945'te II."
-   }
-  ],
-  "10-08": [
-   {
-    "year": 2020,
-    "text": "Kıbrıs Harekâtı'ndan bu yana kapalı olan Maraş (Kapalı Maraş, KKTC), Cumhurbaşkanı Ersin Tatar'ın isteği üzerine 46 yıl aradan sonra açıldı.",
-    "title": "Kıbrıs_Harekâtı",
-    "url": "https://tr.wikipedia.org/wiki/K%C4%B1br%C4%B1s_Harek%C3%A2t%C4%B1",
-    "detay": "Kıbrıs Harekâtı, 20 Temmuz 1974'te Başbakan Bülent Ecevit’in emriyle Türk Silahlı Kuvvetlerinin Kıbrıs'ta başlattığı askerî harekât. Harekâtın ilk ayağı Yunanistan hükûmetinin desteğiyle yapılan 15 Temmuz 1974 darbesinin ardından düzenlendi. 14 Ağustos günü başlatılan ikinci harekâtla -Kuzey Lefkoşa da dâhil olmak üzere- adanın yüzde 37'sinin Türk kontrolüne geçmesiyle sonuçlandı. 140 bin ila 200 bin Rum, adanın kuzeyinden; 42 bin ila 65 bin Türk, adanın güneyinden göçmen oldu."
-   },
-   {
-    "year": 1980,
-    "text": "Bob Marley son konserini bayıldığı için tamamlayamadı, daha sonra kanser olduğu açıklandı.",
-    "title": "Bob_Marley",
-    "url": "https://tr.wikipedia.org/wiki/Bob_Marley",
-    "detay": "Robert Nesta \"Bob\" Marley, Jamaikalı reggae sanatçısıdır. Bob Marley, 130'un üzerinde plağı, yüzlerce şarkısı bulunan bir reggae efsanesi olarak kabul edilir."
-   },
-   {
-    "year": 1912,
-    "text": "Bulgaristan, Yunanistan, Sırbistan ve Karadağ'dan oluşan Balkan Birliği'nin, Osmanlı Devleti'ne karşı savaş ilan etmesiyle I. Balkan Savaşı başladı.",
-    "title": "Balkan_Birliği",
-    "url": "https://tr.wikipedia.org/wiki/Balkan_Birli%C4%9Fi",
-    "detay": "Balkan Birliği, 1912'de Doğu Ortodoks krallıklar Yunanistan, Sırbistan, Bulgaristan ve Karadağ tarafından hala Güneydoğu Avrupa'nın çoğunu kontrol eden Osmanlı İmparatorluğu'na karşı yapılmış bir dizi ikili anlaşmaların oluşturduğu dörtlü bir ittifaktı."
-   }
-  ],
-  "10-09": [
-   {
-    "year": 2008,
-    "text": "Nobel Edebiyat Ödülü'nü Fransız Jean-Marie Gustave Le Clézio kazandı.",
-    "title": "Nobel_Edebiyat_Ödülü",
-    "url": "https://tr.wikipedia.org/wiki/Nobel_Edebiyat_%C3%96d%C3%BCl%C3%BC",
-    "detay": "Nobel Edebiyat ödülleri, Nobel Ödülleri'nin bir parçası olarak, her yıl Alfred Nobel'in sözleri ile \"bir idealist eğilimi en farklı şekilde ifade eden yazara\" verilmektedir. İsveç Akademisi her yıl bu ödüle layık kişileri seçmektedir."
-   },
-   {
-    "year": 1981,
-    "text": "Fransa'da ölüm cezası kaldırıldı.",
-    "title": "Fransa",
-    "url": "https://tr.wikipedia.org/wiki/Fransa",
-    "detay": "Fransa, resmî adıyla Fransız Cumhuriyeti, Batı Avrupa'da yer alan bir ülkedir. Denizaşırı bölgeleri ve toprakları arasında Güney Amerika'daki Fransız Guyanası, Kuzey Atlantik'teki Saint Pierre ve Miquelon, Fransız Batı Hint Adaları ve Okyanusya ile Hint Okyanusu'ndaki birçok ada bulunmaktadır. Anakara Fransa, kuzeyde Belçika ve Lüksemburg; kuzeydoğuda Almanya; doğuda İsviçre; güneydoğuda İtalya ve Monako; güneyde Andorra ve İspanya; ve kuzeybatıda Birleşik Krallık ile deniz sınırı paylaşmaktadır."
-   },
-   {
-    "year": 1936,
-    "text": "Hoover Barajı'ndan 266 mil uzaklıktaki Los Angeles'a (Kaliforniya) elektrik verilmeye başlandı.",
-    "title": "Hoover_Barajı",
-    "url": "https://tr.wikipedia.org/wiki/Hoover_Baraj%C4%B1",
-    "detay": "Hoover Barajı, Arizona ve Nevada eyalet sınırında bulunan kendi kendine çalışabilme kabiliyetine sahip beton-kemer barajdır."
-   }
-  ],
-  "10-10": [
-   {
-    "year": 2015,
-    "text": "Ankara saldırısı: Ankara'da düzenlenen \"Emek, Barış, Demokrasi Mitingi\"nde, Ankara Garı önündeki 2 ayrı patlamada, 109 kişi öldü, 500'den fazla kişi yaralandı.",
-    "title": "Ankara",
-    "url": "https://tr.wikipedia.org/wiki/Ankara",
-    "detay": "Ankara, Türkiye'nin başkenti ve Ankara ilinin merkezi olan şehirdir. Coğrafi olarak Türkiye'nin merkezine yakın bir konumda bulunur ve İç Anadolu Bölgesi'nde yer alır. Türkiye İstatistik Kurumu'nun 2025 sonuçlarına göre 5.910.320 nüfusuyla ülkenin İstanbul'dan sonra nüfus bakımından ikinci büyük şehridir."
-   },
-   {
-    "year": 1982,
-    "text": "Auschwitz toplama kampında tanımadığı bir siyasi tutuklu yerine ceza almaya gönüllü olarak hayatını yitiren rahip Maximilian Kolbe, aziz ilan edildi.",
-    "title": "Maximilian_Kolbe",
-    "url": "https://tr.wikipedia.org/wiki/Maximilian_Kolbe",
-    "detay": "Maximilian Maria Kolbe, doğum ismi Raymund Kolbe;, Polonyalı bir Fransisken rahibi, misyoneri ve şehitti. İkinci Dünya Savaşı sırasında Alman işgali altındaki Polonya'da bulunan Auschwitz ölüm kampında gönüllü olarak Franciszek Gajowniczek adlı bir adamın yerine ölmeyi kabul etti."
-   },
-   {
-    "year": 1938,
-    "text": "Çekoslovakya Hükûmeti, Münih Antlaşması gereğince Südetler bölgesini Almanya'ya devretti.",
-    "title": "Çekoslovakya",
-    "url": "https://tr.wikipedia.org/wiki/%C3%87ekoslovakya",
-    "detay": "Çekoslovakya, Orta Avrupa'da 1918 ile 1992 arasında varlığını sürdürmüş ülke. 1 Ocak 1993'te Slovakya ve Çek Cumhuriyeti adlı iki bağımsız devlete bölünmüştür."
-   }
-  ],
-  "10-11": [
-   {
-    "year": 2012,
-    "text": "Dünya Kız Çocukları Günü Birleşmiş Milletler tarafından alınan bir kararla, kız çocukları konusundaki farkındalığın artırılması amacıyla kutlanmaya başlamıştır.",
-    "title": "Dünya_Kız_Çocukları_Günü",
-    "url": "https://tr.wikipedia.org/wiki/D%C3%BCnya_K%C4%B1z_%C3%87ocuklar%C4%B1_G%C3%BCn%C3%BC",
-    "detay": "Dünya Kız Çocukları Günü, her yıl 11 Ekim'de dünya çapında kutlanan bir gündür. 2012'de Birleşmiş Milletler tarafından alınan bir kararla, kız çocuklarının cinsiyetlerinden ötürü maruz kaldığı eşitsizlik konusundaki farkındalığın artırılması amacıyla kutlanmaya başlamıştır. Eğitim hakkı, beslenme, yasal haklar, kadına yönelik şiddet ve zorla evlendirme konuları da Dünya Kız Çocukları Günü kapsamında gündeme taşınmaktadır."
-   },
-   {
-    "year": 1980,
-    "text": "Yönetmen Ali Özgentürk'ün Hazal filmi, 29. Uluslararası Mannheim Film Festivali'nde 3 ödül aldı.",
-    "title": "Ali_Özgentürk",
-    "url": "https://tr.wikipedia.org/wiki/Ali_%C3%96zgent%C3%BCrk",
-    "detay": "Ali Özgentürk, Türk yönetmen, senarist ve yapımcı. 1977 yapımı Selvi Boylum Al Yazmalım filminin senaristi ve 1979 yılında çektiği ilk uzun metrajlı Hazal filmi ile tanınmaktadır."
-   },
-   {
-    "year": 1928,
-    "text": "LZ-127 Graf Zeppelin adlı bir zeplin, ilk kıtalararası uçuşunu yapmak üzere Almanya'dan New Jersey'e doğru yola çıktı.",
-    "title": "New_Jersey",
-    "url": "https://tr.wikipedia.org/wiki/New_Jersey",
-    "detay": "New Jersey, Amerika Birleşik Devletleri'nin Orta Atlantik ve Kuzeydoğu bölgelerinde yer alan bir eyalettir. Yoğun kentleşmiş Kuzeydoğu metropolünün coğrafi merkezinde yer alan eyalet, kuzeybatı, kuzey ve kuzeydoğuda New York Eyaleti; doğu, güneydoğu ve güneyde Atlantik Okyanusu; batıda Delaware Nehri ve Pensilvanya; güneybatıda ise Delaware Körfezi ve Delaware ile sınırlıdır. 7.354 mil kare yüzölçümüyle New Jersey, yüzölçümü bakımından en küçük beşinci eyalettir."
-   }
-  ],
   "10-12": [
    {
     "year": 2006,
@@ -231,6 +70,167 @@
     "title": "Generalfeldmarschall",
     "url": "https://tr.wikipedia.org/wiki/Generalfeldmarschall",
     "detay": "Generalfeldmarschall, Kutsal Roma Cermen İmparatorluğu'ndan Üçüncü Reich'a kadar Cermen ordularındaki en yüksek rütbe. Habsburg Monarşisinde, Avusturya İmparatorluğu'nda ve Avusturya-Macaristan'da Feldmarschall rütbesi kullanıldı. 1914-1918 yılları arasında on kişiye bu rütbe verilmiş ve bunlardan dört tanesi Habsburg hanedanının egemenliğine mensuptur."
+   }
+  ],
+  "10-15": [
+   {
+    "year": 2022,
+    "text": "Bartın'da maden faciası: 41 işçi hayatını kaybetti 7 işçi yaralandı.",
+    "title": "Bartın",
+    "url": "https://tr.wikipedia.org/wiki/Bart%C4%B1n",
+    "detay": "Bartın, Karadeniz Bölgesi'nin batı bölümünde yer alan Bartın ilinin merkezi olan şehirdir. Şehirden geçen Bartın Çayı'ndan denize gemiyle gidilebilir. Bu özelliğiyle Türkiye'de deniz trafiğine uygun tek akarsudur."
+   },
+   {
+    "year": 1970,
+    "text": "Enver Sedat, Mısır devlet başkanı oldu.",
+    "title": "Enver_Sedat",
+    "url": "https://tr.wikipedia.org/wiki/Enver_Sedat",
+    "detay": "Muhammed Enver Sedat, Mısırlı asker, siyasetçi ve Mısır'ın üçüncü devlet başkanıdır."
+   },
+   {
+    "year": 1937,
+    "text": "Yeni harflerle basılan ilk kâğıt paralar tedavüle çıktı. Üzerinde Atatürk'ün resmi bulunan 100 liralık banknotlar 1942'de tedavülden kaldırıldı.",
+    "title": "Para",
+    "url": "https://tr.wikipedia.org/wiki/Para",
+    "detay": "Para, mal ve hizmetlerin değiş-tokuşu için kullanılan araçlardan en yaygın olanı. Para sözcüğü ile genellikle madenî para ve banknotlar kastedilmekle birlikte; ekonomide, vadesiz mevduatlar ve kredi kartları da parayı meydana getiren unsurlardan sayılır. Vadeli mevduat, devlet tahvili gibi değişim araçları ise para benzeri olarak değerlendirilir."
+   }
+  ],
+  "10-16": [
+   {
+    "year": 2002,
+    "text": "Irak devlet başkanı Saddam Hüseyin, 7 yıllık yeni görev süresi için düzenlenen halk oylamasında oyların tamamını aldı.",
+    "title": "Irak",
+    "url": "https://tr.wikipedia.org/wiki/Irak",
+    "detay": "Irak, resmî adıyla Irak Cumhuriyeti, Batı Asya'da yer alan bir ülkedir. Güneyde Suudi Arabistan, kuzeyde Türkiye, doğuda İran, güneydoğuda Basra Körfezi ve Kuveyt, güneybatıda Ürdün ve batıda Suriye ile komşudur. Irak, 438.317 km2 (169.235 mil2) bir alanı kapsamaktadır ve yüzölçümü bakımından dünyanın 58. büyük ülkesi olup, 46 milyonu aşkın nüfusuyla en kalabalık 31. ülke konumundadır. 8 milyondan fazla nüfusa sahip olan Bağdat, ülkenin başkenti ve en büyük şehridir."
+   },
+   {
+    "year": 1981,
+    "text": "12 Eylül Darbesi: Millî Güvenlik Konseyi tarafından çıkarılan 2533 sayılı kanunla, Türkiye'de faaliyet gösteren tüm siyasal partiler feshedildi ve mal varlıkları hazineye devrolundu.",
+    "title": "12_Eylül_Darbesi",
+    "url": "https://tr.wikipedia.org/wiki/12_Eyl%C3%BCl_Darbesi",
+    "detay": "12 Eylül Darbesi veya 1980 İhtilali, resmî isimlendirmeleriyle 12 Eylül 1980 Harekâtı veya Bayrak Harekâtı, Türk Silahlı Kuvvetlerinin 12 Eylül 1980 tarihinde Türkiye'de emir komuta zinciri içinde gerçekleştirdiği askerî darbedir. 27 Mayıs Darbesi ve 12 Mart Muhtırası'nın ardından Türkiye Cumhuriyeti tarihinde Silahlı Kuvvetlerin yönetime karşı gerçekleştirdiği üçüncü ve son başarılı açık müdahaledir."
+   },
+   {
+    "year": 1940,
+    "text": "Varşova gettosu Nazi SS birlikleri tarafından kuruldu.",
+    "title": "Varşova_Gettosu",
+    "url": "https://tr.wikipedia.org/wiki/Var%C5%9Fova_Gettosu",
+    "detay": "Varşova Gettosu, 1 Nisan 1940 tarihinde Nazi Almanyası'nın II. Dünya Savaşı sırasında işgal ettiği Polonya'nın başkenti Varşova'da kurmuş olduğu gettodur. Kurucusu Polonya'nın Genel Valisi Hans Frank'tır. Daha sonra Nürnberg duruşmaları sonucunda idam edildi. Aynı zamanda bu getto Nazi Almanyası'nın işgal ettiği diğer bölgelerde kurmuş olduğu 400'den fazla gettonun en büyüğüdür. Burada yaklaşık 400.000'den fazla Yahudi vardı. Bu gettoda kısmi olarak Romanlar da vardı."
+   }
+  ],
+  "10-17": [
+   {
+    "year": 2010,
+    "text": "Necmettin Erbakan, Saadet Partisi Genel Başkanlığına seçildi.",
+    "title": "Necmettin_Erbakan",
+    "url": "https://tr.wikipedia.org/wiki/Necmettin_Erbakan",
+    "detay": "Necmettin Erbakan, Türk makine yüksek mühendisi, akademisyen, siyasetçi ve Millî Görüş ideolojisinin kurucusudur. Başbakan yardımcılığı ve başbakanlık görevlerinde bulunmuştur. 1974 yılında Bülent Ecevit liderliğindeki Cumhuriyet Halk Partisi ile kurulan koalisyon hükûmetinde başbakan yardımcısı ve devlet bakanı olmuştur. 1974 Genel Affı ve Kıbrıs Harekâtı'na destek vermiştir. 1996'da başbakan olmuş, başbakanlık görevini 28 Haziran 1996 ile 30 Haziran 1997 tarihleri arasında sürdürmüştür."
+   },
+   {
+    "year": 1970,
+    "text": "Québec Çalışma Bakanı Pierre Laporte, Québec Kurtuluş Cephesi (FLQ) militanlarınca öldürüldü. Laporte, 10 Ekim 1970'te kaçırılmıştı.",
+    "title": "Québec",
+    "url": "https://tr.wikipedia.org/wiki/Qu%C3%A9bec",
+    "detay": "Québec, Kanada'nın doğu bölgesinde en büyük eyaleti olmasının yanı sıra Kanada'da sadece Fransızcanın resmî dil olduğu tek eyalettir."
+   },
+   {
+    "year": 1938,
+    "text": "Atatürk ilk ağır komaya girdi.",
+    "title": "Mustafa_Kemal_Atatürk",
+    "url": "https://tr.wikipedia.org/wiki/Mustafa_Kemal_Atat%C3%BCrk",
+    "detay": "Mustafa Kemal Atatürk, Türk mareşal, devlet adamı, yazar, Türk Kurtuluş Savaşı'nın başkomutanı, Türkiye Cumhuriyeti'nin kurucusu ve ilk cumhurbaşkanıdır. Türkiye'yi laik, sanayileşen bir ulusa dönüştüren kapsamlı ilerici reformlar üstlenmiştir. İdeolojik olarak sekülarist ve milliyetçi politikaları ve sosyo-politik teorileri Kemalizm olarak tanınmıştır."
+   }
+  ],
+  "10-18": [
+   {
+    "year": 2020,
+    "text": "Koronavirüs salgını: Onaylanmış COVID-19 vakalarının sayısı dünya çapında 40 milyonu geçti.",
+    "title": "COVID-19",
+    "url": "https://tr.wikipedia.org/wiki/COVID-19",
+    "detay": "Koronavirüs hastalığı 2019 (COVID-19) şiddetli akut solunum sendromu koronavirüsü 2 (SARS-CoV-2)'nin neden olduğu bulaşıcı bir hastalıktır. İlk vaka ile Çin'in Hubei eyaletinin Wuhan şehrinde Kasım 2019 tarihinde karşılaşılmıştır. O zamandan bu yana yayılmaya devam etmiş ve dünya genelinde pandemiye neden olmuştur. Ancak bu pandemi 2022 yılında birçok ülkede sona ermiştir."
+   },
+   {
+    "year": 1982,
+    "text": "574 sanıklı Ankara Dev-Yol davası başladı: 186 kişi idam istemiyle yargılanıyor.",
+    "title": "Devrimci_Yol",
+    "url": "https://tr.wikipedia.org/wiki/Devrimci_Yol",
+    "detay": "Devrimci Yol (DEV-YOL), 1974 sonrası Türkiye Halk Kurtuluş Partisi-Cephesinin fikrî ve örgütsel olarak devamı niteliğinde olan bir harekettir. 1974 affı sonrası eski THKP-C ve DEV-GENÇ kökenli kadrolar geçmişin değerlendirmesini esas alan tartışmalar yürütmüştür. Kökeni THKP-C Genel Komitesi içerisinde yaşanan ayrılığa kadar giden farklı değerlendirmeler, sürecin ayrılıkla sonuçlanmasına neden olmuştur."
+   },
+   {
+    "year": 1924,
+    "text": "TBMM'nin yeni binası hizmete açıldı.",
+    "title": "Türkiye_Büyük_Millet_Meclisi",
+    "url": "https://tr.wikipedia.org/wiki/T%C3%BCrkiye_B%C3%BCy%C3%BCk_Millet_Meclisi",
+    "detay": "Türkiye Büyük Millet Meclisi (TBMM), Türkiye Cumhuriyeti'nin yasama organıdır. 23 Nisan 1920'de Osmanlı Devleti'nin İtilaf Devletleri'nce işgaline ve Meclis-i Mebûsan'ın İstanbul'un işgalinin ardından kapatılmasına direniş göstermek üzere, Mustafa Kemal ve silah arkadaşlarının öncülüğünde Ankara'da kurulmuştur. Asli görevi yürütmeyi denetlemektir ve yasama erkini kullanır. \"Egemenlik, kayıtsız şartsız milletindir\" ilkesi, TBMM'nin varoluşunun temel dayanağını oluşturur."
+   }
+  ],
+  "10-19": [
+   {
+    "year": 2025,
+    "text": "2025 Kuzey Kıbrıs Türk Cumhuriyeti cumhurbaşkanlığı seçimi yapıldı, seçimi %62,76 oyla Tufan Erhürman kazandı.",
+    "title": "2025_Kuzey_Kıbrıs_Türk_Cumhuriyeti_cumhurbaşkanlığı_seçimi",
+    "url": "https://tr.wikipedia.org/wiki/2025_Kuzey_K%C4%B1br%C4%B1s_T%C3%BCrk_Cumhuriyeti_cumhurba%C5%9Fkanl%C4%B1%C4%9F%C4%B1_se%C3%A7imi",
+    "detay": "2025 Kuzey Kıbrıs Türk Cumhuriyeti cumhurbaşkanlığı seçimi, Kuzey Kıbrıs Türk Cumhuriyeti'nde (KKTC) 2025-2030 yılları arasında görev yapacak cumhurbaşkanını belirlemek amacıyla 19 Ekim 2025 tarihinde yapılan seçimdir."
+   },
+   {
+    "year": 1972,
+    "text": "Nobel Edebiyat Ödülü, Alman yazar Heinrich Böll'e verildi.",
+    "title": "Nobel_Edebiyat_Ödülü",
+    "url": "https://tr.wikipedia.org/wiki/Nobel_Edebiyat_%C3%96d%C3%BCl%C3%BC",
+    "detay": "Nobel Edebiyat ödülleri, Nobel Ödülleri'nin bir parçası olarak, her yıl Alfred Nobel'in sözleri ile \"bir idealist eğilimi en farklı şekilde ifade eden yazara\" verilmektedir. İsveç Akademisi her yıl bu ödüle layık kişileri seçmektedir."
+   },
+   {
+    "year": 1872,
+    "text": "Dünyanın en büyük altın külçesi (215 kilogram) Avustralya New South Wales'de bulundu.",
+    "title": "Avustralya",
+    "url": "https://tr.wikipedia.org/wiki/Avustralya",
+    "detay": "Avustralya, resmî adıyla Avustralya Kamuvarlığı, Güney Yarımkürede yer alan bir kıta ülkesidir. Hint Okyanusu ve Büyük Okyanus arasında uzanır. Okyanusya kıtasında bulunur ve kıtanın çok büyük bir bölümünü kaplar. Deniz komşuları Endonezya, Doğu Timor, Papua Yeni Gine, Solomon Adaları, Vanuatu ve Yeni Zelanda'dır. Başkenti Canberra, en büyük şehri ise Sidney'dir."
+   }
+  ],
+  "10-20": [
+   {
+    "year": 2008,
+    "text": "Ergenekon davası'nın ilk duruşması Silivri Cezaevi içindeki Adliye'de görülmeye başlandı.",
+    "title": "Ergenekon_davaları",
+    "url": "https://tr.wikipedia.org/wiki/Ergenekon_davalar%C4%B1",
+    "detay": "Ergenekon davaları veya Ergenekon kumpası, Fetullahçılar tarafından var olduğu öne sürülen \"Ergenekon\" örgütü kapsamında açılan davalardır."
+   },
+   {
+    "year": 1978,
+    "text": "İTÜ Elektrik Fakültesi dekanı Ord.Prof. Bedri Karafakioğlu İstanbul'da uğradığı silahlı saldırı sonucunda yaşamını yitirdi.",
+    "title": "İstanbul_Teknik_Üniversitesi",
+    "url": "https://tr.wikipedia.org/wiki/%C4%B0stanbul_Teknik_%C3%9Cniversitesi",
+    "detay": "İstanbul Teknik Üniversitesi (İTÜ), kökleri 1773 yılına dayanan ve İstanbul'da yer alan bir devlet üniversitesidir."
+   },
+   {
+    "year": 1944,
+    "text": "Sovyet Kızıl Ordu Belgrad'a girdi. Aynı gün Gestapo, Alman anti-faşist ve sosyal demokrat Julius Leber'i kurşuna dizdi.",
+    "title": "Kızıl_Ordu",
+    "url": "https://tr.wikipedia.org/wiki/K%C4%B1z%C4%B1l_Ordu",
+    "detay": "İşçi ve Köylü Kızıl Ordusu, genellikle Kızıl Ordu olarak kısaltılır. Rusya Sovyet Federatif Sosyalist Cumhuriyeti'nin ve 1922'den itibaren Sovyetler Birliği'nin ordusu ve hava kuvvetleriydi. Ordu, Ocak 1918'de Lev Troçki tarafından Rus İç Savaşı sırasında yeni ulusun düşmanlarının, özellikle de topluca Beyaz Ordu olarak bilinen çeşitli grupların askerî güçlerine karşı koymak için kurulmuştur."
+   }
+  ],
+  "10-21": [
+   {
+    "year": 2007,
+    "text": "2007 Sivil Anayasasının halk tarafında referandumla oylaması.",
+    "title": "Anayasa",
+    "url": "https://tr.wikipedia.org/wiki/Anayasa",
+    "detay": "Anayasa, ülke üzerindeki egemenlik haklarının kullanım yetkisinin içeriğinde belirtildiği şekliyle devlete verildiğini belirleyen toplumsal sözleşmelerdir. Hans Kelsen'in normlar hiyerarşisine göre diğer bütün hukuki kurallardan ve yapılardan üstündür ve hiçbir kanun ve yapı anayasaya aykırı olamaz. Devletin temel örgüt yapısını kuran, önemli organlarını ve işleyişlerini belirleyen; ayrıca temel hak ve özgürlükleri tespit edip, sınırlarını çizen hukuk metinleridir. Toplumsal bir sözleşme niteliği taşır."
+   },
+   {
+    "year": 1981,
+    "text": "Atatürk Barajı'nın temeli, Devlet Başkanı Kenan Evren tarafından atıldı.",
+    "title": "Kenan_Evren",
+    "url": "https://tr.wikipedia.org/wiki/Kenan_Evren",
+    "detay": "Ahmet Kenan Evren, Türk asker, devlet adamı ve ressamdır. Türk Silahlı Kuvvetlerinin 17. Genelkurmay Başkanı (1978-1983), 12 Eylül Darbesi sonrası Türkiye'nin Devlet Başkanı (1980-1982) ve 7. Cumhurbaşkanıdır (1982-1989). Mehmetçik Vakfının kurucusudur."
+   },
+   {
+    "year": 1944,
+    "text": "Kızıl Ordu tarafından Alman sivillere karşı Nemmersdorf Katliamı işlendi.",
+    "title": "Kızıl_Ordu",
+    "url": "https://tr.wikipedia.org/wiki/K%C4%B1z%C4%B1l_Ordu",
+    "detay": "İşçi ve Köylü Kızıl Ordusu, genellikle Kızıl Ordu olarak kısaltılır. Rusya Sovyet Federatif Sosyalist Cumhuriyeti'nin ve 1922'den itibaren Sovyetler Birliği'nin ordusu ve hava kuvvetleriydi. Ordu, Ocak 1918'de Lev Troçki tarafından Rus İç Savaşı sırasında yeni ulusun düşmanlarının, özellikle de topluca Beyaz Ordu olarak bilinen çeşitli grupların askerî güçlerine karşı koymak için kurulmuştur."
    }
   ]
  }
