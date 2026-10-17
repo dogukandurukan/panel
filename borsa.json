@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-17 13:30",
+  "updated": "2026-10-17 17:00",
   "watch": [
     {
       "code": "BIMAS",
@@ -257,6 +257,14 @@
   },
   "news": [
     {
+      "t": "⚪ BofA’nın satış listesinde BİM ve ASELSAN ilk sıralarda  (Paratic Haber)",
+      "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1QT01qZ3l5RFJERDcwZ1k1RnJfa0w0VHlsWTU0ZjZHMVhOQkhiZmRELUtkQ0k0eUlqOWxrX2hOMTZHdXdtVmtLdk5EbC1ZZENRYUtRaWpzRVN1UGZIWW1ieGN6eURlLS1TbUFQeUpTTTFNaFhoOWZjQlh0U2h5OFk?oc=5"
+    },
+    {
+      "t": "⚪ TradingView'de Matriks tarafından haberler, 2026-10-15  (TradingView)",
+      "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFBPak9NUGw1UDg1LWxDV2dVc1BHcWpsVXdjZXI1eWNSSXc2a3c1bUN5ZWo4WWx0ZjhKZE8ySnBtbWZvSmpPOEk3aTJFTUY2Nnc2dTVzYmQ3R1Z2cWVacTlJ?oc=5"
+    },
+    {
       "t": "⚪ TradingView'de Matriks tarafından haberler, 2026-10-15  (TradingView)",
       "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1mNzRoWi1BOXdjYW8wSWFFUkZyVGVad002UzM5aThHY3JBTzZidzYtcjdCSlE4S3NpRUZDbXNfdS1FM19OVU9Wa0dBRl8xQy0tekJZSHpSS2dESU9QZkI4?oc=5"
     },
@@ -265,28 +273,20 @@
       "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOZ3hpTkJGd0J0ekZ2Y2xHRHJZRG5rdGdNbnZQU2QyN1NDUEhVaWM3TmpOcVU1dHdsTkxJcUlpc1NOQlh0TWpiWXFwRkdiVlZtVDhEVVRNWHlLd2NvdTMwbmdJTzJyYzlOR0tvdzQ3dVdTSThRWW9GZHBoZzNKRVRXNmVkUm5vb2FablhSczdBd2xqNFhqeEgwbzNRZ29HSUtoenNUMEhLa2pJT01qVVk3UVNTR2RxUGM?oc=5"
     },
     {
-      "t": "🟢 Şeker Yatırım’dan GARAN Analizi: Kâr Beklentisi 32,68 Milyar TL...  (Para Ajansı)",
-      "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNQ3dKMG5Db0RYbl9NTEJGTzRWZ3Q3TmpBTE1nd2FIb29yZ0VSVU9CUTNWUndmOHJhUjc1aHc5OUlFUkxKNzgyUTJZbmRKenQ2TVhlZHhpNlRwdFVWWTE3YTNXWTdldThWTDZVS0FMd25CT1JmM1MtODZ1MkdVV0xSR3pGU1JPNnVVNDVlZ1dqWm5BREFIcDZPZEpGT2VZRVNfVEJ3UVUtLU9PQ2U3OEc4aDVfWQ?oc=5"
-    },
-    {
       "t": "🟢 Borsa İstanbul, ASTOR ve Ebebek için temettü hak kullanım tarihini duyurdu  (Investing.com Türkiye)",
       "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxNclFmckx0TF9yWG8tY3ljYS1rb2prWjBjZ3dJUGNjX25aYTdjZVFiaWVFOVdXU2Rjb19IaGpZT1Q2dnkxNTh5RW9BbGNpaXVCYnRla3RoNk9XQUtIVkR0bUpzTmFzRHpKdnlBaGlCSkN1MkliYkFYSVlCaUgyeDZCX1NjZTF6VDV5MDlya3ctblYzMkdRdUNZZkd2bjlmMnR4YjlCZl9GbWVLQmpKWWRybVBTemJQMDVnNzl6WUFpSE9rdFN4Z2JoXzBR?oc=5"
-    },
-    {
-      "t": "🟢 ASTOR: Temettü Ödemesiyle Hissede Fiyat Düzeltmesi Yapıldı  (Finans Hattı)",
-      "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQbWxrWXE3YzRVTGRjbmctaW10dk1mVnpNNmprcDVvTGhEQTk0YXM4ZXlQZUo5Mm5YSENxdktKNTUwOHZ2MHI2Q1JKWWZRUTFGNGFmSTlkaUtzNDQ1cGg3aWhPeVMwQnJqR1JMWVE0WXd3TGI5TDBTVlJEa3NlYzB5YURMcms?oc=5"
     },
     {
       "t": "🟢 ASTOR: Temettü Ödemesi Ve Fiyat Düzeltmesi Hakkında Bilgi  (Finans Hattı)",
       "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQeUpXY0UxSDVZSzJvQWhVX1lDcldzcGFuclZDSDEzU0lsN0F1RktoOXltOFRKYk45VXl1bERPQWdNTjJKUEFwb3ZoeUllWTBReHFxYXJ2c1NEUUs1aEFmMU9aeGpMZHJEU2V6QTI0T3JzRmdUcVZhUGpJNVpRQ1FwZmZXby1YZDZBWFFEbmxWdWw?oc=5"
     },
     {
-      "t": "⚪ Kontrolmatik’i kontrol etme savaşı istifa getirdi  (Haber Hürriyeti)",
-      "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQY0tFNGR2bzA2LVhlTXFlVXA0LWhoMjhEaWpnT0F2RkZBRl9JSFJHZG1ZZUd0ZDQ1VXNVUVdqMnBDc0NGdi1DTm8zQ0hYTlFiUldNS2gtWllaeVVBTWJtT1BaMWFqVUFwYTEtdFB5OGl6b3V1anBvU1lNWkVYTFdIeklVRy1qSVB5U05iZnhneWpBdG0wOVJ4Z1pn0gGfAUFVX3lxTE5tZXFRSlNFWV9lanFIS3U1NVRfYnlUaEdJWG9DNUZUTHF3SDBPV2RxbkxDSXV1d2pmTEhyOHE3OVBtS2FFYnkwZDFwRlR0b1JtMmdaVUxXbUpEaVhQcDFOQ0dMUVpBZV9heDRfSTkzQUt0NWtvemxtRVBIZlhlSEQxbERFdWcyRGV0ajFEX2pfZElvbW5LYmJ2UkRzWDdDZw?oc=5"
+      "t": "🟢 Temettü ödemesi yapan ASTOR ve EBEBK'te hisse fiyatı...  (Hisse.net)",
+      "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOQ0tzUU9qVFlGVlhrZ0hkUkhPYkRNcHRVTmtxTzZYMjR3V2tUVTFLLU42bVkzOFU5TS1qN0hhamxENmdtQmRaU3J3ZWdjZGpLRzNuMWlyaXg5MktBS1ZDalVILUZ1QlREWlp1RTlZNHhTWEZoUXlmWlJGWFgySWZVRG1hU1RNSHVYVG5BcHBZSmlwZDBkSTdRT3puUlVSTDRf0gGgAUFVX3lxTE5DS3NRT2pUWUZWWGtnSGRSSE9iRE1wdFVOa3FPNlgyNHdXa1RVMUstTjZtWTM4VTlNLWo3SGFqbEQ2Z21CZFpTcndlZ2NkaktHM24xaXJpeDkyS0FLVkNqVUgtRnVCVERaWnVFOVk0eFNYRmhReWZaUkZYWDJJZlVEbWFTVE1IdVhUbkFwcFlKaXBkMGRJN1FPem5SVVJMNF8?oc=5"
     },
     {
-      "t": "⚪ Sabancı Holding (SAHOL) 3Ç26 bilanço tarihi açıklandı  (Paratic Haber)",
-      "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTE9PbzRXU3dLYl9tQUJESkZUOGdEN0pnN1F5eURackZ6cVg5MXlhSmo2LWJkLXJVdGY1MWExVWFQbG4xei1naHdENHZ2SHFCVWFfYkZDcUtra0Y0N3hCQ0EzMWx1dkpMWHE4dzNYODVzaVJJOGRzVlhjblNVTWk?oc=5"
+      "t": "⚪ Kontrolmatik’i kontrol etme savaşı istifa getirdi  (Haber Hürriyeti)",
+      "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQY0tFNGR2bzA2LVhlTXFlVXA0LWhoMjhEaWpnT0F2RkZBRl9JSFJHZG1ZZUd0ZDQ1VXNVUVdqMnBDc0NGdi1DTm8zQ0hYTlFiUldNS2gtWllaeVVBTWJtT1BaMWFqVUFwYTEtdFB5OGl6b3V1anBvU1lNWkVYTFdIeklVRy1qSVB5U05iZnhneWpBdG0wOVJ4Z1pn0gGfAUFVX3lxTE5tZXFRSlNFWV9lanFIS3U1NVRfYnlUaEdJWG9DNUZUTHF3SDBPV2RxbkxDSXV1d2pmTEhyOHE3OVBtS2FFYnkwZDFwRlR0b1JtMmdaVUxXbUpEaVhQcDFOQ0dMUVpBZV9heDRfSTkzQUt0NWtvemxtRVBIZlhlSEQxbERFdWcyRGV0ajFEX2pfZElvbW5LYmJ2UkRzWDdDZw?oc=5"
     }
   ],
   "world": [
@@ -299,71 +299,71 @@
       "link": "https://www.theguardian.com/global-development/2026/oct/15/senegal-homosexuality-criminalised-anti-lgbtq-arrests-hiv-testing-human-rights-watch"
     },
     {
-      "t": "🌍 Solar power booms in Philippines as war on Iran spikes energy costs  (Al Jazeera)",
-      "link": "https://www.aljazeera.com/news/2026/10/17/solar-power-booms-in-philippines-as-war-on-iran-spikes-energy-costs?traffic_source=rss"
+      "t": "🌍 Child, four women among Palestinians injured in West Bank pogroms  (Al Jazeera)",
+      "link": "https://www.aljazeera.com/news/2026/10/17/several-palestinians-injured-detained-in-ongoing-west-bank-pogrom?traffic_source=rss"
     },
     {
-      "t": "🌍 Sidewalk sleepers: They have nowhere else to stay while a loved one is in the hospital  (NPR World)",
-      "link": "https://www.npr.org/2026/10/17/g-s1-147874/hospital-diagnosis-patients-india-sidewalk"
+      "t": "🌍 Decades after apartheid, South Africans seek justice for crimes of the past  (NPR World)",
+      "link": "https://www.npr.org/2026/10/17/nx-s1-5987671/south-africa-justice-sharpeville-apartheid"
     },
     {
-      "t": "🌍 Super tanker ablaze after striking mine in Strait of Hormuz, IRGC says  (Euronews)",
-      "link": "https://www.euronews.com/2026/10/17/super-tanker-ablaze-after-striking-mine-in-strait-of-hormuz-irgc-says"
+      "t": "🌍 Hungarian PM Péter Magyar says Zelenskyy unlikely to visit Budapest later this month  (Euronews)",
+      "link": "https://www.euronews.com/2026/10/17/hungarian-pm-peter-magyar-says-zelenskyy-unlikely-to-visit-budapest-later-this-month"
     },
     {
-      "t": "🌍 France braces for nationwide protests  (DW)",
-      "link": "https://www.dw.com/en/france-braces-for-nationwide-protests/a-79685584?maca=en-rss-en-world-4025-rdf"
+      "t": "🌍 Russia wants blackout in Ukraine as winter comes — Zelenskyy  (DW)",
+      "link": "https://www.dw.com/en/russia-wants-blackout-in-ukraine-as-winter-comes-zelenskyy/a-79686703?maca=en-rss-en-world-4025-rdf"
     }
   ],
   "tr": [
     {
+      "t": "🇹🇷 Milli motosikletçi Can Öncü, İspanya'da 3'üncü oldu  (AA)",
+      "link": "https://www.aa.com.tr/tr/spor/milli-motosikletci-can-oncu-ispanyada-3uncu-oldu-/4092027"
+    },
+    {
+      "t": "🇹🇷 İmamoğlu savunmasının dördüncü günü: 'Bu bir siyasi davadır'  (BBC Türkçe)",
+      "link": "https://www.bbc.com/turkce/articles/cmlyd2xp1jxwo?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "t": "🇹🇷 Bodrumlu kadınlar sokaklar için ördüğü  (Habertürk)",
+      "link": "https://www.haberturk.com/gundem/bodrumlu-kadinlar-sokaklar-icin-ordugu-3920474"
+    },
+    {
+      "t": "🇹🇷 Ayazağa'da son durum. Dere yatağındaki binalar yıkılıyor  (NTV)",
+      "link": "https://www.ntv.com.tr/turkiye/galeri-ayazagada-dere-yatagindaki-binalar-yikiliyor-iste-yikim-calismalari-1746754"
+    },
+    {
+      "t": "🇹🇷 Filistin topraklarını gasbeden İsrailliler, Batı Şeria'da Batılı diplomatların araçlarına saldırdı  (AA)",
+      "link": "https://www.aa.com.tr/tr/dunya/filistin-topraklarini-gasbeden-israilliler-bati-seriada-batili-diplomatlarin-araclarina-saldirdi/4092033"
+    },
+    {
       "t": "🇹🇷 İstanbul'a düşen 'rekor' yağışın sele dönüşmesi nasıl önlenebilirdi?  (BBC Türkçe)",
       "link": "https://www.bbc.com/turkce/articles/c687zjl55p3qo?at_medium=RSS&at_campaign=rss"
-    },
-    {
-      "t": "🇹🇷 Kimyasal gübreye yeni nesil alternatif: Zeytin atığı  (Habertürk)",
-      "link": "https://www.haberturk.com/gundem/foto/zeytin-atigindan-organomineral-gubreler-gelistiriliyor-3920440"
-    },
-    {
-      "t": "🇹🇷 Osman Gazi gemisi yola çıktı. Cumhurbaşkanı Erdoğan: Gaz üretimi ikiye katlanacak  (NTV)",
-      "link": "https://www.ntv.com.tr/turkiye/cumhurbaskani-erdogan-osman-gazi-gemisi-mavi-vatanin-ilk-fabrikasidir-1746713"
-    },
-    {
-      "t": "🇹🇷 Starlink interneti Ukrayna savaş alanında neden bu kadar önemli?  (BBC Türkçe)",
-      "link": "https://www.bbc.com/turkce/articles/cx1l3dz05r8go?at_medium=RSS&at_campaign=rss"
-    },
-    {
-      "t": "🇹🇷 Balıkesir Kitap Fuarı kapılarını açtı  (Habertürk)",
-      "link": "https://www.haberturk.com/gundem/balikesir-kitap-fuari-kapilarini-acti-3920438"
-    },
-    {
-      "t": "🇹🇷 Gülistan Doku cinayetinde kayıp görüntü muamması. Kafenin üst katındaki kayıtlar silindi mi?  (NTV)",
-      "link": "https://www.ntv.com.tr/turkiye/galeri-gulistan-doku-cinayetinde-kayip-goruntu-muammasi-kafenin-ust-katindaki-kayitlar-silindi-mi-1746708"
     }
   ],
   "_teshis": {
     "dunya": [
-      "BBC World: 27 öğe / 2 alındı / 0 elendi | ilk: Trump waives several Russia sanctions as row with Zelensky i",
+      "BBC World: 23 öğe / 2 alındı / 0 elendi | ilk: Trump waives several Russia sanctions as row with Zelensky i",
       "Guardian World: 45 öğe / 2 alındı / 0 elendi | ilk: LGBTQ+ people go into hiding in Senegal as hundreds are arre",
-      "Al Jazeera: 25 öğe / 2 alındı / 0 elendi | ilk: Solar power booms in Philippines as war on Iran spikes energ",
-      "NPR World: 10 öğe / 2 alındı / 0 elendi | ilk: Sidewalk sleepers: They have nowhere else to stay while a lo",
-      "Euronews: 50 öğe / 2 alındı / 1 elendi | ilk: Latest news bulletin | October 17th, 2026 – Midday",
-      "DW: 11 öğe / 2 alındı / 0 elendi | ilk: France braces for nationwide protests",
+      "Al Jazeera: 25 öğe / 2 alındı / 0 elendi | ilk: Child, four women among Palestinians injured in West Bank po",
+      "NPR World: 10 öğe / 2 alındı / 0 elendi | ilk: Decades after apartheid, South Africans seek justice for cri",
+      "Euronews: 50 öğe / 2 alındı / 1 elendi | ilk: Hungarian PM Péter Magyar says Zelenskyy unlikely to visit B",
+      "DW: 12 öğe / 2 alındı / 0 elendi | ilk: Russia wants blackout in Ukraine as winter comes — Zelenskyy",
       "SONUÇ: 6 haber · veren: Al Jazeera, BBC World, DW, Euronews, Guardian World, NPR World",
-      "AA: OKUNAMADI RemoteDisconnected: Remote end closed connection without response",
-      "TRT Haber: OKUNAMADI ParseError: not well-formed (invalid token): line 24, column 86",
-      "BBC Türkçe: 16 öğe / 2 alındı / 0 elendi | ilk: İstanbul'a düşen 'rekor' yağışın sele dönüşmesi nasıl önlene",
-      "Habertürk: 30 öğe / 2 alındı / 0 elendi | ilk: Kimyasal gübreye yeni nesil alternatif: Zeytin atığı",
-      "NTV: 20 öğe / 2 alındı / 0 elendi | ilk: Osman Gazi gemisi yola çıktı. Cumhurbaşkanı Erdoğan: Gaz üre",
-      "SONUÇ: 6 haber · veren: BBC Türkçe, Habertürk, NTV · boş dönen: AA, TRT Haber"
+      "AA: 25 öğe / 2 alındı / 0 elendi | ilk: Milli motosikletçi Can Öncü, İspanya'da 3'üncü oldu",
+      "TRT Haber: OKUNAMADI ParseError: not well-formed (invalid token): line 192, column 86",
+      "BBC Türkçe: 17 öğe / 2 alındı / 0 elendi | ilk: İmamoğlu savunmasının dördüncü günü: 'Bu bir siyasi davadır'",
+      "Habertürk: 30 öğe / 2 alındı / 0 elendi | ilk: Bodrumlu kadınlar sokaklar için ördüğü",
+      "NTV: 20 öğe / 2 alındı / 0 elendi | ilk: Ayazağa'da son durum. Dere yatağındaki binalar yıkılıyor",
+      "SONUÇ: 6 haber · veren: AA, BBC Türkçe, Habertürk, NTV · boş dönen: TRT Haber"
     ],
-    "hisse": "10 başlık geldi, 1 elendi",
+    "hisse": "8 başlık geldi, 0 elendi",
     "hisse_ham": [
+      "BofA’nın satış listesinde BİM ve ASELSAN ilk sıralarda",
+      "TradingView'de Matriks tarafından haberler, 2026-10-15",
       "TradingView'de Matriks tarafından haberler, 2026-10-15",
       "3Ç26 Bilançosunu Açıklayacak Olan GARAN Hissesine 7 Hedef Fiyat!",
-      "Şeker Yatırım’dan GARAN Analizi: Kâr Beklentisi 32,68 Milyar TL...",
       "Borsa İstanbul, ASTOR ve Ebebek için temettü hak kullanım tarihini duy",
-      "ASTOR: Temettü Ödemesiyle Hissede Fiyat Düzeltmesi Yapıldı",
       "ASTOR: Temettü Ödemesi Ve Fiyat Düzeltmesi Hakkında Bilgi"
     ]
   }
