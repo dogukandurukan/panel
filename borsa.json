@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-18 13:50",
+  "updated": "2026-10-18 17:12",
   "watch": [
     {
       "code": "BIMAS",
@@ -247,7 +247,7 @@
         "rsiTxt": "nötr",
         "rsi": 65.9,
         "volat": 1.9,
-        "volRatio": 0.91
+        "volRatio": 0.9
       }
     }
   ],
@@ -267,6 +267,14 @@
     {
       "t": "⚪ TradingView'de Matriks tarafından haberler, 2026-10-15  (TradingView)",
       "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1mNzRoWi1BOXdjYW8wSWFFUkZyVGVad002UzM5aThHY3JBTzZidzYtcjdCSlE4S3NpRUZDbXNfdS1FM19OVU9Wa0dBRl8xQy0tekJZSHpSS2dESU9QZkI4?oc=5"
+    },
+    {
+      "t": "🟢 Feridun Geçgel’in serveti eridi, Astor yatırımcısının parası yarıya indi!  (ParaMedya)",
+      "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPeFc5d0pCX09oRUlsbDNVV2VqM1NWVGNlbDRsRUwyaTNnRndaX1RQZkdVTVNmMmVNRkJHcnJJcmN4TjN4V0VUQVpPMXh4V3ZDbUVSWGp0cWdPMG1tTzJYRjZqZzJmYWpVS0NTLWhiUnY0aGRvMGxiQzFDR2taa3BKSXVkRlN0UEdTX0dGaUFZcVlxb0FRN1pjRW16b1pwWVRJVlBTeDE3YmxITzR6bjhoMNIBtgFBVV95cUxNNGo5MGl4NmM1MDZyNUFFaGVNcy1Cb2dZQTZnWHl1Z0o1bW9YQ21MMVNpaEZNY2RwV1RJTFBZeUpEVFlGNDJnSm5tTkJobHdvajRiOElpUVRRWmR6aHhhaFJTSFJHX29XbG14bzA3a25scHZJdlo2REdsQl9BUEhYbElqZ0Y4cnE5Q2xOX19fSGxjUUE4UzY2MjZ5bGpJeExzNDR3aVpTSXE4czNzQnVxNDRNMUpaQQ?oc=5"
+    },
+    {
+      "t": "⚪ ASTOR'da geçen haftanın alıcı ve satıcıları belli oldu!  (Hisse.net)",
+      "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNNzdWaGg2WGZIWGZOWVNBb2ZHNG1tUC1pLUZUY1h2V1AwT1VnSTZKTmpHZEx5VDZmZWdTcTZRdEFEdHdIVTV2WTdWNFhVZWQ2bk05TEdNRmpHRWg3OXhFOXJ0R2ZHUDBCTTdyRzNKajBSVGd3dW1sc2xpd2NyYXc3akx1SDl0QkV5ZmdOX0hmZGNnS3liRW1pMtIBmAFBVV95cUxNNzdWaGg2WGZIWGZOWVNBb2ZHNG1tUC1pLUZUY1h2V1AwT1VnSTZKTmpHZEx5VDZmZWdTcTZRdEFEdHdIVTV2WTdWNFhVZWQ2bk05TEdNRmpHRWg3OXhFOXJ0R2ZHUDBCTTdyRzNKajBSVGd3dW1sc2xpd2NyYXc3akx1SDl0QkV5ZmdOX0hmZGNnS3liRW1pMg?oc=5"
     },
     {
       "t": "⚪ Kontrolmatik’i kontrol etme savaşı istifa getirdi  (Haber Hürriyeti)",
@@ -291,72 +299,72 @@
       "link": "https://www.theguardian.com/world/2026/oct/18/lagos-hypemen-redefining-afrobeats-music-afrohype"
     },
     {
-      "t": "🌍 Indian YouTuber Dhruv Rathee leads anti-BJP protest in London  (Al Jazeera)",
-      "link": "https://www.aljazeera.com/video/newsfeed/2026/10/18/indian-youtuber-dhruv-rathee-leads-anti-bjp-protest-in-london?traffic_source=rss"
+      "t": "🌍 Why have France’s school protests become a wider political crisis?  (Al Jazeera)",
+      "link": "https://www.aljazeera.com/news/2026/10/18/why-have-frances-school-protests-become-a-wider-political-crisis?traffic_source=rss"
     },
     {
-      "t": "🌍 Major fire breaks out in Alberta after deadly incident at military base  (NPR World)",
-      "link": "https://www.npr.org/2026/10/18/nx-s1-6007276/fire-alberta-deadly-canada-military-base"
+      "t": "🌍 Pope Leo says he will gradually resume duties after cancer surgery  (NPR World)",
+      "link": "https://www.npr.org/2026/10/18/g-s1-148654/pope-leo-says-he-will-gradually-resume-duties-after-cancer-surgery"
     },
     {
-      "t": "🌍 Lyon wakes up to scenes of destruction after violent protests  (Euronews)",
-      "link": "https://www.euronews.com/2026/10/18/lyon-wakes-up-to-scenes-of-destruction-after-violent-protests"
+      "t": "🌍 Burnt bicycles, smashed windows and looted shops: Trail of destruction across Paris  (Euronews)",
+      "link": "https://www.euronews.com/2026/10/18/burnt-bicycles-smashed-windows-and-looted-shops-trail-of-destruction-across-paris"
     },
     {
-      "t": "🌍 How reliant is Ukraine on the US-controlled Starlink internet service?  (DW)",
-      "link": "https://www.dw.com/en/how-reliant-is-ukraine-on-the-us-controlled-starlink-internet-service/a-79689729?maca=en-rss-en-world-4025-rdf"
+      "t": "🌍 France: Young voters blase about Glucksmann's Socialists  (DW)",
+      "link": "https://www.dw.com/en/france-young-voters-blase-about-glucksmann-s-socialists/a-79684159?maca=en-rss-en-world-4025-rdf"
     }
   ],
   "tr": [
     {
-      "t": "🇹🇷 İstanbul'daki selde can kaybı 5'e yükseldi  (TRT Haber)",
-      "link": "https://www.trthaber.com/haber/gundem/istanbuldaki-selde-can-kaybi-5e-yukseldi-960463.html"
+      "t": "🇹🇷 60 saniyede bugün (18 Ekim 2026)  (AA)",
+      "link": "https://www.aa.com.tr/tr/gundem/60-saniyede-bugun-18-ekim-2026/4092690"
     },
     {
-      "t": "🇹🇷 İstanbul'da sel: Ayazağa'da üç, Pendik'te iki kişi kayıp  (BBC Türkçe)",
+      "t": "🇹🇷 Fransa'da sarı yeleklilerin gösterilerinde 2 binden fazla kişi gözaltına alındı  (TRT Haber)",
+      "link": "https://www.trthaber.com/haber/dunya/fransada-sari-yeleklilerin-gosterilerinde-2-binden-fazla-kisi-gozaltina-alindi-960472.html"
+    },
+    {
+      "t": "🇹🇷 İstanbul'da sel: Kayıp iki kişinin daha cesedine ulaşıldı  (BBC Türkçe)",
       "link": "https://www.bbc.com/turkce/articles/c9e8l1xvnv40o?at_medium=RSS&at_campaign=rss"
     },
     {
-      "t": "🇹🇷 İstanbul'daki sel faciasında son durum!  (Habertürk)",
-      "link": "https://www.haberturk.com/gundem/istanbul-daki-sel-faciasinda-son-durum-3920585"
+      "t": "🇹🇷 Konserde fenalaştılar! 2 can kaybı var!  (Habertürk)",
+      "link": "https://www.haberturk.com/gundem/son-dakika-konserde-fenalastilar-can-kaybi-var-3920611"
     },
     {
-      "t": "🇹🇷 2026 yılının 9 aylık sürecinde 60 cinayet dosyası aydınlatıldı  (NTV)",
-      "link": "https://www.ntv.com.tr/turkiye/2026-yilinin-9-aylik-surecinde-60-cinayet-dosyasi-aydinlatildi-1746848"
+      "t": "🇹🇷 Türk Yıldızları Kayseri'de gösteri uçuşu yaptı  (NTV)",
+      "link": "https://www.ntv.com.tr/turkiye/turk-yildizlari-kayseride-gosteri-ucusu-yapti-1746885"
     },
     {
-      "t": "🇹🇷 Hindistan'da kamyon, kalabalığa daldı: 15 ölü  (TRT Haber)",
-      "link": "https://www.trthaber.com/haber/dunya/hindistanda-kamyon-kalabaliga-daldi-15-olu-960462.html"
-    },
-    {
-      "t": "🇹🇷 Fransa'da protestolar: Bin 800'den fazla gözaltı, binalar ateşe verildi  (BBC Türkçe)",
-      "link": "https://www.bbc.com/turkce/articles/cw8rzp2e2v5xo?at_medium=RSS&at_campaign=rss"
+      "t": "🇹🇷 Cumhurbaşkanı Erdoğan şair Nuri Pakdil'i andı  (AA)",
+      "link": "https://www.aa.com.tr/tr/gundem/cumhurbaskani-erdogan-sair-nuri-pakdili-andi/4092721"
     }
   ],
   "_teshis": {
     "dunya": [
-      "BBC World: 26 öğe / 2 alındı / 0 elendi | ilk: Burnt out cars and shattered glass on Paris streets after pr",
+      "BBC World: 29 öğe / 2 alındı / 0 elendi | ilk: Burnt out cars and shattered glass on Paris streets after pr",
       "Guardian World: 45 öğe / 2 alındı / 0 elendi | ilk: Hilarious quips and ‘100,000-volt’ energy: the hypemen (and ",
-      "Al Jazeera: 25 öğe / 2 alındı / 0 elendi | ilk: Indian YouTuber Dhruv Rathee leads anti-BJP protest in Londo",
-      "NPR World: 10 öğe / 2 alındı / 0 elendi | ilk: Major fire breaks out in Alberta after deadly incident at mi",
-      "Euronews: 50 öğe / 2 alındı / 1 elendi | ilk: Lyon wakes up to scenes of destruction after violent protest",
-      "DW: 12 öğe / 2 alındı / 0 elendi | ilk: How reliant is Ukraine on the US-controlled Starlink interne",
+      "Al Jazeera: 25 öğe / 2 alındı / 0 elendi | ilk: Why have France’s school protests become a wider political c",
+      "NPR World: 10 öğe / 2 alındı / 0 elendi | ilk: Pope Leo says he will gradually resume duties after cancer s",
+      "Euronews: 50 öğe / 2 alındı / 0 elendi | ilk: Burnt bicycles, smashed windows and looted shops: Trail of d",
+      "DW: 11 öğe / 2 alındı / 0 elendi | ilk: France: Young voters blase about Glucksmann's Socialists",
       "SONUÇ: 6 haber · veren: Al Jazeera, BBC World, DW, Euronews, Guardian World, NPR World",
-      "AA: OKUNAMADI RemoteDisconnected: Remote end closed connection without response",
-      "TRT Haber: 50 öğe / 2 alındı / 0 elendi | ilk: İstanbul'daki selde can kaybı 5'e yükseldi",
-      "BBC Türkçe: 16 öğe / 2 alındı / 0 elendi | ilk: İstanbul'da sel: Ayazağa'da üç, Pendik'te iki kişi kayıp",
-      "Habertürk: 30 öğe / 2 alındı / 0 elendi | ilk: İstanbul'daki sel faciasında son durum!",
-      "NTV: 20 öğe / 2 alındı / 0 elendi | ilk: 2026 yılının 9 aylık sürecinde 60 cinayet dosyası aydınlatıl",
-      "SONUÇ: 6 haber · veren: BBC Türkçe, Habertürk, NTV, TRT Haber · boş dönen: AA"
+      "AA: 30 öğe / 2 alındı / 0 elendi | ilk: 60 saniyede bugün (18 Ekim 2026)",
+      "TRT Haber: 50 öğe / 2 alındı / 0 elendi | ilk: Fransa'da sarı yeleklilerin gösterilerinde 2 binden fazla ki",
+      "BBC Türkçe: 16 öğe / 2 alındı / 0 elendi | ilk: İstanbul'da sel: Kayıp iki kişinin daha cesedine ulaşıldı",
+      "Habertürk: 30 öğe / 2 alındı / 0 elendi | ilk: Konserde fenalaştılar! 2 can kaybı var!",
+      "NTV: 20 öğe / 2 alındı / 0 elendi | ilk: Türk Yıldızları Kayseri'de gösteri uçuşu yaptı",
+      "SONUÇ: 6 haber · veren: AA, BBC Türkçe, Habertürk, NTV, TRT Haber"
     ],
-    "hisse": "7 başlık geldi, 1 elendi",
+    "hisse": "9 başlık geldi, 1 elendi",
     "hisse_ham": [
       "BofA’nın satış listesinde BİM ve ASELSAN ilk sıralarda",
       "TradingView'de Matriks tarafından haberler, 2026-10-15",
       "TradingView'de Matriks tarafından haberler, 2026-10-15",
-      "Kontrolmatik’i kontrol etme savaşı istifa getirdi",
-      "Sabancı Holding (SAHOL) 3Ç26 bilanço tarihi açıklandı",
-      "KAP *** HACI ÖMER SABANCI HOLDİNG A.Ş. *** SAHOL *** Payların Geri Alı"
+      "Feridun Geçgel’in serveti eridi, Astor yatırımcısının parası yarıya in",
+      "ASTOR'da geçen haftanın alıcı ve satıcıları belli oldu!",
+      "Kontrolmatik’i kontrol etme savaşı istifa getirdi"
     ]
   }
 }
