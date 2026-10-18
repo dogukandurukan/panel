@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-17 17:00",
+  "updated": "2026-10-18 13:50",
   "watch": [
     {
       "code": "BIMAS",
@@ -247,7 +247,7 @@
         "rsiTxt": "nötr",
         "rsi": 65.9,
         "volat": 1.9,
-        "volRatio": 1.28
+        "volRatio": 0.91
       }
     }
   ],
@@ -269,102 +269,94 @@
       "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1mNzRoWi1BOXdjYW8wSWFFUkZyVGVad002UzM5aThHY3JBTzZidzYtcjdCSlE4S3NpRUZDbXNfdS1FM19OVU9Wa0dBRl8xQy0tekJZSHpSS2dESU9QZkI4?oc=5"
     },
     {
-      "t": "⚪ 3Ç26 Bilançosunu Açıklayacak Olan GARAN Hissesine 7 Hedef Fiyat!  (Para Ajansı)",
-      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOZ3hpTkJGd0J0ekZ2Y2xHRHJZRG5rdGdNbnZQU2QyN1NDUEhVaWM3TmpOcVU1dHdsTkxJcUlpc1NOQlh0TWpiWXFwRkdiVlZtVDhEVVRNWHlLd2NvdTMwbmdJTzJyYzlOR0tvdzQ3dVdTSThRWW9GZHBoZzNKRVRXNmVkUm5vb2FablhSczdBd2xqNFhqeEgwbzNRZ29HSUtoenNUMEhLa2pJT01qVVk3UVNTR2RxUGM?oc=5"
-    },
-    {
-      "t": "🟢 Borsa İstanbul, ASTOR ve Ebebek için temettü hak kullanım tarihini duyurdu  (Investing.com Türkiye)",
-      "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxNclFmckx0TF9yWG8tY3ljYS1rb2prWjBjZ3dJUGNjX25aYTdjZVFiaWVFOVdXU2Rjb19IaGpZT1Q2dnkxNTh5RW9BbGNpaXVCYnRla3RoNk9XQUtIVkR0bUpzTmFzRHpKdnlBaGlCSkN1MkliYkFYSVlCaUgyeDZCX1NjZTF6VDV5MDlya3ctblYzMkdRdUNZZkd2bjlmMnR4YjlCZl9GbWVLQmpKWWRybVBTemJQMDVnNzl6WUFpSE9rdFN4Z2JoXzBR?oc=5"
-    },
-    {
-      "t": "🟢 ASTOR: Temettü Ödemesi Ve Fiyat Düzeltmesi Hakkında Bilgi  (Finans Hattı)",
-      "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQeUpXY0UxSDVZSzJvQWhVX1lDcldzcGFuclZDSDEzU0lsN0F1RktoOXltOFRKYk45VXl1bERPQWdNTjJKUEFwb3ZoeUllWTBReHFxYXJ2c1NEUUs1aEFmMU9aeGpMZHJEU2V6QTI0T3JzRmdUcVZhUGpJNVpRQ1FwZmZXby1YZDZBWFFEbmxWdWw?oc=5"
-    },
-    {
-      "t": "🟢 Temettü ödemesi yapan ASTOR ve EBEBK'te hisse fiyatı...  (Hisse.net)",
-      "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOQ0tzUU9qVFlGVlhrZ0hkUkhPYkRNcHRVTmtxTzZYMjR3V2tUVTFLLU42bVkzOFU5TS1qN0hhamxENmdtQmRaU3J3ZWdjZGpLRzNuMWlyaXg5MktBS1ZDalVILUZ1QlREWlp1RTlZNHhTWEZoUXlmWlJGWFgySWZVRG1hU1RNSHVYVG5BcHBZSmlwZDBkSTdRT3puUlVSTDRf0gGgAUFVX3lxTE5DS3NRT2pUWUZWWGtnSGRSSE9iRE1wdFVOa3FPNlgyNHdXa1RVMUstTjZtWTM4VTlNLWo3SGFqbEQ2Z21CZFpTcndlZ2NkaktHM24xaXJpeDkyS0FLVkNqVUgtRnVCVERaWnVFOVk0eFNYRmhReWZaUkZYWDJJZlVEbWFTVE1IdVhUbkFwcFlKaXBkMGRJN1FPem5SVVJMNF8?oc=5"
-    },
-    {
       "t": "⚪ Kontrolmatik’i kontrol etme savaşı istifa getirdi  (Haber Hürriyeti)",
       "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQY0tFNGR2bzA2LVhlTXFlVXA0LWhoMjhEaWpnT0F2RkZBRl9JSFJHZG1ZZUd0ZDQ1VXNVUVdqMnBDc0NGdi1DTm8zQ0hYTlFiUldNS2gtWllaeVVBTWJtT1BaMWFqVUFwYTEtdFB5OGl6b3V1anBvU1lNWkVYTFdIeklVRy1qSVB5U05iZnhneWpBdG0wOVJ4Z1pn0gGfAUFVX3lxTE5tZXFRSlNFWV9lanFIS3U1NVRfYnlUaEdJWG9DNUZUTHF3SDBPV2RxbkxDSXV1d2pmTEhyOHE3OVBtS2FFYnkwZDFwRlR0b1JtMmdaVUxXbUpEaVhQcDFOQ0dMUVpBZV9heDRfSTkzQUt0NWtvemxtRVBIZlhlSEQxbERFdWcyRGV0ajFEX2pfZElvbW5LYmJ2UkRzWDdDZw?oc=5"
+    },
+    {
+      "t": "⚪ Sabancı Holding (SAHOL) 3Ç26 bilanço tarihi açıklandı  (Paratic Haber)",
+      "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTE9PbzRXU3dLYl9tQUJESkZUOGdEN0pnN1F5eURackZ6cVg5MXlhSmo2LWJkLXJVdGY1MWExVWFQbG4xei1naHdENHZ2SHFCVWFfYkZDcUtra0Y0N3hCQ0EzMWx1dkpMWHE4dzNYODVzaVJJOGRzVlhjblNVTWk?oc=5"
+    },
+    {
+      "t": "⚪ Sabancı Holding'den dev hisse geri alım kararı  (CNBC-e)",
+      "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOUXpCZmFHRV9VaEg3QzBrQi1CQkNFMXpkRkRNQ2c0eTFlZzlVbUcyQ1ozaGpmSHhOSmF3NnFQUEpOZ2VhYVBBbTFzWG4zMFFIVDRrVGlIemdwUURUV2JCTmJXN3VZbkZCd05ydkZCMXE5aUhkZ3E5dHpjUFhWd2ZNSnEwZFF4cVk?oc=5"
     }
   ],
   "world": [
     {
-      "t": "🌍 Trump waives several Russia sanctions as row with Zelensky intensifies  (BBC World)",
-      "link": "https://www.bbc.co.uk/news/articles/cxr5yvzv7rp0o?at_medium=RSS&at_campaign=rss"
+      "t": "🌍 Burnt out cars and shattered glass on Paris streets after protests turn to riots and looting  (BBC World)",
+      "link": "https://www.bbc.co.uk/news/articles/c574pdzl0k4no?at_medium=RSS&at_campaign=rss"
     },
     {
-      "t": "🌍 LGBTQ+ people go into hiding in Senegal as hundreds are arrested  (Guardian World)",
-      "link": "https://www.theguardian.com/global-development/2026/oct/15/senegal-homosexuality-criminalised-anti-lgbtq-arrests-hiv-testing-human-rights-watch"
+      "t": "🌍 Hilarious quips and ‘100,000-volt’ energy: the hypemen (and women) redefining Afrobeats music  (Guardian World)",
+      "link": "https://www.theguardian.com/world/2026/oct/18/lagos-hypemen-redefining-afrobeats-music-afrohype"
     },
     {
-      "t": "🌍 Child, four women among Palestinians injured in West Bank pogroms  (Al Jazeera)",
-      "link": "https://www.aljazeera.com/news/2026/10/17/several-palestinians-injured-detained-in-ongoing-west-bank-pogrom?traffic_source=rss"
+      "t": "🌍 Indian YouTuber Dhruv Rathee leads anti-BJP protest in London  (Al Jazeera)",
+      "link": "https://www.aljazeera.com/video/newsfeed/2026/10/18/indian-youtuber-dhruv-rathee-leads-anti-bjp-protest-in-london?traffic_source=rss"
     },
     {
-      "t": "🌍 Decades after apartheid, South Africans seek justice for crimes of the past  (NPR World)",
-      "link": "https://www.npr.org/2026/10/17/nx-s1-5987671/south-africa-justice-sharpeville-apartheid"
+      "t": "🌍 Major fire breaks out in Alberta after deadly incident at military base  (NPR World)",
+      "link": "https://www.npr.org/2026/10/18/nx-s1-6007276/fire-alberta-deadly-canada-military-base"
     },
     {
-      "t": "🌍 Hungarian PM Péter Magyar says Zelenskyy unlikely to visit Budapest later this month  (Euronews)",
-      "link": "https://www.euronews.com/2026/10/17/hungarian-pm-peter-magyar-says-zelenskyy-unlikely-to-visit-budapest-later-this-month"
+      "t": "🌍 Lyon wakes up to scenes of destruction after violent protests  (Euronews)",
+      "link": "https://www.euronews.com/2026/10/18/lyon-wakes-up-to-scenes-of-destruction-after-violent-protests"
     },
     {
-      "t": "🌍 Russia wants blackout in Ukraine as winter comes — Zelenskyy  (DW)",
-      "link": "https://www.dw.com/en/russia-wants-blackout-in-ukraine-as-winter-comes-zelenskyy/a-79686703?maca=en-rss-en-world-4025-rdf"
+      "t": "🌍 How reliant is Ukraine on the US-controlled Starlink internet service?  (DW)",
+      "link": "https://www.dw.com/en/how-reliant-is-ukraine-on-the-us-controlled-starlink-internet-service/a-79689729?maca=en-rss-en-world-4025-rdf"
     }
   ],
   "tr": [
     {
-      "t": "🇹🇷 Milli motosikletçi Can Öncü, İspanya'da 3'üncü oldu  (AA)",
-      "link": "https://www.aa.com.tr/tr/spor/milli-motosikletci-can-oncu-ispanyada-3uncu-oldu-/4092027"
+      "t": "🇹🇷 İstanbul'daki selde can kaybı 5'e yükseldi  (TRT Haber)",
+      "link": "https://www.trthaber.com/haber/gundem/istanbuldaki-selde-can-kaybi-5e-yukseldi-960463.html"
     },
     {
-      "t": "🇹🇷 İmamoğlu savunmasının dördüncü günü: 'Bu bir siyasi davadır'  (BBC Türkçe)",
-      "link": "https://www.bbc.com/turkce/articles/cmlyd2xp1jxwo?at_medium=RSS&at_campaign=rss"
+      "t": "🇹🇷 İstanbul'da sel: Ayazağa'da üç, Pendik'te iki kişi kayıp  (BBC Türkçe)",
+      "link": "https://www.bbc.com/turkce/articles/c9e8l1xvnv40o?at_medium=RSS&at_campaign=rss"
     },
     {
-      "t": "🇹🇷 Bodrumlu kadınlar sokaklar için ördüğü  (Habertürk)",
-      "link": "https://www.haberturk.com/gundem/bodrumlu-kadinlar-sokaklar-icin-ordugu-3920474"
+      "t": "🇹🇷 İstanbul'daki sel faciasında son durum!  (Habertürk)",
+      "link": "https://www.haberturk.com/gundem/istanbul-daki-sel-faciasinda-son-durum-3920585"
     },
     {
-      "t": "🇹🇷 Ayazağa'da son durum. Dere yatağındaki binalar yıkılıyor  (NTV)",
-      "link": "https://www.ntv.com.tr/turkiye/galeri-ayazagada-dere-yatagindaki-binalar-yikiliyor-iste-yikim-calismalari-1746754"
+      "t": "🇹🇷 2026 yılının 9 aylık sürecinde 60 cinayet dosyası aydınlatıldı  (NTV)",
+      "link": "https://www.ntv.com.tr/turkiye/2026-yilinin-9-aylik-surecinde-60-cinayet-dosyasi-aydinlatildi-1746848"
     },
     {
-      "t": "🇹🇷 Filistin topraklarını gasbeden İsrailliler, Batı Şeria'da Batılı diplomatların araçlarına saldırdı  (AA)",
-      "link": "https://www.aa.com.tr/tr/dunya/filistin-topraklarini-gasbeden-israilliler-bati-seriada-batili-diplomatlarin-araclarina-saldirdi/4092033"
+      "t": "🇹🇷 Hindistan'da kamyon, kalabalığa daldı: 15 ölü  (TRT Haber)",
+      "link": "https://www.trthaber.com/haber/dunya/hindistanda-kamyon-kalabaliga-daldi-15-olu-960462.html"
     },
     {
-      "t": "🇹🇷 İstanbul'a düşen 'rekor' yağışın sele dönüşmesi nasıl önlenebilirdi?  (BBC Türkçe)",
-      "link": "https://www.bbc.com/turkce/articles/c687zjl55p3qo?at_medium=RSS&at_campaign=rss"
+      "t": "🇹🇷 Fransa'da protestolar: Bin 800'den fazla gözaltı, binalar ateşe verildi  (BBC Türkçe)",
+      "link": "https://www.bbc.com/turkce/articles/cw8rzp2e2v5xo?at_medium=RSS&at_campaign=rss"
     }
   ],
   "_teshis": {
     "dunya": [
-      "BBC World: 23 öğe / 2 alındı / 0 elendi | ilk: Trump waives several Russia sanctions as row with Zelensky i",
-      "Guardian World: 45 öğe / 2 alındı / 0 elendi | ilk: LGBTQ+ people go into hiding in Senegal as hundreds are arre",
-      "Al Jazeera: 25 öğe / 2 alındı / 0 elendi | ilk: Child, four women among Palestinians injured in West Bank po",
-      "NPR World: 10 öğe / 2 alındı / 0 elendi | ilk: Decades after apartheid, South Africans seek justice for cri",
-      "Euronews: 50 öğe / 2 alındı / 1 elendi | ilk: Hungarian PM Péter Magyar says Zelenskyy unlikely to visit B",
-      "DW: 12 öğe / 2 alındı / 0 elendi | ilk: Russia wants blackout in Ukraine as winter comes — Zelenskyy",
+      "BBC World: 26 öğe / 2 alındı / 0 elendi | ilk: Burnt out cars and shattered glass on Paris streets after pr",
+      "Guardian World: 45 öğe / 2 alındı / 0 elendi | ilk: Hilarious quips and ‘100,000-volt’ energy: the hypemen (and ",
+      "Al Jazeera: 25 öğe / 2 alındı / 0 elendi | ilk: Indian YouTuber Dhruv Rathee leads anti-BJP protest in Londo",
+      "NPR World: 10 öğe / 2 alındı / 0 elendi | ilk: Major fire breaks out in Alberta after deadly incident at mi",
+      "Euronews: 50 öğe / 2 alındı / 1 elendi | ilk: Lyon wakes up to scenes of destruction after violent protest",
+      "DW: 12 öğe / 2 alındı / 0 elendi | ilk: How reliant is Ukraine on the US-controlled Starlink interne",
       "SONUÇ: 6 haber · veren: Al Jazeera, BBC World, DW, Euronews, Guardian World, NPR World",
-      "AA: 25 öğe / 2 alındı / 0 elendi | ilk: Milli motosikletçi Can Öncü, İspanya'da 3'üncü oldu",
-      "TRT Haber: OKUNAMADI ParseError: not well-formed (invalid token): line 192, column 86",
-      "BBC Türkçe: 17 öğe / 2 alındı / 0 elendi | ilk: İmamoğlu savunmasının dördüncü günü: 'Bu bir siyasi davadır'",
-      "Habertürk: 30 öğe / 2 alındı / 0 elendi | ilk: Bodrumlu kadınlar sokaklar için ördüğü",
-      "NTV: 20 öğe / 2 alındı / 0 elendi | ilk: Ayazağa'da son durum. Dere yatağındaki binalar yıkılıyor",
-      "SONUÇ: 6 haber · veren: AA, BBC Türkçe, Habertürk, NTV · boş dönen: TRT Haber"
+      "AA: OKUNAMADI RemoteDisconnected: Remote end closed connection without response",
+      "TRT Haber: 50 öğe / 2 alındı / 0 elendi | ilk: İstanbul'daki selde can kaybı 5'e yükseldi",
+      "BBC Türkçe: 16 öğe / 2 alındı / 0 elendi | ilk: İstanbul'da sel: Ayazağa'da üç, Pendik'te iki kişi kayıp",
+      "Habertürk: 30 öğe / 2 alındı / 0 elendi | ilk: İstanbul'daki sel faciasında son durum!",
+      "NTV: 20 öğe / 2 alındı / 0 elendi | ilk: 2026 yılının 9 aylık sürecinde 60 cinayet dosyası aydınlatıl",
+      "SONUÇ: 6 haber · veren: BBC Türkçe, Habertürk, NTV, TRT Haber · boş dönen: AA"
     ],
-    "hisse": "8 başlık geldi, 0 elendi",
+    "hisse": "7 başlık geldi, 1 elendi",
     "hisse_ham": [
       "BofA’nın satış listesinde BİM ve ASELSAN ilk sıralarda",
       "TradingView'de Matriks tarafından haberler, 2026-10-15",
       "TradingView'de Matriks tarafından haberler, 2026-10-15",
-      "3Ç26 Bilançosunu Açıklayacak Olan GARAN Hissesine 7 Hedef Fiyat!",
-      "Borsa İstanbul, ASTOR ve Ebebek için temettü hak kullanım tarihini duy",
-      "ASTOR: Temettü Ödemesi Ve Fiyat Düzeltmesi Hakkında Bilgi"
+      "Kontrolmatik’i kontrol etme savaşı istifa getirdi",
+      "Sabancı Holding (SAHOL) 3Ç26 bilanço tarihi açıklandı",
+      "KAP *** HACI ÖMER SABANCI HOLDİNG A.Ş. *** SAHOL *** Payların Geri Alı"
     ]
   }
 }
