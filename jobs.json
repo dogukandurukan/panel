@@ -1,9 +1,9 @@
 {
  "version": 2,
- "updated": "2026-10-22 12:50",
+ "updated": "2026-10-23 12:45",
  "ok": true,
  "count": 9,
- "pool": 17,
+ "pool": 15,
  "quota": {
   "tr": 3,
   "de": 3,
@@ -12,67 +12,60 @@
  },
  "items": [
   {
-   "id": "9473a434f41f",
-   "title": "(Senior) Data Engineer - Tracking Infrastructure (m/f/d)",
-   "company": "Statista",
-   "location": "Hamburg or Berlin",
+   "id": "6f04e5a35a71",
+   "title": "Freelance Senior AI Platform Expert - Azure Databricks",
+   "company": "Visium",
+   "location": "Munich, Germany",
    "country": "DE",
    "market": "international",
    "bucket": "de",
    "label": "DE",
-   "tier": 1,
+   "tier": 2,
    "rank": 0,
    "reserve": false,
-   "is_new": false,
-   "first_seen": "2026-10-19",
+   "is_new": true,
+   "first_seen": "2026-10-23",
    "workplace_type": "onsite",
    "source": "Arbeitnow",
    "also_on": [],
-   "source_url": "https://www.arbeitnow.com/jobs/companies/statista/senior-data-engineer-tracking-infrastructure-hamburg-or-berlin-24021",
-   "publication_date": "2026-10-18",
-   "fit_score": 91,
-   "fit_reason": "rol primary +30; konum +15; beceri 6×5 +30; kıdem senior +5; tazelik +4",
+   "source_url": "https://www.arbeitnow.com/jobs/companies/visium/freelance-senior-ai-platform-expert-azure-databricks-munich-280493",
+   "publication_date": "2026-10-22",
+   "fit_score": 82,
+   "fit_reason": "rol primary +30; konum +10; beceri 4×5 +20; kıdem senior +5; tazelik +10",
    "matched_skills": [
-    "SQL",
     "Python",
-    "ETL",
-    "Airflow",
-    "Snowflake",
-    "dbt"
+    "Azure",
+    "Databricks",
+    "PySpark"
    ],
-   "location_reason": "Arbeitnow konumu 'Hamburg or Berlin'",
+   "location_reason": "Arbeitnow konumu 'Munich, Germany'",
    "seniority": "senior",
    "focus": "pipeline",
    "focus_scores": {
-    "ml": 0,
-    "bi": 1,
-    "pipeline": 21,
-    "business": 2
+    "ml": 5,
+    "bi": 0,
+    "pipeline": 10,
+    "business": 3
    },
    "language": "en",
-   "generated_at": "2026-10-22 12:50",
-   "summary": "At Statista , we’re all about facts and data, for we are the world's leading business data platform. By providing reliable and easy-to-use data as well as various data analytics products and services, we empower people worldwide to make fact-based decisions. F",
+   "generated_at": "2026-10-23 12:45",
+   "summary": "Visium combines strategy, frontier AI, and deep regulated-industry expertise to build and deploy AI-native systems that reinvent how businesses operate - unlocking the value of AI at scale. We're not a strategy firm that ships slide decks and walks away. Not a",
    "keywords": [
-    "cost",
-    "pipeline",
-    "data quality",
-    "governance",
-    "optimization",
+    "enterprise",
     "scalab",
-    "stakeholder"
+    "pipeline",
+    "governance"
    ],
-   "url": "https://www.arbeitnow.com/jobs/companies/statista/senior-data-engineer-tracking-infrastructure-hamburg-or-berlin-24021",
+   "url": "https://www.arbeitnow.com/jobs/companies/visium/freelance-senior-ai-platform-expert-azure-databricks-munich-280493",
    "skills": [
-    "sql",
     "python",
-    "etl",
-    "airflow",
-    "snowflake",
-    "dbt"
+    "azure",
+    "databricks",
+    "pyspark"
    ],
-   "score": 91,
-   "posted": "2026-10-18",
-   "days": 4,
+   "score": 82,
+   "posted": "2026-10-22",
+   "days": 1,
    "remote": false,
    "german": false
   },
@@ -112,7 +105,7 @@
     "business": 7
    },
    "language": "en",
-   "generated_at": "2026-10-22 12:50",
+   "generated_at": "2026-10-23 12:45",
    "summary": "Who we are Melotech is revolutionizing media and entertainment. We create art through technology for humans to enjoy. In just 24 months, our work has been heard, watched and loved for over 4 billion minutes worldwide. Founded by entrepreneur and investor Sohei",
    "keywords": [
     "pipeline",
@@ -128,468 +121,10 @@
    ],
    "score": 67,
    "posted": "2026-10-20",
-   "days": 2,
+   "days": 3,
    "remote": false,
    "german": false
   },
-  {
-   "id": "3a6abb428e94",
-   "title": "Data Engineer - AI Pipelines & DataOps",
-   "company": "Intersnack IT KG",
-   "location": "Düsseldorf, Nordrhein-Westfalen, Germany",
-   "country": "DE",
-   "market": "international",
-   "bucket": "de",
-   "label": "DE",
-   "tier": 2,
-   "rank": 2,
-   "reserve": false,
-   "is_new": false,
-   "first_seen": "2026-10-19",
-   "workplace_type": "onsite",
-   "source": "Arbeitnow",
-   "also_on": [],
-   "source_url": "https://www.arbeitnow.com/jobs/companies/intersnack-it-kg/data-engineer-ai-pipelines-dataops-dusseldorf-8107",
-   "publication_date": "2026-10-18",
-   "fit_score": 86,
-   "fit_reason": "rol primary +30; konum +10; beceri 8×5 +30; kıdem mid +5; tazelik +4",
-   "matched_skills": [
-    "SQL",
-    "Python",
-    "Azure",
-    "Microsoft Fabric",
-    "Databricks",
-    "PySpark",
-    "PostgreSQL",
-    "dbt"
-   ],
-   "location_reason": "Arbeitnow konumu 'Düsseldorf, Nordrhein-Westfalen, Germany'",
-   "seniority": "mid",
-   "focus": "pipeline",
-   "focus_scores": {
-    "ml": 6,
-    "bi": 0,
-    "pipeline": 28,
-    "business": 0
-   },
-   "language": "en",
-   "generated_at": "2026-10-22 12:50",
-   "summary": "We Want You to Grow With Us High-quality, reliable data is the foundation on which every AI use case is built, and this role is responsible for making that foundation unshakeable. As our Data Engineer for AI Pipelines & DataOps, you will design and deliver the",
-   "keywords": [
-    "pipeline",
-    "enterprise",
-    "scalab",
-    "data quality",
-    "optimisation",
-    "governance"
-   ],
-   "url": "https://www.arbeitnow.com/jobs/companies/intersnack-it-kg/data-engineer-ai-pipelines-dataops-dusseldorf-8107",
-   "skills": [
-    "sql",
-    "python",
-    "azure",
-    "microsoft fabric",
-    "databricks",
-    "pyspark",
-    "postgresql",
-    "dbt"
-   ],
-   "score": 86,
-   "posted": "2026-10-18",
-   "days": 4,
-   "remote": false,
-   "german": false
-  },
-  {
-   "id": "ee61861d6795",
-   "title": "Product Data Analyst",
-   "company": "Nebius",
-   "location": "Amsterdam",
-   "country": "NL",
-   "market": "international",
-   "bucket": "nl",
-   "label": "NL",
-   "tier": 1,
-   "rank": 0,
-   "reserve": false,
-   "is_new": true,
-   "first_seen": "2026-10-22",
-   "workplace_type": "onsite",
-   "source": "Arbeitnow",
-   "also_on": [],
-   "source_url": "https://www.arbeitnow.nl/jobs/companies/nebius/product-data-analyst-amsterdam-428402",
-   "publication_date": "2026-10-21",
-   "fit_score": 94,
-   "fit_reason": "rol primary +30; konum +12; beceri 9×5 +30; kıdem mid +5; tazelik +10",
-   "matched_skills": [
-    "SQL",
-    "Python",
-    "Power BI",
-    "Tableau",
-    "ETL",
-    "Airflow",
-    "PostgreSQL",
-    "Snowflake",
-    "dbt"
-   ],
-   "location_reason": "Arbeitnow konumu 'Amsterdam'",
-   "seniority": "mid",
-   "focus": "business",
-   "focus_scores": {
-    "ml": 2,
-    "bi": 12,
-    "pipeline": 6,
-    "business": 17
-   },
-   "language": "en",
-   "generated_at": "2026-10-22 12:50",
-   "summary": "About Nebius: Nebius is leading a new era in cloud infrastructure for the global AI economy. We are building a full-stack AI cloud platform that supports developers and enterprises from data and model training through to production deployment, without the cost",
-   "keywords": [
-    "enterprise",
-    "cost",
-    "optimization",
-    "dashboard",
-    "stakeholder",
-    "data quality",
-    "pipeline"
-   ],
-   "url": "https://www.arbeitnow.nl/jobs/companies/nebius/product-data-analyst-amsterdam-428402",
-   "skills": [
-    "sql",
-    "python",
-    "power bi",
-    "tableau",
-    "etl",
-    "airflow",
-    "postgresql",
-    "snowflake",
-    "dbt"
-   ],
-   "score": 94,
-   "posted": "2026-10-21",
-   "days": 1,
-   "remote": false,
-   "german": false
-  },
-  {
-   "id": "94d354ee5c8d",
-   "title": "Senior Software Engineer (Data Platform, C++)",
-   "company": "Nebius",
-   "location": "Amsterdam",
-   "country": "NL",
-   "market": "international",
-   "bucket": "nl",
-   "label": "NL",
-   "tier": 1,
-   "rank": 1,
-   "reserve": false,
-   "is_new": true,
-   "first_seen": "2026-10-22",
-   "workplace_type": "onsite",
-   "source": "Arbeitnow",
-   "also_on": [],
-   "source_url": "https://www.arbeitnow.nl/jobs/companies/nebius/senior-software-engineer-data-platform-c-amsterdam-173297",
-   "publication_date": "2026-10-21",
-   "fit_score": 89,
-   "fit_reason": "rol primary +30; konum +12; beceri 5×5 +25; kıdem senior +5; tazelik +10",
-   "matched_skills": [
-    "SQL",
-    "Python",
-    "ETL",
-    "Airflow",
-    "PySpark"
-   ],
-   "location_reason": "Arbeitnow konumu 'Amsterdam'",
-   "seniority": "senior",
-   "focus": "pipeline",
-   "focus_scores": {
-    "ml": 3,
-    "bi": 0,
-    "pipeline": 22,
-    "business": 4
-   },
-   "language": "en",
-   "generated_at": "2026-10-22 12:50",
-   "summary": "About Nebius: Nebius is leading a new era in cloud infrastructure for the global AI economy. We are building a full-stack AI cloud platform that supports developers and enterprises from data and model training through to production deployment, without the cost",
-   "keywords": [
-    "enterprise",
-    "cost",
-    "optimization",
-    "pipeline",
-    "stakeholder",
-    "automation",
-    "root cause",
-    "governance"
-   ],
-   "url": "https://www.arbeitnow.nl/jobs/companies/nebius/senior-software-engineer-data-platform-c-amsterdam-173297",
-   "skills": [
-    "sql",
-    "python",
-    "etl",
-    "airflow",
-    "pyspark"
-   ],
-   "score": 89,
-   "posted": "2026-10-21",
-   "days": 1,
-   "remote": false,
-   "german": false
-  },
-  {
-   "id": "5807b448ff26",
-   "title": "Senior Data Engineering Consultant",
-   "company": "Conflux",
-   "location": "Utrecht, Utrecht, Nederland",
-   "country": "NL",
-   "market": "international",
-   "bucket": "nl",
-   "label": "NL",
-   "tier": 1,
-   "rank": 2,
-   "reserve": false,
-   "is_new": false,
-   "first_seen": "2026-10-21",
-   "workplace_type": "onsite",
-   "source": "Arbeitnow",
-   "also_on": [],
-   "source_url": "https://www.arbeitnow.nl/jobs/companies/conflux/senior-data-engineering-consultant-utrecht-151402",
-   "publication_date": "2026-10-21",
-   "fit_score": 94,
-   "fit_reason": "rol primary +30; konum +12; beceri 8×5 +30; kıdem senior +5; tazelik +10",
-   "matched_skills": [
-    "Python",
-    "Azure",
-    "ETL",
-    "Airflow",
-    "Databricks",
-    "PySpark",
-    "Snowflake",
-    "dbt"
-   ],
-   "location_reason": "Arbeitnow konumu 'Utrecht, Utrecht, Nederland'",
-   "seniority": "senior",
-   "focus": "pipeline",
-   "focus_scores": {
-    "ml": 4,
-    "bi": 0,
-    "pipeline": 12,
-    "business": 1
-   },
-   "language": "en",
-   "generated_at": "2026-10-22 12:50",
-   "summary": "Als Senior Data Engineering Consultant bij BigData Republic adviseer je toonaangevende organisaties in Nederland over complexe data-vraagstukken. Je combineert hands-on engineering met een adviserende rol: je schrijft productie-klare code, denkt mee over strat",
-   "keywords": [
-    "pipeline",
-    "governance"
-   ],
-   "url": "https://www.arbeitnow.nl/jobs/companies/conflux/senior-data-engineering-consultant-utrecht-151402",
-   "skills": [
-    "python",
-    "azure",
-    "etl",
-    "airflow",
-    "databricks",
-    "pyspark",
-    "snowflake",
-    "dbt"
-   ],
-   "score": 94,
-   "posted": "2026-10-21",
-   "days": 1,
-   "remote": false,
-   "german": false
-  },
-  {
-   "id": "bb042fbd41ce",
-   "title": "Senior Databricks Data Engineer",
-   "company": "Stack Infrastructure Emea",
-   "location": "London Office",
-   "country": "UK",
-   "market": "international",
-   "bucket": "uk",
-   "label": "UK",
-   "tier": 1,
-   "rank": 0,
-   "reserve": false,
-   "is_new": true,
-   "first_seen": "2026-10-22",
-   "workplace_type": "onsite",
-   "source": "Arbeitnow",
-   "also_on": [],
-   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/stack-infrastructure-emea/senior-databricks-data-engineer-london-455331",
-   "publication_date": "2026-10-22",
-   "fit_score": 94,
-   "fit_reason": "rol primary +30; konum +12; beceri 7×5 +30; kıdem senior +5; tazelik +10",
-   "matched_skills": [
-    "SQL",
-    "Python",
-    "Power BI",
-    "Azure",
-    "ETL",
-    "Databricks",
-    "PySpark"
-   ],
-   "location_reason": "Arbeitnow konumu 'London Office'",
-   "seniority": "senior",
-   "focus": "pipeline",
-   "focus_scores": {
-    "ml": 0,
-    "bi": 6,
-    "pipeline": 27,
-    "business": 2
-   },
-   "language": "en",
-   "generated_at": "2026-10-22 12:50",
-   "summary": "Role Summary We are looking for a Senior Databricks Data Engineer with proven hands-on Databricks experience to build, develop and manage STACK’s enterprise data platform. This is a production-focused engineering role requiring practical expertise in Databrick",
-   "keywords": [
-    "enterprise",
-    "pipeline",
-    "finance",
-    "scalab",
-    "stakeholder",
-    "saas",
-    "governance",
-    "cost",
-    "data quality",
-    "optimisation"
-   ],
-   "url": "https://www.arbeitnow.co.uk/jobs/companies/stack-infrastructure-emea/senior-databricks-data-engineer-london-455331",
-   "skills": [
-    "sql",
-    "python",
-    "power bi",
-    "azure",
-    "etl",
-    "databricks",
-    "pyspark"
-   ],
-   "score": 94,
-   "posted": "2026-10-22",
-   "days": 0,
-   "remote": false,
-   "german": false
-  },
-  {
-   "id": "c483c293bfcf",
-   "title": "Senior Data Engineer",
-   "company": "LiveScore Group",
-   "location": "London, England, United Kingdom",
-   "country": "UK",
-   "market": "international",
-   "bucket": "uk",
-   "label": "UK",
-   "tier": 1,
-   "rank": 1,
-   "reserve": false,
-   "is_new": true,
-   "first_seen": "2026-10-22",
-   "workplace_type": "hybrid",
-   "source": "Arbeitnow",
-   "also_on": [],
-   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/livescore-group/senior-data-engineer-london-423630",
-   "publication_date": "2026-10-22",
-   "fit_score": 87,
-   "fit_reason": "rol primary +30; konum +12; beceri 4×5 +20; kıdem senior +5; tazelik +10",
-   "matched_skills": [
-    "SQL",
-    "Python",
-    "ETL",
-    "Airflow"
-   ],
-   "location_reason": "Arbeitnow konumu 'London, England, United Kingdom'",
-   "seniority": "senior",
-   "focus": "pipeline",
-   "focus_scores": {
-    "ml": 1,
-    "bi": 0,
-    "pipeline": 16,
-    "business": 5
-   },
-   "language": "en",
-   "generated_at": "2026-10-22 12:50",
-   "summary": "Soho, London Hybrid working: 3 days in the office Tues - Thurs The Role We are seeking a Senior Data Engineer to join our Data Team, taking a leading role in building the complex, scalable systems that power our data strategy. You will lead architectural discu",
-   "keywords": [
-    "scalab",
-    "optimisation",
-    "real-time",
-    "automation",
-    "pipeline",
-    "data quality",
-    "cost",
-    "governance",
-    "stakeholder"
-   ],
-   "url": "https://www.arbeitnow.co.uk/jobs/companies/livescore-group/senior-data-engineer-london-423630",
-   "skills": [
-    "sql",
-    "python",
-    "etl",
-    "airflow"
-   ],
-   "score": 87,
-   "posted": "2026-10-22",
-   "days": 0,
-   "remote": false,
-   "german": false
-  },
-  {
-   "id": "5e486093fb58",
-   "title": "Senior Data Scientist, AD/ADAS",
-   "company": "Woven By Toyota",
-   "location": "London",
-   "country": "UK",
-   "market": "international",
-   "bucket": "uk",
-   "label": "UK",
-   "tier": 1,
-   "rank": 2,
-   "reserve": false,
-   "is_new": true,
-   "first_seen": "2026-10-22",
-   "workplace_type": "onsite",
-   "source": "Arbeitnow",
-   "also_on": [],
-   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/woven-by-toyota/senior-data-scientist-ad-adas-london-13255",
-   "publication_date": "2026-10-21",
-   "fit_score": 62,
-   "fit_reason": "rol secondary +18; konum +12; beceri 2×5 +10; kıdem senior +5; tazelik +10",
-   "matched_skills": [
-    "Python",
-    "Azure"
-   ],
-   "location_reason": "Arbeitnow konumu 'London'",
-   "seniority": "senior",
-   "focus": "ml",
-   "focus_scores": {
-    "ml": 22,
-    "bi": 0,
-    "pipeline": 1,
-    "business": 4
-   },
-   "language": "en",
-   "generated_at": "2026-10-22 12:50",
-   "summary": "Woven by Toyota is enabling Toyota’s once-in-a-century transformation into a mobility company. Inspired by a legacy of innovating for the benefit of others, our mission is to challenge the current state of mobility through human-centric innovation — expanding ",
-   "keywords": [
-    "cost",
-    "stakeholder",
-    "scalab",
-    "pipeline",
-    "automation",
-    "a/b"
-   ],
-   "url": "https://www.arbeitnow.co.uk/jobs/companies/woven-by-toyota/senior-data-scientist-ad-adas-london-13255",
-   "skills": [
-    "python",
-    "azure"
-   ],
-   "score": 62,
-   "posted": "2026-10-21",
-   "days": 1,
-   "remote": false,
-   "german": false
-  }
- ],
- "reserve": [
   {
    "id": "4af8d651e1b8",
    "title": "Senior Analytics Engineer - EMEA",
@@ -600,8 +135,8 @@
    "bucket": "de",
    "label": "DE",
    "tier": 2,
-   "rank": 3,
-   "reserve": true,
+   "rank": 2,
+   "reserve": false,
    "is_new": false,
    "first_seen": "2026-10-21",
    "workplace_type": "remote",
@@ -626,7 +161,7 @@
     "business": 6
    },
    "language": "en",
-   "generated_at": "2026-10-22 12:50",
+   "generated_at": "2026-10-23 12:45",
    "summary": "Seeq builds advanced analytics software that unlocks insights from industrial process data—empowering companies in sectors like pharmaceuticals, oil & gas, chemicals, and power generation to optimize operations and drive business value. As a remote-first compa",
    "keywords": [
     "scalab",
@@ -641,71 +176,396 @@
    ],
    "score": 76,
    "posted": "2026-10-20",
-   "days": 2,
+   "days": 3,
    "remote": true,
    "german": false
   },
   {
-   "id": "ec9b7c9a4abb",
-   "title": "Data Scientist & ML Engineer - Predictive Analytics & Agentic AI",
-   "company": "Intersnack IT KG",
-   "location": "Düsseldorf, Nordrhein-Westfalen, Germany",
-   "country": "DE",
+   "id": "be6c1e38c9f3",
+   "title": "Microsoft Data & Analytics Engineer",
+   "company": "GradeMatch",
+   "location": "Venlo, Limburg, Nederland",
+   "country": "NL",
    "market": "international",
-   "bucket": "de",
-   "label": "DE",
-   "tier": 2,
-   "rank": 4,
-   "reserve": true,
-   "is_new": false,
-   "first_seen": "2026-10-19",
+   "bucket": "nl",
+   "label": "NL",
+   "tier": 1,
+   "rank": 0,
+   "reserve": false,
+   "is_new": true,
+   "first_seen": "2026-10-23",
    "workplace_type": "onsite",
    "source": "Arbeitnow",
    "also_on": [],
-   "source_url": "https://www.arbeitnow.com/jobs/companies/intersnack-it-kg/data-scientist-ml-engineer-predictive-analytics-agentic-ai-dusseldorf-473539",
-   "publication_date": "2026-10-18",
-   "fit_score": 54,
-   "fit_reason": "rol secondary +18; konum +10; beceri 2×5 +10; kıdem mid +5; tazelik +4",
+   "source_url": "https://www.arbeitnow.nl/jobs/companies/gradematch/microsoft-data-analytics-engineer-venlo-269433",
+   "publication_date": "2026-10-22",
+   "fit_score": 94,
+   "fit_reason": "rol primary +30; konum +12; beceri 8×5 +30; kıdem mid +5; tazelik +10",
    "matched_skills": [
+    "SQL",
     "Python",
-    "Azure"
+    "Power BI",
+    "Azure",
+    "Microsoft Fabric",
+    "ETL",
+    "DAX",
+    "dbt"
    ],
-   "location_reason": "Arbeitnow konumu 'Düsseldorf, Nordrhein-Westfalen, Germany'",
+   "location_reason": "Arbeitnow konumu 'Venlo, Limburg, Nederland'",
    "seniority": "mid",
-   "focus": "ml",
+   "focus": "pipeline",
    "focus_scores": {
-    "ml": 29,
-    "bi": 0,
-    "pipeline": 2,
-    "business": 9
+    "ml": 1,
+    "bi": 10,
+    "pipeline": 14,
+    "business": 3
    },
    "language": "en",
-   "generated_at": "2026-10-22 12:50",
-   "summary": "We Want You to Grow With Us Data tells stories, and this role is responsible for turning those stories into decisions. As our Data Scientist & ML Engineer, you will develop the predictive, prescriptive, and optimisation models that give Intersnack the analytic",
+   "generated_at": "2026-10-23 12:45",
+   "summary": "De uitdaging Onze klant beschikt over een omvangrijk Microsoft BI-platform en werkt aan de doorontwikkeling hiervan naar Microsoft Fabric. Als Business Intelligence-team ben je verantwoordelijk voor de Fabric- en Power BI-omgeving en voor een data platform dat",
    "keywords": [
-    "optimisation",
-    "forecast",
     "stakeholder",
     "governance",
-    "pipeline",
-    "supply chain"
+    "enterprise",
+    "self-service",
+    "pipeline"
    ],
-   "url": "https://www.arbeitnow.com/jobs/companies/intersnack-it-kg/data-scientist-ml-engineer-predictive-analytics-agentic-ai-dusseldorf-473539",
+   "url": "https://www.arbeitnow.nl/jobs/companies/gradematch/microsoft-data-analytics-engineer-venlo-269433",
    "skills": [
+    "sql",
     "python",
-    "azure"
+    "power bi",
+    "azure",
+    "microsoft fabric",
+    "etl",
+    "dax",
+    "dbt"
    ],
-   "score": 54,
-   "posted": "2026-10-18",
-   "days": 4,
+   "score": 94,
+   "posted": "2026-10-22",
+   "days": 1,
    "remote": false,
    "german": false
   },
   {
-   "id": "780eb12447ed",
-   "title": "Data Engineer",
-   "company": "Univé",
-   "location": "Zwolle, Overijssel, Nederland",
+   "id": "42c3e4a2b74f",
+   "title": "Data Engineer Logistics",
+   "company": "Royal Den Hartogh Logistics",
+   "location": "Rotterdam, Zuid-Holland, Netherlands",
+   "country": "NL",
+   "market": "international",
+   "bucket": "nl",
+   "label": "NL",
+   "tier": 1,
+   "rank": 1,
+   "reserve": false,
+   "is_new": true,
+   "first_seen": "2026-10-23",
+   "workplace_type": "onsite",
+   "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.nl/jobs/companies/royal-den-hartogh-logistics/data-engineer-logistics-rotterdam-256809",
+   "publication_date": "2026-10-22",
+   "fit_score": 94,
+   "fit_reason": "rol primary +30; konum +12; beceri 7×5 +30; kıdem mid +5; tazelik +10",
+   "matched_skills": [
+    "SQL",
+    "Python",
+    "Power BI",
+    "Azure",
+    "Microsoft Fabric",
+    "SSIS",
+    "PySpark"
+   ],
+   "location_reason": "Arbeitnow konumu 'Rotterdam, Zuid-Holland, Netherlands'",
+   "seniority": "mid",
+   "focus": "pipeline",
+   "focus_scores": {
+    "ml": 2,
+    "bi": 8,
+    "pipeline": 11,
+    "business": 0
+   },
+   "language": "en",
+   "generated_at": "2026-10-23 12:45",
+   "summary": "Als Data Engineer word je onderdeel van het Data & Analytics-team in Rotterdam. Het grootste deel van je tijd werk je voor Business Unit Liquid Food , waar je functioneel en technisch mede-eigenaar bent van het datawarehouse en zorgt dat betrouwbare data besch",
+   "keywords": [
+    "dashboard",
+    "self-service"
+   ],
+   "url": "https://www.arbeitnow.nl/jobs/companies/royal-den-hartogh-logistics/data-engineer-logistics-rotterdam-256809",
+   "skills": [
+    "sql",
+    "python",
+    "power bi",
+    "azure",
+    "microsoft fabric",
+    "ssis",
+    "pyspark"
+   ],
+   "score": 94,
+   "posted": "2026-10-22",
+   "days": 1,
+   "remote": false,
+   "german": false
+  },
+  {
+   "id": "49bae69dd41e",
+   "title": "Senior Data Engineer",
+   "company": "SHIFTBASE B.V.",
+   "location": "Zoetermeer, Zuid-Holland, Netherlands",
+   "country": "NL",
+   "market": "international",
+   "bucket": "nl",
+   "label": "NL",
+   "tier": 1,
+   "rank": 2,
+   "reserve": false,
+   "is_new": true,
+   "first_seen": "2026-10-23",
+   "workplace_type": "onsite",
+   "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.nl/jobs/companies/shiftbase-bv/senior-data-engineer-zoetermeer-196651",
+   "publication_date": "2026-10-22",
+   "fit_score": 89,
+   "fit_reason": "rol primary +30; konum +12; beceri 5×5 +25; kıdem senior +5; tazelik +10",
+   "matched_skills": [
+    "SQL",
+    "Python",
+    "ETL",
+    "Snowflake",
+    "dbt"
+   ],
+   "location_reason": "Arbeitnow konumu 'Zoetermeer, Zuid-Holland, Netherlands'",
+   "seniority": "senior",
+   "focus": "pipeline",
+   "focus_scores": {
+    "ml": 4,
+    "bi": 4,
+    "pipeline": 19,
+    "business": 2
+   },
+   "language": "en",
+   "generated_at": "2026-10-23 12:45",
+   "summary": "Data Engineer Shiftbase is building the self-driving assistant for shift-based businesses across Europe. Our customers range from independent restaurants in Amsterdam to multi-location retailers in München, and they spend hours every week on scheduling, time t",
+   "keywords": [
+    "retail",
+    "automation",
+    "pipeline",
+    "root cause",
+    "stakeholder",
+    "data quality",
+    "saas",
+    "dashboard"
+   ],
+   "url": "https://www.arbeitnow.nl/jobs/companies/shiftbase-bv/senior-data-engineer-zoetermeer-196651",
+   "skills": [
+    "sql",
+    "python",
+    "etl",
+    "snowflake",
+    "dbt"
+   ],
+   "score": 89,
+   "posted": "2026-10-22",
+   "days": 1,
+   "remote": false,
+   "german": false
+  },
+  {
+   "id": "3dff79f9dafa",
+   "title": "Senior Data Engineer",
+   "company": "Livescore9",
+   "location": "London",
+   "country": "UK",
+   "market": "international",
+   "bucket": "uk",
+   "label": "UK",
+   "tier": 1,
+   "rank": 0,
+   "reserve": false,
+   "is_new": true,
+   "first_seen": "2026-10-23",
+   "workplace_type": "hybrid",
+   "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/livescore9/senior-data-engineer-london-116975",
+   "publication_date": "2026-10-22",
+   "fit_score": 87,
+   "fit_reason": "rol primary +30; konum +12; beceri 4×5 +20; kıdem senior +5; tazelik +10",
+   "matched_skills": [
+    "SQL",
+    "Python",
+    "ETL",
+    "Airflow"
+   ],
+   "location_reason": "Arbeitnow konumu 'London'",
+   "seniority": "senior",
+   "focus": "pipeline",
+   "focus_scores": {
+    "ml": 1,
+    "bi": 0,
+    "pipeline": 16,
+    "business": 5
+   },
+   "language": "en",
+   "generated_at": "2026-10-23 12:45",
+   "summary": "Soho, London Hybrid working: 3 days in the office Tues - Thurs The Role We are seeking a Senior Data Engineer to join our Data Team, taking a leading role in building the complex, scalable systems that power our data strategy. You will lead architectural discu",
+   "keywords": [
+    "scalab",
+    "optimisation",
+    "real-time",
+    "automation",
+    "pipeline",
+    "data quality",
+    "cost",
+    "governance",
+    "stakeholder"
+   ],
+   "url": "https://www.arbeitnow.co.uk/jobs/companies/livescore9/senior-data-engineer-london-116975",
+   "skills": [
+    "sql",
+    "python",
+    "etl",
+    "airflow"
+   ],
+   "score": 87,
+   "posted": "2026-10-22",
+   "days": 1,
+   "remote": false,
+   "german": false
+  },
+  {
+   "id": "82c214980aaf",
+   "title": "Senior BI Analytics Engineer",
+   "company": "Carwow",
+   "location": "London",
+   "country": "UK",
+   "market": "international",
+   "bucket": "uk",
+   "label": "UK",
+   "tier": 1,
+   "rank": 1,
+   "reserve": false,
+   "is_new": true,
+   "first_seen": "2026-10-23",
+   "workplace_type": "onsite",
+   "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/carwow/senior-bi-analytics-engineer-london-440862",
+   "publication_date": "2026-10-21",
+   "fit_score": 86,
+   "fit_reason": "rol primary +30; konum +12; beceri 5×5 +25; kıdem senior +5; tazelik +7",
+   "matched_skills": [
+    "SQL",
+    "ETL",
+    "Airflow",
+    "Snowflake",
+    "dbt"
+   ],
+   "location_reason": "Arbeitnow konumu 'London'",
+   "seniority": "senior",
+   "focus": "bi",
+   "focus_scores": {
+    "ml": 0,
+    "bi": 24,
+    "pipeline": 8,
+    "business": 7
+   },
+   "language": "en",
+   "generated_at": "2026-10-23 12:45",
+   "summary": "OUR MISSION To become the car-changing destination of choice. By combining technology, media and deep automotive expertise, we've turned how people buy, sell, advertise and lease cars on its head. What started as a simple reviews site is now one of the largest",
+   "keywords": [
+    "stakeholder",
+    "scalab",
+    "dashboard",
+    "data quality",
+    "finance",
+    "cost",
+    "governance"
+   ],
+   "url": "https://www.arbeitnow.co.uk/jobs/companies/carwow/senior-bi-analytics-engineer-london-440862",
+   "skills": [
+    "sql",
+    "etl",
+    "airflow",
+    "snowflake",
+    "dbt"
+   ],
+   "score": 86,
+   "posted": "2026-10-21",
+   "days": 2,
+   "remote": false,
+   "german": false
+  },
+  {
+   "id": "30d8bc738ad3",
+   "title": "Analytics Engineer (UK Cards)",
+   "company": "Lendable",
+   "location": "London",
+   "country": "UK",
+   "market": "international",
+   "bucket": "uk",
+   "label": "UK",
+   "tier": 1,
+   "rank": 2,
+   "reserve": false,
+   "is_new": true,
+   "first_seen": "2026-10-23",
+   "workplace_type": "onsite",
+   "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/lendable/analytics-engineer-uk-cards-london-466793",
+   "publication_date": "2026-10-22",
+   "fit_score": 84,
+   "fit_reason": "rol primary +30; konum +12; beceri 4×5 +20; kıdem mid +5; tazelik +10",
+   "matched_skills": [
+    "SQL",
+    "ETL",
+    "Snowflake",
+    "dbt"
+   ],
+   "location_reason": "Arbeitnow konumu 'London'",
+   "seniority": "mid",
+   "focus": "pipeline",
+   "focus_scores": {
+    "ml": 1,
+    "bi": 1,
+    "pipeline": 16,
+    "business": 5
+   },
+   "language": "en",
+   "generated_at": "2026-10-23 12:45",
+   "summary": "About Lendable Lendable is on a mission to build the world's best technology to help people get credit and save money. We're building one of the world’s leading fintech companies and are off to a strong start: One of the UK’s most exciting unicorns with a team",
+   "keywords": [
+    "finance",
+    "stakeholder",
+    "data quality",
+    "scalab",
+    "pipeline",
+    "cost"
+   ],
+   "url": "https://www.arbeitnow.co.uk/jobs/companies/lendable/analytics-engineer-uk-cards-london-466793",
+   "skills": [
+    "sql",
+    "etl",
+    "snowflake",
+    "dbt"
+   ],
+   "score": 84,
+   "posted": "2026-10-22",
+   "days": 1,
+   "remote": false,
+   "german": false
+  }
+ ],
+ "reserve": [
+  {
+   "id": "64de6016e249",
+   "title": "Data Engineer Kapitaalmarkten",
+   "company": "Autoriteit Financiele Markten",
+   "location": "Amsterdam, Noord-Holland, Nederland",
    "country": "NL",
    "market": "international",
    "bucket": "nl",
@@ -713,57 +573,58 @@
    "tier": 1,
    "rank": 3,
    "reserve": true,
-   "is_new": false,
-   "first_seen": "2026-10-20",
+   "is_new": true,
+   "first_seen": "2026-10-23",
    "workplace_type": "onsite",
    "source": "Arbeitnow",
    "also_on": [],
-   "source_url": "https://www.arbeitnow.nl/jobs/companies/unive/data-engineer-zwolle-82977",
-   "publication_date": "2026-10-20",
-   "fit_score": 86,
-   "fit_reason": "rol primary +30; konum +12; beceri 5×5 +25; kıdem mid +5; tazelik +7",
+   "source_url": "https://www.arbeitnow.nl/jobs/companies/autoriteit-financiele-markten/data-engineer-kapitaalmarkten-amsterdam-95340",
+   "publication_date": "2026-10-22",
+   "fit_score": 89,
+   "fit_reason": "rol primary +30; konum +12; beceri 5×5 +25; kıdem mid +5; tazelik +10",
    "matched_skills": [
     "SQL",
-    "Python",
     "Azure",
-    "Snowflake",
-    "dbt"
+    "ETL",
+    "Databricks",
+    "PySpark"
    ],
-   "location_reason": "Arbeitnow konumu 'Zwolle, Overijssel, Nederland'",
+   "location_reason": "Arbeitnow konumu 'Amsterdam, Noord-Holland, Nederland'",
    "seniority": "mid",
    "focus": "pipeline",
    "focus_scores": {
-    "ml": 2,
-    "bi": 2,
-    "pipeline": 12,
+    "ml": 3,
+    "bi": 0,
+    "pipeline": 17,
     "business": 0
    },
    "language": "en",
-   "generated_at": "2026-10-22 12:50",
-   "summary": "Wil jij bouwen aan betrouwbare dataproducten die door heel Univé worden gebruikt? Binnen het Data & AI Office werk je met Snowflake, dbt, Azure, Git en CI/CD. Je maakt van beschikbare brondata goed gemodelleerde, geteste en beheersbare dataproducten voor analy",
+   "generated_at": "2026-10-23 12:45",
+   "summary": "Als allround Data Engineer binnen de afdeling Datagedreven Kapitaalmarkten (DAK) ontwerp, bouw en beheer je betrouwbare datapipelines en datasets voor het toezicht op de kapitaalmarkten. Daarnaast help je onze ontwikkel- en deploymentprocessen en het gebruik v",
    "keywords": [
-    "self-service",
-    "pipeline"
+    "automation",
+    "governance",
+    "enterprise"
    ],
-   "url": "https://www.arbeitnow.nl/jobs/companies/unive/data-engineer-zwolle-82977",
+   "url": "https://www.arbeitnow.nl/jobs/companies/autoriteit-financiele-markten/data-engineer-kapitaalmarkten-amsterdam-95340",
    "skills": [
     "sql",
-    "python",
     "azure",
-    "snowflake",
-    "dbt"
+    "etl",
+    "databricks",
+    "pyspark"
    ],
-   "score": 86,
-   "posted": "2026-10-20",
-   "days": 2,
+   "score": 89,
+   "posted": "2026-10-22",
+   "days": 1,
    "remote": false,
    "german": false
   },
   {
-   "id": "cf4ed444ca5d",
-   "title": "Senior Data Engineer",
-   "company": "Wypoon",
-   "location": "Amsterdam",
+   "id": "ad727a45769f",
+   "title": "Data Engineer",
+   "company": "Follo",
+   "location": "Dongen, Noord-Brabant, Nederland",
    "country": "NL",
    "market": "international",
    "bucket": "nl",
@@ -771,63 +632,54 @@
    "tier": 1,
    "rank": 4,
    "reserve": true,
-   "is_new": false,
-   "first_seen": "2026-10-16",
-   "workplace_type": "hybrid",
+   "is_new": true,
+   "first_seen": "2026-10-23",
+   "workplace_type": "onsite",
    "source": "Arbeitnow",
    "also_on": [],
-   "source_url": "https://www.arbeitnow.nl/jobs/companies/wypoon/senior-data-engineer-amsterdam-62897",
-   "publication_date": "2026-10-16",
-   "fit_score": 86,
-   "fit_reason": "rol primary +30; konum +12; beceri 5×5 +25; kıdem senior +5; tazelik +4",
+   "source_url": "https://www.arbeitnow.nl/jobs/companies/follo/data-engineer-dongen-69238",
+   "publication_date": "2026-10-22",
+   "fit_score": 84,
+   "fit_reason": "rol primary +30; konum +12; beceri 4×5 +20; kıdem mid +5; tazelik +10",
    "matched_skills": [
     "SQL",
     "Python",
-    "Azure",
-    "Airflow",
-    "dbt"
+    "ETL",
+    "Airflow"
    ],
-   "location_reason": "Arbeitnow konumu 'Amsterdam'",
-   "seniority": "senior",
+   "location_reason": "Arbeitnow konumu 'Dongen, Noord-Brabant, Nederland'",
+   "seniority": "mid",
    "focus": "pipeline",
    "focus_scores": {
     "ml": 0,
     "bi": 0,
     "pipeline": 18,
-    "business": 5
+    "business": 0
    },
    "language": "en",
-   "generated_at": "2026-10-22 12:50",
-   "summary": "Are you a Data Engineer who thrives on building robust, scalable, and secure data platforms in the cloud? Join the Data Chapter at Wypoon Technologies , where we match top-tier engineering talent with impactful opportunities across the Netherlands. You’ll help",
+   "generated_at": "2026-10-23 12:45",
+   "summary": "Een pipeline die 's nachts breekt? Jij levert de structurele fix, niet de workaround. Een query die te veel kost? Jij ziet meteen waar het misgaat. Bij Follo leunt performance marketing volledig op data die klopt: elke bieding, elk klantrapport en elk AI-model",
    "keywords": [
-    "scalab",
-    "real-time",
-    "pipeline",
-    "ecommerce",
-    "energy",
-    "automation",
-    "enterprise",
-    "stakeholder"
+    "pipeline"
    ],
-   "url": "https://www.arbeitnow.nl/jobs/companies/wypoon/senior-data-engineer-amsterdam-62897",
+   "url": "https://www.arbeitnow.nl/jobs/companies/follo/data-engineer-dongen-69238",
    "skills": [
     "sql",
     "python",
-    "azure",
-    "airflow",
-    "dbt"
+    "etl",
+    "airflow"
    ],
-   "score": 86,
-   "posted": "2026-10-16",
-   "days": 6,
+   "score": 84,
+   "posted": "2026-10-22",
+   "days": 1,
    "remote": false,
    "german": false
   },
   {
-   "id": "9717f5ad5c19",
-   "title": "Analytics Engineer, Revenue, Purchase & Order",
-   "company": "Vinteden",
-   "location": "Amsterdam",
+   "id": "3e6e38dea887",
+   "title": "Data Engineer",
+   "company": "Puur Data",
+   "location": "Ede, Gelderland, Nederland",
    "country": "NL",
    "market": "international",
    "bucket": "nl",
@@ -835,57 +687,54 @@
    "tier": 1,
    "rank": 5,
    "reserve": true,
-   "is_new": false,
-   "first_seen": "2026-10-16",
+   "is_new": true,
+   "first_seen": "2026-10-23",
    "workplace_type": "onsite",
    "source": "Arbeitnow",
    "also_on": [],
-   "source_url": "https://www.arbeitnow.nl/jobs/companies/vinteden/analytics-engineer-revenue-purchase-order-amsterdam-499404",
-   "publication_date": "2026-10-15",
-   "fit_score": 78,
-   "fit_reason": "rol primary +30; konum +12; beceri 4×5 +20; kıdem mid +5; tazelik +4",
+   "source_url": "https://www.arbeitnow.nl/jobs/companies/puur-data/data-engineer-ede-471323",
+   "publication_date": "2026-10-22",
+   "fit_score": 79,
+   "fit_reason": "rol primary +30; konum +12; beceri 3×5 +15; kıdem mid +5; tazelik +10",
    "matched_skills": [
     "SQL",
-    "Airflow",
-    "Snowflake",
-    "dbt"
+    "Azure",
+    "ETL"
    ],
-   "location_reason": "Arbeitnow konumu 'Amsterdam'",
+   "location_reason": "Arbeitnow konumu 'Ede, Gelderland, Nederland'",
    "seniority": "mid",
    "focus": "pipeline",
    "focus_scores": {
-    "ml": 2,
-    "bi": 0,
-    "pipeline": 14,
-    "business": 2
+    "ml": 0,
+    "bi": 2,
+    "pipeline": 13,
+    "business": 0
    },
    "language": "en",
-   "generated_at": "2026-10-22 12:50",
-   "summary": "Brief info about Vinted Our mission is to make second-hand the first choice, and we're looking for people who want to help us get there. Every day, we work together to help our members buy and sell pre-loved clothing and lifestyle items, giving each piece a se",
+   "generated_at": "2026-10-23 12:45",
+   "summary": "De wereld om ons heen verandert razendsnel. Wat vandaag nieuw is, kan morgen alweer achterhaald zijn. Bij PuurData krijg je de kans om samen met collega’s te werken aan slimme oplossingen voor onze klanten. Zo kun je bijvoorbeeld bedrijven helpen met het inzic",
    "keywords": [
-    "scalab",
-    "cost",
-    "pipeline",
-    "root cause"
+    "real-time",
+    "dashboard",
+    "pipeline"
    ],
-   "url": "https://www.arbeitnow.nl/jobs/companies/vinteden/analytics-engineer-revenue-purchase-order-amsterdam-499404",
+   "url": "https://www.arbeitnow.nl/jobs/companies/puur-data/data-engineer-ede-471323",
    "skills": [
     "sql",
-    "airflow",
-    "snowflake",
-    "dbt"
+    "azure",
+    "etl"
    ],
-   "score": 78,
-   "posted": "2026-10-15",
-   "days": 7,
+   "score": 79,
+   "posted": "2026-10-22",
+   "days": 1,
    "remote": false,
    "german": false
   },
   {
-   "id": "f35a0eaab1c3",
-   "title": "Senior Data Engineering Manager, AD/ADAS",
-   "company": "Woven By Toyota",
-   "location": "London",
+   "id": "18373ca627b3",
+   "title": "Senior Data Engineer",
+   "company": "Street Group",
+   "location": "Manchester",
    "country": "UK",
    "market": "international",
    "bucket": "uk",
@@ -894,51 +743,51 @@
    "rank": 3,
    "reserve": true,
    "is_new": true,
-   "first_seen": "2026-10-22",
-   "workplace_type": "onsite",
+   "first_seen": "2026-10-23",
+   "workplace_type": "hybrid",
    "source": "Arbeitnow",
    "also_on": [],
-   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/woven-by-toyota/senior-data-engineering-manager-ad-adas-london-167568",
-   "publication_date": "2026-10-21",
-   "fit_score": 61,
-   "fit_reason": "rol primary +30; konum +12; beceri 2×5 +10; kıdem manager -8; tazelik +10",
+   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/street-group/senior-data-engineer-manchester-345585",
+   "publication_date": "2026-10-22",
+   "fit_score": 82,
+   "fit_reason": "rol primary +30; konum +12; beceri 3×5 +15; kıdem senior +5; tazelik +10",
    "matched_skills": [
+    "SQL",
     "Python",
-    "Azure"
+    "ETL"
    ],
-   "location_reason": "Arbeitnow konumu 'London'",
-   "seniority": "manager",
-   "focus": "ml",
+   "location_reason": "Arbeitnow konumu 'Manchester'",
+   "seniority": "senior",
+   "focus": "pipeline",
    "focus_scores": {
-    "ml": 13,
-    "bi": 0,
-    "pipeline": 3,
-    "business": 5
+    "ml": 0,
+    "bi": 1,
+    "pipeline": 15,
+    "business": 2
    },
    "language": "en",
-   "generated_at": "2026-10-22 12:50",
-   "summary": "Woven by Toyota is enabling Toyota’s once-in-a-century transformation into a mobility company. Inspired by a legacy of innovating for the benefit of others, our mission is to challenge the current state of mobility through human-centric innovation — expanding ",
+   "generated_at": "2026-10-23 12:45",
+   "summary": "📍 Manchester (Hybrid, up to 4 days WFH) | 💰 £55k-£70k Street Group is one of the fastest-growing PropTech companies in the UK. We want to be the leading creator of delightful experiences for everybody involved in buying, selling, renting and letting property, ",
    "keywords": [
-    "cost",
     "pipeline",
-    "optimization",
-    "scalab"
+    "cost"
    ],
-   "url": "https://www.arbeitnow.co.uk/jobs/companies/woven-by-toyota/senior-data-engineering-manager-ad-adas-london-167568",
+   "url": "https://www.arbeitnow.co.uk/jobs/companies/street-group/senior-data-engineer-manchester-345585",
    "skills": [
+    "sql",
     "python",
-    "azure"
+    "etl"
    ],
-   "score": 61,
-   "posted": "2026-10-21",
+   "score": 82,
+   "posted": "2026-10-22",
    "days": 1,
    "remote": false,
    "german": false
   },
   {
-   "id": "b8e6b01a9522",
-   "title": "Principal Data Scientist - AI",
-   "company": "Anaplan",
+   "id": "4f4da9e7ee9c",
+   "title": "Apprentice BI Data Analyst",
+   "company": "Brunswickgroup",
    "location": "London",
    "country": "UK",
    "market": "international",
@@ -948,54 +797,54 @@
    "rank": 4,
    "reserve": true,
    "is_new": true,
-   "first_seen": "2026-10-22",
+   "first_seen": "2026-10-23",
    "workplace_type": "onsite",
    "source": "Arbeitnow",
    "also_on": [],
-   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/anaplan/principal-data-scientist-ai-london-163517",
-   "publication_date": "2026-10-21",
-   "fit_score": 51,
-   "fit_reason": "rol secondary +18; konum +12; beceri 2×5 +10; kıdem lead -6; tazelik +10",
+   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/brunswickgroup/apprentice-bi-data-analyst-london-199573",
+   "publication_date": "2026-10-23",
+   "fit_score": 79,
+   "fit_reason": "rol primary +30; konum +12; beceri 3×5 +15; kıdem mid +5; tazelik +10",
    "matched_skills": [
-    "Python",
+    "SQL",
+    "Power BI",
     "Azure"
    ],
    "location_reason": "Arbeitnow konumu 'London'",
-   "seniority": "lead",
-   "focus": "ml",
+   "seniority": "mid",
+   "focus": "bi",
    "focus_scores": {
-    "ml": 23,
-    "bi": 0,
-    "pipeline": 1,
-    "business": 5
+    "ml": 0,
+    "bi": 28,
+    "pipeline": 0,
+    "business": 6
    },
    "language": "en",
-   "generated_at": "2026-10-22 12:50",
-   "summary": "At Anaplan, we are a team of innovators focused on optimizing business decision-making through our leading AI-infused scenario planning and analysis platform so our customers can outpace their competition and the market. What unites Anaplanners across teams an",
+   "generated_at": "2026-10-23 12:45",
+   "summary": "Opportunity Brunswick Group is seeking an enthusiastic and analytical Apprentice BI Data Analyst to join its Group Business Intelligence (BI) team. The Group BI team plays a key role in supporting the business globally by delivering meaningful data, reporting ",
    "keywords": [
-    "forecast",
-    "enterprise",
-    "scalab",
-    "pipeline",
-    "a/b",
-    "experimentation"
+    "finance",
+    "dashboard",
+    "stakeholder",
+    "self-service"
    ],
-   "url": "https://www.arbeitnow.co.uk/jobs/companies/anaplan/principal-data-scientist-ai-london-163517",
+   "url": "https://www.arbeitnow.co.uk/jobs/companies/brunswickgroup/apprentice-bi-data-analyst-london-199573",
    "skills": [
-    "python",
+    "sql",
+    "power bi",
     "azure"
    ],
-   "score": 51,
-   "posted": "2026-10-21",
-   "days": 1,
+   "score": 79,
+   "posted": "2026-10-23",
+   "days": 0,
    "remote": false,
    "german": false
   },
   {
-   "id": "b6e71b9f6ced",
-   "title": "Staff Data Scientist",
-   "company": "Airwallex",
-   "location": "UK - London",
+   "id": "99456f8867cf",
+   "title": "Data Scientist - Product Analytics",
+   "company": "Elevenlabs",
+   "location": "United Kingdom",
    "country": "UK",
    "market": "international",
    "bucket": "uk",
@@ -1004,45 +853,46 @@
    "rank": 5,
    "reserve": true,
    "is_new": true,
-   "first_seen": "2026-10-22",
+   "first_seen": "2026-10-23",
    "workplace_type": "onsite",
    "source": "Arbeitnow",
    "also_on": [],
-   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/airwallex/staff-data-scientist-london-335886",
-   "publication_date": "2026-10-21",
-   "fit_score": 51,
-   "fit_reason": "rol secondary +18; konum +12; beceri 2×5 +10; kıdem lead -6; tazelik +10",
+   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/elevenlabs/data-scientist-product-analytics-united-kingdom-33101",
+   "publication_date": "2026-10-22",
+   "fit_score": 67,
+   "fit_reason": "rol secondary +18; konum +12; beceri 3×5 +15; kıdem mid +5; tazelik +10",
    "matched_skills": [
     "SQL",
-    "Python"
+    "Python",
+    "dbt"
    ],
-   "location_reason": "Arbeitnow konumu 'UK - London'",
-   "seniority": "lead",
+   "location_reason": "Arbeitnow konumu 'United Kingdom'",
+   "seniority": "mid",
    "focus": "ml",
    "focus_scores": {
-    "ml": 16,
-    "bi": 0,
-    "pipeline": 0,
-    "business": 6
+    "ml": 14,
+    "bi": 1,
+    "pipeline": 2,
+    "business": 11
    },
    "language": "en",
-   "generated_at": "2026-10-22 12:50",
-   "summary": "About Airwallex Airwallex is the AI-native financial operating system for a real-time, intelligent economy. More than 675,000 businesses, including McLaren Racing, Qantas, SHEIN, and TikTok, use us, directly or through our platform partners, to run their finan",
+   "generated_at": "2026-10-23 12:45",
+   "summary": "About ElevenLabs ElevenLabs is an AI research and product company transforming how we interact with technology. We launched in January 2023 with the first human-like AI voice model. Today, we serve millions of users and thousands of businesses - from fast-grow",
    "keywords": [
-    "real-time",
-    "energy",
-    "forecast",
-    "scalab",
-    "real time",
-    "governance"
+    "startup",
+    "enterprise",
+    "experimentation",
+    "a/b",
+    "stakeholder"
    ],
-   "url": "https://www.arbeitnow.co.uk/jobs/companies/airwallex/staff-data-scientist-london-335886",
+   "url": "https://www.arbeitnow.co.uk/jobs/companies/elevenlabs/data-scientist-product-analytics-united-kingdom-33101",
    "skills": [
     "sql",
-    "python"
+    "python",
+    "dbt"
    ],
-   "score": 51,
-   "posted": "2026-10-21",
+   "score": 67,
+   "posted": "2026-10-22",
    "days": 1,
    "remote": false,
    "german": false
@@ -1055,9 +905,9 @@
     "istanbul_hibrit": 0,
     "istanbul_onsite": 0
    },
-   "de": 5,
-   "nl": 11,
-   "uk": 13
+   "de": 3,
+   "nl": 18,
+   "uk": 16
   },
   "selected": {
    "tr": 0,
@@ -1072,48 +922,28 @@
    }
   },
   "eliminated": {
-   "rol dışı (başlık)": 980,
-   "rol dışı (hedef rol yok)": 2108,
-   "ülke belirlenemedi": 24,
-   "ML/DS rolü, beceri örtüşmesi zayıf": 13,
-   "Almanca ilan": 17,
+   "rol dışı (hedef rol yok)": 2243,
+   "rol dışı (başlık)": 994,
+   "Almanca ilan": 15,
+   "ülke belirlenemedi": 43,
+   "ML/DS rolü, beceri örtüşmesi zayıf": 12,
    "ileri seviye Almanca şartı": 1,
-   "Remotive candidate_required_location 'Portugal'": 1,
-   "Remotive candidate_required_location 'United States'": 1,
-   "Remotive candidate_required_location 'Spain'": 1,
-   "Remotive candidate_required_location 'Singapore'": 1,
+   "Remotive candidate_required_location 'Latvia'": 1,
+   "Remotive candidate_required_location 'Hungary'": 1,
+   "Remotive candidate_required_location 'United States'": 2,
+   "Remotive candidate_required_location 'Colombia'": 2,
+   "Remotive candidate_required_location 'India'": 1,
+   "Remotive candidate_required_location 'Peru'": 1,
    "Remotive candidate_required_location 'Vancouver'": 1,
-   "dünya geneli remote (Türkiye ilanı değil)": 5,
-   "Remotive candidate_required_location 'North America'": 1
+   "dünya geneli remote (Türkiye ilanı değil)": 4
   }
  },
  "history": {
-  "url:https://www.arbeitnow.com/jobs/companies/reev/senior-business-intelligence-lead-all-genders-munchen-80998": {
-   "first_seen": "2026-09-23",
-   "last_seen": "2026-09-22",
-   "status": "listed",
-   "legacy": true
-  },
   "url:https://remotive.com/remote-jobs/data/senior-data-scientist-2091129": {
    "first_seen": "2026-09-23",
    "last_seen": "2026-09-23",
    "status": "listed",
    "legacy": true
-  },
-  "f87b46a2785d": {
-   "first_seen": "2026-09-21",
-   "status": "listed",
-   "last_seen": "2026-09-22"
-  },
-  "ff2e0e9b5156": {
-   "first_seen": "2026-09-21",
-   "status": "listed",
-   "last_seen": "2026-09-22"
-  },
-  "840f2a02dda1": {
-   "first_seen": "2026-09-21",
-   "status": "listed",
-   "last_seen": "2026-09-22"
   },
   "2cba7e2540f7": {
    "first_seen": "2026-09-21",
@@ -1124,11 +954,6 @@
    "first_seen": "2026-09-21",
    "status": "listed",
    "last_seen": "2026-09-28"
-  },
-  "a500f24e49ee": {
-   "first_seen": "2026-09-21",
-   "status": "listed",
-   "last_seen": "2026-09-22"
   },
   "497413e7eed4": {
    "first_seen": "2026-09-21",
@@ -1149,16 +974,6 @@
    "first_seen": "2026-09-22",
    "status": "expired",
    "last_seen": "2026-10-13"
-  },
-  "ed1c4109d539": {
-   "first_seen": "2026-09-22",
-   "status": "listed",
-   "last_seen": "2026-09-22"
-  },
-  "a812d6fff592": {
-   "first_seen": "2026-09-22",
-   "status": "listed",
-   "last_seen": "2026-09-22"
   },
   "b82315afecc2": {
    "first_seen": "2026-09-23",
@@ -2288,7 +2103,7 @@
   "d6fade0f6f9c": {
    "first_seen": "2026-10-18",
    "status": "listed",
-   "last_seen": "2026-10-22"
+   "last_seen": "2026-10-23"
   },
   "6b834c28c554": {
    "first_seen": "2026-10-18",
@@ -2333,7 +2148,7 @@
   "a51d143e691f": {
    "first_seen": "2026-10-19",
    "status": "listed",
-   "last_seen": "2026-10-22"
+   "last_seen": "2026-10-23"
   },
   "3a6abb428e94": {
    "first_seen": "2026-10-19",
@@ -2353,12 +2168,12 @@
   "780eb12447ed": {
    "first_seen": "2026-10-20",
    "status": "listed",
-   "last_seen": "2026-10-22"
+   "last_seen": "2026-10-23"
   },
   "949b3356d83d": {
    "first_seen": "2026-10-20",
    "status": "listed",
-   "last_seen": "2026-10-22"
+   "last_seen": "2026-10-23"
   },
   "5cf41b895c50": {
    "first_seen": "2026-10-20",
@@ -2368,22 +2183,22 @@
   "8cc1c6e1dd36": {
    "first_seen": "2026-10-21",
    "status": "listed",
-   "last_seen": "2026-10-22"
+   "last_seen": "2026-10-23"
   },
   "4af8d651e1b8": {
    "first_seen": "2026-10-21",
    "status": "listed",
-   "last_seen": "2026-10-22"
+   "last_seen": "2026-10-23"
   },
   "5807b448ff26": {
    "first_seen": "2026-10-21",
    "status": "listed",
-   "last_seen": "2026-10-22"
+   "last_seen": "2026-10-23"
   },
   "408c6228229c": {
    "first_seen": "2026-10-21",
    "status": "listed",
-   "last_seen": "2026-10-22"
+   "last_seen": "2026-10-23"
   },
   "1db1e9780796": {
    "first_seen": "2026-10-21",
@@ -2393,12 +2208,12 @@
   "0a2bc540198e": {
    "first_seen": "2026-10-21",
    "status": "listed",
-   "last_seen": "2026-10-22"
+   "last_seen": "2026-10-23"
   },
   "1f589001f4fd": {
    "first_seen": "2026-10-21",
    "status": "listed",
-   "last_seen": "2026-10-22"
+   "last_seen": "2026-10-23"
   },
   "a2851c12e7b5": {
    "first_seen": "2026-10-21",
@@ -2413,42 +2228,107 @@
   "ee61861d6795": {
    "first_seen": "2026-10-22",
    "status": "listed",
-   "last_seen": "2026-10-22"
+   "last_seen": "2026-10-23"
   },
   "94d354ee5c8d": {
    "first_seen": "2026-10-22",
    "status": "listed",
-   "last_seen": "2026-10-22"
+   "last_seen": "2026-10-23"
   },
   "bb042fbd41ce": {
    "first_seen": "2026-10-22",
    "status": "listed",
-   "last_seen": "2026-10-22"
+   "last_seen": "2026-10-23"
   },
   "c483c293bfcf": {
    "first_seen": "2026-10-22",
    "status": "listed",
-   "last_seen": "2026-10-22"
+   "last_seen": "2026-10-23"
   },
   "5e486093fb58": {
    "first_seen": "2026-10-22",
    "status": "listed",
-   "last_seen": "2026-10-22"
+   "last_seen": "2026-10-23"
   },
   "f35a0eaab1c3": {
    "first_seen": "2026-10-22",
    "status": "listed",
-   "last_seen": "2026-10-22"
+   "last_seen": "2026-10-23"
   },
   "b8e6b01a9522": {
    "first_seen": "2026-10-22",
    "status": "listed",
-   "last_seen": "2026-10-22"
+   "last_seen": "2026-10-23"
   },
   "b6e71b9f6ced": {
    "first_seen": "2026-10-22",
    "status": "listed",
-   "last_seen": "2026-10-22"
+   "last_seen": "2026-10-23"
+  },
+  "6f04e5a35a71": {
+   "first_seen": "2026-10-23",
+   "status": "listed",
+   "last_seen": "2026-10-23"
+  },
+  "be6c1e38c9f3": {
+   "first_seen": "2026-10-23",
+   "status": "listed",
+   "last_seen": "2026-10-23"
+  },
+  "42c3e4a2b74f": {
+   "first_seen": "2026-10-23",
+   "status": "listed",
+   "last_seen": "2026-10-23"
+  },
+  "49bae69dd41e": {
+   "first_seen": "2026-10-23",
+   "status": "listed",
+   "last_seen": "2026-10-23"
+  },
+  "3dff79f9dafa": {
+   "first_seen": "2026-10-23",
+   "status": "listed",
+   "last_seen": "2026-10-23"
+  },
+  "82c214980aaf": {
+   "first_seen": "2026-10-23",
+   "status": "listed",
+   "last_seen": "2026-10-23"
+  },
+  "30d8bc738ad3": {
+   "first_seen": "2026-10-23",
+   "status": "listed",
+   "last_seen": "2026-10-23"
+  },
+  "64de6016e249": {
+   "first_seen": "2026-10-23",
+   "status": "listed",
+   "last_seen": "2026-10-23"
+  },
+  "ad727a45769f": {
+   "first_seen": "2026-10-23",
+   "status": "listed",
+   "last_seen": "2026-10-23"
+  },
+  "3e6e38dea887": {
+   "first_seen": "2026-10-23",
+   "status": "listed",
+   "last_seen": "2026-10-23"
+  },
+  "18373ca627b3": {
+   "first_seen": "2026-10-23",
+   "status": "listed",
+   "last_seen": "2026-10-23"
+  },
+  "4f4da9e7ee9c": {
+   "first_seen": "2026-10-23",
+   "status": "listed",
+   "last_seen": "2026-10-23"
+  },
+  "99456f8867cf": {
+   "first_seen": "2026-10-23",
+   "status": "listed",
+   "last_seen": "2026-10-23"
   }
  },
  "note": "Kaynak: Arbeitnow + Remotive. Basvuruyu kullanici kendisi yapar."
