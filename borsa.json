@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-24 13:45",
+  "updated": "2026-10-24 17:10",
   "watch": [
     {
       "code": "EREGL",
@@ -231,7 +231,7 @@
         "rsiTxt": "aşırı alım",
         "rsi": 74.1,
         "volat": 1.9,
-        "volRatio": 0.95
+        "volRatio": 0.94
       }
     }
   ],
@@ -243,10 +243,6 @@
     {
       "t": "🟢 Ereğli Demir Çelik’te dokuz aylık net kâr 11 milyar lirayı aştı  (Borsa Gundem)",
       "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxQU2I2Z2d4YkZ0cTl1cGZPMlJValBFSFJuY3RSRHg5T0NEOG8yMmgzaFVNakE3WXVobXRWVG5UMFpBX3ZnbjNuUGVkWjJodzBKYm5xM3NuaDhmNms5WWZFTW9fcEl3c2g0a0paR3lISTdiUDRuN3JyZjFjRkRvT3puN3lFNmxmV2kwM1E?oc=5"
-    },
-    {
-      "t": "🟢 Ereğli Demir'in (EREGL) hem satışları hem de net kârı arttı!  (Hisse.net)",
-      "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNc2c5XzV0TnJOLU5Nd0NpdVNrWHBKVXoyVUdDV29oOVhzM194UUV0LVdvTHZqcU1iYTE1cEJCaG9jU09TNGdwSnlHZUJ4blF1OUNIeS1qMXYwMW8yZEhHa25hQU5UY0NpUmQyOXIwZFZZZ2RiSUJjZUc4Y3F1NnV1Yjh4amZKQ0pOdV9XSkNUSDM2MnFpcGNpalFKWWTSAZwBQVVfeXFMTXNnOV81dE5yTi1OTXdDaXVTa1hwSlV6MlVHQ1dvaDlYczNfeFFFdC1Xb0x2anFNYmExNXBCQmhvY1NPUzRncEp5R2VCeG5RdTlDSHktajF2MDFvMmRIR2tuYUFOVGNDaVJkMjlyMGRWWWdkYklCY2VHOGNxdTZ1dWI4eGpmSkNKTnVfV0pDVEgzNjJxaXBjaWpRSllk?oc=5"
     },
     {
       "t": "⚪ EREGL’de Beklenti Üstü Bilanço Sonrası Hedef Fiyat ve Tavsiyeler Ne Oldu?  (Borsa Gundem)",
@@ -271,28 +267,32 @@
     {
       "t": "⚪ Gübretaş 7,25 milyar liralık yatırım açıkladı, hisseleri taban oldu! Ortak olacağı market milyarlarca lira zarar ediyor  (Para Ajansı)",
       "link": "https://news.google.com/rss/articles/CBMi_gFBVV95cUxQU0tCOHlJUW1McjNEOWNkNWdUcWFYeG9IQVg1ZWdfdGgxTFpUQXJkRjN1VEFFR2sxTnE4Y0QzRWd0bHYzMmsyUFd3UG5RQVVEYUQ0aVVfMkFGQVJxM1V0eVRLX2xERndEUUxGbTVBaHo1NGR6Nl9DQ015U0FYSlppUDQwZ255cDhOMWsxXzQtWXg5YXhQbUdfZGFSUElWbUhXUVNNc2RfRUY2dGE3cy0tTlNNUld3dDYyWUVDRmNJTUNIMGJkU1BicXpyajJOdWpJOUNXbnZjZWl1NVJ0Q3B6Y1FKNlpCdUtjTzVwbDZzRHRZcFJtSGpOXzYyR3diUQ?oc=5"
+    },
+    {
+      "t": "⚪ Astor Enerji’den 5 milyarlık ödeme  (Sabah)",
+      "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1JcGlFR1B5eFpBMUc4WEdrZDNjajY2T19fdjllZkRfSG5hRWQyNThjTjlvQ0lLWXlWalhzQ0xYaHRKNnBUTm1JdHhOTFBzRjZBOFRqWF8zWGZIUllFUjZ1Vmc3VHRyT1Z4Njl5QUhhTkpacW90TXNZYjQ0djRybjDSAYIBQVVfeXFMTi1Fc2Z3Unl6ay1xM1ZGVU9SeEZValJwWEhOZUUxMmFmeUlyRmZySUhWaGNpLWU0SXl5UjRINkN6TG0wSGROd2NZd1JrOVNWdmxtYVFPc1hueWdKU1BEZ1JsVVQ1M2dYMzN1aVNSQ1hfTnpkWWhxSGd0dTNEcnZXRldSQQ?oc=5"
     }
   ],
   "world": [
     {
-      "t": "🌍 Arrest made after fire at Hitler's mountaintop Eagle's Nest retreat  (BBC World)",
-      "link": "https://www.bbc.co.uk/news/articles/cr93zwjw1k4qo?at_medium=RSS&at_campaign=rss"
+      "t": "🌍 Ukraine says Starlink connection 'now stable' after network limits  (BBC World)",
+      "link": "https://www.bbc.co.uk/news/articles/cwkg5md14j8go?at_medium=RSS&at_campaign=rss"
     },
     {
       "t": "🌍 Mystery over source of Ebola infection in Nigeria fuels concern about spread of virus  (Guardian World)",
       "link": "https://www.theguardian.com/world/2026/oct/23/ebola-swiss-patient-nigeria-dr-congo-concerns-virus-spread"
     },
     {
-      "t": "🌍 France braces for another day of mass protests as security on high alert  (Al Jazeera)",
-      "link": "https://www.aljazeera.com/news/2026/10/24/france-braces-for-another-day-of-mass-protests-as-security-on-high-alert?traffic_source=rss"
+      "t": "🌍 Who was behind the deadly church shooting in Jordan?  (Al Jazeera)",
+      "link": "https://www.aljazeera.com/news/2026/10/24/who-was-behind-the-deadly-church-shooting-in-jordan?traffic_source=rss"
     },
     {
-      "t": "🌍 Drinking water supplies dwindle in Yemeni city besieged by Houthi rebels  (NPR World)",
-      "link": "https://www.npr.org/2026/10/24/g-s1-149729/drinking-water-supplies-dwindle-in-yemeni-city-besieged-by-houthi-rebels"
+      "t": "🌍 Gunmen open fire at a church during a funeral in Jordan, killing 7 and wounding 40  (NPR World)",
+      "link": "https://www.npr.org/2026/10/24/nx-s1-6015414/shooting-church-jordan"
     },
     {
-      "t": "🌍 Rubio calls on Cubans seeking change to form 'discrete partnership' with CIA  (Euronews)",
-      "link": "https://www.euronews.com/2026/10/24/rubio-calls-on-cubans-seeking-change-to-form-discrete-partnership-with-cia"
+      "t": "🌍 Soldiers patrol Milan streets as shops board up ahead of protests  (Euronews)",
+      "link": "https://www.euronews.com/2026/10/24/soldiers-patrol-milan-streets-as-shops-board-up-ahead-of-protests"
     },
     {
       "t": "🌍 Japan-Russia ties erode as journalist sits in Moscow jail  (DW)",
@@ -301,51 +301,51 @@
   ],
   "tr": [
     {
-      "t": "🇹🇷 YÖK, üniversitelerde haftanın öne çıkan çalışmalarını paylaştı  (AA)",
-      "link": "https://www.aa.com.tr/tr/gundem/yok-universitelerde-haftanin-one-cikan-calismalarini-paylasti/4099402"
+      "t": "🇹🇷 Numan Kurtulmuş: Terörsüz Türkiye ile birlikte terörsüz bir bölgenin kurulduğunu göreceğiz  (TRT Haber)",
+      "link": "https://www.trthaber.com/haber/gundem/numan-kurtulmus-terorsuz-turkiye-ile-birlikte-terorsuz-bir-bolgenin-kuruldugunu-gorecegiz-961086.html"
     },
     {
-      "t": "🇹🇷 74 ilde atık gıdalar hayvan mamasına dönüştürülüyor  (TRT Haber)",
-      "link": "https://www.trthaber.com/haber/gundem/74-ilde-atik-gidalar-hayvan-mamasina-donusturuluyor-961070.html"
+      "t": "🇹🇷 Fon soruşturmalarında İnan Altınbaş dahil 15 tutuklama daha  (BBC Türkçe)",
+      "link": "https://www.bbc.com/turkce/articles/cj5yn01wp4p3o?at_medium=RSS&at_campaign=rss"
     },
     {
-      "t": "🇹🇷 İsrail seçimlerinde Arap partileri neden kritik rol oynuyor?  (BBC Türkçe)",
-      "link": "https://www.bbc.com/turkce/articles/c6e9l1nm35l4o?at_medium=RSS&at_campaign=rss"
+      "t": "🇹🇷 Otomobil su kanalına uçtu: 4’ü çocuk, 6 ölü  (Habertürk)",
+      "link": "https://www.haberturk.com/gundem/son-dakika-haberi-mardinde-otomobil-su-kanalina-uctu-4u-cocuk-6-olu-3922278"
     },
     {
-      "t": "🇹🇷 Anne kızı bıçaklamaya giderken kameraya yansıdı  (Habertürk)",
-      "link": "https://www.haberturk.com/gundem/son-dakika-haberi-anne-kizi-bicaklamaya-giderken-kameraya-yansidi-malatya-haberleri-3922216"
+      "t": "🇹🇷 Kara Kuvvetleri'nin 'Askeri Drone Yarışması'nda Türkiye şampiyon oldu  (NTV)",
+      "link": "https://www.ntv.com.tr/turkiye/galeri-kara-kuvvetlerinin-askeri-drone-yarismasinda-turkiye-sampiyon-oldu-1747791"
     },
     {
-      "t": "🇹🇷 Kamu Personel Seçme Sınavı (KPSS) yarın yapılacak. KPSS Ortaöğretim öncesi önemli çağrı  (NTV)",
-      "link": "https://www.ntv.com.tr/turkiye/galeri-kamu-personel-secme-sinavi-kpss-yarin-yapilacak-kpss-ortaogretim-oncesi-onemli-cagri-1747758"
+      "t": "🇹🇷 Mardin'de otomobil sulama kanalına devrildi: 6 ölü  (TRT Haber)",
+      "link": "https://www.trthaber.com/haber/turkiye/mardinde-otomobil-sulama-kanalina-devrildi-6-olu-961085.html"
     },
     {
-      "t": "🇹🇷 Fransa'daki Sarı Yelekliler eyleminde polis şiddeti iddialarına ilişkin yeni soruşturma  (AA)",
-      "link": "https://www.aa.com.tr/tr/dunya/fransadaki-sari-yelekliler-eyleminde-polis-siddeti-iddialarina-iliskin-yeni-sorusturma/4099397"
+      "t": "🇹🇷 İstanbul dahil 10 şehirde 'Sansüre Hayır, Habere Özgürlük' yürüyüşleri  (BBC Türkçe)",
+      "link": "https://www.bbc.com/turkce/articles/cw77p30rplj3o?at_medium=RSS&at_campaign=rss"
     }
   ],
   "_teshis": {
     "dunya": [
-      "BBC World: 26 öğe / 2 alındı / 0 elendi | ilk: Arrest made after fire at Hitler's mountaintop Eagle's Nest ",
+      "BBC World: 29 öğe / 2 alındı / 0 elendi | ilk: Ukraine says Starlink connection 'now stable' after network ",
       "Guardian World: 45 öğe / 2 alındı / 0 elendi | ilk: Mystery over source of Ebola infection in Nigeria fuels conc",
-      "Al Jazeera: 25 öğe / 2 alındı / 0 elendi | ilk: France braces for another day of mass protests as security o",
-      "NPR World: 10 öğe / 2 alındı / 0 elendi | ilk: Drinking water supplies dwindle in Yemeni city besieged by H",
-      "Euronews: 50 öğe / 2 alındı / 2 elendi | ilk: Latest news bulletin | October 24th, 2026 – Midday",
+      "Al Jazeera: 25 öğe / 2 alındı / 0 elendi | ilk: Who was behind the deadly church shooting in Jordan?",
+      "NPR World: 10 öğe / 2 alındı / 0 elendi | ilk: Gunmen open fire at a church during a funeral in Jordan, kil",
+      "Euronews: 50 öğe / 2 alındı / 0 elendi | ilk: Soldiers patrol Milan streets as shops board up ahead of pro",
       "DW: 12 öğe / 2 alındı / 0 elendi | ilk: Japan-Russia ties erode as journalist sits in Moscow jail",
       "SONUÇ: 6 haber · veren: Al Jazeera, BBC World, DW, Euronews, Guardian World, NPR World",
-      "AA: 30 öğe / 2 alındı / 0 elendi | ilk: YÖK, üniversitelerde haftanın öne çıkan çalışmalarını paylaş",
-      "TRT Haber: 50 öğe / 2 alındı / 0 elendi | ilk: 74 ilde atık gıdalar hayvan mamasına dönüştürülüyor",
-      "BBC Türkçe: 16 öğe / 2 alındı / 0 elendi | ilk: İsrail seçimlerinde Arap partileri neden kritik rol oynuyor?",
-      "Habertürk: 30 öğe / 2 alındı / 0 elendi | ilk: Anne kızı bıçaklamaya giderken kameraya yansıdı",
-      "NTV: 20 öğe / 2 alındı / 0 elendi | ilk: Kamu Personel Seçme Sınavı (KPSS) yarın yapılacak. KPSS Orta",
-      "SONUÇ: 6 haber · veren: AA, BBC Türkçe, Habertürk, NTV, TRT Haber"
+      "AA: OKUNAMADI RemoteDisconnected: Remote end closed connection without response",
+      "TRT Haber: 50 öğe / 2 alındı / 0 elendi | ilk: Numan Kurtulmuş: Terörsüz Türkiye ile birlikte terörsüz bir ",
+      "BBC Türkçe: 16 öğe / 2 alındı / 0 elendi | ilk: Fon soruşturmalarında İnan Altınbaş dahil 15 tutuklama daha",
+      "Habertürk: 30 öğe / 2 alındı / 0 elendi | ilk: Otomobil su kanalına uçtu: 4’ü çocuk, 6 ölü",
+      "NTV: 20 öğe / 2 alındı / 0 elendi | ilk: Kara Kuvvetleri'nin 'Askeri Drone Yarışması'nda Türkiye şamp",
+      "SONUÇ: 6 haber · veren: BBC Türkçe, Habertürk, NTV, TRT Haber · boş dönen: AA"
     ],
-    "hisse": "9 başlık geldi, 1 elendi",
+    "hisse": "12 başlık geldi, 2 elendi",
     "hisse_ham": [
       "Ereğli Demir Çelik’te dokuz aylık net kâr 11 milyar lirayı aştı",
-      "Ereğli Demir'in (EREGL) hem satışları hem de net kârı arttı!",
       "EREGL’de Beklenti Üstü Bilanço Sonrası Hedef Fiyat ve Tavsiyeler Ne Ol",
+      "Erdemir Ereğli Demir Çelik (EREGL) 2026 yılı 3. çeyrek bilançosunu açı",
       "TSKB'den 491 milyon TL net kar",
       "TradingView'de Matriks tarafından haberler, 2026-10-23",
       "KAP *** BORSA İSTANBUL BISTECH DEVRE KESİCİ UYGULAMASI *** TSKB *** Pa"
