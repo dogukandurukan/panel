@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-25 14:10",
+  "updated": "2026-10-25 17:41",
   "watch": [
     {
       "code": "EREGL",
@@ -237,12 +237,16 @@
   ],
   "gold": {
     "price": "6,402.73",
-    "chg": "-1.16%"
+    "chg": "-1.38%"
   },
   "news": [
     {
       "t": "🟢 Ereğli Demir Çelik’te dokuz aylık net kâr 11 milyar lirayı aştı  (Borsa Gundem)",
       "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxQU2I2Z2d4YkZ0cTl1cGZPMlJValBFSFJuY3RSRHg5T0NEOG8yMmgzaFVNakE3WXVobXRWVG5UMFpBX3ZnbjNuUGVkWjJodzBKYm5xM3NuaDhmNms5WWZFTW9fcEl3c2g0a0paR3lISTdiUDRuN3JyZjFjRkRvT3puN3lFNmxmV2kwM1E?oc=5"
+    },
+    {
+      "t": "🟢 Ereğli Demir'in (EREGL) hem satışları hem de net kârı arttı!  (Hisse.net)",
+      "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNc2c5XzV0TnJOLU5Nd0NpdVNrWHBKVXoyVUdDV29oOVhzM194UUV0LVdvTHZqcU1iYTE1cEJCaG9jU09TNGdwSnlHZUJ4blF1OUNIeS1qMXYwMW8yZEhHa25hQU5UY0NpUmQyOXIwZFZZZ2RiSUJjZUc4Y3F1NnV1Yjh4amZKQ0pOdV9XSkNUSDM2MnFpcGNpalFKWWTSAZwBQVVfeXFMTXNnOV81dE5yTi1OTXdDaXVTa1hwSlV6MlVHQ1dvaDlYczNfeFFFdC1Xb0x2anFNYmExNXBCQmhvY1NPUzRncEp5R2VCeG5RdTlDSHktajF2MDFvMmRIR2tuYUFOVGNDaVJkMjlyMGRWWWdkYklCY2VHOGNxdTZ1dWI4eGpmSkNKTnVfV0pDVEgzNjJxaXBjaWpRSllk?oc=5"
     },
     {
       "t": "⚪ EREGL’de Beklenti Üstü Bilanço Sonrası Hedef Fiyat ve Tavsiyeler Ne Oldu?  (Borsa Gundem)",
@@ -267,58 +271,54 @@
     {
       "t": "⚪ Astor Enerji'nin ana hissedarları hakkındaki tedbirler kaldırıldı  (Bloomberght)",
       "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPVnprdHp1X2I4d1dDTlNYNDlqSFUzQ2hsMGF6Z2ladlZsSWVsRVlPbjQxTWYyZXMyOWpneU5JR1E2ajBKazlHdDhiOW51RTJuV0I5YWNwSEdlaDJaemQ0aXpaMmtmcGszNTdBNk9qaWctY3poU3p0RnFtMkdDaUg4ekE5LUdFNkZsdjhlM3ctU1NiQkh6dzhzOFFWT0pZRGF1WDhV?oc=5"
-    },
-    {
-      "t": "⚪ Astor Enerji patronlarının mal varlığı tedbiri kaldırıldı  (Sözcü Gazetesi)",
-      "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPRWZZeWdHV3BMTVg3UWMtQnVSVnNROEg1WWdkb2ItSGhnMThsd0FXVXIzdWNSUmxNVjFzMVkteVFZSzJhYXB6SnhfZG4zMFFPcmhGUGQ4R2x6SDZ2LUtpMTJKUWJ6MGZOVF9lNXlMSmpaNW9ocmtTaVFSZ2Z1eHZjaVprNTVrbU1qY1o5RkRlYjUtcGta0gGaAUFVX3lxTE1QNDBrVHYwU3VvcTZuVTBTUThTMG1OdEFGYlBpTEZsbmlNUDdyczlTRGtaV1A2c1k1LWRxMjN5MElfZkZyV0RaUFBZVDJLMGNCZEhhdE10Z1VUY3ExdEtBWTg5RVpGUWw3RGhHakFvUU01MzA4amdLaUw2YUJyZXVvYzV3aXFaSWJWNkFJczVVN095WERXV1lMS1E?oc=5"
     }
   ],
   "world": [
     {
-      "t": "🌍 More than 1,300 arrested as clashes follow another day of mass protests across France  (BBC World)",
-      "link": "https://www.bbc.co.uk/news/articles/c95ynd587ynzo?at_medium=RSS&at_campaign=rss"
+      "t": "🌍 Voters in Brazil head to polls as Lula goes up against Bolsonaro's son  (BBC World)",
+      "link": "https://www.bbc.co.uk/news/articles/cxp8g21j4648o?at_medium=RSS&at_campaign=rss"
     },
     {
       "t": "🌍 Mystery over source of Ebola infection in Nigeria fuels concern about spread of virus  (Guardian World)",
       "link": "https://www.theguardian.com/world/2026/oct/23/ebola-swiss-patient-nigeria-dr-congo-concerns-virus-spread"
     },
     {
-      "t": "🌍 Iran’s authorities take ‘self-sacrifice’ mobilisation campaign nationwide  (Al Jazeera)",
-      "link": "https://www.aljazeera.com/news/2026/10/25/irans-authorities-take-self-sacrifice-mobilisation-campaign-nationwide?traffic_source=rss"
+      "t": "🌍 Gaza content creator tells Al Jazeera how much her award win means  (Al Jazeera)",
+      "link": "https://www.aljazeera.com/video/newsfeed/2026/10/25/gaza-content-creator-tells-al-jazeera-how-much-her-award-win-means?traffic_source=rss"
     },
     {
-      "t": "🌍 Soldiers guard center of Milan as thousands of protesters march in cities across Europe  (NPR World)",
-      "link": "https://www.npr.org/2026/10/25/nx-s1-6016126/thousands-of-protesters-across-europe"
+      "t": "🌍 The College of Magic turns ordinary kids into confident, top-hat wearing magicians  (NPR World)",
+      "link": "https://www.npr.org/2026/10/25/g-s1-149089/magic-magicians-south-africa-school-students"
     },
     {
-      "t": "🌍 Young protesters clash with police on Rome streets  (Euronews)",
-      "link": "https://www.euronews.com/2026/10/24/young-protesters-clash-with-police-on-rome-streets"
+      "t": "🌍 Israel orders West Bank crossings to close on election day following Hebron shooting  (Euronews)",
+      "link": "https://www.euronews.com/2026/10/25/israel-orders-west-bank-crossings-to-close-on-election-day-following-hebron-shooting"
     },
     {
-      "t": "🌍 Gadi Eisenkot campaigns on Moroccan roots in challenge to Netanyahu  (DW)",
-      "link": "https://www.dw.com/en/gadi-eisenkot-campaigns-on-moroccan-roots-in-challenge-to-netanyahu/a-79747193?maca=en-rss-en-world-4025-rdf"
+      "t": "🌍 Uganda says it has no active Ebola cases, but infections in Kenya and Nigeria are prompting fresh scrutiny  (DW)",
+      "link": "https://www.dw.com/en/uganda-says-it-has-no-active-ebola-cases-but-infections-in-kenya-and-nigeria-are-prompting-fresh-scrutiny/a-79741580?maca=en-rss-en-world-4025-rdf"
     }
   ],
   "tr": [
     {
-      "t": "🇹🇷 Jandarmanın yüzen karakolu görev başında  (TRT Haber)",
-      "link": "https://www.trthaber.com/haber/gundem/jandarmanin-yuzen-karakolu-gorev-basinda-961140.html"
+      "t": "🇹🇷 Bulgaristan'da halk cumhurbaşkanı seçimi için sandık başında  (TRT Haber)",
+      "link": "https://www.trthaber.com/haber/dunya/bulgaristanda-halk-cumhurbaskani-secimi-icin-sandik-basinda-961156.html"
     },
     {
-      "t": "🇹🇷 Azerbaycan'da başörtüsü meselesinde Aliyev'in imajı nasıl tartışılıyor?  (BBC Türkçe)",
-      "link": "https://www.bbc.com/turkce/articles/cq80zxkx40l7o?at_medium=RSS&at_campaign=rss"
+      "t": "🇹🇷 Binyamin Netanyahu: 'Bay Güvenlik' İsrail'de yedinci kez başbakan olabilir mi?  (BBC Türkçe)",
+      "link": "https://www.bbc.com/turkce/articles/c94g1p2m21xlo?at_medium=RSS&at_campaign=rss"
     },
     {
-      "t": "🇹🇷 Çelik'ten şehidimiz için taziye mesajı  (Habertürk)",
-      "link": "https://www.haberturk.com/gundem/son-dakika-ak-parti-sozcusu-celik-ten-sehit-albay-sayit-gokgoz-icin-taziye-mesaji-3922424"
+      "t": "🇹🇷 İstanbul Barosu'nda başkanlık seçimi  (Habertürk)",
+      "link": "https://www.haberturk.com/gundem/istanbul-barosu-baskanlik-seciminde-oy-kullanma-islemi-suruyor-3922442"
     },
     {
-      "t": "🇹🇷 Doğu Akdeniz'de tatbikat: Yerli ve milli insansız deniz araçları sahaya indi  (NTV)",
-      "link": "https://www.ntv.com.tr/turkiye/video-dogu-akdenizde-tatbikat-yerli-ve-milli-insansiz-deniz-araclari-sahaya-indi-1747892"
+      "t": "🇹🇷 SİPER Ürün-2 yeni testi geçti. Havada hedef değiştirdi  (NTV)",
+      "link": "https://www.ntv.com.tr/turkiye/siper-urun-2-yeni-testi-gecti-havada-hedef-degistirdi-1747929"
     },
     {
-      "t": "🇹🇷 Çikolatadan sucuğa, simit çeşitlenerek büyüyor  (TRT Haber)",
-      "link": "https://www.trthaber.com/haber/turkiye/cikolatadan-sucuga-simit-cesitlenerek-buyuyor-961139.html"
+      "t": "🇹🇷 SİPER yeni kabiliyetini başarıyla test etti  (TRT Haber)",
+      "link": "https://www.trthaber.com/haber/savunma/siper-yeni-kabiliyetini-basariyla-test-etti-961155.html"
     },
     {
       "t": "🇹🇷 Sırbistan'da genel seçimler: Öğrenci hareketi iktidarı değiştirebilir mi?  (BBC Türkçe)",
@@ -327,25 +327,25 @@
   ],
   "_teshis": {
     "dunya": [
-      "BBC World: 32 öğe / 2 alındı / 0 elendi | ilk: More than 1,300 arrested as clashes follow another day of ma",
+      "BBC World: 32 öğe / 2 alındı / 0 elendi | ilk: Voters in Brazil head to polls as Lula goes up against Bolso",
       "Guardian World: 45 öğe / 2 alındı / 0 elendi | ilk: Mystery over source of Ebola infection in Nigeria fuels conc",
-      "Al Jazeera: 25 öğe / 2 alındı / 0 elendi | ilk: Iran’s authorities take ‘self-sacrifice’ mobilisation campai",
-      "NPR World: 10 öğe / 2 alındı / 0 elendi | ilk: Soldiers guard center of Milan as thousands of protesters ma",
-      "Euronews: 50 öğe / 2 alındı / 2 elendi | ilk: Latest news bulletin | October 25th, 2026 – Midday",
-      "DW: 12 öğe / 2 alındı / 0 elendi | ilk: Gadi Eisenkot campaigns on Moroccan roots in challenge to Ne",
+      "Al Jazeera: 25 öğe / 2 alındı / 0 elendi | ilk: Gaza content creator tells Al Jazeera how much her award win",
+      "NPR World: 10 öğe / 2 alındı / 0 elendi | ilk: The College of Magic turns ordinary kids into confident, top",
+      "Euronews: 50 öğe / 2 alındı / 2 elendi | ilk: Israel orders West Bank crossings to close on election day f",
+      "DW: 12 öğe / 2 alındı / 0 elendi | ilk: Uganda says it has no active Ebola cases, but infections in ",
       "SONUÇ: 6 haber · veren: Al Jazeera, BBC World, DW, Euronews, Guardian World, NPR World",
       "AA: OKUNAMADI RemoteDisconnected: Remote end closed connection without response",
-      "TRT Haber: 50 öğe / 2 alındı / 0 elendi | ilk: Jandarmanın yüzen karakolu görev başında",
-      "BBC Türkçe: 16 öğe / 2 alındı / 0 elendi | ilk: Azerbaycan'da başörtüsü meselesinde Aliyev'in imajı nasıl ta",
-      "Habertürk: 30 öğe / 2 alındı / 0 elendi | ilk: Çelik'ten şehidimiz için taziye mesajı",
-      "NTV: 20 öğe / 2 alındı / 0 elendi | ilk: Doğu Akdeniz'de tatbikat: Yerli ve milli insansız deniz araç",
+      "TRT Haber: 50 öğe / 2 alındı / 0 elendi | ilk: Bulgaristan'da halk cumhurbaşkanı seçimi için sandık başında",
+      "BBC Türkçe: 16 öğe / 2 alındı / 0 elendi | ilk: Binyamin Netanyahu: 'Bay Güvenlik' İsrail'de yedinci kez baş",
+      "Habertürk: 30 öğe / 2 alındı / 0 elendi | ilk: İstanbul Barosu'nda başkanlık seçimi",
+      "NTV: 20 öğe / 2 alındı / 0 elendi | ilk: SİPER Ürün-2 yeni testi geçti. Havada hedef değiştirdi",
       "SONUÇ: 6 haber · veren: BBC Türkçe, Habertürk, NTV, TRT Haber · boş dönen: AA"
     ],
-    "hisse": "11 başlık geldi, 2 elendi",
+    "hisse": "11 başlık geldi, 1 elendi",
     "hisse_ham": [
       "Ereğli Demir Çelik’te dokuz aylık net kâr 11 milyar lirayı aştı",
+      "Ereğli Demir'in (EREGL) hem satışları hem de net kârı arttı!",
       "EREGL’de Beklenti Üstü Bilanço Sonrası Hedef Fiyat ve Tavsiyeler Ne Ol",
-      "Erdemir Ereğli Demir Çelik (EREGL) 2026 yılı 3. çeyrek bilançosunu açı",
       "TradingView'de Matriks tarafından haberler, 2026-10-23",
       "KAP *** BORSA İSTANBUL BISTECH DEVRE KESİCİ UYGULAMASI *** TSKB *** Pa",
       "Gübretaş'tan GUBRF Tarım ve Gıda Sektörüne 7,25 Milyar TL'lik Yatırım"
