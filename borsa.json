@@ -1,68 +1,68 @@
 {
-  "updated": "2026-10-25 17:41",
+  "updated": "2026-10-26 15:44",
   "watch": [
     {
-      "code": "EREGL",
-      "price": "31.60",
-      "chg": "-9.97%",
-      "avg1w": "35.20",
-      "avg1m": "36.59",
-      "hist": [40.02, 40.34, 39.82, 39.94, 40.32, 42.12, 41.2, 40.48, 40.44, 40.8, 40.1, 41.52, 41.26, 39.94, 40.06, 40.4, 40.86, 41.88, 44.06, 42.34, 43.6, 42.3, 42.24, 44.2, 43.28, 43.26, 43.86, 43.16, 42.4, 42.54, 40.7, 41.74, 41.98, 41.56, 38.68, 36.88, 36.86, 37.18, 38.24, 37.38, 37.94, 37.7, 37.76, 38.1, 38.14, 38.18, 38.24, 38.7, 38.6, 39.16, 38.78, 37.78, 37.6, 36.58, 37.2, 38.32, 39.92, 39.08, 38.98, 39.4, 38.86, 38.26, 34.78, 36.14, 36.42, 37.38, 37.82, 38.54, 37.94, 37.74, 37.48, 36.76, 35.94, 36.62, 37.02, 37.64, 37.08, 36.52, 36.6, 37.32, 37.6, 37.26, 37.1, 37.4, 36.26, 35.62, 37.18, 36.52, 35.1, 31.6],
-      "histD": ["06-19", "06-22", "06-23", "06-24", "06-25", "06-26", "06-29", "06-30", "07-01", "07-02", "07-03", "07-06", "07-07", "07-08", "07-09", "07-10", "07-13", "07-14", "07-16", "07-17", "07-20", "07-21", "07-22", "07-23", "07-24", "07-27", "07-28", "07-29", "07-30", "07-31", "08-03", "08-04", "08-05", "08-06", "08-07", "08-10", "08-11", "08-12", "08-13", "08-14", "08-17", "08-18", "08-19", "08-20", "08-21", "08-24", "08-25", "08-26", "08-27", "08-28", "08-31", "09-01", "09-02", "09-03", "09-04", "09-07", "09-08", "09-09", "09-10", "09-11", "09-14", "09-15", "09-16", "09-17", "09-18", "09-21", "09-22", "09-23", "09-24", "09-25", "09-28", "09-29", "09-30", "10-01", "10-02", "10-05", "10-06", "10-07", "10-08", "10-09", "10-12", "10-13", "10-14", "10-15", "10-16", "10-19", "10-20", "10-21", "10-22", "10-23"],
-      "ind": {
-        "ma": "MA20 & MA50 altında (aşağı eğilim)",
-        "rsiTxt": "aşırı satım",
-        "rsi": 28.7,
-        "volat": 3.3,
-        "volRatio": 4.04
-      }
-    },
-    {
-      "code": "TSKB",
-      "price": "8.92",
-      "chg": "+0.56%",
-      "avg1w": "9.14",
-      "avg1m": "9.71",
-      "hist": [12.4, 12.34, 12.27, 12.14, 11.77, 12.21, 12.05, 11.88, 12.06, 12.08, 11.8, 11.78, 11.85, 11.56, 11.5, 11.53, 11.37, 11.55, 12.05, 11.88, 11.5, 11.23, 11.24, 11.28, 11.43, 11.29, 11.19, 10.84, 10.87, 10.94, 11.22, 11.29, 11.27, 11.24, 11.12, 11.01, 10.87, 11.05, 10.95, 11.0, 10.89, 10.91, 11.05, 10.93, 11.01, 11.15, 10.96, 11.19, 11.12, 11.29, 10.93, 10.99, 10.97, 11.04, 10.97, 11.11, 11.62, 11.39, 11.29, 11.36, 11.49, 11.23, 10.45, 11.22, 10.87, 10.85, 10.87, 10.77, 10.45, 10.35, 10.04, 9.97, 9.64, 9.82, 9.87, 10.05, 9.97, 9.8, 9.8, 9.93, 9.95, 9.93, 9.87, 9.72, 9.43, 9.26, 9.4, 9.27, 8.87, 8.92],
-      "histD": ["06-19", "06-22", "06-23", "06-24", "06-25", "06-26", "06-29", "06-30", "07-01", "07-02", "07-03", "07-06", "07-07", "07-08", "07-09", "07-10", "07-13", "07-14", "07-16", "07-17", "07-20", "07-21", "07-22", "07-23", "07-24", "07-27", "07-28", "07-29", "07-30", "07-31", "08-03", "08-04", "08-05", "08-06", "08-07", "08-10", "08-11", "08-12", "08-13", "08-14", "08-17", "08-18", "08-19", "08-20", "08-21", "08-24", "08-25", "08-26", "08-27", "08-28", "08-31", "09-01", "09-02", "09-03", "09-04", "09-07", "09-08", "09-09", "09-10", "09-11", "09-14", "09-15", "09-16", "09-17", "09-18", "09-21", "09-22", "09-23", "09-24", "09-25", "09-28", "09-29", "09-30", "10-01", "10-02", "10-05", "10-06", "10-07", "10-08", "10-09", "10-12", "10-13", "10-14", "10-15", "10-16", "10-19", "10-20", "10-21", "10-22", "10-23"],
-      "ind": {
-        "ma": "MA20 & MA50 altında (aşağı eğilim)",
-        "rsiTxt": "aşırı satım",
-        "rsi": 27.4,
-        "volat": 1.6,
-        "volRatio": 3.07
-      }
-    },
-    {
       "code": "GUBRF",
-      "price": "298.50",
-      "chg": "-9.95%",
-      "avg1w": "342.80",
-      "avg1m": "394.95",
-      "hist": [490.0, 509.0, 478.25, 467.25, 477.5, 479.75, 451.0, 442.75, 446.75, 461.75, 456.0, 460.25, 457.75, 433.75, 437.0, 437.5, 411.5, 413.25, 422.25, 413.0, 410.25, 416.25, 430.25, 425.0, 422.75, 424.0, 415.0, 399.0, 401.0, 398.5, 404.5, 413.5, 431.0, 432.75, 446.25, 441.75, 422.75, 427.0, 418.5, 419.25, 445.25, 429.0, 471.75, 462.75, 475.75, 492.25, 480.5, 484.5, 488.0, 497.75, 481.75, 471.0, 475.75, 482.25, 478.75, 491.25, 504.0, 512.0, 504.5, 502.5, 478.75, 461.0, 415.0, 429.25, 443.5, 443.5, 440.0, 448.25, 430.25, 458.0, 442.25, 417.0, 411.25, 414.75, 419.75, 416.0, 410.75, 396.75, 407.5, 418.0, 403.75, 406.0, 391.0, 394.5, 372.75, 356.25, 373.25, 354.5, 331.5, 298.5],
-      "histD": ["06-19", "06-22", "06-23", "06-24", "06-25", "06-26", "06-29", "06-30", "07-01", "07-02", "07-03", "07-06", "07-07", "07-08", "07-09", "07-10", "07-13", "07-14", "07-16", "07-17", "07-20", "07-21", "07-22", "07-23", "07-24", "07-27", "07-28", "07-29", "07-30", "07-31", "08-03", "08-04", "08-05", "08-06", "08-07", "08-10", "08-11", "08-12", "08-13", "08-14", "08-17", "08-18", "08-19", "08-20", "08-21", "08-24", "08-25", "08-26", "08-27", "08-28", "08-31", "09-01", "09-02", "09-03", "09-04", "09-07", "09-08", "09-09", "09-10", "09-11", "09-14", "09-15", "09-16", "09-17", "09-18", "09-21", "09-22", "09-23", "09-24", "09-25", "09-28", "09-29", "09-30", "10-01", "10-02", "10-05", "10-06", "10-07", "10-08", "10-09", "10-12", "10-13", "10-14", "10-15", "10-16", "10-19", "10-20", "10-21", "10-22", "10-23"],
+      "price": "268.75",
+      "chg": "-9.97%",
+      "avg1w": "325.30",
+      "avg1m": "385.94",
+      "hist": [509.0, 478.25, 467.25, 477.5, 479.75, 451.0, 442.75, 446.75, 461.75, 456.0, 460.25, 457.75, 433.75, 437.0, 437.5, 411.5, 413.25, 422.25, 413.0, 410.25, 416.25, 430.25, 425.0, 422.75, 424.0, 415.0, 399.0, 401.0, 398.5, 404.5, 413.5, 431.0, 432.75, 446.25, 441.75, 422.75, 427.0, 418.5, 419.25, 445.25, 429.0, 471.75, 462.75, 475.75, 492.25, 480.5, 484.5, 488.0, 497.75, 481.75, 471.0, 475.75, 482.25, 478.75, 491.25, 504.0, 512.0, 504.5, 502.5, 478.75, 461.0, 415.0, 429.25, 443.5, 443.5, 440.0, 448.25, 430.25, 458.0, 442.25, 417.0, 411.25, 414.75, 419.75, 416.0, 410.75, 396.75, 407.5, 418.0, 403.75, 406.0, 391.0, 394.5, 372.75, 356.25, 373.25, 354.5, 331.5, 298.5, 268.75],
+      "histD": ["06-22", "06-23", "06-24", "06-25", "06-26", "06-29", "06-30", "07-01", "07-02", "07-03", "07-06", "07-07", "07-08", "07-09", "07-10", "07-13", "07-14", "07-16", "07-17", "07-20", "07-21", "07-22", "07-23", "07-24", "07-27", "07-28", "07-29", "07-30", "07-31", "08-03", "08-04", "08-05", "08-06", "08-07", "08-10", "08-11", "08-12", "08-13", "08-14", "08-17", "08-18", "08-19", "08-20", "08-21", "08-24", "08-25", "08-26", "08-27", "08-28", "08-31", "09-01", "09-02", "09-03", "09-04", "09-07", "09-08", "09-09", "09-10", "09-11", "09-14", "09-15", "09-16", "09-17", "09-18", "09-21", "09-22", "09-23", "09-24", "09-25", "09-28", "09-29", "09-30", "10-01", "10-02", "10-05", "10-06", "10-07", "10-08", "10-09", "10-12", "10-13", "10-14", "10-15", "10-16", "10-19", "10-20", "10-21", "10-22", "10-23", "10-26"],
       "ind": {
         "ma": "MA20 & MA50 altında (aşağı eğilim)",
         "rsiTxt": "aşırı satım",
-        "rsi": 24.5,
-        "volat": 4.1,
-        "volRatio": 0.18
+        "rsi": 21.2,
+        "volat": 4.6,
+        "volRatio": 5.38
+      }
+    },
+    {
+      "code": "SASA",
+      "price": "1.53",
+      "chg": "-4.38%",
+      "avg1w": "1.63",
+      "avg1m": "1.80",
+      "hist": [2.74, 2.64, 2.54, 2.51, 2.52, 2.45, 2.45, 2.43, 2.4, 2.4, 2.34, 2.31, 2.23, 2.28, 2.42, 2.55, 2.52, 2.54, 2.43, 2.54, 2.51, 2.64, 2.65, 2.69, 2.57, 2.55, 2.45, 2.48, 2.47, 2.52, 2.52, 2.56, 2.58, 2.58, 2.33, 2.36, 2.49, 2.45, 2.39, 2.34, 2.25, 2.27, 2.27, 2.32, 2.33, 2.31, 2.34, 2.38, 2.39, 2.35, 2.36, 2.27, 2.23, 2.29, 2.51, 2.76, 2.73, 2.77, 2.82, 2.94, 2.8, 2.52, 2.42, 2.35, 2.31, 2.29, 2.26, 2.11, 2.08, 1.88, 1.88, 1.8, 1.92, 1.93, 1.94, 1.9, 1.85, 1.88, 1.93, 1.87, 1.86, 1.82, 1.79, 1.73, 1.67, 1.74, 1.66, 1.64, 1.6, 1.53],
+      "histD": ["06-22", "06-23", "06-24", "06-25", "06-26", "06-29", "06-30", "07-01", "07-02", "07-03", "07-06", "07-07", "07-08", "07-09", "07-10", "07-13", "07-14", "07-16", "07-17", "07-20", "07-21", "07-22", "07-23", "07-24", "07-27", "07-28", "07-29", "07-30", "07-31", "08-03", "08-04", "08-05", "08-06", "08-07", "08-10", "08-11", "08-12", "08-13", "08-14", "08-17", "08-18", "08-19", "08-20", "08-21", "08-24", "08-25", "08-26", "08-27", "08-28", "08-31", "09-01", "09-02", "09-03", "09-04", "09-07", "09-08", "09-09", "09-10", "09-11", "09-14", "09-15", "09-16", "09-17", "09-18", "09-21", "09-22", "09-23", "09-24", "09-25", "09-28", "09-29", "09-30", "10-01", "10-02", "10-05", "10-06", "10-07", "10-08", "10-09", "10-12", "10-13", "10-14", "10-15", "10-16", "10-19", "10-20", "10-21", "10-22", "10-23", "10-26"],
+      "ind": {
+        "ma": "MA20 & MA50 altında (aşağı eğilim)",
+        "rsiTxt": "aşırı satım",
+        "rsi": 25.6,
+        "volat": 2.6,
+        "volRatio": 2.41
       }
     },
     {
       "code": "ASTOR",
-      "price": "142.60",
-      "chg": "-4.93%",
-      "avg1w": "155.14",
-      "avg1m": "191.34",
-      "hist": [294.75, 311.5, 296.0, 298.0, 298.75, 289.75, 278.0, 276.5, 277.0, 301.75, 319.0, 317.5, 325.25, 317.5, 304.75, 325.75, 318.0, 325.0, 312.5, 286.5, 296.25, 300.0, 300.0, 307.0, 297.0, 290.0, 277.5, 278.0, 287.5, 295.5, 290.5, 302.75, 311.0, 319.25, 308.5, 305.75, 301.75, 331.75, 345.5, 342.25, 339.5, 320.5, 331.5, 327.25, 335.75, 341.25, 339.0, 338.75, 349.0, 349.25, 325.75, 316.75, 316.0, 293.5, 295.0, 301.0, 300.75, 299.75, 285.25, 294.0, 282.5, 272.25, 245.5, 255.5, 248.0, 261.75, 258.25, 266.0, 260.5, 261.25, 235.2, 211.7, 190.6, 209.6, 220.0, 198.0, 194.6, 184.9, 197.5, 204.4, 197.5, 196.0, 193.0, 183.2, 164.9, 160.6, 165.9, 156.6, 150.0, 142.6],
-      "histD": ["06-19", "06-22", "06-23", "06-24", "06-25", "06-26", "06-29", "06-30", "07-01", "07-02", "07-03", "07-06", "07-07", "07-08", "07-09", "07-10", "07-13", "07-14", "07-16", "07-17", "07-20", "07-21", "07-22", "07-23", "07-24", "07-27", "07-28", "07-29", "07-30", "07-31", "08-03", "08-04", "08-05", "08-06", "08-07", "08-10", "08-11", "08-12", "08-13", "08-14", "08-17", "08-18", "08-19", "08-20", "08-21", "08-24", "08-25", "08-26", "08-27", "08-28", "08-31", "09-01", "09-02", "09-03", "09-04", "09-07", "09-08", "09-09", "09-10", "09-11", "09-14", "09-15", "09-16", "09-17", "09-18", "09-21", "09-22", "09-23", "09-24", "09-25", "09-28", "09-29", "09-30", "10-01", "10-02", "10-05", "10-06", "10-07", "10-08", "10-09", "10-12", "10-13", "10-14", "10-15", "10-16", "10-19", "10-20", "10-21", "10-22", "10-23"],
+      "price": "156.80",
+      "chg": "+9.96%",
+      "avg1w": "154.38",
+      "avg1m": "186.36",
+      "hist": [311.5, 296.0, 298.0, 298.75, 289.75, 278.0, 276.5, 277.0, 301.75, 319.0, 317.5, 325.25, 317.5, 304.75, 325.75, 318.0, 325.0, 312.5, 286.5, 296.25, 300.0, 300.0, 307.0, 297.0, 290.0, 277.5, 278.0, 287.5, 295.5, 290.5, 302.75, 311.0, 319.25, 308.5, 305.75, 301.75, 331.75, 345.5, 342.25, 339.5, 320.5, 331.5, 327.25, 335.75, 341.25, 339.0, 338.75, 349.0, 349.25, 325.75, 316.75, 316.0, 293.5, 295.0, 301.0, 300.75, 299.75, 285.25, 294.0, 282.5, 272.25, 245.5, 255.5, 248.0, 261.75, 258.25, 266.0, 260.5, 261.25, 235.2, 211.7, 190.6, 209.6, 220.0, 198.0, 194.6, 184.9, 197.5, 204.4, 197.5, 196.0, 193.0, 183.2, 164.9, 160.6, 165.9, 156.6, 150.0, 142.6, 156.8],
+      "histD": ["06-22", "06-23", "06-24", "06-25", "06-26", "06-29", "06-30", "07-01", "07-02", "07-03", "07-06", "07-07", "07-08", "07-09", "07-10", "07-13", "07-14", "07-16", "07-17", "07-20", "07-21", "07-22", "07-23", "07-24", "07-27", "07-28", "07-29", "07-30", "07-31", "08-03", "08-04", "08-05", "08-06", "08-07", "08-10", "08-11", "08-12", "08-13", "08-14", "08-17", "08-18", "08-19", "08-20", "08-21", "08-24", "08-25", "08-26", "08-27", "08-28", "08-31", "09-01", "09-02", "09-03", "09-04", "09-07", "09-08", "09-09", "09-10", "09-11", "09-14", "09-15", "09-16", "09-17", "09-18", "09-21", "09-22", "09-23", "09-24", "09-25", "09-28", "09-29", "09-30", "10-01", "10-02", "10-05", "10-06", "10-07", "10-08", "10-09", "10-12", "10-13", "10-14", "10-15", "10-16", "10-19", "10-20", "10-21", "10-22", "10-23", "10-26"],
+      "ind": {
+        "ma": "MA20 & MA50 altında (aşağı eğilim)",
+        "rsiTxt": "nötr",
+        "rsi": 33.0,
+        "volat": 5.5,
+        "volRatio": 0.06
+      }
+    },
+    {
+      "code": "KONTR",
+      "price": "1.39",
+      "chg": "+9.45%",
+      "avg1w": "1.42",
+      "avg1m": "1.88",
+      "hist": [4.99, 4.5, 4.05, 3.65, 3.53, 3.45, 3.16, 3.05, 3.17, 3.48, 3.72, 4.09, 4.49, 4.93, 5.42, 5.96, 6.55, 5.9, 5.31, 4.78, 5.25, 4.73, 5.2, 5.0, 4.72, 4.25, 4.66, 4.85, 4.61, 4.19, 4.24, 4.03, 4.2, 4.06, 4.01, 3.94, 3.83, 3.84, 4.21, 3.98, 4.0, 3.95, 3.88, 3.9, 3.87, 3.78, 3.74, 3.73, 3.68, 3.57, 3.43, 3.3, 3.22, 3.33, 3.28, 3.3, 3.3, 3.3, 3.5, 3.48, 3.35, 3.15, 3.15, 2.84, 2.56, 2.31, 2.54, 2.3, 2.28, 2.2, 2.04, 2.0, 2.2, 2.34, 2.2, 2.19, 2.07, 2.03, 2.09, 2.03, 1.98, 1.92, 1.87, 1.7, 1.62, 1.55, 1.49, 1.38, 1.27, 1.39],
+      "histD": ["06-22", "06-23", "06-24", "06-25", "06-26", "06-29", "06-30", "07-01", "07-02", "07-03", "07-06", "07-07", "07-08", "07-09", "07-10", "07-13", "07-14", "07-16", "07-17", "07-20", "07-21", "07-22", "07-23", "07-24", "07-27", "07-28", "07-29", "07-30", "07-31", "08-03", "08-04", "08-05", "08-06", "08-07", "08-10", "08-11", "08-12", "08-13", "08-14", "08-17", "08-18", "08-19", "08-20", "08-21", "08-24", "08-25", "08-26", "08-27", "08-28", "08-31", "09-01", "09-02", "09-03", "09-04", "09-07", "09-08", "09-09", "09-10", "09-11", "09-14", "09-15", "09-16", "09-17", "09-18", "09-21", "09-22", "09-23", "09-24", "09-25", "09-28", "09-29", "09-30", "10-01", "10-02", "10-05", "10-06", "10-07", "10-08", "10-09", "10-12", "10-13", "10-14", "10-15", "10-16", "10-19", "10-20", "10-21", "10-22", "10-23", "10-26"],
       "ind": {
         "ma": "MA20 & MA50 altında (aşağı eğilim)",
         "rsiTxt": "aşırı satım",
-        "rsi": 25.1,
-        "volat": 4.4,
-        "volRatio": 0.91
+        "rsi": 24.9,
+        "volat": 4.7,
+        "volRatio": 0.3
       }
     }
   ],
@@ -151,19 +151,18 @@
   "world_idx": [
     {
       "code": "XU100.IS",
-      "price": "11,117.00",
-      "chg": "-0.92%",
-      "avg1w": "11,428.46",
-      "avg1m": "12,053.51",
+      "price": "11,038.49",
+      "chg": "-0.71%",
+      "avg1w": "11,350.14",
+      "avg1m": "11,964.90",
       "name": "BIST 100",
-      "hist": [14734.5, 14729.7, 14539.6, 14331.2, 14259.8, 14274.0, 14183.2, 14121.8, 14350.6, 14455.0, 14417.9, 14424.5, 14497.4, 14190.0, 14105.4, 14321.2, 14092.0, 14080.0, 14251.3, 13981.1, 14071.0, 13974.1, 14138.9, 14077.7, 13943.9, 13774.8, 13687.9, 13501.6, 13292.9, 13458.1, 13410.5, 13687.9, 13703.1, 13798.8, 13779.4, 13811.6, 13704.5, 14110.1, 14132.2, 14172.3, 14132.1, 14128.0, 14459.0, 14396.5, 14514.8, 14501.5, 14473.4, 14610.9, 14575.5, 14641.6, 14334.1, 14229.0, 14050.6, 13932.5, 14012.4, 14151.6, 14405.3, 14505.5, 14393.9, 14467.3, 14235.8, 13892.3, 13122.6, 13509.8, 13284.4, 13337.7, 13198.8, 13251.9, 12888.3, 12899.4, 12592.8, 12290.6, 11947.2, 12249.0, 12270.2, 12443.9, 12374.3, 12122.9, 12213.6, 12266.0, 12150.7, 12250.7, 12118.3, 12070.2, 11721.7, 11430.1, 11797.7, 11577.1, 11220.4, 11117.0],
-      "histD": ["06-19", "06-22", "06-23", "06-24", "06-25", "06-26", "06-29", "06-30", "07-01", "07-02", "07-03", "07-06", "07-07", "07-08", "07-09", "07-10", "07-13", "07-14", "07-16", "07-17", "07-20", "07-21", "07-22", "07-23", "07-24", "07-27", "07-28", "07-29", "07-30", "07-31", "08-03", "08-04", "08-05", "08-06", "08-07", "08-10", "08-11", "08-12", "08-13", "08-14", "08-17", "08-18", "08-19", "08-20", "08-21", "08-24", "08-25", "08-26", "08-27", "08-28", "08-31", "09-01", "09-02", "09-03", "09-04", "09-07", "09-08", "09-09", "09-10", "09-11", "09-14", "09-15", "09-16", "09-17", "09-18", "09-21", "09-22", "09-23", "09-24", "09-25", "09-28", "09-29", "09-30", "10-01", "10-02", "10-05", "10-06", "10-07", "10-08", "10-09", "10-12", "10-13", "10-14", "10-15", "10-16", "10-19", "10-20", "10-21", "10-22", "10-23"],
+      "hist": [14729.7, 14539.6, 14331.2, 14259.8, 14274.0, 14183.2, 14121.8, 14350.6, 14455.0, 14417.9, 14424.5, 14497.4, 14190.0, 14105.4, 14321.2, 14092.0, 14080.0, 14251.3, 13981.1, 14071.0, 13974.1, 14138.9, 14077.7, 13943.9, 13774.8, 13687.9, 13501.6, 13292.9, 13458.1, 13410.5, 13687.9, 13703.1, 13798.8, 13779.4, 13811.6, 13704.5, 14110.1, 14132.2, 14172.3, 14132.1, 14128.0, 14459.0, 14396.5, 14514.8, 14501.5, 14473.4, 14610.9, 14575.5, 14641.6, 14334.1, 14229.0, 14050.6, 13932.5, 14012.4, 14151.6, 14405.3, 14505.5, 14393.9, 14467.3, 14235.8, 13892.3, 13122.6, 13509.8, 13284.4, 13337.7, 13198.8, 13251.9, 12888.3, 12899.4, 12592.8, 12290.6, 11947.2, 12249.0, 12270.2, 12443.9, 12374.3, 12122.9, 12213.6, 12266.0, 12150.7, 12250.7, 12118.3, 12070.2, 11721.7, 11430.1, 11797.7, 11577.1, 11220.4, 11117.0, 11038.49],
+      "histD": ["06-22", "06-23", "06-24", "06-25", "06-26", "06-29", "06-30", "07-01", "07-02", "07-03", "07-06", "07-07", "07-08", "07-09", "07-10", "07-13", "07-14", "07-16", "07-17", "07-20", "07-21", "07-22", "07-23", "07-24", "07-27", "07-28", "07-29", "07-30", "07-31", "08-03", "08-04", "08-05", "08-06", "08-07", "08-10", "08-11", "08-12", "08-13", "08-14", "08-17", "08-18", "08-19", "08-20", "08-21", "08-24", "08-25", "08-26", "08-27", "08-28", "08-31", "09-01", "09-02", "09-03", "09-04", "09-07", "09-08", "09-09", "09-10", "09-11", "09-14", "09-15", "09-16", "09-17", "09-18", "09-21", "09-22", "09-23", "09-24", "09-25", "09-28", "09-29", "09-30", "10-01", "10-02", "10-05", "10-06", "10-07", "10-08", "10-09", "10-12", "10-13", "10-14", "10-15", "10-16", "10-19", "10-20", "10-21", "10-22", "10-23", "10-26"],
       "ind": {
         "ma": "MA20 & MA50 altında (aşağı eğilim)",
         "rsiTxt": "aşırı satım",
-        "rsi": 27.3,
-        "volat": 1.7,
-        "volRatio": 1.46
+        "rsi": 26.5,
+        "volat": 1.7
       }
     },
     {
@@ -202,71 +201,62 @@
     },
     {
       "code": "^GDAXI",
-      "price": "25,181.65",
-      "chg": "-0.75%",
-      "avg1w": "25,364.53",
-      "avg1m": "25,281.81",
+      "price": "25,416.23",
+      "chg": "+0.93%",
+      "avg1w": "25,383.82",
+      "avg1m": "25,282.17",
       "name": "DAX",
-      "hist": [25139.69, 24893.58, 24740.36, 24994.83, 24671.22, 24626.89, 24995.81, 25040.28, 25580.88, 25779.31, 25817.89, 25465.25, 24897.45, 25118.27, 25067.09, 25114.25, 25147.03, 24999.53, 24915.49, 24830.98, 24846.69, 25011.35, 25155.41, 24763.12, 25099.0, 25361.03, 25464.01, 25460.48, 25612.03, 25629.24, 26001.31, 26202.35, 26126.3, 26140.13, 26319.45, 26323.88, 26391.42, 26331.07, 26299.74, 26440.31, 26338.61, 26128.36, 26091.33, 25983.04, 26136.56, 26106.6, 26266.14, 26285.96, 26367.24, 26569.99, 26258.11, 25970.11, 25839.33, 26003.32, 26046.4, 26006.53, 26007.63, 25576.45, 25361.15, 25568.56, 25440.81, 25402.28, 25537.75, 25716.71, 25304.06, 25575.01, 25578.85, 25410.63, 25266.53, 25408.64, 25374.42, 25399.21, 25199.19, 24939.35, 25231.2, 25254.21, 25449.19, 25104.36, 24806.97, 25087.27, 25277.68, 25259.9, 25298.61, 25382.62, 25622.61, 25319.77, 25304.42, 25645.04, 25371.75, 25181.65],
-      "histD": ["06-22", "06-23", "06-24", "06-25", "06-26", "06-29", "06-30", "07-01", "07-02", "07-03", "07-06", "07-07", "07-08", "07-09", "07-10", "07-13", "07-14", "07-15", "07-16", "07-17", "07-20", "07-21", "07-22", "07-23", "07-24", "07-27", "07-28", "07-29", "07-30", "07-31", "08-03", "08-04", "08-05", "08-06", "08-07", "08-10", "08-11", "08-12", "08-13", "08-14", "08-17", "08-18", "08-19", "08-20", "08-21", "08-24", "08-25", "08-26", "08-27", "08-28", "08-31", "09-01", "09-02", "09-03", "09-04", "09-07", "09-08", "09-09", "09-10", "09-11", "09-14", "09-15", "09-16", "09-17", "09-18", "09-21", "09-22", "09-23", "09-24", "09-25", "09-28", "09-29", "09-30", "10-01", "10-02", "10-05", "10-06", "10-07", "10-08", "10-09", "10-12", "10-13", "10-14", "10-15", "10-16", "10-19", "10-20", "10-21", "10-22", "10-23"],
+      "hist": [24893.58, 24740.36, 24994.83, 24671.22, 24626.89, 24995.81, 25040.28, 25580.88, 25779.31, 25817.89, 25465.25, 24897.45, 25118.27, 25067.09, 25114.25, 25147.03, 24999.53, 24915.49, 24830.98, 24846.69, 25011.35, 25155.41, 24763.12, 25099.0, 25361.03, 25464.01, 25460.48, 25612.03, 25629.24, 26001.31, 26202.35, 26126.3, 26140.13, 26319.45, 26323.88, 26391.42, 26331.07, 26299.74, 26440.31, 26338.61, 26128.36, 26091.33, 25983.04, 26136.56, 26106.6, 26266.14, 26285.96, 26367.24, 26569.99, 26258.11, 25970.11, 25839.33, 26003.32, 26046.4, 26006.53, 26007.63, 25576.45, 25361.15, 25568.56, 25440.81, 25402.28, 25537.75, 25716.71, 25304.06, 25575.01, 25578.85, 25410.63, 25266.53, 25408.64, 25374.42, 25399.21, 25199.19, 24939.35, 25231.2, 25254.21, 25449.19, 25104.36, 24806.97, 25087.27, 25277.68, 25259.9, 25298.61, 25382.62, 25622.61, 25319.77, 25304.42, 25645.04, 25371.75, 25181.65, 25416.23],
+      "histD": ["06-23", "06-24", "06-25", "06-26", "06-29", "06-30", "07-01", "07-02", "07-03", "07-06", "07-07", "07-08", "07-09", "07-10", "07-13", "07-14", "07-15", "07-16", "07-17", "07-20", "07-21", "07-22", "07-23", "07-24", "07-27", "07-28", "07-29", "07-30", "07-31", "08-03", "08-04", "08-05", "08-06", "08-07", "08-10", "08-11", "08-12", "08-13", "08-14", "08-17", "08-18", "08-19", "08-20", "08-21", "08-24", "08-25", "08-26", "08-27", "08-28", "08-31", "09-01", "09-02", "09-03", "09-04", "09-07", "09-08", "09-09", "09-10", "09-11", "09-14", "09-15", "09-16", "09-17", "09-18", "09-21", "09-22", "09-23", "09-24", "09-25", "09-28", "09-29", "09-30", "10-01", "10-02", "10-05", "10-06", "10-07", "10-08", "10-09", "10-12", "10-13", "10-14", "10-15", "10-16", "10-19", "10-20", "10-21", "10-22", "10-23", "10-26"],
       "ind": {
-        "ma": "MA20 & MA50 altında (aşağı eğilim)",
+        "ma": "MA20 üstünde",
         "rsiTxt": "nötr",
-        "rsi": 45.7,
-        "volat": 0.9,
-        "volRatio": 1.09
+        "rsi": 50.6,
+        "volat": 1.0
       }
     },
     {
       "code": "BZ=F",
-      "price": "111.70",
-      "chg": "-1.30%",
-      "avg1w": "110.41",
-      "avg1m": "105.55",
+      "price": "110.01",
+      "chg": "-5.75%",
+      "avg1w": "111.50",
+      "avg1m": "106.06",
       "name": "Brent",
-      "hist": [79.55, 79.85, 77.9, 77.08, 73.74, 75.26, 71.99, 73.15, 72.92, 71.57, 71.8, 71.99, 74.16, 78.02, 76.3, 76.01, 83.3, 84.73, 84.95, 84.23, 88.1, 89.22, 91.01, 94.07, 100.69, 96.78, 88.36, 84.09, 90.74, 89.03, 90.12, 83.77, 79.36, 79.45, 82.49, 83.55, 87.72, 88.91, 88.98, 87.07, 88.52, 90.87, 91.02, 91.62, 93.78, 94.39, 92.17, 88.58, 87.84, 89.7, 89.31, 90.49, 94.65, 95.63, 95.52, 96.28, 97.92, 101.21, 107.63, 104.61, 105.68, 108.75, 105.83, 104.82, 103.87, 100.34, 99.25, 103.08, 106.6, 104.32, 105.28, 102.59, 103.53, 102.31, 102.25, 100.32, 100.58, 100.2, 104.28, 104.72, 106.65, 105.69, 106.06, 105.92, 109.86, 109.55, 108.79, 108.82, 113.17, 111.7],
-      "histD": ["06-17", "06-18", "06-22", "06-23", "06-24", "06-25", "06-26", "06-29", "06-30", "07-01", "07-02", "07-06", "07-07", "07-08", "07-09", "07-10", "07-13", "07-14", "07-15", "07-16", "07-17", "07-20", "07-21", "07-22", "07-23", "07-24", "07-27", "07-28", "07-29", "07-30", "07-31", "08-03", "08-04", "08-05", "08-06", "08-07", "08-10", "08-11", "08-12", "08-13", "08-14", "08-17", "08-18", "08-19", "08-20", "08-21", "08-24", "08-25", "08-26", "08-27", "08-28", "08-31", "09-01", "09-02", "09-03", "09-04", "09-08", "09-09", "09-10", "09-11", "09-14", "09-15", "09-16", "09-17", "09-18", "09-21", "09-22", "09-23", "09-24", "09-25", "09-28", "09-29", "09-30", "10-01", "10-02", "10-05", "10-06", "10-07", "10-08", "10-09", "10-12", "10-13", "10-14", "10-15", "10-16", "10-19", "10-20", "10-21", "10-22", "10-23"],
+      "hist": [79.85, 77.9, 77.08, 73.74, 75.26, 71.99, 73.15, 72.92, 71.57, 71.8, 71.99, 74.16, 78.02, 76.3, 76.01, 83.3, 84.73, 84.95, 84.23, 88.1, 89.22, 91.01, 94.07, 100.69, 96.78, 88.36, 84.09, 90.74, 89.03, 90.12, 83.77, 79.36, 79.45, 82.49, 83.55, 87.72, 88.91, 88.98, 87.07, 88.52, 90.87, 91.02, 91.62, 93.78, 94.39, 92.17, 88.58, 87.84, 89.7, 89.31, 90.49, 94.65, 95.63, 95.52, 96.28, 97.92, 101.21, 107.63, 104.61, 105.68, 108.75, 105.83, 104.82, 103.87, 100.34, 99.25, 103.08, 106.6, 104.32, 105.28, 102.59, 103.53, 102.31, 102.25, 100.32, 100.58, 100.2, 104.28, 104.72, 106.65, 105.69, 106.06, 105.92, 109.86, 109.55, 108.79, 108.82, 113.17, 116.72, 110.01],
+      "histD": ["06-18", "06-22", "06-23", "06-24", "06-25", "06-26", "06-29", "06-30", "07-01", "07-02", "07-06", "07-07", "07-08", "07-09", "07-10", "07-13", "07-14", "07-15", "07-16", "07-17", "07-20", "07-21", "07-22", "07-23", "07-24", "07-27", "07-28", "07-29", "07-30", "07-31", "08-03", "08-04", "08-05", "08-06", "08-07", "08-10", "08-11", "08-12", "08-13", "08-14", "08-17", "08-18", "08-19", "08-20", "08-21", "08-24", "08-25", "08-26", "08-27", "08-28", "08-31", "09-01", "09-02", "09-03", "09-04", "09-08", "09-09", "09-10", "09-11", "09-14", "09-15", "09-16", "09-17", "09-18", "09-21", "09-22", "09-23", "09-24", "09-25", "09-28", "09-29", "09-30", "10-01", "10-02", "10-05", "10-06", "10-07", "10-08", "10-09", "10-12", "10-13", "10-14", "10-15", "10-16", "10-19", "10-20", "10-21", "10-22", "10-23", "10-26"],
       "ind": {
         "ma": "MA20 & MA50 üstünde (yukarı eğilim)",
         "rsiTxt": "nötr",
-        "rsi": 65.3,
-        "volat": 1.9,
-        "volRatio": 1.01
+        "rsi": 57.5,
+        "volat": 2.6,
+        "volRatio": 0.32
       }
     }
   ],
   "gold": {
-    "price": "6,402.73",
-    "chg": "-1.38%"
+    "price": "6,457.27",
+    "chg": "+0.77%"
   },
   "news": [
     {
-      "t": "🟢 Ereğli Demir Çelik’te dokuz aylık net kâr 11 milyar lirayı aştı  (Borsa Gundem)",
-      "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxQU2I2Z2d4YkZ0cTl1cGZPMlJValBFSFJuY3RSRHg5T0NEOG8yMmgzaFVNakE3WXVobXRWVG5UMFpBX3ZnbjNuUGVkWjJodzBKYm5xM3NuaDhmNms5WWZFTW9fcEl3c2g0a0paR3lISTdiUDRuN3JyZjFjRkRvT3puN3lFNmxmV2kwM1E?oc=5"
+      "t": "⚪ Gübretaş’tan (GUBRF) geri alım kararı  (Rota Borsa)",
+      "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9tdEJNYlVoX29GbXY5U0c5OFpaZ3hCVGViWnp6S19JM1d0aWw2Z3BSNnRLa0ZZVGwyZXY2cDlxMjlwLXdtekRYeGwyNnI3V243ZHEyR0F2UDZvR0h0dENfaHpvbERULXJr?oc=5"
     },
     {
-      "t": "🟢 Ereğli Demir'in (EREGL) hem satışları hem de net kârı arttı!  (Hisse.net)",
-      "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNc2c5XzV0TnJOLU5Nd0NpdVNrWHBKVXoyVUdDV29oOVhzM194UUV0LVdvTHZqcU1iYTE1cEJCaG9jU09TNGdwSnlHZUJ4blF1OUNIeS1qMXYwMW8yZEhHa25hQU5UY0NpUmQyOXIwZFZZZ2RiSUJjZUc4Y3F1NnV1Yjh4amZKQ0pOdV9XSkNUSDM2MnFpcGNpalFKWWTSAZwBQVVfeXFMTXNnOV81dE5yTi1OTXdDaXVTa1hwSlV6MlVHQ1dvaDlYczNfeFFFdC1Xb0x2anFNYmExNXBCQmhvY1NPUzRncEp5R2VCeG5RdTlDSHktajF2MDFvMmRIR2tuYUFOVGNDaVJkMjlyMGRWWWdkYklCY2VHOGNxdTZ1dWI4eGpmSkNKTnVfV0pDVEgzNjJxaXBjaWpRSllk?oc=5"
+      "t": "⚪ SASA hissesinden bu hafta kim aldı, kim sattı?  (Hisse.net)",
+      "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPbFc4ZzA5RTgzTUlkMi1kenFUMWJZMnpYeDhZZnNDc3hnRldoeV9IcV8xby1VazVpS3lFaEVZS0FiYjIxWlQtOUx1VGNWVXV0Ylc4dkVFTTRqSVJmNE1lZ1pvQTB5ZXRWWFJYYWw0eG9UTXhLbExaT1U5bE5mbmZfS1hkU3ViYllzcm5N0gGLAUFVX3lxTE9sVzhnMDlFODNNSWQyLWR6cVQxYlkyelh4OFlmc0NzeGdGV2h5X0hxXzFvLVVrNWlLeUVoRVlLQWJiMjFaVC05THVUY1ZVdXRiVzh2RUVNNGpJUmY0TWVnWm9BMHlldFZYUlhhbDR4b1RNeEtsTFpPVTlsTmZuZl9LWGRTdWJiWXNybk0?oc=5"
     },
     {
-      "t": "⚪ EREGL’de Beklenti Üstü Bilanço Sonrası Hedef Fiyat ve Tavsiyeler Ne Oldu?  (Borsa Gundem)",
-      "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPZ3NORWVkRTg5bGNQTW1rckhONy1HOHhkU3RMZGp3Nm1PTjVqZEhJUDN5LThtVENzamdOczh5Vy03Vk1TY2dka2RqWDVvNThSR01ZYzZKQ2hMYy0xamxXRmdhRkYwWEltZFBKa2tBVmZ5bm85Ulk5V0FCRktFazY0N2VTSmpoRUNsUlI0anZpTTJveUZoQ3dWc1dJUXotVVdweWJNbA?oc=5"
+      "t": "⚪ HSBC'de ASTOR, SASA ve THYAO satışları 1 milyar TL'yi geçti  (Hisse.net)",
+      "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxNU3FJcGwtUGkya1NfQ085MzB6MXJ4OUtNTVk0MFIwaTNtMElyRG5rbVhDTTRXcFpha3ZxVzN2TTlaeUhPX1ZMdktuTGg4cTNmUGNBcTh2NUszODJYemhMalF1dDEzbmxIaTRHYWM4ajJrdTVVWkZIOGU0WXh2bFZ6WGZEdXNJb2ZubnNkV1VGZUZnM1djQlFjWGxmLVlId9IBngFBVV95cUxNU3FJcGwtUGkya1NfQ085MzB6MXJ4OUtNTVk0MFIwaTNtMElyRG5rbVhDTTRXcFpha3ZxVzN2TTlaeUhPX1ZMdktuTGg4cTNmUGNBcTh2NUszODJYemhMalF1dDEzbmxIaTRHYWM4ajJrdTVVWkZIOGU0WXh2bFZ6WGZEdXNJb2ZubnNkV1VGZUZnM1djQlFjWGxmLVlIdw?oc=5"
     },
     {
-      "t": "⚪ TradingView'de Matriks tarafından haberler, 2026-10-23  (TradingView)",
-      "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9Ud01mb1hQUG80NGo0U2d0UUVrR1N6UC1XM05QOGhHNWZxRWQwWGNKOGhOQlVPZlNsc2hoRk82UzFkaGQ1NlRWMTRrS2g5aWliYnBlTzZWYVJvdkpSazZV?oc=5"
+      "t": "⚪ [Son Dakika] Astor Enerji, hissedarlar hakkındaki tedbir kaldırıldı  (Investing.com Türkiye)",
+      "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNTVdOWS11SjZTeFZOVmozelB6Y1VwSHl6eFFyRlVHNnNCd3J6T1RvSmx0UkJSZm1ibkQzUzBHdDk1bjQzcnpVWmZZVzdlcnFCdFNvZ0tqY21zbVZ2Y0hxYVV2YmFQRUtGQk4xQ3htNk1lSzBOQjBMb2RRNEFqUmxYMDFaLWRWWXhMSzA0c2NLSXlJSURaVXdWY0hGN2pBU1ZNcWN5YlMtbW80SnotOERscmVCU0xZNm9ZWmc?oc=5"
     },
     {
-      "t": "🟢 Gübretaş'tan GUBRF Tarım ve Gıda Sektörüne 7,25 Milyar TL'lik Yatırım  (Para Ajansı)",
-      "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxObXpSRnhpb1YtcUxPSFFiVzh6aVprSENEb2trUGRaY2h0N1pDUDN1SkZIZWdlY2Zsc1cwQTZpb2lINDVGdFUyUUJHV3RuMGlmOVFqQkRNSFB3VGFOR3B2MkhEMWRFejVKR0VwUE1sdml4QVFGQU5uYzV5ZjhkZTBCcWVqTENNem5WaFJnUGR1V21TaE9xTDYxQmNyXzBYZzdIbWdRMlNBbEx3bnp2S3VXTWR2SUNUMkJtblRTTDRTWQ?oc=5"
-    },
-    {
-      "t": "🟢 Gübretaş (GUBRF) bağlı ortaklığından yeni yatırım kararları  (Rota Borsa)",
-      "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPY3lldkt3cjJSUGtfSENhMUlXaVBKbzVkQ1JKanNQaGtKcVk3Vmp0ZVJiWWtpRjB0SVdXU1QzVzRRZ2NZWDN0eXpVT0ZGUlpkSEt3Nm9aNW56RWZtd0dJQjdiT2xiU3dFUndzT0dVaWFWSlV6U045em5PZWtiY0dZX2E1bnVLelE?oc=5"
-    },
-    {
-      "t": "⚪ Gübretaş 7,25 milyar liralık yatırım açıkladı, hisseleri taban oldu! Ortak olacağı market milyarlarca lira zarar ediyor  (Para Ajansı)",
-      "link": "https://news.google.com/rss/articles/CBMi_gFBVV95cUxQU0tCOHlJUW1McjNEOWNkNWdUcWFYeG9IQVg1ZWdfdGgxTFpUQXJkRjN1VEFFR2sxTnE4Y0QzRWd0bHYzMmsyUFd3UG5RQVVEYUQ0aVVfMkFGQVJxM1V0eVRLX2xERndEUUxGbTVBaHo1NGR6Nl9DQ015U0FYSlppUDQwZ255cDhOMWsxXzQtWXg5YXhQbUdfZGFSUElWbUhXUVNNc2RfRUY2dGE3cy0tTlNNUld3dDYyWUVDRmNJTUNIMGJkU1BicXpyajJOdWpJOUNXbnZjZWl1NVJ0Q3B6Y1FKNlpCdUtjTzVwbDZzRHRZcFJtSGpOXzYyR3diUQ?oc=5"
+      "t": "🟢 Astor Enerji'den KAP açıklaması: ABD'li firma ile 33 milyon dolarlık sözleşme  (CNBC-e)",
+      "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPeWJqR0xWV1oxXzAzdUhmcWJ2MGhjZnlfYjgtZE42MUhRQTVyY1c3SVNQdGwwcHFsRnRWTnVhZy16eEZCVWRWb3NoeDJwdHZweGloWUdwUFhobzdYS3h4dXVnZ0dndm5fdl8zWTdBeWtqU3ZrSGllcUtBdGZLaHpnS1ZERDV3aFZiNUZidU1xTFQ5V2F4OHpBekJLX1dwZC1DTVhvX25FbEZMS1NvY05yajZ4dV9KWmNXeGVXdw?oc=5"
     },
     {
       "t": "⚪ Astor Enerji'nin ana hissedarları hakkındaki tedbirler kaldırıldı  (Bloomberght)",
@@ -275,80 +265,80 @@
   ],
   "world": [
     {
-      "t": "🌍 Voters in Brazil head to polls as Lula goes up against Bolsonaro's son  (BBC World)",
-      "link": "https://www.bbc.co.uk/news/articles/cxp8g21j4648o?at_medium=RSS&at_campaign=rss"
+      "t": "🌍 Celebrations in Serbia after veteran ruler Vučić loses election to student-led protest movement  (BBC World)",
+      "link": "https://www.bbc.co.uk/news/articles/cw5yn3xlprpmo?at_medium=RSS&at_campaign=rss"
     },
     {
-      "t": "🌍 Mystery over source of Ebola infection in Nigeria fuels concern about spread of virus  (Guardian World)",
-      "link": "https://www.theguardian.com/world/2026/oct/23/ebola-swiss-patient-nigeria-dr-congo-concerns-virus-spread"
+      "t": "🌍 US forces accused of ‘weaponising’ Somalia’s floods by trapping women and children in the path of El Niño  (Guardian World)",
+      "link": "https://www.theguardian.com/global-development/2026/oct/26/us-forces-accused-of-weaponising-somalia-flood-el-nino"
     },
     {
-      "t": "🌍 Gaza content creator tells Al Jazeera how much her award win means  (Al Jazeera)",
-      "link": "https://www.aljazeera.com/video/newsfeed/2026/10/25/gaza-content-creator-tells-al-jazeera-how-much-her-award-win-means?traffic_source=rss"
+      "t": "🌍 Key takeaways from Real Madrid’s El Clasico win over Barcelona  (Al Jazeera)",
+      "link": "https://www.aljazeera.com/sports/2026/10/26/real-madrid-barcelona-el-clasico-mourinho-mbappe-takeaways?traffic_source=rss"
     },
     {
-      "t": "🌍 The College of Magic turns ordinary kids into confident, top-hat wearing magicians  (NPR World)",
-      "link": "https://www.npr.org/2026/10/25/g-s1-149089/magic-magicians-south-africa-school-students"
+      "t": "🌍 Russia says it will open humanitarian corridor to Ukrainian town  (NPR World)",
+      "link": "https://www.npr.org/2026/10/26/nx-s1-6014540/russia-says-it-will-open-humanitarian-corridor-to-ukrainian-town"
     },
     {
-      "t": "🌍 Israel orders West Bank crossings to close on election day following Hebron shooting  (Euronews)",
-      "link": "https://www.euronews.com/2026/10/25/israel-orders-west-bank-crossings-to-close-on-election-day-following-hebron-shooting"
+      "t": "🌍 Trump officials back Orbán bid for UN secretary-general, WSJ reports  (Euronews)",
+      "link": "https://www.euronews.com/2026/10/26/trump-officials-back-orban-bid-for-un-secretary-general-wsj-reports"
     },
     {
-      "t": "🌍 Uganda says it has no active Ebola cases, but infections in Kenya and Nigeria are prompting fresh scrutiny  (DW)",
-      "link": "https://www.dw.com/en/uganda-says-it-has-no-active-ebola-cases-but-infections-in-kenya-and-nigeria-are-prompting-fresh-scrutiny/a-79741580?maca=en-rss-en-world-4025-rdf"
+      "t": "🌍 Venezuela: Opposition leader Machado returns from exile, received by thousands of supporters in Caracas  (DW)",
+      "link": "https://www.dw.com/en/venezuela-opposition-leader-machado-returns-from-exile-received-by-thousands-of-supporters-in-caracas/a-79759187?maca=en-rss-en-world-4025-rdf"
     }
   ],
   "tr": [
     {
-      "t": "🇹🇷 Bulgaristan'da halk cumhurbaşkanı seçimi için sandık başında  (TRT Haber)",
-      "link": "https://www.trthaber.com/haber/dunya/bulgaristanda-halk-cumhurbaskani-secimi-icin-sandik-basinda-961156.html"
+      "t": "🇹🇷 BM Komisyonu: İsrail, Gazze'de soykırımın yanı sıra Filistin topraklarında savaş suçları işledi  (TRT Haber)",
+      "link": "https://www.trthaber.com/haber/dunya/bm-komisyonu-israil-gazzede-soykirimin-yani-sira-filistin-topraklarinda-savas-suclari-isledi-961244.html"
     },
     {
-      "t": "🇹🇷 Binyamin Netanyahu: 'Bay Güvenlik' İsrail'de yedinci kez başbakan olabilir mi?  (BBC Türkçe)",
-      "link": "https://www.bbc.com/turkce/articles/c94g1p2m21xlo?at_medium=RSS&at_campaign=rss"
+      "t": "🇹🇷 Cumhurbaşkanı Başdanışmanı Saral istifa etti: 'İnandığım değerlerden geri adım anlamına gelmiyor'  (BBC Türkçe)",
+      "link": "https://www.bbc.com/turkce/articles/c9zrd444vl5jo?at_medium=RSS&at_campaign=rss"
     },
     {
-      "t": "🇹🇷 İstanbul Barosu'nda başkanlık seçimi  (Habertürk)",
-      "link": "https://www.haberturk.com/gundem/istanbul-barosu-baskanlik-seciminde-oy-kullanma-islemi-suruyor-3922442"
+      "t": "🇹🇷 35 ilde operasyon: 275 gözaltı  (Habertürk)",
+      "link": "https://www.haberturk.com/gundem/35-ilde-operasyon-275-gozalti-3922653"
     },
     {
-      "t": "🇹🇷 SİPER Ürün-2 yeni testi geçti. Havada hedef değiştirdi  (NTV)",
-      "link": "https://www.ntv.com.tr/turkiye/siper-urun-2-yeni-testi-gecti-havada-hedef-degistirdi-1747929"
+      "t": "🇹🇷 35 ilde siber suç operasyonu. 75 tutuklama  (NTV)",
+      "link": "https://www.ntv.com.tr/turkiye/35-ilde-siber-suc-operasyonu-75-tutuklama-1748053"
     },
     {
-      "t": "🇹🇷 SİPER yeni kabiliyetini başarıyla test etti  (TRT Haber)",
-      "link": "https://www.trthaber.com/haber/savunma/siper-yeni-kabiliyetini-basariyla-test-etti-961155.html"
+      "t": "🇹🇷 İsrail'de anketler seçim sonrası muhtemel üç senaryoya işaret ediyor  (TRT Haber)",
+      "link": "https://www.trthaber.com/haber/dunya/israilde-anketler-secim-sonrasi-muhtemel-uc-senaryoya-isaret-ediyor-961243.html"
     },
     {
-      "t": "🇹🇷 Sırbistan'da genel seçimler: Öğrenci hareketi iktidarı değiştirebilir mi?  (BBC Türkçe)",
-      "link": "https://www.bbc.com/turkce/articles/cqdjv8yvw2myo?at_medium=RSS&at_campaign=rss"
+      "t": "🇹🇷 Öğrenci hareketi Sırbistan'da Vucic iktidarını nasıl devirdi?  (BBC Türkçe)",
+      "link": "https://www.bbc.com/turkce/articles/cqx29p2lrndvo?at_medium=RSS&at_campaign=rss"
     }
   ],
   "_teshis": {
     "dunya": [
-      "BBC World: 32 öğe / 2 alındı / 0 elendi | ilk: Voters in Brazil head to polls as Lula goes up against Bolso",
-      "Guardian World: 45 öğe / 2 alındı / 0 elendi | ilk: Mystery over source of Ebola infection in Nigeria fuels conc",
-      "Al Jazeera: 25 öğe / 2 alındı / 0 elendi | ilk: Gaza content creator tells Al Jazeera how much her award win",
-      "NPR World: 10 öğe / 2 alındı / 0 elendi | ilk: The College of Magic turns ordinary kids into confident, top",
-      "Euronews: 50 öğe / 2 alındı / 2 elendi | ilk: Israel orders West Bank crossings to close on election day f",
-      "DW: 12 öğe / 2 alındı / 0 elendi | ilk: Uganda says it has no active Ebola cases, but infections in ",
+      "BBC World: 25 öğe / 2 alındı / 0 elendi | ilk: Celebrations in Serbia after veteran ruler Vučić loses elect",
+      "Guardian World: 45 öğe / 2 alındı / 0 elendi | ilk: US forces accused of ‘weaponising’ Somalia’s floods by trapp",
+      "Al Jazeera: 25 öğe / 2 alındı / 0 elendi | ilk: Key takeaways from Real Madrid’s El Clasico win over Barcelo",
+      "NPR World: 10 öğe / 2 alındı / 0 elendi | ilk: Russia says it will open humanitarian corridor to Ukrainian ",
+      "Euronews: 50 öğe / 2 alındı / 0 elendi | ilk: Trump officials back Orbán bid for UN secretary-general, WSJ",
+      "DW: 11 öğe / 2 alındı / 0 elendi | ilk: Venezuela: Opposition leader Machado returns from exile, rec",
       "SONUÇ: 6 haber · veren: Al Jazeera, BBC World, DW, Euronews, Guardian World, NPR World",
       "AA: OKUNAMADI RemoteDisconnected: Remote end closed connection without response",
-      "TRT Haber: 50 öğe / 2 alındı / 0 elendi | ilk: Bulgaristan'da halk cumhurbaşkanı seçimi için sandık başında",
-      "BBC Türkçe: 16 öğe / 2 alındı / 0 elendi | ilk: Binyamin Netanyahu: 'Bay Güvenlik' İsrail'de yedinci kez baş",
-      "Habertürk: 30 öğe / 2 alındı / 0 elendi | ilk: İstanbul Barosu'nda başkanlık seçimi",
-      "NTV: 20 öğe / 2 alındı / 0 elendi | ilk: SİPER Ürün-2 yeni testi geçti. Havada hedef değiştirdi",
+      "TRT Haber: 50 öğe / 2 alındı / 0 elendi | ilk: BM Komisyonu: İsrail, Gazze'de soykırımın yanı sıra Filistin",
+      "BBC Türkçe: 16 öğe / 2 alındı / 0 elendi | ilk: Cumhurbaşkanı Başdanışmanı Saral istifa etti: 'İnandığım değ",
+      "Habertürk: 30 öğe / 2 alındı / 0 elendi | ilk: 35 ilde operasyon: 275 gözaltı",
+      "NTV: 20 öğe / 2 alındı / 0 elendi | ilk: 35 ilde siber suç operasyonu. 75 tutuklama",
       "SONUÇ: 6 haber · veren: BBC Türkçe, Habertürk, NTV, TRT Haber · boş dönen: AA"
     ],
-    "hisse": "11 başlık geldi, 1 elendi",
+    "hisse": "6 başlık geldi, 0 elendi",
     "hisse_ham": [
-      "Ereğli Demir Çelik’te dokuz aylık net kâr 11 milyar lirayı aştı",
-      "Ereğli Demir'in (EREGL) hem satışları hem de net kârı arttı!",
-      "EREGL’de Beklenti Üstü Bilanço Sonrası Hedef Fiyat ve Tavsiyeler Ne Ol",
-      "TradingView'de Matriks tarafından haberler, 2026-10-23",
-      "KAP *** BORSA İSTANBUL BISTECH DEVRE KESİCİ UYGULAMASI *** TSKB *** Pa",
-      "Gübretaş'tan GUBRF Tarım ve Gıda Sektörüne 7,25 Milyar TL'lik Yatırım"
+      "Gübretaş’tan (GUBRF) geri alım kararı",
+      "SASA hissesinden bu hafta kim aldı, kim sattı?",
+      "HSBC'de ASTOR, SASA ve THYAO satışları 1 milyar TL'yi geçti",
+      "[Son Dakika] Astor Enerji, hissedarlar hakkındaki tedbir kaldırıldı",
+      "Astor Enerji'den KAP açıklaması: ABD'li firma ile 33 milyon dolarlık s",
+      "Astor Enerji'nin ana hissedarları hakkındaki tedbirler kaldırıldı"
     ]
   }
 }
