@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-31 18:55",
+  "updated": "2026-11-01 16:07",
   "watch": [
     {
       "code": "HEKTS",
@@ -219,19 +219,19 @@
     },
     {
       "code": "BZ=F",
-      "price": "117.64",
-      "chg": "+2.40%",
-      "avg1w": "115.51",
-      "avg1m": "108.62",
+      "price": "113.43",
+      "chg": "-1.26%",
+      "avg1w": "114.66",
+      "avg1m": "108.42",
       "name": "Brent",
-      "hist": [75.26, 71.99, 73.15, 72.92, 71.57, 71.8, 71.99, 74.16, 78.02, 76.3, 76.01, 83.3, 84.73, 84.95, 84.23, 88.1, 89.22, 91.01, 94.07, 100.69, 96.78, 88.36, 84.09, 90.74, 89.03, 90.12, 83.77, 79.36, 79.45, 82.49, 83.55, 87.72, 88.91, 88.98, 87.07, 88.52, 90.87, 91.02, 91.62, 93.78, 94.39, 92.17, 88.58, 87.84, 89.7, 89.31, 90.49, 94.65, 95.63, 95.52, 96.28, 97.92, 101.21, 107.63, 104.61, 105.68, 108.75, 105.83, 104.82, 103.87, 100.34, 99.25, 103.08, 106.6, 104.32, 105.28, 102.59, 103.53, 102.31, 102.25, 100.32, 100.58, 100.2, 104.28, 104.72, 106.65, 105.69, 106.06, 105.92, 109.86, 109.55, 108.79, 108.82, 113.17, 116.72, 115.81, 113.88, 115.32, 114.88, 117.64],
+      "hist": [75.26, 71.99, 73.15, 72.92, 71.57, 71.8, 71.99, 74.16, 78.02, 76.3, 76.01, 83.3, 84.73, 84.95, 84.23, 88.1, 89.22, 91.01, 94.07, 100.69, 96.78, 88.36, 84.09, 90.74, 89.03, 90.12, 83.77, 79.36, 79.45, 82.49, 83.55, 87.72, 88.91, 88.98, 87.07, 88.52, 90.87, 91.02, 91.62, 93.78, 94.39, 92.17, 88.58, 87.84, 89.7, 89.31, 90.49, 94.65, 95.63, 95.52, 96.28, 97.92, 101.21, 107.63, 104.61, 105.68, 108.75, 105.83, 104.82, 103.87, 100.34, 99.25, 103.08, 106.6, 104.32, 105.28, 102.59, 103.53, 102.31, 102.25, 100.32, 100.58, 100.2, 104.28, 104.72, 106.65, 105.69, 106.06, 105.92, 109.86, 109.55, 108.79, 108.82, 113.17, 116.72, 115.81, 113.88, 115.32, 114.88, 113.43],
       "histD": ["06-25", "06-26", "06-29", "06-30", "07-01", "07-02", "07-06", "07-07", "07-08", "07-09", "07-10", "07-13", "07-14", "07-15", "07-16", "07-17", "07-20", "07-21", "07-22", "07-23", "07-24", "07-27", "07-28", "07-29", "07-30", "07-31", "08-03", "08-04", "08-05", "08-06", "08-07", "08-10", "08-11", "08-12", "08-13", "08-14", "08-17", "08-18", "08-19", "08-20", "08-21", "08-24", "08-25", "08-26", "08-27", "08-28", "08-31", "09-01", "09-02", "09-03", "09-04", "09-08", "09-09", "09-10", "09-11", "09-14", "09-15", "09-16", "09-17", "09-18", "09-21", "09-22", "09-23", "09-24", "09-25", "09-28", "09-29", "09-30", "10-01", "10-02", "10-05", "10-06", "10-07", "10-08", "10-09", "10-12", "10-13", "10-14", "10-15", "10-16", "10-19", "10-20", "10-21", "10-22", "10-23", "10-26", "10-27", "10-28", "10-29", "10-30"],
       "ind": {
         "ma": "MA20 & MA50 üstünde (yukarı eğilim)",
-        "rsiTxt": "aşırı alım",
-        "rsi": 70.2,
+        "rsiTxt": "nötr",
+        "rsi": 62.1,
         "volat": 1.9,
-        "volRatio": 0.2
+        "volRatio": 1.07
       }
     }
   ],
@@ -241,24 +241,24 @@
   },
   "news": [
     {
+      "t": "🔴 Hektaş (HEKTS) 3. Çeyrek Bilanço Beklentisi: Zarar Öngörüsü  (Finans Hattı)",
+      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNN3dEcV9ZYW9PSFRzWXRGYzlfOW1EbVpBVlhKVDVUNDRTcEg0VHBtR3BJTzBzMHRTVU8wSl9pdXJlQlBvckYtUDRraElHMDRhZnJaM040Vl9JMXhZVDVCdThERkxDb24tUjk1a3dPTi1vRlNKRUhoOWstOTNSQ0hHcQ?oc=5"
+    },
+    {
       "t": "⚪ Hektaş (HEKTS) 2026 3. çeyrek bilanço beklentisi  (Rota Borsa)",
       "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTFBxVzZtbWpOYnpzMmNjYUROb19nNzZQZjBiMlFuLW1oVGh3aE5vaXRIaldBcTR0aVh1OE9NTXp3Y0xsTVNRdnlqcGlPQXgtUFdvR2J1NVBUcUtvN1pVcjRZRDZSNFpuWUpyMTFXU2VlVGZVV2F5eW1V?oc=5"
     },
     {
-      "t": "⚪ TMSF, Kontrolmatik’e kayyum olarak atandı  (bursa tv)",
-      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9xTkZPWWhLdDBQdERLN2k0U2djMDZ1akpKUWdCY25mWmFock5TZTk0djctMWlCeEdjV3Yxd18tWURGZDRqYmlsVE1hNEJDT0JRdS01dERBc0taR3g4RGNiOGUwRm9rQ19kN0cweWZ1V05GVkFW?oc=5"
+      "t": "⚪ Astor Enerji'den ABD'ye 33,5 milyon dolarlık transformatör satışı  (Toplumsal Haber)",
+      "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNR0NnT0Zkb3BZWlZjTnZtS2VNajJidkNBMlE5ZGpOS3NhWHRUVWIxODBlMnVBcHBCZ3hGZDFRalpYX0VhWWpoQkJnbTF1SlJzQXVDSFFnRVlNdm40VzA0ZHFSZUZob1Rlei00XzRtcHBCVW5zYm5jLWpnaGY5LW1iOWZhU19fOGRQNl9qcmlQRHRHay11V1piUnpQY1prN2poQjFMeHl0VkYybms?oc=5"
     },
     {
-      "t": "⚪ BofA’dan Astor Enerji’de 378 milyon TL’lik satış  (Paratic Haber)",
-      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE5GRnB2RWgzRi13RGczdTBxLTBCY0dyc2V3a0tzMXdvZEtWVVFuQlpjV05KN2hOTUtLTVlNTGJYYWhCY1RkWFE1aW9WMWxsakdDamhseVZmQTBGU0tTbk1tZF81RFN5bWQ0cy1ZUjRJV28xY3Rk?oc=5"
+      "t": "⚪ Astor hissesinden ekim ayında en çok alanlar! 31 milyon lot...  (Hisse.net)",
+      "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNc1BrbGxLdXQ0RjMyQW9vbjFDckdCcHpPNTdHeUtubXR2eUZQOGQtLUh0RDdGYVR2WGZZMjNSVjZZelVPVTFadnNhZVVkWnhudndMd2pEMWNLVjF0RnNwS3hlektXQWRRSHNEc3Vjd2dya1hOd3ozV3NlaGo5UmNtSE44Zk9TSUIwbWhERkJDYndCR3dIUVVsaEtPQVNPUTV6ZDd2b0tIT28zZ9IBqgFBVV95cUxNc1BrbGxLdXQ0RjMyQW9vbjFDckdCcHpPNTdHeUtubXR2eUZQOGQtLUh0RDdGYVR2WGZZMjNSVjZZelVPVTFadnNhZVVkWnhudndMd2pEMWNLVjF0RnNwS3hlektXQWRRSHNEc3Vjd2dya1hOd3ozV3NlaGo5UmNtSE44Zk9TSUIwbWhERkJDYndCR3dIUVVsaEtPQVNPUTV6ZDd2b0tIT28zZw?oc=5"
     },
     {
-      "t": "⚪ BofA’nın alım listesinde bankalar, satış listesinde THY ve Astor var  (Paratic Haber)",
-      "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPcDhaZWJ0V0VyXzF5ZWpVb20weTVJRDVIbnV3R1J6UXZheUdWclQ2NWhubFg2MDJ1cHJ4cm5SZHZKY3hFMkRtd0J5YzI1MVA0MVEtZDRjRUJKSHVDS0pzMUVERG9kLXVKZW5mS2dwNjlMRS1BZjFXZUNLWUFFQzRrM2dDVmtPaThnYVc4dkJWME0?oc=5"
-    },
-    {
-      "t": "⚪ Borsada ASTOR ve AGESA hisselerinde özel emir işlemi gerçekleşti  (urfahaber.com)",
-      "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNa1k0SncxMmxKYm4zMng5dGtLRl83alotaEtNejVrLTRTZk5MU1NYb2lNRTZKTlZlaWtlWGNOTTdEd3BvR1hQTnQ5Zk5YSmdIZE5zTmNBbno4NkNzdzVzZlRLZ0twYm0yelpTOHhiZ2w0c1ltblIxTmpiM21yQmU3OUhzNmdiTkxlS3owTlBsQUh0eUtCdE1HLTNiYkJrMVBkSmhIVUd1bw?oc=5"
+      "t": "⚪ Astor Enerji (ASTOR) 2026 3. Çeyrek Bilanço Beklentisi  (Finans Hattı)",
+      "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTFBoajVRTHl5VWR4c3B5WWNNZ2lfV2txbFlGMl9GVExqZmozeFpFZUFkY3Fzazh2S3VCQjhHYnF1QnRwakFSS25sVk44LU9qRko4RUF2YWdVakJzSzVfQjdJRkpNVzhQMzl0dXhSV2xJaHBlckU?oc=5"
     },
     {
       "t": "⚪ Doğuş Otomotiv’den Volkswagen ile üretim hamlesi: KAP'a bildirildi  (Ekonomim)",
@@ -271,80 +271,80 @@
   ],
   "world": [
     {
-      "t": "🌍 Ukrainian evacuees reunite with family after years trapped in Russia-occupied city  (BBC World)",
-      "link": "https://www.bbc.co.uk/news/articles/cqx2818elrnzo?at_medium=RSS&at_campaign=rss"
+      "t": "🌍 Shops looted as German cost of living protests turn violent  (BBC World)",
+      "link": "https://www.bbc.co.uk/news/articles/cqj34gnd3n30o?at_medium=RSS&at_campaign=rss"
     },
     {
       "t": "🌍 Sinkholes, scarred land and scapegoats: the scourge of illegal gold mining in Johannesburg  (Guardian World)",
       "link": "https://www.theguardian.com/business/2026/oct/30/sinkholes-scarred-land-scapegoats-illegal-gold-mining-johannesburg"
     },
     {
-      "t": "🌍 Chelsea beat Man United as Martinez sent off to pile pressure on Carrick  (Al Jazeera)",
-      "link": "https://www.aljazeera.com/sports/2026/10/31/chelsea-beat-man-united-as-martinez-sees-red-for-crazy-moment-in-thriller?traffic_source=rss"
+      "t": "🌍 Senegal kicks off the Youth Games 2026  (Al Jazeera)",
+      "link": "https://www.aljazeera.com/video/newsfeed/2026/11/1/senegal-kicks-off-the-youth-games-2026?traffic_source=rss"
     },
     {
-      "t": "🌍 Drone photo award winners: Far-out landscapes. Ship recycling. Rugs, rugs rugs!  (NPR World)",
-      "link": "https://www.npr.org/2026/10/31/g-s1-150698/drone-photo-award-winners"
+      "t": "🌍 Secretary Rubio has a tough time getting officials at G20 on the same page  (NPR World)",
+      "link": "https://www.npr.org/2026/10/31/nx-s1-6022223/secretary-rubio-has-a-tough-time-getting-officials-at-g20-on-the-same-page"
     },
     {
-      "t": "🌍 Kärcher boss: Less regulation, more action to get Europe and Germany fit again  (Euronews)",
-      "link": "https://www.euronews.com/2026/10/31/karcher-boss-less-regulation-more-action-to-get-europe-and-germany-fit-again"
+      "t": "🌍 Flags, banners and chants at youth protest in Berlin  (Euronews)",
+      "link": "https://www.euronews.com/video/2026/11/01/flags-banners-and-chants-at-youth-protest-in-berlin"
     },
     {
-      "t": "🌍 Bollywood and the underworld — together in the spotlight?  (DW)",
-      "link": "https://www.dw.com/en/bollywood-and-the-underworld-together-in-the-spotlight/a-79806129?maca=en-rss-en-world-4025-rdf"
+      "t": "🌍 Donald Trump loses allies after elections in Serbia and Brazil  (DW)",
+      "link": "https://www.dw.com/en/donald-trump-loses-allies-after-elections-in-serbia-and-brazil/a-79812075?maca=en-rss-en-world-4025-rdf"
     }
   ],
   "tr": [
     {
-      "t": "🇹🇷 Şehit Piyade Sözleşmeli Er Yusuf Sait Ünlü son yolculuğuna uğurlandı  (TRT Haber)",
-      "link": "https://www.trthaber.com/haber/gundem/sehit-piyade-sozlesmeli-er-yusuf-sait-unlu-son-yolculuguna-ugurlandi-961835.html"
+      "t": "🇹🇷 Katil İsrail'in Gazze'ye düzenlediği saldırıda Filistinli bir çocuk yaralandı  (TRT Haber)",
+      "link": "https://www.trthaber.com/haber/dunya/katil-israilin-gazzeye-duzenledigi-saldirida-filistinli-bir-cocuk-yaralandi-961884.html"
     },
     {
-      "t": "🇹🇷 BM Genel Sekreterliği yarışında Türkiye'nin hamlesi ne anlama geliyor?  (BBC Türkçe)",
-      "link": "https://www.bbc.com/turkce/articles/cmy0e2x95l48o?at_medium=RSS&at_campaign=rss"
+      "t": "🇹🇷 Trump döneminde ABD ekonomisinin durumu nasıl?  (BBC Türkçe)",
+      "link": "https://www.bbc.com/turkce/articles/cw0k0rknd1pgo?at_medium=RSS&at_campaign=rss"
     },
     {
-      "t": "🇹🇷 Gece evden çıktı Boğaz'da ölü bulundu  (Habertürk)",
-      "link": "https://www.haberturk.com/gundem/kagithane-de-kaybolan-80-yasindaki-mustafa-doyan-in-cansiz-bedeni-yenikoy-de-bulundu-3923975"
+      "t": "🇹🇷 Başına kepçe düşen sürücü öldü  (Habertürk)",
+      "link": "https://www.haberturk.com/gundem/son-dakika-haberler-konya-da-basina-kepce-dusen-traktor-surucusu-oldu-3924125"
     },
     {
-      "t": "🇹🇷 Yeni dönem. BES birikimleri bedelli askerlik ve hac için de kullanılabilecek  (NTV)",
-      "link": "https://www.ntv.com.tr/turkiye/yeni-donem-bes-birikimleri-bedelli-askerlik-ve-hac-icin-de-kullanilabilecek-1748807"
+      "t": "🇹🇷 Bursa’da barajlarda şaşırtan tablo: Gölbaşı’nda sular çekiliyor  (NTV)",
+      "link": "https://www.ntv.com.tr/turkiye/video-bursada-barajlarda-sasirtan-tablo-golbasinda-sular-cekiliyor-1748914"
     },
     {
-      "t": "🇹🇷 Soykırımcı İsrail'in ateşkese rağmen Gazze'deki saldırılarında 3 Filistinli hayatını kaybetti  (TRT Haber)",
-      "link": "https://www.trthaber.com/haber/dunya/soykirimci-israilin-ateskese-ragmen-gazzedeki-saldirilarinda-3-filistinli-hayatini-kaybetti-961833.html"
+      "t": "🇹🇷 Emlak vergisinde ikinci taksit dönemi başladı  (TRT Haber)",
+      "link": "https://www.trthaber.com/haber/ekonomi/emlak-vergisinde-ikinci-taksit-donemi-basladi-961883.html"
     },
     {
-      "t": "🇹🇷 ABD, Ukrayna'ya 500 adet Patriot füzesi satışını onayladı  (BBC Türkçe)",
-      "link": "https://www.bbc.com/turkce/articles/ck87zqz878ydo?at_medium=RSS&at_campaign=rss"
+      "t": "🇹🇷 Bahçeli '100 il 1000 ilçe projesi'ni açıkladı  (BBC Türkçe)",
+      "link": "https://www.bbc.com/turkce/articles/cm1exy4dwlw6o?at_medium=RSS&at_campaign=rss"
     }
   ],
   "_teshis": {
     "dunya": [
-      "BBC World: 31 öğe / 2 alındı / 0 elendi | ilk: Ukrainian evacuees reunite with family after years trapped i",
+      "BBC World: 25 öğe / 2 alındı / 0 elendi | ilk: Shops looted as German cost of living protests turn violent",
       "Guardian World: 45 öğe / 2 alındı / 0 elendi | ilk: Sinkholes, scarred land and scapegoats: the scourge of illeg",
-      "Al Jazeera: 25 öğe / 2 alındı / 0 elendi | ilk: Chelsea beat Man United as Martinez sent off to pile pressur",
-      "NPR World: 10 öğe / 2 alındı / 0 elendi | ilk: Drone photo award winners: Far-out landscapes. Ship recyclin",
-      "Euronews: 50 öğe / 2 alındı / 1 elendi | ilk: Latest news bulletin | October 31st, 2026 – Midday",
-      "DW: 9 öğe / 2 alındı / 0 elendi | ilk: Bollywood and the underworld — together in the spotlight?",
+      "Al Jazeera: 25 öğe / 2 alındı / 0 elendi | ilk: Senegal kicks off the Youth Games 2026",
+      "NPR World: 10 öğe / 2 alındı / 0 elendi | ilk: Secretary Rubio has a tough time getting officials at G20 on",
+      "Euronews: 50 öğe / 2 alındı / 0 elendi | ilk: Flags, banners and chants at youth protest in Berlin",
+      "DW: 10 öğe / 2 alındı / 0 elendi | ilk: Donald Trump loses allies after elections in Serbia and Braz",
       "SONUÇ: 6 haber · veren: Al Jazeera, BBC World, DW, Euronews, Guardian World, NPR World",
       "AA: OKUNAMADI RemoteDisconnected: Remote end closed connection without response",
-      "TRT Haber: 50 öğe / 2 alındı / 0 elendi | ilk: Şehit Piyade Sözleşmeli Er Yusuf Sait Ünlü son yolculuğuna u",
-      "BBC Türkçe: 16 öğe / 2 alındı / 0 elendi | ilk: BM Genel Sekreterliği yarışında Türkiye'nin hamlesi ne anlam",
-      "Habertürk: 30 öğe / 2 alındı / 0 elendi | ilk: Gece evden çıktı Boğaz'da ölü bulundu",
-      "NTV: 20 öğe / 2 alındı / 1 elendi | ilk: Yeni dönem. BES birikimleri bedelli askerlik ve hac için de ",
+      "TRT Haber: 50 öğe / 2 alındı / 0 elendi | ilk: Katil İsrail'in Gazze'ye düzenlediği saldırıda Filistinli bi",
+      "BBC Türkçe: 16 öğe / 2 alındı / 0 elendi | ilk: Trump döneminde ABD ekonomisinin durumu nasıl?",
+      "Habertürk: 30 öğe / 2 alındı / 0 elendi | ilk: Başına kepçe düşen sürücü öldü",
+      "NTV: 20 öğe / 2 alındı / 0 elendi | ilk: Bursa’da barajlarda şaşırtan tablo: Gölbaşı’nda sular çekili",
       "SONUÇ: 6 haber · veren: BBC Türkçe, Habertürk, NTV, TRT Haber · boş dönen: AA"
     ],
-    "hisse": "10 başlık geldi, 3 elendi",
+    "hisse": "9 başlık geldi, 2 elendi",
     "hisse_ham": [
+      "Hektaş (HEKTS) 3. Çeyrek Bilanço Beklentisi: Zarar Öngörüsü",
       "Hektaş (HEKTS) 2026 3. çeyrek bilanço beklentisi",
       "KAP *** KONTROLMATİK TEKNOLOJİ ENERJİ VE MÜHENDİSLİK A.Ş. *** KONTR **",
-      "TMSF, Kontrolmatik’e kayyum olarak atandı",
-      "BofA’dan Astor Enerji’de 378 milyon TL’lik satış",
-      "BofA’nın alım listesinde bankalar, satış listesinde THY ve Astor var",
-      "Borsada ASTOR ve AGESA hisselerinde özel emir işlemi gerçekleşti"
+      "Astor Enerji'den ABD'ye 33,5 milyon dolarlık transformatör satışı",
+      "Astor hissesinden ekim ayında en çok alanlar! 31 milyon lot...",
+      "Astor Enerji (ASTOR) 2026 3. Çeyrek Bilanço Beklentisi"
     ]
   }
 }
