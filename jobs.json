@@ -1,9 +1,9 @@
 {
  "version": 2,
- "updated": "2026-11-05 15:56",
+ "updated": "2026-11-06 15:43",
  "ok": true,
  "count": 9,
- "pool": 17,
+ "pool": 16,
  "quota": {
   "tr": 3,
   "de": 3,
@@ -12,10 +12,10 @@
  },
  "items": [
   {
-   "id": "52e3f8c61c68",
-   "title": "Client Data & Analytics Lead (f/m/d)",
-   "company": "Kraken",
-   "location": "Berlin, Germany",
+   "id": "7a50ba208a6e",
+   "title": "AI/ML Engineer (m/f/d) Autonomous Systems",
+   "company": "MOTOR Ai",
+   "location": "Berlin",
    "country": "DE",
    "market": "international",
    "bucket": "de",
@@ -24,102 +24,46 @@
    "rank": 0,
    "reserve": false,
    "is_new": true,
-   "first_seen": "2026-11-05",
+   "first_seen": "2026-11-06",
    "workplace_type": "onsite",
    "source": "Arbeitnow",
    "also_on": [],
-   "source_url": "https://www.arbeitnow.com/jobs/companies/kraken/client-data-analytics-lead-berlin-397571",
-   "publication_date": "2026-11-05",
-   "fit_score": 61,
-   "fit_reason": "rol primary +30; konum +15; beceri 1×5 +5; kıdem lead -6; tazelik +10",
-   "matched_skills": [
-    "SQL"
-   ],
-   "location_reason": "Arbeitnow konumu 'Berlin, Germany'",
-   "seniority": "lead",
-   "focus": "bi",
-   "focus_scores": {
-    "ml": 0,
-    "bi": 6,
-    "pipeline": 0,
-    "business": 5
-   },
-   "language": "en",
-   "generated_at": "2026-11-05 15:56",
-   "summary": "Help us use technology to make a big green dent in the universe! Kraken powers some of the most innovative global developments in energy. We create the technology that redefines utilities and unlocks a new energy system of the future. By optimising renewable g",
-   "keywords": [
-    "energy",
-    "cost"
-   ],
-   "url": "https://www.arbeitnow.com/jobs/companies/kraken/client-data-analytics-lead-berlin-397571",
-   "skills": [
-    "sql"
-   ],
-   "score": 61,
-   "posted": "2026-11-05",
-   "days": 0,
-   "remote": false,
-   "german": false
-  },
-  {
-   "id": "b08ffa09eac3",
-   "title": "Data Analyst - Finance",
-   "company": "Emma – The Sleep Company",
-   "location": "Frankfurt",
-   "country": "DE",
-   "market": "international",
-   "bucket": "de",
-   "label": "DE",
-   "tier": 2,
-   "rank": 1,
-   "reserve": false,
-   "is_new": true,
-   "first_seen": "2026-11-05",
-   "workplace_type": "onsite",
-   "source": "Arbeitnow",
-   "also_on": [],
-   "source_url": "https://www.arbeitnow.com/jobs/companies/emma-the-sleep-company/data-analyst-finance-frankfurt-168424",
-   "publication_date": "2026-11-05",
-   "fit_score": 92,
-   "fit_reason": "rol primary +30; konum +10; beceri 6×5 +30; kıdem mid +5; tazelik +10",
+   "source_url": "https://www.arbeitnow.com/jobs/companies/motor-ai/ai-ml-engineer-autonomous-systems-berlin-465396",
+   "publication_date": "2026-11-06",
+   "fit_score": 70,
+   "fit_reason": "rol secondary +18; konum +15; beceri 3×5 +15; kıdem mid +5; tazelik +10",
    "matched_skills": [
     "SQL",
     "Python",
-    "Power BI",
-    "Tableau",
-    "ETL",
-    "dbt"
+    "Azure"
    ],
-   "location_reason": "Arbeitnow konumu 'Frankfurt'",
+   "location_reason": "Arbeitnow konumu 'Berlin'",
    "seniority": "mid",
-   "focus": "business",
+   "focus": "ml",
    "focus_scores": {
-    "ml": 2,
-    "bi": 7,
-    "pipeline": 5,
-    "business": 14
+    "ml": 20,
+    "bi": 0,
+    "pipeline": 1,
+    "business": 1
    },
    "language": "en",
-   "generated_at": "2026-11-05 15:56",
-   "summary": "Ready to lead, disrupt and reinvent the sleep industry? We are Emma – The Sleep Company . Founded in 2015, we have grown into the world’s largest direct-to-consumer (D2C) sleep brand, with a presence in over 20 markets and more than 35 Emma stores across Europ",
+   "generated_at": "2026-11-06 15:43",
+   "summary": "We are MOTOR Ai . Our mission is to make Level 4 autonomous driving a reality in Germany and beyond. By combining state-of-the-art AI with the expertise of our multidisciplinary team, we are poised to introduce the first solution of its kind in Germany that is",
    "keywords": [
-    "finance",
-    "stakeholder",
-    "dashboard",
-    "scalab",
-    "data quality"
+    "experimentation",
+    "optimization",
+    "real-time",
+    "pipeline",
+    "cost"
    ],
-   "url": "https://www.arbeitnow.com/jobs/companies/emma-the-sleep-company/data-analyst-finance-frankfurt-168424",
+   "url": "https://www.arbeitnow.com/jobs/companies/motor-ai/ai-ml-engineer-autonomous-systems-berlin-465396",
    "skills": [
     "sql",
     "python",
-    "power bi",
-    "tableau",
-    "etl",
-    "dbt"
+    "azure"
    ],
-   "score": 92,
-   "posted": "2026-11-05",
+   "score": 70,
+   "posted": "2026-11-06",
    "days": 0,
    "remote": false,
    "german": false
@@ -134,7 +78,7 @@
    "bucket": "de",
    "label": "DE",
    "tier": 1,
-   "rank": 2,
+   "rank": 1,
    "reserve": false,
    "is_new": false,
    "first_seen": "2026-11-04",
@@ -145,8 +89,8 @@
    ],
    "source_url": "https://www.arbeitnow.com/jobs/companies/flix/senior-data-analyst-crm-berlin-44970",
    "publication_date": "2026-11-04",
-   "fit_score": 92,
-   "fit_reason": "rol primary +30; konum +15; beceri 5×5 +25; kıdem senior +5; tazelik +10",
+   "fit_score": 89,
+   "fit_reason": "rol primary +30; konum +15; beceri 5×5 +25; kıdem senior +5; tazelik +7",
    "matched_skills": [
     "SQL",
     "Power BI",
@@ -164,7 +108,7 @@
     "business": 19
    },
    "language": "en",
-   "generated_at": "2026-11-05 15:56",
+   "generated_at": "2026-11-06 15:43",
    "summary": "At Flix, we offer a dynamic work environment with competitive pay, strong growth opportunities, and a tech-driven approach to making travel more accessible, sustainable, and affordable. As a Senior Data Analyst (m/f/d), you will join our global CRM team. This ",
    "keywords": [
     "scalab",
@@ -184,10 +128,164 @@
     "dax",
     "snowflake"
    ],
-   "score": 92,
+   "score": 89,
    "posted": "2026-11-04",
-   "days": 1,
+   "days": 2,
    "remote": false,
+   "german": false
+  },
+  {
+   "id": "9beb5130990d",
+   "title": "Senior Software Engineer - Data Platform (m/w/d)",
+   "company": "Nubank",
+   "location": "Berlin",
+   "country": "DE",
+   "market": "international",
+   "bucket": "de",
+   "label": "DE",
+   "tier": 1,
+   "rank": 2,
+   "reserve": false,
+   "is_new": false,
+   "first_seen": "2026-11-04",
+   "workplace_type": "onsite",
+   "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.com/jobs/companies/nubank/senior-software-engineer-data-platform-berlin-354544",
+   "publication_date": "2026-11-03",
+   "fit_score": 64,
+   "fit_reason": "rol primary +30; konum +15; beceri 0×5 +0; kıdem senior +5; tazelik +7",
+   "matched_skills": [],
+   "location_reason": "Arbeitnow konumu 'Berlin'",
+   "seniority": "senior",
+   "focus": "pipeline",
+   "focus_scores": {
+    "ml": 1,
+    "bi": 0,
+    "pipeline": 22,
+    "business": 2
+   },
+   "language": "en",
+   "generated_at": "2026-11-06 15:43",
+   "summary": "About Nu Nu serves more than 140 million customers, guided by a mission to fight complexity and empower people. The company has been leading an industry transformation through innovative products and human-centered services. Proprietary technology and data at ",
+   "keywords": [
+    "cost",
+    "pipeline"
+   ],
+   "url": "https://www.arbeitnow.com/jobs/companies/nubank/senior-software-engineer-data-platform-berlin-354544",
+   "skills": [],
+   "score": 64,
+   "posted": "2026-11-03",
+   "days": 3,
+   "remote": false,
+   "german": false
+  },
+  {
+   "id": "f89f932c01fa",
+   "title": "Data Analyst",
+   "company": "YoungOnes",
+   "location": "Breda, Noord-Brabant, Netherlands",
+   "country": "NL",
+   "market": "international",
+   "bucket": "nl",
+   "label": "NL",
+   "tier": 1,
+   "rank": 0,
+   "reserve": false,
+   "is_new": true,
+   "first_seen": "2026-11-06",
+   "workplace_type": "onsite",
+   "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.nl/jobs/companies/youngones/data-analyst-breda-11383",
+   "publication_date": "2026-11-06",
+   "fit_score": 89,
+   "fit_reason": "rol primary +30; konum +12; beceri 5×5 +25; kıdem mid +5; tazelik +10",
+   "matched_skills": [
+    "SQL",
+    "Python",
+    "Power BI",
+    "Databricks",
+    "PySpark"
+   ],
+   "location_reason": "Arbeitnow konumu 'Breda, Noord-Brabant, Netherlands'",
+   "seniority": "mid",
+   "focus": "business",
+   "focus_scores": {
+    "ml": 0,
+    "bi": 4,
+    "pipeline": 4,
+    "business": 18
+   },
+   "language": "en",
+   "generated_at": "2026-11-06 15:43",
+   "summary": "Help launch our new temping product and drive commercial impact! At YoungOnes, data is at the start of every decision. Our Data & RevOps team has a seat at every table and takes a leading role in where the company goes next. Two years ago we rebuilt our data e",
+   "keywords": [
+    "startup",
+    "stakeholder"
+   ],
+   "url": "https://www.arbeitnow.nl/jobs/companies/youngones/data-analyst-breda-11383",
+   "skills": [
+    "sql",
+    "python",
+    "power bi",
+    "databricks",
+    "pyspark"
+   ],
+   "score": 89,
+   "posted": "2026-11-06",
+   "days": 0,
+   "remote": false,
+   "german": false
+  },
+  {
+   "id": "18b912afcdad",
+   "title": "Data Analyst",
+   "company": "Uni Systems",
+   "location": "Petten, Netherlands",
+   "country": "NL",
+   "market": "international",
+   "bucket": "nl",
+   "label": "NL",
+   "tier": 1,
+   "rank": 1,
+   "reserve": false,
+   "is_new": true,
+   "first_seen": "2026-11-06",
+   "workplace_type": "remote",
+   "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.nl/jobs/companies/uni-systems/remote-data-analyst-petten-38896",
+   "publication_date": "2026-11-05",
+   "fit_score": 71,
+   "fit_reason": "rol primary +30; konum +12; beceri 1×5 +5; kıdem mid +5; tazelik +10",
+   "matched_skills": [
+    "Tableau"
+   ],
+   "location_reason": "Arbeitnow konumu 'Petten, Netherlands' · remote",
+   "seniority": "mid",
+   "focus": "business",
+   "focus_scores": {
+    "ml": 1,
+    "bi": 2,
+    "pipeline": 1,
+    "business": 14
+   },
+   "language": "en",
+   "generated_at": "2026-11-06 15:43",
+   "summary": "At Uni Systems, we are working towards turning digital visions into reality. We are continuously growing and we are looking for a professional AI & NLP Engineer to join our UniQue Petten, Netherlands team. What will you be bringing to the team? Collect and cle",
+   "keywords": [
+    "stakeholder",
+    "supply chain"
+   ],
+   "url": "https://www.arbeitnow.nl/jobs/companies/uni-systems/remote-data-analyst-petten-38896",
+   "skills": [
+    "tableau"
+   ],
+   "score": 71,
+   "posted": "2026-11-05",
+   "days": 1,
+   "remote": true,
    "german": false
   },
   {
@@ -200,9 +298,9 @@
    "bucket": "nl",
    "label": "NL",
    "tier": 1,
-   "rank": 0,
+   "rank": 2,
    "reserve": false,
-   "is_new": true,
+   "is_new": false,
    "first_seen": "2026-11-05",
    "workplace_type": "onsite",
    "source": "Arbeitnow",
@@ -230,7 +328,7 @@
     "business": 11
    },
    "language": "en",
-   "generated_at": "2026-11-05 15:56",
+   "generated_at": "2026-11-06 15:43",
    "summary": "About Finom Finom is a European tech startup headquartered in Amsterdam, and we’re on a journey towards revolutionizing the financial landscape for entrepreneurs worldwide. Our mission is to develop an all-in-one financial B2B solution that integrates banking ",
    "keywords": [
     "startup",
@@ -249,63 +347,300 @@
    ],
    "score": 89,
    "posted": "2026-11-05",
+   "days": 1,
+   "remote": false,
+   "german": false
+  },
+  {
+   "id": "fcdb5bb5311d",
+   "title": "Data Analyst",
+   "company": "Avepoint",
+   "location": "London",
+   "country": "UK",
+   "market": "international",
+   "bucket": "uk",
+   "label": "UK",
+   "tier": 1,
+   "rank": 0,
+   "reserve": false,
+   "is_new": true,
+   "first_seen": "2026-11-06",
+   "workplace_type": "onsite",
+   "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/avepoint/data-analyst-london-8950",
+   "publication_date": "2026-11-05",
+   "fit_score": 84,
+   "fit_reason": "rol primary +30; konum +12; beceri 4×5 +20; kıdem mid +5; tazelik +10",
+   "matched_skills": [
+    "SQL",
+    "Python",
+    "Power BI",
+    "Tableau"
+   ],
+   "location_reason": "Arbeitnow konumu 'London'",
+   "seniority": "mid",
+   "focus": "business",
+   "focus_scores": {
+    "ml": 1,
+    "bi": 9,
+    "pipeline": 2,
+    "business": 18
+   },
+   "language": "en",
+   "generated_at": "2026-11-06 15:43",
+   "summary": "Job Summary: AvePoint is seeking a highly analytical Data Analyst to support and scale our global partner business. In this role, you will analyze data across our partner ecosystem—including sales performance, customer usage, licensing, and marketing—to provid",
+   "keywords": [
+    "pipeline",
+    "forecast",
+    "dashboard",
+    "finance",
+    "saas"
+   ],
+   "url": "https://www.arbeitnow.co.uk/jobs/companies/avepoint/data-analyst-london-8950",
+   "skills": [
+    "sql",
+    "python",
+    "power bi",
+    "tableau"
+   ],
+   "score": 84,
+   "posted": "2026-11-05",
+   "days": 1,
+   "remote": false,
+   "german": false
+  },
+  {
+   "id": "defe783531cc",
+   "title": "Data Engineering Manager (Data Platform)",
+   "company": "Fundingcircle",
+   "location": "London",
+   "country": "UK",
+   "market": "international",
+   "bucket": "uk",
+   "label": "UK",
+   "tier": 1,
+   "rank": 1,
+   "reserve": false,
+   "is_new": true,
+   "first_seen": "2026-11-06",
+   "workplace_type": "hybrid",
+   "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/fundingcircle/data-engineering-manager-data-platform-london-477264",
+   "publication_date": "2026-11-06",
+   "fit_score": 69,
+   "fit_reason": "rol primary +30; konum +12; beceri 3×5 +15; kıdem manager -8; tazelik +10",
+   "matched_skills": [
+    "Airflow",
+    "Snowflake",
+    "dbt"
+   ],
+   "location_reason": "Arbeitnow konumu 'London'",
+   "seniority": "manager",
+   "focus": "pipeline",
+   "focus_scores": {
+    "ml": 0,
+    "bi": 3,
+    "pipeline": 19,
+    "business": 8
+   },
+   "language": "en",
+   "generated_at": "2026-11-06 15:43",
+   "summary": "We’re on a mission to back the UK’s small businesses like no one else 🚀 Small businesses are the backbone of the economy, and we’re here to help them win. We’ve built a platform that uses clever data to get them the funding they need in minutes, not weeks. At ",
+   "keywords": [
+    "energy",
+    "real-time",
+    "migration",
+    "stakeholder",
+    "pipeline",
+    "scalab",
+    "cost",
+    "self-service"
+   ],
+   "url": "https://www.arbeitnow.co.uk/jobs/companies/fundingcircle/data-engineering-manager-data-platform-london-477264",
+   "skills": [
+    "airflow",
+    "snowflake",
+    "dbt"
+   ],
+   "score": 69,
+   "posted": "2026-11-06",
    "days": 0,
    "remote": false,
    "german": false
   },
   {
-   "id": "f088e268db07",
-   "title": "Medior / Senior Data Analyst",
-   "company": "Follo",
-   "location": "Dongen, Noord-Brabant, Nederland",
-   "country": "NL",
+   "id": "9e9ac38882af",
+   "title": "Principal Data Engineer, Data Warehouse (TPL)",
+   "company": "engelhart",
+   "location": "London",
+   "country": "UK",
    "market": "international",
-   "bucket": "nl",
-   "label": "NL",
+   "bucket": "uk",
+   "label": "UK",
    "tier": 1,
-   "rank": 1,
+   "rank": 2,
    "reserve": false,
-   "is_new": false,
-   "first_seen": "2026-10-31",
+   "is_new": true,
+   "first_seen": "2026-11-06",
    "workplace_type": "onsite",
    "source": "Arbeitnow",
    "also_on": [],
-   "source_url": "https://www.arbeitnow.nl/jobs/companies/follo/medior-senior-data-analyst-dongen-227965",
-   "publication_date": "2026-10-30",
-   "fit_score": 78,
-   "fit_reason": "rol primary +30; konum +12; beceri 4×5 +20; kıdem senior +5; tazelik +4",
+   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/engelhart/principal-data-engineer-data-warehouse-tpl-london-257575",
+   "publication_date": "2026-11-05",
+   "fit_score": 68,
+   "fit_reason": "rol primary +30; konum +12; beceri 3×5 +15; kıdem lead -6; tazelik +10",
+   "matched_skills": [
+    "SQL",
+    "Python",
+    "dbt"
+   ],
+   "location_reason": "Arbeitnow konumu 'London'",
+   "seniority": "lead",
+   "focus": "pipeline",
+   "focus_scores": {
+    "ml": 0,
+    "bi": 1,
+    "pipeline": 22,
+    "business": 2
+   },
+   "language": "en",
+   "generated_at": "2026-11-06 15:43",
+   "summary": "About Us Engelhart was founded in 2013 by BTG Pactual Group as a commodities trading company. Our business model is “asset light” and highly diversified – giving us the ability to adapt effectively and nimbly to changing market conditions. We have assembled su",
+   "keywords": [
+    "energy",
+    "optimisation",
+    "finance",
+    "pipeline",
+    "data quality",
+    "stakeholder",
+    "scalab"
+   ],
+   "url": "https://www.arbeitnow.co.uk/jobs/companies/engelhart/principal-data-engineer-data-warehouse-tpl-london-257575",
+   "skills": [
+    "sql",
+    "python",
+    "dbt"
+   ],
+   "score": 68,
+   "posted": "2026-11-05",
+   "days": 1,
+   "remote": false,
+   "german": false
+  }
+ ],
+ "reserve": [
+  {
+   "id": "52e3f8c61c68",
+   "title": "Client Data & Analytics Lead (f/m/d)",
+   "company": "Kraken",
+   "location": "Berlin, Germany",
+   "country": "DE",
+   "market": "international",
+   "bucket": "de",
+   "label": "DE",
+   "tier": 1,
+   "rank": 3,
+   "reserve": true,
+   "is_new": false,
+   "first_seen": "2026-11-05",
+   "workplace_type": "onsite",
+   "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.com/jobs/companies/kraken/client-data-analytics-lead-berlin-397571",
+   "publication_date": "2026-11-05",
+   "fit_score": 61,
+   "fit_reason": "rol primary +30; konum +15; beceri 1×5 +5; kıdem lead -6; tazelik +10",
+   "matched_skills": [
+    "SQL"
+   ],
+   "location_reason": "Arbeitnow konumu 'Berlin, Germany'",
+   "seniority": "lead",
+   "focus": "bi",
+   "focus_scores": {
+    "ml": 0,
+    "bi": 6,
+    "pipeline": 0,
+    "business": 5
+   },
+   "language": "en",
+   "generated_at": "2026-11-06 15:43",
+   "summary": "Help us use technology to make a big green dent in the universe! Kraken powers some of the most innovative global developments in energy. We create the technology that redefines utilities and unlocks a new energy system of the future. By optimising renewable g",
+   "keywords": [
+    "energy",
+    "cost"
+   ],
+   "url": "https://www.arbeitnow.com/jobs/companies/kraken/client-data-analytics-lead-berlin-397571",
+   "skills": [
+    "sql"
+   ],
+   "score": 61,
+   "posted": "2026-11-05",
+   "days": 1,
+   "remote": false,
+   "german": false
+  },
+  {
+   "id": "b08ffa09eac3",
+   "title": "Data Analyst - Finance",
+   "company": "Emma – The Sleep Company",
+   "location": "Frankfurt",
+   "country": "DE",
+   "market": "international",
+   "bucket": "de",
+   "label": "DE",
+   "tier": 2,
+   "rank": 4,
+   "reserve": true,
+   "is_new": false,
+   "first_seen": "2026-11-05",
+   "workplace_type": "onsite",
+   "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.com/jobs/companies/emma-the-sleep-company/data-analyst-finance-frankfurt-168424",
+   "publication_date": "2026-11-05",
+   "fit_score": 92,
+   "fit_reason": "rol primary +30; konum +10; beceri 6×5 +30; kıdem mid +5; tazelik +10",
    "matched_skills": [
     "SQL",
     "Python",
     "Power BI",
+    "Tableau",
+    "ETL",
     "dbt"
    ],
-   "location_reason": "Arbeitnow konumu 'Dongen, Noord-Brabant, Nederland'",
-   "seniority": "senior",
-   "focus": "bi",
+   "location_reason": "Arbeitnow konumu 'Frankfurt'",
+   "seniority": "mid",
+   "focus": "business",
    "focus_scores": {
-    "ml": 0,
-    "bi": 9,
-    "pipeline": 1,
-    "business": 9
+    "ml": 2,
+    "bi": 7,
+    "pipeline": 5,
+    "business": 14
    },
    "language": "en",
-   "generated_at": "2026-11-05 15:56",
-   "summary": "SQL in BigQuery? Gesneden koek. Een dashboard in Looker Studio? Staat er zo. Maar jij wil meer. Je wil weten welk verhaal er achter de cijfers zit, en je vertelt dat verhaal net zo graag. Met een advies waar klanten en collega’s echt iets mee kunnen. AI zet je",
+   "generated_at": "2026-11-06 15:43",
+   "summary": "Ready to lead, disrupt and reinvent the sleep industry? We are Emma – The Sleep Company . Founded in 2015, we have grown into the world’s largest direct-to-consumer (D2C) sleep brand, with a presence in over 20 markets and more than 35 Emma stores across Europ",
    "keywords": [
+    "finance",
+    "stakeholder",
     "dashboard",
-    "e-commerce"
+    "scalab",
+    "data quality"
    ],
-   "url": "https://www.arbeitnow.nl/jobs/companies/follo/medior-senior-data-analyst-dongen-227965",
+   "url": "https://www.arbeitnow.com/jobs/companies/emma-the-sleep-company/data-analyst-finance-frankfurt-168424",
    "skills": [
     "sql",
     "python",
     "power bi",
+    "tableau",
+    "etl",
     "dbt"
    ],
-   "score": 78,
-   "posted": "2026-10-30",
-   "days": 6,
+   "score": 92,
+   "posted": "2026-11-05",
+   "days": 1,
    "remote": false,
    "german": false
   },
@@ -319,8 +654,8 @@
    "bucket": "nl",
    "label": "NL",
    "tier": 1,
-   "rank": 2,
-   "reserve": false,
+   "rank": 3,
+   "reserve": true,
    "is_new": false,
    "first_seen": "2026-11-03",
    "workplace_type": "onsite",
@@ -345,7 +680,7 @@
     "business": 6
    },
    "language": "en",
-   "generated_at": "2026-11-05 15:56",
+   "generated_at": "2026-11-06 15:43",
    "summary": "At Wypoon Technologies, we are looking for an experienced Data Scientist with a strong focus on Generative AI to join an innovative AI team within a leading financial services organization in the Netherlands. In this role, you will design, develop, and deploy ",
    "keywords": [
     "scalab",
@@ -361,401 +696,8 @@
    ],
    "score": 64,
    "posted": "2026-11-03",
-   "days": 2,
+   "days": 3,
    "remote": false,
-   "german": false
-  },
-  {
-   "id": "cda31bc6f2fb",
-   "title": "Data Engineer, Finance",
-   "company": "engelhart",
-   "location": "London",
-   "country": "UK",
-   "market": "international",
-   "bucket": "uk",
-   "label": "UK",
-   "tier": 1,
-   "rank": 0,
-   "reserve": false,
-   "is_new": true,
-   "first_seen": "2026-11-05",
-   "workplace_type": "onsite",
-   "source": "Arbeitnow",
-   "also_on": [],
-   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/engelhart/data-engineer-finance-london-20379",
-   "publication_date": "2026-11-05",
-   "fit_score": 89,
-   "fit_reason": "rol primary +30; konum +12; beceri 5×5 +25; kıdem mid +5; tazelik +10",
-   "matched_skills": [
-    "SQL",
-    "Python",
-    "ETL",
-    "Airflow",
-    "dbt"
-   ],
-   "location_reason": "Arbeitnow konumu 'London'",
-   "seniority": "mid",
-   "focus": "pipeline",
-   "focus_scores": {
-    "ml": 0,
-    "bi": 1,
-    "pipeline": 18,
-    "business": 3
-   },
-   "language": "en",
-   "generated_at": "2026-11-05 15:56",
-   "summary": "About Us Engelhart was founded in 2013 by BTG Pactual Group as a commodities trading company. Our business model is “asset light” and highly diversified – giving us the ability to adapt effectively and nimbly to changing market conditions. We have assembled su",
-   "keywords": [
-    "energy",
-    "optimisation",
-    "finance",
-    "pipeline",
-    "stakeholder"
-   ],
-   "url": "https://www.arbeitnow.co.uk/jobs/companies/engelhart/data-engineer-finance-london-20379",
-   "skills": [
-    "sql",
-    "python",
-    "etl",
-    "airflow",
-    "dbt"
-   ],
-   "score": 89,
-   "posted": "2026-11-05",
-   "days": 0,
-   "remote": false,
-   "german": false
-  },
-  {
-   "id": "3093ba97aa2c",
-   "title": "Senior Data Engineer",
-   "company": "Accurx",
-   "location": "London (Shoreditch)",
-   "country": "UK",
-   "market": "international",
-   "bucket": "uk",
-   "label": "UK",
-   "tier": 1,
-   "rank": 1,
-   "reserve": false,
-   "is_new": true,
-   "first_seen": "2026-11-05",
-   "workplace_type": "onsite",
-   "source": "Arbeitnow",
-   "also_on": [],
-   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/accurx/senior-data-engineer-london-448368",
-   "publication_date": "2026-11-04",
-   "fit_score": 89,
-   "fit_reason": "rol primary +30; konum +12; beceri 5×5 +25; kıdem senior +5; tazelik +10",
-   "matched_skills": [
-    "SQL",
-    "Python",
-    "ETL",
-    "Snowflake",
-    "dbt"
-   ],
-   "location_reason": "Arbeitnow konumu 'London (Shoreditch)'",
-   "seniority": "senior",
-   "focus": "pipeline",
-   "focus_scores": {
-    "ml": 5,
-    "bi": 0,
-    "pipeline": 19,
-    "business": 3
-   },
-   "language": "en",
-   "generated_at": "2026-11-05 15:56",
-   "summary": "💬 Accurx is where conversations happen with and about patients. For decades, the NHS has struggled with fragmented systems that make simple tasks feel impossible. We’re changing that by building a single, system-wide platform that connects everyone through com",
-   "keywords": [
-    "real-time",
-    "pipeline",
-    "experimentation"
-   ],
-   "url": "https://www.arbeitnow.co.uk/jobs/companies/accurx/senior-data-engineer-london-448368",
-   "skills": [
-    "sql",
-    "python",
-    "etl",
-    "snowflake",
-    "dbt"
-   ],
-   "score": 89,
-   "posted": "2026-11-04",
-   "days": 1,
-   "remote": false,
-   "german": false
-  },
-  {
-   "id": "05d644e02849",
-   "title": "Platform Analytics Engineer",
-   "company": "Arq",
-   "location": "London",
-   "country": "UK",
-   "market": "international",
-   "bucket": "uk",
-   "label": "UK",
-   "tier": 1,
-   "rank": 2,
-   "reserve": false,
-   "is_new": true,
-   "first_seen": "2026-11-05",
-   "workplace_type": "onsite",
-   "source": "Arbeitnow",
-   "also_on": [],
-   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/arq/platform-analytics-engineer-london-397439",
-   "publication_date": "2026-11-05",
-   "fit_score": 84,
-   "fit_reason": "rol primary +30; konum +12; beceri 4×5 +20; kıdem mid +5; tazelik +10",
-   "matched_skills": [
-    "SQL",
-    "Python",
-    "Snowflake",
-    "dbt"
-   ],
-   "location_reason": "Arbeitnow konumu 'London'",
-   "seniority": "mid",
-   "focus": "pipeline",
-   "focus_scores": {
-    "ml": 2,
-    "bi": 7,
-    "pipeline": 10,
-    "business": 5
-   },
-   "language": "en",
-   "generated_at": "2026-11-05 15:56",
-   "summary": "What we're looking for Are you curious about how things work and motivated by uncovering insights hidden in data? As a Platform Analytics Engineer at ARQ , you’ll help us understand our business, customers, and operations through rigorous analysis and thoughtf",
-   "keywords": [
-    "root cause",
-    "automation",
-    "dashboard",
-    "experimentation"
-   ],
-   "url": "https://www.arbeitnow.co.uk/jobs/companies/arq/platform-analytics-engineer-london-397439",
-   "skills": [
-    "sql",
-    "python",
-    "snowflake",
-    "dbt"
-   ],
-   "score": 84,
-   "posted": "2026-11-05",
-   "days": 0,
-   "remote": false,
-   "german": false
-  }
- ],
- "reserve": [
-  {
-   "id": "9beb5130990d",
-   "title": "Senior Software Engineer - Data Platform (m/w/d)",
-   "company": "Nubank",
-   "location": "Berlin",
-   "country": "DE",
-   "market": "international",
-   "bucket": "de",
-   "label": "DE",
-   "tier": 1,
-   "rank": 3,
-   "reserve": true,
-   "is_new": false,
-   "first_seen": "2026-11-04",
-   "workplace_type": "onsite",
-   "source": "Arbeitnow",
-   "also_on": [
-    "Arbeitnow"
-   ],
-   "source_url": "https://www.arbeitnow.com/jobs/companies/nubank/senior-software-engineer-data-platform-berlin-354544",
-   "publication_date": "2026-11-03",
-   "fit_score": 64,
-   "fit_reason": "rol primary +30; konum +15; beceri 0×5 +0; kıdem senior +5; tazelik +7",
-   "matched_skills": [],
-   "location_reason": "Arbeitnow konumu 'Berlin'",
-   "seniority": "senior",
-   "focus": "pipeline",
-   "focus_scores": {
-    "ml": 1,
-    "bi": 0,
-    "pipeline": 22,
-    "business": 2
-   },
-   "language": "en",
-   "generated_at": "2026-11-05 15:56",
-   "summary": "About Nu Nu serves more than 140 million customers, guided by a mission to fight complexity and empower people. The company has been leading an industry transformation through innovative products and human-centered services. Proprietary technology and data at ",
-   "keywords": [
-    "cost",
-    "pipeline"
-   ],
-   "url": "https://www.arbeitnow.com/jobs/companies/nubank/senior-software-engineer-data-platform-berlin-354544",
-   "skills": [],
-   "score": 64,
-   "posted": "2026-11-03",
-   "days": 2,
-   "remote": false,
-   "german": false
-  },
-  {
-   "id": "9eb5ee8659ac",
-   "title": "Machine Learning Engineer (All genders)",
-   "company": "Skdse",
-   "location": "Munich, Bavaria",
-   "country": "DE",
-   "market": "international",
-   "bucket": "de",
-   "label": "DE",
-   "tier": 2,
-   "rank": 4,
-   "reserve": true,
-   "is_new": false,
-   "first_seen": "2026-11-03",
-   "workplace_type": "onsite",
-   "source": "Arbeitnow",
-   "also_on": [],
-   "source_url": "https://www.arbeitnow.com/jobs/companies/skdse/machine-learning-engineer-all-genders-munich-bavaria-32400",
-   "publication_date": "2026-11-03",
-   "fit_score": 72,
-   "fit_reason": "rol secondary +18; konum +10; beceri 5×5 +25; kıdem mid +5; tazelik +7",
-   "matched_skills": [
-    "SQL",
-    "Python",
-    "Azure",
-    "Airflow",
-    "dbt"
-   ],
-   "location_reason": "Arbeitnow konumu 'Munich, Bavaria'",
-   "seniority": "mid",
-   "focus": "ml",
-   "focus_scores": {
-    "ml": 17,
-    "bi": 0,
-    "pipeline": 6,
-    "business": 7
-   },
-   "language": "en",
-   "generated_at": "2026-11-05 15:56",
-   "summary": "At Stark, we forge the future of European and national security through cutting-edge, AI-driven technology and unmatched engineering precision. As a premier defence technology company, our mission is clear: to equip NATO Allies and their partners with next-gen",
-   "keywords": [
-    "stakeholder",
-    "pipeline",
-    "anomaly",
-    "experimentation",
-    "automation"
-   ],
-   "url": "https://www.arbeitnow.com/jobs/companies/skdse/machine-learning-engineer-all-genders-munich-bavaria-32400",
-   "skills": [
-    "sql",
-    "python",
-    "azure",
-    "airflow",
-    "dbt"
-   ],
-   "score": 72,
-   "posted": "2026-11-03",
-   "days": 2,
-   "remote": false,
-   "german": false
-  },
-  {
-   "id": "db2805f19c9c",
-   "title": "Senior Business Intelligence Manager - COO Office (m/f/x)",
-   "company": "FINN",
-   "location": "Munich",
-   "country": "DE",
-   "market": "international",
-   "bucket": "de",
-   "label": "DE",
-   "tier": 2,
-   "rank": 5,
-   "reserve": true,
-   "is_new": false,
-   "first_seen": "2026-11-03",
-   "workplace_type": "onsite",
-   "source": "Arbeitnow",
-   "also_on": [],
-   "source_url": "https://www.arbeitnow.com/jobs/companies/finn/senior-business-intelligence-manager-coo-office-munich-96059",
-   "publication_date": "2026-11-03",
-   "fit_score": 46,
-   "fit_reason": "rol primary +30; konum +10; beceri 0×5 +0; kıdem manager -8; tazelik +7",
-   "matched_skills": [],
-   "location_reason": "Arbeitnow konumu 'Munich'",
-   "seniority": "manager",
-   "focus": "bi",
-   "focus_scores": {
-    "ml": 0,
-    "bi": 15,
-    "pipeline": 0,
-    "business": 8
-   },
-   "language": "en",
-   "generated_at": "2026-11-05 15:56",
-   "summary": "Your Role As Senior Business Intelligence Manager, you are the navigator of our Operations department and own the planning & controlling of a nine-digit P&L across four units. Working closely with our SVP Operations, the Operations leadership teams and our Fin",
-   "keywords": [
-    "finance",
-    "dashboard",
-    "automation",
-    "stakeholder",
-    "supply chain",
-    "energy"
-   ],
-   "url": "https://www.arbeitnow.com/jobs/companies/finn/senior-business-intelligence-manager-coo-office-munich-96059",
-   "skills": [],
-   "score": 46,
-   "posted": "2026-11-03",
-   "days": 2,
-   "remote": false,
-   "german": false
-  },
-  {
-   "id": "4f8e7d9a6e6d",
-   "title": "Senior Data Engineer",
-   "company": "JetBridge",
-   "location": "Albania, Andorra, Anguilla, Antigua and Barbuda, Argentina, Aruba, Austria, Bahamas, Barbados, Belarus, Belgium, Belize, Bermuda, Bolivia, Bonaire, Sint Eustatius and Saba, Bosnia and Herzegovina, Brazil, Bulgaria, Cayman Islands, Chile, Colombia, Costa Rica, Croatia, Cuba, Cyprus, Czechia, Denmark, Dominica, Dominican Republic, Ecuador, El Salvador, Estonia, Falkland Islands (Malvinas), Faroe Islands, Finland, France, Germany, Gibraltar, Greece, Grenada, Guatemala, Guernsey, Guyana, Haiti, Holy See (Vatican City State), Honduras, Hungary, Iceland, Ireland, Isle of Man, Italy, Jamaica, Jersey, Kosovo, Latvia, Liechtenstein, Lithuania, Luxembourg, Malta, Mexico, Moldova, Monaco, Montenegro, Montserrat, Netherlands, Nicaragua, North Macedonia, Norway, Panama, Paraguay, Peru, Poland, Portugal, Puerto Rico, Romania, Saint Kitts and Nevis, Saint Lucia, Saint Vincent and the Grenadines, San Marino, Serbia, Slovakia, Slovenia, South Georgia and the South Sandwich Islands, Spain, Suriname, Svalbard and Jan Mayen, Sweden, Switzerland, Trinidad and Tobago, Turks and Caicos Islands, Ukraine, United Kingdom, Uruguay, Venezuela, Virgin Islands, British, Virgin Islands, U.S., Åland Islands",
-   "country": "DE",
-   "market": "international",
-   "bucket": "de",
-   "label": "DE",
-   "tier": 3,
-   "rank": 6,
-   "reserve": true,
-   "is_new": false,
-   "first_seen": "2026-11-02",
-   "workplace_type": "remote",
-   "source": "Himalayas",
-   "also_on": [],
-   "source_url": "https://himalayas.app/companies/jetbridge/jobs/senior-data-engineer?utm_source=api",
-   "publication_date": "2026-11-05",
-   "fit_score": 78,
-   "fit_reason": "rol primary +30; konum +9; beceri 3×5 +15; kıdem senior +5; tazelik +10",
-   "matched_skills": [
-    "Python",
-    "Snowflake",
-    "dbt"
-   ],
-   "location_reason": "Remotive candidate_required_location 'Albania, Andorra, Anguilla, Antigua and Barbuda, Argentina, '",
-   "seniority": "senior",
-   "focus": "pipeline",
-   "focus_scores": {
-    "ml": 0,
-    "bi": 2,
-    "pipeline": 19,
-    "business": 0
-   },
-   "language": "en",
-   "generated_at": "2026-11-05 15:56",
-   "summary": "Build and scale the data infrastructure for a fast-growing, profitable health-tech company. In this role, you will design the robust pipelines, storage architectures, and data models that ensure our datasets are accurate, secure, and ready to drive critical de",
-   "keywords": [
-    "pipeline",
-    "scalab"
-   ],
-   "url": "https://himalayas.app/companies/jetbridge/jobs/senior-data-engineer?utm_source=api",
-   "skills": [
-    "python",
-    "snowflake",
-    "dbt"
-   ],
-   "score": 78,
-   "posted": "2026-11-05",
-   "days": 0,
-   "remote": true,
    "german": false
   },
   {
@@ -768,7 +710,7 @@
    "bucket": "nl",
    "label": "NL",
    "tier": 1,
-   "rank": 3,
+   "rank": 4,
    "reserve": true,
    "is_new": false,
    "first_seen": "2026-11-01",
@@ -794,7 +736,7 @@
     "business": 3
    },
    "language": "en",
-   "generated_at": "2026-11-05 15:56",
+   "generated_at": "2026-11-06 15:43",
    "summary": "Insurance is a numbers business, and most of those numbers are harder to trust than they look. You would lead the team that defines the numbers Insify runs on, from the event a customer fires on our website to the report a risk carrier audits months later. Abo",
    "keywords": [
     "finance",
@@ -808,15 +750,15 @@
    ],
    "score": 60,
    "posted": "2026-11-01",
-   "days": 4,
+   "days": 5,
    "remote": false,
    "german": false
   },
   {
-   "id": "a8eac63d7d59",
-   "title": "Data analyst ( BI.SQL, Tableu and Python)",
-   "company": "Kryptos Technologies limited",
-   "location": "London",
+   "id": "a2faeeb35ddb",
+   "title": "Lead Analytics Engineer - Finance Data (FinOps)",
+   "company": "Finom",
+   "location": "United Kingdom",
    "country": "UK",
    "market": "international",
    "bucket": "uk",
@@ -825,49 +767,54 @@
    "rank": 3,
    "reserve": true,
    "is_new": true,
-   "first_seen": "2026-11-05",
+   "first_seen": "2026-11-06",
    "workplace_type": "onsite",
    "source": "Arbeitnow",
    "also_on": [],
-   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/kryptos-technologies-limited/data-analyst-bisql-tableu-and-python-london-314986",
+   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/finom/lead-analytics-engineer-finance-data-finops-united-kingdom-414481",
    "publication_date": "2026-11-05",
-   "fit_score": 79,
-   "fit_reason": "rol primary +30; konum +12; beceri 3×5 +15; kıdem mid +5; tazelik +10",
+   "fit_score": 68,
+   "fit_reason": "rol primary +30; konum +12; beceri 3×5 +15; kıdem lead -6; tazelik +10",
    "matched_skills": [
     "SQL",
-    "Python",
-    "Tableau"
+    "ETL",
+    "Databricks"
    ],
-   "location_reason": "Arbeitnow konumu 'London'",
-   "seniority": "mid",
-   "focus": "bi",
+   "location_reason": "Arbeitnow konumu 'United Kingdom'",
+   "seniority": "lead",
+   "focus": "pipeline",
    "focus_scores": {
-    "ml": 2,
-    "bi": 19,
-    "pipeline": 0,
-    "business": 0
+    "ml": 0,
+    "bi": 2,
+    "pipeline": 13,
+    "business": 3
    },
    "language": "en",
-   "generated_at": "2026-11-05 15:56",
-   "summary": "DATA ANALAYST ( BI,SQL, PYTHON and TABLEAU) London, UK 6MONTHS APPLE PROJECT We are looking for strong Data Analyst candidate with hands on BI, SQL , Python, Tableau exp. We are actively looking for a data analyst. Any data analyst should have experience with ",
-   "keywords": [],
-   "url": "https://www.arbeitnow.co.uk/jobs/companies/kryptos-technologies-limited/data-analyst-bisql-tableu-and-python-london-314986",
+   "generated_at": "2026-11-06 15:43",
+   "summary": "About Finom Finom is growing fast, and Finance needs data that grows with it. As our Lead Analytics Engineer for Finance, you'll be the data partner for treasury, reconciliation and accounting. You'll also support our corporate finance and investor reporting w",
+   "keywords": [
+    "finance",
+    "automation",
+    "cost",
+    "stakeholder"
+   ],
+   "url": "https://www.arbeitnow.co.uk/jobs/companies/finom/lead-analytics-engineer-finance-data-finops-united-kingdom-414481",
    "skills": [
     "sql",
-    "python",
-    "tableau"
+    "etl",
+    "databricks"
    ],
-   "score": 79,
+   "score": 68,
    "posted": "2026-11-05",
-   "days": 0,
+   "days": 1,
    "remote": false,
    "german": false
   },
   {
-   "id": "472d33c97c1e",
-   "title": "Senior Data Analyst",
-   "company": "Midnite",
-   "location": "United Kingdom",
+   "id": "cc746b27a6ea",
+   "title": "Data Analyst - Credit Risk",
+   "company": "liberis",
+   "location": "London",
    "country": "UK",
    "market": "international",
    "bucket": "uk",
@@ -876,55 +823,51 @@
    "rank": 4,
    "reserve": true,
    "is_new": true,
-   "first_seen": "2026-11-05",
+   "first_seen": "2026-11-06",
    "workplace_type": "onsite",
    "source": "Arbeitnow",
    "also_on": [],
-   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/midnite/senior-data-analyst-united-kingdom-382044",
+   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/liberis/data-analyst-credit-risk-london-126658",
    "publication_date": "2026-11-04",
-   "fit_score": 79,
-   "fit_reason": "rol primary +30; konum +12; beceri 3×5 +15; kıdem senior +5; tazelik +10",
+   "fit_score": 66,
+   "fit_reason": "rol primary +30; konum +12; beceri 1×5 +5; kıdem mid +5; tazelik +7",
    "matched_skills": [
-    "SQL",
-    "Python",
-    "dbt"
+    "SQL"
    ],
-   "location_reason": "Arbeitnow konumu 'United Kingdom'",
-   "seniority": "senior",
+   "location_reason": "Arbeitnow konumu 'London'",
+   "seniority": "mid",
    "focus": "business",
    "focus_scores": {
-    "ml": 0,
-    "bi": 9,
-    "pipeline": 1,
+    "ml": 1,
+    "bi": 3,
+    "pipeline": 0,
     "business": 19
    },
    "language": "en",
-   "generated_at": "2026-11-05 15:56",
-   "summary": "🚀 Why Midnite? Midnite is a next-generation sports betting and gaming platform built for a new wave of players. We combine sharp product thinking, bold brand, and fast execution to create experiences that feel modern, intuitive, and built for how people actual",
+   "generated_at": "2026-11-06 15:43",
+   "summary": "Some key info for you about Liberis: 🌱 We were founded in 2007 💰 We have provided over $3bn of funding to small businesses so far 🚀 We have been named in CNBC & Statista Top 150 UK Fintechs for 2025 🌍 We're a global team, with a dynamic presence in 6 key locat",
    "keywords": [
+    "startup",
+    "finance",
     "stakeholder",
-    "dashboard",
-    "experimentation",
-    "cost",
-    "retail"
+    "forecast",
+    "dashboard"
    ],
-   "url": "https://www.arbeitnow.co.uk/jobs/companies/midnite/senior-data-analyst-united-kingdom-382044",
+   "url": "https://www.arbeitnow.co.uk/jobs/companies/liberis/data-analyst-credit-risk-london-126658",
    "skills": [
-    "sql",
-    "python",
-    "dbt"
+    "sql"
    ],
-   "score": 79,
+   "score": 66,
    "posted": "2026-11-04",
-   "days": 1,
+   "days": 2,
    "remote": false,
    "german": false
   },
   {
-   "id": "561207fd04e7",
-   "title": "Staff Data Engineer",
-   "company": "Sparta Commodities",
-   "location": "London",
+   "id": "0eff1f1b8830",
+   "title": "Resource Planner – Data Analyst",
+   "company": "Ivcevidensia",
+   "location": "Dunfermline, Fife, Scotland",
    "country": "UK",
    "market": "international",
    "bucket": "uk",
@@ -933,52 +876,36 @@
    "rank": 5,
    "reserve": true,
    "is_new": true,
-   "first_seen": "2026-11-05",
+   "first_seen": "2026-11-06",
    "workplace_type": "onsite",
    "source": "Arbeitnow",
    "also_on": [],
-   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/sparta-commodities/staff-data-engineer-london-404913",
+   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/ivcevidensia/resource-planner-data-analyst-dunfermline-fife-scotland-482578",
    "publication_date": "2026-11-05",
-   "fit_score": 78,
-   "fit_reason": "rol primary +30; konum +12; beceri 5×5 +25; kıdem lead -6; tazelik +10",
-   "matched_skills": [
-    "Python",
-    "ETL",
-    "PySpark",
-    "PostgreSQL",
-    "dbt"
-   ],
-   "location_reason": "Arbeitnow konumu 'London'",
-   "seniority": "lead",
-   "focus": "pipeline",
+   "fit_score": 64,
+   "fit_reason": "rol primary +30; konum +12; beceri 0×5 +0; kıdem mid +5; tazelik +10",
+   "matched_skills": [],
+   "location_reason": "Arbeitnow konumu 'Dunfermline, Fife, Scotland'",
+   "seniority": "mid",
+   "focus": "business",
    "focus_scores": {
     "ml": 0,
-    "bi": 2,
-    "pipeline": 20,
-    "business": 6
+    "bi": 1,
+    "pipeline": 0,
+    "business": 11
    },
    "language": "en",
-   "generated_at": "2026-11-05 15:56",
-   "summary": "We Are Sparta Sparta is the AI leader for commodity trading, home to Leonidas AI, the first operating system for oil and commodity traders. Backed by $42 million in Series B funding led by One Peak, with participation from returning investors FirstMark and Sin",
+   "generated_at": "2026-11-06 15:43",
+   "summary": "Resource Planner – Data Analyst Full-time - £31,930.00 Vets Now, part of inspiring vet care, are the UK’s leading provider of emergency pet care, providing a trusted service to more than 1700 veterinary practices, – from dedicated out-of-hours clinics and 24/7",
    "keywords": [
-    "dashboard",
-    "real-time",
-    "scalab",
-    "pipeline",
-    "stakeholder",
-    "data quality"
+    "forecast",
+    "stakeholder"
    ],
-   "url": "https://www.arbeitnow.co.uk/jobs/companies/sparta-commodities/staff-data-engineer-london-404913",
-   "skills": [
-    "python",
-    "etl",
-    "pyspark",
-    "postgresql",
-    "dbt"
-   ],
-   "score": 78,
+   "url": "https://www.arbeitnow.co.uk/jobs/companies/ivcevidensia/resource-planner-data-analyst-dunfermline-fife-scotland-482578",
+   "skills": [],
+   "score": 64,
    "posted": "2026-11-05",
-   "days": 0,
+   "days": 1,
    "remote": false,
    "german": false
   }
@@ -990,9 +917,9 @@
     "istanbul_hibrit": 0,
     "istanbul_onsite": 0
    },
-   "de": 7,
-   "nl": 4,
-   "uk": 15
+   "de": 5,
+   "nl": 5,
+   "uk": 13
   },
   "selected": {
    "tr": 0,
@@ -1007,19 +934,19 @@
    }
   },
   "eliminated": {
-   "rol dışı (başlık)": 919,
-   "rol dışı (hedef rol yok)": 1909,
-   "ülke belirlenemedi": 32,
-   "tekrar (farklı kaynak)": 3,
+   "rol dışı (hedef rol yok)": 1927,
+   "rol dışı (başlık)": 939,
+   "ML/DS rolü, beceri örtüşmesi zayıf": 7,
    "Almanca ilan": 6,
-   "ML/DS rolü, beceri örtüşmesi zayıf": 4,
-   "Remotive candidate_required_location 'Anguilla, Antigua and Barbuda, Argentina, Aruba, Bahamas, Ba'": 1,
-   "Remotive candidate_required_location 'United States'": 4,
-   "Remotive candidate_required_location 'Brazil'": 1,
-   "dünya geneli remote (Türkiye ilanı değil)": 3,
+   "ülke belirlenemedi": 18,
+   "tekrar (farklı kaynak)": 3,
+   "Remotive candidate_required_location 'Malta'": 1,
+   "Remotive candidate_required_location 'Ukraine'": 1,
+   "Remotive candidate_required_location 'United States'": 1,
+   "dünya geneli remote (Türkiye ilanı değil)": 2,
    "yayın tarihi eski": 2,
    "süresi doldu (daha önce gösterildi)": 1,
-   "süresi doldu (14 gün)": 2
+   "süresi doldu (14 gün)": 1
   }
  },
  "history": {
@@ -1078,11 +1005,6 @@
    "status": "listed",
    "last_seen": "2026-10-12"
   },
-  "0a5357073e22": {
-   "first_seen": "2026-10-06",
-   "status": "listed",
-   "last_seen": "2026-10-06"
-  },
   "c27281295a52": {
    "first_seen": "2026-10-06",
    "status": "listed",
@@ -1097,11 +1019,6 @@
    "first_seen": "2026-10-06",
    "status": "listed",
    "last_seen": "2026-10-14"
-  },
-  "d24203837c90": {
-   "first_seen": "2026-10-06",
-   "status": "listed",
-   "last_seen": "2026-10-06"
   },
   "9732e6ca17a2": {
    "first_seen": "2026-10-06",
@@ -1811,7 +1728,7 @@
   "949b3356d83d": {
    "first_seen": "2026-10-20",
    "status": "expired",
-   "last_seen": "2026-11-05"
+   "last_seen": "2026-11-06"
   },
   "5cf41b895c50": {
    "first_seen": "2026-10-20",
@@ -1930,8 +1847,8 @@
   },
   "82c214980aaf": {
    "first_seen": "2026-10-23",
-   "status": "listed",
-   "last_seen": "2026-11-05"
+   "status": "expired",
+   "last_seen": "2026-11-06"
   },
   "30d8bc738ad3": {
    "first_seen": "2026-10-23",
@@ -2291,7 +2208,7 @@
   "77fe529bbb66": {
    "first_seen": "2026-10-31",
    "status": "listed",
-   "last_seen": "2026-11-05"
+   "last_seen": "2026-11-06"
   },
   "bbf73e38ce08": {
    "first_seen": "2026-11-01",
@@ -2301,7 +2218,7 @@
   "96068e3be415": {
    "first_seen": "2026-11-01",
    "status": "listed",
-   "last_seen": "2026-11-05"
+   "last_seen": "2026-11-06"
   },
   "5202ac19fce8": {
    "first_seen": "2026-11-01",
@@ -2371,7 +2288,7 @@
   "069cf3aa1c02": {
    "first_seen": "2026-11-03",
    "status": "listed",
-   "last_seen": "2026-11-05"
+   "last_seen": "2026-11-06"
   },
   "12dc7e7f1f69": {
    "first_seen": "2026-11-03",
@@ -2406,12 +2323,12 @@
   "f5dc2f8bb803": {
    "first_seen": "2026-11-04",
    "status": "listed",
-   "last_seen": "2026-11-05"
+   "last_seen": "2026-11-06"
   },
   "9beb5130990d": {
    "first_seen": "2026-11-04",
    "status": "listed",
-   "last_seen": "2026-11-05"
+   "last_seen": "2026-11-06"
   },
   "d8f7d07a090c": {
    "first_seen": "2026-11-04",
@@ -2436,32 +2353,32 @@
   "52e3f8c61c68": {
    "first_seen": "2026-11-05",
    "status": "listed",
-   "last_seen": "2026-11-05"
+   "last_seen": "2026-11-06"
   },
   "b08ffa09eac3": {
    "first_seen": "2026-11-05",
    "status": "listed",
-   "last_seen": "2026-11-05"
+   "last_seen": "2026-11-06"
   },
   "2cc19ff8b5e2": {
    "first_seen": "2026-11-05",
    "status": "listed",
-   "last_seen": "2026-11-05"
+   "last_seen": "2026-11-06"
   },
   "cda31bc6f2fb": {
    "first_seen": "2026-11-05",
    "status": "listed",
-   "last_seen": "2026-11-05"
+   "last_seen": "2026-11-06"
   },
   "3093ba97aa2c": {
    "first_seen": "2026-11-05",
    "status": "listed",
-   "last_seen": "2026-11-05"
+   "last_seen": "2026-11-06"
   },
   "05d644e02849": {
    "first_seen": "2026-11-05",
    "status": "listed",
-   "last_seen": "2026-11-05"
+   "last_seen": "2026-11-06"
   },
   "a8eac63d7d59": {
    "first_seen": "2026-11-05",
@@ -2476,7 +2393,52 @@
   "561207fd04e7": {
    "first_seen": "2026-11-05",
    "status": "listed",
-   "last_seen": "2026-11-05"
+   "last_seen": "2026-11-06"
+  },
+  "7a50ba208a6e": {
+   "first_seen": "2026-11-06",
+   "status": "listed",
+   "last_seen": "2026-11-06"
+  },
+  "f89f932c01fa": {
+   "first_seen": "2026-11-06",
+   "status": "listed",
+   "last_seen": "2026-11-06"
+  },
+  "18b912afcdad": {
+   "first_seen": "2026-11-06",
+   "status": "listed",
+   "last_seen": "2026-11-06"
+  },
+  "fcdb5bb5311d": {
+   "first_seen": "2026-11-06",
+   "status": "listed",
+   "last_seen": "2026-11-06"
+  },
+  "defe783531cc": {
+   "first_seen": "2026-11-06",
+   "status": "listed",
+   "last_seen": "2026-11-06"
+  },
+  "9e9ac38882af": {
+   "first_seen": "2026-11-06",
+   "status": "listed",
+   "last_seen": "2026-11-06"
+  },
+  "a2faeeb35ddb": {
+   "first_seen": "2026-11-06",
+   "status": "listed",
+   "last_seen": "2026-11-06"
+  },
+  "cc746b27a6ea": {
+   "first_seen": "2026-11-06",
+   "status": "listed",
+   "last_seen": "2026-11-06"
+  },
+  "0eff1f1b8830": {
+   "first_seen": "2026-11-06",
+   "status": "listed",
+   "last_seen": "2026-11-06"
   }
  },
  "note": "Kaynak: Arbeitnow + Remotive. Basvuruyu kullanici kendisi yapar."
