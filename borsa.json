@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-08 16:11",
+  "updated": "2026-11-08 19:51",
   "watch": [
     {
       "code": "TOASO",
@@ -236,30 +236,63 @@
     }
   ],
   "gold": {
-    "price": "6,568.14",
-    "chg": "-0.98%"
+    "price": "6,568.46",
+    "chg": "-0.97%"
   },
-  "news": [],
+  "news": [
+    {
+      "t": "🟢 Tofaş’ın (TOASO) 9 aylık karı yüzde 189 yükseldi  (Paratic Haber)",
+      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTFBkYkZwSFREWXdtZG81VHVDQ29GRDMyaDM2WHhqdUhBNmoxdlo4WGdmSWtuZzJQN2c2M3pISXBKZkl4c0RrU3BjaHlBVHBYVkJhWWVycGdVOGZ5UFJSbmMyaHhCaFFKQVhBblNhWDFZMTl5N2Q4?oc=5"
+    },
+    {
+      "t": "🟢 Tofaş’ta (TOASO) Güçlü Bilanço Sıçraması ve Aracı Kurum Hedef Fiyatları  (Borsa Gundem)",
+      "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPSVY0NUFwZmxSYXJUNWZoMXhVOEdCYlpYRnZ2bk5rNWFHWEJpcW8zRmVBZExTR05oMFVhZ2tOYWRNTHR6dE50elM5NmpKRTZlYzY0ZFNTUmpCd3NEd0xFSE5oYzd1M1ZrOG9HVHhZSjROTzlROHRneVdkVEtYZG51UzhSdWJ4TjRBdDN6SXJWNWZwRnlJOVQwYlRoMnhRR09Z?oc=5"
+    },
+    {
+      "t": "⚪ YEO TEKNOLOJI EN - KAP Haberleri - 2026-11-05 tarihli  (Bloomberght)",
+      "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE95R1dZdmNpUEZaam9TNnk4WHF4X2huLU1fbUVaaTROUnFjVXFCOC1hQ0NtVnpYTUJfZmpzWWwteGFqbU1HZU9OLXN4Ni04azVaT1dwbmJfeGNzRHk2bmY4aEJ0OEtoSXQ0ek9IWjBDLW16VHgwTWRBQzVEN21VOGs?oc=5"
+    },
+    {
+      "t": "⚪ YEO TEKNOLOJI EN - KAP Haberleri - 2026-11-05 tarihli  (Bloomberght)",
+      "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5pNWZMbXhUWE5uOHIwNm9BVU5yRnNqVTBxUzFQMzMxUVN6Z2dGNVRRWmNabHA3d1VfR1BPbHZGT1hnNjBRTzl4MVZxT3hoOWJJamkwMi1TZUZUMGxEd2lzenpXcVlzRjMzeEdHSS1OOUFmWHRpcDZuaXRYSkJQeEU?oc=5"
+    },
+    {
+      "t": "🟢 Astor Enerji (ASTOR) hisselerinde Ak Yatırım üzerinden yüklü alım  (Rota Borsa)",
+      "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNOXFPbEc0b1FJY25qS2dUQmVvNm9YVGt6LXNYc1dXdXQ4UlBoLVdJNkUtUTdhUmVrN2Ywc0Z5RmxCMnpwVWFXeDV4ZzBwYzZEbWJNUVBIX2Vva21iMFV3S050N010aVhBUTdtNkxFdWFUamdBUk40N2hTckpjX2VRZkRrX0tqWTVBREZYVTROYw?oc=5"
+    },
+    {
+      "t": "⚪ Astor Enerji (ASTOR) Hedef Fiyatları 2026 - Güncel Liste  (Rota Borsa)",
+      "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE0yVUx1QXJOcjhYak51Z3hYWWZFeC1FY3VENXBGZVZwb3pZNFRGTWY4RHZzWHluczU5eFZzeFI1NGhwSkg5a1ZiTFZGNjFrUVFSOVM4a3hhUXRwejBCaU5PZjNWU3dXQVZL?oc=5"
+    },
+    {
+      "t": "🟢 Astor Enerji (ASTOR) Ak Yatırım üzerinden yapılan yüklü alımlarla yüzde 8,17 yükseldi  (Rota Borsa)",
+      "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQODYzWjZmdllSemFsU2RPQW15SW9ILUk0RXJLNmpHbWtEcGgyanRtMVB3RmdiUVdyaWQ4VnBoYmRjbEpBSXI4R1M0V0ZPYkxEX2pKR0l6NXVVbFNFZzktSGJtcm1URWRMWUFHTllTSHpqd2tyV1U4Uy1zaDJvLXlHMjJiZHdHUHFnYlA5MWkzYVpSa3Q5TWZCMmY4c0xxejJTM1Z2blI5bWs?oc=5"
+    },
+    {
+      "t": "⚪ Doğuş Otomotiv (DOAS) 2026 3. çeyrek bilanço beklentisi  (Rota Borsa)",
+      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPRy1CaU5NT2pENDdhaXd4bzBmdVByclhpWHN5eGU1dVc1RlRKUUZyMEpMVHNha0pwbTZKWllnNTMwVjUyUW1Ibm9wS1JCNVRFeVc1bnh5TWFTdk1VV19pcUdsVjF6X2x3ZlUxVU1lbkV4Xy1LODR5b18xNmRyNmVDNA?oc=5"
+    }
+  ],
   "world": [
     {
       "t": "🌍 What we know so far after Krakow gun attack  (BBC World)",
       "link": "https://www.bbc.co.uk/news/articles/cmd7q15drwgeo?at_medium=RSS&at_campaign=rss"
     },
     {
-      "t": "🌍 How African philosophies inspired a new approach to staging film festivals in Manchester  (Guardian World)",
-      "link": "https://www.theguardian.com/news/2026/nov/08/african-philosophies-see-my-world-film-festival-manchester"
+      "t": "🌍 Collision of two trains in Egypt kills at least four  (Guardian World)",
+      "link": "https://www.theguardian.com/world/2026/nov/08/egypt-two-trains-deadly-collision"
     },
     {
-      "t": "🌍 Poland mourns six killed in attack as authorities launch ‘terrorism’ probe  (Al Jazeera)",
-      "link": "https://www.aljazeera.com/news/2026/11/8/poland-mourns-six-killed-in-attack-as-authorities-launch-terrorism-probe?traffic_source=rss"
+      "t": "🌍 Israeli forces release Palestinian journalist Abou Shhadeh  (Al Jazeera)",
+      "link": "https://www.aljazeera.com/news/2026/11/8/israeli-forces-release-palestinian-journalist-abou-shhadeh?traffic_source=rss"
     },
     {
-      "t": "🌍 A desert stirs to life: Chile's Atacama erupts in its biggest floral display in decades  (NPR World)",
-      "link": "https://www.npr.org/2026/11/08/nx-s1-6023812/chile-desert-el-nino"
+      "t": "🌍 No clear winner in New Zealand election, as leaders prepare for weeks of talks  (NPR World)",
+      "link": "https://www.npr.org/2026/11/08/nx-s1-6033999/no-clear-winner-in-new-zealand-election-as-leaders-prepare-for-weeks-of-talks"
     },
     {
-      "t": "🌍 Egypt reopens Tripoli embassy after 12 years and raises concerns over Turkey-Libya maritime deal  (Euronews)",
-      "link": "https://www.euronews.com/2026/11/08/egypt-reopens-tripoli-embassy-after-12-years-and-raises-concerns-over-turkey-libya-maritim"
+      "t": "🌍 Watch: Spectacular double waterspout forms off Italy's Capri island  (Euronews)",
+      "link": "https://www.euronews.com/2026/11/08/watch-spectacular-double-waterspout-forms-off-italys-capri-island"
     },
     {
       "t": "🌍 Ebola: Why is there still no vaccine?  (DW)",
@@ -268,47 +301,54 @@
   ],
   "tr": [
     {
-      "t": "🇹🇷 Ankara'da 247 kilometrelik akıllı ulaşım koridoru oluşturulacak  (TRT Haber)",
-      "link": "https://www.trthaber.com/haber/turkiye/ankarada-247-kilometrelik-akilli-ulasim-koridoru-olusturulacak-962601.html"
+      "t": "🇹🇷 İsrail'de hükümeti kurma görevi Eisenkot'a verildi  (TRT Haber)",
+      "link": "https://www.trthaber.com/haber/dunya/israilde-hukumeti-kurma-gorevi-eisenkota-verildi-962613.html"
+    },
+    {
+      "t": "🇹🇷 Türkiye ve Irak'tan ortak açıklama: TSK'nın Başika üssünden çekilme süreci başlayacak  (BBC Türkçe)",
+      "link": "https://www.bbc.com/turkce/articles/cxnv04p1dvgpo?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "t": "🇹🇷 Türkiye ve Irak'tan ortak açıklama. ''Başika-Zilikan'ın devri için adım atılacak''  (NTV)",
+      "link": "https://www.ntv.com.tr/turkiye/turkiye-ve-iraktan-ortak-aciklama-basika-zilikanin-devri-icin-adim-atilacak-1749996"
+    },
+    {
+      "t": "🇹🇷 İletişim Başkanlığı COP31'de küresel iklim gündemini uluslararası diyaloğun merkezine taşıyor  (TRT Haber)",
+      "link": "https://www.trthaber.com/haber/gundem/iletisim-baskanligi-cop31de-kuresel-iklim-gundemini-uluslararasi-diyalogun-merkezine-tasiyor-962612.html"
     },
     {
       "t": "🇹🇷 Erdoğan Azerbaycan'da: Aliyev ile ortak basın toplantısında 'birlik' mesajı  (BBC Türkçe)",
       "link": "https://www.bbc.com/turkce/articles/cw1m4dj30e05o?at_medium=RSS&at_campaign=rss"
     },
     {
-      "t": "🇹🇷 Polis Merkezi Amirliği'nin açılışını yaptı  (Habertürk)",
-      "link": "https://www.haberturk.com/gundem/icisleri-bakani-mustafa-ciftci-polis-merkezi-amirligi-nin-acilisini-yapti-3925803"
-    },
-    {
-      "t": "🇹🇷 Direksiyon hakimiyetini kaybetti, takla attı  (NTV)",
-      "link": "https://www.ntv.com.tr/turkiye/video-direksiyon-hakimiyetini-kaybetti-takla-atti-1749966"
-    },
-    {
-      "t": "🇹🇷 İran Devrim Muhafızlarından Hürmüz Boğazı uyarısı: Mayınlar bekliyor  (TRT Haber)",
-      "link": "https://www.trthaber.com/haber/dunya/iran-devrim-muhafizlarindan-hurmuz-bogazi-uyarisi-mayinlar-bekliyor-962600.html"
-    },
-    {
-      "t": "🇹🇷 Antalya'da düzenlenen COP31'den neler bekleniyor, kilit sorular neler?  (BBC Türkçe)",
-      "link": "https://www.bbc.com/turkce/articles/cw073jxd20jro?at_medium=RSS&at_campaign=rss"
+      "t": "🇹🇷 Okul saldırısında dikkat çeken tutanak  (Habertürk)",
+      "link": "https://www.haberturk.com/gundem/son-dakika-okul-saldirisinda-dikkat-ceken-tutanak-bina-onunde-1-dakika-beklemis-3925805"
     }
   ],
   "_teshis": {
     "dunya": [
       "BBC World: 25 öğe / 2 alındı / 0 elendi | ilk: What we know so far after Krakow gun attack",
-      "Guardian World: 45 öğe / 2 alındı / 0 elendi | ilk: How African philosophies inspired a new approach to staging ",
-      "Al Jazeera: 25 öğe / 2 alındı / 0 elendi | ilk: Poland mourns six killed in attack as authorities launch ‘te",
-      "NPR World: 10 öğe / 2 alındı / 0 elendi | ilk: A desert stirs to life: Chile's Atacama erupts in its bigges",
-      "Euronews: 50 öğe / 2 alındı / 0 elendi | ilk: Egypt reopens Tripoli embassy after 12 years and raises conc",
-      "DW: 13 öğe / 2 alındı / 0 elendi | ilk: Ebola: Why is there still no vaccine?",
+      "Guardian World: 45 öğe / 2 alındı / 0 elendi | ilk: Collision of two trains in Egypt kills at least four",
+      "Al Jazeera: 25 öğe / 2 alındı / 0 elendi | ilk: Israeli forces release Palestinian journalist Abou Shhadeh",
+      "NPR World: 10 öğe / 2 alındı / 0 elendi | ilk: No clear winner in New Zealand election, as leaders prepare ",
+      "Euronews: 50 öğe / 2 alındı / 0 elendi | ilk: Watch: Spectacular double waterspout forms off Italy's Capri",
+      "DW: 11 öğe / 2 alındı / 0 elendi | ilk: Ebola: Why is there still no vaccine?",
       "SONUÇ: 6 haber · veren: Al Jazeera, BBC World, DW, Euronews, Guardian World, NPR World",
       "AA: OKUNAMADI RemoteDisconnected: Remote end closed connection without response",
-      "TRT Haber: 50 öğe / 2 alındı / 0 elendi | ilk: Ankara'da 247 kilometrelik akıllı ulaşım koridoru oluşturula",
-      "BBC Türkçe: 16 öğe / 2 alındı / 0 elendi | ilk: Erdoğan Azerbaycan'da: Aliyev ile ortak basın toplantısında ",
-      "Habertürk: 30 öğe / 2 alındı / 0 elendi | ilk: Polis Merkezi Amirliği'nin açılışını yaptı",
-      "NTV: 20 öğe / 2 alındı / 0 elendi | ilk: Direksiyon hakimiyetini kaybetti, takla attı",
+      "TRT Haber: 50 öğe / 2 alındı / 0 elendi | ilk: İsrail'de hükümeti kurma görevi Eisenkot'a verildi",
+      "BBC Türkçe: 16 öğe / 2 alındı / 0 elendi | ilk: Türkiye ve Irak'tan ortak açıklama: TSK'nın Başika üssünden ",
+      "Habertürk: 30 öğe / 2 alındı / 0 elendi | ilk: Türkiye ve Irak'tan ortak açıklama",
+      "NTV: 20 öğe / 2 alındı / 0 elendi | ilk: Türkiye ve Irak'tan ortak açıklama. ''Başika-Zilikan'ın devr",
       "SONUÇ: 6 haber · veren: BBC Türkçe, Habertürk, NTV, TRT Haber · boş dönen: AA"
     ],
-    "hisse": "0 başlık geldi, 0 elendi",
-    "hisse_ham": []
+    "hisse": "10 başlık geldi, 2 elendi",
+    "hisse_ham": [
+      "Tofaş’ın (TOASO) 9 aylık karı yüzde 189 yükseldi",
+      "Tofaş'tan (TOASO) beklentileri aşan 3.çeyrek bilançosu: İşte detaylar!",
+      "Tofaş’ta (TOASO) Güçlü Bilanço Sıçraması ve Aracı Kurum Hedef Fiyatlar",
+      "YEO TEKNOLOJI EN - KAP Haberleri - 2026-11-05 tarihli",
+      "YEO TEKNOLOJI EN - KAP Haberleri - 2026-11-05 tarihli",
+      "Yeo Teknoloji (YEOTK) 2026 yılı 3. çeyrek bilançosunu açıkladı! İşte d"
+    ]
   }
 }
