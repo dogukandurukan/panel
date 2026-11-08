@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-07 19:41",
+  "updated": "2026-11-08 16:11",
   "watch": [
     {
       "code": "TOASO",
@@ -231,120 +231,84 @@
         "rsiTxt": "nötr",
         "rsi": 39.4,
         "volat": 4.3,
-        "volRatio": 1.37
+        "volRatio": 1.02
       }
     }
   ],
   "gold": {
-    "price": "6,570.58",
-    "chg": "-0.71%"
+    "price": "6,568.14",
+    "chg": "-0.98%"
   },
-  "news": [
-    {
-      "t": "🟢 Tofaş’ın (TOASO) 9 aylık karı yüzde 189 yükseldi  (Paratic Haber)",
-      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTFBkYkZwSFREWXdtZG81VHVDQ29GRDMyaDM2WHhqdUhBNmoxdlo4WGdmSWtuZzJQN2c2M3pISXBKZkl4c0RrU3BjaHlBVHBYVkJhWWVycGdVOGZ5UFJSbmMyaHhCaFFKQVhBblNhWDFZMTl5N2Q4?oc=5"
-    },
-    {
-      "t": "🟢 Tofaş’ta (TOASO) Güçlü Bilanço Sıçraması ve Aracı Kurum Hedef Fiyatları  (Borsa Gundem)",
-      "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPSVY0NUFwZmxSYXJUNWZoMXhVOEdCYlpYRnZ2bk5rNWFHWEJpcW8zRmVBZExTR05oMFVhZ2tOYWRNTHR6dE50elM5NmpKRTZlYzY0ZFNTUmpCd3NEd0xFSE5oYzd1M1ZrOG9HVHhZSjROTzlROHRneVdkVEtYZG51UzhSdWJ4TjRBdDN6SXJWNWZwRnlJOVQwYlRoMnhRR09Z?oc=5"
-    },
-    {
-      "t": "⚪ TBMM Plan ve Bütçe Komisyonu... YENİ Partili Özlale, Astor ve Barikat'a verilen destekleri gündeme getirdi  (GazeteKalem)",
-      "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxPeGJWSjczOHRXVmJNbFZ0cU9ORUFGakdFODRySGRGelZqZWkyUXhaclZDV0dYckF3ekxza3BWN0JJOHd3NHdyRkRscHRmb0ZpMzE1UGU4RmJtMGEwZWFtdFNYRDR4XzdyTEpPUXVJU3JnZm9JaFE2NUFMVGhzbXJaa2ZaVmFnRkpUQ0ROY1V1enNlXzZCdUhEUGZ1NjkwN2puemJ4YVpVbVRWdkpkS0R4TnRRcm9MN0hSVU9lVXc1ck83T3NLdWRZXw?oc=5"
-    },
-    {
-      "t": "🟢 Astor Enerji (ASTOR) Ak Yatırım üzerinden yapılan yüklü alımlarla yüzde 8,17 yükseldi  (Rota Borsa)",
-      "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQODYzWjZmdllSemFsU2RPQW15SW9ILUk0RXJLNmpHbWtEcGgyanRtMVB3RmdiUVdyaWQ4VnBoYmRjbEpBSXI4R1M0V0ZPYkxEX2pKR0l6NXVVbFNFZzktSGJtcm1URWRMWUFHTllTSHpqd2tyV1U4Uy1zaDJvLXlHMjJiZHdHUHFnYlA5MWkzYVpSa3Q5TWZCMmY4c0xxejJTM1Z2blI5bWs?oc=5"
-    },
-    {
-      "t": "⚪ Astor Enerji (ASTOR) Hedef Fiyatları 2026 - Güncel Liste  (Rota Borsa)",
-      "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE0yVUx1QXJOcjhYak51Z3hYWWZFeC1FY3VENXBGZVZwb3pZNFRGTWY4RHZzWHluczU5eFZzeFI1NGhwSkg5a1ZiTFZGNjFrUVFSOVM4a3hhUXRwejBCaU5PZjNWU3dXQVZL?oc=5"
-    },
-    {
-      "t": "⚪ Doğuş Otomotiv'den (DOAS) Skoda hamlesi: Satış ve servis hizmetlerini üstlenebilir!  (CNBC-e)",
-      "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPTEFKNzJZd1NWbFJsdU5IaC1URzBucTBLSEJ0c3N0ZXFpOVlfcnB0MDY5WlluVHNGUGdxTXFCbGJ4WDF2YnZXVnlWUTZ4Wk1FdGdPWkpkdVMzQmpZU1BkbXVlaXE1VW5QVFVJT0dndTUyc2xfT0MySkJ1VDBSMmtRLWZnOGFwTmVrckZua0FWMXFjV2pRbDhyRVAzeU9yb29RV0U5WlYzd3BDUzhIVzVzZWxYaw?oc=5"
-    },
-    {
-      "t": "⚪ Doğuş Otomotiv’den Skoda’nın Irak operasyonları için adım  (Paratic Haber)",
-      "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQOXlsdm5FNGJ1VjRybHVaYjlPSkRqZlZabXJOYkkyZkR4ZlpGeVY3M3J2ZHRWTWFpT1BuSGx6em1najYyYzQ5WkpPQ3lDVHFCZjJDd1FYQWlqZVM3S2RxeGFuTHo4TzhQa2N5Qkx4MFBYVXhRQi1hQTRMUEc0eXBsdk5B?oc=5"
-    }
-  ],
+  "news": [],
   "world": [
     {
-      "t": "🌍 No clear winner after tight New Zealand general election  (BBC World)",
-      "link": "https://www.bbc.co.uk/news/articles/c3ewev11g1e0o?at_medium=RSS&at_campaign=rss"
+      "t": "🌍 What we know so far after Krakow gun attack  (BBC World)",
+      "link": "https://www.bbc.co.uk/news/articles/cmd7q15drwgeo?at_medium=RSS&at_campaign=rss"
     },
     {
-      "t": "🌍 Kenyan doomsday sect leader jailed for 200 years for murder of 190 children  (Guardian World)",
-      "link": "https://www.theguardian.com/world/2026/nov/06/kenyan-doomsday-sect-leader-jailed-murders-paul-mackenzie"
+      "t": "🌍 How African philosophies inspired a new approach to staging film festivals in Manchester  (Guardian World)",
+      "link": "https://www.theguardian.com/news/2026/nov/08/african-philosophies-see-my-world-film-festival-manchester"
     },
     {
-      "t": "🌍 Guatemalan lawmaker and three police officers killed in armed attack  (Al Jazeera)",
-      "link": "https://www.aljazeera.com/news/2026/11/7/guatemalan-lawmaker-and-three-police-officers-killed-in-armed-attack?traffic_source=rss"
+      "t": "🌍 Poland mourns six killed in attack as authorities launch ‘terrorism’ probe  (Al Jazeera)",
+      "link": "https://www.aljazeera.com/news/2026/11/8/poland-mourns-six-killed-in-attack-as-authorities-launch-terrorism-probe?traffic_source=rss"
     },
     {
-      "t": "🌍 Israel's Arab-led parties in spotlight after inconclusive election  (NPR World)",
-      "link": "https://www.npr.org/2026/11/06/g-s1-152138/israel-election-palestinian-arab-parties"
+      "t": "🌍 A desert stirs to life: Chile's Atacama erupts in its biggest floral display in decades  (NPR World)",
+      "link": "https://www.npr.org/2026/11/08/nx-s1-6023812/chile-desert-el-nino"
     },
     {
-      "t": "🌍 US launches new targeted strikes on Iran as Trump claims progress in talks with Tehran  (Euronews)",
-      "link": "https://www.euronews.com/2026/11/07/us-launches-new-targeted-strikes-on-iran-as-trump-claims-progress-in-talks-with-tehran"
+      "t": "🌍 Egypt reopens Tripoli embassy after 12 years and raises concerns over Turkey-Libya maritime deal  (Euronews)",
+      "link": "https://www.euronews.com/2026/11/08/egypt-reopens-tripoli-embassy-after-12-years-and-raises-concerns-over-turkey-libya-maritim"
     },
     {
-      "t": "🌍 Journalism and AI: Who owns the news?  (DW)",
-      "link": "https://www.dw.com/en/journalism-and-ai-who-owns-the-news/a-79884854?maca=en-rss-en-world-4025-rdf"
+      "t": "🌍 Ebola: Why is there still no vaccine?  (DW)",
+      "link": "https://www.dw.com/en/ebola-why-is-there-still-no-vaccine/a-79888134?maca=en-rss-en-world-4025-rdf"
     }
   ],
   "tr": [
     {
-      "t": "🇹🇷 İletişim Başkanı Duran: TRT ve Anadolu Ajansı dezenformasyonla mücadelede yorulmadan çalışıyor  (TRT Haber)",
-      "link": "https://www.trthaber.com/haber/gundem/iletisim-baskani-duran-trt-ve-anadolu-ajansi-dezenformasyonla-mucadelede-yorulmadan-calisiyor-962552.html"
+      "t": "🇹🇷 Ankara'da 247 kilometrelik akıllı ulaşım koridoru oluşturulacak  (TRT Haber)",
+      "link": "https://www.trthaber.com/haber/turkiye/ankarada-247-kilometrelik-akilli-ulasim-koridoru-olusturulacak-962601.html"
     },
     {
-      "t": "🇹🇷 ABD'de sorgusuz sualsiz İsrail'e destek dönemi sona mı geliyor?  (BBC Türkçe)",
-      "link": "https://www.bbc.com/turkce/articles/ckn8ww8d1yveo?at_medium=RSS&at_campaign=rss"
+      "t": "🇹🇷 Erdoğan Azerbaycan'da: Aliyev ile ortak basın toplantısında 'birlik' mesajı  (BBC Türkçe)",
+      "link": "https://www.bbc.com/turkce/articles/cw1m4dj30e05o?at_medium=RSS&at_campaign=rss"
     },
     {
-      "t": "🇹🇷 Melikgazi'de 6 bin 500 saksılı sergi  (Habertürk)",
-      "link": "https://www.haberturk.com/gundem/melikgazi-de-6-bin-500-saksili-sergi-3925668"
+      "t": "🇹🇷 Polis Merkezi Amirliği'nin açılışını yaptı  (Habertürk)",
+      "link": "https://www.haberturk.com/gundem/icisleri-bakani-mustafa-ciftci-polis-merkezi-amirligi-nin-acilisini-yapti-3925803"
     },
     {
-      "t": "🇹🇷 Fenerbahçe otobüsünün kurşunlanmasında yeni detaylar ortaya çıktı. \"Saldırı önceden planlandı\"  (NTV)",
-      "link": "https://www.ntv.com.tr/turkiye/galeri-fenerbahce-otobusunun-kursunlanmasinda-yeni-detaylar-ortaya-cikti-saldiri-onceden-planlandi-1749858"
+      "t": "🇹🇷 Direksiyon hakimiyetini kaybetti, takla attı  (NTV)",
+      "link": "https://www.ntv.com.tr/turkiye/video-direksiyon-hakimiyetini-kaybetti-takla-atti-1749966"
     },
     {
-      "t": "🇹🇷 Krakov'daki silahlı saldırıda 5 kişi öldü, 10'dan fazla kişi yaralandı  (TRT Haber)",
-      "link": "https://www.trthaber.com/haber/dunya/krakovdaki-silahli-saldirida-5-kisi-oldu-10dan-fazla-kisi-yaralandi-962551.html"
+      "t": "🇹🇷 İran Devrim Muhafızlarından Hürmüz Boğazı uyarısı: Mayınlar bekliyor  (TRT Haber)",
+      "link": "https://www.trthaber.com/haber/dunya/iran-devrim-muhafizlarindan-hurmuz-bogazi-uyarisi-mayinlar-bekliyor-962600.html"
     },
     {
-      "t": "🇹🇷 'Sessiz kalamazdım': Öldürülen İranlı genç kızın annesi adalet arıyor  (BBC Türkçe)",
-      "link": "https://www.bbc.com/turkce/articles/cmpdg7l71480o?at_medium=RSS&at_campaign=rss"
+      "t": "🇹🇷 Antalya'da düzenlenen COP31'den neler bekleniyor, kilit sorular neler?  (BBC Türkçe)",
+      "link": "https://www.bbc.com/turkce/articles/cw073jxd20jro?at_medium=RSS&at_campaign=rss"
     }
   ],
   "_teshis": {
     "dunya": [
-      "BBC World: 23 öğe / 2 alındı / 0 elendi | ilk: No clear winner after tight New Zealand general election",
-      "Guardian World: 45 öğe / 2 alındı / 0 elendi | ilk: Kenyan doomsday sect leader jailed for 200 years for murder ",
-      "Al Jazeera: 25 öğe / 2 alındı / 0 elendi | ilk: Guatemalan lawmaker and three police officers killed in arme",
-      "NPR World: 10 öğe / 2 alındı / 0 elendi | ilk: Israel's Arab-led parties in spotlight after inconclusive el",
-      "Euronews: 50 öğe / 2 alındı / 0 elendi | ilk: US launches new targeted strikes on Iran as Trump claims pro",
-      "DW: 13 öğe / 2 alındı / 0 elendi | ilk: Journalism and AI: Who owns the news?",
+      "BBC World: 25 öğe / 2 alındı / 0 elendi | ilk: What we know so far after Krakow gun attack",
+      "Guardian World: 45 öğe / 2 alındı / 0 elendi | ilk: How African philosophies inspired a new approach to staging ",
+      "Al Jazeera: 25 öğe / 2 alındı / 0 elendi | ilk: Poland mourns six killed in attack as authorities launch ‘te",
+      "NPR World: 10 öğe / 2 alındı / 0 elendi | ilk: A desert stirs to life: Chile's Atacama erupts in its bigges",
+      "Euronews: 50 öğe / 2 alındı / 0 elendi | ilk: Egypt reopens Tripoli embassy after 12 years and raises conc",
+      "DW: 13 öğe / 2 alındı / 0 elendi | ilk: Ebola: Why is there still no vaccine?",
       "SONUÇ: 6 haber · veren: Al Jazeera, BBC World, DW, Euronews, Guardian World, NPR World",
       "AA: OKUNAMADI RemoteDisconnected: Remote end closed connection without response",
-      "TRT Haber: 50 öğe / 2 alındı / 0 elendi | ilk: İletişim Başkanı Duran: TRT ve Anadolu Ajansı dezenformasyon",
-      "BBC Türkçe: 16 öğe / 2 alındı / 0 elendi | ilk: ABD'de sorgusuz sualsiz İsrail'e destek dönemi sona mı geliy",
-      "Habertürk: 30 öğe / 2 alındı / 0 elendi | ilk: Melikgazi'de 6 bin 500 saksılı sergi",
-      "NTV: 20 öğe / 2 alındı / 0 elendi | ilk: Fenerbahçe otobüsünün kurşunlanmasında yeni detaylar ortaya ",
+      "TRT Haber: 50 öğe / 2 alındı / 0 elendi | ilk: Ankara'da 247 kilometrelik akıllı ulaşım koridoru oluşturula",
+      "BBC Türkçe: 16 öğe / 2 alındı / 0 elendi | ilk: Erdoğan Azerbaycan'da: Aliyev ile ortak basın toplantısında ",
+      "Habertürk: 30 öğe / 2 alındı / 0 elendi | ilk: Polis Merkezi Amirliği'nin açılışını yaptı",
+      "NTV: 20 öğe / 2 alındı / 0 elendi | ilk: Direksiyon hakimiyetini kaybetti, takla attı",
       "SONUÇ: 6 haber · veren: BBC Türkçe, Habertürk, NTV, TRT Haber · boş dönen: AA"
     ],
-    "hisse": "10 başlık geldi, 3 elendi",
-    "hisse_ham": [
-      "Tofaş'tan (TOASO) beklentileri aşan 3.çeyrek bilançosu: İşte detaylar!",
-      "Tofaş’ın (TOASO) 9 aylık karı yüzde 189 yükseldi",
-      "Tofaş’ta (TOASO) Güçlü Bilanço Sıçraması ve Aracı Kurum Hedef Fiyatlar",
-      "Yeo Teknoloji (YEOTK) 2026 yılı 3. çeyrek bilançosunu açıkladı! İşte d",
-      "TBMM Plan ve Bütçe Komisyonu... YENİ Partili Özlale, Astor ve Barikat'",
-      "Astor Enerji (ASTOR) Ak Yatırım üzerinden yapılan yüklü alımlarla yüzd"
-    ]
+    "hisse": "0 başlık geldi, 0 elendi",
+    "hisse_ham": []
   }
 }
