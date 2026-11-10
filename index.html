@@ -799,6 +799,16 @@
   .bolum-bas{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
     color:var(--text-secondary);margin:0 0 12px;padding-bottom:7px;border-bottom:1px solid var(--line);}
   .tabpanel>.bolum-bas{margin-top:26px;}
+  /* alt sekme şeridi: yatay kaydırılabilir; tek-grup alt sekmede grup başlığı tekrar etmesin */
+  .altbar{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:2px 0 10px;margin-bottom:4px;
+    border-bottom:1px solid var(--line);}
+  .altbar::-webkit-scrollbar{display:none;}
+  .altbtn{flex:none;font:inherit;font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;
+    padding:7px 12px;border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--text-secondary);cursor:pointer;}
+  .altbtn.on{background:var(--accent);border-color:var(--accent);color:var(--on-accent);}
+  .altbtn:focus-visible{outline:2px solid var(--focus-ring);outline-offset:2px;}
+  .tabpanel.tek-grup>.grup>.bolum-bas{display:none;}
+  .tabpanel>.altbar+.grup,.tabpanel>.grup:not([hidden]){margin-top:14px;}
   html[data-theme="hud"] .bolum-bas{border-bottom-color:var(--line2);}
   .sistem-box{margin-bottom:20px;}
   .sistem-box[hidden]{display:none;}
@@ -1079,6 +1089,7 @@
     .bugun-ust{grid-template-columns:minmax(0,1fr);}
     .pinned{grid-template-columns:minmax(0,1fr);}
     .grup{margin-top:22px;}
+    .altbar{position:sticky;top:0;z-index:20;background:var(--surface-0);padding-top:8px;margin:0 -2px 4px;}
     .card-head{margin-bottom:10px;padding-bottom:8px;}
     .kicker{letter-spacing:.1em;}
     .card-title{font-size:18px;}
@@ -2147,8 +2158,14 @@ function mornIhmal(){
     Object.keys(o).forEach(k=>{if(k!=='__n'&&!/^\d+$/.test(k)&&o[k])g.add(k);});});
   return g;
 }
+/* Bugünün sabah listesi: antrenman türü seçildiyse (d:antSec) ona göre —
+   Çarşamba'ya Lower alındıysa sabah alt vücut hazırlığı gelir. Seçim yoksa
+   eskisi gibi haftagünü. */
+const MORNING_TUR={upper:MORNING_UST,pull:MORNING_UST,push:MORNING_UST,lower:MORNING_ALT,legs:MORNING_ALT,
+  aktivite:MORNING_ISIN,off:MORNING_LONG};
+const morningBugun=()=>MORNING_TUR[antSec[todayKey()]]||MORNING_SHORT[dow]||MORNING_LONG;
 function morningPlan(){
-  let liste=(MORNING_SHORT[dow]||MORNING_LONG).slice();
+  let liste=morningBugun().slice();
   const notlar=[];
   if(/LEGS|LOWER/i.test(gunBugun().title||'')){
     const onceki=liste.map(x=>x[0]).join('|');
@@ -2192,8 +2209,12 @@ async function loadMorning(){
 function renderMorning(){const el=document.getElementById('morningList');if(!el)return;el.innerHTML='';
   const plan=morningPlan(),liste=plan.liste;
   const sub=document.getElementById('morningSub');if(sub){
-    const focus={2:'PULL hazırlığı (~5-7 dk)',4:'Dinamik ısınma — aktivite günü',6:'Koşu ısınması (~5-7 dk)'};
-    sub.textContent=(focus[dow]||'Uzun rutin: mobilite + core (~12-15 dk)')+(plan.not?' · '+plan.not:'');}
+    /* Etiket listeden türetiliyor — eskiden haftagününe sabitti ve program v2'ye
+       geçince Salı'ya hâlâ 'PULL hazırlığı' yazıyordu (10 Kas). */
+    const mb=morningBugun();
+    const etiket=mb===MORNING_UST?'Üst vücut hazırlığı (~5-7 dk)':mb===MORNING_ALT?'Alt vücut hazırlığı (~5-7 dk)':
+      mb===MORNING_ISIN?'Dinamik ısınma — aktivite günü':'Uzun rutin: mobilite + core (~12-15 dk)';
+    sub.textContent=etiket+(plan.not?' · '+plan.not:'');}
   liste.forEach(m=>{const done=!!morningDone[m[0]];const d=document.createElement('div');d.className='ex'+(done?' done':'')+(mRestSira===m[0]?' sirada':'');
     d.innerHTML='<div class="check '+(done?'on':'')+'" data-m="'+encodeURIComponent(m[0])+'"></div><div class="ex-body"><span class="ex-n">'+esc(m[0])+'</span><span class="ex-s">'+esc(m[1])+'</span></div>';el.appendChild(d);});
   const kutu=document.createElement('div');kutu.id='mRestBox';el.appendChild(kutu);
@@ -2642,7 +2663,7 @@ async function antSecDegistir(k,tur){
   renderPlan();renderSched();
   if(k===todayKey()){
     document.getElementById('wkSub').textContent=gunBugun().title;
-    await renderRun();renderEx();renderYok();
+    await renderRun();renderEx();renderYok();renderMorning();
   }
   renderHabits();renderHaftalik();renderOneri();
   pushPlanTazele();
@@ -4854,12 +4875,68 @@ function tabGec(ad,kaydet,kaydir){
   if(kaydir&&degisti)window.scrollTo(0,0);
   if(kaydet)sSet('d:tab',ad);
 }
+/* ===== ALT SEKMELER (10 Kas) =====
+   Takip ve Keşif çok uzundu (11-12 kart alt alta). Ana menü aynı kaldı;
+   bölümün üstünde alt sekme şeridi var, bir anda yalnızca bir alt sekmenin
+   grupları görünür. Gruplar aria-label'larıyla eşleniyor — HTML'e dokunmadan.
+   Seçim cihaz başına (d:altSekme, SYNC_SKIP'te). */
+const ALT_SEKME={
+  takip:[['spor','Spor',['Performans','İlerleme']],['saglik','Sağlık',['Sağlık']],
+         ['para','Para',['Para']],['ogrenme','Öğrenme',['Öğrenme']]],
+  kesif:[['kariyer','Kariyer',['Kariyer']],['gelen','Gelen',['Gelen kutusu']],
+         ['piyasa','Piyasa',['Piyasalar']],['gundem','Gündem',['Gündem']],['kultur','Kültür',['Kültür']]]
+};
+let altSekme={};
+function altSekmeKur(){
+  try{altSekme=JSON.parse(localStorage.getItem('d:altSekme')||'{}')||{};}catch(e){altSekme={};}
+  for(const tab in ALT_SEKME){
+    const p=document.querySelector('.tabpanel[data-tab="'+tab+'"]');if(!p)continue;
+    const nav=document.createElement('div');
+    nav.className='altbar';nav.setAttribute('role','tablist');nav.setAttribute('aria-label','Alt bölümler');
+    nav.innerHTML=ALT_SEKME[tab].map(a=>'<button class="altbtn" role="tab" data-alt="'+a[0]+'">'+esc(a[1])+'</button>').join('');
+    p.insertBefore(nav,p.firstChild);
+    const btns=[...nav.querySelectorAll('.altbtn')];
+    btns.forEach((b,i)=>{
+      b.onclick=()=>{altSekmeGec(tab,b.dataset.alt,true);
+        /* aşağıdaysan yeni alt sekmenin başına dön; başlığı tekrar göstermeye gerek yok */
+        const y=Math.round(p.getBoundingClientRect().top+window.scrollY);
+        if(window.scrollY>y)window.scrollTo({top:y,behavior:'instant'});};
+      b.onkeydown=ev=>{const yon=ev.key==='ArrowRight'?1:ev.key==='ArrowLeft'?-1:0;if(!yon)return;
+        ev.preventDefault();const n=btns[(i+yon+btns.length)%btns.length];n.focus();n.click();};
+    });
+    altSekmeGec(tab,altSekme[tab]);
+  }
+}
+function altSekmeGec(tab,ad,kaydet){
+  const liste=ALT_SEKME[tab];if(!liste)return;
+  const a=liste.find(x=>x[0]===ad)||liste[0];
+  const p=document.querySelector('.tabpanel[data-tab="'+tab+'"]');if(!p)return;
+  p.querySelectorAll(':scope > .grup').forEach(g=>{
+    const gor=a[2].indexOf(g.getAttribute('aria-label'))>-1;
+    if(gor)g.removeAttribute('hidden');else g.setAttribute('hidden','');
+  });
+  p.classList.toggle('tek-grup',a[2].length===1);   // tek grupta başlık sekmeyle aynı, gizlenir
+  p.querySelectorAll('.altbtn').forEach(b=>{const on=b.dataset.alt===a[0];
+    b.classList.toggle('on',on);b.setAttribute('aria-selected',on?'true':'false');b.tabIndex=on?0:-1;
+    /* yalnız yatay kaydır — scrollIntoView sayfayı da dikey oynatıyordu */
+    if(on&&kaydet){const n=b.parentNode;n.scrollLeft=Math.max(0,b.offsetLeft-(n.clientWidth-b.offsetWidth)/2);}});
+  if(kaydet){altSekme[tab]=a[0];try{localStorage.setItem('d:altSekme',JSON.stringify(altSekme));}catch(e){}}
+  /* gizliyken ölçülemeyen gridler/öğün kutuları şimdi düzenlenir */
+  p.querySelectorAll('.grup:not([hidden]) .grid').forEach(g=>{if(GRIDLER.indexOf(g.id)>-1)gridDizBir(g.id);});
+  mealBoyHepsi();
+}
 /* Bildirim/yoklama bir karta götürüyorsa önce o kartın sekmesi açılmalı;
-   gizli sekmedeki karta kaydırmak sayfayı boş yere oynatırdı. */
+   gizli sekmedeki karta kaydırmak sayfayı boş yere oynatırdı. Kart gizli
+   bir alt sekmedeyse o da açılır. */
 function tabAc(el){
   const p=el&&el.closest('.tabpanel');
-  if(!p||!p.hasAttribute('hidden'))return;
-  tabGec(p.dataset.tab,true);
+  if(!p)return;
+  if(p.hasAttribute('hidden'))tabGec(p.dataset.tab,true);
+  const g=el.closest('.grup');
+  if(g&&g.hasAttribute('hidden')&&ALT_SEKME[p.dataset.tab]){
+    const a=ALT_SEKME[p.dataset.tab].find(x=>x[2].indexOf(g.getAttribute('aria-label'))>-1);
+    if(a)altSekmeGec(p.dataset.tab,a[0],true);
+  }
 }
 /* Bir karta git: bölümünü aç, kaydır, bir an vurgula. */
 function kartaGit(el){
@@ -6811,7 +6888,7 @@ function openJobsCfg(){
    - Feed onbellekleri (borsa/haber/hava/ajan) senkrona girmez; her cihaz onlari
      kendi ceker, bosuna trafik olmasin. */
 const SYNC_FILE='panel-data.json';
-const SYNC_SKIP=['d:isSekme','d:kultur','d:sync','d:mtime','d:resetVer','d:theme','d:tab','d:kultTab','d:news','d:fx','d:agents','d:wx','d:bist','d:altin','d:watch','d:world','d:tr','d:us','d:worldIdx','d:gold','d:facts'];
+const SYNC_SKIP=['d:isSekme','d:altSekme','d:kultur','d:sync','d:mtime','d:resetVer','d:theme','d:tab','d:kultTab','d:news','d:fx','d:agents','d:wx','d:bist','d:altin','d:watch','d:world','d:tr','d:us','d:worldIdx','d:gold','d:facts'];
 const SYNC_POLL=5*60*1000;
 let syncCfg=null,syncTimer=null,syncBusy=false,syncMsg='';
 const syncable=k=>k&&k.indexOf('d:')===0&&SYNC_SKIP.indexOf(k)<0;
@@ -7535,6 +7612,7 @@ function kabukBagla(){
   const st=document.getElementById('ssTam');
   st.addEventListener('keydown',ev=>{if(ev.key==='Escape'){ev.preventDefault();sessCik();}else odakTuzak(st,ev);});
   if(window.visualViewport){visualViewport.addEventListener('resize',qkKlavyeAyarla);visualViewport.addEventListener('scroll',qkKlavyeAyarla);}
+  altSekmeKur();
   /* sekmeler: ok tuşlarıyla gezinme (WAI-ARIA tabs) */
   const tablar=[...document.querySelectorAll('.tabbtn')];
   tablar.forEach((b,i)=>{

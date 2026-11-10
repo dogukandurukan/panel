@@ -26,6 +26,18 @@ yasakladığı kişisel verinin en hassas türü ve git geçmişi kalıcı.
 
 ---
 
+## 0a. 10 KASIM — antrenman seçimi + alt sekmeler
+
+- **Antrenman türü güne göre seçilebilir.** `d:antSec` {tarih:tür} (senkronlu);
+  `ANT_TUR` upper/lower/pull/push/legs/aktivite/off → `WK` kaydı. Öncelik:
+  muaf > seçim > `EX_OVR` > haftagünü (`gunProg`, `progEzme`). Antrenman
+  kartında tür düğmeleri, 14 gün listesinde her güne seçici. Sabah rutini de
+  türü izliyor (`MORNING_TUR`, `morningBugun`); etiket listeden türüyor.
+- **Alt sekmeler.** Takip ▸ Spor · Sağlık · Para · Öğrenme; Keşif ▸ Kariyer ·
+  Gelen · Piyasa · Gündem · Kültür. `ALT_SEKME` grupları aria-label ile eşler,
+  HTML değişmedi. Seçim cihaz başına `d:altSekme` (SYNC_SKIP). `tabAc` gizli
+  alt sekmedeki karta giderken onu da açar. Yeni grup eklersen `ALT_SEKME`'ye yaz.
+
 ## 0. SIRADA NE VAR (24 Eyl)
 
 **Kullanıcı bekliyor: bir iş.**
