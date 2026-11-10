@@ -808,14 +808,17 @@
   .altbtn.on{background:var(--accent);border-color:var(--accent);color:var(--on-accent);}
   .altbtn:focus-visible{outline:2px solid var(--focus-ring);outline-offset:2px;}
   .tabpanel.tek-grup>.grup>.bolum-bas{display:none;}
-  .tabpanel>.altbar+.grup,.tabpanel>.grup:not([hidden]){margin-top:14px;}
+  /* Bugün alt sekmesinde içi tamamen gizli kalan .stack sütun kaplamasın */
+  .alt-gizli{display:none!important;}
+  .pinned>.stack:not(:has(>.card:not(.alt-gizli):not([hidden]))){display:none;}
+  .tabpanel>.altbar+.grup,.tabpanel>.grup:not(.alt-gizli){margin-top:14px;}
   html[data-theme="hud"] .bolum-bas{border-bottom-color:var(--line2);}
   .sistem-box{margin-bottom:20px;}
   .sistem-box[hidden]{display:none;}
 
   /* ---- Bugün ---- */
-  .bugun-ust{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr) minmax(0,1fr);gap:20px;align-items:start;}
-  @media (max-width:1099px){.bugun-ust{grid-template-columns:minmax(0,1fr) minmax(0,1fr);}.bugun-ust .simdi{grid-column:1/-1;}}
+  .bugun-ust{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:20px;align-items:start;}
+  /* 10 Kas: 'Bugün kalan' alt sekmeye taştı, üstte iki kart kaldı */
   .oneri:not([hidden]){margin-bottom:16px;}
   .simdi{border-width:1.5px;}
   html:not([data-theme="hud"]) .simdi{border-color:var(--text-primary);box-shadow:inset 0 3px 0 var(--accent);}
@@ -1148,11 +1151,11 @@
   <div class="bugun-ust">
     <section class="card simdi" data-k="simdi" data-ad="Şimdi" id="kSimdi" aria-live="polite"><div id="simdiBox"></div></section>
     <section class="card" data-k="sirada" data-ad="Sıradaki"><div class="card-head"><div><p class="kicker">Sıradaki</p></div><div class="meta"><button class="ibtn" id="siradaTumu">Tümü →</button></div></div><div id="siradaBox"></div></section>
-    <section class="card" data-k="kalan" data-ad="Bugün Kalan"><div class="card-head"><div><p class="kicker">Bugün kalan</p></div><div class="meta" id="kalanMeta">—</div></div><div id="kalanBox"></div></section>
   </div>
   <div id="baglamBox" class="baglam" hidden></div>
   <h2 class="bolum-bas">Günün tamamı</h2>
   <div class="pinned">
+        <section class="card" data-k="kalan" data-ad="Bugün Kalan"><div class="card-head"><div><p class="kicker">Bugün kalan</p></div><div class="meta" id="kalanMeta">—</div></div><div id="kalanBox"></div></section>
         <section class="card" data-k="prog" data-ad="Günün Programı"><div class="card-head"><div><p class="kicker">Plan · <span id="schedDay">—</span></p><h2 class="card-title">Günün Programı</h2></div><div class="meta"><button class="ibtn" id="schedGeri" title="önceki gün">←</button><button class="ibtn" id="schedBugunBtn" hidden>bugün</button><button class="ibtn" id="schedIleri" title="sonraki gün">→</button><br><span id="schedCount">0/0</span></div></div>
       <div class="wtitle" id="schedNow">—</div>
       <div id="schedList"></div></section>
@@ -4881,25 +4884,34 @@ function tabGec(ad,kaydet,kaydir){
    grupları görünür. Gruplar aria-label'larıyla eşleniyor — HTML'e dokunmadan.
    Seçim cihaz başına (d:altSekme, SYNC_SKIP'te). */
 const ALT_SEKME={
-  takip:[['spor','Spor',['Performans','İlerleme']],['saglik','Sağlık',['Sağlık']],
-         ['para','Para',['Para']],['ogrenme','Öğrenme',['Öğrenme']]],
-  kesif:[['kariyer','Kariyer',['Kariyer']],['gelen','Gelen',['Gelen kutusu']],
-         ['piyasa','Piyasa',['Piyasalar']],['gundem','Gündem',['Gündem']],['kultur','Kültür',['Kültür']]]
+  /* Bugün: Şimdi + Sıradaki üstte sabit; günün geri kalanı alt sekmelerde (10 Kas). */
+  bugun:[['kalan','Kalan',['[data-k="kalan"]']],['plan','Program',['[data-k="prog"]']],
+         ['yapilacak','Yapılacak',['[data-k="tasks"]']],['harcama','Harcama',['[data-k="harcadik"]']],
+         ['yoklama','Yoklama',['[data-k="yoklama"]']]],
+  takip:[['spor','Antrenman',['.grup[aria-label="Performans"]']],['ilerleme','İlerleme',['.grup[aria-label="İlerleme"]']],
+         ['saglik','Sağlık',['.grup[aria-label="Sağlık"]']],['para','Para',['.grup[aria-label="Para"]']],
+         ['ogrenme','Öğrenme',['.grup[aria-label="Öğrenme"]']]],
+  kesif:[['kariyer','Kariyer',['.grup[aria-label="Kariyer"]']],['gelen','Gelen',['.grup[aria-label="Gelen kutusu"]']],
+         ['piyasa','Piyasa',['.grup[aria-label="Piyasalar"]']],['gundem','Gündem',['.grup[aria-label="Gündem"]']],
+         ['kultur','Kültür',['.grup[aria-label="Kültür"]']]]
 };
 let altSekme={};
+const altPanel=tab=>document.querySelector('.tabpanel[data-tab="'+tab+'"]');
 function altSekmeKur(){
   try{altSekme=JSON.parse(localStorage.getItem('d:altSekme')||'{}')||{};}catch(e){altSekme={};}
   for(const tab in ALT_SEKME){
-    const p=document.querySelector('.tabpanel[data-tab="'+tab+'"]');if(!p)continue;
+    const p=altPanel(tab);if(!p)continue;
     const nav=document.createElement('div');
     nav.className='altbar';nav.setAttribute('role','tablist');nav.setAttribute('aria-label','Alt bölümler');
     nav.innerHTML=ALT_SEKME[tab].map(a=>'<button class="altbtn" role="tab" data-alt="'+a[0]+'">'+esc(a[1])+'</button>').join('');
-    p.insertBefore(nav,p.firstChild);
+    /* Takip/Keşif'te en üste; Bugün'de 'Günün tamamı' başlığının yerine */
+    const yer=tab==='bugun'?p.querySelector(':scope > .bolum-bas'):p.firstChild;
+    p.insertBefore(nav,yer);if(tab==='bugun'&&yer)yer.hidden=true;
     const btns=[...nav.querySelectorAll('.altbtn')];
     btns.forEach((b,i)=>{
       b.onclick=()=>{altSekmeGec(tab,b.dataset.alt,true);
-        /* aşağıdaysan yeni alt sekmenin başına dön; başlığı tekrar göstermeye gerek yok */
-        const y=Math.round(p.getBoundingClientRect().top+window.scrollY);
+        /* aşağıdaysan yeni alt sekmenin başına dön (şerit yapışkan, hep görünür) */
+        const y=Math.round(nav.getBoundingClientRect().top+window.scrollY);
         if(window.scrollY>y)window.scrollTo({top:y,behavior:'instant'});};
       b.onkeydown=ev=>{const yon=ev.key==='ArrowRight'?1:ev.key==='ArrowLeft'?-1:0;if(!yon)return;
         ev.preventDefault();const n=btns[(i+yon+btns.length)%btns.length];n.focus();n.click();};
@@ -4910,11 +4922,11 @@ function altSekmeKur(){
 function altSekmeGec(tab,ad,kaydet){
   const liste=ALT_SEKME[tab];if(!liste)return;
   const a=liste.find(x=>x[0]===ad)||liste[0];
-  const p=document.querySelector('.tabpanel[data-tab="'+tab+'"]');if(!p)return;
-  p.querySelectorAll(':scope > .grup').forEach(g=>{
-    const gor=a[2].indexOf(g.getAttribute('aria-label'))>-1;
-    if(gor)g.removeAttribute('hidden');else g.setAttribute('hidden','');
-  });
+  const p=altPanel(tab);if(!p)return;
+  liste.forEach(x=>x[2].forEach(sel=>p.querySelectorAll(sel).forEach(el=>{
+    /* hidden DEĞİL sınıf: kart yönetimi (kartCfg.gizli) kartların hidden'ını
+       her çizimde yeniden yazıyor, alt sekme gizlemesini eziyordu. */
+    el.classList.toggle('alt-gizli',x!==a);})));
   p.classList.toggle('tek-grup',a[2].length===1);   // tek grupta başlık sekmeyle aynı, gizlenir
   p.querySelectorAll('.altbtn').forEach(b=>{const on=b.dataset.alt===a[0];
     b.classList.toggle('on',on);b.setAttribute('aria-selected',on?'true':'false');b.tabIndex=on?0:-1;
@@ -4922,7 +4934,7 @@ function altSekmeGec(tab,ad,kaydet){
     if(on&&kaydet){const n=b.parentNode;n.scrollLeft=Math.max(0,b.offsetLeft-(n.clientWidth-b.offsetWidth)/2);}});
   if(kaydet){altSekme[tab]=a[0];try{localStorage.setItem('d:altSekme',JSON.stringify(altSekme));}catch(e){}}
   /* gizliyken ölçülemeyen gridler/öğün kutuları şimdi düzenlenir */
-  p.querySelectorAll('.grup:not([hidden]) .grid').forEach(g=>{if(GRIDLER.indexOf(g.id)>-1)gridDizBir(g.id);});
+  p.querySelectorAll('.grid').forEach(g=>{if(GRIDLER.indexOf(g.id)>-1&&!g.closest('.alt-gizli'))gridDizBir(g.id);});
   mealBoyHepsi();
 }
 /* Bildirim/yoklama bir karta götürüyorsa önce o kartın sekmesi açılmalı;
@@ -4932,11 +4944,9 @@ function tabAc(el){
   const p=el&&el.closest('.tabpanel');
   if(!p)return;
   if(p.hasAttribute('hidden'))tabGec(p.dataset.tab,true);
-  const g=el.closest('.grup');
-  if(g&&g.hasAttribute('hidden')&&ALT_SEKME[p.dataset.tab]){
-    const a=ALT_SEKME[p.dataset.tab].find(x=>x[2].indexOf(g.getAttribute('aria-label'))>-1);
-    if(a)altSekmeGec(p.dataset.tab,a[0],true);
-  }
+  const liste=ALT_SEKME[p.dataset.tab];if(!liste)return;
+  const a=liste.find(x=>x[2].some(sel=>el.closest(sel)));
+  if(a&&a[2].some(sel=>{const h=el.closest(sel);return h&&h.classList.contains('alt-gizli');}))altSekmeGec(p.dataset.tab,a[0],true);
 }
 /* Bir karta git: bölümünü aç, kaydır, bir an vurgula. */
 function kartaGit(el){

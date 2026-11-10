@@ -33,10 +33,15 @@ yasakladığı kişisel verinin en hassas türü ve git geçmişi kalıcı.
   muaf > seçim > `EX_OVR` > haftagünü (`gunProg`, `progEzme`). Antrenman
   kartında tür düğmeleri, 14 gün listesinde her güne seçici. Sabah rutini de
   türü izliyor (`MORNING_TUR`, `morningBugun`); etiket listeden türüyor.
-- **Alt sekmeler.** Takip ▸ Spor · Sağlık · Para · Öğrenme; Keşif ▸ Kariyer ·
-  Gelen · Piyasa · Gündem · Kültür. `ALT_SEKME` grupları aria-label ile eşler,
-  HTML değişmedi. Seçim cihaz başına `d:altSekme` (SYNC_SKIP). `tabAc` gizli
-  alt sekmedeki karta giderken onu da açar. Yeni grup eklersen `ALT_SEKME`'ye yaz.
+- **Alt sekmeler.** Bugün ▸ Kalan · Program · Yapılacak · Harcama · Yoklama
+  (Şimdi + Sıradaki üstte sabit; Kalan kartı .pinned'e taşındı); Takip ▸
+  Antrenman · İlerleme · Sağlık · Para · Öğrenme; Keşif ▸ Kariyer · Gelen ·
+  Piyasa · Gündem · Kültür. `ALT_SEKME` CSS seçicileriyle eşler. Gizleme
+  **`.alt-gizli` sınıfıyla** — `hidden` DEĞİL, çünkü kart yönetimi
+  (`kartCfg.gizli`) kartların hidden'ını her çizimde yeniden yazıyor. Seçim
+  cihaz başına `d:altSekme` (SYNC_SKIP). `tabAc` gizli alt sekmedeki karta
+  giderken onu da açar. Yeni grup/kart eklersen `ALT_SEKME`'ye yaz.
+- **HUD teması açıldı** (kullanıcı "çok siyah" dedi): lacivert-gri yüzeyler.
 
 ## 0. SIRADA NE VAR (24 Eyl)
 
