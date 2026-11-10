@@ -336,6 +336,11 @@
   .plan-not{color:var(--muted);font-size:11.5px;line-height:1.5;margin:10px 0 8px;}
   .plan-r{display:flex;align-items:center;gap:9px;padding:6px 0;border-bottom:1px dotted var(--line2);}
   .plan-r:last-child{border-bottom:none;}
+  .plan-deg{font-style:normal;font-size:11px;color:var(--accent);}
+  .plan-sec{font:inherit;font-size:12px;padding:3px 4px;border:1px solid var(--line);border-radius:6px;background:var(--surface-1);color:var(--text-primary);}
+  .ant-sec{display:flex;flex-wrap:wrap;gap:4px;margin:2px 0 10px;}
+  .ant-sec .ibtn{margin:0;padding:5px 7px;}
+  .ant-sec .ibtn.ana{background:var(--accent);border-color:var(--accent);color:var(--on-accent);}
   .plan-t{font-family:var(--mono);font-size:10.5px;color:var(--muted);white-space:nowrap;min-width:84px;}
   .plan-b{flex:1;font-size:12.5px;min-width:0;}
   .plan-r.muaf .plan-b{text-decoration:line-through;color:var(--muted);}
@@ -1449,10 +1454,30 @@ const muafMi=k=>!!offGunler[k];
 const MUAF_GUN={title:'MUAF — bugün program yok',run:false,slot:'Dinlenme',
   ex:[['Bugün program yok (muaf gün)','—']]};
 
+/* ===== ANTRENMAN SEÇİMİ (10 Kas) =====
+   Kullanıcı her zaman haftagününün antrenmanını yapamıyor (ör. Çarşamba
+   Lower). d:antSec = {tarih:tür} — o günün programı WK'daki o türün kaydı
+   olur. Tek kaynak hâlâ WK: hareket listesi kopyalanmıyor. Öncelik:
+   muaf > seçim > EX_OVR > haftagünü. Haftagününün kendi türü seçilince
+   kayıt silinir (fark yoksa saklanmaz). */
+const ANT_TUR=[['upper','Upper',1],['lower','Lower',2],['pull','Pull',4],['push','Push',5],
+  ['legs','Legs',6],['aktivite','Aktivite',3],['off','Off',0]];
+let antSec={};
+const antVarsayilan=k=>{const d=new Date(k+'T12:00:00').getDay();return ANT_TUR.find(t=>t[2]===d)[0];};
+function antSecKayit(k){
+  const t=ANT_TUR.find(x=>x[0]===antSec[k]);if(!t)return null;
+  /* slot: ağırlık türü 'Antrenman' dilimine yazılır (Çar/Paz'da spor dilimi
+     'Antrenman' olur, yoklama doğru soruyu sorar); Off 'Dinlenme' (yoklama
+     sormaz); Aktivite günün dilimini olduğu gibi bırakır. */
+  const slot=t[0]==='off'?'Dinlenme':(t[0]==='aktivite'?null:'Antrenman');
+  const o=Object.assign({},WK[t[2]],{secim:t[0]});if(slot)o.slot=slot;return o;
+}
+const progEzme=k=>antSecKayit(k)||EX_OVR[k];
 function gunProg(k){
   if(muafMi(k))return MUAF_GUN;
-  return EX_OVR[k]||WK[new Date(k+'T12:00:00').getDay()];
+  return progEzme(k)||WK[new Date(k+'T12:00:00').getDay()];
 }
+const gunTuru=k=>antSec[k]||(EX_OVR[k]?null:antVarsayilan(k));
 const gununEx=()=>gunProg(todayKey()).ex;
 const gunBugun=()=>gunProg(todayKey());
 
@@ -1609,7 +1634,7 @@ function gunSched(k){
      gitmiyor. Takip edilmeyenler (İş, Yemek, TV...) duruyor — gün yine
      okunabilir kalsın, yalnızca hesap sorulmasın. */
   if(muafMi(k))return taban.map(is=>YOK[is]?'':is);
-  const o=EX_OVR[k];
+  const o=progEzme(k);
   if(!o||!o.slot)return taban;
   /* Cumartesi'de dilim 'Antrenman + yemek' — tam eşleşme yetmiyor. */
   if(taban.some(is=>String(is).indexOf('Antrenman')===0))
@@ -1621,7 +1646,9 @@ function gunSched(k){
      adla açılırdı. Spor dilimi de yoksa gün olduğu gibi kalıyor. */
   const si=taban.findIndex(is=>YOK[is]==='spor');
   if(si<0)return taban;
-  const yeniPlan=taban.slice();yeniPlan[si]=o.slot;return yeniPlan;
+  /* Aynı iş birden çok dilime yayılıyorsa (Çar: Kürek 08:00 + 08:30) hepsi
+     değişir; yoksa 'Antrenman'ın ardından 'Kürek' kalırdı (10 Kas). */
+  return taban.map(is=>is===taban[si]?o.slot:is);
 }
 const schedBugun=()=>gunSched(todayKey());
 const yokSlotlari=()=>schedBugun().map((is,i)=>YOK[is]?i:-1).filter(i=>i>-1);
@@ -1675,7 +1702,7 @@ function yokPlanUret(){
      ezmelerin bildirimde karşılığı yok, plan da şişmesin. */
   for(let i=0;i<21;i++){
     const k=dayBack(-i);
-    if(!EX_OVR[k]&&!muafMi(k))continue;
+    if(!progEzme(k)&&!muafMi(k))continue;
     const g=gunSched(k);
     p['t:'+k]=g.map((is,j)=>YOK[is]?[SLOTS[j][0],is,j,YOK[is]]:null).filter(Boolean);
   }
@@ -1854,7 +1881,7 @@ async function yokCevapla(i,a){
 function antSlotIdx(){
   const plan=schedBugun();
   let i=plan.findIndex(is=>String(is).indexOf('Antrenman')===0);
-  if(i<0){const o=EX_OVR[todayKey()];if(o&&o.slot)i=plan.indexOf(o.slot);}
+  if(i<0){const o=progEzme(todayKey());if(o&&o.slot)i=plan.indexOf(o.slot);}
   if(i<0)i=plan.findIndex(is=>YOK[is]==='spor');
   return i;
 }
@@ -2583,11 +2610,51 @@ function renderPlan(){
     html+='<div class="plan-r'+(muaf?' muaf':'')+'">'+
       '<span class="plan-t">'+k.slice(8,10)+'.'+k.slice(5,7)+' '+GUN_KISA[d.getDay()]+
       (i===0?' · bugün':'')+'</span>'+
-      '<span class="plan-b">'+esc(g.title)+'</span>'+
+      /* Tür seçicide yazıyor; başlıktan yalnız alt başlık kalıyor ('Ağır Bileşik').
+         Seçimle değişmiş gün 'değişti' notu alır. */
+      '<span class="plan-b">'+esc(muaf||!gunTuru(k)?g.title:(g.title.split(' — ')[1]||''))+
+        (antSec[k]&&!muaf?' <i class="plan-deg">değişti</i>':'')+'</span>'+
+      (muaf?'':'<select class="plan-sec" data-ant="'+k+'" aria-label="'+k+' antrenmanı">'+
+        (gunTuru(k)?'':'<option value="" selected>özel</option>')+
+        ANT_TUR.map(t=>'<option value="'+t[0]+'"'+(gunTuru(k)===t[0]?' selected':'')+'>'+t[1]+'</option>').join('')+'</select>')+
       '<button class="ibtn'+(muaf?' ana':'')+'" data-muaf="'+k+'">'+(muaf?'muaf ✓':'muaf')+'</button></div>';
   }
   el.innerHTML=html;
   el.querySelectorAll('[data-muaf]').forEach(b=>b.onclick=()=>muafDegistir(b.dataset.muaf));
+  el.querySelectorAll('[data-ant]').forEach(s=>s.onchange=()=>{if(s.value)antSecDegistir(s.dataset.ant,s.value);});
+}
+
+/* Günün antrenman türünü değiştir. Bugünse tikler hareket SIRASINA bağlı
+   (d:ex = {index:true}) — program değişince yanlış harekete düşerler, o
+   yüzden sorup sıfırlanır. Set kayıtları (d:wtlog) hareket ADINA bağlı,
+   etkilenmez. Seans açıkken değiştirilmez. */
+async function antSecDegistir(k,tur){
+  if((antSec[k]||null)===(tur===antVarsayilan(k)&&!EX_OVR[k]?null:tur)){renderPlan();renderEx();return;}
+  if(k===todayKey()){
+    if(sess.on){alert('Antrenman modu açık — önce seansı bitir.');renderPlan();renderEx();return;}
+    if(Object.values(exDone).some(Boolean)){
+      if(!confirm('Bugün işaretlediğin hareketler var. Programı değiştirirsen tikler sıfırlanır (kaydedilen setler durur). Devam?')){renderPlan();renderEx();return;}
+      exDone={};await sSet('d:ex:'+k,exDone);
+    }
+  }
+  if(tur===antVarsayilan(k)&&!EX_OVR[k])delete antSec[k];else antSec[k]=tur;
+  await sSet('d:antSec',antSec);
+  renderPlan();renderSched();
+  if(k===todayKey()){
+    document.getElementById('wkSub').textContent=gunBugun().title;
+    await renderRun();renderEx();renderYok();
+  }
+  renderHabits();renderHaftalik();renderOneri();
+  pushPlanTazele();
+}
+function antSecHTML(){
+  const k=todayKey();if(muafMi(k))return '';
+  const aktif=gunTuru(k),vars=antVarsayilan(k);
+  return '<div class="ant-sec" role="group" aria-label="Bugün hangi antrenman">'+ANT_TUR.map(t=>
+    '<button class="ibtn'+(aktif===t[0]?' ana':'')+'" data-antsec="'+t[0]+'"'+
+    (aktif===t[0]?' aria-pressed="true"':' aria-pressed="false"')+
+    (t[0]===vars?' title="haftanın bu günü normalde '+t[1]+'"':'')+'>'+t[1]+(t[0]===vars&&aktif!==t[0]?' ·':'')+'</button>').join('')+
+    '</div>';
 }
 
 /* ---- çizim ---- */
@@ -2607,7 +2674,7 @@ function renderEx(){
   ssTamGoster(false);
 
   /* Liste görünümü — hızlı bakış ve elle tik için korunuyor. */
-  el.innerHTML=ex.map((e,i)=>{
+  el.innerHTML=antSecHTML()+ex.map((e,i)=>{
     const done=!!exDone[i],adet=(sess.s&&sess.s[i]||[]).length;
     const r=repAralik(e[1])?progKg(e[0]):0,art=progBugun(e[0]);
     return '<div class="ex'+(done?' done':'')+'"><div class="check '+(done?'on':'')+'" data-x="'+i+'"></div>'+
@@ -2625,6 +2692,7 @@ function renderEx(){
   const bas=document.getElementById('ssBas');if(bas)bas.onclick=sessBaslat;
   el.querySelectorAll('[data-his]').forEach(b=>b.onclick=()=>sessHis(b.dataset.his));
   el.querySelectorAll('[data-bolge]').forEach(b=>b.onclick=()=>sessBolge(b.dataset.bolge));
+  el.querySelectorAll('[data-antsec]').forEach(b=>b.onclick=()=>antSecDegistir(todayKey(),b.dataset.antsec));
   el.querySelectorAll('[data-x]').forEach(c=>c.onclick=()=>{const i=+c.dataset.x;exDone[i]=!exDone[i];sSet('d:ex:'+todayKey(),exDone);renderEx();renderHabits();});
   exYapamadimGuncelle();
   bugunTazele();
@@ -7570,7 +7638,7 @@ function kabukBagla(){
     await loadGmailJson();};
   document.getElementById('agentRefresh').onclick=()=>loadAgents(true);
   document.getElementById('jobsCfg').onclick=openJobsCfg;
-  jobProfile=await sGet(K.jobProfile)||null;jobsApplied=await sGet(K.jobsApplied)||[];jobsHidden=await sGet('d:jobsHidden')||{};isSekme=await sGet('d:isSekme')||'tr';await linkedinYukle();myApps=await sGet(K.myApps)||[];retler=await sGet('d:retler')||[];retGizli=await sGet('d:retGizli')||[];retElle=await sGet('d:retElle')||[];oneriKapali=await sGet('d:oneriKapali')||{};offGunler=await sGet('d:off')||{};
+  jobProfile=await sGet(K.jobProfile)||null;jobsApplied=await sGet(K.jobsApplied)||[];jobsHidden=await sGet('d:jobsHidden')||{};isSekme=await sGet('d:isSekme')||'tr';await linkedinYukle();myApps=await sGet(K.myApps)||[];retler=await sGet('d:retler')||[];retGizli=await sGet('d:retGizli')||[];retElle=await sGet('d:retElle')||[];oneriKapali=await sGet('d:oneriKapali')||{};offGunler=await sGet('d:off')||{};antSec=await sGet('d:antSec')||{};
   document.getElementById('placeName').textContent=PLACE.name;
   renderTasks();await loadSched();await loadYok();await loadMorning();await renderRun();await loadWorkout();renderWtLog();await loadMeals();await loadWater();await takviyeYukle();await adimYukle();await loadSleep();await loadBW();await loadMoney();await renderBugunHarcama();await renderHaftalik();await renderOneri();loadHabits();await initSync();
   renderFacts();renderFilm();renderArtist();renderBook();renderHistory();kulturYukle();renderKult();renderGerman();renderNews();renderTR();renderRetler();renderWatch();renderUS();renderWorldIdx();renderGold();renderWorld();renderMktSummary();renderFinNote();
