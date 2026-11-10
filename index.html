@@ -486,7 +486,7 @@
   /* günün 3 işi */
   .job{border:1px solid var(--line);border-radius:5px;padding:12px 13px;margin-bottom:11px;background:var(--paper);}
   .job:last-child{margin-bottom:0;}
-  html[data-theme="hud"] .job{background:#0A111C;}
+  html[data-theme="hud"] .job{background:#1F2937;}
   .job.applied{opacity:.5;}
   .job-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;}
   .job-t{font-size:15px;font-weight:600;line-height:1.35;flex:1;min-width:180px;}
@@ -503,7 +503,7 @@
   .job-done{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--up);}
   .job-done.ret{color:var(--down);}
   .cfgbox{border:1px solid var(--line2);border-radius:5px;padding:12px 13px;margin-bottom:13px;background:var(--paper);}
-  html[data-theme="hud"] .cfgbox{background:#0A111C;}
+  html[data-theme="hud"] .cfgbox{background:#1F2937;}
   .cfgbox label{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;
     text-transform:uppercase;color:var(--muted);margin:9px 0 4px;}
   .cfgbox input,.cfgbox textarea{width:100%;background:var(--card);border:1px solid var(--line);
@@ -633,8 +633,8 @@
   /* harcama & kazanç */
   .msel{background:transparent;border:1px solid var(--line);border-radius:4px;padding:7px 8px;font-family:var(--sans);font-size:13.5px;color:var(--ink);cursor:pointer;}
   .msel:focus{outline:none;border-color:var(--accent);}
-  html[data-theme="hud"] .msel{background:#0A111C;}
-  html[data-theme="hud"] .msel option{background:#0D1420;color:var(--ink);}
+  html[data-theme="hud"] .msel{background:#1F2937;}
+  html[data-theme="hud"] .msel option{background:#243041;color:var(--ink);}
   #mAdd{flex-wrap:wrap;}
   #mAdd input{min-width:90px;}
   .mnav{display:inline-flex;align-items:center;gap:6px;}
@@ -699,10 +699,10 @@
 
   /* ===================== HUD TEMASI ===================== */
   html[data-theme="hud"]{
-    --surface-0:#070B12; --surface-1:#0D1420; --surface-2:#111B2A;
-    --text-primary:#D8E6F2; --text-secondary:#7C93A8;
-    --line:#1B2942; --line2:#131E30; --accent:#35E0D4; --on-accent:#051016;
-    --success:#3DDC91; --warning:#F2B447; --danger:#FF5C7A; --focus-ring:#35E0D4;
+    --surface-0:#1B2431; --surface-1:#243041; --surface-2:#2C394C;   /* 10 Kas: 'çok siyah' — lacivert-gri */
+    --text-primary:#E3EDF6; --text-secondary:#9DB0C2;
+    --line:#3A4A62; --line2:#2F3D52; --accent:#35E0D4; --on-accent:#051016;
+    --success:#3DDC91; --warning:#F2B447; --danger:#FF7590; --focus-ring:#35E0D4;
     --serif:'Inter',system-ui,sans-serif;   /* Fraunces almanak kimliği; HUD'da sans */
   }
   /* Grid korunuyor ama çok silik: yüzeyin %45'i kadar. */
@@ -712,7 +712,7 @@
     background-size:42px 42px;
   }
   html[data-theme="hud"] body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
-    background:radial-gradient(125% 92% at 50% 0%,transparent 55%,rgba(3,7,14,.9) 100%);}
+    background:radial-gradient(125% 92% at 50% 0%,transparent 60%,rgba(14,19,27,.45) 100%);}
   html[data-theme="hud"] .wrap{position:relative;z-index:1;}
   /* kart: ince parlama + köşe işaretleri */
   /* Cyan parlama artık yalnızca AKTİF kartta (Şimdi) — her kartta olunca
@@ -730,7 +730,7 @@
   html[data-theme="hud"] .film-title,html[data-theme="hud"] .de-word{font-family:var(--mono);letter-spacing:.02em;}
   /* sayılarda hafif parıltı */
   /* koyu zeminde beyaz form alanları olmasın */
-  html[data-theme="hud"] .wtin,html[data-theme="hud"] .pin,html[data-theme="hud"] .mkt-in,html[data-theme="hud"] .macros input,html[data-theme="hud"] .tgt input,html[data-theme="hud"] .runbox input,html[data-theme="hud"] .slp-in,html[data-theme="hud"] .add-row input,html[data-theme="hud"] .paste,html[data-theme="hud"] .stat,html[data-theme="hud"] .recipe{background:#0A111C;}
+  html[data-theme="hud"] .wtin,html[data-theme="hud"] .pin,html[data-theme="hud"] .mkt-in,html[data-theme="hud"] .macros input,html[data-theme="hud"] .tgt input,html[data-theme="hud"] .runbox input,html[data-theme="hud"] .slp-in,html[data-theme="hud"] .add-row input,html[data-theme="hud"] .paste,html[data-theme="hud"] .stat,html[data-theme="hud"] .recipe{background:#1F2937;}
   html[data-theme="hud"] .check.on::after{border-color:var(--paper);}
   html[data-theme="hud"] .add-row button,html[data-theme="hud"] .pchip.on{color:var(--paper);}
   /* durum rozetleri iki temada da okunur kalsın */
@@ -741,7 +741,7 @@
   #agentGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(212px,1fr));gap:12px;}
   .agent{position:relative;border:1px solid var(--line);border-radius:5px;padding:12px 13px 10px;background:var(--paper);text-decoration:none;color:inherit;display:block;transition:border-color .2s;}
   .agent:hover{border-color:var(--accent);}
-  html[data-theme="hud"] .agent{background:#0A111C;}
+  html[data-theme="hud"] .agent{background:#1F2937;}
   .agent-top{display:flex;align-items:center;gap:8px;margin-bottom:7px;}
   .agent-dot{width:9px;height:9px;min-width:9px;border-radius:50%;background:var(--muted);}
   .agent-name{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.04em;color:var(--ink);}
