@@ -6,6 +6,11 @@ on:
     - cron: '0 6 * * *'    # 09:00 Türkiye
     - cron: '0 11 * * *'   # 14:00 Türkiye
   workflow_dispatch:          # "Run workflow" ile elle de tetiklenir
+    inputs:
+      zorla:
+        description: 'Hafta sonu da olsa sinyal bildirimini gönder (test)'
+        type: boolean
+        default: false
 jobs:
   feed:
     runs-on: ubuntu-latest
@@ -25,3 +30,16 @@ jobs:
           git add borsa.json
           git diff --staged --quiet || git commit -m "borsa.json otomatik güncelleme"
           git push
+      # Teknik sinyal özeti telefona (11 Kas). Ayrı adım ve continue-on-error:
+      # pywebpush kurulamazsa ya da push servisi hata verirse borsa.json
+      # zaten commit edilmiş olur, feed kırmızıya dönmez.
+      - name: sinyal bildirimi
+        continue-on-error: true
+        run: |
+          pip install pywebpush
+          python borsa_push.py
+        env:
+          PANEL_GIST_TOKEN: ${{ secrets.PANEL_GIST_TOKEN }}
+          VAPID_PRIVATE: ${{ secrets.VAPID_PRIVATE }}
+          VAPID_SUB: ${{ secrets.VAPID_SUB }}
+          BORSA_ZORLA: ${{ inputs.zorla }}

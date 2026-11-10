@@ -14,6 +14,7 @@ import pandas as pd
 import yfinance as yf
 
 import borsa as B          # senin mevcut botun
+import teknik as TK        # kural tabanlı teknik yorum (11 Kas)
 import config as C         # senin mevcut ayarların
 
 IST = dt.timezone(dt.timedelta(hours=3))
@@ -69,6 +70,35 @@ def _ind(m):
     return d
 
 
+def _teknik(df):
+    """Kapanış + hacimden teknik yorum. Hacim boşsa kırılım teyitsiz sayılır."""
+    if df is None or "Close" not in df:
+        return None
+    d = df.dropna(subset=["Close"])
+    hacim = list(d["Volume"].fillna(0)) if "Volume" in d else None
+    try:
+        return TK.analiz(list(d["Close"]), hacim)
+    except Exception as e:                 # tek kağıdın verisi bütün feed'i düşürmesin
+        print(f"teknik analiz atlandı: {e}")
+        return None
+
+
+def sinyaller(veri, piyasa, n=None):
+    """Olası alım/satış etiketli kağıtlar, puanın mutlak değerine göre.
+    Etiket mekanik kural toplamıdır, tavsiye değil (bkz. teknik.py)."""
+    out = []
+    for code, df in veri.items():
+        a = _teknik(df)
+        if not a or a["durum"] not in ("olasi_alim", "olasi_satis"):
+            continue
+        m = B.metrics(df)
+        chg = m["day_chg"]
+        out.append({"code": code, "piyasa": piyasa, "price": _fmt(m["last"]),
+                    "chg": f"{'+' if chg >= 0 else ''}{chg:.2f}%", **a})
+    out.sort(key=lambda x: (-abs(x["puan"]), x["code"]))
+    return out[:n] if n else out
+
+
 def _row(code, m, df=None, ad=None):
     chg = m["day_chg"]
     r = {
@@ -85,6 +115,9 @@ def _row(code, m, df=None, ad=None):
         r["hist"] = h
         r["histD"] = hd
     r["ind"] = _ind(m)
+    t = _teknik(df)
+    if t:
+        r["teknik"] = t
     return r
 
 
@@ -368,8 +401,17 @@ def build():
     dunya = fetch_world(6)
     turkiye = fetch_tr(6)
 
+    # Sinyal taraması: BIST evreninin tamamı (veri zaten indirildi) + ABD listesi
+    bist_sinyal = sinyaller({c: data[c] for c in C.UNIVERSE if c in data}, "BIST")
+    us_sinyal = sinyaller(usdata, "ABD")
+    sinyal = (bist_sinyal + us_sinyal)
+    sinyal.sort(key=lambda x: (-abs(x["puan"]), x["code"]))
+
     return {
         "updated": dt.datetime.now(IST).strftime("%Y-%m-%d %H:%M"),
+        "sinyaller": sinyal[:8],
+        "sinyalTarama": {"bist": len([c for c in C.UNIVERSE if c in data]),
+                         "abd": len(usdata), "bulunan": len(sinyal)},
         "watch": watch_rows,
         "us": us_rows,
         "world_idx": idx_rows,
@@ -397,6 +439,8 @@ if __name__ == "__main__":
     with open("borsa.json", "w", encoding="utf-8") as f:
         f.write(metin + "\n")
     seri = sum(1 for r in d["watch"] + d["us"] + d["world_idx"] if r.get("hist"))
+    print(f"sinyal: {d['sinyalTarama']} · " + ", ".join(
+        f"{x['code']} {x['ad']} ({x['puan']:+d})" for x in d["sinyaller"]))
     print(f"borsa.json: {len(d['watch'])} BIST, {len(d['us'])} ABD, "
           f"{len(d['world_idx'])} endeks, {seri} seri, "
           f"altın={'var' if d['gold'] else 'yok'}, {len(d['news'])} haber, "

@@ -217,6 +217,13 @@
   .pspark.down polyline{stroke:var(--down);} .pspark.down circle{fill:var(--down);}
   .stk-det{padding:10px 0 13px;border-bottom:1px dotted var(--line2);}
   .stk-det[hidden]{display:none;}
+  /* teknik sinyal etiketi: renk değişkenden, iki temada da çalışır */
+  .sg-et{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;
+    padding:1px 6px;border-radius:4px;border:1px solid currentColor;margin-left:6px;vertical-align:1px;white-space:nowrap;}
+  .sg-et.al{color:var(--success);} .sg-et.sat{color:var(--danger);}
+  .sg-neden{font-size:12px;color:var(--text-secondary);margin-top:2px;}
+  .sg-ol{margin:4px 0 0;padding-left:18px;font-size:12.5px;line-height:1.5;}
+  .sg-not{font-size:11px;color:var(--text-secondary);margin-top:10px;line-height:1.45;}
   .stk-det .pspark{width:100%;height:auto;display:block;}
   .stk-x{display:flex;justify-content:space-between;font-family:var(--mono);font-size:9px;
         color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin:3px 0 7px;}
@@ -1278,6 +1285,8 @@
   </section>
   <section class="grup" aria-label="Piyasalar"><h2 class="bolum-bas">Piyasalar</h2>
   <div class="grid" id="gridPiyasa">
+<section class="card" data-k="sinyal" data-ad="Teknik Sinyaller" id="kSinyal"><div class="card-head"><div><p class="kicker">Piyasa · 09:00 / 14:00</p><h2 class="card-title">Teknik Sinyaller</h2></div><div class="meta" id="sinyalTime">—</div></div>
+      <div id="sinyalBox"><div class="loading">Feed bekleniyor…</div></div></section>
 <section class="card" data-k="doviz" data-ad="Döviz &amp; Piyasalar"><div class="card-head"><div><p class="kicker">Piyasa · Canlı</p><h2 class="card-title">Döviz &amp; Piyasalar</h2></div><div class="meta"><span id="fxTime">—</span><br><button class="ibtn" id="fxRefresh">Yenile</button></div></div>
       <div id="marketList"><div class="loading">Kur çekiliyor…</div></div>
       <div id="goldRow"></div>
@@ -4644,6 +4653,10 @@ function stkDetay(s,piyasa,sira){
   x+=sat('Ortalamalara göre',ind.ma&&ind.ma!=='—'?ind.ma:'');
   x+=sat('Volatilite (14 gün)',ind.volat!=null?ind.volat+'%':'');
   x+=sat('Hacim / 20 gün ort.',ind.volRatio>0?'×'+ind.volRatio:'');
+  const tk=s.teknik;
+  if(tk){x+=sat('Teknik yorum',tk.ad+' · trend '+tk.trend);
+    x+=sat('Destek · Direnç',fmtN(tk.destek)+' · '+fmtN(tk.direnc));
+    if(tk.olaylar&&tk.olaylar.length)x+='<ul class="sg-ol">'+tk.olaylar.map(o=>'<li>'+esc(o)+'</li>').join('')+'</ul>';}
   /* Yalnizca TradingView bagi olan bos bir kutu acilmasin: eski bicimli
      (hist/ind icermeyen) borsa.json onbelleginde satir tiklanabilir olmuyor. */
   if(!g&&!x)return '';
@@ -4656,7 +4669,7 @@ function fmtN(v){return v.toLocaleString('tr-TR',{minimumFractionDigits:2,maximu
 function stockRow(s,piyasa,sira){const neg=/^-/.test(s.chg);const cls=neg?'down':(/^\+/.test(s.chg)?'up':'flat');const ar=neg?'▼':(cls==='up'?'▲':'–');
   const avg=(s.avg1w||s.avg1m)?'<div class="mkt-sub" style="margin-top:2px">H.ort '+esc(s.avg1w||'—')+' · A.ort '+esc(s.avg1m||'—')+'</div>':'';
   const det=stkDetay(s,piyasa,sira),spark=(s.hist&&s.hist.length>1)?priceSpark(s.hist,66,20):'';
-  const ad=esc(s.name||s.code);
+  const ad=esc(s.name||s.code)+sgEtiket(s.teknik);
   return '<div class="mkt'+(det?' stk':'')+'"'+(det?' role="button" tabindex="0" aria-expanded="false"':'')+'>'+
     '<div><div class="mkt-label">'+ad+'</div>'+avg+'</div>'+
     '<div class="stk-r">'+spark+'<div><div class="mkt-val">'+esc(s.price)+'</div><div class="mkt-chg '+cls+'">'+ar+' '+esc(s.chg.replace(/^[+-]/,''))+'</div></div></div></div>'+det;}
@@ -5012,6 +5025,35 @@ function stkTiklaBagla(id){const el=document.getElementById(id);if(!el||el.datas
   el.addEventListener('click',e=>{const r=e.target.closest('.mkt.stk');if(r&&el.contains(r))ac(r);});
   el.addEventListener('keydown',e=>{if(e.key!=='Enter'&&e.key!==' ')return;
     const r=e.target.closest('.mkt.stk');if(r&&el.contains(r)){e.preventDefault();ac(r);}});}
+/* ===== TEKNİK SİNYALLER (11 Kas) =====
+   borsa.json "sinyaller": teknik.py'nin mekanik kurallarıyla 'olası alım /
+   olası satış' etiketlenen kağıtlar (BIST evreni + ABD listesi). Model yok,
+   tavsiye değil — kart bunu altında yazar. Aynı özet 09:00/14:00 koşusunda
+   borsa_push.py ile telefona da gidiyor (#borsa bu karta getirir). */
+let sinyal={s:[],t:null,u:''};
+function sgEtiket(tk){
+  if(!tk||(tk.durum!=='olasi_alim'&&tk.durum!=='olasi_satis'))return '';
+  return '<span class="sg-et '+(tk.durum==='olasi_alim'?'al':'sat')+'">'+esc(tk.ad)+'</span>';}
+function renderSinyal(){const el=document.getElementById('sinyalBox');if(!el)return;
+  const ag=feedAge(sinyal.u),mt=document.getElementById('sinyalTime');if(mt)mt.textContent=ag?ag.txt:'—';
+  const t=sinyal.t,toplam=t?(t.bist||0)+(t.abd||0):0;
+  const not='<div class="sg-not">Kural tabanlı: trend, 20/50 günlük ortalama kesişimi, 20 günlük zirve/dip kırılımı (hacim teyidi) ve RSI. '+
+    (toplam?toplam+' kağıt tarandı. ':'')+'Yatırım tavsiyesi değil; karar ve risk senin.</div>';
+  if(!t&&!sinyal.s.length){el.innerHTML='<div class="empty">Feed çalışınca (09:00/14:00) dolar.</div>';return;}
+  if(!sinyal.s.length){el.innerHTML='<div class="empty">Bu taramada kural eşleşmesi yok.</div>'+not;return;}
+  el.innerHTML=sinyal.s.map(x=>{const neg=/^-/.test(x.chg),cls=neg?'down':(/^\+/.test(x.chg)?'up':'flat');
+    return '<div class="mkt stk" role="button" tabindex="0" aria-expanded="false">'+
+      '<div><div class="mkt-label">'+esc(x.code)+sgEtiket(x)+'</div>'+
+      '<div class="sg-neden">'+esc((x.kisa&&x.kisa.length?x.kisa:[x.trend]).join(' · '))+' · '+esc(x.piyasa)+'</div></div>'+
+      '<div class="stk-r"><div><div class="mkt-val">'+esc(x.price)+'</div><div class="mkt-chg '+cls+'">'+esc(x.chg)+'</div></div></div></div>'+
+      '<div class="stk-det" hidden>'+
+      '<div class="sum"><span class="sl">Trend</span><span>'+esc(x.trend)+'</span></div>'+
+      (x.rsi!=null?'<div class="sum"><span class="sl">RSI (14)</span><span>'+x.rsi+'</span></div>':'')+
+      '<div class="sum"><span class="sl">Destek · Direnç</span><span>'+fmtN(x.destek)+' · '+fmtN(x.direnc)+'</span></div>'+
+      '<ul class="sg-ol">'+(x.olaylar||[]).map(o=>'<li>'+esc(o)+'</li>').join('')+'</ul>'+
+      (x.senaryo?'<ul class="sg-ol"><li>▲ '+esc(x.senaryo.yukari)+'</li><li>▼ '+esc(x.senaryo.asagi)+'</li></ul>':'')+
+      '</div>';}).join('')+not;
+  stkTiklaBagla('sinyalBox');}
 let watch=[];
 function renderWatch(){const el=document.getElementById('watchList');if(!el)return;
   const head='<div class="wtitle">BIST</div>';
@@ -5036,6 +5078,9 @@ function renderWorld(){const el=document.getElementById('worldList');if(!el)retu
   newsRows(world.slice(0,6),el,'Feed çalışınca (09:00/14:00) buraya düşer.');}
 async function loadBorsaJson(){try{const r=await fetch('borsa.json?_='+Date.now());if(!r.ok)throw 0;const d=await r.json();
     if(d.watch&&d.watch.length){watch=d.watch;await sSet('d:watch',watch);renderWatch();}
+    if(Array.isArray(d.sinyaller)){sinyal={s:d.sinyaller,t:d.sinyalTarama||null,u:d.updated||''};
+      await sSet('d:sinyal',sinyal);renderSinyal();
+      const sa=feedAge(d.updated);veriDurumu('sinyal',(sa&&sa.dk>VD_ESIK_DK.borsa)?'eski':'guncel',sa&&sa.txt);}
     if(d.us&&d.us.length){us=d.us;await sSet('d:us',us);renderUS();}
     if(d.world_idx&&d.world_idx.length){worldIdx=d.world_idx;await sSet('d:worldIdx',worldIdx);renderWorldIdx();}
     if(d.gold){gold=d.gold;await sSet('d:gold',gold);renderGold();}
@@ -6898,7 +6943,7 @@ function openJobsCfg(){
    - Feed onbellekleri (borsa/haber/hava/ajan) senkrona girmez; her cihaz onlari
      kendi ceker, bosuna trafik olmasin. */
 const SYNC_FILE='panel-data.json';
-const SYNC_SKIP=['d:isSekme','d:altSekme','d:kultur','d:sync','d:mtime','d:resetVer','d:theme','d:tab','d:kultTab','d:news','d:fx','d:agents','d:wx','d:bist','d:altin','d:watch','d:world','d:tr','d:us','d:worldIdx','d:gold','d:facts'];
+const SYNC_SKIP=['d:sinyal','d:isSekme','d:altSekme','d:kultur','d:sync','d:mtime','d:resetVer','d:theme','d:tab','d:kultTab','d:news','d:fx','d:agents','d:wx','d:bist','d:altin','d:watch','d:world','d:tr','d:us','d:worldIdx','d:gold','d:facts'];
 const SYNC_POLL=5*60*1000;
 let syncCfg=null,syncTimer=null,syncBusy=false,syncMsg='';
 const syncable=k=>k&&k.indexOf('d:')===0&&SYNC_SKIP.indexOf(k)<0;
@@ -7132,7 +7177,7 @@ async function initSync(){
      2. Panel zaten açıkken -> service worker mesaj atar (aynı URL'e gidince
         hashchange tetiklenmediği için hash'e güvenilemez).
    Sadece 'spor' ve 'rutin' türleri hedef taşır; diğerleri paneli açar. */
-const BILDIRIM_HEDEF={antrenman:'kAntrenman',rutin:'kRutin'};
+const BILDIRIM_HEDEF={antrenman:'kAntrenman',rutin:'kRutin',borsa:'kSinyal'};
 function bildirimeGit(hedef){
   const id=BILDIRIM_HEDEF[String(hedef||'').replace(/^#/,'')];
   if(!id)return;
@@ -7653,7 +7698,7 @@ function kabukBagla(){
     targets={...DEFAULT_TARGETS,kcal:num(DEFAULT_TARGETS.kcal)+ofs,kcalOfs:ofs,
       c:CARB_BY_DAY[new Date().getDay()]??DEFAULT_TARGETS.c};
     await sSet(K.targets,targets);await sSet(K.targetsVer,TARGETS_VERSION);
-  }news=await sGet(K.news)||[];watch=await sGet('d:watch')||[];world=await sGet('d:world')||[];trNews=await sGet('d:tr')||[];us=await sGet('d:us')||[];worldIdx=await sGet('d:worldIdx')||[];gold=await sGet('d:gold')||null;gmailDone=await sGet(K.gmailDone)||[];
+  }news=await sGet(K.news)||[];watch=await sGet('d:watch')||[];sinyal=await sGet('d:sinyal')||sinyal;world=await sGet('d:world')||[];trNews=await sGet('d:tr')||[];us=await sGet('d:us')||[];worldIdx=await sGet('d:worldIdx')||[];gold=await sGet('d:gold')||null;gmailDone=await sGet(K.gmailDone)||[];
   const de=await sGet(K.de);deExtra=(de&&de.date===todayKey())?de.extra:0;
   deWrong=await sGet(K.deWrong)||[];await loadQuiz();
   mCur=thisMonth();
@@ -7729,7 +7774,7 @@ function kabukBagla(){
   jobProfile=await sGet(K.jobProfile)||null;jobsApplied=await sGet(K.jobsApplied)||[];jobsHidden=await sGet('d:jobsHidden')||{};isSekme=await sGet('d:isSekme')||'tr';await linkedinYukle();myApps=await sGet(K.myApps)||[];retler=await sGet('d:retler')||[];retGizli=await sGet('d:retGizli')||[];retElle=await sGet('d:retElle')||[];oneriKapali=await sGet('d:oneriKapali')||{};offGunler=await sGet('d:off')||{};antSec=await sGet('d:antSec')||{};
   document.getElementById('placeName').textContent=PLACE.name;
   renderTasks();await loadSched();await loadYok();await loadMorning();await renderRun();await loadWorkout();renderWtLog();await loadMeals();await loadWater();await takviyeYukle();await adimYukle();await loadSleep();await loadBW();await loadMoney();await renderBugunHarcama();await renderHaftalik();await renderOneri();loadHabits();await initSync();
-  renderFacts();renderFilm();renderArtist();renderBook();renderHistory();kulturYukle();renderKult();renderGerman();renderNews();renderTR();renderRetler();renderWatch();renderUS();renderWorldIdx();renderGold();renderWorld();renderMktSummary();renderFinNote();
+  renderFacts();renderFilm();renderArtist();renderBook();renderHistory();kulturYukle();renderKult();renderGerman();renderNews();renderTR();renderRetler();renderWatch();renderSinyal();renderUS();renderWorldIdx();renderGold();renderWorld();renderMktSummary();renderFinNote();
   ['watchList','usList','idxList'].forEach(stkTiklaBagla);
   loadFX(false);loadBorsaJson();loadBasvuru();loadGmailJson();loadFactsJson();loadAgents(false);loadWx();loadJobsJson();
   setInterval(loadBorsaJson,15*60*1000);setInterval(loadBasvuru,15*60*1000);setInterval(loadGmailJson,15*60*1000);setInterval(()=>loadAgents(false),15*60*1000);setInterval(loadWx,30*60*1000);setInterval(loadJobsJson,60*60*1000);

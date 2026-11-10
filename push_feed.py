@@ -233,21 +233,14 @@ def oneri_satiri(veri):
         return ""
 
 
-def gonder(saat, ad, dilim, tur, subs, gizli, gun_anahtari, oneri=""):
-    """Bildirimi gönderir. Hem cron hem dış tetik buraya düşüyor —
-    gövde, VAPID iddiası ve ölü abonelik işleme tek yerde kalsın."""
+def hepsine_gonder(govde, subs, gizli, ttl=1800):
+    """JSON gövdeyi bütün aboneliklere yollar -> (başarılı, ölü). Yoklama ve
+    borsa bildirimi (borsa_push.py) aynı yolu kullanır: VAPID iddiası ve
+    ölü abonelik işleme tek yerde kalsın."""
     sub = os.environ.get("VAPID_SUB", "").strip() or VAPID_SUB_VARSAYILAN
     if not sub.startswith("mailto:"):
         sub = "mailto:" + sub
     vapid_claims = {"sub": sub}
-
-    govde = json.dumps({
-        "title": ad,
-        "body": f"{saat} · başladın mı?" + (f" · {oneri}" if oneri else ""),
-        "tag": f"yok-{gun_anahtari}-{dilim}",
-        "url": "./index.html" + HEDEF_KART.get(tur, ""),
-        "icon": "icon-192.png",
-    }, ensure_ascii=False)
 
     basarili, olu = 0, []
     for s in subs:
@@ -257,7 +250,7 @@ def gonder(saat, ad, dilim, tur, subs, gizli, gun_anahtari, oneri=""):
                 data=govde,
                 vapid_private_key=gizli,
                 vapid_claims=dict(vapid_claims),
-                ttl=1800,
+                ttl=ttl,
             )
             basarili += 1
         except WebPushException as e:
@@ -268,7 +261,20 @@ def gonder(saat, ad, dilim, tur, subs, gizli, gun_anahtari, oneri=""):
             print(f"gönderilemedi ({kod}): {e}")
         except Exception as e:
             print(f"gönderilemedi: {e}")
+    return basarili, olu
 
+
+def gonder(saat, ad, dilim, tur, subs, gizli, gun_anahtari, oneri=""):
+    """Yoklama bildirimi. Hem cron hem dış tetik buraya düşüyor."""
+    govde = json.dumps({
+        "title": ad,
+        "body": f"{saat} · başladın mı?" + (f" · {oneri}" if oneri else ""),
+        "tag": f"yok-{gun_anahtari}-{dilim}",
+        "url": "./index.html" + HEDEF_KART.get(tur, ""),
+        "icon": "icon-192.png",
+    }, ensure_ascii=False)
+
+    basarili, olu = hepsine_gonder(govde, subs, gizli)
     print(f"{ad} ({saat}) — {basarili}/{len(subs)} cihaza gönderildi."
           + (f" ölü abonelik: {len(olu)}" if olu else "")
           + (" · öneri eklendi" if oneri else ""))

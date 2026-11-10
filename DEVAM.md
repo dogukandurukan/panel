@@ -43,6 +43,22 @@ yasakladığı kişisel verinin en hassas türü ve git geçmişi kalıcı.
   giderken onu da açar. Yeni grup/kart eklersen `ALT_SEKME`'ye yaz.
 - **HUD teması açıldı** (kullanıcı "çok siyah" dedi): lacivert-gri yüzeyler.
 
+## 0c. 11 KASIM — teknik sinyaller
+
+Kullanıcı tradermonty/claude-trading-skills'i gösterdi; emir vermiyor, ABD +
+ücretli API ağırlıklı. `technical-analyst` yaklaşımı **kural tabanlı** olarak
+uyarlandı (kullanıcı seçti; model yok, ANTHROPIC_API_KEY gerekmez).
+- `teknik.py` — trend (20/50 ort.), kesişim (son 3 gün), 20 gün zirve/dip
+  kırılımı (hacim ≥1.5× teyit), RSI (trendin tersine puan vermez). Puan ≥2
+  'olası alım', ≤-2 'olası satış'. Testler `tests/test_teknik.py`.
+- `panel_feed.py` — BIST evreni (36) + ABD (5) taranır → borsa.json
+  `sinyaller` (≤8) + `sinyalTarama`; izleme satırlarına `teknik`.
+- `borsa_push.py` — feed.yml'nin son adımı (continue-on-error), hafta içi
+  09:00/14:00 özet push; `push_feed.hepsine_gonder` ortak. `#borsa` →
+  Keşif › Piyasa › Teknik Sinyaller kartı. Elle test: feed'i `zorla` ile çalıştır.
+- **Tavsiye değil** ibaresi kartta ve bildirimde duruyor — kaldırma.
+- Otomatik emir YOK (kullanıcıyla konuşuldu: BIST'te bireysel API yok, repo public).
+
 ## 0. SIRADA NE VAR (24 Eyl)
 
 **Kullanıcı bekliyor: bir iş.**
