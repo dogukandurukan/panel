@@ -32,6 +32,9 @@ on:
 jobs:
   gonder:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: write         # borsa-feed'i workflow_dispatch ile başlatmak için
     # Betik dilim saatine kadar uyuyabiliyor (en fazla ~40 dk); sapmış bir
     # koşu runner'ı saatlerce tutmasın.
     timeout-minutes: 75
@@ -43,6 +46,28 @@ jobs:
       # pywebpush KASITEN ortak requirements.txt'te değil: bir alt bağımlılığı
       # (http-ece) bazı ortamlarda derlenmiyor ve bu iş akışı çökerse diğer
       # feed'ler (gmail, borsa, jobs, facts) etkilenmemeli.
+      # BORSA ZAMANLAYICISI (11 Kas): borsa-feed'in kendi schedule'ı güvenilmez.
+      # cron-job.org bu iş akışını 08:15 ve 12:15'te (TR) zaten tetikliyor;
+      # o tetikte borsa-feed hedef=09:00 / 14:00 ile başlatılır ve o saate
+      # kadar bekler. Hafta sonu yok. push_feed uyumadan ÖNCE çalışır; hata
+      # yoklama bildirimini engellemez.
+      - name: borsa feed'i zamanla
+        if: github.event_name != 'schedule'
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          s=$((10#$(TZ=Europe/Istanbul date +%H%M))); g=$(TZ=Europe/Istanbul date +%u)
+          hedef=""
+          if [ "$g" -le 5 ]; then
+            if [ "$s" -ge 810 ] && [ "$s" -le 830 ]; then hedef="09:00"; fi
+            if [ "$s" -ge 1210 ] && [ "$s" -le 1230 ]; then hedef="14:00"; fi
+          fi
+          if [ -n "$hedef" ]; then
+            gh workflow run feed.yml -R "$GITHUB_REPOSITORY" -f hedef="$hedef" && echo "borsa-feed $hedef için başlatıldı"
+          else
+            echo "borsa penceresi değil ($s)"
+          fi
       - run: pip install requests pywebpush
       - run: python push_feed.py
         env:

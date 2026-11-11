@@ -59,9 +59,13 @@ uyarlandı (kullanıcı seçti; model yok, ANTHROPIC_API_KEY gerekmez).
 - **Tavsiye değil** ibaresi kartta ve bildirimde duruyor — kaldırma.
 - Otomatik emir YOK (kullanıcıyla konuşuldu: BIST'te bireysel API yok, repo public).
 - **Zamanlama:** GitHub schedule borsa-feed'i geciktiriyor/atlıyor (11 Kas hiç
-  çalışmadı; ilk gerçek push elle tetikle 15:05'te 1/1 cihaza gitti). Kullanıcı
-  cron-job.org'da yoklama işini klonlayıp `feed.yml/dispatches`'e 09:00 ve
-  14:00 iki iş ekleyecek. Schedule koşusu yalnız 09-11 / 14-16'da push atar.
+  çalışmadı; ilk gerçek push elle tetikle 15:05'te 1/1 cihaza gitti).
+  Çözüm kullanıcıya iş bırakmadan: cron-job.org push.yml'yi zaten 08:00/08:15/
+  12:00/12:15'te tetikliyor; push.yml'nin 'borsa feed'i zamanla' adımı 08:15
+  ve 12:15 tetiğinde feed.yml'yi `hedef=09:00/14:00` ile başlatıyor (GITHUB_TOKEN,
+  actions: write), feed checkout'tan önce o saate kadar uyuyor. Schedule
+  koşusu veri günceller, push ATMAZ. cron-job.org saatleri değişirse
+  push.yml'deki 0810-0830 / 1210-1230 pencerelerini güncelle.
 
 ## 0. SIRADA NE VAR (24 Eyl)
 

@@ -13,9 +13,9 @@ Hafta sonu gönderilmez: borsa kapalı, veri cumadan beri aynı.
 
 ZAMANLAMA (11 Kas): GitHub `schedule` bu feed'de saatlerce gecikiyor ya da
 hiç çalışmıyor (10 Kas 09:00 koşusu 17:43'te, 11 Kas'ta hiç). Zamanında
-bildirim dış zamanlayıcıdan (cron-job.org → workflow_dispatch) gelir. Geciken
-schedule koşusu veriyi yine günceller ama bildirimi yalnızca PENCERE içinde
-atar — akşam 21:00'de "09:00 özeti" gelmesin.
+bildirim dış tetikten gelir: cron-job.org → push.yml (08:15/12:15) →
+feed.yml hedef=09:00/14:00. Schedule koşusu veriyi günceller ama bildirim
+ATMAZ — hem akşam 21:00'de "09:00 özeti" gelmez hem dış tetikle ikizlenmez.
 Çalıştırma: python borsa_push.py   (BORSA_ZORLA=true hafta sonu kontrolünü atlar)
 """
 import datetime as dt
@@ -26,7 +26,6 @@ import sys
 import push_feed as P
 
 IST = dt.timezone(dt.timedelta(hours=3))
-PENCERELER = ((9, 11), (14, 16))   # TR saati [başlangıç, bitiş)
 EN_FAZLA = 4          # gövdede adı geçen kağıt sayısı (iOS ~4 satır gösteriyor)
 
 
@@ -64,8 +63,8 @@ def main():
         print("hafta sonu — borsa kapalı, bildirim yok.")
         return 0
     tetik = os.environ.get("TETIK", "")
-    if tetik == "schedule" and not any(a <= simdi.hour < b for a, b in PENCERELER):
-        print(f"schedule koşusu {simdi:%H:%M}'de geldi (pencere dışı) — veri güncellendi, bildirim yok.")
+    if tetik == "schedule" and not zorla:
+        print(f"schedule koşusu ({simdi:%H:%M}) — veri güncellendi, bildirim dış tetikte.")
         return 0
     token = os.environ.get("PANEL_GIST_TOKEN", "").strip()
     gizli = os.environ.get("VAPID_PRIVATE", "").strip()
