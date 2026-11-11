@@ -58,6 +58,10 @@ uyarlandı (kullanıcı seçti; model yok, ANTHROPIC_API_KEY gerekmez).
   Keşif › Piyasa › Teknik Sinyaller kartı. Elle test: feed'i `zorla` ile çalıştır.
 - **Tavsiye değil** ibaresi kartta ve bildirimde duruyor — kaldırma.
 - Otomatik emir YOK (kullanıcıyla konuşuldu: BIST'te bireysel API yok, repo public).
+- **Zamanlama:** GitHub schedule borsa-feed'i geciktiriyor/atlıyor (11 Kas hiç
+  çalışmadı; ilk gerçek push elle tetikle 15:05'te 1/1 cihaza gitti). Kullanıcı
+  cron-job.org'da yoklama işini klonlayıp `feed.yml/dispatches`'e 09:00 ve
+  14:00 iki iş ekleyecek. Schedule koşusu yalnız 09-11 / 14-16'da push atar.
 
 ## 0. SIRADA NE VAR (24 Eyl)
 
