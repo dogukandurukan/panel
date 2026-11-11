@@ -43,3 +43,4 @@ jobs:
           VAPID_PRIVATE: ${{ secrets.VAPID_PRIVATE }}
           VAPID_SUB: ${{ secrets.VAPID_SUB }}
           BORSA_ZORLA: ${{ inputs.zorla }}
+          TETIK: ${{ github.event_name }}
