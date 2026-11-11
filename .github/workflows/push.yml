@@ -29,6 +29,10 @@ on:
         description: 'Pencere dışı olsa da en yakın dilim için bildirim gönder (test)'
         type: boolean
         default: false
+      borsa_hedef:
+        description: 'Yalnız borsa tetiğini dene: SS:DD (dolu ise yoklama gönderilmez)'
+        type: string
+        default: ''
 jobs:
   gonder:
     runs-on: ubuntu-latest
@@ -58,8 +62,8 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           s=$((10#$(TZ=Europe/Istanbul date +%H%M))); g=$(TZ=Europe/Istanbul date +%u)
-          hedef=""
-          if [ "$g" -le 5 ]; then
+          hedef="${{ inputs.borsa_hedef }}"
+          if [ -z "$hedef" ] && [ "$g" -le 5 ]; then
             if [ "$s" -ge 810 ] && [ "$s" -le 830 ]; then hedef="09:00"; fi
             if [ "$s" -ge 1210 ] && [ "$s" -le 1230 ]; then hedef="14:00"; fi
           fi
@@ -70,6 +74,7 @@ jobs:
           fi
       - run: pip install requests pywebpush
       - run: python push_feed.py
+        if: inputs.borsa_hedef == ''
         env:
           # Gists okuma izinli token — abonelik gizli gist'te duruyor
           PANEL_GIST_TOKEN: ${{ secrets.PANEL_GIST_TOKEN }}
