@@ -1,9 +1,9 @@
 {
  "version": 2,
- "updated": "2026-11-12 16:32",
+ "updated": "2026-11-13 15:51",
  "ok": true,
- "count": 7,
- "pool": 13,
+ "count": 10,
+ "pool": 16,
  "quota": {
   "tr": 3,
   "de": 3,
@@ -11,6 +11,179 @@
   "uk": 3
  },
  "items": [
+  {
+   "id": "56fb622867d7",
+   "title": "Data Engineer",
+   "company": "Surgo Health",
+   "location": "Turkey",
+   "country": "TR",
+   "market": "turkey",
+   "bucket": "tr",
+   "label": "Türkiye Remote",
+   "tier": 1,
+   "rank": 0,
+   "reserve": false,
+   "is_new": true,
+   "first_seen": "2026-11-13",
+   "workplace_type": "remote",
+   "source": "Himalayas",
+   "also_on": [],
+   "source_url": "https://himalayas.app/companies/surgo-health/jobs/data-engineer?utm_source=api",
+   "publication_date": "2026-11-13",
+   "fit_score": 99,
+   "fit_reason": "rol primary +30; konum +15; beceri 6×5 +30; kıdem mid +5; tazelik +10",
+   "matched_skills": [
+    "SQL",
+    "Python",
+    "Azure",
+    "Databricks",
+    "PySpark",
+    "PostgreSQL"
+   ],
+   "location_reason": "Remotive candidate_required_location 'Turkey'",
+   "seniority": "mid",
+   "focus": "pipeline",
+   "focus_scores": {
+    "ml": 1,
+    "bi": 1,
+    "pipeline": 20,
+    "business": 2
+   },
+   "language": "en",
+   "generated_at": "2026-11-13 15:51",
+   "summary": "Surgo Health is building the Behavioral Intelligence layer for healthcare — revealing why people behave as they do, predicting what they will do next, and helping organizations make the decisions that change outcomes. A Public Benefit Corporation grounded in t",
+   "keywords": [
+    "pipeline",
+    "real time",
+    "migration",
+    "optimization",
+    "data quality"
+   ],
+   "url": "https://himalayas.app/companies/surgo-health/jobs/data-engineer?utm_source=api",
+   "skills": [
+    "sql",
+    "python",
+    "azure",
+    "databricks",
+    "pyspark",
+    "postgresql"
+   ],
+   "score": 99,
+   "posted": "2026-11-13",
+   "days": 0,
+   "remote": true,
+   "german": false
+  },
+  {
+   "id": "66d2e30eb4c1",
+   "title": "Senior Data Engineer",
+   "company": "Kayak",
+   "location": "Berlin Office",
+   "country": "DE",
+   "market": "international",
+   "bucket": "de",
+   "label": "DE",
+   "tier": 1,
+   "rank": 0,
+   "reserve": false,
+   "is_new": true,
+   "first_seen": "2026-11-13",
+   "workplace_type": "onsite",
+   "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.com/jobs/companies/kayak/senior-data-engineer-berlin-467027",
+   "publication_date": "2026-11-13",
+   "fit_score": 87,
+   "fit_reason": "rol primary +30; konum +15; beceri 4×5 +20; kıdem senior +5; tazelik +10",
+   "matched_skills": [
+    "SQL",
+    "Python",
+    "Airflow",
+    "PostgreSQL"
+   ],
+   "location_reason": "Arbeitnow konumu 'Berlin Office'",
+   "seniority": "senior",
+   "focus": "pipeline",
+   "focus_scores": {
+    "ml": 0,
+    "bi": 6,
+    "pipeline": 14,
+    "business": 1
+   },
+   "language": "en",
+   "generated_at": "2026-11-13 15:51",
+   "summary": "KAYAK, part of Booking Holdings (NASDAQ: BKNG), is the world's leading travel search engine. With billions of queries across our platforms, we help people find their perfect flight, stay, rental car and vacation package. We're also transforming business travel",
+   "keywords": [
+    "pipeline",
+    "self-service",
+    "real-time",
+    "automation"
+   ],
+   "url": "https://www.arbeitnow.com/jobs/companies/kayak/senior-data-engineer-berlin-467027",
+   "skills": [
+    "sql",
+    "python",
+    "airflow",
+    "postgresql"
+   ],
+   "score": 87,
+   "posted": "2026-11-13",
+   "days": 0,
+   "remote": false,
+   "german": false
+  },
+  {
+   "id": "b0d97004deb8",
+   "title": "Senior Data Platform Engineer (m/f/d)",
+   "company": "Statista",
+   "location": "Hamburg or Berlin",
+   "country": "DE",
+   "market": "international",
+   "bucket": "de",
+   "label": "DE",
+   "tier": 1,
+   "rank": 1,
+   "reserve": false,
+   "is_new": true,
+   "first_seen": "2026-11-13",
+   "workplace_type": "onsite",
+   "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.com/jobs/companies/statista/senior-data-platform-engineer-hamburg-or-berlin-92902",
+   "publication_date": "2026-11-12",
+   "fit_score": 72,
+   "fit_reason": "rol primary +30; konum +15; beceri 1×5 +5; kıdem senior +5; tazelik +10",
+   "matched_skills": [
+    "Snowflake"
+   ],
+   "location_reason": "Arbeitnow konumu 'Hamburg or Berlin'",
+   "seniority": "senior",
+   "focus": "pipeline",
+   "focus_scores": {
+    "ml": 0,
+    "bi": 0,
+    "pipeline": 15,
+    "business": 3
+   },
+   "language": "en",
+   "generated_at": "2026-11-13 15:51",
+   "summary": "At Statista , we’re all about facts and data, for we are the world's leading business data platform. By providing reliable and easy-to-use data as well as various data analytics products and services, we empower people worldwide to make fact-based decisions. F",
+   "keywords": [
+    "governance",
+    "cost",
+    "pipeline",
+    "stakeholder"
+   ],
+   "url": "https://www.arbeitnow.com/jobs/companies/statista/senior-data-platform-engineer-hamburg-or-berlin-92902",
+   "skills": [
+    "snowflake"
+   ],
+   "score": 72,
+   "posted": "2026-11-12",
+   "days": 1,
+   "remote": false,
+   "german": false
+  },
   {
    "id": "380aa827701f",
    "title": "Senior Data Analyst, ML & Experimentation (f/m/d)",
@@ -21,7 +194,7 @@
    "bucket": "de",
    "label": "DE",
    "tier": 2,
-   "rank": 0,
+   "rank": 2,
    "reserve": false,
    "is_new": false,
    "first_seen": "2026-11-11",
@@ -49,7 +222,7 @@
     "business": 17
    },
    "language": "en",
-   "generated_at": "2026-11-12 16:32",
+   "generated_at": "2026-11-13 15:51",
    "summary": "adjoe builds the technologies behind mobile apps growth and monetization. With our core product Playtime Arcade , we've become the global leader in rewarded advertising, an ad unit built on a simple premise: users earn real in-app rewards for engaging with new",
    "keywords": [
     "optimization",
@@ -70,7 +243,70 @@
    ],
    "score": 84,
    "posted": "2026-11-10",
-   "days": 2,
+   "days": 3,
+   "remote": false,
+   "german": false
+  },
+  {
+   "id": "0c5faa5f3e75",
+   "title": "Data Platform Manager",
+   "company": "Destinusgroup",
+   "location": "Hengelo, Netherlands",
+   "country": "NL",
+   "market": "international",
+   "bucket": "nl",
+   "label": "NL",
+   "tier": 1,
+   "rank": 0,
+   "reserve": false,
+   "is_new": true,
+   "first_seen": "2026-11-13",
+   "workplace_type": "onsite",
+   "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.nl/jobs/companies/destinusgroup/data-platform-manager-hengelo-61385",
+   "publication_date": "2026-11-12",
+   "fit_score": 71,
+   "fit_reason": "rol primary +30; konum +12; beceri 6×5 +30; kıdem manager -18; tazelik +10",
+   "matched_skills": [
+    "SQL",
+    "Power BI",
+    "Azure",
+    "Microsoft Fabric",
+    "Databricks",
+    "PySpark"
+   ],
+   "location_reason": "Arbeitnow konumu 'Hengelo, Netherlands'",
+   "seniority": "manager",
+   "focus": "pipeline",
+   "focus_scores": {
+    "ml": 0,
+    "bi": 7,
+    "pipeline": 24,
+    "business": 0
+   },
+   "language": "en",
+   "generated_at": "2026-11-13 15:51",
+   "summary": "About the role As Data Platform Manager you will own Destinus's company data platform. Built on Microsoft Fabric, it brings together data from our different systems, and it serves the reporting and data agents that production, supply chain, program management,",
+   "keywords": [
+    "supply chain",
+    "finance",
+    "pipeline",
+    "cost",
+    "governance"
+   ],
+   "url": "https://www.arbeitnow.nl/jobs/companies/destinusgroup/data-platform-manager-hengelo-61385",
+   "skills": [
+    "sql",
+    "power bi",
+    "azure",
+    "microsoft fabric",
+    "databricks",
+    "pyspark"
+   ],
+   "score": 71,
+   "posted": "2026-11-12",
+   "days": 1,
    "remote": false,
    "german": false
   },
@@ -84,17 +320,17 @@
    "bucket": "nl",
    "label": "NL",
    "tier": 1,
-   "rank": 0,
+   "rank": 1,
    "reserve": false,
-   "is_new": true,
+   "is_new": false,
    "first_seen": "2026-11-12",
    "workplace_type": "onsite",
    "source": "Arbeitnow",
    "also_on": [],
    "source_url": "https://www.arbeitnow.nl/jobs/companies/heinenoordzicht-groep/business-intelligence-ontwikkelaar-den-bosch-120995",
    "publication_date": "2026-11-11",
-   "fit_score": 89,
-   "fit_reason": "rol primary +30; konum +12; beceri 5×5 +25; kıdem mid +5; tazelik +10",
+   "fit_score": 86,
+   "fit_reason": "rol primary +30; konum +12; beceri 5×5 +25; kıdem mid +5; tazelik +7",
    "matched_skills": [
     "SQL",
     "Python",
@@ -112,7 +348,7 @@
     "business": 2
    },
    "language": "en",
-   "generated_at": "2026-11-12 16:32",
+   "generated_at": "2026-11-13 15:51",
    "summary": "Data omzetten in inzichten waar onze organisatie echt mee verder kan. Dat is waar jij als business intelligence ontwikkelaar bij HeinenoordZicht Groep voor zorgt. Je bouwt mee aan een toekomstbestendig datawarehouse en draagt bij aan de verdere professionalise",
    "keywords": [
     "dashboard",
@@ -126,12 +362,259 @@
     "azure",
     "databricks"
    ],
-   "score": 89,
+   "score": 86,
    "posted": "2026-11-11",
+   "days": 2,
+   "remote": false,
+   "german": false
+  },
+  {
+   "id": "8dce19e883a5",
+   "title": "Production & ESG Data Engineer",
+   "company": "ONE-Dyas B.V.",
+   "location": "Amsterdam, Noord-Holland, Netherlands",
+   "country": "NL",
+   "market": "international",
+   "bucket": "nl",
+   "label": "NL",
+   "tier": 1,
+   "rank": 2,
+   "reserve": false,
+   "is_new": false,
+   "first_seen": "2026-11-10",
+   "workplace_type": "onsite",
+   "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.nl/jobs/companies/one-dyas-bv/production-esg-data-engineer-amsterdam-214778",
+   "publication_date": "2026-11-10",
+   "fit_score": 71,
+   "fit_reason": "rol primary +30; konum +12; beceri 2×5 +10; kıdem mid +5; tazelik +7",
+   "matched_skills": [
+    "SQL",
+    "Python"
+   ],
+   "location_reason": "Arbeitnow konumu 'Amsterdam, Noord-Holland, Netherlands'",
+   "seniority": "mid",
+   "focus": "pipeline",
+   "focus_scores": {
+    "ml": 1,
+    "bi": 5,
+    "pipeline": 8,
+    "business": 1
+   },
+   "language": "en",
+   "generated_at": "2026-11-13 15:51",
+   "summary": "Are you passionate about data, technology and sustainability? ONE-Dyas is looking for a Production & ESG Data Engineer to ensure the accurate collection, administration and reporting of production, hydrocarbon and ESG data. You will turn complex data into reli",
+   "keywords": [
+    "automation",
+    "energy",
+    "governance",
+    "supply chain"
+   ],
+   "url": "https://www.arbeitnow.nl/jobs/companies/one-dyas-bv/production-esg-data-engineer-amsterdam-214778",
+   "skills": [
+    "sql",
+    "python"
+   ],
+   "score": 71,
+   "posted": "2026-11-10",
+   "days": 3,
+   "remote": false,
+   "german": false
+  },
+  {
+   "id": "6219b1b37959",
+   "title": "Senior Analytics Engineer",
+   "company": "Kraken",
+   "location": "Manchester, UK",
+   "country": "UK",
+   "market": "international",
+   "bucket": "uk",
+   "label": "UK",
+   "tier": 1,
+   "rank": 0,
+   "reserve": false,
+   "is_new": true,
+   "first_seen": "2026-11-13",
+   "workplace_type": "onsite",
+   "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/kraken/senior-analytics-engineer-manchester-220540",
+   "publication_date": "2026-11-13",
+   "fit_score": 94,
+   "fit_reason": "rol primary +30; konum +12; beceri 6×5 +30; kıdem senior +5; tazelik +10",
+   "matched_skills": [
+    "SQL",
+    "Python",
+    "Airflow",
+    "Databricks",
+    "PostgreSQL",
+    "dbt"
+   ],
+   "location_reason": "Arbeitnow konumu 'Manchester, UK'",
+   "seniority": "senior",
+   "focus": "pipeline",
+   "focus_scores": {
+    "ml": 0,
+    "bi": 4,
+    "pipeline": 16,
+    "business": 2
+   },
+   "language": "en",
+   "generated_at": "2026-11-13 15:51",
+   "summary": "Help us use technology to make a big green dent in the universe! Kraken powers some of the most innovative global developments in energy. We create the technology that redefines utilities and unlocks a new energy system of the future. By optimising renewable g",
+   "keywords": [
+    "energy",
+    "dashboard",
+    "stakeholder",
+    "pipeline"
+   ],
+   "url": "https://www.arbeitnow.co.uk/jobs/companies/kraken/senior-analytics-engineer-manchester-220540",
+   "skills": [
+    "sql",
+    "python",
+    "airflow",
+    "databricks",
+    "postgresql",
+    "dbt"
+   ],
+   "score": 94,
+   "posted": "2026-11-13",
+   "days": 0,
+   "remote": false,
+   "german": false
+  },
+  {
+   "id": "ed1c4109d539",
+   "title": "Data Engineer III - FMX",
+   "company": "Fanaticsfbg",
+   "location": "London",
+   "country": "UK",
+   "market": "international",
+   "bucket": "uk",
+   "label": "UK",
+   "tier": 1,
+   "rank": 1,
+   "reserve": false,
+   "is_new": true,
+   "first_seen": "2026-11-13",
+   "workplace_type": "onsite",
+   "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/fanaticsfbg/data-engineer-iii-fmx-london-844",
+   "publication_date": "2026-11-12",
+   "fit_score": 94,
+   "fit_reason": "rol primary +30; konum +12; beceri 6×5 +30; kıdem mid +5; tazelik +10",
+   "matched_skills": [
+    "SQL",
+    "Python",
+    "ETL",
+    "Airflow",
+    "Databricks",
+    "Snowflake"
+   ],
+   "location_reason": "Arbeitnow konumu 'London'",
+   "seniority": "mid",
+   "focus": "pipeline",
+   "focus_scores": {
+    "ml": 0,
+    "bi": 0,
+    "pipeline": 23,
+    "business": 3
+   },
+   "language": "en",
+   "generated_at": "2026-11-13 15:51",
+   "summary": "About Us Fanatics is building a leading global digital sports platform. We ignite the passions of global sports fans and maximize the presence and reach for our hundreds of sports partners globally by offering products and services across Fanatics Commerce, Fa",
+   "keywords": [
+    "retail",
+    "pipeline",
+    "governance",
+    "stakeholder",
+    "data quality",
+    "e-commerce"
+   ],
+   "url": "https://www.arbeitnow.co.uk/jobs/companies/fanaticsfbg/data-engineer-iii-fmx-london-844",
+   "skills": [
+    "sql",
+    "python",
+    "etl",
+    "airflow",
+    "databricks",
+    "snowflake"
+   ],
+   "score": 94,
+   "posted": "2026-11-12",
    "days": 1,
    "remote": false,
    "german": false
   },
+  {
+   "id": "4e19d20146d3",
+   "title": "Data Engineer",
+   "company": "Zego",
+   "location": "London",
+   "country": "UK",
+   "market": "international",
+   "bucket": "uk",
+   "label": "UK",
+   "tier": 1,
+   "rank": 2,
+   "reserve": false,
+   "is_new": true,
+   "first_seen": "2026-11-13",
+   "workplace_type": "onsite",
+   "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/zego/data-engineer-london-162403",
+   "publication_date": "2026-11-12",
+   "fit_score": 94,
+   "fit_reason": "rol primary +30; konum +12; beceri 7×5 +30; kıdem mid +5; tazelik +10",
+   "matched_skills": [
+    "SQL",
+    "Python",
+    "ETL",
+    "Airflow",
+    "PySpark",
+    "Snowflake",
+    "dbt"
+   ],
+   "location_reason": "Arbeitnow konumu 'London'",
+   "seniority": "mid",
+   "focus": "pipeline",
+   "focus_scores": {
+    "ml": 4,
+    "bi": 0,
+    "pipeline": 22,
+    "business": 4
+   },
+   "language": "en",
+   "generated_at": "2026-11-13 15:51",
+   "summary": "About Zego 🚀 At Zego, we're on a mission to do the good thing, not the insurance thing. Insurance hasn't changed much in over a century. The way we live, work and travel has. We're building the real-time, AI-driven infrastructure that powers innovative insuran",
+   "keywords": [
+    "real-time",
+    "scalab",
+    "pipeline",
+    "optimisation",
+    "stakeholder"
+   ],
+   "url": "https://www.arbeitnow.co.uk/jobs/companies/zego/data-engineer-london-162403",
+   "skills": [
+    "sql",
+    "python",
+    "etl",
+    "airflow",
+    "pyspark",
+    "snowflake",
+    "dbt"
+   ],
+   "score": 94,
+   "posted": "2026-11-12",
+   "days": 1,
+   "remote": false,
+   "german": false
+  }
+ ],
+ "reserve": [
   {
    "id": "1aa216acd6a6",
    "title": "Junior Business Data Analyst",
@@ -142,17 +625,17 @@
    "bucket": "nl",
    "label": "NL",
    "tier": 1,
-   "rank": 1,
-   "reserve": false,
-   "is_new": true,
+   "rank": 3,
+   "reserve": true,
+   "is_new": false,
    "first_seen": "2026-11-12",
    "workplace_type": "onsite",
    "source": "Arbeitnow",
    "also_on": [],
    "source_url": "https://www.arbeitnow.nl/jobs/companies/cefetra-group-bv/junior-business-data-analyst-alkmaar-367366",
    "publication_date": "2026-11-11",
-   "fit_score": 69,
-   "fit_reason": "rol primary +30; konum +12; beceri 5×5 +25; kıdem junior -15; tazelik +10",
+   "fit_score": 66,
+   "fit_reason": "rol primary +30; konum +12; beceri 5×5 +25; kıdem junior -15; tazelik +7",
    "matched_skills": [
     "SQL",
     "Python",
@@ -170,7 +653,7 @@
     "business": 13
    },
    "language": "en",
-   "generated_at": "2026-11-12 16:32",
+   "generated_at": "2026-11-13 15:51",
    "summary": "Start your career as a connector between business, processes and data and make an impact on global trade! Who we are Royal Ingredients Group located in Alkmaar, part of the Cefetra Group, is a dynamic trading company with locations in the United States, India,",
    "keywords": [
     "automation",
@@ -186,9 +669,9 @@
     "microsoft fabric",
     "etl"
    ],
-   "score": 69,
+   "score": 66,
    "posted": "2026-11-11",
-   "days": 1,
+   "days": 2,
    "remote": false,
    "german": false
   },
@@ -202,17 +685,17 @@
    "bucket": "nl",
    "label": "NL",
    "tier": 1,
-   "rank": 2,
-   "reserve": false,
-   "is_new": true,
+   "rank": 4,
+   "reserve": true,
+   "is_new": false,
    "first_seen": "2026-11-12",
    "workplace_type": "onsite",
    "source": "Arbeitnow",
    "also_on": [],
    "source_url": "https://www.arbeitnow.nl/jobs/companies/the-trainee-company/traineeship-data-analytics-bunnik-27658",
    "publication_date": "2026-11-11",
-   "fit_score": 64,
-   "fit_reason": "rol primary +30; konum +12; beceri 0×5 +0; kıdem mid +5; tazelik +10",
+   "fit_score": 61,
+   "fit_reason": "rol primary +30; konum +12; beceri 0×5 +0; kıdem mid +5; tazelik +7",
    "matched_skills": [],
    "location_reason": "Arbeitnow konumu 'Bunnik, Utrecht, Nederland'",
    "seniority": "mid",
@@ -224,192 +707,17 @@
     "business": 1
    },
    "language": "en",
-   "generated_at": "2026-11-12 16:32",
+   "generated_at": "2026-11-13 15:51",
    "summary": "Ben je nieuwsgierig naar de dynamische wereld van data, maar geen idee waar je moet beginnen? Ons traineeship Data & Analytics biedt dé oplossing! We gaan samen kijken waar jij energie van krijgt, of dit nu bijvoorbeeld projectmatig knallen is of strategisch p",
    "keywords": [],
    "url": "https://www.arbeitnow.nl/jobs/companies/the-trainee-company/traineeship-data-analytics-bunnik-27658",
    "skills": [],
-   "score": 64,
+   "score": 61,
    "posted": "2026-11-11",
-   "days": 1,
+   "days": 2,
    "remote": false,
    "german": false
   },
-  {
-   "id": "b344a73f2ecb",
-   "title": "Data Engineer",
-   "company": "Fanduel",
-   "location": "Edinburgh",
-   "country": "UK",
-   "market": "international",
-   "bucket": "uk",
-   "label": "UK",
-   "tier": 1,
-   "rank": 0,
-   "reserve": false,
-   "is_new": true,
-   "first_seen": "2026-11-12",
-   "workplace_type": "onsite",
-   "source": "Arbeitnow",
-   "also_on": [],
-   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/fanduel/data-engineer-edinburgh-423991",
-   "publication_date": "2026-11-11",
-   "fit_score": 89,
-   "fit_reason": "rol primary +30; konum +12; beceri 5×5 +25; kıdem mid +5; tazelik +10",
-   "matched_skills": [
-    "Python",
-    "Azure",
-    "ETL",
-    "Databricks",
-    "PySpark"
-   ],
-   "location_reason": "Arbeitnow konumu 'Edinburgh'",
-   "seniority": "mid",
-   "focus": "pipeline",
-   "focus_scores": {
-    "ml": 3,
-    "bi": 0,
-    "pipeline": 20,
-    "business": 4
-   },
-   "language": "en",
-   "generated_at": "2026-11-12 16:32",
-   "summary": "FanDuel Group is a world-class team of brands and products that deliver sports betting, gaming and entertainment to millions of US sports fans every day. That’s no easy task and wouldn't be possible without a fantastic team who have helped us pioneer new produ",
-   "keywords": [
-    "scalab",
-    "stakeholder",
-    "real-time",
-    "enterprise",
-    "data quality",
-    "pipeline",
-    "governance",
-    "ecommerce",
-    "saas"
-   ],
-   "url": "https://www.arbeitnow.co.uk/jobs/companies/fanduel/data-engineer-edinburgh-423991",
-   "skills": [
-    "python",
-    "azure",
-    "etl",
-    "databricks",
-    "pyspark"
-   ],
-   "score": 89,
-   "posted": "2026-11-11",
-   "days": 1,
-   "remote": false,
-   "german": false
-  },
-  {
-   "id": "7bc725f31c51",
-   "title": "Senior Data Engineer",
-   "company": "Quantum",
-   "location": "London",
-   "country": "UK",
-   "market": "international",
-   "bucket": "uk",
-   "label": "UK",
-   "tier": 1,
-   "rank": 1,
-   "reserve": false,
-   "is_new": true,
-   "first_seen": "2026-11-12",
-   "workplace_type": "onsite",
-   "source": "Arbeitnow",
-   "also_on": [],
-   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/quantum/senior-data-engineer-london-355412",
-   "publication_date": "2026-11-11",
-   "fit_score": 79,
-   "fit_reason": "rol primary +30; konum +12; beceri 3×5 +15; kıdem senior +5; tazelik +10",
-   "matched_skills": [
-    "SQL",
-    "Python",
-    "ETL"
-   ],
-   "location_reason": "Arbeitnow konumu 'London'",
-   "seniority": "senior",
-   "focus": "pipeline",
-   "focus_scores": {
-    "ml": 0,
-    "bi": 2,
-    "pipeline": 17,
-    "business": 3
-   },
-   "language": "en",
-   "generated_at": "2026-11-12 16:32",
-   "summary": "Our Company At Quantum, we connect global brands with high-intent consumers. We turn intent into action and complexity into clarity. Our Mission is clear, to help smarter, faster buying decisions. Our vision, to be the world’s most used digital comparison serv",
-   "keywords": [
-    "real time",
-    "pipeline",
-    "governance",
-    "data quality",
-    "migration"
-   ],
-   "url": "https://www.arbeitnow.co.uk/jobs/companies/quantum/senior-data-engineer-london-355412",
-   "skills": [
-    "sql",
-    "python",
-    "etl"
-   ],
-   "score": 79,
-   "posted": "2026-11-11",
-   "days": 1,
-   "remote": false,
-   "german": false
-  },
-  {
-   "id": "ed2c2899cfac",
-   "title": "Data Engineer",
-   "company": "Janestreet",
-   "location": "London",
-   "country": "UK",
-   "market": "international",
-   "bucket": "uk",
-   "label": "UK",
-   "tier": 1,
-   "rank": 2,
-   "reserve": false,
-   "is_new": true,
-   "first_seen": "2026-11-12",
-   "workplace_type": "onsite",
-   "source": "Arbeitnow",
-   "also_on": [],
-   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/janestreet/data-engineer-london-325684",
-   "publication_date": "2026-11-12",
-   "fit_score": 74,
-   "fit_reason": "rol primary +30; konum +12; beceri 2×5 +10; kıdem mid +5; tazelik +10",
-   "matched_skills": [
-    "SQL",
-    "Python"
-   ],
-   "location_reason": "Arbeitnow konumu 'London'",
-   "seniority": "mid",
-   "focus": "pipeline",
-   "focus_scores": {
-    "ml": 0,
-    "bi": 0,
-    "pipeline": 9,
-    "business": 0
-   },
-   "language": "en",
-   "generated_at": "2026-11-12 16:32",
-   "summary": "About the Position We are looking for a Data Engineer to turn messy, real-world datasets into reliable inputs for research and trading. Jane Street depends on data from a wide variety of sources to understand markets and the global economy—think world news, de",
-   "keywords": [
-    "pipeline"
-   ],
-   "url": "https://www.arbeitnow.co.uk/jobs/companies/janestreet/data-engineer-london-325684",
-   "skills": [
-    "sql",
-    "python"
-   ],
-   "score": 74,
-   "posted": "2026-11-12",
-   "days": 0,
-   "remote": false,
-   "german": false
-  }
- ],
- "reserve": [
   {
    "id": "14629b653ddc",
    "title": "Data & Analytics traineeship Noord-Brabant",
@@ -420,17 +728,17 @@
    "bucket": "nl",
    "label": "NL",
    "tier": 1,
-   "rank": 3,
+   "rank": 5,
    "reserve": true,
-   "is_new": true,
+   "is_new": false,
    "first_seen": "2026-11-12",
    "workplace_type": "onsite",
    "source": "Arbeitnow",
    "also_on": [],
    "source_url": "https://www.arbeitnow.nl/jobs/companies/the-trainee-company/data-analytics-traineeship-noord-brabant-breda-470525",
    "publication_date": "2026-11-11",
-   "fit_score": 64,
-   "fit_reason": "rol primary +30; konum +12; beceri 0×5 +0; kıdem mid +5; tazelik +10",
+   "fit_score": 61,
+   "fit_reason": "rol primary +30; konum +12; beceri 0×5 +0; kıdem mid +5; tazelik +7",
    "matched_skills": [],
    "location_reason": "Arbeitnow konumu 'Breda, Noord-Brabant, Nederland'",
    "seniority": "mid",
@@ -442,119 +750,23 @@
     "business": 1
    },
    "language": "en",
-   "generated_at": "2026-11-12 16:32",
+   "generated_at": "2026-11-13 15:51",
    "summary": "Je weet dat data belangrijk is. Je voelt dat het iets voor jou is. Maar waar begin je? Met het Data & Analytics traineeship van TTC ontdek je waar jouw kracht ligt; of dat nou het slim bouwen van dashboards is, het analyseren van processen of het strategisch a",
    "keywords": [
     "dashboard"
    ],
    "url": "https://www.arbeitnow.nl/jobs/companies/the-trainee-company/data-analytics-traineeship-noord-brabant-breda-470525",
    "skills": [],
-   "score": 64,
+   "score": 61,
    "posted": "2026-11-11",
-   "days": 1,
+   "days": 2,
    "remote": false,
    "german": false
   },
   {
-   "id": "888a1d55bdc1",
-   "title": "Data Scientist – Statistisch Onderzoek",
-   "company": "The Trainee Company",
-   "location": "Eindhoven, Noord-Brabant, Nederland",
-   "country": "NL",
-   "market": "international",
-   "bucket": "nl",
-   "label": "NL",
-   "tier": 1,
-   "rank": 4,
-   "reserve": true,
-   "is_new": true,
-   "first_seen": "2026-11-12",
-   "workplace_type": "onsite",
-   "source": "Arbeitnow",
-   "also_on": [],
-   "source_url": "https://www.arbeitnow.nl/jobs/companies/the-trainee-company/data-scientist-statistisch-onderzoek-eindhoven-258525",
-   "publication_date": "2026-11-11",
-   "fit_score": 62,
-   "fit_reason": "rol secondary +18; konum +12; beceri 2×5 +10; kıdem mid +5; tazelik +10",
-   "matched_skills": [
-    "Python",
-    "Tableau"
-   ],
-   "location_reason": "Arbeitnow konumu 'Eindhoven, Noord-Brabant, Nederland'",
-   "seniority": "mid",
-   "focus": "ml",
-   "focus_scores": {
-    "ml": 13,
-    "bi": 3,
-    "pipeline": 0,
-    "business": 0
-   },
-   "language": "en",
-   "generated_at": "2026-11-12 16:32",
-   "summary": "Je bent recent afgestudeerd van een bèta / kwantitatieve opleiding, bent statistisch goed onderlegd en je hebt ook al enige ervaring opgedaan met R, SPSS en/of Python en op zoek naar een mogelijkheid om je eerste stappen in de wereld van Data te zetten. Wij he",
-   "keywords": [
-    "dashboard"
-   ],
-   "url": "https://www.arbeitnow.nl/jobs/companies/the-trainee-company/data-scientist-statistisch-onderzoek-eindhoven-258525",
-   "skills": [
-    "python",
-    "tableau"
-   ],
-   "score": 62,
-   "posted": "2026-11-11",
-   "days": 1,
-   "remote": false,
-   "german": false
-  },
-  {
-   "id": "63744f8364a4",
-   "title": "Junior Data Engineer",
-   "company": "The Trainee Company",
-   "location": "Drachten, Friesland, Nederland",
-   "country": "NL",
-   "market": "international",
-   "bucket": "nl",
-   "label": "NL",
-   "tier": 1,
-   "rank": 5,
-   "reserve": true,
-   "is_new": true,
-   "first_seen": "2026-11-12",
-   "workplace_type": "onsite",
-   "source": "Arbeitnow",
-   "also_on": [],
-   "source_url": "https://www.arbeitnow.nl/jobs/companies/the-trainee-company/junior-data-engineer-drachten-370033",
-   "publication_date": "2026-11-11",
-   "fit_score": 44,
-   "fit_reason": "rol primary +30; konum +12; beceri 0×5 +0; kıdem junior -15; tazelik +10",
-   "matched_skills": [],
-   "location_reason": "Arbeitnow konumu 'Drachten, Friesland, Nederland'",
-   "seniority": "junior",
-   "focus": "pipeline",
-   "focus_scores": {
-    "ml": 1,
-    "bi": 1,
-    "pipeline": 8,
-    "business": 0
-   },
-   "language": "en",
-   "generated_at": "2026-11-12 16:32",
-   "summary": "Je bent vol energie om aan je carrière te beginnen. Het pad van data engineer klinkt als muziek in je oren, maar hoe je in die rol gaat groeien en waar je dat precies wilt doen, dat is nog een vraagteken. No worries, de opdracht Data Engineer is het antwoord! ",
-   "keywords": [
-    "dashboard"
-   ],
-   "url": "https://www.arbeitnow.nl/jobs/companies/the-trainee-company/junior-data-engineer-drachten-370033",
-   "skills": [],
-   "score": 44,
-   "posted": "2026-11-11",
-   "days": 1,
-   "remote": false,
-   "german": false
-  },
-  {
-   "id": "9e9ac38882af",
-   "title": "Principal Data Engineer, Data Warehouse (TPL)",
-   "company": "engelhart",
+   "id": "f0f10439e2e3",
+   "title": "Senior Data Engineer",
+   "company": "Zego",
    "location": "London",
    "country": "UK",
    "market": "international",
@@ -563,60 +775,66 @@
    "tier": 1,
    "rank": 3,
    "reserve": true,
-   "is_new": false,
-   "first_seen": "2026-11-06",
+   "is_new": true,
+   "first_seen": "2026-11-13",
    "workplace_type": "onsite",
    "source": "Arbeitnow",
    "also_on": [
     "Arbeitnow"
    ],
-   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/engelhart/principal-data-engineer-data-warehouse-tpl-london-379586",
-   "publication_date": "2026-11-11",
-   "fit_score": 68,
-   "fit_reason": "rol primary +30; konum +12; beceri 3×5 +15; kıdem lead -6; tazelik +10",
+   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/zego/senior-data-engineer-london-450176",
+   "publication_date": "2026-11-12",
+   "fit_score": 84,
+   "fit_reason": "rol primary +30; konum +12; beceri 7×5 +30; kıdem senior -5; tazelik +10",
    "matched_skills": [
     "SQL",
     "Python",
+    "ETL",
+    "Airflow",
+    "PySpark",
+    "Snowflake",
     "dbt"
    ],
    "location_reason": "Arbeitnow konumu 'London'",
-   "seniority": "lead",
+   "seniority": "senior",
    "focus": "pipeline",
    "focus_scores": {
-    "ml": 0,
-    "bi": 1,
+    "ml": 4,
+    "bi": 0,
     "pipeline": 22,
-    "business": 2
+    "business": 4
    },
    "language": "en",
-   "generated_at": "2026-11-12 16:32",
-   "summary": "About Us Engelhart was founded in 2013 by BTG Pactual Group as a commodities trading company. Our business model is “asset light” and highly diversified – giving us the ability to adapt effectively and nimbly to changing market conditions. We have assembled su",
+   "generated_at": "2026-11-13 15:51",
+   "summary": "About Zego 🚀 At Zego, we're on a mission to do the good thing, not the insurance thing. Insurance hasn't changed much in over a century. The way we live, work and travel has. We're building the real-time, AI-driven infrastructure that powers innovative insuran",
    "keywords": [
-    "energy",
-    "optimisation",
-    "finance",
+    "real-time",
+    "scalab",
     "pipeline",
-    "data quality",
-    "stakeholder",
-    "scalab"
+    "optimisation",
+    "stakeholder"
    ],
-   "url": "https://www.arbeitnow.co.uk/jobs/companies/engelhart/principal-data-engineer-data-warehouse-tpl-london-379586",
+   "url": "https://www.arbeitnow.co.uk/jobs/companies/zego/senior-data-engineer-london-450176",
    "skills": [
     "sql",
     "python",
+    "etl",
+    "airflow",
+    "pyspark",
+    "snowflake",
     "dbt"
    ],
-   "score": 68,
-   "posted": "2026-11-11",
+   "score": 84,
+   "posted": "2026-11-12",
    "days": 1,
    "remote": false,
    "german": false
   },
   {
-   "id": "adb39bf24026",
-   "title": "Senior Data Scientist",
-   "company": "Trainline",
-   "location": "London",
+   "id": "124671137c7b",
+   "title": "Data Engineer",
+   "company": "Mulberry",
+   "location": "Kensington Office, London",
    "country": "UK",
    "market": "international",
    "bucket": "uk",
@@ -624,51 +842,60 @@
    "tier": 1,
    "rank": 4,
    "reserve": true,
-   "is_new": false,
-   "first_seen": "2026-11-11",
+   "is_new": true,
+   "first_seen": "2026-11-13",
    "workplace_type": "onsite",
    "source": "Arbeitnow",
    "also_on": [],
-   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/trainline/senior-data-scientist-london-441076",
-   "publication_date": "2026-11-11",
-   "fit_score": 62,
-   "fit_reason": "rol secondary +18; konum +12; beceri 2×5 +10; kıdem senior +5; tazelik +10",
+   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/mulberry/data-engineer-kensington-office-london-328514",
+   "publication_date": "2026-11-12",
+   "fit_score": 79,
+   "fit_reason": "rol primary +30; konum +12; beceri 3×5 +15; kıdem mid +5; tazelik +10",
    "matched_skills": [
     "SQL",
-    "Python"
+    "ETL",
+    "dbt"
    ],
-   "location_reason": "Arbeitnow konumu 'London'",
-   "seniority": "senior",
-   "focus": "ml",
+   "location_reason": "Arbeitnow konumu 'Kensington Office, London'",
+   "seniority": "mid",
+   "focus": "pipeline",
    "focus_scores": {
-    "ml": 14,
-    "bi": 0,
-    "pipeline": 0,
-    "business": 11
+    "ml": 1,
+    "bi": 4,
+    "pipeline": 22,
+    "business": 4
    },
    "language": "en",
-   "generated_at": "2026-11-12 16:32",
-   "summary": "About us At Trainline, our purpose is to empower greener travel choices, connecting people and places. Trainline enables millions of travellers to find and book the best value tickets across carriers, fares, and journey options through our highly rated mobile ",
+   "generated_at": "2026-11-13 15:51",
+   "summary": "Born in 1971, the roots of Mulberry are in Somerset, England. For more than fifty years, Mulberry has been a British lifestyle brand, internationally acclaimed for quality and design capturing the Mulberry Spirit. Sustainability has been part of the Mulberry e",
    "keywords": [
-    "root cause",
-    "stakeholder"
+    "pipeline",
+    "scalab",
+    "governance",
+    "self-service",
+    "data quality",
+    "stakeholder",
+    "enterprise",
+    "retail",
+    "ecommerce"
    ],
-   "url": "https://www.arbeitnow.co.uk/jobs/companies/trainline/senior-data-scientist-london-441076",
+   "url": "https://www.arbeitnow.co.uk/jobs/companies/mulberry/data-engineer-kensington-office-london-328514",
    "skills": [
     "sql",
-    "python"
+    "etl",
+    "dbt"
    ],
-   "score": 62,
-   "posted": "2026-11-11",
+   "score": 79,
+   "posted": "2026-11-12",
    "days": 1,
    "remote": false,
    "german": false
   },
   {
-   "id": "78366afea3de",
-   "title": "QA Lead - Data Platform (TL1)",
-   "company": "Kaluza",
-   "location": "London, UK",
+   "id": "f9966a31a01f",
+   "title": "Research & Data Analyst",
+   "company": "Legal 500",
+   "location": "Leeds",
    "country": "UK",
    "market": "international",
    "bucket": "uk",
@@ -676,55 +903,36 @@
    "tier": 1,
    "rank": 5,
    "reserve": true,
-   "is_new": false,
-   "first_seen": "2026-11-11",
+   "is_new": true,
+   "first_seen": "2026-11-13",
    "workplace_type": "onsite",
    "source": "Arbeitnow",
    "also_on": [],
-   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/kaluza/qa-lead-data-platform-tl1-london-38241",
-   "publication_date": "2026-11-10",
-   "fit_score": 60,
-   "fit_reason": "rol primary +30; konum +12; beceri 4×5 +20; kıdem lead -16; tazelik +7",
-   "matched_skills": [
-    "SQL",
-    "Python",
-    "Power BI",
-    "ETL"
-   ],
-   "location_reason": "Arbeitnow konumu 'London, UK'",
-   "seniority": "lead",
-   "focus": "pipeline",
+   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/legal-500/research-data-analyst-leeds-344411",
+   "publication_date": "2026-11-13",
+   "fit_score": 64,
+   "fit_reason": "rol primary +30; konum +12; beceri 0×5 +0; kıdem mid +5; tazelik +10",
+   "matched_skills": [],
+   "location_reason": "Arbeitnow konumu 'Leeds'",
+   "seniority": "mid",
+   "focus": "business",
    "focus_scores": {
     "ml": 0,
-    "bi": 8,
-    "pipeline": 15,
-    "business": 7
+    "bi": 0,
+    "pipeline": 0,
+    "business": 19
    },
    "language": "en",
-   "generated_at": "2026-11-12 16:32",
-   "summary": "Location: Bristol or London Level: TL1 Team: Quality Contract: Permanent Reporting To: Shira Tsinovich Please note: This role requires an existing right to work in the UK. We can’t offer visa sponsorship, but we review sponsorship role by role, so keep an eye ",
+   "generated_at": "2026-11-13 15:51",
+   "summary": "About Legal 500 Legal 500 is a global legal market research, data and intelligence business. Our research helps corporate clients make informed decisions about legal representation and gives law firms insight into their market position, performance, and client",
    "keywords": [
-    "energy",
-    "real-time",
-    "migration",
-    "stakeholder",
-    "data quality",
-    "dashboard",
-    "automation",
-    "pipeline",
-    "governance",
-    "retail"
+    "stakeholder"
    ],
-   "url": "https://www.arbeitnow.co.uk/jobs/companies/kaluza/qa-lead-data-platform-tl1-london-38241",
-   "skills": [
-    "sql",
-    "python",
-    "power bi",
-    "etl"
-   ],
-   "score": 60,
-   "posted": "2026-11-10",
-   "days": 2,
+   "url": "https://www.arbeitnow.co.uk/jobs/companies/legal-500/research-data-analyst-leeds-344411",
+   "skills": [],
+   "score": 64,
+   "posted": "2026-11-13",
+   "days": 0,
    "remote": false,
    "german": false
   }
@@ -732,47 +940,40 @@
  "stats": {
   "candidates": {
    "tr": {
-    "tr_remote": 0,
+    "tr_remote": 1,
     "istanbul_hibrit": 0,
     "istanbul_onsite": 0
    },
-   "de": 1,
-   "nl": 13,
-   "uk": 6
+   "de": 3,
+   "nl": 12,
+   "uk": 12
   },
   "selected": {
-   "tr": 0,
-   "de": 1,
+   "tr": 1,
+   "de": 3,
    "nl": 3,
    "uk": 3
   },
   "missing": {
    "tr": {
-    "eksik": 3,
-    "sebep": "Türkiye kaynağı bağlı değil — Jooble anahtarı eklenmedi"
-   },
-   "de": {
     "eksik": 2,
-    "sebep": "yalnızca 1 uygun aday"
+    "sebep": "Türkiye kaynağı bağlı değil — Jooble anahtarı eklenmedi"
    }
   },
   "eliminated": {
-   "rol dışı (başlık)": 946,
-   "rol dışı (hedef rol yok)": 2006,
-   "ülke belirlenemedi": 25,
-   "ML/DS rolü, beceri örtüşmesi zayıf": 8,
+   "rol dışı (hedef rol yok)": 1918,
+   "rol dışı (başlık)": 1003,
    "Almanca ilan": 5,
+   "ülke belirlenemedi": 21,
+   "ileri seviye Almanca şartı": 2,
+   "ML/DS rolü, beceri örtüşmesi zayıf": 6,
    "tekrar (farklı kaynak)": 1,
-   "dünya geneli remote (Türkiye ilanı değil)": 6,
-   "Remotive candidate_required_location 'Vietnam'": 1,
-   "Remotive candidate_required_location 'United States'": 3,
-   "Remotive candidate_required_location 'Indonesia'": 1,
-   "Remotive candidate_required_location 'Australia'": 1,
-   "Remotive candidate_required_location 'Brazil'": 1,
-   "Remotive candidate_required_location 'Argentina, Brazil, Colombia, Costa Rica, Mexico, Peru, Urugu'": 1,
-   "Remotive candidate_required_location 'Asia'": 1,
-   "süresi doldu (14 gün)": 1,
-   "süresi doldu (daha önce gösterildi)": 2
+   "Remotive candidate_required_location 'United States'": 5,
+   "Remotive candidate_required_location 'Romania'": 1,
+   "Remotive candidate_required_location 'Anguilla, Antigua and Barbuda, Argentina, Aruba, Bahamas, Ba'": 1,
+   "Remotive candidate_required_location 'India'": 1,
+   "dünya geneli remote (Türkiye ilanı değil)": 5,
+   "süresi doldu (daha önce gösterildi)": 5
   }
  },
  "history": {
@@ -780,11 +981,6 @@
    "first_seen": "2026-09-21",
    "status": "expired",
    "last_seen": "2026-10-14"
-  },
-  "130ded59c5a5": {
-   "first_seen": "2026-09-22",
-   "status": "expired",
-   "last_seen": "2026-10-13"
   },
   "945c0e16a65b": {
    "first_seen": "2026-09-24",
@@ -794,12 +990,7 @@
   "d8fb09ba182b": {
    "first_seen": "2026-09-24",
    "status": "expired",
-   "last_seen": "2026-10-13"
-  },
-  "d88e411798a2": {
-   "first_seen": "2026-09-25",
-   "status": "expired",
-   "last_seen": "2026-10-13"
+   "last_seen": "2026-11-13"
   },
   "85480e7abd35": {
    "first_seen": "2026-09-30",
@@ -841,45 +1032,10 @@
    "status": "listed",
    "last_seen": "2026-10-17"
   },
-  "a75eb0271f81": {
-   "first_seen": "2026-10-11",
-   "status": "listed",
-   "last_seen": "2026-10-13"
-  },
-  "6a731419a876": {
-   "first_seen": "2026-10-11",
-   "status": "listed",
-   "last_seen": "2026-10-13"
-  },
   "03464dadc613": {
    "first_seen": "2026-10-11",
    "status": "expired",
    "last_seen": "2026-11-05"
-  },
-  "b9324349571f": {
-   "first_seen": "2026-10-12",
-   "status": "listed",
-   "last_seen": "2026-10-13"
-  },
-  "c2d613629de6": {
-   "first_seen": "2026-10-12",
-   "status": "listed",
-   "last_seen": "2026-10-13"
-  },
-  "92f366328a65": {
-   "first_seen": "2026-10-12",
-   "status": "listed",
-   "last_seen": "2026-10-13"
-  },
-  "4c2a5396b71c": {
-   "first_seen": "2026-10-12",
-   "status": "listed",
-   "last_seen": "2026-10-13"
-  },
-  "2928b7d26fb6": {
-   "first_seen": "2026-10-12",
-   "status": "listed",
-   "last_seen": "2026-10-13"
   },
   "224613e36857": {
    "first_seen": "2026-10-13",
@@ -890,16 +1046,6 @@
    "first_seen": "2026-10-13",
    "status": "listed",
    "last_seen": "2026-10-14"
-  },
-  "3c0d4ac334a2": {
-   "first_seen": "2026-10-13",
-   "status": "listed",
-   "last_seen": "2026-10-13"
-  },
-  "2db60eb9604c": {
-   "first_seen": "2026-10-13",
-   "status": "listed",
-   "last_seen": "2026-10-13"
   },
   "612191b8d8d2": {
    "first_seen": "2026-10-13",
@@ -915,26 +1061,6 @@
    "first_seen": "2026-10-13",
    "status": "listed",
    "last_seen": "2026-10-14"
-  },
-  "c1f9463e2902": {
-   "first_seen": "2026-10-13",
-   "status": "listed",
-   "last_seen": "2026-10-13"
-  },
-  "78f4650b8284": {
-   "first_seen": "2026-10-13",
-   "status": "listed",
-   "last_seen": "2026-10-13"
-  },
-  "544065ec4e50": {
-   "first_seen": "2026-10-13",
-   "status": "listed",
-   "last_seen": "2026-10-13"
-  },
-  "1c7a413fbd79": {
-   "first_seen": "2026-10-13",
-   "status": "listed",
-   "last_seen": "2026-10-13"
   },
   "ecb55fff863e": {
    "first_seen": "2026-10-14",
@@ -1324,7 +1450,7 @@
   "949b3356d83d": {
    "first_seen": "2026-10-20",
    "status": "expired",
-   "last_seen": "2026-11-11"
+   "last_seen": "2026-11-13"
   },
   "5cf41b895c50": {
    "first_seen": "2026-10-20",
@@ -1499,7 +1625,7 @@
   "d97422c88589": {
    "first_seen": "2026-10-24",
    "status": "expired",
-   "last_seen": "2026-11-12"
+   "last_seen": "2026-11-13"
   },
   "e55e627aca55": {
    "first_seen": "2026-10-24",
@@ -1559,7 +1685,7 @@
   "3835b24e1515": {
    "first_seen": "2026-10-25",
    "status": "expired",
-   "last_seen": "2026-11-12"
+   "last_seen": "2026-11-13"
   },
   "3751c9693f9a": {
    "first_seen": "2026-10-25",
@@ -1679,7 +1805,7 @@
   "a3d39a7dbc64": {
    "first_seen": "2026-10-27",
    "status": "expired",
-   "last_seen": "2026-11-10"
+   "last_seen": "2026-11-13"
   },
   "e3632e8ed7b3": {
    "first_seen": "2026-10-27",
@@ -2039,12 +2165,12 @@
   "a2f37ca1c757": {
    "first_seen": "2026-11-07",
    "status": "listed",
-   "last_seen": "2026-11-12"
+   "last_seen": "2026-11-13"
   },
   "06e7cd163348": {
    "first_seen": "2026-11-07",
    "status": "listed",
-   "last_seen": "2026-11-12"
+   "last_seen": "2026-11-13"
   },
   "5dae62accb65": {
    "first_seen": "2026-11-07",
@@ -2094,7 +2220,7 @@
   "59955d11b389": {
    "first_seen": "2026-11-08",
    "status": "listed",
-   "last_seen": "2026-11-12"
+   "last_seen": "2026-11-13"
   },
   "fa1a913e41de": {
    "first_seen": "2026-11-08",
@@ -2169,7 +2295,7 @@
   "8dce19e883a5": {
    "first_seen": "2026-11-10",
    "status": "listed",
-   "last_seen": "2026-11-12"
+   "last_seen": "2026-11-13"
   },
   "d08cbfeef0c7": {
    "first_seen": "2026-11-10",
@@ -2189,17 +2315,17 @@
   "380aa827701f": {
    "first_seen": "2026-11-11",
    "status": "listed",
-   "last_seen": "2026-11-12"
+   "last_seen": "2026-11-13"
   },
   "f4c955e83472": {
    "first_seen": "2026-11-11",
    "status": "listed",
-   "last_seen": "2026-11-12"
+   "last_seen": "2026-11-13"
   },
   "982b77cdbb0a": {
    "first_seen": "2026-11-11",
    "status": "listed",
-   "last_seen": "2026-11-11"
+   "last_seen": "2026-11-13"
   },
   "ca0236ef6aca": {
    "first_seen": "2026-11-11",
@@ -2224,17 +2350,17 @@
   "d600a6924b5d": {
    "first_seen": "2026-11-12",
    "status": "listed",
-   "last_seen": "2026-11-12"
+   "last_seen": "2026-11-13"
   },
   "1aa216acd6a6": {
    "first_seen": "2026-11-12",
    "status": "listed",
-   "last_seen": "2026-11-12"
+   "last_seen": "2026-11-13"
   },
   "bdc9144ab291": {
    "first_seen": "2026-11-12",
    "status": "listed",
-   "last_seen": "2026-11-12"
+   "last_seen": "2026-11-13"
   },
   "b344a73f2ecb": {
    "first_seen": "2026-11-12",
@@ -2249,22 +2375,72 @@
   "ed2c2899cfac": {
    "first_seen": "2026-11-12",
    "status": "listed",
-   "last_seen": "2026-11-12"
+   "last_seen": "2026-11-13"
   },
   "14629b653ddc": {
    "first_seen": "2026-11-12",
    "status": "listed",
-   "last_seen": "2026-11-12"
+   "last_seen": "2026-11-13"
   },
   "888a1d55bdc1": {
    "first_seen": "2026-11-12",
    "status": "listed",
-   "last_seen": "2026-11-12"
+   "last_seen": "2026-11-13"
   },
   "63744f8364a4": {
    "first_seen": "2026-11-12",
    "status": "listed",
-   "last_seen": "2026-11-12"
+   "last_seen": "2026-11-13"
+  },
+  "56fb622867d7": {
+   "first_seen": "2026-11-13",
+   "status": "listed",
+   "last_seen": "2026-11-13"
+  },
+  "66d2e30eb4c1": {
+   "first_seen": "2026-11-13",
+   "status": "listed",
+   "last_seen": "2026-11-13"
+  },
+  "b0d97004deb8": {
+   "first_seen": "2026-11-13",
+   "status": "listed",
+   "last_seen": "2026-11-13"
+  },
+  "0c5faa5f3e75": {
+   "first_seen": "2026-11-13",
+   "status": "listed",
+   "last_seen": "2026-11-13"
+  },
+  "6219b1b37959": {
+   "first_seen": "2026-11-13",
+   "status": "listed",
+   "last_seen": "2026-11-13"
+  },
+  "ed1c4109d539": {
+   "first_seen": "2026-11-13",
+   "status": "listed",
+   "last_seen": "2026-11-13"
+  },
+  "4e19d20146d3": {
+   "first_seen": "2026-11-13",
+   "status": "listed",
+   "last_seen": "2026-11-13"
+  },
+  "f0f10439e2e3": {
+   "first_seen": "2026-11-13",
+   "status": "listed",
+   "last_seen": "2026-11-13"
+  },
+  "124671137c7b": {
+   "first_seen": "2026-11-13",
+   "status": "listed",
+   "last_seen": "2026-11-13"
+  },
+  "f9966a31a01f": {
+   "first_seen": "2026-11-13",
+   "status": "listed",
+   "last_seen": "2026-11-13"
   }
  },
  "note": "Kaynak: Arbeitnow + Remotive. Basvuruyu kullanici kendisi yapar."
