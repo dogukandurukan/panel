@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-15 16:49",
+  "updated": "2026-11-15 20:30",
   "sinyaller": [
     {
       "code": "NVDA",
@@ -532,7 +532,7 @@
         "rsiTxt": "nötr",
         "rsi": 40.4,
         "volat": 4.4,
-        "volRatio": 0.94
+        "volRatio": 0.6
       },
       "teknik": {
         "durum": "notr",
@@ -553,106 +553,79 @@
     }
   ],
   "gold": {
-    "price": "6,282.59",
-    "chg": "+0.08%"
+    "price": "6,290.56",
+    "chg": "+0.15%"
   },
-  "news": [
-    {
-      "t": "⚪ MSCI'dan Borsa İstanbul'da 20 hisseyi ilgilendiren karar! Sabancı Holding ve Astor Enerji'nin endeksi değişti  (Haberton)",
-      "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxQdkV1SnkteXJOdEp1LVNWQVVTYjZaelA2VU1hN1U2QUdreXdwNHk1UHRKVjdsNTc5RVJFUXp4YW1VVWx4ZGZzTmRDendYTnRhQkZsblhPMXJBSlBnUXQ0Y0psWTlWTWhvOVdaSjlRcUZBQnRiSG1NdXBCamFBT2ZJRkRHMEJYRmNCQUJkaEM0eG1tUUJpVk43V2NiUi1weG5CTGpVOE93VllsSUVOSG5lLVpEOUJFUG5xYWQ3dUVUalFDS2RPVEE?oc=5"
-    },
-    {
-      "t": "⚪ MSCI kararı sonrası borsada çarpıcı tablo: 8 tavan, 1 taban  (CNBC-e)",
-      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOUnZpMjZIUW9TWGhTdTh5OF8wSVhFSHhKci00cnBtZm9HNXZHMmRwSUp6bElCbm1XdXREUUloNHJLbjAxVFFRS2ZaR1E1OFlsbVhudGdYRmxNR1FUWGRNRGQ3a1RXbG9SSkNMT1U5ZVpBSFk1U21IY1NEQm5YdTBwdlloWWVVZHFYVHlZUDU2Wkx0bmVrak0w?oc=5"
-    },
-    {
-      "t": "🔴 BofA’nın satış listesinde ilk sırada yer alan ASTOR sert düştü  (Paratic Haber)",
-      "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNQjNvY0w2anctSVBXcDRRVUN2dURiT2E2SGRUOFF6QkpzNmp2RTRFUnE0UFNqcmcxOVlTM2pTdEZuT2l5NXRKS0tQM0ZlcWZaLXdUOXV6WnhfcEVCQlhwZEtKREtKb21iY2o3VFhjQ1VDVGhCTFMxdEFSWkI5MUlKYlRqRTBEM0hUS1E?oc=5"
-    },
-    {
-      "t": "🔴 3Ç26 434 Milyon TL Net Zarar Açıklayan Doğuş Otomotiv (DOAS) Değerlendirildi!  (Para Ajansı)",
-      "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPVDd5ZlU1VXZ5MVo5UDJSMmI3VXRFS3NheEJfNzhEXzcwUlNWd29XX1hZWUpITGdudU1ndnNrY0l0cnI2Q1RaTm1YbHJTVEhXVWd6LWlKRjczUFdPUWRVbU9UV0JCNnY4SmdrUmtwV25JRmxTSTdYX3dBNmxSU3pmQ0tJZ3ZCU1ZSczQtOElXWkprcVoyaFJtUW1icjNfZTlfeV9NeEQwaHVMSHNsSGt2N3dKSnpEeDIwdU4wRG1vVXRydGtnbFE?oc=5"
-    },
-    {
-      "t": "⚪ Kontrolmatik Teknoloji Enerji Ve Muhendislik Anonim Sirketi (KONTR.IS) Stock Price, News, Quote & History  (Yahoo! Finance Canada)",
-      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5hN3plWE1EbTBvanhrRDVJN0k3RzhpRUpkamRZNUVsR2lFLUR2czc1N3RWMTY2THR1bk9yaWFGT1c1NWh5aUFMRm1SbzdMNDJ5VmFoZ1l5UQ?oc=5"
-    }
-  ],
+  "news": [],
   "world": [
     {
-      "t": "🌍 South Korea's top scorer in tax accountancy exam admits cheating  (BBC World)",
-      "link": "https://www.bbc.co.uk/news/articles/ckvg2ezvpe08o?at_medium=RSS&at_campaign=rss"
+      "t": "🌍 Iran targets US military base in Bahrain with drone attack  (BBC World)",
+      "link": "https://www.bbc.co.uk/news/articles/cqn4e2py48kwo?at_medium=RSS&at_campaign=rss"
     },
     {
       "t": "🌍 Zimbabwean author Simbarashe Kundizeza cleared of using AI to write prize-winning story  (Guardian World)",
       "link": "https://www.theguardian.com/books/2026/nov/12/zimbabwean-author-simbarashe-kundizeza-cleared-ai-caine-prize-winning-story"
     },
     {
-      "t": "🌍 Kayla ⁠⁠Harrison defeats Amanda Nunes to retain UFC bantamweight belt  (Al Jazeera)",
-      "link": "https://www.aljazeera.com/sports/2026/11/15/kayla-%e2%81%a0%e2%81%a0harrison-defeats-amanda-nunes-to-retain-ufc-bantamweight-belt?traffic_source=rss"
+      "t": "🌍 Somalia: We would not have recovered without the international community  (Al Jazeera)",
+      "link": "https://www.aljazeera.com/video/talk-to-al-jazeera/2026/11/15/somalia-we-would-not-have-recovered-without-the-international-community?traffic_source=rss"
     },
     {
       "t": "🌍 Fuel crisis and protests pressure Chile's far-right president  (NPR World)",
       "link": "https://www.npr.org/2026/11/14/nx-s1-6040144/chile-protests-fuel-kast-students"
     },
     {
-      "t": "🌍 Two aircraft collide at Miami International Airport  (Euronews)",
-      "link": "https://www.euronews.com/2026/11/15/two-aircraft-collide-at-miami-international-airport"
+      "t": "🌍 UK: London's Santa School trains Father Christmas performers for 2026  (Euronews)",
+      "link": "https://www.euronews.com/video/2026/11/15/uk-londons-santa-school-trains-father-christmas-performers-for-2026"
     },
     {
-      "t": "🌍 Beijing faces its Russia dilemma amid talk of Xi-Trump-Putin summit  (DW)",
-      "link": "https://www.dw.com/en/beijing-faces-its-russia-dilemma-amid-talk-of-xi-trump-putin-summit/a-79942427?maca=en-rss-en-world-4025-rdf"
+      "t": "🌍 Polish activists face opposition as they make abortion more accessible  (DW)",
+      "link": "https://www.dw.com/en/polish-activists-face-opposition-as-they-make-abortion-more-accessible/a-79943914?maca=en-rss-en-world-4025-rdf"
     }
   ],
   "tr": [
     {
-      "t": "🇹🇷 Fransa'da ulusal posta operatörü iştirakine siber saldırı  (TRT Haber)",
-      "link": "https://www.trthaber.com/haber/dunya/fransada-ulusal-posta-operatoru-istirakine-siber-saldiri-963349.html"
+      "t": "🇹🇷 ABD Ulaştırma Bakanı, kesintinin ardından hava trafiğinin pazartesi gününe kadar normale dönmesini bekliyor  (AA)",
+      "link": "https://www.aa.com.tr/tr/dunya/abd-ulastirma-bakani-kesintinin-ardindan-hava-trafiginin-pazartesi-gunune-kadar-normale-donmesini-bekliyor/4125966"
+    },
+    {
+      "t": "🇹🇷 SPK'den olağanüstü tasfiyede halka açık ortaklıkların geri aldığı paylarla ilgili açıklama  (TRT Haber)",
+      "link": "https://www.trthaber.com/haber/ekonomi/spkden-olaganustu-tasfiyede-halka-acik-ortakliklarin-geri-aldigi-paylarla-ilgili-aciklama-963356.html"
     },
     {
       "t": "🇹🇷 Yeni Parti'nin ilk kurultayı: 160 kişiye çıkarılan PM'de kimler var?  (BBC Türkçe)",
       "link": "https://www.bbc.com/turkce/articles/cwlylvd3374po?at_medium=RSS&at_campaign=rss"
     },
     {
-      "t": "🇹🇷 Yeni Parti'de PM ve YDK seçimleri başladı  (Habertürk)",
+      "t": "🇹🇷 Yeni Parti'de PM ve YDK seçimleri  (Habertürk)",
       "link": "https://www.haberturk.com/gundem/yeni-parti-de-pm-ve-ydk-secimi-yapilacak-3927459"
     },
     {
-      "t": "🇹🇷 Cumhurbaşkanı'nı tehdit davası. Fatih Altaylı'nın hapis cezası bozuldu  (NTV)",
-      "link": "https://www.ntv.com.tr/turkiye/cumhurbaskanini-tehdit-davasi-fatih-altaylinin-hapis-cezasi-bozuldu-1751007"
+      "t": "🇹🇷 ASELSAN'dan dronlara karşı EJDERHA. 51 dronu tek tuşla düşürdü  (NTV)",
+      "link": "https://www.ntv.com.tr/turkiye/aselsandan-dronlara-karsi-ejderha-51-dronu-tek-tusla-dusurdu-1751028"
     },
     {
-      "t": "🇹🇷 Milli projeler Türk mühendislerin rotasını Türkiye'ye çevirdi  (TRT Haber)",
-      "link": "https://www.trthaber.com/haber/savunma/milli-projeler-turk-muhendislerin-rotasini-turkiyeye-cevirdi-963348.html"
-    },
-    {
-      "t": "🇹🇷 İspanya gerçekten bir 'öpüşme ülkesi' mi?  (BBC Türkçe)",
-      "link": "https://www.bbc.com/turkce/articles/cq36gnknx14lo?at_medium=RSS&at_campaign=rss"
+      "t": "🇹🇷 356 bin kişi sigara bırakma polikliniklerinden yararlandı  (TRT Haber)",
+      "link": "https://www.trthaber.com/haber/guncel/356-bin-kisi-sigara-birakma-polikliniklerinden-yararlandi-963355.html"
     }
   ],
   "_teshis": {
     "dunya": [
-      "BBC World: 23 öğe / 2 alındı / 0 elendi | ilk: South Korea's top scorer in tax accountancy exam admits chea",
+      "BBC World: 26 öğe / 2 alındı / 0 elendi | ilk: Iran targets US military base in Bahrain with drone attack",
       "Guardian World: 45 öğe / 2 alındı / 0 elendi | ilk: Zimbabwean author Simbarashe Kundizeza cleared of using AI t",
-      "Al Jazeera: 25 öğe / 2 alındı / 0 elendi | ilk: Kayla ⁠⁠Harrison defeats Amanda Nunes to retain UFC bantamwe",
+      "Al Jazeera: 25 öğe / 2 alındı / 0 elendi | ilk: Somalia: We would not have recovered without the internation",
       "NPR World: 10 öğe / 2 alındı / 0 elendi | ilk: Fuel crisis and protests pressure Chile's far-right presiden",
-      "Euronews: 50 öğe / 2 alındı / 1 elendi | ilk: Two aircraft collide at Miami International Airport",
-      "DW: 11 öğe / 2 alındı / 0 elendi | ilk: Beijing faces its Russia dilemma amid talk of Xi-Trump-Putin",
+      "Euronews: 50 öğe / 2 alındı / 1 elendi | ilk: UK: London's Santa School trains Father Christmas performers",
+      "DW: 11 öğe / 2 alındı / 0 elendi | ilk: Polish activists face opposition as they make abortion more ",
       "SONUÇ: 6 haber · veren: Al Jazeera, BBC World, DW, Euronews, Guardian World, NPR World",
-      "AA: OKUNAMADI RemoteDisconnected: Remote end closed connection without response",
-      "TRT Haber: 50 öğe / 2 alındı / 0 elendi | ilk: Fransa'da ulusal posta operatörü iştirakine siber saldırı",
+      "AA: 30 öğe / 2 alındı / 0 elendi | ilk: ABD Ulaştırma Bakanı, kesintinin ardından hava trafiğinin pa",
+      "TRT Haber: 50 öğe / 2 alındı / 0 elendi | ilk: SPK'den olağanüstü tasfiyede halka açık ortaklıkların geri a",
       "BBC Türkçe: 16 öğe / 2 alındı / 0 elendi | ilk: Yeni Parti'nin ilk kurultayı: 160 kişiye çıkarılan PM'de kim",
-      "Habertürk: 30 öğe / 2 alındı / 0 elendi | ilk: Yeni Parti'de PM ve YDK seçimleri başladı",
-      "NTV: 20 öğe / 2 alındı / 0 elendi | ilk: Cumhurbaşkanı'nı tehdit davası. Fatih Altaylı'nın hapis ceza",
-      "SONUÇ: 6 haber · veren: BBC Türkçe, Habertürk, NTV, TRT Haber · boş dönen: AA"
+      "Habertürk: 30 öğe / 2 alındı / 0 elendi | ilk: Yeni Parti'de PM ve YDK seçimleri",
+      "NTV: 20 öğe / 2 alındı / 0 elendi | ilk: ASELSAN'dan dronlara karşı EJDERHA. 51 dronu tek tuşla düşür",
+      "SONUÇ: 6 haber · veren: AA, BBC Türkçe, Habertürk, NTV, TRT Haber"
     ],
-    "hisse": "5 başlık geldi, 0 elendi",
-    "hisse_ham": [
-      "MSCI'dan Borsa İstanbul'da 20 hisseyi ilgilendiren karar! Sabancı Hold",
-      "MSCI kararı sonrası borsada çarpıcı tablo: 8 tavan, 1 taban",
-      "BofA’nın satış listesinde ilk sırada yer alan ASTOR sert düştü",
-      "3Ç26 434 Milyon TL Net Zarar Açıklayan Doğuş Otomotiv (DOAS) Değerlend",
-      "Kontrolmatik Teknoloji Enerji Ve Muhendislik Anonim Sirketi (KONTR.IS)"
-    ]
+    "hisse": "0 başlık geldi, 0 elendi",
+    "hisse_ham": []
   }
 }
