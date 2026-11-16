@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-15 20:30",
+  "updated": "2026-11-16 09:00",
   "sinyaller": [
     {
       "code": "NVDA",
@@ -76,7 +76,7 @@
     }
   ],
   "sinyalTarama": {
-    "bist": 36,
+    "bist": 35,
     "abd": 5,
     "bulunan": 3
   },
@@ -520,19 +520,19 @@
     },
     {
       "code": "BZ=F",
-      "price": "95.84",
-      "chg": "+0.02%",
-      "avg1w": "93.70",
-      "avg1m": "105.36",
+      "price": "95.81",
+      "chg": "-0.03%",
+      "avg1w": "94.34",
+      "avg1m": "104.69",
       "name": "Brent",
-      "hist": [76.01, 83.3, 84.73, 84.95, 84.23, 88.1, 89.22, 91.01, 94.07, 100.69, 96.78, 88.36, 84.09, 90.74, 89.03, 90.12, 83.77, 79.36, 79.45, 82.49, 83.55, 87.72, 88.91, 88.98, 87.07, 88.52, 90.87, 91.02, 91.62, 93.78, 94.39, 92.17, 88.58, 87.84, 89.7, 89.31, 90.49, 94.65, 95.63, 95.52, 96.28, 97.92, 101.21, 107.63, 104.61, 105.68, 108.75, 105.83, 104.82, 103.87, 100.34, 99.25, 103.08, 106.6, 104.32, 105.28, 102.59, 103.53, 102.31, 102.25, 100.32, 100.58, 100.2, 104.28, 104.72, 106.65, 105.69, 106.06, 105.92, 109.86, 109.55, 108.79, 108.82, 113.17, 116.72, 115.81, 113.88, 115.32, 114.88, 117.64, 104.77, 103.6, 94.62, 98.29, 98.32, 92.57, 91.49, 92.76, 95.82, 95.84],
-      "histD": ["07-10", "07-13", "07-14", "07-15", "07-16", "07-17", "07-20", "07-21", "07-22", "07-23", "07-24", "07-27", "07-28", "07-29", "07-30", "07-31", "08-03", "08-04", "08-05", "08-06", "08-07", "08-10", "08-11", "08-12", "08-13", "08-14", "08-17", "08-18", "08-19", "08-20", "08-21", "08-24", "08-25", "08-26", "08-27", "08-28", "08-31", "09-01", "09-02", "09-03", "09-04", "09-08", "09-09", "09-10", "09-11", "09-14", "09-15", "09-16", "09-17", "09-18", "09-21", "09-22", "09-23", "09-24", "09-25", "09-28", "09-29", "09-30", "10-01", "10-02", "10-05", "10-06", "10-07", "10-08", "10-09", "10-12", "10-13", "10-14", "10-15", "10-16", "10-19", "10-20", "10-21", "10-22", "10-23", "10-26", "10-27", "10-28", "10-29", "10-30", "11-02", "11-03", "11-04", "11-05", "11-06", "11-09", "11-10", "11-11", "11-12", "11-13"],
+      "hist": [83.3, 84.73, 84.95, 84.23, 88.1, 89.22, 91.01, 94.07, 100.69, 96.78, 88.36, 84.09, 90.74, 89.03, 90.12, 83.77, 79.36, 79.45, 82.49, 83.55, 87.72, 88.91, 88.98, 87.07, 88.52, 90.87, 91.02, 91.62, 93.78, 94.39, 92.17, 88.58, 87.84, 89.7, 89.31, 90.49, 94.65, 95.63, 95.52, 96.28, 97.92, 101.21, 107.63, 104.61, 105.68, 108.75, 105.83, 104.82, 103.87, 100.34, 99.25, 103.08, 106.6, 104.32, 105.28, 102.59, 103.53, 102.31, 102.25, 100.32, 100.58, 100.2, 104.28, 104.72, 106.65, 105.69, 106.06, 105.92, 109.86, 109.55, 108.79, 108.82, 113.17, 116.72, 115.81, 113.88, 115.32, 114.88, 117.64, 104.77, 103.6, 94.62, 98.29, 98.32, 92.57, 91.49, 92.76, 95.82, 95.84, 95.81],
+      "histD": ["07-13", "07-14", "07-15", "07-16", "07-17", "07-20", "07-21", "07-22", "07-23", "07-24", "07-27", "07-28", "07-29", "07-30", "07-31", "08-03", "08-04", "08-05", "08-06", "08-07", "08-10", "08-11", "08-12", "08-13", "08-14", "08-17", "08-18", "08-19", "08-20", "08-21", "08-24", "08-25", "08-26", "08-27", "08-28", "08-31", "09-01", "09-02", "09-03", "09-04", "09-08", "09-09", "09-10", "09-11", "09-14", "09-15", "09-16", "09-17", "09-18", "09-21", "09-22", "09-23", "09-24", "09-25", "09-28", "09-29", "09-30", "10-01", "10-02", "10-05", "10-06", "10-07", "10-08", "10-09", "10-12", "10-13", "10-14", "10-15", "10-16", "10-19", "10-20", "10-21", "10-22", "10-23", "10-26", "10-27", "10-28", "10-29", "10-30", "11-02", "11-03", "11-04", "11-05", "11-06", "11-09", "11-10", "11-11", "11-12", "11-13", "11-16"],
       "ind": {
         "ma": "MA20 altında",
         "rsiTxt": "nötr",
         "rsi": 40.4,
         "volat": 4.4,
-        "volRatio": 0.6
+        "volRatio": 0.04
       },
       "teknik": {
         "durum": "notr",
@@ -553,79 +553,101 @@
     }
   ],
   "gold": {
-    "price": "6,290.56",
-    "chg": "+0.15%"
+    "price": "6,224.90",
+    "chg": "-0.92%"
   },
-  "news": [],
+  "news": [
+    {
+      "t": "🟢 Astor Enerji (ASTOR) hisselerinde Ak Yatırım üzerinden yüklü alım  (Rota Borsa)",
+      "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPVlFzWXZ3czNXVXI1NnpnUGxqd0tvRUNFMXdhZ3c0SXhUYXBvZ3RvRVFpenBkTFFZRXNBSUEyOUxnMGZRb3k1a21oX0hNM1B6THBfR2xOcTUyTHVmVmg5OWE5OGJEdVdCV1ZtR3VSWnVhaWwwdk1vS28xaHhTRlJGcjlOa2ctZnQ2TFZLODlHMTNjdw?oc=5"
+    },
+    {
+      "t": "⚪ EKGYO, PGSUS, LOGO, BİMAS, Astor, TUPRS, Aygaz... Hisseler için yorumlar ve hedef fiyat açıklandı  (Kamu Son Dakika Haberleri)",
+      "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOYmY4OG51bGs5VGJieVdGNldnSS0wWDVYR3hDdmRPUnlkVGt6anUySkxmal84T0VTckhjbC1jOURybFpSSE80a21GWjc5MFMtT2VKTVBxN3c5SXMtQzF5c0dtMmc1ZXEySTZYbXNnY3RGc2dsbzMwQ19yNU9fRU5RMzRnd0V2QUFvTkZ3enNCNlVocW9TYTBXZ18wUUtaZzBvdEkzY3lvWnliNU1kUDVfbnZ1LW1wUkpUNnc?oc=5"
+    },
+    {
+      "t": "⚪ Borsada Para Girişi ve Çıkışı En Yüksek Hisseler (13 Kasım 2026)  (Paranın Yönü)",
+      "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOcEgxVkJZeTZZODBMX1EzdzJ3YmJPdFlrQ045Z2lfQlF5REQwU1hvZW5ZR2Y0MFRvLTYyTk02RVNvTHh1S3d6dDF4WXdvbXZUV3ZJLU9GTmdPRDlNdklBMGRkZmNGc2p2dTlURW5PaGktSWNvTzRWZWhxVGpZNTF4N0ktRkg5M0tnQzdhTGVsdGV6UW5FcmhkVG1RUjdQRkxTeUdRcTY3dmY?oc=5"
+    },
+    {
+      "t": "🔴 3Ç26 434 Milyon TL Net Zarar Açıklayan Doğuş Otomotiv (DOAS) Değerlendirildi!  (Para Ajansı)",
+      "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPVDd5ZlU1VXZ5MVo5UDJSMmI3VXRFS3NheEJfNzhEXzcwUlNWd29XX1hZWUpITGdudU1ndnNrY0l0cnI2Q1RaTm1YbHJTVEhXVWd6LWlKRjczUFdPUWRVbU9UV0JCNnY4SmdrUmtwV25JRmxTSTdYX3dBNmxSU3pmQ0tJZ3ZCU1ZSczQtOElXWkprcVoyaFJtUW1icjNfZTlfeV9NeEQwaHVMSHNsSGt2N3dKSnpEeDIwdU4wRG1vVXRydGtnbFE?oc=5"
+    }
+  ],
   "world": [
     {
-      "t": "🌍 Iran targets US military base in Bahrain with drone attack  (BBC World)",
-      "link": "https://www.bbc.co.uk/news/articles/cqn4e2py48kwo?at_medium=RSS&at_campaign=rss"
+      "t": "🌍 Zelensky urges US and Musk to lift Starlink restrictions and be on 'right side of history'  (BBC World)",
+      "link": "https://www.bbc.co.uk/news/articles/c6m25zg88k45o?at_medium=RSS&at_campaign=rss"
     },
     {
       "t": "🌍 Zimbabwean author Simbarashe Kundizeza cleared of using AI to write prize-winning story  (Guardian World)",
       "link": "https://www.theguardian.com/books/2026/nov/12/zimbabwean-author-simbarashe-kundizeza-cleared-ai-caine-prize-winning-story"
     },
     {
-      "t": "🌍 Somalia: We would not have recovered without the international community  (Al Jazeera)",
-      "link": "https://www.aljazeera.com/video/talk-to-al-jazeera/2026/11/15/somalia-we-would-not-have-recovered-without-the-international-community?traffic_source=rss"
+      "t": "🌍 Iraqi armed group denies involvement in oil smuggling, calls probe a ‘lie’  (Al Jazeera)",
+      "link": "https://www.aljazeera.com/news/2026/11/16/iraqi-armed-group-denies-involvement-in-oil-smuggling-calls-probe-a-lie?traffic_source=rss"
     },
     {
-      "t": "🌍 Fuel crisis and protests pressure Chile's far-right president  (NPR World)",
-      "link": "https://www.npr.org/2026/11/14/nx-s1-6040144/chile-protests-fuel-kast-students"
+      "t": "🌍 What to expect from Trump and Xi's upcoming meeting in China  (NPR World)",
+      "link": "https://www.npr.org/2026/11/15/nx-s1-6038814/what-to-expect-from-trump-and-xis-upcoming-meeting-in-china"
     },
     {
-      "t": "🌍 UK: London's Santa School trains Father Christmas performers for 2026  (Euronews)",
-      "link": "https://www.euronews.com/video/2026/11/15/uk-londons-santa-school-trains-father-christmas-performers-for-2026"
+      "t": "🌍 Trump presses for $50bn to fix air traffic control after nationwide grounding  (Euronews)",
+      "link": "https://www.euronews.com/2026/11/16/trump-presses-for-50bn-to-fix-air-traffic-control-after-nationwide-grounding"
     },
     {
-      "t": "🌍 Polish activists face opposition as they make abortion more accessible  (DW)",
-      "link": "https://www.dw.com/en/polish-activists-face-opposition-as-they-make-abortion-more-accessible/a-79943914?maca=en-rss-en-world-4025-rdf"
+      "t": "🌍 Goodbye, overtourism? Sustainable travel gains ground  (DW)",
+      "link": "https://www.dw.com/en/goodbye-overtourism-sustainable-travel-gains-ground/a-79934295?maca=en-rss-en-world-4025-rdf"
     }
   ],
   "tr": [
     {
-      "t": "🇹🇷 ABD Ulaştırma Bakanı, kesintinin ardından hava trafiğinin pazartesi gününe kadar normale dönmesini bekliyor  (AA)",
-      "link": "https://www.aa.com.tr/tr/dunya/abd-ulastirma-bakani-kesintinin-ardindan-hava-trafiginin-pazartesi-gunune-kadar-normale-donmesini-bekliyor/4125966"
+      "t": "🇹🇷 Sınavda birinci olan kişi yapay zeka ile kopya çektiğini itiraf etti  (TRT Haber)",
+      "link": "https://www.trthaber.com/haber/dunya/sinavda-birinci-olan-kisi-yapay-zeka-ile-kopya-cektigini-itiraf-etti-963378.html"
     },
     {
-      "t": "🇹🇷 SPK'den olağanüstü tasfiyede halka açık ortaklıkların geri aldığı paylarla ilgili açıklama  (TRT Haber)",
-      "link": "https://www.trthaber.com/haber/ekonomi/spkden-olaganustu-tasfiyede-halka-acik-ortakliklarin-geri-aldigi-paylarla-ilgili-aciklama-963356.html"
+      "t": "🇹🇷 Trump, Şi ve Putin'den tarihi zirve: Dünya için nasıl sonuçlar çıkabilir?  (BBC Türkçe)",
+      "link": "https://www.bbc.com/turkce/articles/cjdx1y7p47ydo?at_medium=RSS&at_campaign=rss"
     },
     {
-      "t": "🇹🇷 Yeni Parti'nin ilk kurultayı: 160 kişiye çıkarılan PM'de kimler var?  (BBC Türkçe)",
-      "link": "https://www.bbc.com/turkce/articles/cwlylvd3374po?at_medium=RSS&at_campaign=rss"
+      "t": "🇹🇷 Sis, pus, sağanak bekleniyor  (Habertürk)",
+      "link": "https://www.haberturk.com/gundem/son-dakika-haberi-meteoroloji-den-uyari-sis-pus-saganak-bekleniyor-16-kasim-hava-durumu-3927569"
     },
     {
-      "t": "🇹🇷 Yeni Parti'de PM ve YDK seçimleri  (Habertürk)",
-      "link": "https://www.haberturk.com/gundem/yeni-parti-de-pm-ve-ydk-secimi-yapilacak-3927459"
+      "t": "🇹🇷 COP31’de AFAD parkuru yoğun ilgi görüyor  (NTV)",
+      "link": "https://www.ntv.com.tr/turkiye/video-cop31de-afad-parkuru-yogun-ilgi-goruyor-1751063"
     },
     {
-      "t": "🇹🇷 ASELSAN'dan dronlara karşı EJDERHA. 51 dronu tek tuşla düşürdü  (NTV)",
-      "link": "https://www.ntv.com.tr/turkiye/aselsandan-dronlara-karsi-ejderha-51-dronu-tek-tusla-dusurdu-1751028"
+      "t": "🇹🇷 Bakan Fidan, Brüksel'de AB toplantısına katılacak  (TRT Haber)",
+      "link": "https://www.trthaber.com/haber/gundem/bakan-fidan-brukselde-ab-toplantisina-katilacak-963377.html"
     },
     {
-      "t": "🇹🇷 356 bin kişi sigara bırakma polikliniklerinden yararlandı  (TRT Haber)",
-      "link": "https://www.trthaber.com/haber/guncel/356-bin-kisi-sigara-birakma-polikliniklerinden-yararlandi-963355.html"
+      "t": "🇹🇷 Yemen hükümet güçleri Babülmendep Boğazı civarından çekiliyor  (BBC Türkçe)",
+      "link": "https://www.bbc.com/turkce/articles/cm4gnznnnxvxo?at_medium=RSS&at_campaign=rss"
     }
   ],
   "_teshis": {
     "dunya": [
-      "BBC World: 26 öğe / 2 alındı / 0 elendi | ilk: Iran targets US military base in Bahrain with drone attack",
+      "BBC World: 21 öğe / 2 alındı / 0 elendi | ilk: Zelensky urges US and Musk to lift Starlink restrictions and",
       "Guardian World: 45 öğe / 2 alındı / 0 elendi | ilk: Zimbabwean author Simbarashe Kundizeza cleared of using AI t",
-      "Al Jazeera: 25 öğe / 2 alındı / 0 elendi | ilk: Somalia: We would not have recovered without the internation",
-      "NPR World: 10 öğe / 2 alındı / 0 elendi | ilk: Fuel crisis and protests pressure Chile's far-right presiden",
-      "Euronews: 50 öğe / 2 alındı / 1 elendi | ilk: UK: London's Santa School trains Father Christmas performers",
-      "DW: 11 öğe / 2 alındı / 0 elendi | ilk: Polish activists face opposition as they make abortion more ",
+      "Al Jazeera: 25 öğe / 2 alındı / 0 elendi | ilk: Iraqi armed group denies involvement in oil smuggling, calls",
+      "NPR World: 10 öğe / 2 alındı / 0 elendi | ilk: What to expect from Trump and Xi's upcoming meeting in China",
+      "Euronews: 50 öğe / 2 alındı / 0 elendi | ilk: Trump presses for $50bn to fix air traffic control after nat",
+      "DW: 12 öğe / 2 alındı / 0 elendi | ilk: Goodbye, overtourism? Sustainable travel gains ground",
       "SONUÇ: 6 haber · veren: Al Jazeera, BBC World, DW, Euronews, Guardian World, NPR World",
-      "AA: 30 öğe / 2 alındı / 0 elendi | ilk: ABD Ulaştırma Bakanı, kesintinin ardından hava trafiğinin pa",
-      "TRT Haber: 50 öğe / 2 alındı / 0 elendi | ilk: SPK'den olağanüstü tasfiyede halka açık ortaklıkların geri a",
-      "BBC Türkçe: 16 öğe / 2 alındı / 0 elendi | ilk: Yeni Parti'nin ilk kurultayı: 160 kişiye çıkarılan PM'de kim",
-      "Habertürk: 30 öğe / 2 alındı / 0 elendi | ilk: Yeni Parti'de PM ve YDK seçimleri",
-      "NTV: 20 öğe / 2 alındı / 0 elendi | ilk: ASELSAN'dan dronlara karşı EJDERHA. 51 dronu tek tuşla düşür",
-      "SONUÇ: 6 haber · veren: AA, BBC Türkçe, Habertürk, NTV, TRT Haber"
+      "AA: OKUNAMADI RemoteDisconnected: Remote end closed connection without response",
+      "TRT Haber: 50 öğe / 2 alındı / 0 elendi | ilk: Sınavda birinci olan kişi yapay zeka ile kopya çektiğini iti",
+      "BBC Türkçe: 16 öğe / 2 alındı / 0 elendi | ilk: Trump, Şi ve Putin'den tarihi zirve: Dünya için nasıl sonuçl",
+      "Habertürk: 30 öğe / 2 alındı / 2 elendi | ilk: Aranıyordu! Bıçaklanmış",
+      "NTV: 20 öğe / 2 alındı / 1 elendi | ilk: COP31’de AFAD parkuru yoğun ilgi görüyor",
+      "SONUÇ: 6 haber · veren: BBC Türkçe, Habertürk, NTV, TRT Haber · boş dönen: AA"
     ],
-    "hisse": "0 başlık geldi, 0 elendi",
-    "hisse_ham": []
+    "hisse": "4 başlık geldi, 0 elendi",
+    "hisse_ham": [
+      "Astor Enerji (ASTOR) hisselerinde Ak Yatırım üzerinden yüklü alım",
+      "EKGYO, PGSUS, LOGO, BİMAS, Astor, TUPRS, Aygaz... Hisseler için yoruml",
+      "Borsada Para Girişi ve Çıkışı En Yüksek Hisseler (13 Kasım 2026)",
+      "3Ç26 434 Milyon TL Net Zarar Açıklayan Doğuş Otomotiv (DOAS) Değerlend"
+    ]
   }
 }
