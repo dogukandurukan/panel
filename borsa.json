@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-22 17:27",
+  "updated": "2026-11-22 21:08",
   "sinyaller": [
     {
       "code": "THYAO",
@@ -701,30 +701,59 @@
     }
   ],
   "gold": {
-    "price": "5,709.25",
-    "chg": "-4.71%"
+    "price": "5,712.91",
+    "chg": "-4.65%"
   },
-  "news": [],
+  "news": [
+    {
+      "t": "⚪ 20 Kasım kapanış gününde para çıkışı olan hisseler; SASA, TUPRS, KCHOL, OZATD…  (Ekonomim)",
+      "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxQZnR1S2tfV0gzbnpIeEgxODNxLU5USXFoMkxwQjVnMEpkaVowWUZqdG5qa3g0eldtNFFmalZjbEpuQ19GNmpKeHJfeDZGQkVwWUtwLWdVeE1vSE85dTRNTHR1cXhVcjNudnl5VS1vYy16OVdRYjhfWmpORllIM3B4YS12WFdoVmdrQmJWeGxJS2lZVDVfSmpJaVdVUVBCbjdHc3pTMWdhaENwWkdvRlk1RTAzV2FGazZWV3lDWE0wa19kVUtOazFtcWVFVzd1ZG8?oc=5"
+    },
+    {
+      "t": "🟢 Tüpraş (TUPRS) hisselerinde TEB Yatırım üzerinden yüklü satış  (Rota Borsa)",
+      "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNcm5IZVhsbGtnbFhrZWNJNmpBLVJDUWtvUEpya2pPdEtxS09SV3NMMUNtNk52T0lnZ1VKNUhjejV6ek5Fbk5LaGdNOWsyS3ZTdmY0T0lBQS1McnpIeTJLcDdOaVNWQjhiTVM5dXFQZmVKcWlnVW0zcHMyOTFOM0tFQ29VVVZwY2lOZklJNA?oc=5"
+    },
+    {
+      "t": "🟢 Tüpraş (TUPRS) 2027 temettü tahmini  (Rota Borsa)",
+      "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBmWHdpVWVKWFZGVU41U19XOExwWnFUa3gxbUVpOThfR08yS2JKNFNrQmpvME1VY2NkRXVrSS1DNGp1WmZpTi02OTdHQXRIdU4yWXo1TDlRbnMxUHpCSUZiTXhmaWhGRV9vZXc?oc=5"
+    },
+    {
+      "t": "🟢 TUPRS, THYAO, SASA ve ASELS zirvede! İşte yatırımcı sayısı en yüksek hisseler  (Rota Borsa)",
+      "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNcGswYkxxN05LRzRrS0dyYVMtdW1hMERBanFCdFd2ZHdUY3RZYVAta0oyV0ZIaUJYN0Z3cnJCTUNxUVEyRzB0S1l6eFFrUEZ2aWp5WkYwRDBlNjZVVzFoalhpODZyZ1htWERZczVlaVlxR0FkdTFTYmdScUhTRXNVNzBoVThGRTU4RnRYLWQ5bGd6S3RSQnl0b1JjUW1IY3FZ?oc=5"
+    },
+    {
+      "t": "⚪ BofA’dan borsada 1 milyar TL’yi aşan satış: ASTOR ilk sırada  (Paratic Haber)",
+      "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPa2VfTV9qTnR5T1oyODhHM190Rmo3aTBSUXJpX2JTTWtIc1VzbHltdEFXTWl4YUt2dmV5TUQyM0FTN2Mxc04tUTRHTGJTUWF6dFBvcDJ5STFoMmV5bWJTd2hvcUZXZm94cXFGR25zZ0Y0djhtMmFxb2ZtMFRtWlM3dTA4MFo?oc=5"
+    },
+    {
+      "t": "⚪ Astor Enerji (ASTOR) hisselerinde Bank of America (BofA) üzerinden yüklü satış  (Rota Borsa)",
+      "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNRzR0dF9IZFN1S0s5N1lwcVZSSHVmT2RrUVFwdmMybEpVT3hwQ25fSzA2Q1RPdzFVQ0Vkcktwc1IwdDcyN1d1dW92LW9yTkxtRkZLX2RiSEE3eHJsWGVZaEpSM3h0N1NSNGloZ1ZqOEQ1TnE4MzBXYmZHYXJldGlTYXZlVVotTE5xQm5GMHZ0Ml9MRmJhT3c1R3BCb2ZaVVVw?oc=5"
+    },
+    {
+      "t": "⚪ Astor Enerji (ASTOR) 2026 3. çeyrek bilanço yorumu  (Rota Borsa)",
+      "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE5vUU0zbkNwdXExREV2ZmdtYUo1NFBvS1BXSGFVQmNUa3p2dXNxS2JXS014cUZpWGF4a3FBN3hQUEZpeXNfWFlRVUtzUWFOR2V6V042SEhnVkdaMkllU0kyRjZZdGp1Vjd6ODdtd252UURZaUlRcDc3d0h3?oc=5"
+    }
+  ],
   "world": [
     {
-      "t": "🌍 South Korea education minister resigns over exam cheating scandal  (BBC World)",
-      "link": "https://www.bbc.co.uk/news/articles/cw3dgk29d37no?at_medium=RSS&at_campaign=rss"
+      "t": "🌍 Explosion on Russian ship at Libya port caused by suspected drone attack, officials say  (BBC World)",
+      "link": "https://www.bbc.co.uk/news/articles/cr894gjz0j0yo?at_medium=RSS&at_campaign=rss"
     },
     {
-      "t": "🌍 California’s coastal communities on alert as biggest waves in years hit state  (Guardian World)",
-      "link": "https://www.theguardian.com/us-news/2026/nov/20/california-coastal-communities-alert-big-waves-hit-state"
+      "t": "🌍 Blast on Russian ship in Benghazi a suspected drone attack, say Libyan authorities  (Guardian World)",
+      "link": "https://www.theguardian.com/world/2026/nov/22/blast-russian-ship-suspected-drone-attack-benghazi-libya"
     },
     {
-      "t": "🌍 Iran unveils dual-missile launcher, new ‘missile city’: What to know  (Al Jazeera)",
-      "link": "https://www.aljazeera.com/news/2026/11/22/iran-unveils-dual-missile-launcher-new-missile-city-what-to-know?traffic_source=rss"
+      "t": "🌍 India-Pakistan cricket rivalry brings World Cup atmosphere to Qatar  (Al Jazeera)",
+      "link": "https://www.aljazeera.com/video/newsfeed/2026/11/22/india-pakistan-cricket-rivalry-brings-world-cup-atmosphere-to-qatar?traffic_source=rss"
     },
     {
-      "t": "🌍 What did Xi Jinping get from the bear hug with Trump at the Shenzhen summit?  (NPR World)",
-      "link": "https://www.npr.org/2026/11/21/nx-s1-6048741/what-did-xi-jinping-get-from-the-bear-hug-with-trump-at-the-shenzhen-summit"
+      "t": "🌍 Lebanese villagers return to wrecked homes as the Israeli army pulls back  (NPR World)",
+      "link": "https://www.npr.org/2026/11/22/nx-s1-6048710/lebanon-israel-army-conflict-homes"
     },
     {
-      "t": "🌍 Emergency workers recover at least six body bags after Indonesian factory fire  (Euronews)",
-      "link": "https://www.euronews.com/2026/11/22/emergency-workers-recover-at-least-six-body-bags-after-indonesian-factory-fire"
+      "t": "🌍 Tanker incident “involving military forces” reported in Strait of Hormuz  (Euronews)",
+      "link": "https://www.euronews.com/2026/11/22/tanker-incident-involving-military-forces-reported-in-strait-of-hormuz"
     },
     {
       "t": "🌍 China, ASEAN countries struggle over South China Sea code of conduct  (DW)",
@@ -733,47 +762,54 @@
   ],
   "tr": [
     {
-      "t": "🇹🇷 Gazze Şeridi'nde menenjit vakalarında olağan dışı artış yaşanıyor  (TRT Haber)",
-      "link": "https://www.trthaber.com/haber/dunya/gazze-seridinde-menenjit-vakalarinda-olagan-disi-artis-yasaniyor-964144.html"
+      "t": "🇹🇷 Bakan Kurum: Türkiye olarak Antalya'da uzlaşının bütün imkanlarını zorladık  (TRT Haber)",
+      "link": "https://www.trthaber.com/haber/gundem/bakan-kurum-turkiye-olarak-antalyada-uzlasinin-butun-imkanlarini-zorladik-964151.html"
     },
     {
-      "t": "🇹🇷 COP31: 'Antalya Paktı' kabul edilmedi, müzakereler çökebilir  (BBC Türkçe)",
+      "t": "🇹🇷 COP31 sona erdi, 'Antalya Paktı' kabul edilmedi  (BBC Türkçe)",
       "link": "https://www.bbc.com/turkce/articles/c5rmg31g88glo?at_medium=RSS&at_campaign=rss"
     },
     {
-      "t": "🇹🇷 Eve yıldırım düştü! Anne ve 2 çocuğu yaralandı!  (Habertürk)",
-      "link": "https://www.haberturk.com/gundem/son-dakika-eve-yildirim-dustu-anne-ve-2-cocugu-yaralandi-3929222"
+      "t": "🇹🇷 Murat Kurum'dan BM Temsilcisine tepki: Simon yerine geç  (Habertürk)",
+      "link": "https://www.haberturk.com/gundem/murat-kurum-dan-bm-temsilcisine-tepki-simon-yerine-gec-3929248"
     },
     {
-      "t": "🇹🇷 HGS icra takiplerine soruşturma  (NTV)",
-      "link": "https://www.ntv.com.tr/turkiye/hizli-gecis-sistemi-hgs-icra-takiplerine-sorusturma-1752076"
+      "t": "🇹🇷 Gökçeada ve Bozcaada feribot seferlerine fırtına engeli  (NTV)",
+      "link": "https://www.ntv.com.tr/turkiye/gokceada-ve-bozcaada-feribot-seferlerine-firtina-engeli-1752096"
     },
     {
-      "t": "🇹🇷 COP31 Başkanı Kurum: Maalesef sürecin ilerlemesine engel oldular  (TRT Haber)",
-      "link": "https://www.trthaber.com/haber/gundem/cop31-baskani-kurum-maalesef-surecin-ilerlemesine-engel-oldular-964143.html"
+      "t": "🇹🇷 Muş'ta yıldırımın isabet eden minare yıkıldı: 1 kişi yaralandı  (TRT Haber)",
+      "link": "https://www.trthaber.com/haber/turkiye/musta-yildirimin-isabet-eden-minare-yikildi-1-kisi-yaralandi-964150.html"
     },
     {
-      "t": "🇹🇷 Antalya Kepez Belediyesi'ne soruşturma: 20 kişi gözaltına alındı  (BBC Türkçe)",
-      "link": "https://www.bbc.com/turkce/articles/c6y0xy47q4wpo?at_medium=RSS&at_campaign=rss"
+      "t": "🇹🇷 Ankara'da Soğuksu Milli Parkı'nda iki bozayının vurulmasıyla ilgili neler biliniyor?  (BBC Türkçe)",
+      "link": "https://www.bbc.com/turkce/articles/cm3wgxjn1e20o?at_medium=RSS&at_campaign=rss"
     }
   ],
   "_teshis": {
     "dunya": [
-      "BBC World: 28 öğe / 2 alındı / 0 elendi | ilk: South Korea education minister resigns over exam cheating sc",
-      "Guardian World: 45 öğe / 2 alındı / 0 elendi | ilk: California’s coastal communities on alert as biggest waves i",
-      "Al Jazeera: 25 öğe / 2 alındı / 0 elendi | ilk: Iran unveils dual-missile launcher, new ‘missile city’: What",
-      "NPR World: 10 öğe / 2 alındı / 0 elendi | ilk: What did Xi Jinping get from the bear hug with Trump at the ",
-      "Euronews: 50 öğe / 2 alındı / 1 elendi | ilk: Emergency workers recover at least six body bags after Indon",
+      "BBC World: 29 öğe / 2 alındı / 0 elendi | ilk: Explosion on Russian ship at Libya port caused by suspected ",
+      "Guardian World: 45 öğe / 2 alındı / 0 elendi | ilk: Blast on Russian ship in Benghazi a suspected drone attack, ",
+      "Al Jazeera: 25 öğe / 2 alındı / 0 elendi | ilk: India-Pakistan cricket rivalry brings World Cup atmosphere t",
+      "NPR World: 10 öğe / 2 alındı / 0 elendi | ilk: Lebanese villagers return to wrecked homes as the Israeli ar",
+      "Euronews: 50 öğe / 2 alındı / 0 elendi | ilk: Tanker incident “involving military forces” reported in Stra",
       "DW: 11 öğe / 2 alındı / 0 elendi | ilk: China, ASEAN countries struggle over South China Sea code of",
       "SONUÇ: 6 haber · veren: Al Jazeera, BBC World, DW, Euronews, Guardian World, NPR World",
       "AA: OKUNAMADI RemoteDisconnected: Remote end closed connection without response",
-      "TRT Haber: 50 öğe / 2 alındı / 0 elendi | ilk: Gazze Şeridi'nde menenjit vakalarında olağan dışı artış yaşa",
-      "BBC Türkçe: 16 öğe / 2 alındı / 0 elendi | ilk: COP31: 'Antalya Paktı' kabul edilmedi, müzakereler çökebilir",
-      "Habertürk: 30 öğe / 2 alındı / 0 elendi | ilk: Eve yıldırım düştü! Anne ve 2 çocuğu yaralandı!",
-      "NTV: 20 öğe / 2 alındı / 0 elendi | ilk: HGS icra takiplerine soruşturma",
+      "TRT Haber: 50 öğe / 2 alındı / 0 elendi | ilk: Bakan Kurum: Türkiye olarak Antalya'da uzlaşının bütün imkan",
+      "BBC Türkçe: 16 öğe / 2 alındı / 0 elendi | ilk: COP31 sona erdi, 'Antalya Paktı' kabul edilmedi",
+      "Habertürk: 30 öğe / 2 alındı / 0 elendi | ilk: Murat Kurum'dan BM Temsilcisine tepki: Simon yerine geç",
+      "NTV: 20 öğe / 2 alındı / 0 elendi | ilk: Gökçeada ve Bozcaada feribot seferlerine fırtına engeli",
       "SONUÇ: 6 haber · veren: BBC Türkçe, Habertürk, NTV, TRT Haber · boş dönen: AA"
     ],
-    "hisse": "0 başlık geldi, 0 elendi",
-    "hisse_ham": []
+    "hisse": "7 başlık geldi, 0 elendi",
+    "hisse_ham": [
+      "20 Kasım kapanış gününde para çıkışı olan hisseler; SASA, TUPRS, KCHOL",
+      "Tüpraş (TUPRS) hisselerinde TEB Yatırım üzerinden yüklü satış",
+      "Tüpraş (TUPRS) 2027 temettü tahmini",
+      "TUPRS, THYAO, SASA ve ASELS zirvede! İşte yatırımcı sayısı en yüksek h",
+      "BofA’dan borsada 1 milyar TL’yi aşan satış: ASTOR ilk sırada",
+      "Astor Enerji (ASTOR) hisselerinde Bank of America (BofA) üzerinden yük"
+    ]
   }
 }
