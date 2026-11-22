@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-21 20:49",
+  "updated": "2026-11-22 17:27",
   "sinyaller": [
     {
       "code": "THYAO",
@@ -664,148 +664,116 @@
     },
     {
       "code": "BZ=F",
-      "price": "92.57",
-      "chg": "+0.64%",
-      "avg1w": "92.42",
-      "avg1m": "101.16",
+      "price": "89.95",
+      "chg": "-2.21%",
+      "avg1w": "91.89",
+      "avg1m": "101.04",
       "name": "Brent",
-      "hist": [88.1, 89.22, 91.01, 94.07, 100.69, 96.78, 88.36, 84.09, 90.74, 89.03, 90.12, 83.77, 79.36, 79.45, 82.49, 83.55, 87.72, 88.91, 88.98, 87.07, 88.52, 90.87, 91.02, 91.62, 93.78, 94.39, 92.17, 88.58, 87.84, 89.7, 89.31, 90.49, 94.65, 95.63, 95.52, 96.28, 97.92, 101.21, 107.63, 104.61, 105.68, 108.75, 105.83, 104.82, 103.87, 100.34, 99.25, 103.08, 106.6, 104.32, 105.28, 102.59, 103.53, 102.31, 102.25, 100.32, 100.58, 100.2, 104.28, 104.72, 106.65, 105.69, 106.06, 105.92, 109.86, 109.55, 108.79, 108.82, 113.17, 116.72, 115.81, 113.88, 115.32, 114.88, 117.64, 104.77, 103.6, 94.62, 98.29, 98.32, 92.57, 91.49, 92.76, 95.82, 95.84, 92.44, 93.14, 91.95, 91.98, 92.57],
+      "hist": [88.1, 89.22, 91.01, 94.07, 100.69, 96.78, 88.36, 84.09, 90.74, 89.03, 90.12, 83.77, 79.36, 79.45, 82.49, 83.55, 87.72, 88.91, 88.98, 87.07, 88.52, 90.87, 91.02, 91.62, 93.78, 94.39, 92.17, 88.58, 87.84, 89.7, 89.31, 90.49, 94.65, 95.63, 95.52, 96.28, 97.92, 101.21, 107.63, 104.61, 105.68, 108.75, 105.83, 104.82, 103.87, 100.34, 99.25, 103.08, 106.6, 104.32, 105.28, 102.59, 103.53, 102.31, 102.25, 100.32, 100.58, 100.2, 104.28, 104.72, 106.65, 105.69, 106.06, 105.92, 109.86, 109.55, 108.79, 108.82, 113.17, 116.72, 115.81, 113.88, 115.32, 114.88, 117.64, 104.77, 103.6, 94.62, 98.29, 98.32, 92.57, 91.49, 92.76, 95.82, 95.84, 92.44, 93.14, 91.95, 91.98, 89.95],
       "histD": ["07-17", "07-20", "07-21", "07-22", "07-23", "07-24", "07-27", "07-28", "07-29", "07-30", "07-31", "08-03", "08-04", "08-05", "08-06", "08-07", "08-10", "08-11", "08-12", "08-13", "08-14", "08-17", "08-18", "08-19", "08-20", "08-21", "08-24", "08-25", "08-26", "08-27", "08-28", "08-31", "09-01", "09-02", "09-03", "09-04", "09-08", "09-09", "09-10", "09-11", "09-14", "09-15", "09-16", "09-17", "09-18", "09-21", "09-22", "09-23", "09-24", "09-25", "09-28", "09-29", "09-30", "10-01", "10-02", "10-05", "10-06", "10-07", "10-08", "10-09", "10-12", "10-13", "10-14", "10-15", "10-16", "10-19", "10-20", "10-21", "10-22", "10-23", "10-26", "10-27", "10-28", "10-29", "10-30", "11-02", "11-03", "11-04", "11-05", "11-06", "11-09", "11-10", "11-11", "11-12", "11-13", "11-16", "11-17", "11-18", "11-19", "11-20"],
       "ind": {
         "ma": "MA20 & MA50 altında (aşağı eğilim)",
         "rsiTxt": "nötr",
-        "rsi": 37.9,
+        "rsi": 34.2,
         "volat": 3.3,
-        "volRatio": 0.67
+        "volRatio": 0.77
       },
       "teknik": {
-        "durum": "notr",
-        "ad": "nötr",
-        "puan": -1,
-        "olaylar": [],
-        "kisa": [],
+        "durum": "olasi_satis",
+        "ad": "olası satış",
+        "puan": -2,
+        "olaylar": [
+          "son 20 günün dibi 91.49 aşağı kırıldı (hacim teyidi yok)"
+        ],
+        "kisa": [
+          "dip kırılımı"
+        ],
         "trend": "düşüş",
-        "rsi": 37.9,
-        "destek": 91.49,
-        "direnc": 117.64,
+        "rsi": 34.2,
+        "destek": 89.95,
+        "direnc": 91.49,
         "senaryo": {
-          "yukari": "117.64 üstünde kapanış yükselişi teyit eder",
-          "asagi": "91.49 altında kapanış zayıflık işareti"
+          "yukari": "91.49 üstünde kapanış yükselişi teyit eder",
+          "asagi": "89.95 altında kapanış zayıflık işareti"
         },
-        "ozet": "Trend düşüş"
+        "ozet": "Trend düşüş · son 20 günün dibi 91.49 aşağı kırıldı (hacim teyidi yok)"
       }
     }
   ],
   "gold": {
-    "price": "5,714.69",
-    "chg": "-4.43%"
+    "price": "5,709.25",
+    "chg": "-4.71%"
   },
-  "news": [
-    {
-      "t": "⚪ 20 Kasım kapanış gününde para çıkışı olan hisseler; SASA, TUPRS, KCHOL, OZATD…  (Ekonomim)",
-      "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxQZnR1S2tfV0gzbnpIeEgxODNxLU5USXFoMkxwQjVnMEpkaVowWUZqdG5qa3g0eldtNFFmalZjbEpuQ19GNmpKeHJfeDZGQkVwWUtwLWdVeE1vSE85dTRNTHR1cXhVcjNudnl5VS1vYy16OVdRYjhfWmpORllIM3B4YS12WFdoVmdrQmJWeGxJS2lZVDVfSmpJaVdVUVBCbjdHc3pTMWdhaENwWkdvRlk1RTAzV2FGazZWV3lDWE0wa19kVUtOazFtcWVFVzd1ZG8?oc=5"
-    },
-    {
-      "t": "🟢 Sasa Polyester (SASA) yatırımcı sunumunu güncelledi  (Borsatek)",
-      "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBVV1BkTTFIcEF3dVJtWm5yNzBLcUpKYnNidjJ5LVJpVjY1SmxJOWZZeWY4NDZfX2Uwd1FvMnVZb3VpTHZGeC1qWEkxYnRSRmN2VGVGMVh2SGIyczdpcW9CRzA2TE1vRGdqVTQyaw?oc=5"
-    },
-    {
-      "t": "🟢 SASA Polyester’den yatırımcı bilgilendirme sunumu  (Rota Borsa)",
-      "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTFBSU3lSc3FKbFpqandvcUNENlNMT3R3b3pVUVF5bERsVDBabjVUZEJyOEp5UE1VTnFQelVydm52YTZRT3otY19QVGpSNkRIcDJqMVBFeTlDN0lsalhMcnpPeGFCNk1RSTBuV29UY0dEdEVPeGFrVEdhZkhKcw?oc=5"
-    },
-    {
-      "t": "🟢 Kontrolmatik’te fabrika hayalleri kuruldu, yatırımcı yüzde 95 kaybetti  (YatırımX)",
-      "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPNjBZUDJxM3RoRjhmbWVFQ2JVMFluSEgtZHFCN0VWbGc5RUFnYVJSTzN1NjFGWnZVVU5RNUxXVjJkTllzbFZBa2FLUFBnOEVSYndDSzBWQTdTRUJscUVFQTlMeGFzZngyQUwyRkRmYWNUQVU0YWo2WEtiWUZhNmhqMXB6OEYxekNoTVNsdGRVUzF1eFpqQnBieWdMUGVRWXd2TkJ4NnVSQ2xyVDBHT1RnUFBUSVVKbHlNRFNj?oc=5"
-    },
-    {
-      "t": "⚪ BofA’dan borsada 1 milyar TL’yi aşan satış: ASTOR ilk sırada  (Paratic Haber)",
-      "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPa2VfTV9qTnR5T1oyODhHM190Rmo3aTBSUXJpX2JTTWtIc1VzbHltdEFXTWl4YUt2dmV5TUQyM0FTN2Mxc04tUTRHTGJTUWF6dFBvcDJ5STFoMmV5bWJTd2hvcUZXZm94cXFGR25zZ0Y0djhtMmFxb2ZtMFRtWlM3dTA4MFo?oc=5"
-    },
-    {
-      "t": "⚪ BofA’dan Aselsan Elektronik’te (ASELS) 1 milyar TL’ye yakın satış  (Paratic Haber)",
-      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPaDlWVFBpRzdPZVdEWkxmVW5hLTRDSDItZjF6MDg5U2xmUzJZMEVWRkh4QjJ0S3hUZHpYcVhGZ3RLSTg4M2RSMUxLdDYxdVFSSTFHSTA2RlRISDJjUWp3ZkhWUVBicF9BaEVGRmhsa3lSWnB3djZSUHlhc0xUWnNrMWRuUVlfYmpk?oc=5"
-    },
-    {
-      "t": "⚪ BofA’nın borsadaki satış listesinde ASTOR, KTLEV ve YKBNK yer aldı  (Paratic Haber)",
-      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPXzFwOTd2akY5WFBiVnJ4blgyY1pMM0puSmhjVURxMEFjN1hEck1vNUdTWUJhMk8wYTRfdENoVktkSld6eUU5OUlCVkdWbXM3ZVNLT205MTVhLURrRDZRdEc2WmF6VENJcjBseW9ib0NIUldGb3NIblpXc2dDUVRaTUJlVHpxRGo0ajV6WlVn?oc=5"
-    }
-  ],
+  "news": [],
   "world": [
     {
-      "t": "🌍 Zelensky says Crimean Bridge strikes 'fair response' as he meets UK's Streeting  (BBC World)",
-      "link": "https://www.bbc.co.uk/news/articles/c6wy0qj7w5zqo?at_medium=RSS&at_campaign=rss"
+      "t": "🌍 South Korea education minister resigns over exam cheating scandal  (BBC World)",
+      "link": "https://www.bbc.co.uk/news/articles/cw3dgk29d37no?at_medium=RSS&at_campaign=rss"
     },
     {
       "t": "🌍 California’s coastal communities on alert as biggest waves in years hit state  (Guardian World)",
       "link": "https://www.theguardian.com/us-news/2026/nov/20/california-coastal-communities-alert-big-waves-hit-state"
     },
     {
-      "t": "🌍 Liverpool vs Manchester United: Premier League – teams, prediction, lineups  (Al Jazeera)",
-      "link": "https://www.aljazeera.com/sports/2026/11/21/liverpool-vs-manchester-united-premier-league-teams-prediction-lineups?traffic_source=rss"
+      "t": "🌍 Iran unveils dual-missile launcher, new ‘missile city’: What to know  (Al Jazeera)",
+      "link": "https://www.aljazeera.com/news/2026/11/22/iran-unveils-dual-missile-launcher-new-missile-city-what-to-know?traffic_source=rss"
     },
     {
-      "t": "🌍 Killer robots: U.N. talks fall short of hopes for legally binding rules  (NPR World)",
-      "link": "https://www.npr.org/2026/11/21/nx-s1-6047916/killer-robots-un-drones"
+      "t": "🌍 What did Xi Jinping get from the bear hug with Trump at the Shenzhen summit?  (NPR World)",
+      "link": "https://www.npr.org/2026/11/21/nx-s1-6048741/what-did-xi-jinping-get-from-the-bear-hug-with-trump-at-the-shenzhen-summit"
     },
     {
-      "t": "🌍 Jair Bolsonaro hospitalised with abdominal pain while under house arrest  (Euronews)",
-      "link": "https://www.euronews.com/2026/11/21/jair-bolsonaro-hospitalised-with-abdominal-pain-while-under-house-arrest"
+      "t": "🌍 Emergency workers recover at least six body bags after Indonesian factory fire  (Euronews)",
+      "link": "https://www.euronews.com/2026/11/22/emergency-workers-recover-at-least-six-body-bags-after-indonesian-factory-fire"
     },
     {
-      "t": "🌍 Russian helicopter suspected of violating Finnish airspace  (DW)",
-      "link": "https://www.dw.com/en/russian-helicopter-suspected-of-violating-finnish-airspace/a-80010133?maca=en-rss-en-world-4025-rdf"
+      "t": "🌍 China, ASEAN countries struggle over South China Sea code of conduct  (DW)",
+      "link": "https://www.dw.com/en/china-asean-countries-struggle-over-south-china-sea-code-of-conduct/a-80009799?maca=en-rss-en-world-4025-rdf"
     }
   ],
   "tr": [
     {
-      "t": "🇹🇷 Dışişleri Bakanı Fidan: Amerika-İran anlaşması küresel finansal krizin geriletilmesi manasında önemli  (AA)",
-      "link": "https://www.aa.com.tr/tr/gundem/disisleri-bakani-fidan-amerika-iran-anlasmasi-kuresel-finansal-krizin-geriletilmesi-manasinda-onemli/4133147"
+      "t": "🇹🇷 Gazze Şeridi'nde menenjit vakalarında olağan dışı artış yaşanıyor  (TRT Haber)",
+      "link": "https://www.trthaber.com/haber/dunya/gazze-seridinde-menenjit-vakalarinda-olagan-disi-artis-yasaniyor-964144.html"
     },
     {
-      "t": "🇹🇷 DMM'den Türkiye'de eğitimde eşitsizlik derinleşiyor iddialarına yalanlama  (TRT Haber)",
-      "link": "https://www.trthaber.com/haber/gundem/dmmden-turkiyede-egitimde-esitsizlik-derinlesiyor-iddialarina-yalanlama-964085.html"
+      "t": "🇹🇷 COP31: 'Antalya Paktı' kabul edilmedi, müzakereler çökebilir  (BBC Türkçe)",
+      "link": "https://www.bbc.com/turkce/articles/c5rmg31g88glo?at_medium=RSS&at_campaign=rss"
     },
     {
-      "t": "🇹🇷 Teknoloji hisselerindeki düşüş için uzmanlar ne diyor?  (BBC Türkçe)",
-      "link": "https://www.bbc.com/turkce/articles/cx7v2ne04np2o?at_medium=RSS&at_campaign=rss"
+      "t": "🇹🇷 Eve yıldırım düştü! Anne ve 2 çocuğu yaralandı!  (Habertürk)",
+      "link": "https://www.haberturk.com/gundem/son-dakika-eve-yildirim-dustu-anne-ve-2-cocugu-yaralandi-3929222"
     },
     {
-      "t": "🇹🇷 DMM'den eğitimde eşitlik açıklaması  (Habertürk)",
-      "link": "https://www.haberturk.com/gundem/dmm-turkiye-de-egitimde-esitsizligin-derinlestigi-iddialarini-verilerle-yalanladi-3929108"
+      "t": "🇹🇷 HGS icra takiplerine soruşturma  (NTV)",
+      "link": "https://www.ntv.com.tr/turkiye/hizli-gecis-sistemi-hgs-icra-takiplerine-sorusturma-1752076"
     },
     {
-      "t": "🇹🇷 İstanbul'da yollar beyaza büründü  (NTV)",
-      "link": "https://www.ntv.com.tr/turkiye/video-istanbulda-yollar-beyaza-burundu-1751954"
+      "t": "🇹🇷 COP31 Başkanı Kurum: Maalesef sürecin ilerlemesine engel oldular  (TRT Haber)",
+      "link": "https://www.trthaber.com/haber/gundem/cop31-baskani-kurum-maalesef-surecin-ilerlemesine-engel-oldular-964143.html"
     },
     {
-      "t": "🇹🇷 Özgün 4 koreografi \"Momentum\"da buluşuyor  (AA)",
-      "link": "https://www.aa.com.tr/tr/kultur/ozgun-4-koreografi-momentumda-bulusuyor/4133149"
+      "t": "🇹🇷 Antalya Kepez Belediyesi'ne soruşturma: 20 kişi gözaltına alındı  (BBC Türkçe)",
+      "link": "https://www.bbc.com/turkce/articles/c6y0xy47q4wpo?at_medium=RSS&at_campaign=rss"
     }
   ],
   "_teshis": {
     "dunya": [
-      "BBC World: 25 öğe / 2 alındı / 0 elendi | ilk: Zelensky says Crimean Bridge strikes 'fair response' as he m",
+      "BBC World: 28 öğe / 2 alındı / 0 elendi | ilk: South Korea education minister resigns over exam cheating sc",
       "Guardian World: 45 öğe / 2 alındı / 0 elendi | ilk: California’s coastal communities on alert as biggest waves i",
-      "Al Jazeera: 25 öğe / 2 alındı / 0 elendi | ilk: Liverpool vs Manchester United: Premier League – teams, pred",
-      "NPR World: 10 öğe / 2 alındı / 0 elendi | ilk: Killer robots: U.N. talks fall short of hopes for legally bi",
-      "Euronews: 50 öğe / 2 alındı / 1 elendi | ilk: Latest news bulletin | November 21st, 2026 – Evening",
-      "DW: 11 öğe / 2 alındı / 0 elendi | ilk: Russian helicopter suspected of violating Finnish airspace",
+      "Al Jazeera: 25 öğe / 2 alındı / 0 elendi | ilk: Iran unveils dual-missile launcher, new ‘missile city’: What",
+      "NPR World: 10 öğe / 2 alındı / 0 elendi | ilk: What did Xi Jinping get from the bear hug with Trump at the ",
+      "Euronews: 50 öğe / 2 alındı / 1 elendi | ilk: Emergency workers recover at least six body bags after Indon",
+      "DW: 11 öğe / 2 alındı / 0 elendi | ilk: China, ASEAN countries struggle over South China Sea code of",
       "SONUÇ: 6 haber · veren: Al Jazeera, BBC World, DW, Euronews, Guardian World, NPR World",
-      "AA: 30 öğe / 2 alındı / 0 elendi | ilk: Dışişleri Bakanı Fidan: Amerika-İran anlaşması küresel finan",
-      "TRT Haber: 50 öğe / 2 alındı / 0 elendi | ilk: DMM'den Türkiye'de eğitimde eşitsizlik derinleşiyor iddialar",
-      "BBC Türkçe: 16 öğe / 2 alındı / 0 elendi | ilk: Teknoloji hisselerindeki düşüş için uzmanlar ne diyor?",
-      "Habertürk: 30 öğe / 2 alındı / 0 elendi | ilk: DMM'den eğitimde eşitlik açıklaması",
-      "NTV: 20 öğe / 2 alındı / 0 elendi | ilk: İstanbul'da yollar beyaza büründü",
-      "SONUÇ: 6 haber · veren: AA, BBC Türkçe, Habertürk, NTV, TRT Haber"
+      "AA: OKUNAMADI RemoteDisconnected: Remote end closed connection without response",
+      "TRT Haber: 50 öğe / 2 alındı / 0 elendi | ilk: Gazze Şeridi'nde menenjit vakalarında olağan dışı artış yaşa",
+      "BBC Türkçe: 16 öğe / 2 alındı / 0 elendi | ilk: COP31: 'Antalya Paktı' kabul edilmedi, müzakereler çökebilir",
+      "Habertürk: 30 öğe / 2 alındı / 0 elendi | ilk: Eve yıldırım düştü! Anne ve 2 çocuğu yaralandı!",
+      "NTV: 20 öğe / 2 alındı / 0 elendi | ilk: HGS icra takiplerine soruşturma",
+      "SONUÇ: 6 haber · veren: BBC Türkçe, Habertürk, NTV, TRT Haber · boş dönen: AA"
     ],
-    "hisse": "7 başlık geldi, 0 elendi",
-    "hisse_ham": [
-      "20 Kasım kapanış gününde para çıkışı olan hisseler; SASA, TUPRS, KCHOL",
-      "Sasa Polyester (SASA) yatırımcı sunumunu güncelledi",
-      "SASA Polyester’den yatırımcı bilgilendirme sunumu",
-      "Kontrolmatik’te fabrika hayalleri kuruldu, yatırımcı yüzde 95 kaybetti",
-      "BofA’dan borsada 1 milyar TL’yi aşan satış: ASTOR ilk sırada",
-      "BofA’dan Aselsan Elektronik’te (ASELS) 1 milyar TL’ye yakın satış"
-    ]
+    "hisse": "0 başlık geldi, 0 elendi",
+    "hisse_ham": []
   }
 }
