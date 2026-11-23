@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-22 21:08",
+  "updated": "2026-11-23 09:00",
   "sinyaller": [
     {
       "code": "THYAO",
@@ -202,9 +202,9 @@
     }
   ],
   "sinyalTarama": {
-    "bist": 36,
+    "bist": 35,
     "abd": 5,
-    "bulunan": 13
+    "bulunan": 12
   },
   "watch": [
     {
@@ -664,19 +664,19 @@
     },
     {
       "code": "BZ=F",
-      "price": "89.95",
-      "chg": "-2.21%",
-      "avg1w": "91.89",
-      "avg1m": "101.04",
+      "price": "90.31",
+      "chg": "-2.44%",
+      "avg1w": "91.99",
+      "avg1m": "99.90",
       "name": "Brent",
-      "hist": [88.1, 89.22, 91.01, 94.07, 100.69, 96.78, 88.36, 84.09, 90.74, 89.03, 90.12, 83.77, 79.36, 79.45, 82.49, 83.55, 87.72, 88.91, 88.98, 87.07, 88.52, 90.87, 91.02, 91.62, 93.78, 94.39, 92.17, 88.58, 87.84, 89.7, 89.31, 90.49, 94.65, 95.63, 95.52, 96.28, 97.92, 101.21, 107.63, 104.61, 105.68, 108.75, 105.83, 104.82, 103.87, 100.34, 99.25, 103.08, 106.6, 104.32, 105.28, 102.59, 103.53, 102.31, 102.25, 100.32, 100.58, 100.2, 104.28, 104.72, 106.65, 105.69, 106.06, 105.92, 109.86, 109.55, 108.79, 108.82, 113.17, 116.72, 115.81, 113.88, 115.32, 114.88, 117.64, 104.77, 103.6, 94.62, 98.29, 98.32, 92.57, 91.49, 92.76, 95.82, 95.84, 92.44, 93.14, 91.95, 91.98, 89.95],
-      "histD": ["07-17", "07-20", "07-21", "07-22", "07-23", "07-24", "07-27", "07-28", "07-29", "07-30", "07-31", "08-03", "08-04", "08-05", "08-06", "08-07", "08-10", "08-11", "08-12", "08-13", "08-14", "08-17", "08-18", "08-19", "08-20", "08-21", "08-24", "08-25", "08-26", "08-27", "08-28", "08-31", "09-01", "09-02", "09-03", "09-04", "09-08", "09-09", "09-10", "09-11", "09-14", "09-15", "09-16", "09-17", "09-18", "09-21", "09-22", "09-23", "09-24", "09-25", "09-28", "09-29", "09-30", "10-01", "10-02", "10-05", "10-06", "10-07", "10-08", "10-09", "10-12", "10-13", "10-14", "10-15", "10-16", "10-19", "10-20", "10-21", "10-22", "10-23", "10-26", "10-27", "10-28", "10-29", "10-30", "11-02", "11-03", "11-04", "11-05", "11-06", "11-09", "11-10", "11-11", "11-12", "11-13", "11-16", "11-17", "11-18", "11-19", "11-20"],
+      "hist": [89.22, 91.01, 94.07, 100.69, 96.78, 88.36, 84.09, 90.74, 89.03, 90.12, 83.77, 79.36, 79.45, 82.49, 83.55, 87.72, 88.91, 88.98, 87.07, 88.52, 90.87, 91.02, 91.62, 93.78, 94.39, 92.17, 88.58, 87.84, 89.7, 89.31, 90.49, 94.65, 95.63, 95.52, 96.28, 97.92, 101.21, 107.63, 104.61, 105.68, 108.75, 105.83, 104.82, 103.87, 100.34, 99.25, 103.08, 106.6, 104.32, 105.28, 102.59, 103.53, 102.31, 102.25, 100.32, 100.58, 100.2, 104.28, 104.72, 106.65, 105.69, 106.06, 105.92, 109.86, 109.55, 108.79, 108.82, 113.17, 116.72, 115.81, 113.88, 115.32, 114.88, 117.64, 104.77, 103.6, 94.62, 98.29, 98.32, 92.57, 91.49, 92.76, 95.82, 95.84, 92.44, 93.14, 91.95, 91.98, 92.57, 90.31],
+      "histD": ["07-20", "07-21", "07-22", "07-23", "07-24", "07-27", "07-28", "07-29", "07-30", "07-31", "08-03", "08-04", "08-05", "08-06", "08-07", "08-10", "08-11", "08-12", "08-13", "08-14", "08-17", "08-18", "08-19", "08-20", "08-21", "08-24", "08-25", "08-26", "08-27", "08-28", "08-31", "09-01", "09-02", "09-03", "09-04", "09-08", "09-09", "09-10", "09-11", "09-14", "09-15", "09-16", "09-17", "09-18", "09-21", "09-22", "09-23", "09-24", "09-25", "09-28", "09-29", "09-30", "10-01", "10-02", "10-05", "10-06", "10-07", "10-08", "10-09", "10-12", "10-13", "10-14", "10-15", "10-16", "10-19", "10-20", "10-21", "10-22", "10-23", "10-26", "10-27", "10-28", "10-29", "10-30", "11-02", "11-03", "11-04", "11-05", "11-06", "11-09", "11-10", "11-11", "11-12", "11-13", "11-16", "11-17", "11-18", "11-19", "11-20", "11-23"],
       "ind": {
         "ma": "MA20 & MA50 altında (aşağı eğilim)",
         "rsiTxt": "nötr",
-        "rsi": 34.2,
-        "volat": 3.3,
-        "volRatio": 0.77
+        "rsi": 35.0,
+        "volat": 3.4,
+        "volRatio": 0.07
       },
       "teknik": {
         "durum": "olasi_satis",
@@ -689,20 +689,20 @@
           "dip kırılımı"
         ],
         "trend": "düşüş",
-        "rsi": 34.2,
-        "destek": 89.95,
+        "rsi": 35.0,
+        "destek": 90.31,
         "direnc": 91.49,
         "senaryo": {
           "yukari": "91.49 üstünde kapanış yükselişi teyit eder",
-          "asagi": "89.95 altında kapanış zayıflık işareti"
+          "asagi": "90.31 altında kapanış zayıflık işareti"
         },
         "ozet": "Trend düşüş · son 20 günün dibi 91.49 aşağı kırıldı (hacim teyidi yok)"
       }
     }
   ],
   "gold": {
-    "price": "5,712.91",
-    "chg": "-4.65%"
+    "price": "5,890.32",
+    "chg": "+3.07%"
   },
   "news": [
     {
@@ -710,50 +710,38 @@
       "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxQZnR1S2tfV0gzbnpIeEgxODNxLU5USXFoMkxwQjVnMEpkaVowWUZqdG5qa3g0eldtNFFmalZjbEpuQ19GNmpKeHJfeDZGQkVwWUtwLWdVeE1vSE85dTRNTHR1cXhVcjNudnl5VS1vYy16OVdRYjhfWmpORllIM3B4YS12WFdoVmdrQmJWeGxJS2lZVDVfSmpJaVdVUVBCbjdHc3pTMWdhaENwWkdvRlk1RTAzV2FGazZWV3lDWE0wa19kVUtOazFtcWVFVzd1ZG8?oc=5"
     },
     {
-      "t": "🟢 Tüpraş (TUPRS) hisselerinde TEB Yatırım üzerinden yüklü satış  (Rota Borsa)",
-      "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNcm5IZVhsbGtnbFhrZWNJNmpBLVJDUWtvUEpya2pPdEtxS09SV3NMMUNtNk52T0lnZ1VKNUhjejV6ek5Fbk5LaGdNOWsyS3ZTdmY0T0lBQS1McnpIeTJLcDdOaVNWQjhiTVM5dXFQZmVKcWlnVW0zcHMyOTFOM0tFQ29VVVZwY2lOZklJNA?oc=5"
-    },
-    {
-      "t": "🟢 Tüpraş (TUPRS) 2027 temettü tahmini  (Rota Borsa)",
-      "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBmWHdpVWVKWFZGVU41U19XOExwWnFUa3gxbUVpOThfR08yS2JKNFNrQmpvME1VY2NkRXVrSS1DNGp1WmZpTi02OTdHQXRIdU4yWXo1TDlRbnMxUHpCSUZiTXhmaWhGRV9vZXc?oc=5"
-    },
-    {
       "t": "🟢 TUPRS, THYAO, SASA ve ASELS zirvede! İşte yatırımcı sayısı en yüksek hisseler  (Rota Borsa)",
       "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNcGswYkxxN05LRzRrS0dyYVMtdW1hMERBanFCdFd2ZHdUY3RZYVAta0oyV0ZIaUJYN0Z3cnJCTUNxUVEyRzB0S1l6eFFrUEZ2aWp5WkYwRDBlNjZVVzFoalhpODZyZ1htWERZczVlaVlxR0FkdTFTYmdScUhTRXNVNzBoVThGRTU4RnRYLWQ5bGd6S3RSQnl0b1JjUW1IY3FZ?oc=5"
     },
     {
+      "t": "⚪ Moody’s, Pegasus (PGSUS) kredi derecelendirme notunu açıkladı  (Rota Borsa)",
+      "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxPcWs1QUVvRlF0NDhtcUhHcEhZcnJVQmRLbmdaVHQzSUpuUDF1SkNNbjdPNjdBb1JmWUNVTlFPRHJCUTFGT3dhUlZETktmVm40bGprT3NZb2tLOXJOSjRfdFRLd1R3bko4NFpzRUhQWmZFRXdrYjRmb3l4REV4ZnBMZWZYWXhhMFJ3V0E?oc=5"
+    },
+    {
       "t": "⚪ BofA’dan borsada 1 milyar TL’yi aşan satış: ASTOR ilk sırada  (Paratic Haber)",
       "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPa2VfTV9qTnR5T1oyODhHM190Rmo3aTBSUXJpX2JTTWtIc1VzbHltdEFXTWl4YUt2dmV5TUQyM0FTN2Mxc04tUTRHTGJTUWF6dFBvcDJ5STFoMmV5bWJTd2hvcUZXZm94cXFGR25zZ0Y0djhtMmFxb2ZtMFRtWlM3dTA4MFo?oc=5"
-    },
-    {
-      "t": "⚪ Astor Enerji (ASTOR) hisselerinde Bank of America (BofA) üzerinden yüklü satış  (Rota Borsa)",
-      "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNRzR0dF9IZFN1S0s5N1lwcVZSSHVmT2RrUVFwdmMybEpVT3hwQ25fSzA2Q1RPdzFVQ0Vkcktwc1IwdDcyN1d1dW92LW9yTkxtRkZLX2RiSEE3eHJsWGVZaEpSM3h0N1NSNGloZ1ZqOEQ1TnE4MzBXYmZHYXJldGlTYXZlVVotTE5xQm5GMHZ0Ml9MRmJhT3c1R3BCb2ZaVVVw?oc=5"
-    },
-    {
-      "t": "⚪ Astor Enerji (ASTOR) 2026 3. çeyrek bilanço yorumu  (Rota Borsa)",
-      "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE5vUU0zbkNwdXExREV2ZmdtYUo1NFBvS1BXSGFVQmNUa3p2dXNxS2JXS014cUZpWGF4a3FBN3hQUEZpeXNfWFlRVUtzUWFOR2V6V042SEhnVkdaMkllU0kyRjZZdGp1Vjd6ODdtd252UURZaUlRcDc3d0h3?oc=5"
     }
   ],
   "world": [
     {
-      "t": "🌍 Explosion on Russian ship at Libya port caused by suspected drone attack, officials say  (BBC World)",
-      "link": "https://www.bbc.co.uk/news/articles/cr894gjz0j0yo?at_medium=RSS&at_campaign=rss"
+      "t": "🌍 Longest-ever UN climate talks end with no deal as deep divisions exposed  (BBC World)",
+      "link": "https://www.bbc.co.uk/news/articles/cqwy06zrd26lo?at_medium=RSS&at_campaign=rss"
     },
     {
-      "t": "🌍 Blast on Russian ship in Benghazi a suspected drone attack, say Libyan authorities  (Guardian World)",
+      "t": "🌍 Russian warship sinks in Benghazi after suspected Ukrainian drone attack  (Guardian World)",
       "link": "https://www.theguardian.com/world/2026/nov/22/blast-russian-ship-suspected-drone-attack-benghazi-libya"
     },
     {
-      "t": "🌍 India-Pakistan cricket rivalry brings World Cup atmosphere to Qatar  (Al Jazeera)",
-      "link": "https://www.aljazeera.com/video/newsfeed/2026/11/22/india-pakistan-cricket-rivalry-brings-world-cup-atmosphere-to-qatar?traffic_source=rss"
+      "t": "🌍 Israeli attacks on medics in occupied West Bank surge by 350%: Rights group  (Al Jazeera)",
+      "link": "https://www.aljazeera.com/news/2026/11/23/israeli-attacks-on-medics-in-occupied-west-bank-surge-by-350-rights-group?traffic_source=rss"
     },
     {
-      "t": "🌍 Lebanese villagers return to wrecked homes as the Israeli army pulls back  (NPR World)",
-      "link": "https://www.npr.org/2026/11/22/nx-s1-6048710/lebanon-israel-army-conflict-homes"
+      "t": "🌍 Ukraine war spilling into NATO territory  (NPR World)",
+      "link": "https://www.npr.org/2026/11/22/nx-s1-6050236/ukraine-war-spilling-into-nato-territory"
     },
     {
-      "t": "🌍 Tanker incident “involving military forces” reported in Strait of Hormuz  (Euronews)",
-      "link": "https://www.euronews.com/2026/11/22/tanker-incident-involving-military-forces-reported-in-strait-of-hormuz"
+      "t": "🌍 UN mission in Libya urges probe after Russian ship hit by drones off Benghazi  (Euronews)",
+      "link": "https://www.euronews.com/2026/11/23/un-mission-in-libya-urges-probe-after-russian-ship-hit-by-drones-off-benghazi"
     },
     {
       "t": "🌍 China, ASEAN countries struggle over South China Sea code of conduct  (DW)",
@@ -762,54 +750,52 @@
   ],
   "tr": [
     {
-      "t": "🇹🇷 Bakan Kurum: Türkiye olarak Antalya'da uzlaşının bütün imkanlarını zorladık  (TRT Haber)",
-      "link": "https://www.trthaber.com/haber/gundem/bakan-kurum-turkiye-olarak-antalyada-uzlasinin-butun-imkanlarini-zorladik-964151.html"
+      "t": "🇹🇷 İstanbul'da suç örgütü operasyonu: 51 gözaltı  (TRT Haber)",
+      "link": "https://www.trthaber.com/haber/gundem/istanbulda-suc-orgutu-operasyonu-51-gozalti-964175.html"
     },
     {
-      "t": "🇹🇷 COP31 sona erdi, 'Antalya Paktı' kabul edilmedi  (BBC Türkçe)",
+      "t": "🇹🇷 COP31 sona erdi: Ülkeler arasında anlaşma neden sağlanamadı?  (BBC Türkçe)",
       "link": "https://www.bbc.com/turkce/articles/c5rmg31g88glo?at_medium=RSS&at_campaign=rss"
     },
     {
-      "t": "🇹🇷 Murat Kurum'dan BM Temsilcisine tepki: Simon yerine geç  (Habertürk)",
-      "link": "https://www.haberturk.com/gundem/murat-kurum-dan-bm-temsilcisine-tepki-simon-yerine-gec-3929248"
+      "t": "🇹🇷 MGM'den saatli kritik uyarı! Marmara ve Ege'de tam fırtına! 22 kent için \"sarı\" alarm!  (Habertürk)",
+      "link": "https://www.haberturk.com/gundem/son-dakika-haberi-mgm-den-saatli-kritik-uyari-marmara-ve-ege-de-tam-firtina-22-kent-icin-sari-alarm-3929291"
     },
     {
-      "t": "🇹🇷 Gökçeada ve Bozcaada feribot seferlerine fırtına engeli  (NTV)",
-      "link": "https://www.ntv.com.tr/turkiye/gokceada-ve-bozcaada-feribot-seferlerine-firtina-engeli-1752096"
+      "t": "🇹🇷 İçişleri Bakanlığı 1170 personel alımı yapacak. Başvurular ne zaman, şartlar neler?  (NTV)",
+      "link": "https://www.ntv.com.tr/turkiye/galeri-icisleri-bakanligi-1170-personel-alimi-yapacak-basvurular-ne-zaman-sartlar-neler-1752134"
     },
     {
-      "t": "🇹🇷 Muş'ta yıldırımın isabet eden minare yıkıldı: 1 kişi yaralandı  (TRT Haber)",
-      "link": "https://www.trthaber.com/haber/turkiye/musta-yildirimin-isabet-eden-minare-yikildi-1-kisi-yaralandi-964150.html"
+      "t": "🇹🇷 Bilim insanlarından sivrisinek kaynaklı hastalıklara sivrisinekle çözüm  (TRT Haber)",
+      "link": "https://www.trthaber.com/haber/dunya/bilim-insanlarindan-sivrisinek-kaynakli-hastaliklara-sivrisinekle-cozum-964174.html"
     },
     {
-      "t": "🇹🇷 Ankara'da Soğuksu Milli Parkı'nda iki bozayının vurulmasıyla ilgili neler biliniyor?  (BBC Türkçe)",
-      "link": "https://www.bbc.com/turkce/articles/cm3wgxjn1e20o?at_medium=RSS&at_campaign=rss"
+      "t": "🇹🇷 Demokratlar, 1992'den bu yana ABD Temsilciler Meclisi'ndeki en fazla sandalyeye ulaştı  (BBC Türkçe)",
+      "link": "https://www.bbc.com/turkce/articles/c50mdr0mp04ro?at_medium=RSS&at_campaign=rss"
     }
   ],
   "_teshis": {
     "dunya": [
-      "BBC World: 29 öğe / 2 alındı / 0 elendi | ilk: Explosion on Russian ship at Libya port caused by suspected ",
-      "Guardian World: 45 öğe / 2 alındı / 0 elendi | ilk: Blast on Russian ship in Benghazi a suspected drone attack, ",
-      "Al Jazeera: 25 öğe / 2 alındı / 0 elendi | ilk: India-Pakistan cricket rivalry brings World Cup atmosphere t",
-      "NPR World: 10 öğe / 2 alındı / 0 elendi | ilk: Lebanese villagers return to wrecked homes as the Israeli ar",
-      "Euronews: 50 öğe / 2 alındı / 0 elendi | ilk: Tanker incident “involving military forces” reported in Stra",
-      "DW: 11 öğe / 2 alındı / 0 elendi | ilk: China, ASEAN countries struggle over South China Sea code of",
+      "BBC World: 37 öğe / 2 alındı / 0 elendi | ilk: Longest-ever UN climate talks end with no deal as deep divis",
+      "Guardian World: 45 öğe / 2 alındı / 0 elendi | ilk: Russian warship sinks in Benghazi after suspected Ukrainian ",
+      "Al Jazeera: 25 öğe / 2 alındı / 0 elendi | ilk: Israeli attacks on medics in occupied West Bank surge by 350",
+      "NPR World: 10 öğe / 2 alındı / 0 elendi | ilk: Ukraine war spilling into NATO territory",
+      "Euronews: 50 öğe / 2 alındı / 0 elendi | ilk: UN mission in Libya urges probe after Russian ship hit by dr",
+      "DW: 10 öğe / 2 alındı / 0 elendi | ilk: China, ASEAN countries struggle over South China Sea code of",
       "SONUÇ: 6 haber · veren: Al Jazeera, BBC World, DW, Euronews, Guardian World, NPR World",
       "AA: OKUNAMADI RemoteDisconnected: Remote end closed connection without response",
-      "TRT Haber: 50 öğe / 2 alındı / 0 elendi | ilk: Bakan Kurum: Türkiye olarak Antalya'da uzlaşının bütün imkan",
-      "BBC Türkçe: 16 öğe / 2 alındı / 0 elendi | ilk: COP31 sona erdi, 'Antalya Paktı' kabul edilmedi",
-      "Habertürk: 30 öğe / 2 alındı / 0 elendi | ilk: Murat Kurum'dan BM Temsilcisine tepki: Simon yerine geç",
-      "NTV: 20 öğe / 2 alındı / 0 elendi | ilk: Gökçeada ve Bozcaada feribot seferlerine fırtına engeli",
+      "TRT Haber: 50 öğe / 2 alındı / 0 elendi | ilk: İstanbul'da suç örgütü operasyonu: 51 gözaltı",
+      "BBC Türkçe: 16 öğe / 2 alındı / 0 elendi | ilk: COP31 sona erdi: Ülkeler arasında anlaşma neden sağlanamadı?",
+      "Habertürk: 30 öğe / 2 alındı / 0 elendi | ilk: MGM'den saatli kritik uyarı! Marmara ve Ege'de tam fırtına! ",
+      "NTV: 20 öğe / 2 alındı / 0 elendi | ilk: İçişleri Bakanlığı 1170 personel alımı yapacak. Başvurular n",
       "SONUÇ: 6 haber · veren: BBC Türkçe, Habertürk, NTV, TRT Haber · boş dönen: AA"
     ],
-    "hisse": "7 başlık geldi, 0 elendi",
+    "hisse": "4 başlık geldi, 0 elendi",
     "hisse_ham": [
       "20 Kasım kapanış gününde para çıkışı olan hisseler; SASA, TUPRS, KCHOL",
-      "Tüpraş (TUPRS) hisselerinde TEB Yatırım üzerinden yüklü satış",
-      "Tüpraş (TUPRS) 2027 temettü tahmini",
       "TUPRS, THYAO, SASA ve ASELS zirvede! İşte yatırımcı sayısı en yüksek h",
-      "BofA’dan borsada 1 milyar TL’yi aşan satış: ASTOR ilk sırada",
-      "Astor Enerji (ASTOR) hisselerinde Bank of America (BofA) üzerinden yük"
+      "Moody’s, Pegasus (PGSUS) kredi derecelendirme notunu açıkladı",
+      "BofA’dan borsada 1 milyar TL’yi aşan satış: ASTOR ilk sırada"
     ]
   }
 }
