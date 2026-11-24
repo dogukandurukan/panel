@@ -1,9 +1,9 @@
 {
  "version": 2,
- "updated": "2026-11-23 18:41",
+ "updated": "2026-11-24 18:31",
  "ok": true,
  "count": 9,
- "pool": 15,
+ "pool": 16,
  "quota": {
   "tr": 3,
   "de": 3,
@@ -12,61 +12,126 @@
  },
  "items": [
   {
-   "id": "c6e96d9ef734",
-   "title": "Senior Data Scientist (m/f/x)",
-   "company": "Makersite",
-   "location": "Afghanistan, Albania, Algeria, Andorra, Angola, Antarctica, Armenia, Austria, Azerbaijan, Bahrain, Belarus, Belgium, Benin, Bosnia and Herzegovina, Botswana, Bouvet Island, Bulgaria, Burkina Faso, Burundi, Cabo Verde, Cameroon, Central African Republic, Chad, Comoros, Congo, Congo, The Democratic Republic of the, Cook Islands, Croatia, Curaçao, Cyprus, Czechia, Côte d'Ivoire, Denmark, Djibouti, Egypt, Equatorial Guinea, Eritrea, Estonia, Eswatini, Ethiopia, Faroe Islands, Finland, France, French Guiana, French Southern Territories, Gabon, Gambia, Georgia, Germany, Ghana, Gibraltar, Greece, Greenland, Guadeloupe, Guernsey, Guinea, Guinea-Bissau, Heard Island and McDonald Islands, Holy See (Vatican City State), Hungary, Iceland, Iran, Iraq, Ireland, Isle of Man, Israel, Italy, Jersey, Jordan, Kazakhstan, Kenya, Kosovo, Kuwait, Kyrgyzstan, Latvia, Lebanon, Lesotho, Liberia, Libya, Liechtenstein, Lithuania, Luxembourg, Madagascar, Malawi, Mali, Malta, Martinique, Mauritania, Mauritius, Mayotte, Moldova, Monaco, Montenegro, Morocco, Mozambique, Namibia, Netherlands, Niger, Nigeria, North Macedonia, Norway, Oman, Palestine, State of, Poland, Portugal, Qatar, Romania, Rwanda, Réunion, Saint Barthélemy, Saint Helena, Ascension and Tristan da Cunha, Saint Martin (French part), Saint Pierre and Miquelon, San Marino, Sao Tome and Principe, Saudi Arabia, Senegal, Serbia, Seychelles, Sierra Leone, Sint Maarten (Dutch part), Slovakia, Slovenia, Somalia, South Africa, South Sudan, Spain, Sudan, Svalbard and Jan Mayen, Sweden, Switzerland, Syrian Arab Republic, Tajikistan, Tanzania, Togo, Tunisia, Turkey, Turkmenistan, Uganda, Ukraine, United Arab Emirates, United Kingdom, Uzbekistan, Western Sahara, Yemen, Zambia, Zimbabwe, Åland Islands",
-   "country": "TR",
-   "market": "turkey",
-   "bucket": "tr",
-   "label": "Türkiye Remote",
-   "tier": 1,
+   "id": "dbe3d715ea9c",
+   "title": "(Senior) Controller (m/f/d) – Financial Reporting, Planning & BI",
+   "company": "Avantgarde",
+   "location": "Avantgarde – München",
+   "country": "DE",
+   "market": "international",
+   "bucket": "de",
+   "label": "DE",
+   "tier": 2,
    "rank": 0,
    "reserve": false,
    "is_new": true,
-   "first_seen": "2026-11-23",
-   "workplace_type": "remote",
-   "source": "Himalayas",
+   "first_seen": "2026-11-24",
+   "workplace_type": "onsite",
+   "source": "Arbeitnow",
    "also_on": [],
-   "source_url": "https://himalayas.app/companies/makersite/jobs/senior-data-scientist-m-f-x?utm_source=api",
-   "publication_date": "2026-11-23",
-   "fit_score": 67,
-   "fit_reason": "rol secondary +18; konum +15; beceri 2×5 +10; kıdem senior +5; tazelik +10",
+   "source_url": "https://www.arbeitnow.com/jobs/companies/avantgarde/senior-controller-financial-reporting-planning-bi-avantgarde-munchen-205627",
+   "publication_date": "2026-11-24",
+   "fit_score": 87,
+   "fit_reason": "rol primary +30; konum +10; beceri 5×5 +25; kıdem senior +5; tazelik +10",
    "matched_skills": [
+    "SQL",
     "Python",
-    "Azure"
+    "Power BI",
+    "Tableau",
+    "DAX"
    ],
-   "location_reason": "Remotive candidate_required_location 'Afghanistan, Albania, Algeria, Andorra, Angola, Antarctica, '",
+   "location_reason": "Arbeitnow konumu 'Avantgarde – München'",
    "seniority": "senior",
-   "focus": "ml",
+   "focus": "bi",
    "focus_scores": {
-    "ml": 18,
-    "bi": 0,
-    "pipeline": 3,
-    "business": 6
+    "ml": 0,
+    "bi": 28,
+    "pipeline": 0,
+    "business": 3
    },
    "language": "en",
-   "generated_at": "2026-11-23 18:41",
-   "summary": "Data Scientist (m/f/x) Location: EU (Remote) Who You’ll Work For: At Makersite , we're pioneering the future of sustainable product development and digital collaboration. As a leading platform for product lifecycle management (PLM), we empower companies to mak",
+   "generated_at": "2026-11-24 18:31",
+   "summary": "Join our team! We’re not looking for an all-around talent who simply fills out spreadsheets, but rather a meticulous numbers whiz (m/f/x) who doesn’t just report figures—but explains them: with a solid understanding of balance sheets, income statements, and ca",
    "keywords": [
-    "supply chain",
-    "scalab",
-    "cost",
+    "dashboard",
+    "forecast",
+    "finance",
+    "automation",
+    "anomaly",
+    "optimization"
+   ],
+   "url": "https://www.arbeitnow.com/jobs/companies/avantgarde/senior-controller-financial-reporting-planning-bi-avantgarde-munchen-205627",
+   "skills": [
+    "sql",
+    "python",
+    "power bi",
+    "tableau",
+    "dax"
+   ],
+   "score": 87,
+   "posted": "2026-11-24",
+   "days": 0,
+   "remote": false,
+   "german": false
+  },
+  {
+   "id": "7df4792a6c07",
+   "title": "Data Science Lead",
+   "company": "adjoe",
+   "location": "Hamburg",
+   "country": "DE",
+   "market": "international",
+   "bucket": "de",
+   "label": "DE",
+   "tier": 2,
+   "rank": 1,
+   "reserve": false,
+   "is_new": true,
+   "first_seen": "2026-11-24",
+   "workplace_type": "onsite",
+   "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.com/jobs/companies/adjoe/data-science-lead-hamburg-251419",
+   "publication_date": "2026-11-24",
+   "fit_score": 44,
+   "fit_reason": "rol secondary +18; konum +10; beceri 3×5 +15; kıdem lead -16; tazelik +10",
+   "matched_skills": [
+    "SQL",
+    "Python",
+    "Airflow"
+   ],
+   "location_reason": "Arbeitnow konumu 'Hamburg'",
+   "seniority": "lead",
+   "focus": "ml",
+   "focus_scores": {
+    "ml": 16,
+    "bi": 0,
+    "pipeline": 3,
+    "business": 5
+   },
+   "language": "en",
+   "generated_at": "2026-11-24 18:31",
+   "summary": "Data Science Lead The adjoe Ads Data Science team owns the entire bidding algorithm that decides which ad you are most likely to enjoy from start to finish: conversion prediction, user quality estimation, and bid shading. Every bid adjoe placed in an ad auctio",
+   "keywords": [
+    "a/b",
     "pipeline",
     "experimentation",
-    "saas",
-    "startup",
-    "stakeholder"
+    "real-time",
+    "data quality",
+    "cost",
+    "root cause",
+    "stakeholder",
+    "energy"
    ],
-   "url": "https://himalayas.app/companies/makersite/jobs/senior-data-scientist-m-f-x?utm_source=api",
+   "url": "https://www.arbeitnow.com/jobs/companies/adjoe/data-science-lead-hamburg-251419",
    "skills": [
+    "sql",
     "python",
-    "azure"
+    "airflow"
    ],
-   "score": 67,
-   "posted": "2026-11-23",
+   "score": 44,
+   "posted": "2026-11-24",
    "days": 0,
-   "remote": true,
+   "remote": false,
    "german": false
   },
   {
@@ -79,9 +144,9 @@
    "bucket": "de",
    "label": "DE",
    "tier": 1,
-   "rank": 0,
+   "rank": 2,
    "reserve": false,
-   "is_new": true,
+   "is_new": false,
    "first_seen": "2026-11-23",
    "workplace_type": "onsite",
    "source": "Arbeitnow",
@@ -107,7 +172,7 @@
     "business": 6
    },
    "language": "en",
-   "generated_at": "2026-11-23 18:41",
+   "generated_at": "2026-11-24 18:31",
    "summary": "Vestiaire Collective is the leading global online marketplace for desirable pre-loved fashion. Our mission is to transform the fashion industry for a more sustainable future by empowering our community to promote the circular fashion movement. Vestiaire was fo",
    "keywords": [
     "pipeline",
@@ -125,73 +190,15 @@
    ],
    "score": 80,
    "posted": "2026-11-23",
-   "days": 0,
-   "remote": false,
-   "german": false
-  },
-  {
-   "id": "8e83c3a964a5",
-   "title": "Staff Data Platform Engineer",
-   "company": "Kayak",
-   "location": "Berlin Office",
-   "country": "DE",
-   "market": "international",
-   "bucket": "de",
-   "label": "DE",
-   "tier": 1,
-   "rank": 1,
-   "reserve": false,
-   "is_new": false,
-   "first_seen": "2026-11-22",
-   "workplace_type": "onsite",
-   "source": "Arbeitnow",
-   "also_on": [],
-   "source_url": "https://www.arbeitnow.com/jobs/companies/kayak/staff-data-platform-engineer-berlin-152496",
-   "publication_date": "2026-11-22",
-   "fit_score": 66,
-   "fit_reason": "rol primary +30; konum +15; beceri 2×5 +10; kıdem lead -6; tazelik +10",
-   "matched_skills": [
-    "Python",
-    "Airflow"
-   ],
-   "location_reason": "Arbeitnow konumu 'Berlin Office'",
-   "seniority": "lead",
-   "focus": "pipeline",
-   "focus_scores": {
-    "ml": 2,
-    "bi": 2,
-    "pipeline": 28,
-    "business": 4
-   },
-   "language": "en",
-   "generated_at": "2026-11-23 18:41",
-   "summary": "KAYAK, part of Booking Holdings (NASDAQ: BKNG), is a leading travel search engine. With billions of queries across our platforms, we help people find their perfect flight, stay, rental car and vacation package. We're also transforming business travel with a ne",
-   "keywords": [
-    "real-time",
-    "cost",
-    "governance",
-    "pipeline",
-    "data quality",
-    "self-service",
-    "scalab",
-    "automation"
-   ],
-   "url": "https://www.arbeitnow.com/jobs/companies/kayak/staff-data-platform-engineer-berlin-152496",
-   "skills": [
-    "python",
-    "airflow"
-   ],
-   "score": 66,
-   "posted": "2026-11-22",
    "days": 1,
    "remote": false,
    "german": false
   },
   {
-   "id": "bd6e1ba85c12",
-   "title": "Master Data Engineer",
-   "company": "Vitestro",
-   "location": "Utrecht, Utrecht, Netherlands",
+   "id": "9117e1c0a710",
+   "title": "Analytics Engineer",
+   "company": "Talk360",
+   "location": "Amsterdam, Noord-Holland, Netherlands",
    "country": "NL",
    "market": "international",
    "bucket": "nl",
@@ -200,36 +207,100 @@
    "rank": 0,
    "reserve": false,
    "is_new": true,
-   "first_seen": "2026-11-23",
+   "first_seen": "2026-11-24",
    "workplace_type": "onsite",
    "source": "Arbeitnow",
    "also_on": [],
-   "source_url": "https://www.arbeitnow.nl/jobs/companies/vitestro/master-data-engineer-utrecht-309006",
-   "publication_date": "2026-11-23",
-   "fit_score": 64,
-   "fit_reason": "rol primary +30; konum +12; beceri 0×5 +0; kıdem mid +5; tazelik +10",
-   "matched_skills": [],
-   "location_reason": "Arbeitnow konumu 'Utrecht, Utrecht, Netherlands'",
+   "source_url": "https://www.arbeitnow.nl/jobs/companies/talk360/analytics-engineer-amsterdam-343474",
+   "publication_date": "2026-11-24",
+   "fit_score": 84,
+   "fit_reason": "rol primary +30; konum +12; beceri 4×5 +20; kıdem mid +5; tazelik +10",
+   "matched_skills": [
+    "SQL",
+    "Tableau",
+    "PySpark",
+    "dbt"
+   ],
+   "location_reason": "Arbeitnow konumu 'Amsterdam, Noord-Holland, Netherlands'",
    "seniority": "mid",
    "focus": "pipeline",
    "focus_scores": {
     "ml": 0,
-    "bi": 0,
-    "pipeline": 8,
-    "business": 2
+    "bi": 4,
+    "pipeline": 20,
+    "business": 6
    },
    "language": "en",
-   "generated_at": "2026-11-23 18:41",
-   "summary": "About Vitestro Founded in 2017 in Utrecht, Vitestro is pioneering the future of blood collection with the Aletta® Autonomous Robotic Phlebotomy Device™ (ARPD™) . This groundbreaking medical device combines advanced multi-modal imaging (near-infrared, ultrasoun",
+   "generated_at": "2026-11-24 18:31",
+   "summary": "The Challenge Talk360 connects more than 6 million people worldwide every year, and we rely on data we can trust. We have built the foundations of a modern data platform, and now we are looking for an Analytics Engineer to carry the build forward and make that",
    "keywords": [
-    "supply chain",
-    "cost",
+    "pipeline",
+    "scalab",
+    "automation",
+    "stakeholder",
+    "governance",
+    "data quality",
+    "cost"
+   ],
+   "url": "https://www.arbeitnow.nl/jobs/companies/talk360/analytics-engineer-amsterdam-343474",
+   "skills": [
+    "sql",
+    "tableau",
+    "pyspark",
+    "dbt"
+   ],
+   "score": 84,
+   "posted": "2026-11-24",
+   "days": 0,
+   "remote": false,
+   "german": false
+  },
+  {
+   "id": "74ba3d4710fe",
+   "title": "Senior data analytics consultant",
+   "company": "Berenschot Groep B.V.",
+   "location": "Utrecht, Utrecht, Nederland",
+   "country": "NL",
+   "market": "international",
+   "bucket": "nl",
+   "label": "NL",
+   "tier": 1,
+   "rank": 1,
+   "reserve": false,
+   "is_new": true,
+   "first_seen": "2026-11-24",
+   "workplace_type": "onsite",
+   "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.nl/jobs/companies/berenschot-groep-bv/senior-data-analytics-consultant-utrecht-231680",
+   "publication_date": "2026-11-24",
+   "fit_score": 69,
+   "fit_reason": "rol primary +30; konum +12; beceri 1×5 +5; kıdem senior +5; tazelik +10",
+   "matched_skills": [
+    "Power BI"
+   ],
+   "location_reason": "Arbeitnow konumu 'Utrecht, Utrecht, Nederland'",
+   "seniority": "senior",
+   "focus": "bi",
+   "focus_scores": {
+    "ml": 0,
+    "bi": 10,
+    "pipeline": 0,
+    "business": 9
+   },
+   "language": "en",
+   "generated_at": "2026-11-24 18:31",
+   "summary": "0.8-1 fte per week | Utrecht | Hybride | € 5.086-8.376| Business and data solutions | Wo-master Jouw vooruitgang begint bij Berenschot Ben jij een ervaren BI- of analyticsprofessional die organisaties helpt beter te sturen met data? Vind je het leuk om complex",
+   "keywords": [
+    "dashboard",
     "stakeholder"
    ],
-   "url": "https://www.arbeitnow.nl/jobs/companies/vitestro/master-data-engineer-utrecht-309006",
-   "skills": [],
-   "score": 64,
-   "posted": "2026-11-23",
+   "url": "https://www.arbeitnow.nl/jobs/companies/berenschot-groep-bv/senior-data-analytics-consultant-utrecht-231680",
+   "skills": [
+    "power bi"
+   ],
+   "score": 69,
+   "posted": "2026-11-24",
    "days": 0,
    "remote": false,
    "german": false
@@ -244,7 +315,7 @@
    "bucket": "nl",
    "label": "NL",
    "tier": 1,
-   "rank": 1,
+   "rank": 2,
    "reserve": false,
    "is_new": false,
    "first_seen": "2026-11-19",
@@ -273,7 +344,7 @@
     "business": 1
    },
    "language": "en",
-   "generated_at": "2026-11-23 18:41",
+   "generated_at": "2026-11-24 18:31",
    "summary": "Studytube makes professional development accessible. Our customers use client reporting, the insights they see in the platform, to understand how their people learn and to show the impact of their learning programmes. Those numbers have to be right, every time",
    "keywords": [
     "dashboard",
@@ -291,7 +362,243 @@
    ],
    "score": 88,
    "posted": "2026-11-19",
-   "days": 4,
+   "days": 5,
+   "remote": false,
+   "german": false
+  },
+  {
+   "id": "60de4ffb6cc0",
+   "title": "Associate, Data Engineering, UK",
+   "company": "wppmedia",
+   "location": "London",
+   "country": "UK",
+   "market": "international",
+   "bucket": "uk",
+   "label": "UK",
+   "tier": 1,
+   "rank": 0,
+   "reserve": false,
+   "is_new": true,
+   "first_seen": "2026-11-24",
+   "workplace_type": "onsite",
+   "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/wppmedia/associate-data-engineering-uk-london-130846",
+   "publication_date": "2026-11-23",
+   "fit_score": 84,
+   "fit_reason": "rol primary +30; konum +12; beceri 4×5 +20; kıdem mid +5; tazelik +10",
+   "matched_skills": [
+    "SQL",
+    "Python",
+    "Power BI",
+    "dbt"
+   ],
+   "location_reason": "Arbeitnow konumu 'London'",
+   "seniority": "mid",
+   "focus": "bi",
+   "focus_scores": {
+    "ml": 0,
+    "bi": 12,
+    "pipeline": 6,
+    "business": 5
+   },
+   "language": "en",
+   "generated_at": "2026-11-24 18:31",
+   "summary": "About WPP Media WPP is the trusted growth partner for the world’s leading brands. With exceptional talent, trusted data and intelligence, and world-class partnerships – all united by our pioneering agentic marketing platform, WPP Open – we help clients navigat",
+   "keywords": [
+    "pipeline",
+    "dashboard",
+    "optimization",
+    "enterprise"
+   ],
+   "url": "https://www.arbeitnow.co.uk/jobs/companies/wppmedia/associate-data-engineering-uk-london-130846",
+   "skills": [
+    "sql",
+    "python",
+    "power bi",
+    "dbt"
+   ],
+   "score": 84,
+   "posted": "2026-11-23",
+   "days": 1,
+   "remote": false,
+   "german": false
+  },
+  {
+   "id": "1828a51952b0",
+   "title": "Data Analyst",
+   "company": "Nexgencloud",
+   "location": "London",
+   "country": "UK",
+   "market": "international",
+   "bucket": "uk",
+   "label": "UK",
+   "tier": 1,
+   "rank": 1,
+   "reserve": false,
+   "is_new": true,
+   "first_seen": "2026-11-24",
+   "workplace_type": "onsite",
+   "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/nexgencloud/data-analyst-london-169388",
+   "publication_date": "2026-11-24",
+   "fit_score": 79,
+   "fit_reason": "rol primary +30; konum +12; beceri 3×5 +15; kıdem mid +5; tazelik +10",
+   "matched_skills": [
+    "SQL",
+    "Power BI",
+    "Databricks"
+   ],
+   "location_reason": "Arbeitnow konumu 'London'",
+   "seniority": "mid",
+   "focus": "business",
+   "focus_scores": {
+    "ml": 0,
+    "bi": 7,
+    "pipeline": 6,
+    "business": 12
+   },
+   "language": "en",
+   "generated_at": "2026-11-24 18:31",
+   "summary": "ABOUT NEXGEN CLOUD NexGen Cloud is a fast-growing GPU cloud and AI infrastructure business. We're the company behind Hyperstack — a self-serve, on-demand cloud platform built for high-performance AI, HPC, and compute-heavy workloads. Powered by 100% renewable ",
+   "keywords": [
+    "energy",
+    "startup",
+    "enterprise",
+    "cost",
+    "pipeline",
+    "finance",
+    "automation",
+    "saas"
+   ],
+   "url": "https://www.arbeitnow.co.uk/jobs/companies/nexgencloud/data-analyst-london-169388",
+   "skills": [
+    "sql",
+    "power bi",
+    "databricks"
+   ],
+   "score": 79,
+   "posted": "2026-11-24",
+   "days": 0,
+   "remote": false,
+   "german": false
+  },
+  {
+   "id": "fb95e86b3a8a",
+   "title": "Staff Data Scientist, Algorithm (Payments Fraud & Optimization)",
+   "company": "Airwallex",
+   "location": "UK - London",
+   "country": "UK",
+   "market": "international",
+   "bucket": "uk",
+   "label": "UK",
+   "tier": 1,
+   "rank": 2,
+   "reserve": false,
+   "is_new": true,
+   "first_seen": "2026-11-24",
+   "workplace_type": "onsite",
+   "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/airwallex/staff-data-scientist-algorithm-payments-fraud-optimization-london-305305",
+   "publication_date": "2026-11-24",
+   "fit_score": 51,
+   "fit_reason": "rol secondary +18; konum +12; beceri 2×5 +10; kıdem lead -6; tazelik +10",
+   "matched_skills": [
+    "SQL",
+    "Python"
+   ],
+   "location_reason": "Arbeitnow konumu 'UK - London'",
+   "seniority": "lead",
+   "focus": "ml",
+   "focus_scores": {
+    "ml": 15,
+    "bi": 0,
+    "pipeline": 2,
+    "business": 9
+   },
+   "language": "en",
+   "generated_at": "2026-11-24 18:31",
+   "summary": "About Airwallex Airwallex is the AI-native financial operating system for a real-time, intelligent economy. More than 675,000 businesses, including McLaren Racing, Qantas, SHEIN, and TikTok, use us, directly or through our platform partners, to run their finan",
+   "keywords": [
+    "real-time",
+    "energy",
+    "optimisation",
+    "cost",
+    "experimentation",
+    "a/b",
+    "stakeholder",
+    "pipeline"
+   ],
+   "url": "https://www.arbeitnow.co.uk/jobs/companies/airwallex/staff-data-scientist-algorithm-payments-fraud-optimization-london-305305",
+   "skills": [
+    "sql",
+    "python"
+   ],
+   "score": 51,
+   "posted": "2026-11-24",
+   "days": 0,
+   "remote": false,
+   "german": false
+  }
+ ],
+ "reserve": [
+  {
+   "id": "8e83c3a964a5",
+   "title": "Staff Data Platform Engineer",
+   "company": "Kayak",
+   "location": "Berlin Office",
+   "country": "DE",
+   "market": "international",
+   "bucket": "de",
+   "label": "DE",
+   "tier": 1,
+   "rank": 3,
+   "reserve": true,
+   "is_new": false,
+   "first_seen": "2026-11-22",
+   "workplace_type": "onsite",
+   "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.com/jobs/companies/kayak/staff-data-platform-engineer-berlin-152496",
+   "publication_date": "2026-11-22",
+   "fit_score": 63,
+   "fit_reason": "rol primary +30; konum +15; beceri 2×5 +10; kıdem lead -6; tazelik +7",
+   "matched_skills": [
+    "Python",
+    "Airflow"
+   ],
+   "location_reason": "Arbeitnow konumu 'Berlin Office'",
+   "seniority": "lead",
+   "focus": "pipeline",
+   "focus_scores": {
+    "ml": 2,
+    "bi": 2,
+    "pipeline": 28,
+    "business": 4
+   },
+   "language": "en",
+   "generated_at": "2026-11-24 18:31",
+   "summary": "KAYAK, part of Booking Holdings (NASDAQ: BKNG), is a leading travel search engine. With billions of queries across our platforms, we help people find their perfect flight, stay, rental car and vacation package. We're also transforming business travel with a ne",
+   "keywords": [
+    "real-time",
+    "cost",
+    "governance",
+    "pipeline",
+    "data quality",
+    "self-service",
+    "scalab",
+    "automation"
+   ],
+   "url": "https://www.arbeitnow.com/jobs/companies/kayak/staff-data-platform-engineer-berlin-152496",
+   "skills": [
+    "python",
+    "airflow"
+   ],
+   "score": 63,
+   "posted": "2026-11-22",
+   "days": 2,
    "remote": false,
    "german": false
   },
@@ -305,8 +612,8 @@
    "bucket": "nl",
    "label": "NL",
    "tier": 1,
-   "rank": 2,
-   "reserve": false,
+   "rank": 3,
+   "reserve": true,
    "is_new": false,
    "first_seen": "2026-11-19",
    "workplace_type": "onsite",
@@ -338,7 +645,7 @@
     "business": 1
    },
    "language": "en",
-   "generated_at": "2026-11-23 18:41",
+   "generated_at": "2026-11-24 18:31",
    "summary": "Data die het verschil maakt Data is pas waardevol als een organisatie erop kan bouwen. Als Senior Data Engineer bij LINKIT zorg jij daarvoor: je ontwerpt platformen die schaalbaar, betrouwbaar en toekomstbestendig zijn, en je kijkt verder dan de losse pipeline",
    "keywords": [
     "pipeline",
@@ -359,169 +666,10 @@
    ],
    "score": 88,
    "posted": "2026-11-19",
-   "days": 4,
+   "days": 5,
    "remote": false,
    "german": false
   },
-  {
-   "id": "71ec8fcdffd5",
-   "title": "Senior Data Analyst",
-   "company": "Kwalee",
-   "location": "Leamington Spa, England",
-   "country": "UK",
-   "market": "international",
-   "bucket": "uk",
-   "label": "UK",
-   "tier": 1,
-   "rank": 0,
-   "reserve": false,
-   "is_new": true,
-   "first_seen": "2026-11-23",
-   "workplace_type": "onsite",
-   "source": "Arbeitnow",
-   "also_on": [],
-   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/kwalee/senior-data-analyst-leamington-spa-england-307401",
-   "publication_date": "2026-11-23",
-   "fit_score": 74,
-   "fit_reason": "rol primary +30; konum +12; beceri 2×5 +10; kıdem senior +5; tazelik +10",
-   "matched_skills": [
-    "SQL",
-    "Python"
-   ],
-   "location_reason": "Arbeitnow konumu 'Leamington Spa, England'",
-   "seniority": "senior",
-   "focus": "business",
-   "focus_scores": {
-    "ml": 0,
-    "bi": 2,
-    "pipeline": 0,
-    "business": 14
-   },
-   "language": "en",
-   "generated_at": "2026-11-23 18:41",
-   "summary": "Level Up Your Career! At Kwalee, you’ll join a gaming powerhouse that boasts a mobile empire with 1.5 billion+ downloads alongside a thriving PC & Console division that has achieved numerous global chart-topping releases across Steam, Consoles, and Amazon, dri",
-   "keywords": [
-    "dashboard",
-    "forecast",
-    "anomaly"
-   ],
-   "url": "https://www.arbeitnow.co.uk/jobs/companies/kwalee/senior-data-analyst-leamington-spa-england-307401",
-   "skills": [
-    "sql",
-    "python"
-   ],
-   "score": 74,
-   "posted": "2026-11-23",
-   "days": 0,
-   "remote": false,
-   "german": false
-  },
-  {
-   "id": "c70b2a0aa2e8",
-   "title": "Merchandise Planning & Analytics Analyst",
-   "company": "Farfetch",
-   "location": "UK London, United Kingdom",
-   "country": "UK",
-   "market": "international",
-   "bucket": "uk",
-   "label": "UK",
-   "tier": 1,
-   "rank": 1,
-   "reserve": false,
-   "is_new": true,
-   "first_seen": "2026-11-23",
-   "workplace_type": "onsite",
-   "source": "Arbeitnow",
-   "also_on": [],
-   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/farfetch/merchandise-planning-analytics-analyst-uk-london-united-kingdom-472731",
-   "publication_date": "2026-11-23",
-   "fit_score": 69,
-   "fit_reason": "rol primary +30; konum +12; beceri 1×5 +5; kıdem mid +5; tazelik +10",
-   "matched_skills": [
-    "SQL"
-   ],
-   "location_reason": "Arbeitnow konumu 'UK London, United Kingdom'",
-   "seniority": "mid",
-   "focus": "business",
-   "focus_scores": {
-    "ml": 0,
-    "bi": 4,
-    "pipeline": 0,
-    "business": 16
-   },
-   "language": "en",
-   "generated_at": "2026-11-23 18:41",
-   "summary": "Farfetch is a leading global marketplace for the luxury fashion industry, connecting customers in over 190 countries with items from more than 50 countries and over 1,400 of the world’s best brands and charming boutiques from around the world. Farfetch opens a",
-   "keywords": [
-    "dashboard",
-    "optimisation",
-    "forecast"
-   ],
-   "url": "https://www.arbeitnow.co.uk/jobs/companies/farfetch/merchandise-planning-analytics-analyst-uk-london-united-kingdom-472731",
-   "skills": [
-    "sql"
-   ],
-   "score": 69,
-   "posted": "2026-11-23",
-   "days": 0,
-   "remote": false,
-   "german": false
-  },
-  {
-   "id": "3421b1364c57",
-   "title": "Machine Learning Engineer",
-   "company": "Trainline",
-   "location": "London",
-   "country": "UK",
-   "market": "international",
-   "bucket": "uk",
-   "label": "UK",
-   "tier": 1,
-   "rank": 2,
-   "reserve": false,
-   "is_new": true,
-   "first_seen": "2026-11-23",
-   "workplace_type": "onsite",
-   "source": "Arbeitnow",
-   "also_on": [],
-   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/trainline/machine-learning-engineer-london-417945",
-   "publication_date": "2026-11-23",
-   "fit_score": 62,
-   "fit_reason": "rol secondary +18; konum +12; beceri 2×5 +10; kıdem mid +5; tazelik +10",
-   "matched_skills": [
-    "Python",
-    "PySpark"
-   ],
-   "location_reason": "Arbeitnow konumu 'London'",
-   "seniority": "mid",
-   "focus": "ml",
-   "focus_scores": {
-    "ml": 22,
-    "bi": 0,
-    "pipeline": 1,
-    "business": 4
-   },
-   "language": "en",
-   "generated_at": "2026-11-23 18:41",
-   "summary": "About us At Trainline, our purpose is to empower greener travel choices, connecting people and places. Trainline enables millions of travellers to find and book the best value tickets across carriers, fares, and journey options through our highly rated mobile ",
-   "keywords": [
-    "optimisation",
-    "stakeholder",
-    "experimentation"
-   ],
-   "url": "https://www.arbeitnow.co.uk/jobs/companies/trainline/machine-learning-engineer-london-417945",
-   "skills": [
-    "python",
-    "pyspark"
-   ],
-   "score": 62,
-   "posted": "2026-11-23",
-   "days": 0,
-   "remote": false,
-   "german": false
-  }
- ],
- "reserve": [
   {
    "id": "1ff9d743b17e",
    "title": "Data Engineer",
@@ -532,7 +680,7 @@
    "bucket": "nl",
    "label": "NL",
    "tier": 1,
-   "rank": 3,
+   "rank": 4,
    "reserve": true,
    "is_new": false,
    "first_seen": "2026-11-19",
@@ -563,7 +711,7 @@
     "business": 0
    },
    "language": "en",
-   "generated_at": "2026-11-23 18:41",
+   "generated_at": "2026-11-24 18:31",
    "summary": "Bouwen is pas de helft van het werk Data draait nooit om de tool, maar om de vraag erachter. Als Data Engineer bij LINKIT ga je die vraag niet uit de weg, je zoekt hem juist op. De uitdaging Als Data Engineer werk je aan dataplatformen die er in de praktijk to",
    "keywords": [
     "pipeline",
@@ -582,7 +730,7 @@
    ],
    "score": 88,
    "posted": "2026-11-19",
-   "days": 4,
+   "days": 5,
    "remote": false,
    "german": false
   },
@@ -596,7 +744,7 @@
    "bucket": "nl",
    "label": "NL",
    "tier": 1,
-   "rank": 4,
+   "rank": 5,
    "reserve": true,
    "is_new": false,
    "first_seen": "2026-11-19",
@@ -624,7 +772,7 @@
     "business": 1
    },
    "language": "en",
-   "generated_at": "2026-11-23 18:41",
+   "generated_at": "2026-11-24 18:31",
    "summary": "Studytube maakt professionele ontwikkeling toegankelijk. Achter het platform zit een groeiende stroom leerdata. Die moet klanten, de business en de AI-features die we bouwen écht verder helpen. Daar zoeken we een Data Engineer voor die de datalaag bezit. De ro",
    "keywords": [
     "dashboard",
@@ -642,73 +790,15 @@
    ],
    "score": 83,
    "posted": "2026-11-19",
-   "days": 4,
+   "days": 5,
    "remote": false,
    "german": false
   },
   {
-   "id": "a2bb61821f3f",
-   "title": "Data Analyst (EN)",
-   "company": "YoungOnes",
-   "location": "Breda, Noord-Brabant, Netherlands",
-   "country": "NL",
-   "market": "international",
-   "bucket": "nl",
-   "label": "NL",
-   "tier": 1,
-   "rank": 5,
-   "reserve": true,
-   "is_new": false,
-   "first_seen": "2026-11-18",
-   "workplace_type": "onsite",
-   "source": "Arbeitnow",
-   "also_on": [],
-   "source_url": "https://www.arbeitnow.nl/jobs/companies/youngones/data-analyst-en-breda-2608",
-   "publication_date": "2026-11-17",
-   "fit_score": 83,
-   "fit_reason": "rol primary +30; konum +12; beceri 5×5 +25; kıdem mid +5; tazelik +4",
-   "matched_skills": [
-    "SQL",
-    "Python",
-    "Power BI",
-    "Databricks",
-    "PySpark"
-   ],
-   "location_reason": "Arbeitnow konumu 'Breda, Noord-Brabant, Netherlands'",
-   "seniority": "mid",
-   "focus": "business",
-   "focus_scores": {
-    "ml": 0,
-    "bi": 4,
-    "pipeline": 4,
-    "business": 18
-   },
-   "language": "en",
-   "generated_at": "2026-11-23 18:41",
-   "summary": "Help launch our new temping product and drive commercial impact! At YoungOnes, data is at the start of every decision. Our Data & RevOps team has a seat at every table and takes a leading role in where the company goes next. Two years ago we rebuilt our data e",
-   "keywords": [
-    "startup",
-    "stakeholder"
-   ],
-   "url": "https://www.arbeitnow.nl/jobs/companies/youngones/data-analyst-en-breda-2608",
-   "skills": [
-    "sql",
-    "python",
-    "power bi",
-    "databricks",
-    "pyspark"
-   ],
-   "score": 83,
-   "posted": "2026-11-17",
-   "days": 6,
-   "remote": false,
-   "german": false
-  },
-  {
-   "id": "278074f918a8",
-   "title": "Data Analyst",
-   "company": "Trainline",
-   "location": "London",
+   "id": "71ec8fcdffd5",
+   "title": "Senior Data Analyst",
+   "company": "Kwalee",
+   "location": "Leamington Spa, England",
    "country": "UK",
    "market": "international",
    "bucket": "uk",
@@ -717,110 +807,42 @@
    "rank": 3,
    "reserve": true,
    "is_new": false,
-   "first_seen": "2026-11-22",
+   "first_seen": "2026-11-23",
    "workplace_type": "onsite",
    "source": "Arbeitnow",
    "also_on": [],
-   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/trainline/data-analyst-london-289423",
-   "publication_date": "2026-11-21",
-   "fit_score": 86,
-   "fit_reason": "rol primary +30; konum +12; beceri 5×5 +25; kıdem mid +5; tazelik +7",
+   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/kwalee/senior-data-analyst-leamington-spa-england-307401",
+   "publication_date": "2026-11-23",
+   "fit_score": 74,
+   "fit_reason": "rol primary +30; konum +12; beceri 2×5 +10; kıdem senior +5; tazelik +10",
    "matched_skills": [
     "SQL",
-    "Python",
-    "Power BI",
-    "Tableau",
-    "dbt"
+    "Python"
    ],
-   "location_reason": "Arbeitnow konumu 'London'",
-   "seniority": "mid",
+   "location_reason": "Arbeitnow konumu 'Leamington Spa, England'",
+   "seniority": "senior",
    "focus": "business",
    "focus_scores": {
-    "ml": 5,
-    "bi": 7,
-    "pipeline": 1,
-    "business": 21
+    "ml": 0,
+    "bi": 2,
+    "pipeline": 0,
+    "business": 14
    },
    "language": "en",
-   "generated_at": "2026-11-23 18:41",
-   "summary": "About us At Trainline, our purpose is to empower greener travel choices, connecting people and places. Trainline enables millions of travellers to find and book the best value tickets across carriers, fares, and journey options through our highly rated mobile ",
+   "generated_at": "2026-11-24 18:31",
+   "summary": "Level Up Your Career! At Kwalee, you’ll join a gaming powerhouse that boasts a mobile empire with 1.5 billion+ downloads alongside a thriving PC & Console division that has achieved numerous global chart-topping releases across Steam, Consoles, and Amazon, dri",
    "keywords": [
-    "enterprise",
-    "retail",
     "dashboard",
-    "stakeholder",
-    "automation"
+    "forecast",
+    "anomaly"
    ],
-   "url": "https://www.arbeitnow.co.uk/jobs/companies/trainline/data-analyst-london-289423",
+   "url": "https://www.arbeitnow.co.uk/jobs/companies/kwalee/senior-data-analyst-leamington-spa-england-307401",
    "skills": [
     "sql",
-    "python",
-    "power bi",
-    "tableau",
-    "dbt"
+    "python"
    ],
-   "score": 86,
-   "posted": "2026-11-21",
-   "days": 2,
-   "remote": false,
-   "german": false
-  },
-  {
-   "id": "d96fd116b9e4",
-   "title": "Analytics Engineer",
-   "company": "Lendable",
-   "location": "London",
-   "country": "UK",
-   "market": "international",
-   "bucket": "uk",
-   "label": "UK",
-   "tier": 1,
-   "rank": 4,
-   "reserve": true,
-   "is_new": false,
-   "first_seen": "2026-11-22",
-   "workplace_type": "onsite",
-   "source": "Arbeitnow",
-   "also_on": [],
-   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/lendable/analytics-engineer-london-317432",
-   "publication_date": "2026-11-22",
-   "fit_score": 84,
-   "fit_reason": "rol primary +30; konum +12; beceri 4×5 +20; kıdem mid +5; tazelik +10",
-   "matched_skills": [
-    "SQL",
-    "ETL",
-    "Snowflake",
-    "dbt"
-   ],
-   "location_reason": "Arbeitnow konumu 'London'",
-   "seniority": "mid",
-   "focus": "pipeline",
-   "focus_scores": {
-    "ml": 1,
-    "bi": 1,
-    "pipeline": 16,
-    "business": 5
-   },
-   "language": "en",
-   "generated_at": "2026-11-23 18:41",
-   "summary": "About Lendable Lendable is on a mission to build the world's best technology to help people get credit and save money. We're building one of the world’s leading fintech companies and are off to a strong start: One of the UK’s most exciting unicorns with a team",
-   "keywords": [
-    "finance",
-    "stakeholder",
-    "data quality",
-    "scalab",
-    "pipeline",
-    "cost"
-   ],
-   "url": "https://www.arbeitnow.co.uk/jobs/companies/lendable/analytics-engineer-london-317432",
-   "skills": [
-    "sql",
-    "etl",
-    "snowflake",
-    "dbt"
-   ],
-   "score": 84,
-   "posted": "2026-11-22",
+   "score": 74,
+   "posted": "2026-11-23",
    "days": 1,
    "remote": false,
    "german": false
@@ -835,7 +857,7 @@
    "bucket": "uk",
    "label": "UK",
    "tier": 1,
-   "rank": 5,
+   "rank": 4,
    "reserve": true,
    "is_new": false,
    "first_seen": "2026-11-22",
@@ -844,8 +866,8 @@
    "also_on": [],
    "source_url": "https://www.arbeitnow.co.uk/jobs/companies/wundermanthompson/senior-analyst-data-science-and-analytics-london-425912",
    "publication_date": "2026-11-22",
-   "fit_score": 75,
-   "fit_reason": "rol secondary +18; konum +12; beceri 4×5 +20; kıdem senior +5; tazelik +10",
+   "fit_score": 72,
+   "fit_reason": "rol secondary +18; konum +12; beceri 4×5 +20; kıdem senior +5; tazelik +7",
    "matched_skills": [
     "SQL",
     "Python",
@@ -862,7 +884,7 @@
     "business": 14
    },
    "language": "en",
-   "generated_at": "2026-11-23 18:41",
+   "generated_at": "2026-11-24 18:31",
    "summary": "Who We Are VML is a global creative company that combines brand experience, customer experience, and commerce to create connected brands that drive growth. Guided by a Human First philosophy, VML is known for its innovative work for brands and consistently ran",
    "keywords": [
     "enterprise",
@@ -876,8 +898,59 @@
     "power bi",
     "tableau"
    ],
-   "score": 75,
+   "score": 72,
    "posted": "2026-11-22",
+   "days": 2,
+   "remote": false,
+   "german": false
+  },
+  {
+   "id": "c70b2a0aa2e8",
+   "title": "Merchandise Planning & Analytics Analyst",
+   "company": "Farfetch",
+   "location": "UK London, United Kingdom",
+   "country": "UK",
+   "market": "international",
+   "bucket": "uk",
+   "label": "UK",
+   "tier": 1,
+   "rank": 5,
+   "reserve": true,
+   "is_new": false,
+   "first_seen": "2026-11-23",
+   "workplace_type": "onsite",
+   "source": "Arbeitnow",
+   "also_on": [],
+   "source_url": "https://www.arbeitnow.co.uk/jobs/companies/farfetch/merchandise-planning-analytics-analyst-uk-london-united-kingdom-472731",
+   "publication_date": "2026-11-23",
+   "fit_score": 69,
+   "fit_reason": "rol primary +30; konum +12; beceri 1×5 +5; kıdem mid +5; tazelik +10",
+   "matched_skills": [
+    "SQL"
+   ],
+   "location_reason": "Arbeitnow konumu 'UK London, United Kingdom'",
+   "seniority": "mid",
+   "focus": "business",
+   "focus_scores": {
+    "ml": 0,
+    "bi": 4,
+    "pipeline": 0,
+    "business": 16
+   },
+   "language": "en",
+   "generated_at": "2026-11-24 18:31",
+   "summary": "Farfetch is a leading global marketplace for the luxury fashion industry, connecting customers in over 190 countries with items from more than 50 countries and over 1,400 of the world’s best brands and charming boutiques from around the world. Farfetch opens a",
+   "keywords": [
+    "dashboard",
+    "optimisation",
+    "forecast"
+   ],
+   "url": "https://www.arbeitnow.co.uk/jobs/companies/farfetch/merchandise-planning-analytics-analyst-uk-london-united-kingdom-472731",
+   "skills": [
+    "sql"
+   ],
+   "score": 69,
+   "posted": "2026-11-23",
    "days": 1,
    "remote": false,
    "german": false
@@ -886,42 +959,36 @@
  "stats": {
   "candidates": {
    "tr": {
-    "tr_remote": 1,
+    "tr_remote": 0,
     "istanbul_hibrit": 0,
     "istanbul_onsite": 0
    },
-   "de": 2,
+   "de": 4,
    "nl": 14,
-   "uk": 6
+   "uk": 7
   },
   "selected": {
-   "tr": 1,
-   "de": 2,
+   "tr": 0,
+   "de": 3,
    "nl": 3,
    "uk": 3
   },
   "missing": {
    "tr": {
-    "eksik": 2,
+    "eksik": 3,
     "sebep": "Türkiye kaynağı bağlı değil — Jooble anahtarı eklenmedi"
-   },
-   "de": {
-    "eksik": 1,
-    "sebep": "yalnızca 2 uygun aday"
    }
   },
   "eliminated": {
-   "rol dışı (hedef rol yok)": 2099,
-   "rol dışı (başlık)": 1048,
-   "ülke belirlenemedi": 39,
-   "Almanca ilan": 11,
-   "ML/DS rolü, beceri örtüşmesi zayıf": 5,
-   "ileri seviye Almanca şartı": 1,
-   "dünya geneli remote (Türkiye ilanı değil)": 5,
-   "Remotive candidate_required_location 'United States'": 5,
-   "Remotive candidate_required_location 'Belgium'": 1,
-   "Remotive candidate_required_location 'Canada'": 1,
+   "rol dışı (hedef rol yok)": 2034,
+   "rol dışı (başlık)": 1014,
+   "ML/DS rolü, beceri örtüşmesi zayıf": 9,
+   "ülke belirlenemedi": 38,
+   "Almanca ilan": 9,
+   "dünya geneli remote (Türkiye ilanı değil)": 8,
+   "Remotive candidate_required_location 'United States'": 6,
    "Remotive candidate_required_location 'India'": 1,
+   "Remotive candidate_required_location 'Spain'": 1,
    "Remotive candidate_required_location 'US Only'": 3,
    "süresi doldu (daha önce gösterildi)": 4
   }
@@ -945,7 +1012,7 @@
   "36160abe4f8b": {
    "first_seen": "2026-10-03",
    "status": "expired",
-   "last_seen": "2026-11-23"
+   "last_seen": "2026-11-24"
   },
   "03464dadc613": {
    "first_seen": "2026-10-11",
@@ -972,16 +1039,6 @@
    "status": "expired",
    "last_seen": "2026-11-22"
   },
-  "d6fade0f6f9c": {
-   "first_seen": "2026-10-18",
-   "status": "listed",
-   "last_seen": "2026-10-24"
-  },
-  "a51d143e691f": {
-   "first_seen": "2026-10-19",
-   "status": "listed",
-   "last_seen": "2026-10-24"
-  },
   "780eb12447ed": {
    "first_seen": "2026-10-20",
    "status": "listed",
@@ -990,7 +1047,7 @@
   "949b3356d83d": {
    "first_seen": "2026-10-20",
    "status": "expired",
-   "last_seen": "2026-11-23"
+   "last_seen": "2026-11-24"
   },
   "5807b448ff26": {
    "first_seen": "2026-10-21",
@@ -1006,11 +1063,6 @@
    "first_seen": "2026-10-22",
    "status": "expired",
    "last_seen": "2026-11-05"
-  },
-  "bb042fbd41ce": {
-   "first_seen": "2026-10-22",
-   "status": "listed",
-   "last_seen": "2026-10-24"
   },
   "c483c293bfcf": {
    "first_seen": "2026-10-22",
@@ -1225,7 +1277,7 @@
   "48e512637e8f": {
    "first_seen": "2026-10-26",
    "status": "expired",
-   "last_seen": "2026-11-23"
+   "last_seen": "2026-11-24"
   },
   "d118e15e71d9": {
    "first_seen": "2026-10-26",
@@ -1280,7 +1332,7 @@
   "a3d39a7dbc64": {
    "first_seen": "2026-10-27",
    "status": "expired",
-   "last_seen": "2026-11-15"
+   "last_seen": "2026-11-24"
   },
   "e3632e8ed7b3": {
    "first_seen": "2026-10-27",
@@ -2050,7 +2102,7 @@
   "a2bb61821f3f": {
    "first_seen": "2026-11-18",
    "status": "listed",
-   "last_seen": "2026-11-23"
+   "last_seen": "2026-11-24"
   },
   "8a02cb6300a2": {
    "first_seen": "2026-11-18",
@@ -2090,7 +2142,7 @@
   "bcfb5a27fe86": {
    "first_seen": "2026-11-19",
    "status": "listed",
-   "last_seen": "2026-11-23"
+   "last_seen": "2026-11-24"
   },
   "dc79a2ba521d": {
    "first_seen": "2026-11-19",
@@ -2100,17 +2152,17 @@
   "b13f43a80749": {
    "first_seen": "2026-11-19",
    "status": "listed",
-   "last_seen": "2026-11-23"
+   "last_seen": "2026-11-24"
   },
   "49a76cd21925": {
    "first_seen": "2026-11-19",
    "status": "listed",
-   "last_seen": "2026-11-23"
+   "last_seen": "2026-11-24"
   },
   "1ff9d743b17e": {
    "first_seen": "2026-11-19",
    "status": "listed",
-   "last_seen": "2026-11-23"
+   "last_seen": "2026-11-24"
   },
   "e9a0a2530fe8": {
    "first_seen": "2026-11-19",
@@ -2120,17 +2172,17 @@
   "d3e56074146a": {
    "first_seen": "2026-11-19",
    "status": "listed",
-   "last_seen": "2026-11-23"
+   "last_seen": "2026-11-24"
   },
   "244a8a36a818": {
    "first_seen": "2026-11-19",
    "status": "listed",
-   "last_seen": "2026-11-23"
+   "last_seen": "2026-11-24"
   },
   "37aad68d6850": {
    "first_seen": "2026-11-19",
    "status": "listed",
-   "last_seen": "2026-11-23"
+   "last_seen": "2026-11-24"
   },
   "ae131880e451": {
    "first_seen": "2026-11-20",
@@ -2150,17 +2202,17 @@
   "3808e18e0af7": {
    "first_seen": "2026-11-20",
    "status": "listed",
-   "last_seen": "2026-11-23"
+   "last_seen": "2026-11-24"
   },
   "c8bd790e759b": {
    "first_seen": "2026-11-20",
    "status": "listed",
-   "last_seen": "2026-11-23"
+   "last_seen": "2026-11-24"
   },
   "a3032acb296e": {
    "first_seen": "2026-11-20",
    "status": "listed",
-   "last_seen": "2026-11-23"
+   "last_seen": "2026-11-24"
   },
   "294019927114": {
    "first_seen": "2026-11-20",
@@ -2210,7 +2262,7 @@
   "8e83c3a964a5": {
    "first_seen": "2026-11-22",
    "status": "listed",
-   "last_seen": "2026-11-23"
+   "last_seen": "2026-11-24"
   },
   "278074f918a8": {
    "first_seen": "2026-11-22",
@@ -2225,7 +2277,7 @@
   "15a804de87bd": {
    "first_seen": "2026-11-22",
    "status": "listed",
-   "last_seen": "2026-11-23"
+   "last_seen": "2026-11-24"
   },
   "c6e96d9ef734": {
    "first_seen": "2026-11-23",
@@ -2235,27 +2287,62 @@
   "df7c08e2c5e0": {
    "first_seen": "2026-11-23",
    "status": "listed",
-   "last_seen": "2026-11-23"
+   "last_seen": "2026-11-24"
   },
   "bd6e1ba85c12": {
    "first_seen": "2026-11-23",
    "status": "listed",
-   "last_seen": "2026-11-23"
+   "last_seen": "2026-11-24"
   },
   "71ec8fcdffd5": {
    "first_seen": "2026-11-23",
    "status": "listed",
-   "last_seen": "2026-11-23"
+   "last_seen": "2026-11-24"
   },
   "c70b2a0aa2e8": {
    "first_seen": "2026-11-23",
    "status": "listed",
-   "last_seen": "2026-11-23"
+   "last_seen": "2026-11-24"
   },
   "3421b1364c57": {
    "first_seen": "2026-11-23",
    "status": "listed",
-   "last_seen": "2026-11-23"
+   "last_seen": "2026-11-24"
+  },
+  "dbe3d715ea9c": {
+   "first_seen": "2026-11-24",
+   "status": "listed",
+   "last_seen": "2026-11-24"
+  },
+  "7df4792a6c07": {
+   "first_seen": "2026-11-24",
+   "status": "listed",
+   "last_seen": "2026-11-24"
+  },
+  "9117e1c0a710": {
+   "first_seen": "2026-11-24",
+   "status": "listed",
+   "last_seen": "2026-11-24"
+  },
+  "74ba3d4710fe": {
+   "first_seen": "2026-11-24",
+   "status": "listed",
+   "last_seen": "2026-11-24"
+  },
+  "60de4ffb6cc0": {
+   "first_seen": "2026-11-24",
+   "status": "listed",
+   "last_seen": "2026-11-24"
+  },
+  "1828a51952b0": {
+   "first_seen": "2026-11-24",
+   "status": "listed",
+   "last_seen": "2026-11-24"
+  },
+  "fb95e86b3a8a": {
+   "first_seen": "2026-11-24",
+   "status": "listed",
+   "last_seen": "2026-11-24"
   }
  },
  "note": "Kaynak: Arbeitnow + Remotive. Basvuruyu kullanici kendisi yapar."
