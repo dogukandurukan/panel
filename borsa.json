@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-24 01:18",
+  "updated": "2026-11-24 09:00",
   "sinyaller": [
     {
       "code": "THYAO",
@@ -357,7 +357,7 @@
         "rsiTxt": "nötr",
         "rsi": 52.6,
         "volat": 1.9,
-        "volRatio": 1.13
+        "volRatio": 1.16
       },
       "teknik": {
         "durum": "notr",
@@ -389,7 +389,7 @@
         "rsiTxt": "nötr",
         "rsi": 39.1,
         "volat": 2.7,
-        "volRatio": 0.98
+        "volRatio": 0.99
       },
       "teknik": {
         "durum": "notr",
@@ -421,7 +421,7 @@
         "rsiTxt": "nötr",
         "rsi": 42.9,
         "volat": 10.3,
-        "volRatio": 2.41
+        "volRatio": 2.42
       },
       "teknik": {
         "durum": "notr",
@@ -485,7 +485,7 @@
         "rsiTxt": "nötr",
         "rsi": 52.1,
         "volat": 5.5,
-        "volRatio": 1.27
+        "volRatio": 1.29
       },
       "teknik": {
         "durum": "notr",
@@ -508,19 +508,19 @@
   "world_idx": [
     {
       "code": "XU100.IS",
-      "price": "11,131.30",
-      "chg": "-2.36%",
-      "avg1w": "11,502.32",
-      "avg1m": "11,383.40",
+      "price": "11,104.40",
+      "chg": "-0.24%",
+      "avg1w": "11,354.84",
+      "avg1m": "11,377.87",
       "name": "BIST 100",
-      "hist": [13981.1, 14071.0, 13974.1, 14138.9, 14077.7, 13943.9, 13774.8, 13687.9, 13501.6, 13292.9, 13458.1, 13410.5, 13687.9, 13703.1, 13798.8, 13779.4, 13811.6, 13704.5, 14110.1, 14132.2, 14172.3, 14132.1, 14128.0, 14459.0, 14396.5, 14514.8, 14501.5, 14473.4, 14610.9, 14575.5, 14641.6, 14334.1, 14229.0, 14050.6, 13932.5, 14012.4, 14151.6, 14405.3, 14505.5, 14393.9, 14467.3, 14235.8, 13892.3, 13122.6, 13509.8, 13284.4, 13337.7, 13198.8, 13251.9, 12888.3, 12899.4, 12592.8, 12290.6, 11947.2, 12249.0, 12270.2, 12443.9, 12374.3, 12122.9, 12213.6, 12266.0, 12150.7, 12250.7, 12118.3, 12070.2, 11721.7, 11430.1, 11797.7, 11577.1, 11220.4, 11117.0, 11152.0, 11151.0, 11165.4, 10759.6, 10961.7, 11023.6, 11478.1, 11333.3, 11482.6, 11712.7, 11661.9, 11666.4, 11811.2, 11842.8, 11841.8, 11661.0, 11477.4, 11400.1, 11131.3],
-      "histD": ["07-17", "07-20", "07-21", "07-22", "07-23", "07-24", "07-27", "07-28", "07-29", "07-30", "07-31", "08-03", "08-04", "08-05", "08-06", "08-07", "08-10", "08-11", "08-12", "08-13", "08-14", "08-17", "08-18", "08-19", "08-20", "08-21", "08-24", "08-25", "08-26", "08-27", "08-28", "08-31", "09-01", "09-02", "09-03", "09-04", "09-07", "09-08", "09-09", "09-10", "09-11", "09-14", "09-15", "09-16", "09-17", "09-18", "09-21", "09-22", "09-23", "09-24", "09-25", "09-28", "09-29", "09-30", "10-01", "10-02", "10-05", "10-06", "10-07", "10-08", "10-09", "10-12", "10-13", "10-14", "10-15", "10-16", "10-19", "10-20", "10-21", "10-22", "10-23", "10-26", "10-27", "10-28", "10-30", "11-02", "11-03", "11-04", "11-05", "11-06", "11-09", "11-10", "11-11", "11-12", "11-13", "11-16", "11-17", "11-18", "11-19", "11-20"],
+      "hist": [14071.0, 13974.1, 14138.9, 14077.7, 13943.9, 13774.8, 13687.9, 13501.6, 13292.9, 13458.1, 13410.5, 13687.9, 13703.1, 13798.8, 13779.4, 13811.6, 13704.5, 14110.1, 14132.2, 14172.3, 14132.1, 14128.0, 14459.0, 14396.5, 14514.8, 14501.5, 14473.4, 14610.9, 14575.5, 14641.6, 14334.1, 14229.0, 14050.6, 13932.5, 14012.4, 14151.6, 14405.3, 14505.5, 14393.9, 14467.3, 14235.8, 13892.3, 13122.6, 13509.8, 13284.4, 13337.7, 13198.8, 13251.9, 12888.3, 12899.4, 12592.8, 12290.6, 11947.2, 12249.0, 12270.2, 12443.9, 12374.3, 12122.9, 12213.6, 12266.0, 12150.7, 12250.7, 12118.3, 12070.2, 11721.7, 11430.1, 11797.7, 11577.1, 11220.4, 11117.0, 11152.0, 11151.0, 11165.4, 10759.6, 10961.7, 11023.6, 11478.1, 11333.3, 11482.6, 11712.7, 11661.9, 11666.4, 11811.2, 11842.8, 11841.8, 11661.0, 11477.4, 11400.1, 11131.3, 11104.4],
+      "histD": ["07-20", "07-21", "07-22", "07-23", "07-24", "07-27", "07-28", "07-29", "07-30", "07-31", "08-03", "08-04", "08-05", "08-06", "08-07", "08-10", "08-11", "08-12", "08-13", "08-14", "08-17", "08-18", "08-19", "08-20", "08-21", "08-24", "08-25", "08-26", "08-27", "08-28", "08-31", "09-01", "09-02", "09-03", "09-04", "09-07", "09-08", "09-09", "09-10", "09-11", "09-14", "09-15", "09-16", "09-17", "09-18", "09-21", "09-22", "09-23", "09-24", "09-25", "09-28", "09-29", "09-30", "10-01", "10-02", "10-05", "10-06", "10-07", "10-08", "10-09", "10-12", "10-13", "10-14", "10-15", "10-16", "10-19", "10-20", "10-21", "10-22", "10-23", "10-26", "10-27", "10-28", "10-30", "11-02", "11-03", "11-04", "11-05", "11-06", "11-09", "11-10", "11-11", "11-12", "11-13", "11-16", "11-17", "11-18", "11-19", "11-20", "11-23"],
       "ind": {
         "ma": "MA20 & MA50 altında (aşağı eğilim)",
         "rsiTxt": "nötr",
-        "rsi": 36.6,
+        "rsi": 36.1,
         "volat": 1.7,
-        "volRatio": 0.64
+        "volRatio": 0.85
       },
       "teknik": {
         "durum": "notr",
@@ -529,7 +529,7 @@
         "olaylar": [],
         "kisa": [],
         "trend": "düşüş",
-        "rsi": 36.6,
+        "rsi": 36.1,
         "destek": 10759.6,
         "direnc": 11842.8,
         "senaryo": {
@@ -553,7 +553,7 @@
         "rsiTxt": "nötr",
         "rsi": 41.3,
         "volat": 2.4,
-        "volRatio": 0.76
+        "volRatio": 1.0
       },
       "teknik": {
         "durum": "notr",
@@ -586,7 +586,7 @@
         "rsiTxt": "nötr",
         "rsi": 41.8,
         "volat": 3.1,
-        "volRatio": 1.01
+        "volRatio": 1.18
       },
       "teknik": {
         "durum": "notr",
@@ -618,7 +618,8 @@
         "ma": "MA20 altında",
         "rsiTxt": "nötr",
         "rsi": 43.5,
-        "volat": 1.6
+        "volat": 1.6,
+        "volRatio": 1.02
       },
       "teknik": {
         "durum": "notr",
@@ -639,45 +640,45 @@
     },
     {
       "code": "BZ=F",
-      "price": "86.72",
-      "chg": "-6.32%",
-      "avg1w": "91.27",
-      "avg1m": "99.73",
+      "price": "86.24",
+      "chg": "-3.50%",
+      "avg1w": "90.42",
+      "avg1m": "98.45",
       "name": "Brent",
-      "hist": [89.22, 91.01, 94.07, 100.69, 96.78, 88.36, 84.09, 90.74, 89.03, 90.12, 83.77, 79.36, 79.45, 82.49, 83.55, 87.72, 88.91, 88.98, 87.07, 88.52, 90.87, 91.02, 91.62, 93.78, 94.39, 92.17, 88.58, 87.84, 89.7, 89.31, 90.49, 94.65, 95.63, 95.52, 96.28, 97.92, 101.21, 107.63, 104.61, 105.68, 108.75, 105.83, 104.82, 103.87, 100.34, 99.25, 103.08, 106.6, 104.32, 105.28, 102.59, 103.53, 102.31, 102.25, 100.32, 100.58, 100.2, 104.28, 104.72, 106.65, 105.69, 106.06, 105.92, 109.86, 109.55, 108.79, 108.82, 113.17, 116.72, 115.81, 113.88, 115.32, 114.88, 117.64, 104.77, 103.6, 94.62, 98.29, 98.32, 92.57, 91.49, 92.76, 95.82, 95.84, 92.44, 93.14, 91.95, 91.98, 92.57, 86.72],
-      "histD": ["07-20", "07-21", "07-22", "07-23", "07-24", "07-27", "07-28", "07-29", "07-30", "07-31", "08-03", "08-04", "08-05", "08-06", "08-07", "08-10", "08-11", "08-12", "08-13", "08-14", "08-17", "08-18", "08-19", "08-20", "08-21", "08-24", "08-25", "08-26", "08-27", "08-28", "08-31", "09-01", "09-02", "09-03", "09-04", "09-08", "09-09", "09-10", "09-11", "09-14", "09-15", "09-16", "09-17", "09-18", "09-21", "09-22", "09-23", "09-24", "09-25", "09-28", "09-29", "09-30", "10-01", "10-02", "10-05", "10-06", "10-07", "10-08", "10-09", "10-12", "10-13", "10-14", "10-15", "10-16", "10-19", "10-20", "10-21", "10-22", "10-23", "10-26", "10-27", "10-28", "10-29", "10-30", "11-02", "11-03", "11-04", "11-05", "11-06", "11-09", "11-10", "11-11", "11-12", "11-13", "11-16", "11-17", "11-18", "11-19", "11-20", "11-23"],
+      "hist": [91.01, 94.07, 100.69, 96.78, 88.36, 84.09, 90.74, 89.03, 90.12, 83.77, 79.36, 79.45, 82.49, 83.55, 87.72, 88.91, 88.98, 87.07, 88.52, 90.87, 91.02, 91.62, 93.78, 94.39, 92.17, 88.58, 87.84, 89.7, 89.31, 90.49, 94.65, 95.63, 95.52, 96.28, 97.92, 101.21, 107.63, 104.61, 105.68, 108.75, 105.83, 104.82, 103.87, 100.34, 99.25, 103.08, 106.6, 104.32, 105.28, 102.59, 103.53, 102.31, 102.25, 100.32, 100.58, 100.2, 104.28, 104.72, 106.65, 105.69, 106.06, 105.92, 109.86, 109.55, 108.79, 108.82, 113.17, 116.72, 115.81, 113.88, 115.32, 114.88, 117.64, 104.77, 103.6, 94.62, 98.29, 98.32, 92.57, 91.49, 92.76, 95.82, 95.84, 92.44, 93.14, 91.95, 91.98, 92.57, 89.37, 86.24],
+      "histD": ["07-21", "07-22", "07-23", "07-24", "07-27", "07-28", "07-29", "07-30", "07-31", "08-03", "08-04", "08-05", "08-06", "08-07", "08-10", "08-11", "08-12", "08-13", "08-14", "08-17", "08-18", "08-19", "08-20", "08-21", "08-24", "08-25", "08-26", "08-27", "08-28", "08-31", "09-01", "09-02", "09-03", "09-04", "09-08", "09-09", "09-10", "09-11", "09-14", "09-15", "09-16", "09-17", "09-18", "09-21", "09-22", "09-23", "09-24", "09-25", "09-28", "09-29", "09-30", "10-01", "10-02", "10-05", "10-06", "10-07", "10-08", "10-09", "10-12", "10-13", "10-14", "10-15", "10-16", "10-19", "10-20", "10-21", "10-22", "10-23", "10-26", "10-27", "10-28", "10-29", "10-30", "11-02", "11-03", "11-04", "11-05", "11-06", "11-09", "11-10", "11-11", "11-12", "11-13", "11-16", "11-17", "11-18", "11-19", "11-20", "11-23", "11-24"],
       "ind": {
         "ma": "MA20 & MA50 altında (aşağı eğilim)",
         "rsiTxt": "nötr",
-        "rsi": 31.2,
-        "volat": 3.7,
-        "volRatio": 0.81
+        "rsi": 30.5,
+        "volat": 2.7,
+        "volRatio": 0.05
       },
       "teknik": {
         "durum": "olasi_satis",
         "ad": "olası satış",
         "puan": -2,
         "olaylar": [
-          "son 20 günün dibi 91.49 aşağı kırıldı (hacim teyidi yok)"
+          "son 20 günün dibi 89.37 aşağı kırıldı (hacim teyidi yok)"
         ],
         "kisa": [
           "dip kırılımı"
         ],
         "trend": "düşüş",
-        "rsi": 31.2,
-        "destek": 86.72,
-        "direnc": 91.49,
+        "rsi": 30.5,
+        "destek": 86.24,
+        "direnc": 89.37,
         "senaryo": {
-          "yukari": "91.49 üstünde kapanış yükselişi teyit eder",
-          "asagi": "86.72 altında kapanış zayıflık işareti"
+          "yukari": "89.37 üstünde kapanış yükselişi teyit eder",
+          "asagi": "86.24 altında kapanış zayıflık işareti"
         },
-        "ozet": "Trend düşüş · son 20 günün dibi 91.49 aşağı kırıldı (hacim teyidi yok)"
+        "ozet": "Trend düşüş · son 20 günün dibi 89.37 aşağı kırıldı (hacim teyidi yok)"
       }
     }
   ],
   "gold": {
-    "price": "5,911.95",
-    "chg": "+3.45%"
+    "price": "5,909.24",
+    "chg": "-0.47%"
   },
   "news": [
     {
@@ -685,8 +686,12 @@
       "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxQZnR1S2tfV0gzbnpIeEgxODNxLU5USXFoMkxwQjVnMEpkaVowWUZqdG5qa3g0eldtNFFmalZjbEpuQ19GNmpKeHJfeDZGQkVwWUtwLWdVeE1vSE85dTRNTHR1cXhVcjNudnl5VS1vYy16OVdRYjhfWmpORllIM3B4YS12WFdoVmdrQmJWeGxJS2lZVDVfSmpJaVdVUVBCbjdHc3pTMWdhaENwWkdvRlk1RTAzV2FGazZWV3lDWE0wa19kVUtOazFtcWVFVzd1ZG8?oc=5"
     },
     {
-      "t": "🟢 SASA Polyester’den yatırımcı bilgilendirme sunumu  (Rota Borsa)",
-      "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTFBSU3lSc3FKbFpqandvcUNENlNMT3R3b3pVUVF5bERsVDBabjVUZEJyOEp5UE1VTnFQelVydm52YTZRT3otY19QVGpSNkRIcDJqMVBFeTlDN0lsalhMcnpPeGFCNk1RSTBuV29UY0dEdEVPeGFrVEdhZkhKcw?oc=5"
+      "t": "⚪ Tüpraş (TUPRS) 2026 3. çeyrek bilanço yorumu  (Rota Borsa)",
+      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9qWUNPTUxBalg2NDgxeE56dlFqNUR6Uk1lUzNWMU1sVGdBMTlKSXRUY1hSYlJaRDE2dEstZ2RrZklCREtDeE9CRl9jbXZ0ZFJHVm5KcnlTYzE4M0hpRzZmVDViU253ZmZiaW1iUVNPYUc1NGFN?oc=5"
+    },
+    {
+      "t": "🟢 Tüpraş (TUPRS) 2027 temettü tahmini  (Rota Borsa)",
+      "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBmWHdpVWVKWFZGVU41U19XOExwWnFUa3gxbUVpOThfR08yS2JKNFNrQmpvME1VY2NkRXVrSS1DNGp1WmZpTi02OTdHQXRIdU4yWXo1TDlRbnMxUHpCSUZiTXhmaWhGRV9vZXc?oc=5"
     },
     {
       "t": "🟢 TUPRS, THYAO, SASA ve ASELS zirvede! İşte yatırımcı sayısı en yüksek hisseler  (Rota Borsa)",
@@ -695,20 +700,20 @@
   ],
   "world": [
     {
-      "t": "🌍 US to blacklist Asian AI firm Megaspeed after Nvidia scandal  (BBC World)",
-      "link": "https://www.bbc.co.uk/news/articles/cv98xpg5dg5zo?at_medium=RSS&at_campaign=rss"
+      "t": "🌍 Trump faces backlash after saying he 'convinced' Nvidia to reinstate CEO Jensen Huang  (BBC World)",
+      "link": "https://www.bbc.co.uk/news/articles/cq5y1k8ez407o?at_medium=RSS&at_campaign=rss"
     },
     {
       "t": "🌍 Ukraine confirms it used naval drones to strike two Russian ships off Libya  (Guardian World)",
       "link": "https://www.theguardian.com/world/2026/nov/23/ukraine-naval-drones-strike-russian-warship-libya"
     },
     {
-      "t": "🌍 US escalates sanctions on Iran, targets ‘shadow banking’ networks  (Al Jazeera)",
-      "link": "https://www.aljazeera.com/news/2026/11/23/us-escalates-sanctions-on-iran-targets-shadow-banking-networks?traffic_source=rss"
+      "t": "🌍 Pennsylvania reports ninth measles death in ongoing state outbreak  (Al Jazeera)",
+      "link": "https://www.aljazeera.com/news/2026/11/24/pennsylvania-reports-ninth-measles-death-in-ongoing-state-outbreak?traffic_source=rss"
     },
     {
-      "t": "🌍 Democrats win House by largest margin in 50 years. And, COP31 ends with no deal  (NPR World)",
-      "link": "https://www.npr.org/2026/11/23/g-s1-155021/up-first-newsletter-midterms-house-ai-stocks-poland-nato-cop31"
+      "t": "🌍 Russian incursions into NATO territory are increasing  (NPR World)",
+      "link": "https://www.npr.org/2026/11/23/nx-s1-6051013/russian-incursions-into-nato-territory-are-increasing"
     },
     {
       "t": "🌍 Tanzania: Towering flames engulf beachfront hotels in Zanzibar  (Euronews)",
@@ -721,50 +726,51 @@
   ],
   "tr": [
     {
-      "t": "🇹🇷 Jensen Huang'ın Nvidia'ya dönüşü sonrası küresel piyasalarda satış baskısı hafifledi  (AA)",
-      "link": "https://www.aa.com.tr/tr/ekonomi/jensen-huangin-nvidiaya-donusu-sonrasi-kuresel-piyasalarda-satis-baskisi-hafifledi/4135185"
+      "t": "🇹🇷 Siyasilerden \"24 Kasım Öğretmenler Günü\" mesajları  (AA)",
+      "link": "https://www.aa.com.tr/tr/gundem/siyasilerden-24-kasim-ogretmenler-gunu-mesajlari/4135180"
     },
     {
-      "t": "🇹🇷 Devlet Bahçeli'den 24 Kasım Öğretmenler Günü mesajı  (TRT Haber)",
-      "link": "https://www.trthaber.com/haber/gundem/devlet-bahceliden-24-kasim-ogretmenler-gunu-mesaji-964242.html"
+      "t": "🇹🇷 Kartal Belediyesi'ne yönelik operasyon: 10 gözaltı  (TRT Haber)",
+      "link": "https://www.trthaber.com/haber/turkiye/kartal-belediyesine-yonelik-operasyon-10-gozalti-964249.html"
     },
     {
       "t": "🇹🇷 Schengen vize serbestisi için Türkiye'yi hangi zorluklar bekliyor?  (BBC Türkçe)",
       "link": "https://www.bbc.com/turkce/articles/c61wr385xervo?at_medium=RSS&at_campaign=rss"
     },
     {
-      "t": "🇹🇷 2026 yılı yeniden değerleme oranı belli oldu  (NTV)",
-      "link": "https://www.ntv.com.tr/turkiye/2026-yili-yeniden-degerleme-orani-belli-oldu-1752267"
+      "t": "🇹🇷 Kartal Belediyesine operasyon  (Habertürk)",
+      "link": "https://www.haberturk.com/gundem/son-dakika-kartal-belediyesine-operasyon-3929611"
     },
     {
-      "t": "🇹🇷 Katar Başbakanı ve Dışişleri Bakanı Al Sani: Orta Doğu yeni bir ABD-İran gerilimini kaldıramaz  (AA)",
-      "link": "https://www.aa.com.tr/tr/dunya/katar-basbakani-ve-disisleri-bakani-al-sani-orta-dogu-yeni-bir-abd-iran-gerilimini-kaldiramaz/4135177"
+      "t": "🇹🇷 Kartal Belediyesi'ne kentsel dönüşüm operasyonu. 10 şüpheli gözaltında  (NTV)",
+      "link": "https://www.ntv.com.tr/turkiye/kartal-belediyesine-kentsel-donusum-operasyonu-10-supheli-gozaltinda-1752285"
     },
     {
-      "t": "🇹🇷 Suudi Arabistan'ın Cazan ve Abha kentlerinde erken uyarı sistemi devreye alındı  (TRT Haber)",
-      "link": "https://www.trthaber.com/haber/dunya/suudi-arabistanin-cazan-ve-abha-kentlerinde-erken-uyari-sistemi-devreye-alindi-964241.html"
+      "t": "🇹🇷 İstanbul'da yüksek katlı binalara yıldırım düşmesi görüntülendi  (AA)",
+      "link": "https://www.aa.com.tr/tr/gundem/istanbulda-yuksek-katli-binalara-yildirim-dusmesi-goruntulendi/4135224"
     }
   ],
   "_teshis": {
     "dunya": [
-      "BBC World: 33 öğe / 2 alındı / 0 elendi | ilk: US to blacklist Asian AI firm Megaspeed after Nvidia scandal",
+      "BBC World: 22 öğe / 2 alındı / 0 elendi | ilk: Trump faces backlash after saying he 'convinced' Nvidia to r",
       "Guardian World: 45 öğe / 2 alındı / 0 elendi | ilk: Ukraine confirms it used naval drones to strike two Russian ",
-      "Al Jazeera: 25 öğe / 2 alındı / 0 elendi | ilk: US escalates sanctions on Iran, targets ‘shadow banking’ net",
-      "NPR World: 10 öğe / 2 alındı / 0 elendi | ilk: Democrats win House by largest margin in 50 years. And, COP3",
+      "Al Jazeera: 25 öğe / 2 alındı / 0 elendi | ilk: Pennsylvania reports ninth measles death in ongoing state ou",
+      "NPR World: 10 öğe / 2 alındı / 0 elendi | ilk: Russian incursions into NATO territory are increasing",
       "Euronews: 50 öğe / 2 alındı / 0 elendi | ilk: Tanzania: Towering flames engulf beachfront hotels in Zanzib",
       "DW: 11 öğe / 2 alındı / 0 elendi | ilk: After Japan's APEC snub, what's next for its China ties?",
       "SONUÇ: 6 haber · veren: Al Jazeera, BBC World, DW, Euronews, Guardian World, NPR World",
-      "AA: 30 öğe / 2 alındı / 0 elendi | ilk: Jensen Huang'ın Nvidia'ya dönüşü sonrası küresel piyasalarda",
-      "TRT Haber: 50 öğe / 2 alındı / 0 elendi | ilk: Devlet Bahçeli'den 24 Kasım Öğretmenler Günü mesajı",
+      "AA: 30 öğe / 2 alındı / 0 elendi | ilk: Siyasilerden \"24 Kasım Öğretmenler Günü\" mesajları",
+      "TRT Haber: 50 öğe / 2 alındı / 0 elendi | ilk: Kartal Belediyesi'ne yönelik operasyon: 10 gözaltı",
       "BBC Türkçe: 16 öğe / 2 alındı / 0 elendi | ilk: Schengen vize serbestisi için Türkiye'yi hangi zorluklar bek",
-      "Habertürk: 30 öğe / 2 alındı / 0 elendi | ilk: Bahçeli'den Öğretmenler Günü mesajı",
-      "NTV: 20 öğe / 2 alındı / 4 elendi | ilk: 2026 yılı yeniden değerleme oranı belli oldu",
-      "SONUÇ: 6 haber · veren: AA, BBC Türkçe, NTV, TRT Haber"
+      "Habertürk: 30 öğe / 2 alındı / 0 elendi | ilk: Kartal Belediyesine operasyon",
+      "NTV: 20 öğe / 2 alındı / 0 elendi | ilk: Kartal Belediyesi'ne kentsel dönüşüm operasyonu. 10 şüpheli ",
+      "SONUÇ: 6 haber · veren: AA, BBC Türkçe, Habertürk, NTV, TRT Haber"
     ],
-    "hisse": "3 başlık geldi, 0 elendi",
+    "hisse": "4 başlık geldi, 0 elendi",
     "hisse_ham": [
       "20 Kasım kapanış gününde para çıkışı olan hisseler; SASA, TUPRS, KCHOL",
-      "SASA Polyester’den yatırımcı bilgilendirme sunumu",
+      "Tüpraş (TUPRS) 2026 3. çeyrek bilanço yorumu",
+      "Tüpraş (TUPRS) 2027 temettü tahmini",
       "TUPRS, THYAO, SASA ve ASELS zirvede! İşte yatırımcı sayısı en yüksek h"
     ]
   }
