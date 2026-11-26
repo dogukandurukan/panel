@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-26 19:44",
+  "updated": "2026-11-26 22:55",
   "sinyaller": [
     {
       "code": "MGROS",
@@ -100,7 +100,7 @@
     }
   ],
   "sinyalTarama": {
-    "bist": 36,
+    "bist": 35,
     "abd": 5,
     "bulunan": 4
   },
@@ -570,17 +570,17 @@
     },
     {
       "code": "^GDAXI",
-      "price": "25,235.32",
-      "chg": "+2.16%",
-      "avg1w": "25,019.06",
-      "avg1m": "25,905.96",
+      "price": "25,215.52",
+      "chg": "+2.08%",
+      "avg1w": "25,015.10",
+      "avg1m": "25,905.02",
       "name": "DAX",
-      "hist": [25099.0, 25361.03, 25464.01, 25460.48, 25612.03, 25629.24, 26001.31, 26202.35, 26126.3, 26140.13, 26319.45, 26323.88, 26391.42, 26331.07, 26299.74, 26440.31, 26338.61, 26128.36, 26091.33, 25983.04, 26136.56, 26106.6, 26266.14, 26285.96, 26367.24, 26569.99, 26258.11, 25970.11, 25839.33, 26003.32, 26046.4, 26006.53, 26007.63, 25576.45, 25361.15, 25568.56, 25440.81, 25402.28, 25537.75, 25716.71, 25304.06, 25575.01, 25578.85, 25410.63, 25266.53, 25408.64, 25374.42, 25399.21, 25199.19, 24939.35, 25231.2, 25254.21, 25449.19, 25104.36, 24806.97, 25087.27, 25277.68, 25259.9, 25298.61, 25382.62, 25622.61, 25319.77, 25304.42, 25645.04, 25371.75, 25181.65, 25410.84, 25590.77, 25704.02, 26039.68, 25818.21, 25981.09, 25864.62, 26437.67, 26325.01, 25820.36, 26267.19, 26347.45, 26662.77, 26771.88, 26749.95, 26598.64, 26045.37, 25736.24, 25463.81, 24802.78, 25337.27, 25017.81, 24702.13, 25235.32],
+      "hist": [25099.0, 25361.03, 25464.01, 25460.48, 25612.03, 25629.24, 26001.31, 26202.35, 26126.3, 26140.13, 26319.45, 26323.88, 26391.42, 26331.07, 26299.74, 26440.31, 26338.61, 26128.36, 26091.33, 25983.04, 26136.56, 26106.6, 26266.14, 26285.96, 26367.24, 26569.99, 26258.11, 25970.11, 25839.33, 26003.32, 26046.4, 26006.53, 26007.63, 25576.45, 25361.15, 25568.56, 25440.81, 25402.28, 25537.75, 25716.71, 25304.06, 25575.01, 25578.85, 25410.63, 25266.53, 25408.64, 25374.42, 25399.21, 25199.19, 24939.35, 25231.2, 25254.21, 25449.19, 25104.36, 24806.97, 25087.27, 25277.68, 25259.9, 25298.61, 25382.62, 25622.61, 25319.77, 25304.42, 25645.04, 25371.75, 25181.65, 25410.84, 25590.77, 25704.02, 26039.68, 25818.21, 25981.09, 25864.62, 26437.67, 26325.01, 25820.36, 26267.19, 26347.45, 26662.77, 26771.88, 26749.95, 26598.64, 26045.37, 25736.24, 25463.81, 24802.78, 25337.27, 25017.81, 24702.13, 25215.52],
       "histD": ["07-24", "07-27", "07-28", "07-29", "07-30", "07-31", "08-03", "08-04", "08-05", "08-06", "08-07", "08-10", "08-11", "08-12", "08-13", "08-14", "08-17", "08-18", "08-19", "08-20", "08-21", "08-24", "08-25", "08-26", "08-27", "08-28", "08-31", "09-01", "09-02", "09-03", "09-04", "09-07", "09-08", "09-09", "09-10", "09-11", "09-14", "09-15", "09-16", "09-17", "09-18", "09-21", "09-22", "09-23", "09-24", "09-25", "09-28", "09-29", "09-30", "10-01", "10-02", "10-05", "10-06", "10-07", "10-08", "10-09", "10-12", "10-13", "10-14", "10-15", "10-16", "10-19", "10-20", "10-21", "10-22", "10-23", "10-26", "10-27", "10-28", "10-29", "10-30", "11-02", "11-03", "11-04", "11-05", "11-06", "11-09", "11-10", "11-11", "11-12", "11-13", "11-16", "11-17", "11-18", "11-19", "11-20", "11-23", "11-24", "11-25", "11-26"],
       "ind": {
         "ma": "MA20 altında",
         "rsiTxt": "nötr",
-        "rsi": 44.7,
+        "rsi": 44.5,
         "volat": 1.5
       },
       "teknik": {
@@ -590,7 +590,7 @@
         "olaylar": [],
         "kisa": [],
         "trend": "yatay",
-        "rsi": 44.7,
+        "rsi": 44.5,
         "destek": 24702.13,
         "direnc": 26771.88,
         "senaryo": {
@@ -602,19 +602,19 @@
     },
     {
       "code": "BZ=F",
-      "price": "91.59",
-      "chg": "-3.19%",
-      "avg1w": "91.91",
-      "avg1m": "96.65",
+      "price": "91.73",
+      "chg": "-3.04%",
+      "avg1w": "91.94",
+      "avg1m": "96.66",
       "name": "Brent",
-      "hist": [100.69, 96.78, 88.36, 84.09, 90.74, 89.03, 90.12, 83.77, 79.36, 79.45, 82.49, 83.55, 87.72, 88.91, 88.98, 87.07, 88.52, 90.87, 91.02, 91.62, 93.78, 94.39, 92.17, 88.58, 87.84, 89.7, 89.31, 90.49, 94.65, 95.63, 95.52, 96.28, 97.92, 101.21, 107.63, 104.61, 105.68, 108.75, 105.83, 104.82, 103.87, 100.34, 99.25, 103.08, 106.6, 104.32, 105.28, 102.59, 103.53, 102.31, 102.25, 100.32, 100.58, 100.2, 104.28, 104.72, 106.65, 105.69, 106.06, 105.92, 109.86, 109.55, 108.79, 108.82, 113.17, 116.72, 115.81, 113.88, 115.32, 114.88, 117.64, 104.77, 103.6, 94.62, 98.29, 98.32, 92.57, 91.49, 92.76, 95.82, 95.84, 92.44, 93.14, 91.95, 91.98, 92.57, 89.37, 91.4, 94.61, 91.59],
+      "hist": [100.69, 96.78, 88.36, 84.09, 90.74, 89.03, 90.12, 83.77, 79.36, 79.45, 82.49, 83.55, 87.72, 88.91, 88.98, 87.07, 88.52, 90.87, 91.02, 91.62, 93.78, 94.39, 92.17, 88.58, 87.84, 89.7, 89.31, 90.49, 94.65, 95.63, 95.52, 96.28, 97.92, 101.21, 107.63, 104.61, 105.68, 108.75, 105.83, 104.82, 103.87, 100.34, 99.25, 103.08, 106.6, 104.32, 105.28, 102.59, 103.53, 102.31, 102.25, 100.32, 100.58, 100.2, 104.28, 104.72, 106.65, 105.69, 106.06, 105.92, 109.86, 109.55, 108.79, 108.82, 113.17, 116.72, 115.81, 113.88, 115.32, 114.88, 117.64, 104.77, 103.6, 94.62, 98.29, 98.32, 92.57, 91.49, 92.76, 95.82, 95.84, 92.44, 93.14, 91.95, 91.98, 92.57, 89.37, 91.4, 94.61, 91.73],
       "histD": ["07-23", "07-24", "07-27", "07-28", "07-29", "07-30", "07-31", "08-03", "08-04", "08-05", "08-06", "08-07", "08-10", "08-11", "08-12", "08-13", "08-14", "08-17", "08-18", "08-19", "08-20", "08-21", "08-24", "08-25", "08-26", "08-27", "08-28", "08-31", "09-01", "09-02", "09-03", "09-04", "09-08", "09-09", "09-10", "09-11", "09-14", "09-15", "09-16", "09-17", "09-18", "09-21", "09-22", "09-23", "09-24", "09-25", "09-28", "09-29", "09-30", "10-01", "10-02", "10-05", "10-06", "10-07", "10-08", "10-09", "10-12", "10-13", "10-14", "10-15", "10-16", "10-19", "10-20", "10-21", "10-22", "10-23", "10-26", "10-27", "10-28", "10-29", "10-30", "11-02", "11-03", "11-04", "11-05", "11-06", "11-09", "11-10", "11-11", "11-12", "11-13", "11-16", "11-17", "11-18", "11-19", "11-20", "11-23", "11-24", "11-25", "11-26"],
       "ind": {
         "ma": "MA20 & MA50 altında (aşağı eğilim)",
         "rsiTxt": "nötr",
-        "rsi": 40.5,
+        "rsi": 40.6,
         "volat": 2.8,
-        "volRatio": 0.43
+        "volRatio": 0.52
       },
       "teknik": {
         "durum": "notr",
@@ -623,7 +623,7 @@
         "olaylar": [],
         "kisa": [],
         "trend": "düşüş",
-        "rsi": 40.5,
+        "rsi": 40.6,
         "destek": 89.37,
         "direnc": 117.64,
         "senaryo": {
@@ -635,8 +635,8 @@
     }
   ],
   "gold": {
-    "price": "5,861.81",
-    "chg": "+1.77%"
+    "price": "5,854.34",
+    "chg": "+1.64%"
   },
   "news": [
     {
@@ -646,10 +646,6 @@
     {
       "t": "⚪ Hektaş’tan (HEKTS) Yönetim Kurulu açıklaması  (Rota Borsa)",
       "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9xcFJtb1BHYjBWajR1aVM4U0c1UTNJdG9JZzNtbUNTa2FrODRUakVtbHdNVzhPQkFEMkc3NEw5QWhVNENTbURVUGxKZTk0eUp0aWRLdER4U3NqMTM3Q1U2c2plNWw3ZTBiT3ozM3pMU3dUbTdwcnc?oc=5"
-    },
-    {
-      "t": "⚪ VESTL Hisse Senedi Fiyatı ve Grafiği - Vestel Elektronik Sanayi ve Ticaret A.Ş.  (Sanayi Gazetesi)",
-      "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPampoRml5OTc2MkNneTZWVlhtSzlVeDBQcWhqRlJ4NWN4YXZlVVRYOEFtdEJSVHZ1MkRLUmU3QkdaZ3g1UG5iTHEyMUxIUkxKQmd1d0VEOXlndlBQUFdqV2xiTDlQZTRTbUl0Z3VMeWNYQ1BKbHQyZ1hxZTZxX0s4YnZlNXZTcWs3VG8xLTJIQTBPN1U?oc=5"
     },
     {
       "t": "⚪ Astor Enerji kısa vadeli notu J1+  (Enerji Günlüğü)",
@@ -674,72 +670,72 @@
       "link": "https://www.theguardian.com/world/2026/nov/26/lana-nusseibeh-uae-sudan-un-secretary-general"
     },
     {
-      "t": "🌍 Spanish economist to become new European Central Bank chief  (Al Jazeera)",
-      "link": "https://www.aljazeera.com/news/2026/11/26/spanish-economist-to-become-new-european-central-bank-chief?traffic_source=rss"
+      "t": "🌍 Peru burns more than 10 tonnes of seized drugs  (Al Jazeera)",
+      "link": "https://www.aljazeera.com/video/newsfeed/2026/11/26/peru-burns-more-than-10-tonnes-of-seized-drugs?traffic_source=rss"
     },
     {
       "t": "🌍 Congo Ebola outbreak reaches 12,000 cases as some responders evacuate  (NPR World)",
       "link": "https://www.npr.org/2026/11/26/g-s1-155957/congo-ebola-responders"
     },
     {
-      "t": "🌍 Anthropic chief denies wanting humans to 'surrender' free will to AI  (Euronews)",
-      "link": "https://www.euronews.com/2026/11/26/anthropic-chief-denies-wanting-humans-to-surrender-free-will-to-ai"
+      "t": "🌍 Son of Myanmar's Suu Kyi 'relieved' by first call in five years, questions military's motives  (Euronews)",
+      "link": "https://www.euronews.com/2026/11/26/son-of-myanmars-suu-kyi-relieved-by-first-call-in-five-years-questions-militarys-motives"
     },
     {
-      "t": "🌍 Protests in Iraqi Kurdistan at plans for government in Baghdad to take over oil, border crossings  (DW)",
-      "link": "https://www.dw.com/en/protests-in-iraqi-kurdistan-at-plans-for-government-in-baghdad-to-take-over-oil-border-crossings/a-80065994?maca=en-rss-en-world-4025-rdf"
+      "t": "🌍 Saudi pop music is thriving — but for the right reasons?  (DW)",
+      "link": "https://www.dw.com/en/saudi-pop-music-is-thriving-but-for-the-right-reasons/a-80036013?maca=en-rss-en-world-4025-rdf"
     }
   ],
   "tr": [
     {
-      "t": "🇹🇷 İsrail'de muhalefetteki Yashar ve Demokratlar partileri koalisyon anlaşması konusunda uzlaştıklarını açıkladı  (TRT Haber)",
-      "link": "https://www.trthaber.com/haber/dunya/israilde-muhalefetteki-yashar-ve-demokratlar-partileri-koalisyon-anlasmasi-konusunda-uzlastiklarini-acikladi-964578.html"
+      "t": "🇹🇷 Beşiktaş: Cumhurbaşkanı Erdoğan olayı yakından takip ettiğini ifade etti  (TRT Haber)",
+      "link": "https://www.trthaber.com/haber/gundem/besiktas-cumhurbaskani-erdogan-olayi-yakindan-takip-ettigini-ifade-etti-964591.html"
     },
     {
-      "t": "🇹🇷 Fon krizinde ortak basın toplantısı: 'İddianame yazım aşamasına geldi'  (BBC Türkçe)",
+      "t": "🇹🇷 Fon krizinde ortak basın toplantısı: 'İddianame çıktığı zaman bütün isimleri kamuoyu duyacak'  (BBC Türkçe)",
       "link": "https://www.bbc.com/turkce/articles/ckedqgjqw1d4o?at_medium=RSS&at_campaign=rss"
     },
     {
-      "t": "🇹🇷 Kastamonu'da dalgalar sahildeki yola zarar verdi  (Habertürk)",
-      "link": "https://www.haberturk.com/gundem/kastamonu-da-dalgalar-sahildeki-yola-zarar-verdi-3930406"
+      "t": "🇹🇷 AK Parti'li Çelik: Yapılan şiddet kabul edilemez  (Habertürk)",
+      "link": "https://www.haberturk.com/gundem/ak-parti-li-celik-filistin-bayragi-acan-besiktas-taraftarlarina-yapilan-siddet-kabul-edilemez-3930440"
     },
     {
-      "t": "🇹🇷 Fon soruşturmasıyla ilgili ortak basın toplantısı. ''119 fonda 444 bin 987 yatırımcı ödeme aldı''  (NTV)",
-      "link": "https://www.ntv.com.tr/turkiye/fon-sorusturmasiyla-ilgili-ortak-basin-toplantisi-yilmaz-simsek-ve-gurlek-aciklama-yapiyor-1752748"
+      "t": "🇹🇷 Dışişleri'nden Avrupa Parlamentosu'nun Libya kararına tepki  (NTV)",
+      "link": "https://www.ntv.com.tr/turkiye/disislerinden-avrupa-parlamentosunun-libya-kararina-tepki-1752751"
     },
     {
-      "t": "🇹🇷 Bakan Şimşek konuşuyor  (TRT Haber)",
-      "link": "https://www.trthaber.com/haber/gundem/bakan-simsek-konusuyor-964577.html"
+      "t": "🇹🇷 Hamas: İsrail, ateşkese rağmen Gazze'de yaklaşık 1700 Filistinliyi öldürdü  (TRT Haber)",
+      "link": "https://www.trthaber.com/haber/dunya/hamas-israil-ateskese-ragmen-gazzede-yaklasik-1700-filistinliyi-oldurdu-964590.html"
     },
     {
-      "t": "🇹🇷 Abdullah Öcalan'dan Özgür Özel'e İzleme Komisyonu mesajı  (BBC Türkçe)",
-      "link": "https://www.bbc.com/turkce/articles/ckn902gn0d8eo?at_medium=RSS&at_campaign=rss"
+      "t": "🇹🇷 İddianame, ödemeler: Fon krizi ortak basın toplantısından neler öğrendik?  (BBC Türkçe)",
+      "link": "https://www.bbc.com/turkce/articles/cmrlgzxy0rp6o?at_medium=RSS&at_campaign=rss"
     }
   ],
   "_teshis": {
     "dunya": [
-      "BBC World: 28 öğe / 2 alındı / 0 elendi | ilk: German boat dealer suspected of supplying Channel smuggling ",
+      "BBC World: 27 öğe / 2 alındı / 0 elendi | ilk: German boat dealer suspected of supplying Channel smuggling ",
       "Guardian World: 45 öğe / 2 alındı / 0 elendi | ilk: ‘I’m no longer a UAE official’: UN hopeful Lana Nusseibeh tr",
-      "Al Jazeera: 25 öğe / 2 alındı / 0 elendi | ilk: Spanish economist to become new European Central Bank chief",
+      "Al Jazeera: 25 öğe / 2 alındı / 0 elendi | ilk: Peru burns more than 10 tonnes of seized drugs",
       "NPR World: 10 öğe / 2 alındı / 0 elendi | ilk: Congo Ebola outbreak reaches 12,000 cases as some responders",
-      "Euronews: 50 öğe / 2 alındı / 0 elendi | ilk: Anthropic chief denies wanting humans to 'surrender' free wi",
-      "DW: 13 öğe / 2 alındı / 0 elendi | ilk: Protests in Iraqi Kurdistan at plans for government in Baghd",
+      "Euronews: 50 öğe / 2 alındı / 0 elendi | ilk: Son of Myanmar's Suu Kyi 'relieved' by first call in five ye",
+      "DW: 12 öğe / 2 alındı / 0 elendi | ilk: Saudi pop music is thriving — but for the right reasons?",
       "SONUÇ: 6 haber · veren: Al Jazeera, BBC World, DW, Euronews, Guardian World, NPR World",
       "AA: OKUNAMADI RemoteDisconnected: Remote end closed connection without response",
-      "TRT Haber: 50 öğe / 2 alındı / 0 elendi | ilk: İsrail'de muhalefetteki Yashar ve Demokratlar partileri koal",
-      "BBC Türkçe: 16 öğe / 2 alındı / 0 elendi | ilk: Fon krizinde ortak basın toplantısı: 'İddianame yazım aşamas",
-      "Habertürk: 30 öğe / 2 alındı / 0 elendi | ilk: Kastamonu'da dalgalar sahildeki yola zarar verdi",
-      "NTV: 20 öğe / 2 alındı / 0 elendi | ilk: Fon soruşturmasıyla ilgili ortak basın toplantısı. ''119 fon",
+      "TRT Haber: 50 öğe / 2 alındı / 0 elendi | ilk: Beşiktaş: Cumhurbaşkanı Erdoğan olayı yakından takip ettiğin",
+      "BBC Türkçe: 16 öğe / 2 alındı / 0 elendi | ilk: Fon krizinde ortak basın toplantısı: 'İddianame çıktığı zama",
+      "Habertürk: 30 öğe / 2 alındı / 0 elendi | ilk: AK Parti'li Çelik: Yapılan şiddet kabul edilemez",
+      "NTV: 20 öğe / 2 alındı / 0 elendi | ilk: Dışişleri'nden Avrupa Parlamentosu'nun Libya kararına tepki",
       "SONUÇ: 6 haber · veren: BBC Türkçe, Habertürk, NTV, TRT Haber · boş dönen: AA"
     ],
-    "hisse": "7 başlık geldi, 1 elendi",
+    "hisse": "6 başlık geldi, 1 elendi",
     "hisse_ham": [
       "Dev şirketin hissesi1.718 gün öncesi fiyata düştü, 700 bin yatırımcı m",
       "KAP *** HEKTAŞ TİCARET T.A.Ş. *** HEKTS *** Şirket Genel Bilgi Formu",
       "Hektaş’tan (HEKTS) Yönetim Kurulu açıklaması",
-      "VESTL Hisse Senedi Fiyatı ve Grafiği - Vestel Elektronik Sanayi ve Tic",
       "Astor Enerji kısa vadeli notu J1+",
-      "JCR Eurasia’dan Astor Enerji kararı: Kredi notunda iki kademe düşüş"
+      "JCR Eurasia’dan Astor Enerji kararı: Kredi notunda iki kademe düşüş",
+      "Günün öne çıkan gelişmeleri: AVPGY, BRSAN, KATMR, METEN, ASTOR"
     ]
   }
 }
